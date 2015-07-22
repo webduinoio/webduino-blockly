@@ -271,6 +271,7 @@ Code.renderContent = function() {
     xmlTextarea.focus();
   } else if (content.id == 'content_javascript') {
     var code = Blockly.JavaScript.workspaceToCode(Code.workspace);
+    code = Code.wrapUp(code);
     content.textContent = code;
     if (typeof prettyPrintOne == 'function') {
       code = content.innerHTML;
@@ -407,7 +408,8 @@ Code.initLanguage = function() {
   document.getElementById('trashButton').title = MSG['trashTooltip'];
 
   var categories = ['catLogic', 'catLoops', 'catMath', 'catText', 'catLists',
-                    'catColour', 'catVariables', 'catFunctions'];
+                    'catColour', 'catVariables', 'catFunctions', 
+                    'catBoard', 'catLed', 'catRGBLed', 'catCar', 'catUtil'];
   for (var i = 0, cat; cat = categories[i]; i++) {
     document.getElementById(cat).setAttribute('name', MSG[cat]);
   }
@@ -434,6 +436,7 @@ Code.runJS = function() {
     }
   };
   var code = Blockly.JavaScript.workspaceToCode(Code.workspace);
+  code = Code.wrapUp(code);
   Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
   try {
     eval(code);
@@ -452,6 +455,10 @@ Code.discard = function() {
     Code.workspace.clear();
     window.location.hash = '';
   }
+};
+
+Code.wrapUp = function (str) {
+  return str.replace(/__onBoardReady__([\s\S]*)/g, "board.on('ready', function () {\n$1\n});");
 };
 
 // Load the Code demo's language strings.

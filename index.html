@@ -12,6 +12,9 @@
   <script src="components/blockly/blocks_compressed.js"></script>
   <script src="components/blockly/javascript_compressed.js"></script>
   <script src="code.js"></script>
+  <script src="blocks/webduino.js"></script>
+  <script src="generators/webduino.js"></script>
+  <Script src="https://webduino.io/components/webduino-js/dist/webduino-all.min.js"></script>
 </head>
 
 <body>
@@ -269,6 +272,30 @@
     <sep></sep>
     <category id="catVariables" custom="VARIABLE"></category>
     <category id="catFunctions" custom="PROCEDURE"></category>
+    <sep></sep>
+    <category id="catBoard">
+      <block type="board_setup"></block>
+    </category>
+    <category id="catLed">
+      <block type="led_new"></block>
+      <block type="led_state"></block>
+      <block type="led_toggle"></block>
+    </category>
+    <category id="catRGBLed">
+      <block type="rgbled_new"></block>
+      <block type="rgbled_setcolor"></block>
+    </category>
+    <category id="catCar">
+      <block type="car_init_control"></block>
+      <block type="car_move"></block>
+      <block type="car_move_then"></block>
+    </category>
+    <sep></sep>
+    <category id="catUtil">
+      <block type="timer"></block>
+      <block type="exec_then"></block>
+      <block type="exec_then_stms"></block>
+    </category>
   </xml>
 </body>
 
