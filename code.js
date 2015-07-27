@@ -465,6 +465,6 @@ Code.wrapUp = function (str) {
 document.write('<script src="msg/' + Code.LANG + '.js"></script>\n');
 // Load Blockly's language strings.
 document.write('<script src="components/blockly/msg/js/' + Code.LANG + '.js"></script>\n');
-document.write('<script src="../../blocks/msg/' + Code.LANG + '.js"></script>\n');
+document.write('<script src="blocks/msg/' + Code.LANG + '.js"></script>\n');
 
 window.addEventListener('load', Code.init);
