@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="google" value="notranslate">
+  <title></title>
+  <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../tutorials.css">
+  <script src="../../storage.js"></script>
+  <script src="../../components/blockly/blockly_compressed.js"></script>
+  <script src="../../components/blockly/blocks_compressed.js"></script>
+  <script src="../../components/blockly/javascript_compressed.js"></script>
+  <script src="led-code.js"></script>
+  <script src="../../blocks/webduino.js"></script>
+  <script src="../../generators/webduino.js"></script>
+  <script src="../../blocks/tutorials.js"></script>
+  <script src="../../generators/tutorials.js"></script>
+  <Script src="https://webduino.io/components/webduino-js/dist/webduino-all.min.js"></script>
+  <style>
+    #light{
+      width:60%;
+    }
+    #light img{
+      width:100%;
+      display:none;
+    }
+    #light.off img:first-child{
+      display:inline-block;
+    }
+    #light.on img:last-child{
+      display:inline-block;
+    }
+  </style>
+</head>
+
+<body id="tutorialsBody" chapter="LED01">
+  <div id="demoArea">
+    <div id="demoTitle">...</div>
+    <div id="demoDescription">...</div>
+    <div id="light" class="off">
+      <img src='http://i.imgur.com/T5H4MHE.png'></img>
+      <img src='http://i.imgur.com/8qFj2Ou.png'></img>
+    </div>
+  </div>
+  <table width="60%" height="100%">
+    <tr>
+      <td>
+        <h1>
+          <span id="title">...</span><span id="subTitle">...</span>
+        </h1>
+      </td>
+      <td class="farSide">
+        <select id="languageMenu"></select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2>
+        <table width="100%">
+          <tr id="tabRow" height="1em">
+            <td id="tab_blocks" class="tabon">...</td>
+            <td class="tabmin">&nbsp;</td>
+            <td id="tab_javascript" class="taboff">JavaScript</td>
+            <td class="tabmin">&nbsp;</td>
+            <td id="tab_xml" class="taboff" style="display:none;">XML</td>
+            <td class="tabmax">
+              <button id="trashButton" class="notext" title="...">
+                <img src='../../media/1x1.gif' class="trash icon21">
+              </button>
+              <button id="linkButton" class="notext" title="...">
+                <img src='../../media/1x1.gif' class="link icon21">
+              </button>
+              <button id="runButton" class="notext primary" title="...">
+                <img src='../../media/1x1.gif' class="run icon21">
+              </button>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td height="99%" colspan=2 id="content_area">
+      </td>
+    </tr>
+  </table>
+  <div id="content_blocks" class="content"></div>
+  <pre id="content_javascript" class="content"></pre>
+  <textarea id="content_xml" class="content" wrap="off"></textarea>
+  <xml id="toolbox" style="display: none">
+    <category id="catVariables" custom="VARIABLE"></category>
+    <sep></sep>
+    <category id="catBoard">
+      <block type="board_setup"></block>
+    </category>
+    <category id="catLed">
+      <block type="led_new"></block>
+      <block type="led_state"></block>
+    </category>
+    <category id="catTutorials">
+      <block type="light"></block>
+    </category>
+    <sep></sep>
+  </xml>
+</body>
+
+</html>

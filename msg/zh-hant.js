@@ -16,7 +16,7 @@ var MSG = {
   catVariables: "變量",
   catFunctions: "流程",
   catBoard: "開發板",
-  catLed: "Led",
+  catLed: "Led 燈",
   catRGBLed: "RGBLed",
   catUtil: "公用函式",
   catCar: "遙控車",

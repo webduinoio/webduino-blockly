@@ -1,0 +1,29 @@
+#title{
+  display:none;
+}
+#languageMenu{
+  position:absolute;
+  top:0px;
+  right:0px;
+  font-size:20px;
+}
+#demoArea{
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  width:calc(40% - 20px);
+  height:calc(100% - 90px);
+  border:1px dotted #aaa;
+  padding:20px;
+  box-sizing:border-box;
+}
+#demoTitle{
+  position:absolute;
+  top:-26px;
+  left:10px;
+  font-size:20px;
+}
+#demoDescription{
+	line-height:22px;
+	margin:0 0 10px;
+}

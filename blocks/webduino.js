@@ -6,8 +6,8 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks['board_setup'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField("Board")
-      .appendField("Setup")
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_SETUP_BOARD,"Board")
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_SETUP_SETUP,"Setup")
       .appendField(new Blockly.FieldTextInput("[device_id]"), "device_");
     this.appendStatementInput("setup_");
     this.setColour(290);
@@ -19,8 +19,8 @@ Blockly.Blocks['board_setup'] = {
 Blockly.Blocks['led_new'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField("Led")
-      .appendField("pin")
+      .appendField(Blockly.Msg.WEBDUINO_LED_NEW_LED,"Led")
+      .appendField(Blockly.Msg.WEBDUINO_LED_NEW_PIN,"pin")
       .appendField(new Blockly.FieldDropdown([
         ["6", "6"],
         ["7", "7"],
@@ -40,7 +40,7 @@ Blockly.Blocks['led_state'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable(" "), "led_")
-      .appendField("set state")
+      .appendField(Blockly.Msg.WEBDUINO_LED_NEW_SET_STATUS,"set state")
       .appendField(new Blockly.FieldDropdown([
         ["on", "on"],
         ["off", "off"]

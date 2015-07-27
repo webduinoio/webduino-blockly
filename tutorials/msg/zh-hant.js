@@ -1,0 +1,10 @@
+MSG.demoTitle = "Blockly 範例測試區";
+MSG.catTutorials = "教學積木";
+MSG.subTitleLED01 = "Webduino Blockly 教學 1-1：點亮 LED 燈";
+MSG.demoDescriptionLED01 = "點亮 LED 燈與下面這張圖片的燈泡";
+MSG.subTitleLED02 = "Webduino Blockly 教學 1-2：點選圖片控制 LED 燈";
+MSG.demoDescriptionLED02 = "點選下圖的燈泡，控制 LED 的開或關";
+MSG.subTitleLED03 = "Webduino Blockly 教學 1-3：控制兩顆 LED 燈";
+MSG.demoDescriptionLED03 = "點選下圖左右兩顆燈泡，分別控制兩顆 LED 的開或關";
+MSG.subTitleLED04 = "Webduino Blockly 教學 1-4：兩顆 LED 燈交互閃爍";
+MSG.demoDescriptionLED04 = "利用燈泡圖片作為開關，讓兩顆 LED 開始閃爍與停止閃爍";

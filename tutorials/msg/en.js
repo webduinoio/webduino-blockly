@@ -1,0 +1,10 @@
+MSG.demoTitle = "Blockly Demo Area";
+MSG.catTutorials = "Tutorials";
+MSG.subTitleLED01 = "Webduino Blockly Tutorial 1-1 : LED ON";
+MSG.demoDescriptionLED01 = "Using 'building blocks', light LED and bulb pictures";
+MSG.subTitleLED02 = "Webduino Blockly Tutorial 1-2 : Click the image control LED";
+MSG.demoDescriptionLED02 = "Click on the image below the bulb and the control LED on or off";
+MSG.subTitleLED03 = "Webduino Blockly Tutorial 1-3 : Control 2 LED";
+MSG.demoDescriptionLED03 = "Click on the two light bulbs, control of two LED on or off";
+MSG.subTitleLED04 = "Webduino Blockly Tutorial 1-4 : Two blinking LED";
+MSG.demoDescriptionLED04 = "Click on the light bulb, let the two LED start blinking and stops blinking";
