@@ -4,17 +4,18 @@ goog.provide('Blockly.Msg.Webduino.zh.hant');
 
 goog.require('Blockly.Msg.Webduino');
 
-
 Blockly.Msg.WEBDUINO_TIMER_AFTER = "在";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "秒之後";
 Blockly.Msg.WEBDUINO_TIMER_DO = "執行";
 Blockly.Msg.WEBDUINO_EXEC_THEN = "然後執行";
 
-Blockly.Msg.WEBDUINO_BOARD_SETUP_BOARD = "開發板";
-Blockly.Msg.WEBDUINO_BOARD_SETUP_SETUP = "Device 名稱：";
-Blockly.Msg.WEBDUINO_LED_NEW_LED = "LED 燈";
-Blockly.Msg.WEBDUINO_LED_NEW_PIN = "腳位";
-Blockly.Msg.WEBDUINO_LED_NEW_SET_STATUS = "狀態為：";
+Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "開發版";
+Blockly.Msg.WEBDUINO_BOARD_READY_DEVICE = "device";
+
+Blockly.Msg.WEBDUINO_LED = "LED 燈";
+Blockly.Msg.WEBDUINO_LED_PIN = "腳位";
+Blockly.Msg.WEBDUINO_LED_SET_STATE = "設定狀態";
+Blockly.Msg.WEBDUINO_LED_TOGGLE = "切換狀態";
 
 Blockly.Msg.WEBDUINO_RGBLED = "三色 LED";
 Blockly.Msg.WEBDUINO_RGBLED_RED = "紅";

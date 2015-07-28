@@ -3,20 +3,17 @@
 goog.provide('Blockly.JavaScript.webduino');
 goog.require('Blockly.JavaScript');
 
-Blockly.JavaScript['board_setup'] = function (block) {
-  var text_device_ = block.getFieldValue('device_');
-  var statements_setup_ = Blockly.JavaScript.statementToCode(block, 'setup_');
-  var code = "var board = new webduino.WebArduino('" + text_device_ + "');\n" +
-    '__onBoardReady__\n' +
-    statements_setup_ + '\n';
+Blockly.JavaScript['board_ready'] = function (block) {
+  var value_device_ = Blockly.JavaScript.valueToCode(block, 'device_', Blockly.JavaScript.ORDER_ATOMIC);
+  var statements_callbacks_ = Blockly.JavaScript.statementToCode(block, 'callbacks_');
+  var code = 'boardReady(' + value_device_ + ', function (board) {\n' + statements_callbacks_ + '});\n';
   return code;
 };
 
 Blockly.JavaScript['led_new'] = function (block) {
   var dropdown_pin_ = block.getFieldValue('pin_');
-  var code = 'new webduino.module.Led(board, ' +
-    'board.getDigitalPin(' + dropdown_pin_ + '))';
-  return [code, Blockly.JavaScript.ORDER_NEW];
+  var code = 'getLed(board, ' + dropdown_pin_ + ')';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
 Blockly.JavaScript['led_state'] = function (block) {
