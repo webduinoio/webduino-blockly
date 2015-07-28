@@ -33,11 +33,8 @@ Blockly.JavaScript['rgbled_new'] = function (block) {
   var dropdown_red_ = block.getFieldValue('red_');
   var dropdown_green_ = block.getFieldValue('green_');
   var dropdown_blue_ = block.getFieldValue('blue_');
-  var code = 'new webduino.module.RGBLed(board, ' +
-    'board.getDigitalPin(' + dropdown_red_ + '), ' +
-    'board.getDigitalPin(' + dropdown_green_ + '), ' +
-    'board.getDigitalPin(' + dropdown_blue_ + '))';
-  return [code, Blockly.JavaScript.ORDER_NEW];
+  var code = 'getRGBLed(board, ' + dropdown_red_ + ', ' + dropdown_green_ + ', ' + dropdown_blue_ + ')';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
 Blockly.JavaScript['rgbled_setcolor'] = function (block) {
