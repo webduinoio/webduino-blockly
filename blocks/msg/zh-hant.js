@@ -31,7 +31,7 @@ Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL_R = "右";
 Blockly.Msg.WEBDUINO_CAR_MOVE_FOR = "持續";
 Blockly.Msg.WEBDUINO_CAR_MOVE_SEC = "秒";
 
-// tutorial 1 - led
+// LED
 
 Blockly.Msg.WEBDUINO_LIGHT = "燈泡";
 Blockly.Msg.WEBDUINO_LIGHT_CLICK = "點擊燈泡時執行";
@@ -48,3 +48,14 @@ Blockly.Msg.WEBDUINO_TWO_LED_START_BLANKING_TIME = "毫秒 ( 1/1000 秒 )";
 Blockly.Msg.WEBDUINO_TWO_LED_START_BLANKING_STATE1 = "狀態 1：";
 Blockly.Msg.WEBDUINO_TWO_LED_START_BLANKING_STATE2 = "狀態 2：";
 Blockly.Msg.WEBDUINO_TWO_LED_STOP_BLANKING = "停止閃爍";
+
+// RGB
+
+Blockly.Msg.WEBDUINO_RGB_LED_AREA_COLOR = "設定展示區域顏色：";
+Blockly.Msg.WEBDUINO_RGB_LED_BTN_CLICK = "點選";
+Blockly.Msg.WEBDUINO_RGB_LED_BTN_BUTTON = "按鈕";
+Blockly.Msg.WEBDUINO_RGB_LED_BTN_DO = "執行";
+
+Blockly.Msg.WEBDUINO_RGB_LED_RANGE_CHANGE = "調整拉霸";
+Blockly.Msg.WEBDUINO_RGB_LED_RANGE_DO = "執行：";
+Blockly.Msg.WEBDUINO_RGB_LED_CURRENT_COLOR = "拉霸調整的顏色";

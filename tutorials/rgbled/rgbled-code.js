@@ -415,33 +415,29 @@ Code.initLanguage = function() {
                     'catBoard', 'catLed', 'catRGBLed', 'catCar', 'catUtil'];*/
   var tutorialsChapter = document.getElementById('tutorialsBody').getAttribute('chapter');
 
-  if(tutorialsChapter=='LED01'){
-    document.getElementById('subTitle').textContent = MSG['subTitleLED01'];
-  document.getElementById('demoDescription').textContent = MSG['demoDescriptionLED01'];
-    var categories = ['catVariables', 'catBoard', 'catLed', 'catTutorials'];
+  if(tutorialsChapter=='RGBLED01'){
+    document.getElementById('subTitle').textContent = MSG['subTitleRGBLED01'];
+  document.getElementById('demoDescription').textContent = MSG['demoDescriptionRGBLED01'];
+    var categories = ['catVariables','catColour', 'catBoard', 'catRGBLed', 'catTutorials'];
   }
-  else if(tutorialsChapter=='LED02'){
-    document.getElementById('subTitle').textContent = MSG['subTitleLED02'];
-  document.getElementById('demoDescription').textContent = MSG['demoDescriptionLED02'];
-    var categories = ['catLogic','catVariables', 'catBoard', 'catLed', 'catTutorials'];
+  else if(tutorialsChapter=='RGBLED02'){
+    document.getElementById('subTitle').textContent = MSG['subTitleRGBLED02'];
+  document.getElementById('demoDescription').textContent = MSG['demoDescriptionRGBLED02'];
+    var categories = ['catVariables','catColour', 'catBoard', 'catRGBLed', 'catTutorials'];
   }
-  else if(tutorialsChapter=='LED03'){
-    document.getElementById('subTitle').textContent = MSG['subTitleLED03'];
-  document.getElementById('demoDescription').textContent = MSG['demoDescriptionLED03'];
-    var categories = ['catLogic','catVariables', 'catBoard', 'catLed', 'catTutorials'];
+  else if(tutorialsChapter=='RGBLED03'){
+    document.getElementById('subTitle').textContent = MSG['subTitleRGBLED03'];
+  document.getElementById('demoDescription').textContent = MSG['demoDescriptionRGBLED03'];
+    var categories = ['catVariables','catColour', 'catBoard', 'catRGBLed', 'catTutorials'];
   }
-  else if(tutorialsChapter=='LED04'){
-    document.getElementById('subTitle').textContent = MSG['subTitleLED04'];
-  document.getElementById('demoDescription').textContent = MSG['demoDescriptionLED04'];
-    var categories = ['catLogic','catMath','catVariables', 'catBoard', 'catLed', 'catTutorials'];
+  else if(tutorialsChapter=='RGBLED04'){
+    document.getElementById('subTitle').textContent = MSG['subTitleRGBLED04'];
+  document.getElementById('demoDescription').textContent = MSG['demoDescriptionRGBLED04'];
+    var categories = ['catLogic','catMath','catVariables', 'catBoard', 'catRGBLed', 'catTutorials'];
   }
 
   for (var i = 0, cat; cat = categories[i]; i++) {
     document.getElementById(cat).setAttribute('name', MSG[cat]);
-  }
-  var timerVars = document.getElementsByClassName('timerVar');
-  for (var i = 0, timerVar; timerVar = timerVars[i]; i++) {
-    timerVar.textContent = MSG['timerVariable'];
   }
   var textVars = document.getElementsByClassName('textVar');
   for (var i = 0, textVar; textVar = textVars[i]; i++) {

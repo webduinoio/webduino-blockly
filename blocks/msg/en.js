@@ -31,6 +31,8 @@ Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL_R = "R";
 Blockly.Msg.WEBDUINO_CAR_MOVE_FOR = "for";
 Blockly.Msg.WEBDUINO_CAR_MOVE_SEC = "secs";
 
+// LED
+
 Blockly.Msg.WEBDUINO_LIGHT = "Light";
 Blockly.Msg.WEBDUINO_LIGHT_CLICK = "Click light, do";
 Blockly.Msg.WEBDUINO_LIGHT_STATUS = "Light status = ";
@@ -46,3 +48,14 @@ Blockly.Msg.WEBDUINO_TWO_LED_START_BLANKING_TIME = "ms ( 1/1000 sec )";
 Blockly.Msg.WEBDUINO_TWO_LED_START_BLANKING_STATE1 = "Status 1：";
 Blockly.Msg.WEBDUINO_TWO_LED_START_BLANKING_STATE2 = "Status 2：";
 Blockly.Msg.WEBDUINO_TWO_LED_STOP_BLANKING = "Stop Blinking";
+
+// RGB
+
+Blockly.Msg.WEBDUINO_RGB_LED_AREA_COLOR = "Set demo area color:";
+Blockly.Msg.WEBDUINO_RGB_LED_BTN_CLICK = "Click";
+Blockly.Msg.WEBDUINO_RGB_LED_BTN_BUTTON = "Button";
+Blockly.Msg.WEBDUINO_RGB_LED_BTN_DO = "do:";
+
+Blockly.Msg.WEBDUINO_RGB_LED_RANGE_CHANGE = "Range change";
+Blockly.Msg.WEBDUINO_RGB_LED_RANGE_DO = "do:";
+Blockly.Msg.WEBDUINO_RGB_LED_CURRENT_COLOR = "Current color";

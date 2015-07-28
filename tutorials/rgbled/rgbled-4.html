@@ -7,7 +7,8 @@
   <title></title>
   <style>
     #light{
-      width:60%;
+      width:70%;
+      margin:0 5px;
     }
     #light img{
       width:100%;
@@ -22,13 +23,13 @@
   </style>
 </head>
 
-<body id="tutorialsBody" chapter="LED01">
+<body id="tutorialsBody" chapter="RGBLED04">
   <div id="demoArea">
     <div id="demoTitle">...</div>
     <div id="demoDescription">...</div>
     <div id="light" class="off">
-      <img src='http://i.imgur.com/T5H4MHE.png'></img>
-      <img src='http://i.imgur.com/8qFj2Ou.png'></img>
+      <img src='http://i.imgur.com/T5H4MHE.png'>
+      <img src='http://i.imgur.com/8qFj2Ou.png'>
     </div>
   </div>
   <table width="60%" height="100%">
@@ -77,6 +78,13 @@
   <xml id="toolbox" style="display: none">
     <category id="catVariables" custom="VARIABLE"></category>
     <sep></sep>
+    <category id="catLogic">
+      <block type="controls_if"></block>
+    </category>
+    <category id="catMath">
+      <block type="math_number"></block>
+    </category>
+    <sep></sep>
     <category id="catBoard">
       <block type="board_ready">
         <value name="device_">
@@ -84,21 +92,27 @@
         </value>
       </block>
     </category>
-    <category id="catLed">
+    <category id="catRGBLed">
       <block type="variables_set">
-        <field name="VAR">led</field>
+        <field name="VAR">rgbled</field>
         <value name="VALUE">
-          <block type="led_new">
-            <field name="pin_">10</field>
+          <block type="rgbled_new">
+            <field name="red_">6</field>
+            <field name="green_">9</field>
+            <field name="blue_">10</field>
           </block>
         </value>
       </block>
-      <block type="led_state">
-        <field name="led_">led</field>
+      <block type="rgbled_setcolor">
+        <field name="rgbled_">rgbled</field>
       </block>
     </category>
     <category id="catTutorials">
       <block type="light"></block>
+      <block type="light_click"></block>
+      <block type="light_check"></block>
+      <block type="two_led_start_blinking"></block>
+      <block type="two_led_stop_blinking"></block>
     </category>
     <sep></sep>
   </xml>

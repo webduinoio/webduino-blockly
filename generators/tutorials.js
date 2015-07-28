@@ -3,6 +3,15 @@
 goog.provide('Blockly.JavaScript.webduino.tutorials');
 goog.require('Blockly.JavaScript');
 
+/*
+ooooo        oooooooooooo oooooooooo.   
+`888'        `888'     `8 `888'   `Y8b  
+ 888          888          888      888 
+ 888          888oooo8     888      888 
+ 888          888    "     888      888 
+ 888       o  888       o  888     d88' 
+o888ooooood8 o888ooooood8 o888bood8P'   
+*/
 
 Blockly.JavaScript['light'] = function(block) {
   var dropdown_status = block.getFieldValue('status');
@@ -12,8 +21,7 @@ Blockly.JavaScript['light'] = function(block) {
 
 Blockly.JavaScript['light_click'] = function(block) {
   var statements_click = Blockly.JavaScript.statementToCode(block, 'click');
-  var code =  'var timer;\n'+
-              'document.getElementById("light").addEventListener("click",function(){\n'+
+  var code =  'document.getElementById("light").addEventListener("click",function(){\n'+
   						statements_click+'\n});\n';
   return code;
 };
@@ -50,28 +58,100 @@ Blockly.JavaScript['two_led_start_blinking'] = function(block) {
   var value_time = Blockly.JavaScript.valueToCode(block, 'time', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_status1 = Blockly.JavaScript.statementToCode(block, 'status1');
   var statements_status2 = Blockly.JavaScript.statementToCode(block, 'status2');
-  var code =  'var a=1;\n'+
-              'blink();\n'+
-              'function blink(){\n'+
-              '  a=a+1;\n'+
-              '  if(a%2==0){\n'+statements_status1+
+  var blinkVar = Blockly.JavaScript.variableDB_.getDistinctName(
+      'blinkVar', Blockly.Variables.NAME_TYPE);
+  var blinkTimer = Blockly.JavaScript.variableDB_.getDistinctName(
+      'blinkTimer', Blockly.Variables.NAME_TYPE);
+  var blinkFunction = Blockly.JavaScript.variableDB_.getDistinctName(
+      'blinkFunction', Blockly.Variables.NAME_TYPE);
+  var code =  'var '+blinkVar+'=1;\n'+
+              'var '+blinkTimer+';\n'+
+              'var '+blinkFunction+'=function(){\n'+
+              '  '+blinkVar+'='+blinkVar+'+1;\n'+
+              '  if('+blinkVar+'%2==0){\n'+statements_status1+
               '  \n}else{\n'+statements_status2+
               '  }\n'+
-              '  timer = setTimeout(blink,'+value_time+');\n'+
-              '}\n';
+              '  '+blinkTimer+' = setTimeout('+blinkFunction+','+value_time+');\n'+
+              '}\n'+
+              blinkFunction+'();\n';
+  return code;
+};
+Blockly.JavaScript['two_led_start_blinking'] = function(block) {
+  var value_timer = Blockly.JavaScript.valueToCode(block, 'timer', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_time = Blockly.JavaScript.valueToCode(block, 'time', Blockly.JavaScript.ORDER_ATOMIC);
+  var statements_status1 = Blockly.JavaScript.statementToCode(block, 'status1');
+  var statements_status2 = Blockly.JavaScript.statementToCode(block, 'status2');
+  var blinkVar = Blockly.JavaScript.variableDB_.getDistinctName(
+      'blinkVar', Blockly.Variables.NAME_TYPE);
+  var blinkFunction = Blockly.JavaScript.variableDB_.getDistinctName(
+      'blinkFunction', Blockly.Variables.NAME_TYPE);
+  var code =  'var '+blinkVar+'=1;\n'+
+              'var '+blinkFunction+'=function(){\n'+
+              '  '+blinkVar+'='+blinkVar+'+1;\n'+
+              '  if('+blinkVar+'%2==0){\n'+statements_status1+
+              '  \n}else{\n'+statements_status2+
+              '  }\n'+
+              '  '+value_timer+' = setTimeout('+blinkFunction+','+value_time+');\n'+
+              '}\n'+
+              blinkFunction+'();\n';
   return code;
 };
 
+
 Blockly.JavaScript['two_led_stop_blinking'] = function(block) {
-  var code = 'clearTimeout(timer);\n'+
-              'a=1;';
+  var value_timer = Blockly.JavaScript.valueToCode(block, 'timer', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'clearTimeout('+value_timer+');\n';
   return code;
 };
-Blockly.JavaScript['two_led_stop_blinking'] = function(block) {
-  var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
-  var code = 'clearTimeout(timer);\n'+
-              'a=1;\n'+statements_name;
+
+/*
+ooooooooo.     .oooooo.    oooooooooo.  
+`888   `Y88.  d8P'  `Y8b   `888'   `Y8b 
+ 888   .d88' 888            888     888 
+ 888ooo88P'  888            888oooo888' 
+ 888`88b.    888     ooooo  888    `88b 
+ 888  `88b.  `88.    .88'   888    .88P 
+o888o  o888o  `Y8bood8P'   o888bood8P'  
+*/
+
+Blockly.JavaScript['rgb_led_area_color'] = function(block) {
+  var value_color = Blockly.JavaScript.valueToCode(block, 'color', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'document.getElementById("show").style.background = '+value_color+';\n';
   return code;
+};
+
+Blockly.JavaScript['rgb_led_btn_click'] = function(block) {
+  var dropdown_btn = block.getFieldValue('btn');
+  var statements_do = Blockly.JavaScript.statementToCode(block, 'do');
+  var code = 'document.getElementById("'+dropdown_btn+'").addEventListener("click",function(){\n'+
+             statements_do+'\n});\n';
+  return code;
+};
+Blockly.JavaScript['rgb_led_range'] = function(block) {
+  var statements_do = Blockly.JavaScript.statementToCode(block, 'do');
+  var varChangeColor = Blockly.JavaScript.variableDB_.getDistinctName(
+      'changeColor', Blockly.Variables.NAME_TYPE);
+  var code = 'var '+varChangeColor+' = function(){\n'+
+              '  var color,r="00",g="00",b="00";\n'+
+              '  var cc = function(e){\n'+
+              '    var id=e.target.id;\n'+
+              '    if(id=="redRange"){r=e.target.value*1; if(r<17){r="0"+r.toString(16);}else{r=r.toString(16);}}\n'+
+              '    if(id=="greenRange"){g=e.target.value*1; if(g<17){g="0"+g.toString(16);}else{g=g.toString(16);}}\n'+
+              '    if(id=="blueRange"){b=e.target.value*1; if(b<17){b="0"+b.toString(16);}else{b=b.toString(16);}}\n'+
+              '    color="#"+r+g+b;\n'+
+              '  '+statements_do+
+              '  };\n'+
+              '  document.getElementById("redRange").addEventListener("change",cc);\n'+
+              '  document.getElementById("greenRange").addEventListener("change",cc);\n'+
+              '  document.getElementById("blueRange").addEventListener("change",cc);\n'+
+              '};\n'+
+              varChangeColor+'();\n';
+  return code;
+};
+
+Blockly.JavaScript['rgb_led_current_color'] = function(block) {
+  var code = 'color';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 

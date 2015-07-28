@@ -6,30 +6,39 @@
   <meta name="google" value="notranslate">
   <title></title>
   <style>
-    #light{
-      width:60%;
-    }
-    #light img{
-      width:100%;
-      display:none;
-    }
-    #light.off img:first-child{
+    #demoArea span{
       display:inline-block;
+      width:60px;
+      margin:5px;
+      outline: none;
     }
-    #light.on img:last-child{
+    #demoArea input{
       display:inline-block;
+      width:80%;
+      max-width:200px;
+      margin:5px;
+      outline: none;
+    }
+    #show{
+      width:80%;
+      height:150px;
+      border:1px solid #000;
+      background:#000;
+      margin:15px 5px;
     }
   </style>
 </head>
 
-<body id="tutorialsBody" chapter="LED01">
+<body id="tutorialsBody" chapter="RGBLED03">
   <div id="demoArea">
     <div id="demoTitle">...</div>
     <div id="demoDescription">...</div>
-    <div id="light" class="off">
-      <img src='http://i.imgur.com/T5H4MHE.png'></img>
-      <img src='http://i.imgur.com/8qFj2Ou.png'></img>
-    </div>
+    <span style="color:red;">RED:</span><input type="range" min="0" max="255" step="5" value="0" id="redRange">
+    <br/>
+    <span style="color:green;">GREEN:</span><input type="range" min="0" max="255" step="5" value="0" id="greenRange">
+    <br/>
+    <span style="color:blue;">BLUE:</span><input type="range" min="0" max="255" step="5" value="0" id="blueRange">
+    <div id="show"></div>
   </div>
   <table width="60%" height="100%">
     <tr>
@@ -77,6 +86,10 @@
   <xml id="toolbox" style="display: none">
     <category id="catVariables" custom="VARIABLE"></category>
     <sep></sep>
+    <category id="catColour">
+      <block type="colour_picker"></block>
+    </category>
+    <sep></sep>
     <category id="catBoard">
       <block type="board_ready">
         <value name="device_">
@@ -84,21 +97,25 @@
         </value>
       </block>
     </category>
-    <category id="catLed">
+    <category id="catRGBLed">
       <block type="variables_set">
-        <field name="VAR">led</field>
+        <field name="VAR">rgbled</field>
         <value name="VALUE">
-          <block type="led_new">
-            <field name="pin_">10</field>
+          <block type="rgbled_new">
+            <field name="red_">6</field>
+            <field name="green_">9</field>
+            <field name="blue_">10</field>
           </block>
         </value>
       </block>
-      <block type="led_state">
-        <field name="led_">led</field>
+      <block type="rgbled_setcolor">
+        <field name="rgbled_">rgbled</field>
       </block>
     </category>
     <category id="catTutorials">
-      <block type="light"></block>
+      <block type="rgb_led_area_color"></block>
+      <block type="rgb_led_range"></block>
+      <block type="rgb_led_current_color"></block>
     </category>
     <sep></sep>
   </xml>

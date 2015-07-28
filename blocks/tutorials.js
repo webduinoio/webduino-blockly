@@ -5,6 +5,16 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.colour.HUE = 120;
 
+/*
+ooooo        oooooooooooo oooooooooo.   
+`888'        `888'     `8 `888'   `Y8b  
+ 888          888          888      888 
+ 888          888oooo8     888      888 
+ 888          888    "     888      888 
+ 888       o  888       o  888     d88' 
+o888ooooood8 o888ooooood8 o888bood8P'   
+*/
+
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#fe62nb
 Blockly.Blocks['light'] = {
   init: function() {
@@ -87,21 +97,21 @@ Blockly.Blocks['two_led_light_check'] = {
   }
 };
 
-// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vn3qfq
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#4cypqk
 Blockly.Blocks['two_led_start_blinking'] = {
   init: function() {
-    this.appendDummyInput()
-        .appendField(Blockly.Msg.WEBDUINO_TWO_LED_START_BLANKING,"Start blinking ,  time:");
+    this.appendValueInput("timer")
+        .setCheck("String")
+        .appendField("設置閃爍計時器 :");
     this.appendValueInput("time")
         .setCheck("Number")
-        .setAlign(Blockly.ALIGN_RIGHT);
+        .appendField("，閃爍時間 :");
     this.appendDummyInput()
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(Blockly.Msg.WEBDUINO_TWO_LED_START_BLANKING_TIME,"ms (1/1000 sec)");
+        .appendField("毫秒 ( 1/1000 秒 )");
     this.appendStatementInput("status1")
-        .appendField(Blockly.Msg.WEBDUINO_TWO_LED_START_BLANKING_STATE1,"status 1:");
+        .appendField("狀態 1 :");
     this.appendStatementInput("status2")
-        .appendField(Blockly.Msg.WEBDUINO_TWO_LED_START_BLANKING_STATE2,"status 2:");
+        .appendField("狀態 1 :");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -110,12 +120,83 @@ Blockly.Blocks['two_led_start_blinking'] = {
   }
 };
 
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#a5m29w
 Blockly.Blocks['two_led_stop_blinking'] = {
   init: function() {
-    this.appendStatementInput("NAME")
-        .appendField(Blockly.Msg.WEBDUINO_TWO_LED_STOP_BLANKING,"Stop blinking");
+    this.appendValueInput("timer")
+        .setCheck("String")
+        .appendField("停止閃爍計時器 :");
+    this.appendDummyInput();
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+/*
+ooooooooo.     .oooooo.    oooooooooo.  
+`888   `Y88.  d8P'  `Y8b   `888'   `Y8b 
+ 888   .d88' 888            888     888 
+ 888ooo88P'  888            888oooo888' 
+ 888`88b.    888     ooooo  888    `88b 
+ 888  `88b.  `88.    .88'   888    .88P 
+o888o  o888o  `Y8bood8P'   o888bood8P'  
+*/
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#hjvosw
+Blockly.Blocks['rgb_led_area_color'] = {
+  init: function() {
+    this.appendValueInput("color")
+        .appendField(Blockly.Msg.WEBDUINO_RGB_LED_AREA_COLOR,"Demo area's color: ");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#7i3gk5
+Blockly.Blocks['rgb_led_btn_click'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.WEBDUINO_RGB_LED_BTN_CLICK,"Click")
+        .appendField(new Blockly.FieldDropdown([["red", "redBtn"], ["green", "greenBtn"], ["blue", "blueBtn"], ["clear", "clearBtn"]]), "btn")
+        .appendField(Blockly.Msg.WEBDUINO_RGB_LED_BTN_BUTTON,"button");
+    this.appendStatementInput("do")
+        .appendField(Blockly.Msg.WEBDUINO_RGB_LED_BTN_DO,"do");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#mhys2h
+Blockly.Blocks['rgb_led_range'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.WEBDUINO_RGB_LED_RANGE_CHANGE,"Range change");
+    this.appendStatementInput("do")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.WEBDUINO_RGB_LED_RANGE_DO,"do:");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#rexmw4
+Blockly.Blocks['rgb_led_current_color'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.WEBDUINO_RGB_LED_CURRENT_COLOR,"Current color");
+    this.setOutput(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
     this.setHelpUrl('http://www.example.com/');

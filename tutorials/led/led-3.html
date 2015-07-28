@@ -5,19 +5,6 @@
   <meta charset="utf-8">
   <meta name="google" value="notranslate">
   <title></title>
-  <link rel="icon" href="../../favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="../../style.css">
-  <link rel="stylesheet" href="../tutorials.css">
-  <script src="../../storage.js"></script>
-  <script src="../../components/blockly/blockly_compressed.js"></script>
-  <script src="../../components/blockly/blocks_compressed.js"></script>
-  <script src="../../components/blockly/javascript_compressed.js"></script>
-  <script src="led-code.js"></script>
-  <script src="../../blocks/webduino.js"></script>
-  <script src="../../generators/webduino.js"></script>
-  <script src="../../blocks/tutorials.js"></script>
-  <script src="../../generators/tutorials.js"></script>
-  <Script src="https://webduino.io/components/webduino-js/dist/webduino-all.min.js"></script>
   <style>
     #light1, #light2{
       width:40%;
@@ -101,11 +88,24 @@
     </category>
     <sep></sep>
     <category id="catBoard">
-      <block type="board_setup"></block>
+      <block type="board_ready">
+        <value name="device_">
+          <block type="text"></block>
+        </value>
+      </block>
     </category>
     <category id="catLed">
-      <block type="led_new"></block>
-      <block type="led_state"></block>
+      <block type="variables_set">
+        <field name="VAR">led</field>
+        <value name="VALUE">
+          <block type="led_new">
+            <field name="pin_">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="led_state">
+        <field name="led_">led</field>
+      </block>
     </category>
     <category id="catTutorials">
       <block type="two_led_light"></block>
@@ -114,6 +114,7 @@
     </category>
     <sep></sep>
   </xml>
+  <script src="../tutorials-public.js"></script>
 </body>
 
 </html>

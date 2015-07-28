@@ -6,30 +6,20 @@
   <meta name="google" value="notranslate">
   <title></title>
   <style>
-    #light{
+    #show{
       width:60%;
-    }
-    #light img{
-      width:100%;
-      display:none;
-    }
-    #light.off img:first-child{
-      display:inline-block;
-    }
-    #light.on img:last-child{
-      display:inline-block;
+      height:200px;
+      border:1px solid #000;
+      background:#ccc;
     }
   </style>
 </head>
 
-<body id="tutorialsBody" chapter="LED01">
+<body id="tutorialsBody" chapter="RGBLED01">
   <div id="demoArea">
     <div id="demoTitle">...</div>
     <div id="demoDescription">...</div>
-    <div id="light" class="off">
-      <img src='http://i.imgur.com/T5H4MHE.png'></img>
-      <img src='http://i.imgur.com/8qFj2Ou.png'></img>
-    </div>
+    <div id="show"></div>
   </div>
   <table width="60%" height="100%">
     <tr>
@@ -77,6 +67,10 @@
   <xml id="toolbox" style="display: none">
     <category id="catVariables" custom="VARIABLE"></category>
     <sep></sep>
+    <category id="catColour">
+      <block type="colour_picker"></block>
+    </category>
+    <sep></sep>
     <category id="catBoard">
       <block type="board_ready">
         <value name="device_">
@@ -84,21 +78,23 @@
         </value>
       </block>
     </category>
-    <category id="catLed">
+    <category id="catRGBLed">
       <block type="variables_set">
-        <field name="VAR">led</field>
+        <field name="VAR">rgbled</field>
         <value name="VALUE">
-          <block type="led_new">
-            <field name="pin_">10</field>
+          <block type="rgbled_new">
+            <field name="red_">6</field>
+            <field name="green_">9</field>
+            <field name="blue_">10</field>
           </block>
         </value>
       </block>
-      <block type="led_state">
-        <field name="led_">led</field>
+      <block type="rgbled_setcolor">
+        <field name="rgbled_">rgbled</field>
       </block>
     </category>
     <category id="catTutorials">
-      <block type="light"></block>
+      <block type="rgb_led_area_color"></block>
     </category>
     <sep></sep>
   </xml>
