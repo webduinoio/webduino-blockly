@@ -110,11 +110,11 @@ Blockly.Blocks['rgbled_setcolor'] = {
   }
 };
 
-Blockly.Blocks['car_init_control'] = {
+Blockly.Blocks['car_new'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL, "set car controller")
-      .appendField(Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL_F, "F")
+      .appendField(Blockly.Msg.WEBDUINO_CAR)
+      .appendField(Blockly.Msg.WEBDUINO_CAR_F)
       .appendField(new Blockly.FieldDropdown([
         ["6", "6"],
         ["7", "7"],
@@ -122,8 +122,8 @@ Blockly.Blocks['car_init_control'] = {
         ["9", "9"],
         ["10", "10"],
         ["11", "11"]
-      ]), "F_pin_")
-      .appendField(Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL_B, "B")
+      ]), "f_")
+      .appendField(Blockly.Msg.WEBDUINO_CAR_B)
       .appendField(new Blockly.FieldDropdown([
         ["6", "6"],
         ["7", "7"],
@@ -131,8 +131,8 @@ Blockly.Blocks['car_init_control'] = {
         ["9", "9"],
         ["10", "10"],
         ["11", "11"]
-      ]), "B_pin_")
-      .appendField(Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL_L, "L")
+      ]), "b_")
+      .appendField(Blockly.Msg.WEBDUINO_CAR_L)
       .appendField(new Blockly.FieldDropdown([
         ["6", "6"],
         ["7", "7"],
@@ -140,8 +140,8 @@ Blockly.Blocks['car_init_control'] = {
         ["9", "9"],
         ["10", "10"],
         ["11", "11"]
-      ]), "L_pin_")
-      .appendField(Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL_R, "R")
+      ]), "l_")
+      .appendField(Blockly.Msg.WEBDUINO_CAR_R)
       .appendField(new Blockly.FieldDropdown([
         ["6", "6"],
         ["7", "7"],
@@ -149,10 +149,9 @@ Blockly.Blocks['car_init_control'] = {
         ["9", "9"],
         ["10", "10"],
         ["11", "11"]
-      ]), "R_pin_");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setColour(330);
+      ]), "r_");
+    this.setOutput(true);
+    this.setColour(230);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -160,40 +159,22 @@ Blockly.Blocks['car_init_control'] = {
 
 Blockly.Blocks['car_move'] = {
   init: function () {
-    this.appendDummyInput()
+    this.appendValueInput("secs_")
+      .appendField(new Blockly.FieldVariable(" "), "car_")
       .appendField(new Blockly.FieldDropdown([
-        ["↑", "F"],
-        ["↓", "B"],
-        ["↺", "L"],
-        ["↻", "R"],
-        ["STOP", "STOP"]
+        ["↑", "forward"],
+        ["↓", "backward"],
+        ["↺", "left"],
+        ["↻", "right"],
+        ["✕", "stop"]
       ]), "move_")
-      .appendField(Blockly.Msg.WEBDUINO_CAR_MOVE_FOR, "for")
-      .appendField(new Blockly.FieldTextInput("1"), "secs_")
-      .appendField(Blockly.Msg.WEBDUINO_CAR_MOVE_SEC, "secs");
+      .appendField(Blockly.Msg.WEBDUINO_CAR_MOVE_FOR);
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_CAR_MOVE_SEC);
+    this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(65);
-    this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
-  }
-};
-
-Blockly.Blocks['car_move_then'] = {
-  init: function () {
-    this.appendDummyInput()
-      .appendField(new Blockly.FieldDropdown([
-        ["↑", "F"],
-        ["↓", "B"],
-        ["↺", "L"],
-        ["↻", "R"],
-        ["STOP", "STOP"]
-      ]), "move_")
-      .appendField(Blockly.Msg.WEBDUINO_CAR_MOVE_FOR, "for")
-      .appendField(new Blockly.FieldTextInput("1"), "secs_")
-      .appendField(Blockly.Msg.WEBDUINO_CAR_MOVE_SEC, "secs");
-    this.setOutput(true);
-    this.setColour(65);
+    this.setColour(180);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -210,7 +191,31 @@ Blockly.Blocks['timer'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(65);
+    this.setColour(290);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['do'] = {
+  init: function () {
+    this.appendValueInput("return_")
+      .appendField(Blockly.Msg.WEBDUINO_DO);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(290);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['exec_seq'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_EXEC_SEQ);
+    this.appendStatementInput("seq_");
+    this.setOutput(true);
+    this.setColour(20);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -231,7 +236,7 @@ Blockly.Blocks['exec_then'] = {
 Blockly.Blocks['exec_then_stms'] = {
   init: function () {
     this.appendStatementInput("then_")
-      .appendField(Blockly.Msg.WEBDUINO_EXEC_THEN, "then");
+      .appendField(Blockly.Msg.WEBDUINO_EXEC_THEN_STMS, "then");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(20);

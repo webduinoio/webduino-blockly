@@ -7,7 +7,10 @@ goog.require('Blockly.Msg.Webduino');
 Blockly.Msg.WEBDUINO_TIMER_AFTER = "在";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "秒之後";
 Blockly.Msg.WEBDUINO_TIMER_DO = "執行";
-Blockly.Msg.WEBDUINO_EXEC_THEN = "然後執行";
+Blockly.Msg.WEBDUINO_DO = "執行";
+Blockly.Msg.WEBDUINO_EXEC_SEQ = "依序";
+Blockly.Msg.WEBDUINO_EXEC_THEN = "然後";
+Blockly.Msg.WEBDUINO_EXEC_THEN_STMS = "然後";
 
 Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "開發版";
 Blockly.Msg.WEBDUINO_BOARD_READY_DEVICE = "device";
@@ -23,11 +26,11 @@ Blockly.Msg.WEBDUINO_RGBLED_GREEN = "綠";
 Blockly.Msg.WEBDUINO_RGBLED_BLUE = "藍";
 Blockly.Msg.WEBDUINO_RGBLED_SETCOLOR = "設定顏色";
 
-Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL = "遙控車控制：";
-Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL_F = "前";
-Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL_B = "後";
-Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL_L = "左";
-Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL_R = "右";
+Blockly.Msg.WEBDUINO_CAR = "遙控車";
+Blockly.Msg.WEBDUINO_CAR_F = "前進";
+Blockly.Msg.WEBDUINO_CAR_B = "後退";
+Blockly.Msg.WEBDUINO_CAR_L = "左轉";
+Blockly.Msg.WEBDUINO_CAR_R = "右轉";
 Blockly.Msg.WEBDUINO_CAR_MOVE_FOR = "持續";
 Blockly.Msg.WEBDUINO_CAR_MOVE_SEC = "秒";
 

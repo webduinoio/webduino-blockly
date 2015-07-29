@@ -407,8 +407,8 @@ Code.initLanguage = function() {
   document.getElementById('trashButton').title = MSG['trashTooltip'];
 
   var categories = ['catLogic', 'catLoops', 'catMath', 'catText', 'catLists',
-                    'catColour', 'catVariables', 'catFunctions', 
-                    'catBoard', 'catLed', 'catRGBLed', 'catCar', 'catUtil'];
+                    'catColour', 'catVariables', 'catFunctions', 'catExec',
+                    'catBoard', 'catLed', 'catRGBLed', 'catCar'];
   for (var i = 0, cat; cat = categories[i]; i++) {
     document.getElementById(cat).setAttribute('name', MSG[cat]);
   }

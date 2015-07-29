@@ -273,6 +273,13 @@
     <sep></sep>
     <category id="catVariables" custom="VARIABLE"></category>
     <category id="catFunctions" custom="PROCEDURE"></category>
+    <category id="catExec">
+      <block type="timer"></block>
+      <block type="do"></block>
+      <block type="exec_seq"></block>
+      <block type="exec_then"></block>
+      <block type="exec_then_stms"></block>
+    </category>
     <sep></sep>
     <category id="catBoard">
       <block type="board_ready">
@@ -313,15 +320,26 @@
       </block>
     </category>
     <category id="catCar">
-      <block type="car_init_control"></block>
-      <block type="car_move"></block>
-      <block type="car_move_then"></block>
-    </category>
-    <sep></sep>
-    <category id="catUtil">
-      <block type="timer"></block>
-      <block type="exec_then"></block>
-      <block type="exec_then_stms"></block>
+      <block type="variables_set">
+        <field name="VAR">car</field>
+        <value name="VALUE">
+          <block type="car_new">
+            <field name="f_">9</field>
+            <field name="b_">8</field>
+            <field name="l_">6</field>
+            <field name="r_">7</field>
+          </block>
+        </value>
+      </block>
+      <block type="car_move">
+        <field name="car_">car</field>
+        <field name="move_">forward</field>
+        <value name="secs_">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
     </category>
   </xml>
 </body>

@@ -7,7 +7,10 @@ goog.require('Blockly.Msg.Webduino');
 Blockly.Msg.WEBDUINO_TIMER_AFTER = "After";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "seconds";
 Blockly.Msg.WEBDUINO_TIMER_DO = "do";
+Blockly.Msg.WEBDUINO_DO = "do";
+Blockly.Msg.WEBDUINO_EXEC_SEQ = "sequence";
 Blockly.Msg.WEBDUINO_EXEC_THEN = "then";
+Blockly.Msg.WEBDUINO_EXEC_THEN_STMS = "then";
 
 Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "Board";
 Blockly.Msg.WEBDUINO_BOARD_READY_DEVICE = "device";
@@ -23,11 +26,11 @@ Blockly.Msg.WEBDUINO_RGBLED_GREEN = "Green";
 Blockly.Msg.WEBDUINO_RGBLED_BLUE = "Blue";
 Blockly.Msg.WEBDUINO_RGBLED_SETCOLOR = "set color";
 
-Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL = "Set car Controller";
-Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL_F = "F";
-Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL_B = "B";
-Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL_L = "L";
-Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL_R = "R";
+Blockly.Msg.WEBDUINO_CAR = "Car";
+Blockly.Msg.WEBDUINO_CAR_F = "Forward";
+Blockly.Msg.WEBDUINO_CAR_B = "Backward";
+Blockly.Msg.WEBDUINO_CAR_L = "Left";
+Blockly.Msg.WEBDUINO_CAR_R = "Right";
 Blockly.Msg.WEBDUINO_CAR_MOVE_FOR = "for";
 Blockly.Msg.WEBDUINO_CAR_MOVE_SEC = "secs";
 
