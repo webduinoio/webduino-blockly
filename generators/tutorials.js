@@ -98,7 +98,7 @@ Blockly.JavaScript['two_led_start_blinking'] = function(block) {
 };
 
 
-Blockly.JavaScript['two_led_stop_blinking'] = function(block) {
+Blockly.JavaScript['stop_clock'] = function(block) {
   var value_timer = Blockly.JavaScript.valueToCode(block, 'timer', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'clearTimeout('+value_timer+');\n';
   return code;
@@ -154,4 +154,38 @@ Blockly.JavaScript['rgb_led_current_color'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.JavaScript['rgb_led_start_dancing'] = function(block) {
+  var value_timer = Blockly.JavaScript.valueToCode(block, 'timer', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_time = Blockly.JavaScript.valueToCode(block, 'time', Blockly.JavaScript.ORDER_ATOMIC);
+  var statements_status = Blockly.JavaScript.statementToCode(block, 'status');
+  var varDancing = Blockly.JavaScript.variableDB_.getDistinctName(
+      'dancing', Blockly.Variables.NAME_TYPE);
+  var content;
+  if(!statements_status){
+    content = '';
+  }else{
+    content = 'repeat();\n'+
+              'function repeat(){\n'+
+              '    delay(1)'+statements_status+'.then(function(){\n'+
+              '      repeat();\n    });\n  }\n';
+  }
+  var code = 'var '+varDancing+' = function(){\n'+
+              '  var time = '+value_time+';\n'+
+              '  function delay(time){\n'+
+              '    return new Promise(function(resolve) {\n'+
+              '      '+value_timer+' = setTimeout(resolve, time);\n'+
+              '    });\n'+
+              '  }\n'+
+              '  \n'+
+              '  '+content+
+              '};\n'+
+              varDancing+'();\n';
+  return code;
+};
+
+Blockly.JavaScript['rgb_led_dancing_status'] = function(block) {
+  var statements_status = Blockly.JavaScript.statementToCode(block, 'status');
+  var code = '.then(function(){\n  '+statements_status+'    return delay(time);\n  })';
+  return code;
+};
 

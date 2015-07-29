@@ -102,16 +102,16 @@ Blockly.Blocks['two_led_start_blinking'] = {
   init: function() {
     this.appendValueInput("timer")
         .setCheck("String")
-        .appendField("設置閃爍計時器 :");
+        .appendField(Blockly.Msg.WEBDUINO_TWO_LED_START_BLANKING_SET, "Set clock name: ");
     this.appendValueInput("time")
         .setCheck("Number")
-        .appendField("，閃爍時間 :");
+        .appendField(Blockly.Msg.WEBDUINO_TWO_LED_START_BLANKING_TIME, ", time:");
     this.appendDummyInput()
-        .appendField("毫秒 ( 1/1000 秒 )");
+        .appendField(Blockly.Msg.WEBDUINO_TWO_LED_START_BLANKING_MSEC, "ms ( 1/1000 sec )");
     this.appendStatementInput("status1")
-        .appendField("狀態 1 :");
+        .appendField(Blockly.Msg.WEBDUINO_TWO_LED_START_BLANKING_STATUS1, "status 1:");
     this.appendStatementInput("status2")
-        .appendField("狀態 1 :");
+        .appendField(Blockly.Msg.WEBDUINO_TWO_LED_START_BLANKING_STATUS2, "status 2:");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -121,11 +121,11 @@ Blockly.Blocks['two_led_start_blinking'] = {
 };
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#a5m29w
-Blockly.Blocks['two_led_stop_blinking'] = {
+Blockly.Blocks['stop_clock'] = {
   init: function() {
     this.appendValueInput("timer")
         .setCheck("String")
-        .appendField("停止閃爍計時器 :");
+        .appendField(Blockly.Msg.WEBDUINO_STOP_CLOCK, "停止計時器 :");
     this.appendDummyInput();
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -197,6 +197,40 @@ Blockly.Blocks['rgb_led_current_color'] = {
     this.appendDummyInput()
         .appendField(Blockly.Msg.WEBDUINO_RGB_LED_CURRENT_COLOR,"Current color");
     this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#twfhrf
+Blockly.Blocks['rgb_led_start_dancing'] = {
+  init: function() {
+    this.appendValueInput("timer")
+        .setCheck("String")
+        .appendField(Blockly.Msg.WEBDUINO_RGB_LED_START_DANCING_CLOCK_NAME, "Set clock name: ");
+    this.appendValueInput("time")
+        .setCheck("Number")
+        .appendField(Blockly.Msg.WEBDUINO_RGB_LED_START_DANCING_TIME, " ,  time: ");
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.WEBDUINO_RGB_LED_START_DANCING_MSEC, "ms ( 1/1000 sec )");
+    this.appendStatementInput("status")
+        .appendField(Blockly.Msg.WEBDUINO_RGB_LED_START_DANCING_CHANGE,"Change: ");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#hqdjex
+Blockly.Blocks['rgb_led_dancing_status'] = {
+  init: function() {
+    this.appendStatementInput("status")
+        .appendField(Blockly.Msg.WEBDUINO_RGB_LED_START_DANCING_STATUS,"Status: ");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
     this.setHelpUrl('http://www.example.com/');

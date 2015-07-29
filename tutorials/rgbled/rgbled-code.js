@@ -433,7 +433,7 @@ Code.initLanguage = function() {
   else if(tutorialsChapter=='RGBLED04'){
     document.getElementById('subTitle').textContent = MSG['subTitleRGBLED04'];
   document.getElementById('demoDescription').textContent = MSG['demoDescriptionRGBLED04'];
-    var categories = ['catLogic','catMath','catVariables', 'catBoard', 'catRGBLed', 'catTutorials'];
+    var categories = ['catLogic','catColour','catMath','catVariables', 'catBoard', 'catRGBLed', 'catTutorials'];
   }
 
   for (var i = 0, cat; cat = categories[i]; i++) {
@@ -446,6 +446,10 @@ Code.initLanguage = function() {
   var listVars = document.getElementsByClassName('listVar');
   for (var i = 0, listVar; listVar = listVars[i]; i++) {
     listVar.textContent = MSG['listVariable'];
+  }
+  var timerVars = document.getElementsByClassName('timerVar');
+  for (var i = 0, timerVar; timerVar = timerVars[i]; i++) {
+    timerVar.textContent = MSG['timerVariable'];
   }
 };
 
