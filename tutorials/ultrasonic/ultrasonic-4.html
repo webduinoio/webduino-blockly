@@ -6,19 +6,12 @@
   <meta name="google" value="notranslate">
   <title></title>
   <style>
-    #light{
-      width:70%;
-      margin:0 5px;
-    }
-    #light img{
-      width:100%;
-      display:none;
-    }
-    #light.off img:first-child{
-      display:inline-block;
-    }
-    #light.on img:last-child{
-      display:inline-block;
+    #show{
+      width:80%;
+      height:150px;
+      border:1px solid #000;
+      background:#ccc;
+      margin:15px 5px;
     }
   </style>
 </head>
@@ -27,10 +20,7 @@
   <div id="demoArea">
     <div id="demoTitle">...</div>
     <div id="demoDescription">...</div>
-    <div id="light" class="off">
-      <img src='http://i.imgur.com/T5H4MHE.png'>
-      <img src='http://i.imgur.com/8qFj2Ou.png'>
-    </div>
+    <div id="show"></div>
   </div>
   <table width="60%" height="100%">
     <tr>
@@ -81,6 +71,8 @@
     <sep></sep>
     <category id="catLogic">
       <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
     </category>
     <category id="catColour">
       <block type="colour_picker"></block>
@@ -111,30 +103,27 @@
         <field name="rgbled_">rgbled</field>
       </block>
     </category>
-    <category id="catTutorials">
-      <block type="light"></block>
-      <block type="light_click"></block>
-      <block type="light_check"></block>
-      <block type="rgb_led_start_dancing">
-        <value name="timer">
-          <block type="variables_get">
-            <field name="VAR" class="timerVar"></field>
+    <category id="catUltraSonic">
+      <block type="variables_set">
+        <field name="VAR">ultrasonic</field>
+        <value name="VALUE">
+          <block type="ultrasonic_new">
+            <field name="trig_">11</field>
+            <field name="echo_">10</field>
           </block>
         </value>
+      </block>
+      <block type="ultrasonic_get">
         <value name="time">
           <block type="math_number">
             <field name="NUM">500</field>
           </block>
         </value>
       </block>
-      <block type="stop_clock">
-        <value name="timer">
-          <block type="variables_get">
-            <field name="VAR" class="timerVar"></field>
-          </block>
-        </value>
-      </block>
-      <block type="rgb_led_dancing_status"></block>
+      <block type="ultrasonic_distance"></block>
+    </category>
+    <category id="catTutorials">
+      <block type="rgb_led_area_color"></block>
     </category>
     <sep></sep>
   </xml>
