@@ -82,3 +82,6 @@ Blockly.Msg.WEBDUINO_RGB_LED_START_DANCING_STATUS = " 狀態：";
 // UltraSonic
 
 Blockly.Msg.WEBDUINO_ULTRASONIC_SET_SHOW_DISTANCE = "顯示距離：";
+
+Blockly.Msg.WEBDUINO_ULTRASONIC_IMAGE_SIZE = "圖片尺寸：";
+Blockly.Msg.WEBDUINO_ULTRASONIC_IMAGE_URL = "圖片網址：";

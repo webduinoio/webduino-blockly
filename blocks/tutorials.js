@@ -237,12 +237,42 @@ Blockly.Blocks['rgb_led_dancing_status'] = {
   }
 };
 
+/*
+ooooo     ooo ooooo        ooooooooooooo ooooooooo.         .o.       
+`888'     `8' `888'        8'   888   `8 `888   `Y88.      .888.      
+ 888       8   888              888       888   .d88'     .8"888.     
+ 888       8   888              888       888ooo88P'     .8' `888.    
+ 888       8   888              888       888`88b.      .88ooo8888.   
+ `88.    .8'   888       o      888       888  `88b.   .8'     `888.  
+   `YbodP'    o888ooooood8     o888o     o888o  o888o o88o     o8888o 
+*/
+
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#ikjd3j
 Blockly.Blocks['ultrasonic_set_number'] = {
   init: function() {
     this.appendValueInput("number")
         .setCheck("Number")
         .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_SET_SHOW_DISTANCE,"show distance:");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#hm9tbp
+Blockly.Blocks['ultrasonic_change_image_size'] = {
+  init: function() {
+    this.appendValueInput("size")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_IMAGE_SIZE,"圖片的尺寸：");
+    this.appendValueInput("url")
+        .setCheck("String")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_IMAGE_URL,"圖片網址：");
+    this.setInputsInline(false);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');

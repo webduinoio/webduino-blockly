@@ -206,4 +206,13 @@ Blockly.JavaScript['ultrasonic_set_number'] = function(block) {
 };
 
 
+Blockly.JavaScript['ultrasonic_change_image_size'] = function(block) {
+  var value_size = Blockly.JavaScript.valueToCode(block, 'size', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_url = Blockly.JavaScript.valueToCode(block, 'url', Blockly.JavaScript.ORDER_ATOMIC);
+  if(!value_size){value_size=100;}
+  if(value_url=='\'\''||!value_url){value_url='"https://webduino.io/img/tutorials/tutorial-05-01s.jpg"';}
+  var code = 'document.getElementById("image").style.width = '+value_size+'+"px";\n'+
+              'document.getElementById("image").setAttribute("src",'+value_url+');\n';
+  return code;
+};
 

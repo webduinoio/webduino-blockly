@@ -82,3 +82,6 @@ Blockly.Msg.WEBDUINO_RGB_LED_START_DANCING_STATUS = " Status:";
 // UltraSonic
 
 Blockly.Msg.WEBDUINO_ULTRASONIC_SET_SHOW_DISTANCE = "Show distance:";
+
+Blockly.Msg.WEBDUINO_ULTRASONIC_IMAGE_SIZE = "Image size:";
+Blockly.Msg.WEBDUINO_ULTRASONIC_IMAGE_URL = "Image url:";
