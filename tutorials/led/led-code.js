@@ -407,6 +407,9 @@ Code.initLanguage = function() {
   document.getElementById('runButton').title = MSG['runTooltip'];
   document.getElementById('trashButton').title = MSG['trashTooltip'];
 
+  // Title link
+  document.getElementById('backIndex').textContent = MSG['backIndex'];
+  
   // Demo Area 
   document.getElementById('demoTitle').textContent = MSG['demoTitle'];
 
