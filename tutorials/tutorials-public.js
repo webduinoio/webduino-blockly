@@ -11,6 +11,9 @@ if(chapter=='LED01'||chapter=='LED02'||chapter=='LED03'||chapter=='LED04'){
 if(chapter=='RGBLED01'||chapter=='RGBLED02'||chapter=='RGBLED03'||chapter=='RGBLED04'){
 	importChapter = '<script src="rgbled-code.js"></script>\n';
 }
+if(chapter=='ULTRASONIC01'||chapter=='ULTRASONIC02'||chapter=='ULTRASONIC03'||chapter=='ULTRASONIC04'){
+  importChapter = '<script src="ultrasonic-code.js"></script>\n';
+}
 
 document.write('<script src="../../storage.js"></script>\n'+
   '<script src="../../components/blockly/blockly_compressed.js"></script>\n'+

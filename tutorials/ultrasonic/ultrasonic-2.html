@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="google" value="notranslate">
+  <title></title>
+  <style>
+    #demoArea button{
+      display:inline-block;
+      width:80px;
+      height:50px;
+      font-size:16px;
+      line-height:48px;
+      margin:5px;
+      outline: none;
+    }
+    #redBtn{
+      color:#f00;
+    }
+    #greenBtn{
+      color:#0a0;
+    }
+    #blueBtn{
+      color:#00f;
+    }
+    #show{
+      width:80%;
+      height:150px;
+      border:1px solid #000;
+      background:#ccc;
+      margin:15px 5px;
+    }
+  </style>
+</head>
+
+<body id="tutorialsBody" chapter="ULTRASONIC02">
+  <div id="demoArea">
+    <div id="demoTitle">...</div>
+    <div id="demoDescription">...</div>
+    <button id="redBtn">RED</button>
+    <button id="greenBtn">GREEN</button>
+    <button id="blueBtn">BLUE</button>
+    <button id="clearBtn">CLEAR</button>
+    <div id="show"></div>
+  </div>
+  <table width="60%" height="100%">
+    <tr>
+      <td>
+        <h1>
+          <a href="../index.html"><span id="backIndex">...</span></a> > 
+          <span id="title">...</span><span id="subTitle">...</span>
+        </h1>
+      </td>
+      <td class="farSide">
+        <select id="languageMenu"></select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2>
+        <table width="100%">
+          <tr id="tabRow" height="1em">
+            <td id="tab_blocks" class="tabon">...</td>
+            <td class="tabmin">&nbsp;</td>
+            <td id="tab_javascript" class="taboff">JavaScript</td>
+            <td class="tabmin">&nbsp;</td>
+            <td id="tab_xml" class="taboff" style="display:none;">XML</td>
+            <td class="tabmax">
+              <button id="trashButton" class="notext" title="...">
+                <img src='../../media/1x1.gif' class="trash icon21">
+              </button>
+              <button id="linkButton" class="notext" title="...">
+                <img src='../../media/1x1.gif' class="link icon21">
+              </button>
+              <button id="runButton" class="notext primary" title="...">
+                <img src='../../media/1x1.gif' class="run icon21">
+              </button>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td height="99%" colspan=2 id="content_area">
+      </td>
+    </tr>
+  </table>
+  <div id="content_blocks" class="content"></div>
+  <pre id="content_javascript" class="content"></pre>
+  <textarea id="content_xml" class="content" wrap="off"></textarea>
+  <xml id="toolbox" style="display: none">
+    <category id="catVariables" custom="VARIABLE"></category>
+    <sep></sep>
+    <category id="catColour">
+      <block type="colour_picker"></block>
+    </category>
+    <sep></sep>
+    <category id="catBoard">
+      <block type="board_ready">
+        <value name="device_">
+          <block type="text"></block>
+        </value>
+      </block>
+    </category>
+    <category id="catRGBLed">
+      <block type="variables_set">
+        <field name="VAR">rgbled</field>
+        <value name="VALUE">
+          <block type="rgbled_new">
+            <field name="red_">6</field>
+            <field name="green_">9</field>
+            <field name="blue_">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="rgbled_setcolor">
+        <field name="rgbled_">rgbled</field>
+      </block>
+    </category>
+    <category id="catTutorials">
+      <block type="rgb_led_area_color"></block>
+      <block type="rgb_led_btn_click"></block>
+    </category>
+    <sep></sep>
+  </xml>
+  <script src="../tutorials-public.js"></script>
+</body>
+
+</html>

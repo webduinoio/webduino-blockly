@@ -189,3 +189,21 @@ Blockly.JavaScript['rgb_led_dancing_status'] = function(block) {
   return code;
 };
 
+/*
+ooooo     ooo ooooo        ooooooooooooo ooooooooo.         .o.       
+`888'     `8' `888'        8'   888   `8 `888   `Y88.      .888.      
+ 888       8   888              888       888   .d88'     .8"888.     
+ 888       8   888              888       888ooo88P'     .8' `888.    
+ 888       8   888              888       888`88b.      .88ooo8888.   
+ `88.    .8'   888       o      888       888  `88b.   .8'     `888.  
+   `YbodP'    o888ooooood8     o888o     o888o  o888o o88o     o8888o 
+*/
+
+Blockly.JavaScript['ultrasonic_set_number'] = function(block) {
+  var value_number = Blockly.JavaScript.valueToCode(block, 'number', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'document.getElementById("show").innerHTML = '+value_number+';\n';
+  return code;
+};
+
+
+

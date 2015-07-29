@@ -18,6 +18,7 @@ var MSG = {
   catBoard: "Board",
   catLed: "Led",
   catRGBLed: "RGBLed",
+  carUltraSonic: "Ultra Sonic",
   catUtil: "Util",
   catCar: "Car",
   listVariable: "list",

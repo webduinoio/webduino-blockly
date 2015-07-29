@@ -3,6 +3,7 @@ MSG.demoTitle = "Blockly 範例測試區";
 MSG.catTutorials = "教學積木";
 MSG.timerVariable = "計時器";
 
+
 MSG.subTitleLED01 = "課程 1-1：點亮 LED 燈";
 MSG.demoDescriptionLED01 = "點亮 LED 燈與下面這張圖片的燈泡";
 MSG.subTitleLED02 = "課程 1-2：點選圖片控制 LED 燈";

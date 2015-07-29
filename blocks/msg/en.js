@@ -23,6 +23,13 @@ Blockly.Msg.WEBDUINO_RGBLED_GREEN = "Green";
 Blockly.Msg.WEBDUINO_RGBLED_BLUE = "Blue";
 Blockly.Msg.WEBDUINO_RGBLED_SETCOLOR = "set color";
 
+Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_TRIG = "Ultrasonic, Trig:";
+Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_ECHO = "  Echo:";
+Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DISTANCE = "get distance over every";
+Blockly.Msg.WEBDUINO_ULTRASONIC_GET_TIME = "ms ( 1/1000 sec )";
+Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DO = "do";
+Blockly.Msg.WEBDUINO_ULTRASONIC_DISTANCE = "s distance ( cm )";
+
 Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL = "Set car Controller";
 Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL_F = "F";
 Blockly.Msg.WEBDUINO_CAR_INIT_CONTROL_B = "B";
@@ -68,3 +75,7 @@ Blockly.Msg.WEBDUINO_RGB_LED_START_DANCING_MSEC = Blockly.Msg.WEBDUINO_TWO_LED_S
 Blockly.Msg.WEBDUINO_RGB_LED_START_DANCING_CHANGE = "Change:";
 
 Blockly.Msg.WEBDUINO_RGB_LED_START_DANCING_STATUS = " Status:";
+
+// UltraSonic
+
+Blockly.Msg.WEBDUINO_ULTRASONIC_SET_SHOW_DISTANCE = "Show distance:";

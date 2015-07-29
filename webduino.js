@@ -10,3 +10,7 @@ function getLed(board, pin) {
 function getRGBLed(board, red, green, blue) {
   return new webduino.module.RGBLed(board, board.getDigitalPin(red), board.getDigitalPin(green), board.getDigitalPin(blue));
 }
+
+function getUltrasonic(board, trig, echo) {
+  return new webduino.module.Ultrasonic(board, board.getDigitalPin(trig), board.getDigitalPin(echo));
+}

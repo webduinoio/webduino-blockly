@@ -236,3 +236,17 @@ Blockly.Blocks['rgb_led_dancing_status'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#ikjd3j
+Blockly.Blocks['ultrasonic_set_number'] = {
+  init: function() {
+    this.appendValueInput("number")
+        .setCheck("Number")
+        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_SET_SHOW_DISTANCE,"show distance:");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
