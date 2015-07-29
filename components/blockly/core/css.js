@@ -316,10 +316,6 @@ Blockly.Css.CONTENT = [
   '  fill-opacity: .8;',
   '}',
 
-  '.blocklyColourBackground {',
-  '  fill: #666;',
-  '}',
-
   '.blocklyScrollbarBackground {',
   '  opacity: 0;',
   '}',
@@ -331,6 +327,17 @@ Blockly.Css.CONTENT = [
   '.blocklyScrollbarBackground:hover+.blocklyScrollbarKnob,',
   '.blocklyScrollbarKnob:hover {',
   '  fill: #bbb;',
+  '}',
+
+  /* Darken flyout scrollbars due to being on a grey background. */
+  /* By contrast, workspace scrollbars are on a white background. */
+  '.blocklyFlyout .blocklyScrollbarKnob {',
+  '  fill: #bbb;',
+  '}',
+
+  '.blocklyFlyout .blocklyScrollbarBackground:hover+.blocklyScrollbarKnob,',
+  '.blocklyFlyout .blocklyScrollbarKnob:hover {',
+  '  fill: #aaa;',
   '}',
 
   '.blocklyInvalidInput {',
@@ -540,6 +547,9 @@ Blockly.Css.CONTENT = [
   '  outline: none;',
   '  padding: 4px 0;',
   '  position: absolute;',
+  '  overflow-y: auto;',
+  '  overflow-x: hidden;',
+  '  max-height: 100%;',
   '  z-index: 20000;',  /* Arbitrary, but some apps depend on it... */
   '}',
 

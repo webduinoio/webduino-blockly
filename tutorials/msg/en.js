@@ -20,3 +20,12 @@ MSG.subTitleRGBLED03 = "Chapter 2-3：RGB LED Palette";
 MSG.demoDescriptionRGBLED03 = "Using the range, making RGB LED palette";
 MSG.subTitleRGBLED04 = "Chapter 2-4：Colorful lights";
 MSG.demoDescriptionRGBLED04 = "Click on the light bulb, let the RGB LED become colorful lights";
+
+MSG.subTitleULTRASONIC01 = "Chapter 3-1：UltraSonic";
+MSG.demoDescriptionULTRASONIC01 = "Using the ultrasonic sensor, return the distance and displays distance.";
+MSG.subTitleULTRASONIC02 = "Chapter 3-2：UltraSonic change image size";
+MSG.demoDescriptionULTRASONIC02 = "Using Ultrasonic sensor, changing picture size.";
+MSG.subTitleULTRASONIC03 = "Chapter 3-3：UltraSonic change the volume of the music";
+MSG.demoDescriptionULTRASONIC03 = "Using Ultrasonic sensors, changing the volume of the music";
+MSG.subTitleULTRASONIC04 = "Chapter 3-4：Ultrasonic and RGB LED";
+MSG.demoDescriptionULTRASONIC04 = "Using Ultrasonic sensors, control RGB LED";

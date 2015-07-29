@@ -22,3 +22,12 @@ MSG.demoDescriptionRGBLED03 = "利用拉霸，調整三色 LED 燈的顏色";
 MSG.subTitleRGBLED04 = "課程 2-4：轉吧七彩霓虹燈";
 MSG.demoDescriptionRGBLED04 = "利用燈泡圖片作為開關，讓三色 LED 燈有不同顏色的呈現";
 
+MSG.subTitleULTRASONIC01 = "課程 3-1：超音波傳感器";
+MSG.demoDescriptionULTRASONIC01 = "使用超音波傳感器，回傳並顯示偵測到的公分數";
+MSG.subTitleULTRASONIC02 = "課程 3-2：超音波傳感器改變圖片大小";
+MSG.demoDescriptionULTRASONIC02 = "使用超音波傳感器改變下面這張圖片的大小";
+MSG.subTitleULTRASONIC03 = "課程 3-3：超音波傳感器改變音量大小";
+MSG.demoDescriptionULTRASONIC03 = "使用超音波傳感器改變音樂的音量大小";
+MSG.subTitleULTRASONIC04 = "課程 3-4：超音波傳感器控制三色 LED 燈顏色";
+MSG.demoDescriptionULTRASONIC04 = "使用超音波傳感器，控制三色 LED 燈的顏色變化，並將顏色顯示在下方區域裡";
+
