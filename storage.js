@@ -91,7 +91,7 @@ BlocklyStorage.retrieveXml = function (key, opt_workspace) {
 
 /**
  * Global reference to current AJAX request.
- * @type XMLHttpRequest
+ * @type {XMLHttpRequest}
  * @private
  */
 BlocklyStorage.httpRequest_ = null;
