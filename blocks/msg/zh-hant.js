@@ -33,6 +33,15 @@ Blockly.Msg.WEBDUINO_ULTRASONIC_GET_TIME = "豪秒 ( 1/1000 秒 ) 擷取一次";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DO = "執行";
 Blockly.Msg.WEBDUINO_ULTRASONIC_DISTANCE = "所截取的距離 ( 公分 )";
 
+Blockly.Msg.WEBDUINO_BUTTON_NEW = "按鈕開關，腳位：";
+Blockly.Msg.WEBDUINO_BUTTON_EVENT_WHEN = "當";
+Blockly.Msg.WEBDUINO_BUTTON_EVENT_WAS = "進行";
+Blockly.Msg.WEBDUINO_BUTTON_EVENT_TO = "時";
+Blockly.Msg.WEBDUINO_BUTTON_EVENT_DO = "執行";
+Blockly.Msg.WEBDUINO_BUTTON_EVENT_PRESSED = "按下";
+Blockly.Msg.WEBDUINO_BUTTON_EVENT_RELEASED = "放開";
+Blockly.Msg.WEBDUINO_BUTTON_EVENT_LONGPRESS = "長按";
+
 Blockly.Msg.WEBDUINO_CAR = "遙控車";
 Blockly.Msg.WEBDUINO_CAR_F = "前進";
 Blockly.Msg.WEBDUINO_CAR_B = "後退";
@@ -92,3 +101,7 @@ Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY_PLAY = "播放";
 Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY_PAUSE = "暫停";
 Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY_STOP = "停止";
 Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_ADD = "放入音樂";
+
+// Button
+
+Blockly.Msg.WEBDUINO_SHOW_TEXT = "顯示文字：";

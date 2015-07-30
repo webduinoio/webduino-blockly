@@ -15,6 +15,10 @@ function getUltrasonic(board, trig, echo) {
   return new webduino.module.Ultrasonic(board, board.getDigitalPin(trig), board.getDigitalPin(echo));
 }
 
+function getButton(board, pin) {
+  return new webduino.module.Button(board, board.getDigitalPin(pin));
+}
+
 function getCar(board, F, B, L, R) {
   return new Car(board, F, B, L, R);
 }

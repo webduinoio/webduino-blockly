@@ -33,6 +33,15 @@ Blockly.Msg.WEBDUINO_ULTRASONIC_GET_TIME = "ms ( 1/1000 sec )";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DO = "do";
 Blockly.Msg.WEBDUINO_ULTRASONIC_DISTANCE = "s distance ( cm )";
 
+Blockly.Msg.WEBDUINO_BUTTON_NEW = "Button , pin:";
+Blockly.Msg.WEBDUINO_BUTTON_EVENT_WHEN = "When";
+Blockly.Msg.WEBDUINO_BUTTON_EVENT_WAS = "was";
+Blockly.Msg.WEBDUINO_BUTTON_EVENT_TO = "";
+Blockly.Msg.WEBDUINO_BUTTON_EVENT_DO = "do:";
+Blockly.Msg.WEBDUINO_BUTTON_EVENT_PRESSED = "Pressed";
+Blockly.Msg.WEBDUINO_BUTTON_EVENT_RELEASED = "Released";
+Blockly.Msg.WEBDUINO_BUTTON_EVENT_LONGPRESS = "Long Pressed";
+
 Blockly.Msg.WEBDUINO_CAR = "Car";
 Blockly.Msg.WEBDUINO_CAR_F = "Forward";
 Blockly.Msg.WEBDUINO_CAR_B = "Backward";
@@ -92,3 +101,7 @@ Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY_PLAY = "Paly";
 Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY_PAUSE = "Pause";
 Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY_STOP = "Stop";
 Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_ADD = "Add Music";
+
+// Button
+
+Blockly.Msg.WEBDUINO_SHOW_TEXT = "Show text: ";

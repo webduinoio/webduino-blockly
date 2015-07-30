@@ -338,6 +338,17 @@
       </block>
       <block type="ultrasonic_distance"></block>
     </category>
+    <category id="catButton">
+      <block type="variables_set">
+        <field name="VAR">button</field>
+        <value name="VALUE">
+          <block type="button_new">
+            <field name="pin_">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="button_event"></block>
+    </category>
     <category id="catCar">
       <block type="variables_set">
         <field name="VAR">car</field>

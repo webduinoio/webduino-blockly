@@ -338,3 +338,27 @@ Blockly.Blocks['ultrasonic_change_add_music'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
+/*
+oooooooooo.  ooooo     ooo ooooooooooooo ooooooooooooo   .oooooo.   ooooo      ooo 
+`888'   `Y8b `888'     `8' 8'   888   `8 8'   888   `8  d8P'  `Y8b  `888b.     `8' 
+ 888     888  888       8       888           888      888      888  8 `88b.    8  
+ 888oooo888'  888       8       888           888      888      888  8   `88b.  8  
+ 888    `88b  888       8       888           888      888      888  8     `88b.8  
+ 888    .88P  `88.    .8'       888           888      `88b    d88'  8       `888  
+o888bood8P'     `YbodP'        o888o         o888o      `Y8bood8P'  o8o        `8  
+*/
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#jvaga8
+Blockly.Blocks['show_text'] = {
+  init: function() {
+    this.appendValueInput("show_")
+        .setCheck("String")
+        .appendField(Blockly.Msg.WEBDUINO_SHOW_TEXT,"顯示文字：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};

@@ -163,10 +163,10 @@ Code.importPrettify = function() {
   //<script src="../prettify.js"></script>
   var link = document.createElement('link');
   link.setAttribute('rel', 'stylesheet');
-  link.setAttribute('href', 'prettify.css');
+  link.setAttribute('href', '../../prettify.css');
   document.head.appendChild(link);
   var script = document.createElement('script');
-  script.setAttribute('src', 'prettify.js');
+  script.setAttribute('src', '../../prettify.js');
   document.head.appendChild(script);
 };
 
@@ -271,6 +271,7 @@ Code.renderContent = function() {
     xmlTextarea.focus();
   } else if (content.id == 'content_javascript') {
     var code = Blockly.JavaScript.workspaceToCode(Code.workspace);
+    code = Code.wrapUp(code);
     content.textContent = code;
     if (typeof prettyPrintOne == 'function') {
       code = content.innerHTML;
@@ -317,7 +318,7 @@ Code.init = function() {
            length: 3,
            colour: '#ccc',
            snap: true},
-       media: 'components/blockly/media/',
+       media: '../../components/blockly/media/',
        rtl: rtl,
        toolbox: toolbox});
 
@@ -406,9 +407,37 @@ Code.initLanguage = function() {
   document.getElementById('runButton').title = MSG['runTooltip'];
   document.getElementById('trashButton').title = MSG['trashTooltip'];
 
-  var categories = ['catLogic', 'catLoops', 'catMath', 'catText', 'catLists',
-                    'catColour', 'catVariables', 'catFunctions', 'catExec',
-                    'catBoard', 'catLed', 'catRGBLed', 'catUltraSonic', 'catButton', 'catCar'];
+  // Title link
+  document.getElementById('backIndex').textContent = MSG['backIndex'];
+  // Demo Area 
+  document.getElementById('demoTitle').textContent = MSG['demoTitle'];
+
+ /* var categories = ['catLogic', 'catLoops', 'catMath', 'catText', 'catLists',
+                    'catColour', 'catVariables', 'catFunctions', 
+                    'catBoard', 'catLed', 'catRGBLed', 'catCar', 'catUtil'];*/
+  var tutorialsChapter = document.getElementById('tutorialsBody').getAttribute('chapter');
+
+  if(tutorialsChapter=='BUTTON01'){
+    document.getElementById('subTitle').textContent = MSG['subTitleBUTTON01'];
+  document.getElementById('demoDescription').textContent = MSG['demoDescriptionBUTTON01'];
+    var categories = ['catVariables', 'catText','catBoard', 'catButton', 'catTutorials'];
+  }
+  else if(tutorialsChapter=='BUTTON02'){
+    document.getElementById('subTitle').textContent = MSG['subTitleBUTTON02'];
+  document.getElementById('demoDescription').textContent = MSG['demoDescriptionBUTTON02'];
+    var categories = ['catVariables', 'catMath', 'catText', 'catBoard', 'catUltraSonic', 'catTutorials'];
+  }
+  else if(tutorialsChapter=='BUTTON03'){
+    document.getElementById('subTitle').textContent = MSG['subTitleBUTTON03'];
+  document.getElementById('demoDescription').textContent = MSG['demoDescriptionBUTTON03'];
+    var categories = ['catVariables', 'catText','catMath', 'catBoard', 'catUltraSonic', 'catTutorials'];
+  }
+  else if(tutorialsChapter=='BUTTON04'){
+    document.getElementById('subTitle').textContent = MSG['subTitleBUTTON04'];
+  document.getElementById('demoDescription').textContent = MSG['demoDescriptionBUTTON04'];
+    var categories = ['catLogic','catColour','catMath','catVariables', 'catBoard', 'catRGBLed', 'catUltraSonic', 'catTutorials'];
+  }
+
   for (var i = 0, cat; cat = categories[i]; i++) {
     document.getElementById(cat).setAttribute('name', MSG[cat]);
   }
@@ -419,6 +448,10 @@ Code.initLanguage = function() {
   var listVars = document.getElementsByClassName('listVar');
   for (var i = 0, listVar; listVar = listVars[i]; i++) {
     listVar.textContent = MSG['listVariable'];
+  }
+  var timerVars = document.getElementsByClassName('timerVar');
+  for (var i = 0, timerVar; timerVar = timerVars[i]; i++) {
+    timerVar.textContent = MSG['timerVariable'];
   }
 };
 
@@ -435,6 +468,7 @@ Code.runJS = function() {
     }
   };
   var code = Blockly.JavaScript.workspaceToCode(Code.workspace);
+  code = Code.wrapUp(code);
   Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
   try {
     eval(code);
@@ -455,10 +489,15 @@ Code.discard = function() {
   }
 };
 
+Code.wrapUp = function (str) {
+  return str.replace(/__onBoardReady__([\s\S]*)/g, "board.on('ready', function () {\n$1\n});");
+};
+
 // Load the Code demo's language strings.
-document.write('<script src="msg/' + Code.LANG + '.js"></script>\n');
+document.write('<script src="../../msg/' + Code.LANG + '.js"></script>\n');
+document.write('<script src="../msg/' + Code.LANG + '.js"></script>\n');
 // Load Blockly's language strings.
-document.write('<script src="components/blockly/msg/js/' + Code.LANG + '.js"></script>\n');
-document.write('<script src="blocks/msg/' + Code.LANG + '.js"></script>\n');
+document.write('<script src="../../components/blockly/msg/js/' + Code.LANG + '.js"></script>\n');
+document.write('<script src="../../blocks/msg/' + Code.LANG + '.js"></script>\n');
 
 window.addEventListener('load', Code.init);

@@ -31,3 +31,12 @@ MSG.demoDescriptionULTRASONIC03 = "使用超音波傳感器改變音樂的音量
 MSG.subTitleULTRASONIC04 = "課程 3-4：超音波傳感器控制三色 LED 燈顏色";
 MSG.demoDescriptionULTRASONIC04 = "使用超音波傳感器，控制三色 LED 燈的顏色變化，並將顏色顯示在下方區域裡";
 
+MSG.subTitleBUTTON01 = "課程 4-1：按鈕開關";
+MSG.demoDescriptionBUTTON01 = "偵測按鈕開關點擊的訊號，並顯示在下方區域。";
+MSG.subTitleBUTTON02 = "課程 4-2：點擊按鈕開關增加數字";
+MSG.demoDescriptionBUTTON02 = "每次點擊按鈕開關時讓數字加 1。";
+MSG.subTitleBUTTON03 = "課程 4-3：點擊按鈕開關改變圖片位置";
+MSG.demoDescriptionBUTTON03 = "透過點擊按鈕開關，讓圖片的位置改變";
+MSG.subTitleBUTTON04 = "課程 4-4：點擊按鈕開關玩賽跑小遊戲";
+MSG.demoDescriptionBUTTON04 = "使用按鈕開關和電腦進行賽跑";
+

@@ -20,6 +20,7 @@ var MSG = {
   catLed: "LED 燈",
   catRGBLed: "三色 LED",
   catUltraSonic: "超音波傳感器",
+  catButton: "按鈕開關",
   catCar: "遙控車",
   listVariable: "列表",
   textVariable: "文字",

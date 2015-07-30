@@ -258,3 +258,21 @@ Blockly.JavaScript['ultrasonic_change_add_music'] = function(block) {
   var code = 'document.getElementById("music").innerHTML = "<source src='+value_music+' type=\'audio/mpeg\'>";\n';
   return code;
 };
+
+/*
+oooooooooo.  ooooo     ooo ooooooooooooo ooooooooooooo   .oooooo.   ooooo      ooo 
+`888'   `Y8b `888'     `8' 8'   888   `8 8'   888   `8  d8P'  `Y8b  `888b.     `8' 
+ 888     888  888       8       888           888      888      888  8 `88b.    8  
+ 888oooo888'  888       8       888           888      888      888  8   `88b.  8  
+ 888    `88b  888       8       888           888      888      888  8     `88b.8  
+ 888    .88P  `88.    .8'       888           888      `88b    d88'  8       `888  
+o888bood8P'     `YbodP'        o888o         o888o      `Y8bood8P'  o8o        `8  
+*/
+
+Blockly.JavaScript['show_text'] = function(block) {
+  var value_show_ = Blockly.JavaScript.valueToCode(block, 'show_', Blockly.JavaScript.ORDER_ATOMIC);
+  var a = value_show_.split('');
+  value_show_ = a.splice(1,(a.length-2)).join('');
+  var code = 'document.getElementById("show").innerHTML = "'+value_show_+'";\n';
+  return code;
+};
