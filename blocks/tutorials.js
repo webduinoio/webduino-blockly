@@ -261,17 +261,75 @@ Blockly.Blocks['ultrasonic_set_number'] = {
   }
 };
 
-// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#hm9tbp
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#ddafdo
 Blockly.Blocks['ultrasonic_change_image_size'] = {
   init: function() {
     this.appendValueInput("size")
         .setCheck("Number")
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_IMAGE_SIZE,"圖片的尺寸：");
+        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_IMAGE_SIZE,"圖片尺寸 ( 寬度 )：");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#3m3noj
+Blockly.Blocks['ultrasonic_change_image_url'] = {
+  init: function() {
     this.appendValueInput("url")
         .setCheck("String")
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_IMAGE_URL,"圖片網址：");
+        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_IMAGE_URL,"圖片網址");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#dmpbh7
+Blockly.Blocks['ultrasonic_change_music_volume'] = {
+  init: function() {
+    this.appendValueInput("volume")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_VOLUME,"音量大小");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#npydoc
+Blockly.Blocks['ultrasonic_change_music_play'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY,"音樂")
+        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY_PLAY, "play"], [Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY_PAUSE, "pause"], [Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY_STOP, "stop"]]), "play");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#46pbzq
+Blockly.Blocks['ultrasonic_change_add_music'] = {
+  init: function() {
+    this.appendValueInput("music")
+        .setCheck("String")
+        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_ADD,"加入音樂");
     this.setInputsInline(false);
     this.setPreviousStatement(true);
     this.setNextStatement(true);

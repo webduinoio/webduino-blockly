@@ -319,6 +319,25 @@
         <field name="rgbled_">rgbled</field>
       </block>
     </category>
+    <category id="catUltraSonic">
+      <block type="variables_set">
+        <field name="VAR">ultrasonic</field>
+        <value name="VALUE">
+          <block type="ultrasonic_new">
+            <field name="trig_">11</field>
+            <field name="echo_">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="ultrasonic_get">
+        <value name="time">
+          <block type="math_number">
+            <field name="NUM">500</field>
+          </block>
+        </value>
+      </block>
+      <block type="ultrasonic_distance"></block>
+    </category>
     <category id="catCar">
       <block type="variables_set">
         <field name="VAR">car</field>

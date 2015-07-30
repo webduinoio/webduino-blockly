@@ -430,7 +430,7 @@ Code.initLanguage = function() {
   else if(tutorialsChapter=='ULTRASONIC03'){
     document.getElementById('subTitle').textContent = MSG['subTitleULTRASONIC03'];
   document.getElementById('demoDescription').textContent = MSG['demoDescriptionULTRASONIC03'];
-    var categories = ['catVariables','catColour', 'catBoard', 'catRGBLed', 'catTutorials'];
+    var categories = ['catVariables', 'catText','catMath', 'catBoard', 'catUltraSonic', 'catTutorials'];
   }
   else if(tutorialsChapter=='ULTRASONIC04'){
     document.getElementById('subTitle').textContent = MSG['subTitleULTRASONIC04'];

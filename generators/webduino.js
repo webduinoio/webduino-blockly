@@ -111,7 +111,7 @@ Blockly.JavaScript['ultrasonic_get'] = function(block) {
   var code = variable_var_+'.ping(function(cm){\n'+
               '  '+variable_var_+'.distance = cm*1;\n'+
               '  console.log('+variable_var_+'.distance);\n'+
-              '  '+statements_do+
+              statements_do+
               '},'+value_time+');\n';
   return code;
 };

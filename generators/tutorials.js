@@ -205,14 +205,56 @@ Blockly.JavaScript['ultrasonic_set_number'] = function(block) {
   return code;
 };
 
-
 Blockly.JavaScript['ultrasonic_change_image_size'] = function(block) {
   var value_size = Blockly.JavaScript.valueToCode(block, 'size', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_url = Blockly.JavaScript.valueToCode(block, 'url', Blockly.JavaScript.ORDER_ATOMIC);
   if(!value_size){value_size=100;}
-  if(value_url=='\'\''||!value_url){value_url='"https://webduino.io/img/tutorials/tutorial-05-01s.jpg"';}
-  var code = 'document.getElementById("image").style.width = '+value_size+'+"px";\n'+
-              'document.getElementById("image").setAttribute("src",'+value_url+');\n';
+  var code = 'document.getElementById("image").style.width = '+value_size+'+"px";\n';
   return code;
 };
 
+Blockly.JavaScript['ultrasonic_change_image_url'] = function(block) {
+  var value_url = Blockly.JavaScript.valueToCode(block, 'url', Blockly.JavaScript.ORDER_ATOMIC);
+  if(value_url=='\'\''||!value_url){value_url='"https://webduino.io/img/tutorials/tutorial-05-01s.jpg"';}
+  var code = 'document.getElementById("image").setAttribute("src",'+value_url+');\n';
+  return code;
+};
+
+Blockly.JavaScript['ultrasonic_change_music_volume'] = function(block) {
+  var value_volume = Blockly.JavaScript.valueToCode(block, 'volume', Blockly.JavaScript.ORDER_ATOMIC);
+  var varMusicVolume = Blockly.JavaScript.variableDB_.getDistinctName(
+      'musicVolume', Blockly.Variables.NAME_TYPE);
+  var varMusicVolumeBar = Blockly.JavaScript.variableDB_.getDistinctName(
+      'musicVolumeBar', Blockly.Variables.NAME_TYPE);
+  var code = 'var '+varMusicVolume+' = '+value_volume+'/100;\n'+
+              'var '+varMusicVolumeBar+' = '+value_volume+';\n'+
+              'if('+varMusicVolume+'>=1){'+varMusicVolume+'=1;}\n'+
+              'if('+varMusicVolumeBar+'>=255){'+varMusicVolumeBar+'=255;}\n'+
+              'document.getElementById("music").volume='+varMusicVolume+';\n'+
+              'document.getElementById("volume").style.width = (10+'+varMusicVolumeBar+')+"px";\n'+
+              'document.getElementById("volume").style.background = "rgba("+'+varMusicVolumeBar+'+","+(255-'+varMusicVolumeBar+')+",0,1)";\n';
+  return code;
+};
+
+Blockly.JavaScript['ultrasonic_change_music_play'] = function(block) {
+  var dropdown_play = block.getFieldValue('play');
+  var value_play = Blockly.JavaScript.valueToCode(block, 'play', Blockly.JavaScript.ORDER_ATOMIC);
+  var code;
+  if(dropdown_play=='play'){
+    code = 'document.getElementById("music").play();\n';
+  }
+  if(dropdown_play=='pause'){
+    code = 'document.getElementById("music").pause();\n';
+  }
+  if(dropdown_play=='stop'){
+    code = 'document.getElementById("music").pause();\n'+
+            'document.getElementById("music").currentTime = 0;\n';
+  }
+  return code;
+};
+
+Blockly.JavaScript['ultrasonic_change_add_music'] = function(block) {
+  var value_music = Blockly.JavaScript.valueToCode(block, 'music', Blockly.JavaScript.ORDER_ATOMIC);
+  if(value_music=='\'\''||!value_music){value_music='\'https://webduinoio.github.io/event20150408/demo/minions/music.mp3\'';}
+  var code = 'document.getElementById("music").innerHTML = "<source src='+value_music+' type=\'audio/mpeg\'>";\n';
+  return code;
+};
