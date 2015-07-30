@@ -362,3 +362,33 @@ Blockly.Blocks['show_text'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#4qa6xn
+Blockly.Blocks['show_calculate_numbers'] = {
+  init: function() {
+    this.appendValueInput("show_calculate_numbers")
+        .setCheck("Number")
+        .appendField(Blockly.Msg.WEBDUINO_SHOW_CALCULATE_NUMBER,"顯示數字 ＝ 當前數字")
+        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.WEBDUINO_SHOW_CALCULATE_PLUS, "plus"], [Blockly.Msg.WEBDUINO_SHOW_CALCULATE_MINUS, "minus"], [Blockly.Msg.WEBDUINO_SHOW_CALCULATE_TIMES, "times"], [Blockly.Msg.WEBDUINO_SHOW_CALCULATE_DIVIDED, "divided"]]), "calculate_");
+    this.appendDummyInput();
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#xcsnik
+Blockly.Blocks['show_set_numbers'] = {
+  init: function() {
+    this.appendValueInput("numbers_")
+        .setCheck("Number")
+        .appendField(Blockly.Msg.WEBDUINO_SHOW_SET_CURRENT_NUMBER,"設定當前數字為：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};

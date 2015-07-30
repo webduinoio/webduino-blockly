@@ -276,3 +276,28 @@ Blockly.JavaScript['show_text'] = function(block) {
   var code = 'document.getElementById("show").innerHTML = "'+value_show_+'";\n';
   return code;
 };
+
+Blockly.JavaScript['show_calculate_numbers'] = function(block) {
+  var dropdown_calculate_ = block.getFieldValue('calculate_');
+  var value_show_calculate_numbers = Blockly.JavaScript.valueToCode(block, 'show_calculate_numbers', Blockly.JavaScript.ORDER_ATOMIC);
+  if(dropdown_calculate_=='plus'){dropdown_calculate_='+';}
+  if(dropdown_calculate_=='minus'){dropdown_calculate_='-';}
+  if(dropdown_calculate_=='times'){dropdown_calculate_='*';}
+  if(dropdown_calculate_=='divided'){dropdown_calculate_='/';}
+  var varString = Blockly.JavaScript.variableDB_.getDistinctName(
+      'varString', Blockly.Variables.NAME_TYPE);
+  var varNumber = Blockly.JavaScript.variableDB_.getDistinctName(
+      'varNumber', Blockly.Variables.NAME_TYPE);
+  var code = 'var '+varString+' = document.getElementById("show").innerHTML;\n'+
+              'var '+varNumber+' = '+varString+'*1;\n'+
+              varNumber+' = '+varNumber+dropdown_calculate_+value_show_calculate_numbers+';\n'+
+              'document.getElementById("show").innerHTML = '+varNumber+';\n';
+  return code;
+};
+
+Blockly.JavaScript['show_set_numbers'] = function(block) {
+  var value_numbers_ = Blockly.JavaScript.valueToCode(block, 'numbers_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'document.getElementById("show").innerHTML = '+value_numbers_+';\n';
+  return code;
+};
+

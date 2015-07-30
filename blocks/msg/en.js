@@ -105,3 +105,11 @@ Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_ADD = "Add Music";
 // Button
 
 Blockly.Msg.WEBDUINO_SHOW_TEXT = "Show text: ";
+
+Blockly.Msg.WEBDUINO_SHOW_CALCULATE_NUMBER = "Show Number = Current number";
+Blockly.Msg.WEBDUINO_SHOW_CALCULATE_PLUS = "+";
+Blockly.Msg.WEBDUINO_SHOW_CALCULATE_MINUS = "-";
+Blockly.Msg.WEBDUINO_SHOW_CALCULATE_TIMES = "*";
+Blockly.Msg.WEBDUINO_SHOW_CALCULATE_DIVIDED = "/";
+
+Blockly.Msg.WEBDUINO_SHOW_SET_CURRENT_NUMBER = "Set Current number";
