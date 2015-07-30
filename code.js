@@ -417,10 +417,10 @@ Code.initLanguage = function () {
   document.getElementById('runButton').title = MSG['runTooltip'];
   document.getElementById('trashButton').title = MSG['trashTooltip'];
 
-  var categories = ['catLogic', 'catLoops', 'catMath', 'catText', 'catLists',
-    'catColour', 'catVariables', 'catFunctions', 'catExec',
-    'catBoard', 'catLed', 'catRGBLed', 'catCar'
-  ];
+  var toolbox = document.getElementById('toolbox');
+  var categories = Array.prototype.slice.call(toolbox.querySelectorAll('category')).map(function (e) {
+    return e.id
+  });
   for (var i = 0, cat; cat = categories[i]; i++) {
     document.getElementById(cat).setAttribute('name', MSG[cat]);
   }
