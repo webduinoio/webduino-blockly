@@ -4,7 +4,7 @@ goog.provide('Blockly.Blocks.webduino');
 goog.require('Blockly.Blocks');
 
 Blockly.Blocks['board_ready'] = {
-  init: function() {
+  init: function () {
     this.appendValueInput("device_")
       .appendField(Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO)
       .appendField(Blockly.Msg.WEBDUINO_BOARD_READY_DEVICE);
@@ -16,7 +16,7 @@ Blockly.Blocks['board_ready'] = {
 };
 
 Blockly.Blocks['led_new'] = {
-  init: function() {
+  init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_LED, "Led")
       .appendField(Blockly.Msg.WEBDUINO_LED_PIN, "pin")
@@ -36,7 +36,7 @@ Blockly.Blocks['led_new'] = {
 };
 
 Blockly.Blocks['led_state'] = {
-  init: function() {
+  init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable(" "), "led_")
       .appendField(Blockly.Msg.WEBDUINO_LED_SET_STATE, "set state")
@@ -53,7 +53,7 @@ Blockly.Blocks['led_state'] = {
 };
 
 Blockly.Blocks['led_toggle'] = {
-  init: function() {
+  init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable(" "), "led_")
       .appendField(Blockly.Msg.WEBDUINO_LED_TOGGLE, "toggle");
@@ -66,7 +66,7 @@ Blockly.Blocks['led_toggle'] = {
 };
 
 Blockly.Blocks['rgbled_new'] = {
-  init: function() {
+  init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_RGBLED, "RGBLed")
       .appendField(Blockly.Msg.WEBDUINO_RGBLED_RED, "red")
@@ -98,7 +98,7 @@ Blockly.Blocks['rgbled_new'] = {
 };
 
 Blockly.Blocks['rgbled_setcolor'] = {
-  init: function() {
+  init: function () {
     this.appendValueInput("color_")
       .appendField(new Blockly.FieldVariable(" "), "rgbled_")
       .appendField(Blockly.Msg.WEBDUINO_RGBLED_SETCOLOR, "set color");
@@ -181,7 +181,7 @@ Blockly.Blocks['car_move'] = {
 };
 
 Blockly.Blocks['timer'] = {
-  init: function() {
+  init: function () {
     this.appendValueInput("secs_")
       .appendField(Blockly.Msg.WEBDUINO_TIMER_AFTER, "After");
     this.appendDummyInput()
@@ -222,7 +222,7 @@ Blockly.Blocks['exec_seq'] = {
 };
 
 Blockly.Blocks['exec_then'] = {
-  init: function() {
+  init: function () {
     this.appendValueInput("then_")
       .appendField(Blockly.Msg.WEBDUINO_EXEC_THEN, "then");
     this.setPreviousStatement(true);
@@ -234,7 +234,7 @@ Blockly.Blocks['exec_then'] = {
 };
 
 Blockly.Blocks['exec_then_stms'] = {
-  init: function() {
+  init: function () {
     this.appendStatementInput("then_")
       .appendField(Blockly.Msg.WEBDUINO_EXEC_THEN_STMS, "then");
     this.setPreviousStatement(true);
@@ -246,9 +246,9 @@ Blockly.Blocks['exec_then_stms'] = {
 };
 
 Blockly.Blocks['ultrasonic_new'] = {
-  init: function() {
+  init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_TRIG,"UltraSonic,  Trig:")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_TRIG, "UltraSonic,  Trig:")
       .appendField(new Blockly.FieldDropdown([
         ["6", "6"],
         ["7", "7"],
@@ -257,7 +257,7 @@ Blockly.Blocks['ultrasonic_new'] = {
         ["10", "10"],
         ["11", "11"]
       ]), "trig_")
-      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_ECHO,"  Echo:")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_ECHO, "  Echo:")
       .appendField(new Blockly.FieldDropdown([
         ["6", "6"],
         ["7", "7"],
@@ -275,16 +275,16 @@ Blockly.Blocks['ultrasonic_new'] = {
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#s2p7t7
 Blockly.Blocks['ultrasonic_get'] = {
-  init: function() {
+  init: function () {
     this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("ultrasonic"), "var_");
+      .appendField(new Blockly.FieldVariable("ultrasonic"), "var_");
     this.appendValueInput("time")
-        .setCheck("Number")
-        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DISTANCE,"get distance over every ");
+      .setCheck("Number")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DISTANCE, "get distance over every ");
     this.appendDummyInput()
-        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_GET_TIME,"ms ( 1/1000 sec )");
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_GET_TIME, "ms ( 1/1000 sec )");
     this.appendStatementInput("do")
-        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DO,"do");
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DO, "do");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -295,10 +295,10 @@ Blockly.Blocks['ultrasonic_get'] = {
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vv8fx4
 Blockly.Blocks['ultrasonic_distance'] = {
-  init: function() {
+  init: function () {
     this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("ultrasonic"), "var_")
-        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_DISTANCE,"'s distance");
+      .appendField(new Blockly.FieldVariable("ultrasonic"), "var_")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_DISTANCE, "'s distance");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(65);

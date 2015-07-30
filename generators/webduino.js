@@ -97,28 +97,27 @@ Blockly.JavaScript['exec_then_stms'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['ultrasonic_new'] = function(block) {
+Blockly.JavaScript['ultrasonic_new'] = function (block) {
   var dropdown_trig_ = block.getFieldValue('trig_');
   var dropdown_echo_ = block.getFieldValue('echo_');
   var code = 'getUltrasonic(board, ' + dropdown_trig_ + ', ' + dropdown_echo_ + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
-Blockly.JavaScript['ultrasonic_get'] = function(block) {
+Blockly.JavaScript['ultrasonic_get'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
   var value_time = Blockly.JavaScript.valueToCode(block, 'time', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_do = Blockly.JavaScript.statementToCode(block, 'do');
-  var code = variable_var_+'.ping(function(cm){\n'+
-              '  '+variable_var_+'.distance = cm*1;\n'+
-              '  console.log('+variable_var_+'.distance);\n'+
-              '  '+statements_do+
-              '},'+value_time+');\n';
+  var code = variable_var_ + '.ping(function(cm){\n' +
+    '  ' + variable_var_ + '.distance = cm*1;\n' +
+    '  console.log(' + variable_var_ + '.distance);\n' +
+    '  ' + statements_do +
+    '},' + value_time + ');\n';
   return code;
 };
 
-Blockly.JavaScript['ultrasonic_distance'] = function(block) {
+Blockly.JavaScript['ultrasonic_distance'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
-  var code = variable_var_+'.distance';
+  var code = variable_var_ + '.distance';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
-
