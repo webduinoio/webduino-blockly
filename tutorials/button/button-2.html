@@ -6,13 +6,8 @@
   <meta name="google" value="notranslate">
   <title></title>
   <style>
-    #image{
-      transition:.3s;
-      max-width:100%;
-    }
     #show{
-      font-size:30px;
-      margin-bottom:10px;
+      font-size:120px;
     }
   </style>
 </head>
@@ -22,7 +17,6 @@
     <div id="demoTitle">...</div>
     <div id="demoDescription">...</div>
     <div id="show">0</div>
-    <img src="https://webduino.io/img/tutorials/tutorial-05-01s.jpg" id="image">
   </div>
   <table width="60%" height="100%">
     <tr>
@@ -71,14 +65,11 @@
   <xml id="toolbox" style="display: none">
     <category id="catVariables" custom="VARIABLE"></category>
     <sep></sep>
-    <category id="catMath">
-      <block type="math_number"></block>
-      <block type="math_arithmetic"></block>
-    </category>
-    <category id="catText">
-      <block type="text"></block>
-    </category>
     <sep></sep>
+    <category id="catMath">
+      <block type="math_number">
+      </block>
+    </category>
     <category id="catBoard">
       <block type="board_ready">
         <value name="device_">
@@ -86,31 +77,26 @@
         </value>
       </block>
     </category>
-    <category id="catUltraSonic">
+    <category id="catButton">
       <block type="variables_set">
-        <field name="VAR">ultrasonic</field>
+        <field name="VAR">button</field>
         <value name="VALUE">
-          <block type="ultrasonic_new">
-            <field name="trig_">11</field>
-            <field name="echo_">10</field>
+          <block type="button_new">
+            <field name="pin_">10</field>
           </block>
         </value>
       </block>
-      <block type="ultrasonic_get">
-        <value name="time">
-          <block type="math_number">
-            <field name="NUM">500</field>
-          </block>
-        </value>
-      </block>
-      <block type="ultrasonic_distance"></block>
+      <block type="button_event"></block>
     </category>
     <category id="catTutorials">
-      <block type="ultrasonic_set_number"></block>
-      <block type="ultrasonic_change_image_size"></block>
-      <block type="ultrasonic_change_image_url">
-        <value name="url">
-          <block type="text"></block>
+      <block type="show_set_numbers">
+        <value name="numbers_">
+          <block type="math_number"></block>
+        </value>
+      </block>
+      <block type="show_calculate_numbers">
+        <value name="show_calculate_numbers">
+          <block type="math_number"></block>
         </value>
       </block>
     </category>
