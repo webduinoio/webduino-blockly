@@ -23,6 +23,8 @@
  */
 'use strict';
 
+var baseUrl = baseUrl || '.';
+
 /**
  * Create a namespace for the application.
  */
@@ -163,10 +165,10 @@ Code.importPrettify = function () {
   //<script src="../prettify.js"></script>
   var link = document.createElement('link');
   link.setAttribute('rel', 'stylesheet');
-  link.setAttribute('href', 'prettify.css');
+  link.setAttribute('href', baseUrl + '/prettify.css');
   document.head.appendChild(link);
   var script = document.createElement('script');
-  script.setAttribute('src', 'prettify.js');
+  script.setAttribute('src', baseUrl + '/prettify.js');
   document.head.appendChild(script);
 };
 
@@ -284,6 +286,7 @@ Code.renderContent = function () {
  * Initialize Blockly.  Called on page load.
  */
 Code.init = function () {
+  Code.renderPage();
   Code.initLanguage();
 
   var rtl = Code.isRtl();
@@ -318,7 +321,7 @@ Code.init = function () {
       colour: '#ccc',
       snap: true
     },
-    media: 'components/blockly/media/',
+    media: baseUrl + '/components/blockly/media/',
     rtl: rtl,
     toolbox: toolbox
   });
@@ -373,6 +376,11 @@ Code.init = function () {
   window.setTimeout(Code.importPrettify, 1);
 };
 
+Code.renderPage = function () {
+  var template = Handlebars.compile(document.getElementById('page-template').textContent);
+  document.body.innerHTML = template(MSG);
+};
+
 /**
  * Initialize the page language.
  */
@@ -410,12 +418,6 @@ Code.initLanguage = function () {
 
   // Inject language strings.
   document.title += ' ' + MSG['title'];
-  document.getElementById('title').textContent = MSG['title'];
-  document.getElementById('tab_blocks').textContent = MSG['blocks'];
-
-  document.getElementById('linkButton').title = MSG['linkTooltip'];
-  document.getElementById('runButton').title = MSG['runTooltip'];
-  document.getElementById('trashButton').title = MSG['trashTooltip'];
 
   var toolbox = document.getElementById('toolbox');
   var categories = Array.prototype.slice.call(toolbox.querySelectorAll('category')).map(function (e) {
@@ -423,14 +425,6 @@ Code.initLanguage = function () {
   });
   for (var i = 0, cat; cat = categories[i]; i++) {
     document.getElementById(cat).setAttribute('name', MSG[cat]);
-  }
-  var textVars = document.getElementsByClassName('textVar');
-  for (var i = 0, textVar; textVar = textVars[i]; i++) {
-    textVar.textContent = MSG['textVariable'];
-  }
-  var listVars = document.getElementsByClassName('listVar');
-  for (var i = 0, listVar; listVar = listVars[i]; i++) {
-    listVar.textContent = MSG['listVariable'];
   }
 };
 
@@ -468,9 +462,9 @@ Code.discard = function () {
 };
 
 // Load the Code demo's language strings.
-document.write('<script src="msg/' + Code.LANG + '.js"></script>\n');
+document.write('<script src="' + baseUrl + '/msg/' + Code.LANG + '.js"></script>\n');
 // Load Blockly's language strings.
-document.write('<script src="components/blockly/msg/js/' + Code.LANG + '.js"></script>\n');
-document.write('<script src="blocks/msg/' + Code.LANG + '.js"></script>\n');
+document.write('<script src="' + baseUrl + '/components/blockly/msg/js/' + Code.LANG + '.js"></script>\n');
+document.write('<script src="' + baseUrl + '/blocks/msg/' + Code.LANG + '.js"></script>\n');
 
 window.addEventListener('load', Code.init);
