@@ -23,6 +23,8 @@
  */
 'use strict';
 
+var slice = Array.prototype.slice;
+
 var baseUrl = baseUrl || '.';
 
 /**
@@ -72,6 +74,11 @@ Code.getLang = function () {
     lang = 'en';
   }
   return lang;
+};
+
+Code.getPage = function () {
+  var page = Code.getStringParamFromUrl('page', 'index');
+  return page;
 };
 
 /**
@@ -166,6 +173,9 @@ Code.importPrettify = function () {
   var link = document.createElement('link');
   link.setAttribute('rel', 'stylesheet');
   link.setAttribute('href', baseUrl + '/prettify.css');
+  link.onload = function () {
+    Blockly.fireUiEvent(window, 'resize');
+  };
   document.head.appendChild(link);
   var script = document.createElement('script');
   script.setAttribute('src', baseUrl + '/prettify.js');
@@ -201,6 +211,8 @@ Code.getBBox_ = function (element) {
  * @type {string}
  */
 Code.LANG = Code.getLang();
+
+Code.PAGE = Code.getPage();
 
 /**
  * List of tab names.
@@ -286,7 +298,6 @@ Code.renderContent = function () {
  * Initialize Blockly.  Called on page load.
  */
 Code.init = function () {
-  Code.renderPage();
   Code.initLanguage();
 
   var rtl = Code.isRtl();
@@ -376,9 +387,33 @@ Code.init = function () {
   window.setTimeout(Code.importPrettify, 1);
 };
 
-Code.renderPage = function () {
-  var template = Handlebars.compile(document.getElementById('page-template').textContent);
-  document.body.innerHTML = template(MSG);
+Code.renderPage = function (callback) {
+  var req = new XMLHttpRequest(),
+    head = document.head,
+    body = document.body;
+
+  req.addEventListener('load', function () {
+    var template = Handlebars.compile(this.responseText);
+    body.innerHTML = template(MSG);
+
+    slice.call(body.querySelectorAll('script')).forEach(function (sc) {
+      var script = document.createElement('script');
+      if (sc.getAttribute('src')) {
+        script.setAttribute('src', sc.getAttribute('src'));
+        head.appendChild(script);
+        body.removeChild(sc);
+      } else if (sc.text) {
+        script.text = sc.text;
+        head.appendChild(script);
+        body.removeChild(sc);
+      }
+    });
+
+    callback();
+  });
+
+  req.open("get", baseUrl + '/views/' + Code.PAGE + '.handlebars', true);
+  req.send();
 };
 
 /**
@@ -419,7 +454,7 @@ Code.initLanguage = function () {
   // Inject language strings.
   document.title += ' ' + MSG['title'];
   var toolbox = document.getElementById('toolbox');
-  var categories = Array.prototype.slice.call(toolbox.querySelectorAll('category')).map(function (e) {
+  var categories = slice.call(toolbox.querySelectorAll('category')).map(function (e) {
     return e.id
   });
   for (var i = 0, cat; cat = categories[i]; i++) {
@@ -466,4 +501,14 @@ document.write('<script src="' + baseUrl + '/msg/' + Code.LANG + '.js"></script>
 document.write('<script src="' + baseUrl + '/components/blockly/msg/js/' + Code.LANG + '.js"></script>\n');
 document.write('<script src="' + baseUrl + '/blocks/msg/' + Code.LANG + '.js"></script>\n');
 
-window.addEventListener('load', Code.init);
+if (Code.PAGE !== 'index') {
+  document.write('<script src="' + baseUrl + '/msg/' + Code.PAGE + '/' + Code.LANG + '.js"></script>\n');
+  document.write('<script src="' + baseUrl + '/blocks/' + Code.PAGE.split('/')[0] + '.js"></script>\n');
+  document.write('<script src="' + baseUrl + '/generators/' + Code.PAGE.split('/')[0] + '.js"></script>\n');
+}
+
+window.addEventListener('load', function () {
+  Code.renderPage(function () {
+    Code.init();
+  });
+});
