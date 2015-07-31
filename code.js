@@ -218,7 +218,7 @@ Code.PAGE = Code.getPage();
  * List of tab names.
  * @private
  */
-Code.TABS_ = ['blocks', 'javascript', 'xml'];
+Code.TABS_ = ['blocks', 'javascript'];
 
 Code.selected = 'blocks';
 
@@ -228,7 +228,7 @@ Code.selected = 'blocks';
  */
 Code.tabClick = function (clickedName) {
   // If the XML tab was open, save and render the content.
-  if (document.getElementById('tab_xml').className == 'tabon') {
+  if (Code.TABS_['xml'] && document.getElementById('tab_xml').className == 'tabon') {
     var xmlTextarea = document.getElementById('content_xml');
     var xmlText = xmlTextarea.value;
     var xmlDom = null;
