@@ -1,34 +1,15 @@
 <link rel="stylesheet" href="tutorials.css">
 
 <style>
-#light1, #light2{
-  width:40%;
-  display:inline-block;
-  margin:0 5px;
-}
-#light1 img, #light2 img{
-  width:100%;
-  display:none;
-}
-#light1.off img:first-child, #light2.off img:first-child{
-  display:inline-block;
-}
-#light1.on img:last-child, #light2.on img:last-child{
-  display:inline-block;
-}
+  #show{
+    font-size:120px;
+  }
 </style>
 
 <div id="demoArea">
-<div id="demoTitle">{[demoTitle}}</div>
-<div id="demoDescription">{{demoDescription}}</div>
-<div id="light1" class="off">
-  <img src='http://i.imgur.com/T5H4MHE.png'></img>
-  <img src='http://i.imgur.com/8qFj2Ou.png'></img>
-</div>
-<div id="light2" class="off">
-  <img src='http://i.imgur.com/T5H4MHE.png'></img>
-  <img src='http://i.imgur.com/8qFj2Ou.png'></img>
-</div>
+  <div id="demoTitle">{{demoTitle}}</div>
+  <div id="demoDescription">{{demoDescription}}</div>
+  <div id="show">0</div>
 </div>
 <table width="60%" height="100%">
 <tr>
@@ -77,36 +58,37 @@
 <textarea id="content_xml" class="content" wrap="off"></textarea>
 
 <xml id="toolbox" style="display: none">
-<category id="catVariables" custom="VARIABLE"></category>
-<sep></sep>
-<category id="catLogic">
-  <block type="controls_if"></block>
-</category>
-<sep></sep>
-<category id="catBoard">
-  <block type="board_ready">
-    <value name="device_">
-      <block type="text"></block>
-    </value>
-  </block>
-</category>
-<category id="catLed">
-  <block type="variables_set">
-    <field name="VAR">led</field>
-    <value name="VALUE">
-      <block type="led_new">
-        <field name="pin_">10</field>
-      </block>
-    </value>
-  </block>
-  <block type="led_state">
-    <field name="led_">led</field>
-  </block>
-</category>
-<category id="catTutorials">
-  <block type="two_led_light"></block>
-  <block type="two_led_light_click"></block>
-  <block type="two_led_light_check"></block>
-</category>
-<sep></sep>
+  <category id="catVariables" custom="VARIABLE"></category>
+  <sep></sep>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category id="catUltraSonic">
+    <block type="variables_set">
+      <field name="VAR">ultrasonic</field>
+      <value name="VALUE">
+        <block type="ultrasonic_new">
+          <field name="trig_">11</field>
+          <field name="echo_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_get">
+      <value name="time">
+        <block type="math_number">
+          <field name="NUM">500</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_distance"></block>
+  </category>
+  <category id="catTutorials">
+    <block type="ultrasonic_set_number"></block>
+  </category>
+  <sep></sep>
 </xml>
