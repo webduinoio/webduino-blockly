@@ -435,7 +435,7 @@ Code.initLanguage = function() {
   else if(tutorialsChapter=='BUTTON04'){
     document.getElementById('subTitle').textContent = MSG['subTitleBUTTON04'];
   document.getElementById('demoDescription').textContent = MSG['demoDescriptionBUTTON04'];
-    var categories = ['catLogic','catColour','catMath','catVariables', 'catBoard', 'catRGBLed', 'catUltraSonic', 'catTutorials'];
+    var categories = ['catVariables', 'catMath', 'catBoard', 'catButton', 'catTutorials'];
   }
 
   for (var i = 0, cat; cat = categories[i]; i++) {

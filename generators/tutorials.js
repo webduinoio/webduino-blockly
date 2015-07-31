@@ -320,47 +320,121 @@ Blockly.JavaScript['button_change_image_position'] = function (block) {
   var value_image_pos_ = Blockly.JavaScript.valueToCode(block, 'image_pos_', Blockly.JavaScript.ORDER_ATOMIC);
   var code;
   if (dropdown_pos_ == 'u') {
-    code = 'if(!window.varImageUD){window.varImageUD = 0;}\n'+
-            'if(!window.varImageUp){window.varImageUp = 0;}\n'+
-            'if(!window.varImageDown){window.varImageDown = 0;}\n'+
-            'window.varImageUp = '+value_image_pos_+';\n'+
-            'window.varImageUD = window.varImageUD + (window.varImageDown - window.varImageUp);\n'+
-            'document.getElementById("image").style.marginTop = varImageUD+"px";\n'+
-            'console.log(window.varImageUD);\n';
+    code = 'if(!window.varImageUD){window.varImageUD = 0;}\n' +
+      'if(!window.varImageUp){window.varImageUp = 0;}\n' +
+      'if(!window.varImageDown){window.varImageDown = 0;}\n' +
+      'window.varImageUp = ' + value_image_pos_ + ';\n' +
+      'window.varImageUD = window.varImageUD + (window.varImageDown - window.varImageUp);\n' +
+      'document.getElementById("image").style.marginTop = varImageUD+"px";\n' +
+      'console.log(window.varImageUD);\n';
   }
   if (dropdown_pos_ == 'd') {
-    code = 'if(!window.varImageUD){window.varImageUD = 0;}\n'+
-            'if(!window.varImageUp){window.varImageUp = 0;}\n'+
-            'if(!window.varImageDown){window.varImageDown = 0;}\n'+
-            'window.varImageDown = '+value_image_pos_+';\n'+
-            'window.varImageUD = window.varImageUD + (window.varImageDown - window.varImageUp);\n'+
-            'document.getElementById("image").style.marginTop = varImageUD+"px";\n'+
-            'console.log(window.varImageUD);\n';
+    code = 'if(!window.varImageUD){window.varImageUD = 0;}\n' +
+      'if(!window.varImageUp){window.varImageUp = 0;}\n' +
+      'if(!window.varImageDown){window.varImageDown = 0;}\n' +
+      'window.varImageDown = ' + value_image_pos_ + ';\n' +
+      'window.varImageUD = window.varImageUD + (window.varImageDown - window.varImageUp);\n' +
+      'document.getElementById("image").style.marginTop = varImageUD+"px";\n' +
+      'console.log(window.varImageUD);\n';
   }
   if (dropdown_pos_ == 'l') {
-    code = 'if(!window.varImageLR){window.varImageLR = 0;}\n'+
-            'if(!window.varImageLeft){window.varImageLeft = 0;}\n'+
-            'if(!window.varImageRight){window.varImageRight = 0;}\n'+
-            'window.varImageLeft = '+value_image_pos_+';\n'+
-            'window.varImageLR = window.varImageLR + (window.varImageRight - window.varImageLeft);\n'+
-            'document.getElementById("image").style.marginLeft = varImageLR+"px";\n'+
-            'console.log(window.varImageLR);\n';
+    code = 'if(!window.varImageLR){window.varImageLR = 0;}\n' +
+      'if(!window.varImageLeft){window.varImageLeft = 0;}\n' +
+      'if(!window.varImageRight){window.varImageRight = 0;}\n' +
+      'window.varImageLeft = ' + value_image_pos_ + ';\n' +
+      'window.varImageLR = window.varImageLR + (window.varImageRight - window.varImageLeft);\n' +
+      'document.getElementById("image").style.marginLeft = varImageLR+"px";\n' +
+      'console.log(window.varImageLR);\n';
   }
   if (dropdown_pos_ == 'r') {
-    code = 'if(!window.varImageLR){window.varImageLR = 0;}\n'+
-            'if(!window.varImageLeft){window.varImageLeft = 0;}\n'+
-            'if(!window.varImageRight){window.varImageRight = 0;}\n'+
-            'window.varImageRight = '+value_image_pos_+';\n'+
-            'window.varImageLR = window.varImageLR + (window.varImageRight - window.varImageLeft);\n'+
-            'document.getElementById("image").style.marginLeft = varImageLR+"px";\n'+
-            'console.log(window.varImageLR);\n';
+    code = 'if(!window.varImageLR){window.varImageLR = 0;}\n' +
+      'if(!window.varImageLeft){window.varImageLeft = 0;}\n' +
+      'if(!window.varImageRight){window.varImageRight = 0;}\n' +
+      'window.varImageRight = ' + value_image_pos_ + ';\n' +
+      'window.varImageLR = window.varImageLR + (window.varImageRight - window.varImageLeft);\n' +
+      'document.getElementById("image").style.marginLeft = varImageLR+"px";\n' +
+      'console.log(window.varImageLR);\n';
   }
   return code;
 };
 
-Blockly.JavaScript['button_reset_image_position'] = function(block) {
-  var code = 'document.getElementById("image").style.margin = "0 0 0 0";\n'+
-            'window.varImageUD=0;\n'+
-            'window.varImageLR=0;\n';
+Blockly.JavaScript['button_reset_image_position'] = function (block) {
+  var code = 'document.getElementById("image").style.margin = "0 0 0 0";\n' +
+    'window.varImageUD=0;\n' +
+    'window.varImageLR=0;\n';
   return code;
 };
+
+Blockly.JavaScript['button_game'] = function (block) {
+  var dropdown_npc_ = block.getFieldValue('npc_');
+  var dropdown_level_ = block.getFieldValue('level_');
+  var dropdown_distance_ = block.getFieldValue('distance_');
+  var dropdown_user_ = block.getFieldValue('user_');
+  var variable_button_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('button_'), Blockly.Variables.NAME_TYPE);
+  var statements_event_ = Blockly.JavaScript.statementToCode(block, 'event_');
+  var code = 'var btnGameNpcShow_ = document.getElementById("npcshow"),\n' +
+    '  btnGameUserShow_ = document.getElementById("usershow"),\n' +
+    '  btnGameNpc_ = document.getElementById("npc"),\n' +
+    '  btnGameUser_ = document.getElementById("user"),\n' +
+    '  btnGameNpcImg_ = document.getElementById("npcimg"),\n' +
+    '  btnGameUserImg_ = document.getElementById("userimg"),\n' +
+    '  btnGameGoal_ = document.getElementById("goal"),\n' +
+    '  btnGameStart_ = document.getElementById("start"),\n' +
+    '  btnGameTimer_,\n' +
+    '  btnGameA_ = 0,\n' +
+    '  btnGameB_ = 0,\n' +
+    '  btnGameDistance_ = ' + dropdown_distance_ + ',\n' +
+    '  btnGameNpcSpeed_ = ' + dropdown_level_ + ',\n' +
+    '  btnGameUserSpeed_;\n' +
+    '  \n' +
+    'btnGameStart_.className = "";\n' +
+    'btnGameNpcImg_.setAttribute("src","' + dropdown_npc_ + '");\n' +
+    'btnGameUserImg_.setAttribute("src","' + dropdown_user_ + '");\n' +
+    'btnGameGoal_.innerHTML = btnGameDistance_;\n' +
+    'btnGameStart_.addEventListener("click",go);\n' +
+    '  \n' +
+    'function go(){\n' +
+    '  btnGameStart_.className = "go";\n' +
+    '  btnGameA_ = 0;\n' +
+    '  btnGameB_ = 0;\n' +
+    '  ' + statements_event_ +
+    '  btnGameTimer_ = setInterval(function(){\n' +
+    '    btnGameB_ = btnGameB_ + btnGameNpcSpeed_;\n' +
+    '    btnGameNpcShow_.innerHTML = btnGameB_;\n' +
+    '    btnGameNpc_.style.marginLeft = btnGameB_+"px";\n' +
+    '    if(btnGameB_>=btnGameDistance_){\n' +
+    '      alert("GAME OVER!!!! YOU LOSE!!!!!");\n' +
+    '      stop();\n' +
+    '    }\n' +
+    '  },120);\n' +
+    '  \n' +
+    '  function stop(){\n' +
+    '    clearInterval(btnGameTimer_);\n' +
+    '    btnGameA_ = 0;\n' +
+    '    btnGameB_ = 0;\n' +
+    '    btnGameNpcShow_.innerHTML = 0;\n' +
+    '    btnGameUserShow_.innerHTML = 0;\n' +
+    '    btnGameNpc_.style.marginLeft = 0;\n' +
+    '    btnGameUser_.style.marginLeft = 0;\n' +
+    '    btnGameStart_.className = "";\n' +
+    '    ' + variable_button_ + '.removeAllListeners("pressed");\n' +
+    '    ' + variable_button_ + '.removeAllListeners("repressed");\n' +
+    '    ' + variable_button_ + '.removeAllListeners("longPress");\n' +
+    '  }\n' +
+    '}\n';
+  return code;
+};
+
+
+Blockly.JavaScript['button_game_user'] = function (block) {
+  var dropdown_user_ = block.getFieldValue('user_');
+  var code = '      btnGameA_ = btnGameA_ + ' + dropdown_user_ + ';\n' +
+    '      btnGameUserShow_.innerHTML = btnGameA_;\n' +
+    '      btnGameUser_.style.marginLeft = btnGameA_+"px";\n' +
+    '      if(btnGameA_>=btnGameDistance_){\n' +
+    '        alert("YOU WIN!!!!!");\n' +
+    '        stop();\n' +
+    '      }\n';
+  return code;
+};
+

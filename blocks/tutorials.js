@@ -439,9 +439,9 @@ Blockly.Blocks['button_change_image_position'] = {
         [Blockly.Msg.WEBDUINO_BUTTON_CHANGE_IMAGE_LEFT, "l"],
         [Blockly.Msg.WEBDUINO_BUTTON_CHANGE_IMAGE_RIGHT, "r"]
       ]), "pos_")
-      .appendField(Blockly.Msg.WEBDUINO_BUTTON_CHANGE_IMAGE_MOVE,"移動");
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_CHANGE_IMAGE_MOVE, "移動");
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BUTTON_CHANGE_IMAGE_PX,"個像素");
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_CHANGE_IMAGE_PX, "個像素");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -452,9 +452,85 @@ Blockly.Blocks['button_change_image_position'] = {
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#ynuit9
 Blockly.Blocks['button_reset_image_position'] = {
-  init: function() {
+  init: function () {
     this.appendDummyInput()
-        .appendField(Blockly.Msg.WEBDUINO_BUTTON_CHANGE_IMAGE_RESET,"重設圖片位置");
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_CHANGE_IMAGE_RESET, "重設圖片位置");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#dch7xc
+Blockly.Blocks['button_game'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_ADD_SINGLEGAME,"載入 <單人> 遊戲模組");
+    this.appendDummyInput();
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC,"電腦角色：")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_CAT, "run-cat.gif"],
+        [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_PICA, "run-pica.gif"],
+        [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LION, "run-lion.gif"],
+        [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_SQU, "run-squirrel.gif"],
+        [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_MAN2, "run-man2.gif"],
+        [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_MAN1, "run-man1.gif"]
+      ]), "npc_")
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL,"  電腦強度：")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL_5, "5"],
+        [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL_4, "4"],
+        [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL_3, "3"],
+        [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL_2, "2"],
+        [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL_1, "1"]
+      ]), "level_")
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_DISTANCE,"  比賽距離：")
+      .appendField(new Blockly.FieldDropdown([
+        ["100", "100"],
+        ["200", "200"],
+        ["300", "300"],
+        ["400", "400"],
+        ["500", "500"]
+      ]), "distance_");
+    this.appendDummyInput();
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_USER,"玩家角色：")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_CAT, "run-cat.gif"],
+        [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_PICA, "run-pica.gif"],
+        [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LION, "run-lion.gif"],
+        [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_SQU, "run-squirrel.gif"],
+        [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_MAN2, "run-man2.gif"],
+        [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_MAN1, "run-man1.gif"]
+      ]), "user_")
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_USER_BUTTON,"  按鈕：")
+      .appendField(new Blockly.FieldVariable("button"), "button_");
+    this.appendStatementInput("event_")
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_USER_EVENT,"玩家按鈕行為設定：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#ggtrzs
+Blockly.Blocks['button_game_user'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_USER_RUN_FORWARD,"角色往前跑")
+      .appendField(new Blockly.FieldDropdown([
+        ["1", "1"],
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"]
+      ]), "user_")
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_USER_RUN_PIXEL,"像素");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');

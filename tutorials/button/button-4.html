@@ -6,12 +6,25 @@
   <meta name="google" value="notranslate">
   <title></title>
   <style>
-    #show{
-      width:80%;
-      height:150px;
-      border:1px solid #000;
-      background:#ccc;
-      margin:15px 5px;
+    #start{
+      font-size:30px;
+      display:block;
+      padding:10px;
+      margin:10px auto;
+    }
+    #start.go{
+      display:none;
+    }
+    #npc, #user{
+      transition:.3s;
+    }
+    #npc img{
+      width:100px;
+      transform:scaleX(-1);
+    }
+    #user img{
+      width:100px;
+      transform:scaleX(-1);
     }
   </style>
 </head>
@@ -20,7 +33,17 @@
   <div id="demoArea">
     <div id="demoTitle">...</div>
     <div id="demoDescription">...</div>
-    <div id="show"></div>
+    <br/>
+    先到 <span id="goal"></span> 的贏
+    <br/><br/>
+    電腦：<span id="npcshow">0</span>
+    <br/>
+    玩家：<span id="usershow">0</span> 
+    <br/>
+    <br/>
+    <div id="npc"><img id="npcimg" src="http://orig14.deviantart.net/6e37/f/2012/167/c/9/cat_run_cycle_animation_by_bluwinterwolf-d53o2g3.gif"></div>
+    <div id="user"><img id="userimg" src="http://www.cartoonsolutions.com/store/files/images/cycles/richard_run.gif"></div>  
+    <button id="start" class="go">比賽開始</button>  
   </div>
   <table width="60%" height="100%">
     <tr>
@@ -69,18 +92,11 @@
   <xml id="toolbox" style="display: none">
     <category id="catVariables" custom="VARIABLE"></category>
     <sep></sep>
-    <category id="catLogic">
-      <block type="controls_if"></block>
-      <block type="logic_compare"></block>
-      <block type="logic_operation"></block>
-    </category>
-    <category id="catColour">
-      <block type="colour_picker"></block>
-    </category>
-    <category id="catMath">
-      <block type="math_number"></block>
-    </category>
     <sep></sep>
+    <category id="catMath">
+      <block type="math_number">
+      </block>
+    </category>
     <category id="catBoard">
       <block type="board_ready">
         <value name="device_">
@@ -88,42 +104,20 @@
         </value>
       </block>
     </category>
-    <category id="catRGBLed">
+    <category id="catButton">
       <block type="variables_set">
-        <field name="VAR">rgbled</field>
+        <field name="VAR">button</field>
         <value name="VALUE">
-          <block type="rgbled_new">
-            <field name="red_">6</field>
-            <field name="green_">9</field>
-            <field name="blue_">10</field>
+          <block type="button_new">
+            <field name="pin_">10</field>
           </block>
         </value>
       </block>
-      <block type="rgbled_setcolor">
-        <field name="rgbled_">rgbled</field>
-      </block>
-    </category>
-    <category id="catUltraSonic">
-      <block type="variables_set">
-        <field name="VAR">ultrasonic</field>
-        <value name="VALUE">
-          <block type="ultrasonic_new">
-            <field name="trig_">11</field>
-            <field name="echo_">10</field>
-          </block>
-        </value>
-      </block>
-      <block type="ultrasonic_get">
-        <value name="time">
-          <block type="math_number">
-            <field name="NUM">500</field>
-          </block>
-        </value>
-      </block>
-      <block type="ultrasonic_distance"></block>
+      <block type="button_event"></block>
     </category>
     <category id="catTutorials">
-      <block type="rgb_led_area_color"></block>
+      <block type="button_game"></block>
+      <block type="button_game_user"></block>
     </category>
     <sep></sep>
   </xml>
