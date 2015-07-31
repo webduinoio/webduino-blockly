@@ -1,0 +1,112 @@
+<link rel="stylesheet" href="tutorials/tutorials.css">
+
+<style>
+#light1, #light2{
+  width:40%;
+  display:inline-block;
+  margin:0 5px;
+}
+#light1 img, #light2 img{
+  width:100%;
+  display:none;
+}
+#light1.off img:first-child, #light2.off img:first-child{
+  display:inline-block;
+}
+#light1.on img:last-child, #light2.on img:last-child{
+  display:inline-block;
+}
+</style>
+
+<div id="demoArea">
+<div id="demoTitle">{[demoTitle}}</div>
+<div id="demoDescription">{{demoDescription}}</div>
+<div id="light1" class="off">
+  <img src='http://i.imgur.com/T5H4MHE.png'></img>
+  <img src='http://i.imgur.com/8qFj2Ou.png'></img>
+</div>
+<div id="light2" class="off">
+  <img src='http://i.imgur.com/T5H4MHE.png'></img>
+  <img src='http://i.imgur.com/8qFj2Ou.png'></img>
+</div>
+</div>
+<table width="60%" height="100%">
+<tr>
+  <td>
+    <h1>
+      <a href="index-tutorials.html"><span id="backIndex">{{backIndex}}</span></a> > 
+      <span id="title">...</span><span id="subTitle">{{subTitle}}</span>
+    </h1>
+  </td>
+  <td class="farSide">
+    <select id="languageMenu"></select>
+  </td>
+</tr>
+<tr>
+  <td colspan=2>
+    <table width="100%">
+      <tr id="tabRow" height="1em">
+        <td id="tab_blocks" class="tabon">{{blocks}}</td>
+        <td class="tabmin">&nbsp;</td>
+        <td id="tab_javascript" class="taboff">JavaScript</td>
+        <td class="tabmin">&nbsp;</td>
+        <td id="tab_xml" class="taboff" style="display:none;">XML</td>
+        <td class="tabmax">
+          <button id="trashButton" class="notext" title="{{trashTooltip}}">
+            <img src='media/1x1.gif' class="trash icon21">
+          </button>
+          <button id="linkButton" class="notext" title="{{linkTooltip}}">
+            <img src='media/1x1.gif' class="link icon21">
+          </button>
+          <button id="runButton" class="notext primary" title="{{runTooltip}}">
+            <img src='media/1x1.gif' class="run icon21">
+          </button>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+  <td height="99%" colspan=2 id="content_area">
+  </td>
+</tr>
+</table>
+
+<div id="content_blocks" class="content"></div>
+<pre id="content_javascript" class="content"></pre>
+<textarea id="content_xml" class="content" wrap="off"></textarea>
+
+<xml id="toolbox" style="display: none">
+<category id="catVariables" custom="VARIABLE"></category>
+<sep></sep>
+<category id="catLogic">
+  <block type="controls_if"></block>
+</category>
+<sep></sep>
+<category id="catBoard">
+  <block type="board_ready">
+    <value name="device_">
+      <block type="text"></block>
+    </value>
+  </block>
+</category>
+<category id="catLed">
+  <block type="variables_set">
+    <field name="VAR">led</field>
+    <value name="VALUE">
+      <block type="led_new">
+        <field name="pin_">10</field>
+      </block>
+    </value>
+  </block>
+  <block type="led_state">
+    <field name="led_">led</field>
+  </block>
+</category>
+<category id="catTutorials">
+  <block type="two_led_light"></block>
+  <block type="two_led_light_click"></block>
+  <block type="two_led_light_check"></block>
+</category>
+<sep></sep>
+</xml>
