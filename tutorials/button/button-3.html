@@ -6,16 +6,9 @@
   <meta name="google" value="notranslate">
   <title></title>
   <style>
-  #show {
-    font-size: 30px;
-    margin-bottom: 10px;
-  }
-  #volume {
-    transition: .3s;
-    height: 30px;
-    width: 10px;
-    background:rgba(0,255,0,1);
-  }
+    #image{
+      max-width:100%;
+    }
   </style>
 </head>
 
@@ -23,10 +16,7 @@
   <div id="demoArea">
     <div id="demoTitle">...</div>
     <div id="demoDescription">...</div>
-    <div id="show">0</div>
-    <div id="volume"></div>
-    <audio id='music' loop="loop" value="1">
-    </audio>
+    <img src="https://webduino.io/img/tutorials/tutorial-09-02.jpg" id="image">
   </div>
   <table width="60%" height="100%">
     <tr>
@@ -75,13 +65,11 @@
   <xml id="toolbox" style="display: none">
     <category id="catVariables" custom="VARIABLE"></category>
     <sep></sep>
-    <category id="catMath">
-      <block type="math_number"></block>
-    </category>
-    <category id="catText">
-      <block type="text"></block>
-    </category>
     <sep></sep>
+    <category id="catMath">
+      <block type="math_number">
+      </block>
+    </category>
     <category id="catBoard">
       <block type="board_ready">
         <value name="device_">
@@ -89,36 +77,29 @@
         </value>
       </block>
     </category>
-    <sep></sep>
-    <category id="catUltraSonic">
+    <category id="catButton">
       <block type="variables_set">
-        <field name="VAR">ultrasonic</field>
+        <field name="VAR">button</field>
         <value name="VALUE">
-          <block type="ultrasonic_new">
-            <field name="trig_">11</field>
-            <field name="echo_">10</field>
+          <block type="button_new">
+            <field name="pin_">10</field>
           </block>
         </value>
       </block>
-      <block type="ultrasonic_get">
-        <value name="time">
-          <block type="math_number">
-            <field name="NUM">500</field>
-          </block>
-        </value>
-      </block>
-      <block type="ultrasonic_distance"></block>
+      <block type="button_event"></block>
     </category>
     <category id="catTutorials">
-      <block type="ultrasonic_set_number"></block>
-      <block type="ultrasonic_change_add_music"> 
-        <value name="music">
+      <block type="ultrasonic_change_image_url">
+        <value name="url">
           <block type="text"></block>
         </value>
       </block>
+      <block type="button_change_image_position">
+        <value name="image_pos_">
+          <block type="math_number"></block>
+        </value>
       </block>
-      <block type="ultrasonic_change_music_play"></block>
-      <block type="ultrasonic_change_music_volume"></block>
+      <block type="button_reset_image_position"></block>
     </category>
     <sep></sep>
   </xml>

@@ -16,6 +16,7 @@
   border:1px dotted #aaa;
   padding:20px;
   box-sizing:border-box;
+  overflow: hidden;
 }
 #demoTitle{
   position:absolute;

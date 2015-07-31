@@ -430,7 +430,7 @@ Code.initLanguage = function() {
   else if(tutorialsChapter=='BUTTON03'){
     document.getElementById('subTitle').textContent = MSG['subTitleBUTTON03'];
   document.getElementById('demoDescription').textContent = MSG['demoDescriptionBUTTON03'];
-    var categories = ['catVariables', 'catText','catMath', 'catBoard', 'catUltraSonic', 'catTutorials'];
+    var categories = ['catVariables', 'catMath', 'catBoard', 'catButton', 'catTutorials'];
   }
   else if(tutorialsChapter=='BUTTON04'){
     document.getElementById('subTitle').textContent = MSG['subTitleBUTTON04'];
