@@ -1,0 +1,124 @@
+<link rel="stylesheet" href="tutorials.css">
+
+<style>
+  #show{
+    width:80%;
+    height:150px;
+    border:1px solid #000;
+    background:#ccc;
+    margin:15px 5px;
+  }
+</style>
+
+<div id="demoArea">
+  <div id="demoTitle">{{demoTitle}}</div>
+  <div id="demoDescription">{{demoDescription}}</div>
+  <div id="show"></div>
+</div>
+<table width="60%" height="100%">
+<tr>
+  <td>
+    <h1>
+      <a href="index-tutorials.html"><span id="backIndex">{{backIndex}}</span></a> > 
+      <span id="title">...</span><span id="subTitle">{{subTitle}}</span>
+    </h1>
+  </td>
+  <td class="farSide">
+    <select id="languageMenu"></select>
+  </td>
+</tr>
+<tr>
+  <td colspan=2>
+    <table width="100%">
+      <tr id="tabRow" height="1em">
+        <td id="tab_blocks" class="tabon">{{blocks}}</td>
+        <td class="tabmin">&nbsp;</td>
+        <td id="tab_javascript" class="taboff">JavaScript</td>
+        <td class="tabmin">&nbsp;</td>
+        <td id="tab_xml" class="taboff" style="display:none;">XML</td>
+        <td class="tabmax">
+          <button id="trashButton" class="notext" title="{{trashTooltip}}">
+            <img src='media/1x1.gif' class="trash icon21">
+          </button>
+          <button id="linkButton" class="notext" title="{{linkTooltip}}">
+            <img src='media/1x1.gif' class="link icon21">
+          </button>
+          <button id="runButton" class="notext primary" title="{{runTooltip}}">
+            <img src='media/1x1.gif' class="run icon21">
+          </button>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+  <td height="99%" colspan=2 id="content_area">
+  </td>
+</tr>
+</table>
+
+<div id="content_blocks" class="content"></div>
+<pre id="content_javascript" class="content"></pre>
+<textarea id="content_xml" class="content" wrap="off"></textarea>
+
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <sep></sep>
+  <category id="catLogic">
+    <block type="controls_if"></block>
+    <block type="logic_compare"></block>
+    <block type="logic_operation"></block>
+  </category>
+  <category id="catColour">
+    <block type="colour_picker"></block>
+  </category>
+  <category id="catMath">
+    <block type="math_number"></block>
+  </category>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category id="catRGBLed">
+    <block type="variables_set">
+      <field name="VAR">rgbled</field>
+      <value name="VALUE">
+        <block type="rgbled_new">
+          <field name="red_">6</field>
+          <field name="green_">9</field>
+          <field name="blue_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="rgbled_setcolor">
+      <field name="rgbled_">rgbled</field>
+    </block>
+  </category>
+  <category id="catUltraSonic">
+    <block type="variables_set">
+      <field name="VAR">ultrasonic</field>
+      <value name="VALUE">
+        <block type="ultrasonic_new">
+          <field name="trig_">11</field>
+          <field name="echo_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_get">
+      <value name="time">
+        <block type="math_number">
+          <field name="NUM">500</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_distance"></block>
+  </category>
+  <category id="catTutorials">
+    <block type="rgb_led_area_color"></block>
+  </category>
+  <sep></sep>
+</xml>

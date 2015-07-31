@@ -1,28 +1,15 @@
 <link rel="stylesheet" href="tutorials.css">
 
 <style>
-#light{
-  width:60%;
-}
-#light img{
-  width:100%;
-  display:none;
-}
-#light.off img:first-child{
-  display:inline-block;
-}
-#light.on img:last-child{
-  display:inline-block; 
-}
+  #show{
+    font-size:120px;
+  }
 </style>
 
 <div id="demoArea">
-<div id="demoTitle">{{demoTitle}}</div>
-<div id="demoDescription">{{demoDescription}}</div>
-<div id="light" class="off">
-  <img src='http://i.imgur.com/T5H4MHE.png'></img>
-  <img src='http://i.imgur.com/8qFj2Ou.png'></img>
-</div>
+  <div id="demoTitle">{{demoTitle}}</div>
+  <div id="demoDescription">{{demoDescription}}</div>
+  <div id="show">text</div>
 </div>
 <table width="60%" height="100%">
 <tr>
@@ -71,30 +58,32 @@
 <textarea id="content_xml" class="content" wrap="off"></textarea>
 
 <xml id="toolbox" style="display: none">
-<category id="catVariables" custom="VARIABLE"></category>
-<sep></sep>
-<category id="catBoard">
-  <block type="board_ready">
-    <value name="device_">
-      <block type="text"></block>
-    </value>
-  </block>
-</category>
-<category id="catLed">
-  <block type="variables_set">
-    <field name="VAR">led</field>
-    <value name="VALUE">
-      <block type="led_new">
-        <field name="pin_">10</field>
-      </block>
-    </value>
-  </block>
-  <block type="led_state">
-    <field name="led_">led</field>
-  </block>
-</category>
-<category id="catTutorials">
-  <block type="light"></block>
-</category>
-<sep></sep>
+  <category id="catVariables" custom="VARIABLE"></category>
+  <sep></sep>
+  <sep></sep>
+  <category id="catText">
+    <block type="text"></block>
+  </category>
+  <category id="catBoard">
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category id="catButton">
+    <block type="variables_set">
+      <field name="VAR">button</field>
+      <value name="VALUE">
+        <block type="button_new">
+          <field name="pin_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="button_event"></block>
+  </category>
+  <category id="catTutorials">
+    <block type="show_text"></block>
+  </category>
+  <sep></sep>
 </xml>

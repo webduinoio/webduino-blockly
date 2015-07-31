@@ -388,8 +388,8 @@ Blockly.JavaScript['button_game'] = function (block) {
     '  btnGameUserSpeed_;\n' +
     '  \n' +
     'btnGameStart_.className = "";\n' +
-    'btnGameNpcImg_.setAttribute("src","' + dropdown_npc_ + '");\n' +
-    'btnGameUserImg_.setAttribute("src","' + dropdown_user_ + '");\n' +
+    'btnGameNpcImg_.setAttribute("src","media/tutorials/' + dropdown_npc_ + '");\n' +
+    'btnGameUserImg_.setAttribute("src","media/tutorials/' + dropdown_user_ + '");\n' +
     'btnGameGoal_.innerHTML = btnGameDistance_;\n' +
     'btnGameStart_.addEventListener("click",go);\n' +
     '  \n' +
