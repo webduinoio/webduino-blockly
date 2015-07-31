@@ -1,0 +1,355 @@
+<table width="100%" height="100%">
+  <tr>
+    <td>
+      <h1>
+      <span id="title">{{title}}</span>
+    </h1>
+    </td>
+    <td class="farSide">
+      <select id="languageMenu"></select>
+    </td>
+  </tr>
+  <tr>
+    <td colspan=2>
+      <table width="100%">
+        <tr id="tabRow" height="1em">
+          <td id="tab_blocks" class="tabon">{{blocks}}</td>
+          <td class="tabmin">&nbsp;</td>
+          <td id="tab_javascript" class="taboff">JavaScript</td>
+          <td class="tabmin">&nbsp;</td>
+          <td id="tab_xml" class="taboff">XML</td>
+          <td class="tabmax">
+            <button id="trashButton" class="notext" title="{{trashTooltip}}">
+              <img src='media/1x1.gif' class="trash icon21">
+            </button>
+            <button id="linkButton" class="notext" title="{{linkTooltip}}">
+              <img src='media/1x1.gif' class="link icon21">
+            </button>
+            <button id="runButton" class="notext primary" title="{{runTooltip}}">
+              <img src='media/1x1.gif' class="run icon21">
+            </button>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td height="99%" colspan=2 id="content_area">
+    </td>
+  </tr>
+</table>
+
+<div id="content_blocks" class="content"></div>
+<pre id="content_javascript" class="content"></pre>
+<textarea id="content_xml" class="content" wrap="off"></textarea>
+
+<xml id="toolbox" style="display: none">
+  <category id="catLogic">
+    <block type="controls_if"></block>
+    <block type="logic_compare"></block>
+    <block type="logic_operation"></block>
+    <block type="logic_negate"></block>
+    <block type="logic_boolean"></block>
+    <block type="logic_null"></block>
+    <block type="logic_ternary"></block>
+  </category>
+  <category id="catLoops">
+    <block type="controls_repeat_ext">
+      <value name="TIMES">
+        <block type="math_number">
+          <field name="NUM">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="controls_whileUntil"></block>
+    <block type="controls_for">
+      <value name="FROM">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+      <value name="TO">
+        <block type="math_number">
+          <field name="NUM">10</field>
+        </block>
+      </value>
+      <value name="BY">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+    </block>
+    <block type="controls_forEach"></block>
+    <block type="controls_flow_statements"></block>
+  </category>
+  <category id="catMath">
+    <block type="math_number"></block>
+    <block type="math_arithmetic"></block>
+    <block type="math_single"></block>
+    <block type="math_trig"></block>
+    <block type="math_constant"></block>
+    <block type="math_number_property"></block>
+    <block type="math_change">
+      <value name="DELTA">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+    </block>
+    <block type="math_round"></block>
+    <block type="math_on_list"></block>
+    <block type="math_modulo"></block>
+    <block type="math_constrain">
+      <value name="LOW">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+      <value name="HIGH">
+        <block type="math_number">
+          <field name="NUM">100</field>
+        </block>
+      </value>
+    </block>
+    <block type="math_random_int">
+      <value name="FROM">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+      <value name="TO">
+        <block type="math_number">
+          <field name="NUM">100</field>
+        </block>
+      </value>
+    </block>
+    <block type="math_random_float"></block>
+  </category>
+  <category id="catText">
+    <block type="text"></block>
+    <block type="text_join"></block>
+    <block type="text_append">
+      <value name="TEXT">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="text_length"></block>
+    <block type="text_isEmpty"></block>
+    <block type="text_indexOf">
+      <value name="VALUE">
+        <block type="variables_get">
+          <field name="VAR" class="textVar">{{textVariable}}</field>
+        </block>
+      </value>
+    </block>
+    <block type="text_charAt">
+      <value name="VALUE">
+        <block type="variables_get">
+          <field name="VAR" class="textVar">{{textVariable}}</field>
+        </block>
+      </value>
+    </block>
+    <block type="text_getSubstring">
+      <value name="STRING">
+        <block type="variables_get">
+          <field name="VAR" class="textVar">{{textVariable}}</field>
+        </block>
+      </value>
+    </block>
+    <block type="text_changeCase"></block>
+    <block type="text_trim"></block>
+    <block type="text_print"></block>
+    <block type="text_prompt_ext">
+      <value name="TEXT">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category id="catLists">
+    <block type="lists_create_empty"></block>
+    <block type="lists_create_with"></block>
+    <block type="lists_repeat">
+      <value name="NUM">
+        <block type="math_number">
+          <field name="NUM">5</field>
+        </block>
+      </value>
+    </block>
+    <block type="lists_length"></block>
+    <block type="lists_isEmpty"></block>
+    <block type="lists_indexOf">
+      <value name="VALUE">
+        <block type="variables_get">
+          <field name="VAR" class="listVar">{{listVariable}}</field>
+        </block>
+      </value>
+    </block>
+    <block type="lists_getIndex">
+      <value name="VALUE">
+        <block type="variables_get">
+          <field name="VAR" class="listVar">{{listVariable}}</field>
+        </block>
+      </value>
+    </block>
+    <block type="lists_setIndex">
+      <value name="LIST">
+        <block type="variables_get">
+          <field name="VAR" class="listVar">{{listVariable}}</field>
+        </block>
+      </value>
+    </block>
+    <block type="lists_getSublist">
+      <value name="LIST">
+        <block type="variables_get">
+          <field name="VAR" class="listVar">{{listVariable}}</field>
+        </block>
+      </value>
+    </block>
+    <block type="lists_split">
+      <value name="DELIM">
+        <block type="text">
+          <field name="TEXT">,</field>
+        </block>
+      </value>
+    </block>
+  </category>
+  <category id="catColour">
+    <block type="colour_picker"></block>
+    <block type="colour_random"></block>
+    <block type="colour_rgb">
+      <value name="RED">
+        <block type="math_number">
+          <field name="NUM">100</field>
+        </block>
+      </value>
+      <value name="GREEN">
+        <block type="math_number">
+          <field name="NUM">50</field>
+        </block>
+      </value>
+      <value name="BLUE">
+        <block type="math_number">
+          <field name="NUM">0</field>
+        </block>
+      </value>
+    </block>
+    <block type="colour_blend">
+      <value name="COLOUR1">
+        <block type="colour_picker">
+          <field name="COLOUR">#ff0000</field>
+        </block>
+      </value>
+      <value name="COLOUR2">
+        <block type="colour_picker">
+          <field name="COLOUR">#3333ff</field>
+        </block>
+      </value>
+      <value name="RATIO">
+        <block type="math_number">
+          <field name="NUM">0.5</field>
+        </block>
+      </value>
+    </block>
+  </category>
+  <sep></sep>
+  <category id="catVariables" custom="VARIABLE"></category>
+  <category id="catFunctions" custom="PROCEDURE"></category>
+  <category id="catExec">
+    <block type="timer"></block>
+    <block type="do"></block>
+    <block type="exec_seq"></block>
+    <block type="exec_then"></block>
+    <block type="exec_then_stms"></block>
+  </category>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category id="catLed">
+    <block type="variables_set">
+      <field name="VAR">led</field>
+      <value name="VALUE">
+        <block type="led_new">
+          <field name="pin_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="led_state">
+      <field name="led_">led</field>
+    </block>
+    <block type="led_toggle">
+      <field name="led_">led</field>
+    </block>
+  </category>
+  <category id="catRGBLed">
+    <block type="variables_set">
+      <field name="VAR">rgbled</field>
+      <value name="VALUE">
+        <block type="rgbled_new">
+          <field name="red_">6</field>
+          <field name="green_">9</field>
+          <field name="blue_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="rgbled_setcolor">
+      <field name="rgbled_">rgbled</field>
+    </block>
+  </category>
+  <category id="catUltraSonic">
+    <block type="variables_set">
+      <field name="VAR">ultrasonic</field>
+      <value name="VALUE">
+        <block type="ultrasonic_new">
+          <field name="trig_">11</field>
+          <field name="echo_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_get">
+      <value name="time">
+        <block type="math_number">
+          <field name="NUM">500</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_distance"></block>
+  </category>
+  <category id="catButton">
+    <block type="variables_set">
+      <field name="VAR">button</field>
+      <value name="VALUE">
+        <block type="button_new">
+          <field name="pin_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="button_event"></block>
+  </category>
+  <category id="catCar">
+    <block type="variables_set">
+      <field name="VAR">car</field>
+      <value name="VALUE">
+        <block type="car_new">
+          <field name="f_">9</field>
+          <field name="b_">8</field>
+          <field name="l_">6</field>
+          <field name="r_">7</field>
+        </block>
+      </value>
+    </block>
+    <block type="car_move">
+      <field name="car_">car</field>
+      <field name="move_">forward</field>
+      <value name="secs_">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+    </block>
+  </category>
+</xml>
