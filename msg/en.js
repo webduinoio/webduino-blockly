@@ -20,6 +20,7 @@ var MSG = {
   catLed: "Led",
   catRGBLed: "RGBLed",
   catUltraSonic: "Ultra Sonic",
+  catDht: "DHT",
   catButton: "Button",
   catShock: "Shock",
   catPir: "PIR Detect",
@@ -31,5 +32,6 @@ var MSG = {
   linkAlert: "Share your blocks with this link:\n\n%1",
   hashError: "Sorry, '%1' doesn't correspond with any saved program.",
   xmlError: "Could not load your saved file. Perhaps it was created with a different version of Blockly?",
-  badXml: "Error parsing XML:\n%1\n\nSelect 'OK' to abandon your changes or 'Cancel' to further edit the XML."
+  badXml: "Error parsing XML:\n%1\n\nSelect 'OK' to abandon your changes or 'Cancel' to further edit the XML.",
+  catConsole: "Console"
 };

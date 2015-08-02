@@ -3,6 +3,22 @@
 goog.provide('Blockly.Blocks.webduino');
 goog.require('Blockly.Blocks');
 
+/**
+ * console
+ * https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vnzmgi
+ */
+Blockly.Blocks['console'] = {
+  init: function() {
+    this.appendValueInput('console')
+        .appendField(Blockly.Msg.CUSTOM_JS_CONSOLE,'console');
+    this.setColour(0);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setHelpUrl('https://blockly-demo.appspot.com/');
+  }
+};
+
 Blockly.Blocks['board_ready'] = {
   init: function () {
     this.appendValueInput("device_")
@@ -457,6 +473,58 @@ Blockly.Blocks['shock_event'] = {
       .appendField(Blockly.Msg.WEBDUINO_SHOCK_EVENT_DO, "執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['dht_new'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_DHT_NEW, "DHT ,  pin:")
+      .appendField(new Blockly.FieldDropdown([
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"]
+      ]), "pin_");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(230);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['dht_get'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("dht"), "var_");
+    this.appendValueInput("time")
+      .setCheck("Number")
+      .appendField(Blockly.Msg.WEBDUINO_DHT_GET, "get temperature and humidity over every ");
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_DHT_GET_TIME, "ms ( 1/1000 sec )");
+    this.appendStatementInput("do")
+      .appendField(Blockly.Msg.WEBDUINO_DHT_GET_DO, "do");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+
+Blockly.Blocks['dht_get_number'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldVariable("dht"), "name_")
+        .appendField(Blockly.Msg.WEBDUINO_DHT_GET_NOW,"測得目前的")
+        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.WEBDUINO_DHT_GET_T, "temperature"], [Blockly.Msg.WEBDUINO_DHT_GET_H, "humidity"]]), "dht_");
+    this.setOutput(true);
     this.setTooltip('');
     this.setColour(65);
     this.setHelpUrl('http://www.example.com/');

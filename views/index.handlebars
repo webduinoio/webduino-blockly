@@ -260,6 +260,11 @@
     <block type="exec_then"></block>
     <block type="exec_then_stms"></block>
   </category>
+  <category id="catConsole">
+    <block type="console"></block>
+  </category>
+  <sep></sep>
+  <sep></sep>
   <sep></sep>
   <category id="catBoard">
     <block type="board_ready">
@@ -268,6 +273,7 @@
       </value>
     </block>
   </category>
+  <sep></sep>
   <category id="catLed">
     <block type="variables_set">
       <field name="VAR">led</field>
@@ -299,25 +305,29 @@
       <field name="rgbled_">rgbled</field>
     </block>
   </category>
-  <category id="catUltraSonic">
+  <category id="catCar">
     <block type="variables_set">
-      <field name="VAR">ultrasonic</field>
+      <field name="VAR">car</field>
       <value name="VALUE">
-        <block type="ultrasonic_new">
-          <field name="trig_">11</field>
-          <field name="echo_">10</field>
+        <block type="car_new">
+          <field name="f_">9</field>
+          <field name="b_">8</field>
+          <field name="l_">6</field>
+          <field name="r_">7</field>
         </block>
       </value>
     </block>
-    <block type="ultrasonic_get">
-      <value name="time">
+    <block type="car_move">
+      <field name="car_">car</field>
+      <field name="move_">forward</field>
+      <value name="secs_">
         <block type="math_number">
-          <field name="NUM">500</field>
+          <field name="NUM">1</field>
         </block>
       </value>
     </block>
-    <block type="ultrasonic_distance"></block>
   </category>
+  <sep></sep>
   <category id="catButton">
     <block type="variables_set">
       <field name="VAR">button</field>
@@ -340,6 +350,44 @@
     </block>
     <block type="shock_event"></block>
   </category>
+  <sep></sep>
+  <category id="catUltraSonic">
+    <block type="variables_set">
+      <field name="VAR">ultrasonic</field>
+      <value name="VALUE">
+        <block type="ultrasonic_new">
+          <field name="trig_">11</field>
+          <field name="echo_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_get">
+      <value name="time">
+        <block type="math_number">
+          <field name="NUM">500</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_distance"></block>
+  </category>
+  <category id="catDht">
+    <block type="variables_set">
+      <field name="VAR">dht</field>
+      <value name="VALUE">
+        <block type="dht_new">
+          <field name="pin_">11</field>
+        </block>
+      </value>
+    </block>
+    <block type="dht_get">
+      <value name="time">
+        <block type="math_number">
+          <field name="NUM">1000</field>
+        </block>
+      </value>
+    </block>
+    <block type="dht_get_number"></block>
+  </category>
   <category id="catPir">
     <block type="variables_set">
       <field name="VAR">pir</field>
@@ -361,27 +409,5 @@
       </value>
     </block>
     <block type="sound_status"></block>
-  </category>
-  <category id="catCar">
-    <block type="variables_set">
-      <field name="VAR">car</field>
-      <value name="VALUE">
-        <block type="car_new">
-          <field name="f_">9</field>
-          <field name="b_">8</field>
-          <field name="l_">6</field>
-          <field name="r_">7</field>
-        </block>
-      </value>
-    </block>
-    <block type="car_move">
-      <field name="car_">car</field>
-      <field name="move_">forward</field>
-      <value name="secs_">
-        <block type="math_number">
-          <field name="NUM">1</field>
-        </block>
-      </value>
-    </block>
   </category>
 </xml>

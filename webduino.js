@@ -24,11 +24,15 @@ function getPir(board, pin) {
 }
 
 function getSound(board, pin) {
-  return new webduino.module.Sound(board, board.getDigitalPin(pin));
+  return new webduino.module.Sound(boardReadyd, board.getDigitalPin(pin));
 }
 
 function getShock(board, pin) {
   return new webduino.module.Shock(board, board.getDigitalPin(pin));
+}
+
+function getDht(board, pin) {
+  return new webduino.module.Dht(board, board.getDigitalPin(pin));
 }
 
 function getCar(board, F, B, L, R) {

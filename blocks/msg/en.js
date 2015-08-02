@@ -4,6 +4,8 @@ goog.provide('Blockly.Msg.Webduino.en');
 
 goog.require('Blockly.Msg.Webduino');
 
+Blockly.Msg.CUSTOM_JS_CONSOLE = "Console:";
+
 Blockly.Msg.WEBDUINO_TIMER_AFTER = "After";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "seconds";
 Blockly.Msg.WEBDUINO_TIMER_DO = "do";
@@ -31,7 +33,15 @@ Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_ECHO = "  Echo:";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DISTANCE = "get distance over every";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_TIME = "ms ( 1/1000 sec )";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DO = "do";
-Blockly.Msg.WEBDUINO_ULTRASONIC_DISTANCE = "s distance ( cm )";
+Blockly.Msg.WEBDUINO_ULTRASONIC_DISTANCE = "'s distance ( cm )";
+
+Blockly.Msg.WEBDUINO_DHT_NEW = "DHT , pin:";
+Blockly.Msg.WEBDUINO_DHT_GET = "detect temperature and humidity over every";
+Blockly.Msg.WEBDUINO_DHT_GET_TIME = "ms ( 1/1000 sec )";
+Blockly.Msg.WEBDUINO_DHT_GET_DO = "do";
+Blockly.Msg.WEBDUINO_DHT_GET_NOW = "‘s";
+Blockly.Msg.WEBDUINO_DHT_GET_T = "temperature (C)";
+Blockly.Msg.WEBDUINO_DHT_GET_H = "humidity (%)";
 
 Blockly.Msg.WEBDUINO_BUTTON_NEW = "Button , pin:";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_WHEN = "When";

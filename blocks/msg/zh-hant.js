@@ -4,6 +4,8 @@ goog.provide('Blockly.Msg.Webduino.zh.hant');
 
 goog.require('Blockly.Msg.Webduino');
 
+Blockly.Msg.CUSTOM_JS_CONSOLE = "控制台顯示";
+
 Blockly.Msg.WEBDUINO_TIMER_AFTER = "在";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "秒之後";
 Blockly.Msg.WEBDUINO_TIMER_DO = "執行";
@@ -32,6 +34,14 @@ Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DISTANCE = "擷取距離，每";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_TIME = "豪秒 ( 1/1000 秒 ) 擷取一次";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DO = "執行：";
 Blockly.Msg.WEBDUINO_ULTRASONIC_DISTANCE = "所截取的距離 ( 公分 )";
+
+Blockly.Msg.WEBDUINO_DHT_NEW = "溫濕度傳感器，腳位：";
+Blockly.Msg.WEBDUINO_DHT_GET = "偵測溫濕度，每";
+Blockly.Msg.WEBDUINO_DHT_GET_TIME = "豪秒 ( 1/1000 秒 ) 擷取一次";
+Blockly.Msg.WEBDUINO_DHT_GET_DO = "執行：";
+Blockly.Msg.WEBDUINO_DHT_GET_NOW = "所測得目前的";
+Blockly.Msg.WEBDUINO_DHT_GET_T = "溫度 (攝氏)";
+Blockly.Msg.WEBDUINO_DHT_GET_H = "濕度 (%)";
 
 Blockly.Msg.WEBDUINO_BUTTON_NEW = "按鈕開關，腳位：";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_WHEN = "當";

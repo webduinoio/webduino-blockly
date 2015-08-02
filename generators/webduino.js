@@ -3,6 +3,12 @@
 goog.provide('Blockly.JavaScript.webduino');
 goog.require('Blockly.JavaScript');
 
+Blockly.JavaScript['console'] = function(block) {
+  var value_console = Blockly.JavaScript.valueToCode(block, 'console', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'console.log('+value_console+');\n';
+  return code;
+};
+
 Blockly.JavaScript['board_ready'] = function (block) {
   var value_device_ = Blockly.JavaScript.valueToCode(block, 'device_', Blockly.JavaScript.ORDER_NONE);
   var statements_callbacks_ = Blockly.JavaScript.statementToCode(block, 'callbacks_');
@@ -186,4 +192,29 @@ Blockly.JavaScript['shock_event'] = function (block) {
     '  ' + statements_do_ + '\n' +
     '});\n';
   return code;
+};
+
+Blockly.JavaScript['dht_new'] = function (block) {
+  var dropdown_pin_ = block.getFieldValue('pin_');
+  var code = 'getDht(board, ' + dropdown_pin_ + ')';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['dht_get'] = function (block) {
+  var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
+  var value_time = Blockly.JavaScript.valueToCode(block, 'time', Blockly.JavaScript.ORDER_ATOMIC);
+  var statements_do = Blockly.JavaScript.statementToCode(block, 'do');
+  var code = variable_var_ + '.read(function(evt){\n' +
+    '  ' + variable_var_ + '.temperature = evt.temperature;\n' +
+    '  ' + variable_var_ + '.humidity = evt.humidity;\n' +
+    statements_do +
+    '},' + value_time + ');\n';
+  return code;
+};
+
+Blockly.JavaScript['dht_get_number'] = function(block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_dht_ = block.getFieldValue('dht_');
+  var code = variable_name_+'.'+dropdown_dht_;
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
