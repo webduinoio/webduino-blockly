@@ -19,6 +19,10 @@ function getButton(board, pin) {
   return new webduino.module.Button(board, board.getDigitalPin(pin));
 }
 
+function getPir(board, pin) {
+  return new webduino.module.Pir(board, board.getDigitalPin(pin));
+}
+
 function getCar(board, F, B, L, R) {
   return new Car(board, F, B, L, R);
 }

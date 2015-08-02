@@ -138,3 +138,27 @@ Blockly.JavaScript['button_event'] = function (block) {
     '});\n';
   return code;
 };
+
+Blockly.JavaScript['pir_new'] = function (block) {
+  var dropdown_pin_ = block.getFieldValue('pin_');
+  var code = 'getPir(board, ' + dropdown_pin_ + ')';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['pir_detected'] = function(block) {
+  var variable_name = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+  var statements_var_ = Blockly.JavaScript.statementToCode(block, 'var_');
+  var code = variable_name+'.on("detected",function(){\n'+
+              statements_var_+'\n'+
+              '});\n';
+  return code;
+};
+
+Blockly.JavaScript['pir_ended'] = function(block) {
+  var variable_name = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+  var statements_var_ = Blockly.JavaScript.statementToCode(block, 'var_');
+  var code = variable_name+'.on("ended",function(){\n'+
+              statements_var_+'\n'+
+              '});\n';
+  return code;
+};

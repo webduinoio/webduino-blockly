@@ -329,6 +329,18 @@
     </block>
     <block type="button_event"></block>
   </category>
+  <category id="catPir">
+    <block type="variables_set">
+      <field name="VAR">pir</field>
+      <value name="VALUE">
+        <block type="pir_new">
+          <field name="pin_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="pir_detected"></block>
+    <block type="pir_ended"></block>
+  </category>
   <category id="catCar">
     <block type="variables_set">
       <field name="VAR">car</field>

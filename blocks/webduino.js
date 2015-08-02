@@ -348,3 +348,56 @@ Blockly.Blocks['button_event'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#ninxcs
+Blockly.Blocks['pir_new'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("PIR ,  pin:")
+      .appendField(new Blockly.FieldDropdown([
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"]
+      ]), "pin_");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(230);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vzwp59
+Blockly.Blocks['pir_detected'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("當")
+        .appendField(new Blockly.FieldVariable("pir"), "NAME")
+        .appendField("「有」偵測到人體紅外線變化");
+    this.appendStatementInput("var_")
+        .appendField("執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['pir_ended'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("當")
+        .appendField(new Blockly.FieldVariable("pir"), "NAME")
+        .appendField("「沒有」偵測到人體紅外線變化");
+    this.appendStatementInput("var_")
+        .appendField("執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
