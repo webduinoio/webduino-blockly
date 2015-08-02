@@ -42,6 +42,14 @@ Blockly.Msg.WEBDUINO_BUTTON_EVENT_PRESSED = "Pressed";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_RELEASED = "Released";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_LONGPRESS = "Long Pressed";
 
+Blockly.Msg.WEBDUINO_SHOCK_NEW = "Shock , pin:";
+Blockly.Msg.WEBDUINO_SHOCK_EVENT_WHEN = "When";
+Blockly.Msg.WEBDUINO_SHOCK_EVENT_WAS = "Status was";
+Blockly.Msg.WEBDUINO_SHOCK_EVENT_TO = "";
+Blockly.Msg.WEBDUINO_SHOCK_EVENT_DO = "do:";
+Blockly.Msg.WEBDUINO_SHOCK_EVENT_HIGH = "high";
+Blockly.Msg.WEBDUINO_SHOCK_EVENT_LOW = "low";
+
 Blockly.Msg.WEBDUINO_PIR = "PIR detect";
 Blockly.Msg.WEBDUINO_PIR_WHEN = "When";
 Blockly.Msg.WEBDUINO_PIR_STATUS_DETECTED = "detect";

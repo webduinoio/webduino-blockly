@@ -422,3 +422,43 @@ Blockly.Blocks['sound_status'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
+Blockly.Blocks['shock_new'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_SHOCK_NEW, "Shock ,  pin:")
+      .appendField(new Blockly.FieldDropdown([
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"]
+      ]), "pin_");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(230);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['shock_event'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_SHOCK_EVENT_WHEN, "當")
+      .appendField(new Blockly.FieldVariable("shock"), "var_")
+      .appendField(Blockly.Msg.WEBDUINO_SHOCK_EVENT_WAS, "狀態為")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_SHOCK_EVENT_HIGH, "high"],
+        [Blockly.Msg.WEBDUINO_SHOCK_EVENT_LOW, "low"]
+      ]), "event_")
+      .appendField(Blockly.Msg.WEBDUINO_SHOCK_EVENT_TO, "時");
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_SHOCK_EVENT_DO, "執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};

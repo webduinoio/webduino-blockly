@@ -30,26 +30,34 @@ Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_TRIG = "超音波傳感器，Trig：";
 Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_ECHO = "  Echo：";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DISTANCE = "擷取距離，每";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_TIME = "豪秒 ( 1/1000 秒 ) 擷取一次";
-Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DO = "執行";
+Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DO = "執行：";
 Blockly.Msg.WEBDUINO_ULTRASONIC_DISTANCE = "所截取的距離 ( 公分 )";
 
 Blockly.Msg.WEBDUINO_BUTTON_NEW = "按鈕開關，腳位：";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_WHEN = "當";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_WAS = "進行";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_TO = "時";
-Blockly.Msg.WEBDUINO_BUTTON_EVENT_DO = "執行";
+Blockly.Msg.WEBDUINO_BUTTON_EVENT_DO = "執行：";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_PRESSED = "按下";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_RELEASED = "放開";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_LONGPRESS = "長按";
 
-Blockly.Msg.WEBDUINO_PIR = "人體紅外線偵測傳感器";
+Blockly.Msg.WEBDUINO_SHOCK_NEW = "震動開關，腳位：";
+Blockly.Msg.WEBDUINO_SHOCK_EVENT_WHEN = "當";
+Blockly.Msg.WEBDUINO_SHOCK_EVENT_WAS = "狀態為";
+Blockly.Msg.WEBDUINO_SHOCK_EVENT_TO = "時";
+Blockly.Msg.WEBDUINO_SHOCK_EVENT_DO = "執行：";
+Blockly.Msg.WEBDUINO_SHOCK_EVENT_HIGH = "通電";
+Blockly.Msg.WEBDUINO_SHOCK_EVENT_LOW = "斷電";
+
+Blockly.Msg.WEBDUINO_PIR = "人體紅外線偵測傳感器，腳位：";
 Blockly.Msg.WEBDUINO_PIR_WHEN = "當";
 Blockly.Msg.WEBDUINO_PIR_STATUS_DETECTED = "有";
 Blockly.Msg.WEBDUINO_PIR_STATUS_ENDED = "沒有";
 Blockly.Msg.WEBDUINO_PIR_DETECTED = "偵測到人體紅外線變化";
 Blockly.Msg.WEBDUINO_PIR_DO = "執行：";
 
-Blockly.Msg.WEBDUINO_SOUND = "聲音偵測傳感器";
+Blockly.Msg.WEBDUINO_SOUND = "聲音偵測傳感器，腳位：";
 Blockly.Msg.WEBDUINO_SOUND_WHEN = "當";
 Blockly.Msg.WEBDUINO_SOUND_STATUS_DETECTED = "有";
 Blockly.Msg.WEBDUINO_SOUND_STATUS_ENDED = "沒有";
@@ -89,7 +97,7 @@ Blockly.Msg.WEBDUINO_STOP_CLOCK = "停止計時器";
 Blockly.Msg.WEBDUINO_RGB_LED_AREA_COLOR = "設定展示區域顏色：";
 Blockly.Msg.WEBDUINO_RGB_LED_BTN_CLICK = "點選";
 Blockly.Msg.WEBDUINO_RGB_LED_BTN_BUTTON = "按鈕";
-Blockly.Msg.WEBDUINO_RGB_LED_BTN_DO = "執行";
+Blockly.Msg.WEBDUINO_RGB_LED_BTN_DO = "執行：";
 
 Blockly.Msg.WEBDUINO_RGB_LED_RANGE_CHANGE = "調整拉霸";
 Blockly.Msg.WEBDUINO_RGB_LED_RANGE_DO = "執行：";

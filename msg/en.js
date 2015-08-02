@@ -21,6 +21,7 @@ var MSG = {
   catRGBLed: "RGBLed",
   catUltraSonic: "Ultra Sonic",
   catButton: "Button",
+  catShock: "Shock",
   catPir: "PIR Detect",
   catSound: "Sound Detect",
   catCar: "Car",

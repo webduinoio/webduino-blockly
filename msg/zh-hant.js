@@ -21,6 +21,7 @@ var MSG = {
   catRGBLed: "三色 LED",
   catUltraSonic: "超音波傳感器",
   catButton: "按鈕開關",
+  catShock: "震動開關",
   catPir: "人體紅外線偵測",
   catSound: "聲音偵測",
   catCar: "遙控車",
