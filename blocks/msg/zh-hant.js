@@ -42,6 +42,20 @@ Blockly.Msg.WEBDUINO_BUTTON_EVENT_PRESSED = "按下";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_RELEASED = "放開";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_LONGPRESS = "長按";
 
+Blockly.Msg.WEBDUINO_PIR = "人體紅外線偵測傳感器";
+Blockly.Msg.WEBDUINO_PIR_WHEN = "當";
+Blockly.Msg.WEBDUINO_PIR_STATUS_DETECTED = "有";
+Blockly.Msg.WEBDUINO_PIR_STATUS_ENDED = "沒有";
+Blockly.Msg.WEBDUINO_PIR_DETECTED = "偵測到人體紅外線變化";
+Blockly.Msg.WEBDUINO_PIR_DO = "執行：";
+
+Blockly.Msg.WEBDUINO_SOUND = "聲音偵測傳感器";
+Blockly.Msg.WEBDUINO_SOUND_WHEN = "當";
+Blockly.Msg.WEBDUINO_SOUND_STATUS_DETECTED = "有";
+Blockly.Msg.WEBDUINO_SOUND_STATUS_ENDED = "沒有";
+Blockly.Msg.WEBDUINO_SOUND_DETECTED = "偵測到聲音變化";
+Blockly.Msg.WEBDUINO_SOUND_DO = "執行：";
+
 Blockly.Msg.WEBDUINO_CAR = "遙控車";
 Blockly.Msg.WEBDUINO_CAR_F = "前進";
 Blockly.Msg.WEBDUINO_CAR_B = "後退";

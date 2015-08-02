@@ -338,8 +338,18 @@
         </block>
       </value>
     </block>
-    <block type="pir_detected"></block>
-    <block type="pir_ended"></block>
+    <block type="pir_status"></block>
+  </category>
+  <category id="catSound">
+    <block type="variables_set">
+      <field name="VAR">sound</field>
+      <value name="VALUE">
+        <block type="sound_new">
+          <field name="pin_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="sound_status"></block>
   </category>
   <category id="catCar">
     <block type="variables_set">

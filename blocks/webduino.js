@@ -353,7 +353,7 @@ Blockly.Blocks['button_event'] = {
 Blockly.Blocks['pir_new'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField("PIR ,  pin:")
+      .appendField(Blockly.Msg.WEBDUINO_PIR,"PIR ,  pin:")
       .appendField(new Blockly.FieldDropdown([
         ["6", "6"],
         ["7", "7"],
@@ -370,14 +370,15 @@ Blockly.Blocks['pir_new'] = {
 };
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vzwp59
-Blockly.Blocks['pir_detected'] = {
+Blockly.Blocks['pir_status'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("當")
-        .appendField(new Blockly.FieldVariable("pir"), "NAME")
-        .appendField("「有」偵測到人體紅外線變化");
+        .appendField(Blockly.Msg.WEBDUINO_PIR_WHEN,"當")
+        .appendField(new Blockly.FieldVariable("pir"), "item_")
+        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.WEBDUINO_PIR_STATUS_DETECTED, "detected"], [Blockly.Msg.WEBDUINO_PIR_STATUS_ENDED, "ended"]]), "status_")
+        .appendField(Blockly.Msg.WEBDUINO_PIR_DETECTED,"偵測到人體紅外線變化");
     this.appendStatementInput("var_")
-        .appendField("執行：");
+        .appendField(Blockly.Msg.WEBDUINO_PIR_DO,"執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -386,14 +387,34 @@ Blockly.Blocks['pir_detected'] = {
   }
 };
 
-Blockly.Blocks['pir_ended'] = {
+Blockly.Blocks['sound_new'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_SOUND,"Sound ,  pin:")
+      .appendField(new Blockly.FieldDropdown([
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"]
+      ]), "pin_");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(230);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['sound_status'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("當")
-        .appendField(new Blockly.FieldVariable("pir"), "NAME")
-        .appendField("「沒有」偵測到人體紅外線變化");
+        .appendField(Blockly.Msg.WEBDUINO_SOUND_WHEN,"當")
+        .appendField(new Blockly.FieldVariable("sound"), "item_")
+        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.WEBDUINO_SOUND_STATUS_DETECTED, "detected"], [Blockly.Msg.WEBDUINO_SOUND_STATUS_ENDED, "ended"]]), "status_")
+        .appendField(Blockly.Msg.WEBDUINO_SOUND_DETECTED,"偵測到聲音變化");
     this.appendStatementInput("var_")
-        .appendField("執行：");
+        .appendField(Blockly.Msg.WEBDUINO_SOUND_DO,"執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');

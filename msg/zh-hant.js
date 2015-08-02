@@ -22,6 +22,7 @@ var MSG = {
   catUltraSonic: "超音波傳感器",
   catButton: "按鈕開關",
   catPir: "人體紅外線偵測",
+  catSound: "聲音偵測",
   catCar: "遙控車",
   listVariable: "列表",
   textVariable: "文字",

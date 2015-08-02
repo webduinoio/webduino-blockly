@@ -42,6 +42,20 @@ Blockly.Msg.WEBDUINO_BUTTON_EVENT_PRESSED = "Pressed";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_RELEASED = "Released";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_LONGPRESS = "Long Pressed";
 
+Blockly.Msg.WEBDUINO_PIR = "PIR detect";
+Blockly.Msg.WEBDUINO_PIR_WHEN = "When";
+Blockly.Msg.WEBDUINO_PIR_STATUS_DETECTED = "detect";
+Blockly.Msg.WEBDUINO_PIR_STATUS_ENDED = "no detect";
+Blockly.Msg.WEBDUINO_PIR_DETECTED = "PIR changed";
+Blockly.Msg.WEBDUINO_PIR_DO = "do:";
+
+Blockly.Msg.WEBDUINO_SOUND = "Sound detect";
+Blockly.Msg.WEBDUINO_SOUND_WHEN = "When";
+Blockly.Msg.WEBDUINO_SOUND_STATUS_DETECTED = "detect";
+Blockly.Msg.WEBDUINO_SOUND_STATUS_ENDED = "no detect";
+Blockly.Msg.WEBDUINO_SOUND_DETECTED = "sound changed";
+Blockly.Msg.WEBDUINO_SOUND_DO = "do:";
+
 Blockly.Msg.WEBDUINO_CAR = "Car";
 Blockly.Msg.WEBDUINO_CAR_F = "Forward";
 Blockly.Msg.WEBDUINO_CAR_B = "Backward";

@@ -145,19 +145,27 @@ Blockly.JavaScript['pir_new'] = function (block) {
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
-Blockly.JavaScript['pir_detected'] = function(block) {
-  var variable_name = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+Blockly.JavaScript['pir_status'] = function(block) {
+  var variable_item_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('item_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_status_ = block.getFieldValue('status_');
   var statements_var_ = Blockly.JavaScript.statementToCode(block, 'var_');
-  var code = variable_name+'.on("detected",function(){\n'+
+  var code = variable_item_+'.on("'+dropdown_status_+'",function(){\n'+
               statements_var_+'\n'+
               '});\n';
   return code;
 };
 
-Blockly.JavaScript['pir_ended'] = function(block) {
-  var variable_name = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('NAME'), Blockly.Variables.NAME_TYPE);
+Blockly.JavaScript['sound_new'] = function (block) {
+  var dropdown_pin_ = block.getFieldValue('pin_');
+  var code = 'getSound(board, ' + dropdown_pin_ + ')';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['sound_status'] = function(block) {
+  var variable_item_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('item_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_status_ = block.getFieldValue('status_');
   var statements_var_ = Blockly.JavaScript.statementToCode(block, 'var_');
-  var code = variable_name+'.on("ended",function(){\n'+
+  var code = variable_item_+'.on("'+dropdown_status_+'",function(){\n'+
               statements_var_+'\n'+
               '});\n';
   return code;
