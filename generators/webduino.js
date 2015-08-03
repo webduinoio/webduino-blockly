@@ -218,3 +218,101 @@ Blockly.JavaScript['dht_get_number'] = function(block) {
   var code = variable_name_+'.'+dropdown_dht_;
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
+
+Blockly.JavaScript['buzzer_new'] = function (block) {
+  var dropdown_pin_ = block.getFieldValue('pin_');
+  var code = 'getBuzzer(board, ' + dropdown_pin_ + ')';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['buzzer_music'] = function(block) {
+  var value_music_name_ = Blockly.JavaScript.valueToCode(block, 'music_name_', Blockly.JavaScript.ORDER_ATOMIC);
+  var statements_music_ = Blockly.JavaScript.statementToCode(block, 'music_');
+  var code = 'var '+value_music_name_+'={};\n'+
+              '(function(){\n'+
+              '  var musicNotes = {};\n'+
+              '  musicNotes.notes = [];\n'+
+              '  musicNotes.tempos = [];\n'+
+              statements_music_+'\n'+
+              '  '+value_music_name_+'.notes = musicNotes.notes;\n'+
+              '  '+value_music_name_+'.tempos = musicNotes.tempos;\n'+
+              '})();\n';
+  return code;
+};
+
+Blockly.JavaScript['buzzer_music_array'] = function(block) {
+  var value_music_name_ = Blockly.JavaScript.valueToCode(block, 'music_name_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_notes_ = Blockly.JavaScript.valueToCode(block, 'notes_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_tempos_ = Blockly.JavaScript.valueToCode(block, 'tempos_', Blockly.JavaScript.ORDER_ATOMIC);
+  var a = value_notes_.split(',');
+  value_notes_ = '['+a.join('\',\'')+']';
+  var b = value_tempos_.split(',');
+  value_tempos_ = '['+b.join('\',\'')+']';
+  var code = 'var '+value_music_name_+'={};\n'+
+              '(function(){\n'+
+              '  '+value_music_name_+'.notes = '+value_notes_+';\n'+
+              '  '+value_music_name_+'.tempos = '+value_tempos_+';\n'+
+              '})();\n';
+  return code;
+};
+
+Blockly.JavaScript['buzzer_notes_tempos'] = function(block) {
+  var dropdown_tone_ = block.getFieldValue('tone_');
+  var dropdown_pitch_ = block.getFieldValue('pitch_');
+  var dropdown_tempos_ = block.getFieldValue('tempos_');
+  var code = 'musicNotes.notes.push("'+dropdown_tone_+dropdown_pitch_+'");\n'+
+              'musicNotes.tempos.push("'+dropdown_tempos_+'");\n';
+  return code;
+};
+
+Blockly.JavaScript['buzzer_play'] = function(block) {
+  var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
+  var value_play_music_ = Blockly.JavaScript.valueToCode(block, 'play_music_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code;
+  if(value_play_music_.indexOf(".notes")===1){
+    code = variable_var_+'.play('+value_play_music_+');\n';
+  }
+  else{
+    var code = variable_var_+'.play('+value_play_music_+'.notes, '+value_play_music_+'.tempos);\n';
+  }
+  return code;
+};
+
+Blockly.JavaScript['buzzer_stop'] = function(block) {
+  var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
+  var code = variable_var_+'.stop();\n';
+  return code;
+};
+
+Blockly.JavaScript['buzzer_load_music'] = function(block) {
+  var dropdown_music_ = block.getFieldValue('music_');
+  var notes, tempos, a, b;  
+  var m = function(){
+    a = notes.split(',');
+    notes = '["'+a.join('","')+'"]';
+    b = tempos.split(',');
+    tempos = '["'+b.join('","')+'"]';
+  }
+  if(dropdown_music_=='m1'){
+    notes = "E7,E7,0,E7,0,C7,E7,0,G7,0,0,0,G6,0,0,0,C7,0,0,G6,0,0,E6,0,0,A6,0,B6,0,AS6,A6,0,G6,E7,0,G7,A7,0,F7,G7,0,E7,0,C7,D7,B6,0,0,C7,0,0,G6,0,0,E6,0,0,A6,0,B6,0,AS6,A6,0,G6,E7,0,G7,A7,0,F7,G7,0,E7,0,C7,D7,B6,0,0";
+    tempos = "8";
+    m();
+  }
+  if(dropdown_music_=='m2'){
+    notes = "c4,e4,e4,0,e4,g4,g4,0,d4,f4,f4,0,a4,b4,b4,0,c4,d4,e4,c4,e4,c4,e4,0,d4,e4,f4,f4,e4,d4,f4,0,e4,f4,g4,e4,g4,e4,g4,0,f4,g4,a4,a4,g4,f4,a4,0,g4,c4,d4,e4,f4,g4,a4,0,a4,d4,e4,f4,g4,a4,b4,0,b4,e4,f4,g4,a4,b4,c5,0,c5,b4,a4,f4,b4,g4,c5";
+    tempos = "6, 6, 6,6,6 ,6 ,6 ,6,6 ,6 ,6 ,6,6 ,6 ,6 ,6 ,6 ,6 ,6 ,6 ,6 ,6 ,6,6,6 ,6 ,6 ,6 ,6 ,6 ,6 ,6,6 ,6 ,6 , 6, 6, 6, 6,6, 6, 6, 6, 6, 6, 6, 6,6, 6, 6, 6, 6,6 ,6 ,6 ,6,6 ,6 ,6 ,6 ,6 ,6 ,6 ,6,6 ,6 ,6 ,6 ,6 ,6 ,6 ,6,6 ,6 ,6 ,6 ,6 ,6 ,6";
+    m();
+  }
+  if(dropdown_music_=='m3'){
+    notes = "C5,C5,G4,G4,A4,A4,G4,0,E4,G4,C5,A4,G4,0,0,A4,0,G4,0,E4,A4,G4,0,E4,0,G4,0,E4,D4,C4,0,E4,E4,G4,G4,A4,A4,G4,G4,0,D5,0,C5,A4,G4,A4,C5,G4,0,A4,A4,G4,A4,C5,G4,0,A4,A4,G4,A4,D5,C5";
+    tempos = "6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6";
+    m();
+  }
+  if(dropdown_music_=='m4'){
+    notes = "FS6,FS6,0,FS6,0,D6,FS6,0,B6,0,0,0,G6,0,0,0,G6,0,0,E6,0,0,C6,0,0,F6,0,G6,0,FS6,F6,0,E6,C7,0,E7,F7,0,D7,E7,0,C7,0,A6,B6,G6,0,0,G6,0,0,E6,0,0,C6,0,0,F6,0,G6,0,FS6,F6,0,E6,G6,0,E7,F7,0,D7,E7,0,C7,0,A6,B6,G6,0,0";
+    tempos = "8";
+    m();
+  }
+  var code =notes+','+tempos;
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};

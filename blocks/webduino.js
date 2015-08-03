@@ -8,9 +8,9 @@ goog.require('Blockly.Blocks');
  * https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vnzmgi
  */
 Blockly.Blocks['console'] = {
-  init: function() {
+  init: function () {
     this.appendValueInput('console')
-        .appendField(Blockly.Msg.CUSTOM_JS_CONSOLE,'console');
+      .appendField(Blockly.Msg.CUSTOM_JS_CONSOLE, 'console');
     this.setColour(0);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -369,7 +369,7 @@ Blockly.Blocks['button_event'] = {
 Blockly.Blocks['pir_new'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_PIR,"PIR ,  pin:")
+      .appendField(Blockly.Msg.WEBDUINO_PIR, "PIR ,  pin:")
       .appendField(new Blockly.FieldDropdown([
         ["6", "6"],
         ["7", "7"],
@@ -387,14 +387,17 @@ Blockly.Blocks['pir_new'] = {
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vzwp59
 Blockly.Blocks['pir_status'] = {
-  init: function() {
+  init: function () {
     this.appendDummyInput()
-        .appendField(Blockly.Msg.WEBDUINO_PIR_WHEN,"當")
-        .appendField(new Blockly.FieldVariable("pir"), "item_")
-        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.WEBDUINO_PIR_STATUS_DETECTED, "detected"], [Blockly.Msg.WEBDUINO_PIR_STATUS_ENDED, "ended"]]), "status_")
-        .appendField(Blockly.Msg.WEBDUINO_PIR_DETECTED,"偵測到人體紅外線變化");
+      .appendField(Blockly.Msg.WEBDUINO_PIR_WHEN, "當")
+      .appendField(new Blockly.FieldVariable("pir"), "item_")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_PIR_STATUS_DETECTED, "detected"],
+        [Blockly.Msg.WEBDUINO_PIR_STATUS_ENDED, "ended"]
+      ]), "status_")
+      .appendField(Blockly.Msg.WEBDUINO_PIR_DETECTED, "偵測到人體紅外線變化");
     this.appendStatementInput("var_")
-        .appendField(Blockly.Msg.WEBDUINO_PIR_DO,"執行：");
+      .appendField(Blockly.Msg.WEBDUINO_PIR_DO, "執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -406,7 +409,7 @@ Blockly.Blocks['pir_status'] = {
 Blockly.Blocks['sound_new'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_SOUND,"Sound ,  pin:")
+      .appendField(Blockly.Msg.WEBDUINO_SOUND, "Sound ,  pin:")
       .appendField(new Blockly.FieldDropdown([
         ["6", "6"],
         ["7", "7"],
@@ -423,14 +426,17 @@ Blockly.Blocks['sound_new'] = {
 };
 
 Blockly.Blocks['sound_status'] = {
-  init: function() {
+  init: function () {
     this.appendDummyInput()
-        .appendField(Blockly.Msg.WEBDUINO_SOUND_WHEN,"當")
-        .appendField(new Blockly.FieldVariable("sound"), "item_")
-        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.WEBDUINO_SOUND_STATUS_DETECTED, "detected"], [Blockly.Msg.WEBDUINO_SOUND_STATUS_ENDED, "ended"]]), "status_")
-        .appendField(Blockly.Msg.WEBDUINO_SOUND_DETECTED,"偵測到聲音變化");
+      .appendField(Blockly.Msg.WEBDUINO_SOUND_WHEN, "當")
+      .appendField(new Blockly.FieldVariable("sound"), "item_")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_SOUND_STATUS_DETECTED, "detected"],
+        [Blockly.Msg.WEBDUINO_SOUND_STATUS_ENDED, "ended"]
+      ]), "status_")
+      .appendField(Blockly.Msg.WEBDUINO_SOUND_DETECTED, "偵測到聲音變化");
     this.appendStatementInput("var_")
-        .appendField(Blockly.Msg.WEBDUINO_SOUND_DO,"執行：");
+      .appendField(Blockly.Msg.WEBDUINO_SOUND_DO, "執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -517,13 +523,169 @@ Blockly.Blocks['dht_get'] = {
   }
 };
 
-
 Blockly.Blocks['dht_get_number'] = {
-  init: function() {
+  init: function () {
     this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("dht"), "name_")
-        .appendField(Blockly.Msg.WEBDUINO_DHT_GET_NOW,"測得目前的")
-        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.WEBDUINO_DHT_GET_T, "temperature"], [Blockly.Msg.WEBDUINO_DHT_GET_H, "humidity"]]), "dht_");
+      .appendField(new Blockly.FieldVariable("dht"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_DHT_GET_NOW, "測得目前的")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_DHT_GET_T, "temperature"],
+        [Blockly.Msg.WEBDUINO_DHT_GET_H, "humidity"]
+      ]), "dht_");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['buzzer_new'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER, "Buzzer ,  pin:")
+      .appendField(new Blockly.FieldDropdown([
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"]
+      ]), "pin_");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(230);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#76fim8
+Blockly.Blocks['buzzer_music'] = {
+  init: function () {
+    this.appendValueInput("music_name_")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC1, "建立音樂，音樂名稱：");
+    this.appendStatementInput("music_")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_EDIT, "音符與節奏：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#5k77h6
+Blockly.Blocks['buzzer_notes_tempos'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_TONE, "音調：")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_NO, "0"],
+        ["C", "C"],
+        ["CS", "CS"],
+        ["D", "D"],
+        ["DS", "DS"],
+        ["E", "E"],
+        ["F", "F"],
+        ["FS", "FS"],
+        ["G", "G"],
+        ["GS", "GS"],
+        ["A", "A"],
+        ["AS", "AS"],
+        ["B", "B"]
+      ]), "tone_")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_PITCH, "   音高：")
+      .appendField(new Blockly.FieldDropdown([
+        ["1", "1"],
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"]
+      ]), "pitch_")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_TEMPOS, "   節奏 ( 幾分之1秒 )：")
+      .appendField(new Blockly.FieldDropdown([
+        ["1", "1"],
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"]
+      ]), "tempos_");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vnhdso
+Blockly.Blocks['buzzer_play'] = {
+  init: function () {
+    this.appendValueInput("play_music_")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_USE, "使用")
+      .appendField(new Blockly.FieldVariable("buzzer"), "var_")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_PLAY, "播放：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#t2cidp
+Blockly.Blocks['buzzer_stop'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("buzzer"), "var_")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_STOP, "停止播放");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#tgex67
+Blockly.Blocks['buzzer_music_array'] = {
+  init: function () {
+    this.appendValueInput("music_name_")
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC2, "快速建立音樂，音樂名稱：");
+    this.appendValueInput("notes_")
+      .setCheck("String")
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC2_NOTES, "音符：");
+    this.appendValueInput("tempos_")
+      .setCheck("String")
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC2_TEMPOS, "節奏：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vv3u4z
+Blockly.Blocks['buzzer_load_music'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC, "選擇資料庫音樂：")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC1, "m1"],
+        [Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC4, "m4"],
+        [Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC2, "m2"],
+        [Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC3, "m3"]
+      ]), "music_");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(65);

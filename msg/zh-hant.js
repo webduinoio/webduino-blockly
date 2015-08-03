@@ -25,6 +25,7 @@ var MSG = {
   catPir: "人體紅外線偵測",
   catSound: "聲音偵測",
   catDht: "溫濕度傳感器",
+  catBuzzer: "蜂鳴器",
   catCar: "遙控車",
   listVariable: "列表",
   textVariable: "文字",

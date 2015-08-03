@@ -82,6 +82,25 @@ Blockly.Msg.WEBDUINO_CAR_R = "Right";
 Blockly.Msg.WEBDUINO_CAR_MOVE_FOR = "for";
 Blockly.Msg.WEBDUINO_CAR_MOVE_SEC = "secs";
 
+Blockly.Msg.WEBDUINO_BUZZER = "Buzzer , pin:";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC1 = "Add Music, name:";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_EDIT = "Notes and Tempos:";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_TONE = "tone:";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_PITCH = "   pitch:";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_TEMPOS = "   tempos:";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_NO = "none";
+Blockly.Msg.WEBDUINO_BUZZER_USE = "Use";
+Blockly.Msg.WEBDUINO_BUZZER_PLAY = "play:";
+Blockly.Msg.WEBDUINO_BUZZER_STOP = "Stop";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC2 = "Add Music, name:";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC2_NOTES = "notes:";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC2_TEMPOS = "tempos:";
+Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC = "Choose music:";
+Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC1 = "Super Mario";
+Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC2 = "DoReMi";
+Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC3 = "Big brother and father";
+Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC4 = "Super Mario Chord";
+
 // LED
 
 Blockly.Msg.WEBDUINO_LIGHT = "Light";

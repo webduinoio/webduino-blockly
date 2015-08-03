@@ -28,6 +28,25 @@ Blockly.Msg.WEBDUINO_RGBLED_GREEN = "綠";
 Blockly.Msg.WEBDUINO_RGBLED_BLUE = "藍";
 Blockly.Msg.WEBDUINO_RGBLED_SETCOLOR = "設定顏色";
 
+Blockly.Msg.WEBDUINO_BUZZER = "蜂鳴器，腳位：";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC1 = "建立音樂，音樂名稱：";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_EDIT = "音符與節奏：";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_TONE = "音調：";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_PITCH = "   音高：";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_TEMPOS = "   節奏 ( 幾分之1秒 )：";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_NO = "無聲";
+Blockly.Msg.WEBDUINO_BUZZER_USE = "使用";
+Blockly.Msg.WEBDUINO_BUZZER_PLAY = "播放：";
+Blockly.Msg.WEBDUINO_BUZZER_STOP = "停止播放";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC2 = "快速建立音樂，音樂名稱：";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC2_NOTES = "音符：";
+Blockly.Msg.WEBDUINO_BUZZER_MUSIC2_TEMPOS = "節奏：";
+Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC = "選擇資料庫音樂：";
+Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC1 = "超級瑪莉";
+Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC2 = "真善美";
+Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC3 = "哥哥爸爸真偉大";
+Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC4 = "超級瑪莉和弦";
+
 Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_TRIG = "超音波傳感器，Trig：";
 Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_ECHO = "  Echo：";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DISTANCE = "擷取距離，每";

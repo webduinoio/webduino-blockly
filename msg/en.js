@@ -26,6 +26,7 @@ var MSG = {
   catPir: "PIR Detect",
   catSound: "Sound Detect",
   catCar: "Car",
+  catBuzzer: "Buzzer",
   listVariable: "list",
   textVariable: "text",
   httpRequestError: "There was a problem with the request.",
