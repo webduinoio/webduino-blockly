@@ -63,8 +63,8 @@ Blockly.JavaScript['car_move'] = function (block) {
   var variable_car_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('car_'), Blockly.Variables.NAME_TYPE);
   var dropdown_move_ = block.getFieldValue('move_');
   var value_secs_ = Blockly.JavaScript.valueToCode(block, 'secs_', Blockly.JavaScript.ORDER_NONE);
-  var code = variable_car_ + '.' + dropdown_move_ + '(' + value_secs_ + ')';
-  code = promisifyBlockCode(block, code);
+  var code = variable_car_ + '.' + dropdown_move_ + '(' + value_secs_ + ');\n';
+  block.setPromise(true);
   return code;
 };
 
