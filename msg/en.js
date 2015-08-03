@@ -1,5 +1,6 @@
 var MSG = {
   title: "Webduino Blockly Editor",
+  gotoTutorials: "Go to Tutorials",
   blocks: "Blocks",
   linkTooltip: "Save and link to blocks.",
   runTooltip: "Run the program defined by the blocks in the workspace.",
