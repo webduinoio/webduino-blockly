@@ -437,4 +437,3 @@ Blockly.JavaScript['button_game_user'] = function (block) {
     '      }\n';
   return code;
 };
-

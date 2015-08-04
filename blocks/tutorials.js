@@ -467,10 +467,10 @@ Blockly.Blocks['button_reset_image_position'] = {
 Blockly.Blocks['button_game'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_ADD_SINGLEGAME,"載入 <單人> 遊戲模組");
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_ADD_SINGLEGAME, "載入 <單人> 遊戲模組");
     this.appendDummyInput();
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC,"電腦角色：")
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC, "電腦角色：")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_CAT, "run-cat.gif"],
         [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_PICA, "run-pica.gif"],
@@ -479,7 +479,7 @@ Blockly.Blocks['button_game'] = {
         [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_MAN2, "run-man2.gif"],
         [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_MAN1, "run-man1.gif"]
       ]), "npc_")
-      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL,"  電腦強度：")
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL, "  電腦強度：")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL_5, "5"],
         [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL_4, "4"],
@@ -487,7 +487,7 @@ Blockly.Blocks['button_game'] = {
         [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL_2, "2"],
         [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL_1, "1"]
       ]), "level_")
-      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_DISTANCE,"  比賽距離：")
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_DISTANCE, "  比賽距離：")
       .appendField(new Blockly.FieldDropdown([
         ["100", "100"],
         ["200", "200"],
@@ -497,7 +497,7 @@ Blockly.Blocks['button_game'] = {
       ]), "distance_");
     this.appendDummyInput();
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_USER,"玩家角色：")
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_USER, "玩家角色：")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_CAT, "run-cat.gif"],
         [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_PICA, "run-pica.gif"],
@@ -506,10 +506,10 @@ Blockly.Blocks['button_game'] = {
         [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_MAN2, "run-man2.gif"],
         [Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_MAN1, "run-man1.gif"]
       ]), "user_")
-      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_USER_BUTTON,"  按鈕：")
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_USER_BUTTON, "  按鈕：")
       .appendField(new Blockly.FieldVariable("button"), "button_");
     this.appendStatementInput("event_")
-      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_USER_EVENT,"玩家按鈕行為設定：");
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_USER_EVENT, "玩家按鈕行為設定：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -522,7 +522,7 @@ Blockly.Blocks['button_game'] = {
 Blockly.Blocks['button_game_user'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_USER_RUN_FORWARD,"角色往前跑")
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_USER_RUN_FORWARD, "角色往前跑")
       .appendField(new Blockly.FieldDropdown([
         ["1", "1"],
         ["2", "2"],
@@ -530,7 +530,7 @@ Blockly.Blocks['button_game_user'] = {
         ["4", "4"],
         ["5", "5"]
       ]), "user_")
-      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_USER_RUN_PIXEL,"像素");
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_GAME_USER_RUN_PIXEL, "像素");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
