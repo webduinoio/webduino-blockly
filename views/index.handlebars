@@ -350,6 +350,19 @@
     <block type="buzzer_stop"></block>
     <block type="buzzer_load_music"></block>
   </category>
+  <category id="catRelay">
+    <block type="variables_set">
+      <field name="VAR">relay</field>
+      <value name="VALUE">
+        <block type="relay_new">
+          <field name="pin_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="relay_state">
+      <field name="relay_">relay</field>
+    </block>
+  </category>
   <category id="catCar">
     <block type="variables_set">
       <field name="VAR">car</field>

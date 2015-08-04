@@ -19,6 +19,7 @@ var MSG = {
   catExec: "執行",
   catBoard: "開發板",
   catLed: "LED 燈",
+  catRelay: "繼電器",
   catRGBLed: "三色 LED",
   catUltraSonic: "超音波傳感器",
   catButton: "按鈕開關",

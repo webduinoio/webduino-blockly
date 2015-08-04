@@ -19,6 +19,7 @@ var MSG = {
   catExec: "Execute",
   catBoard: "Board",
   catLed: "Led",
+  catRelay: "Relay",
   catRGBLed: "RGBLed",
   catUltraSonic: "Ultra Sonic",
   catDht: "DHT",

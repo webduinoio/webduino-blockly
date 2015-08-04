@@ -316,3 +316,16 @@ Blockly.JavaScript['buzzer_load_music'] = function(block) {
   var code =notes+','+tempos;
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
+
+Blockly.JavaScript['relay_new'] = function (block) {
+  var dropdown_pin_ = block.getFieldValue('pin_');
+  var code = 'getRelay(board, ' + dropdown_pin_ + ')';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['relay_state'] = function (block) {
+  var variable_relay_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('relay_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_state_ = block.getFieldValue('state_');
+  var code = variable_relay_ + '.' + dropdown_state_ + '();\n';
+  return code;
+};

@@ -18,9 +18,12 @@ Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "開發版";
 Blockly.Msg.WEBDUINO_BOARD_READY_DEVICE = "device";
 
 Blockly.Msg.WEBDUINO_LED = "LED 燈";
-Blockly.Msg.WEBDUINO_LED_PIN = "腳位";
+Blockly.Msg.WEBDUINO_LED_PIN = "，腳位：";
 Blockly.Msg.WEBDUINO_LED_SET_STATE = "設定狀態";
 Blockly.Msg.WEBDUINO_LED_TOGGLE = "切換狀態";
+
+Blockly.Msg.WEBDUINO_RELAY = "繼電器，腳位：";
+Blockly.Msg.WEBDUINO_RELAY_SET_STATE = "設定狀態";
 
 Blockly.Msg.WEBDUINO_RGBLED = "三色 LED";
 Blockly.Msg.WEBDUINO_RGBLED_RED = "紅";

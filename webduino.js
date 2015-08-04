@@ -7,6 +7,10 @@ function getLed(board, pin) {
   return new webduino.module.Led(board, board.getDigitalPin(pin));
 }
 
+function getRelay(board, pin) {
+  return new webduino.module.Relay(board, board.getDigitalPin(pin));
+}
+
 function getRGBLed(board, red, green, blue) {
   return new webduino.module.RGBLed(board, board.getDigitalPin(red), board.getDigitalPin(green), board.getDigitalPin(blue));
 }
