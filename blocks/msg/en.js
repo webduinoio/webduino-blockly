@@ -78,6 +78,10 @@ Blockly.Msg.WEBDUINO_SOUND_STATUS_ENDED = "no detect";
 Blockly.Msg.WEBDUINO_SOUND_DETECTED = "sound changed";
 Blockly.Msg.WEBDUINO_SOUND_DO = "do:";
 
+Blockly.Msg.WEBDUINO_SERVO = "Servo , pin:";
+Blockly.Msg.WEBDUINO_SERVO_TEXT = "Servo:";
+Blockly.Msg.WEBDUINO_SERVO_ANGLE = "  angle ( 0-180 ) :";
+
 Blockly.Msg.WEBDUINO_CAR = "Car";
 Blockly.Msg.WEBDUINO_CAR_F = "Forward";
 Blockly.Msg.WEBDUINO_CAR_B = "Backward";

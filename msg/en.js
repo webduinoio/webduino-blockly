@@ -27,6 +27,7 @@ var MSG = {
   catShock: "Shock",
   catPir: "PIR Detect",
   catSound: "Sound Detect",
+  catServo: "Servo",
   catCar: "Car",
   catBuzzer: "Buzzer",
   listVariable: "list",

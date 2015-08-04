@@ -693,7 +693,6 @@ Blockly.Blocks['buzzer_load_music'] = {
   }
 };
 
-
 Blockly.Blocks['relay_new'] = {
   init: function () {
     this.appendDummyInput()
@@ -726,6 +725,40 @@ Blockly.Blocks['relay_state'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['servo_new'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_SERVO, "Servo ,  pin:")
+      .appendField(new Blockly.FieldDropdown([
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"]
+      ]), "pin_");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(230);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['servo_angle'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.WEBDUINO_SERVO_TEXT,"伺服馬達")
+        .appendField(new Blockly.FieldVariable("servo"), "var_")
+        .appendField(Blockly.Msg.WEBDUINO_SERVO_ANGLE,"  旋轉角度：")
+        .appendField(new Blockly.FieldAngle("90"), "angle_");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
     this.setHelpUrl('http://www.example.com/');
   }
 };

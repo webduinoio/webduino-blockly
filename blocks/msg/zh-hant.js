@@ -96,6 +96,10 @@ Blockly.Msg.WEBDUINO_SOUND_STATUS_ENDED = "沒有";
 Blockly.Msg.WEBDUINO_SOUND_DETECTED = "偵測到聲音變化";
 Blockly.Msg.WEBDUINO_SOUND_DO = "執行：";
 
+Blockly.Msg.WEBDUINO_SERVO = "伺服馬達，腳位：";
+Blockly.Msg.WEBDUINO_SERVO_TEXT = "伺服馬達";
+Blockly.Msg.WEBDUINO_SERVO_ANGLE = "旋轉角度 ( 0-180 ) ";
+
 Blockly.Msg.WEBDUINO_CAR = "遙控車";
 Blockly.Msg.WEBDUINO_CAR_F = "前進";
 Blockly.Msg.WEBDUINO_CAR_B = "後退";

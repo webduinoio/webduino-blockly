@@ -329,3 +329,25 @@ Blockly.JavaScript['relay_state'] = function (block) {
   var code = variable_relay_ + '.' + dropdown_state_ + '();\n';
   return code;
 };
+
+Blockly.JavaScript['servo_new'] = function (block) {
+  var dropdown_pin_ = block.getFieldValue('pin_');
+  var code = 'getServo(board, ' + dropdown_pin_ + ')';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['servo_angle'] = function(block) {
+  var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
+  var angle_angle_ = block.getFieldValue('angle_');
+  if(angle_angle_>=0&&angle_angle_<=5){
+    angle_angle_=5;
+  }
+  if(angle_angle_>270&&angle_angle_<=360){
+    angle_angle_=5;
+  }
+  if(angle_angle_>=175&&angle_angle_<=270){
+    angle_angle_=175;
+  }
+  var code = variable_var_+'.angle = '+angle_angle_+';\n';
+  return code;
+};

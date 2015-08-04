@@ -363,6 +363,17 @@
       <field name="relay_">relay</field>
     </block>
   </category>
+  <category id="catServo">
+    <block type="variables_set">
+      <field name="VAR">servo</field>
+      <value name="VALUE">
+        <block type="servo_new">
+          <field name="pin_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="servo_angle"></block>
+  </category>
   <category id="catCar">
     <block type="variables_set">
       <field name="VAR">car</field>

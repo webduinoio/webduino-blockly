@@ -43,6 +43,10 @@ function getBuzzer(board, pin) {
   return new webduino.module.Buzzer(board, board.getDigitalPin(pin));
 }
 
+function getServo(board, pin) {
+  return new webduino.module.Servo(board, board.getDigitalPin(pin));
+}
+
 function getCar(board, F, B, L, R) {
   return new Car(board, F, B, L, R);
 }
