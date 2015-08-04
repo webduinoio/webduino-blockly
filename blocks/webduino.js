@@ -762,3 +762,17 @@ Blockly.Blocks['servo_angle'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
+Blockly.Blocks['servo_angle_set'] = {
+  init: function() {
+    this.appendValueInput("angle_")
+        .appendField(Blockly.Msg.WEBDUINO_SERVO_TEXT,"伺服馬達")
+        .appendField(new Blockly.FieldVariable("servo"), "var_")
+        .appendField(Blockly.Msg.WEBDUINO_SERVO_ANGLE,"  旋轉角度：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
