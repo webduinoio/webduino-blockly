@@ -538,3 +538,28 @@ Blockly.Blocks['button_game_user'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
+/*
+oooooooooo.   ooooo   ooooo ooooooooooooo 
+`888'   `Y8b  `888'   `888' 8'   888   `8 
+ 888      888  888     888       888      
+ 888      888  888ooooo888       888      
+ 888      888  888     888       888      
+ 888     d88'  888     888       888      
+o888bood8P'   o888o   o888o     o888o     
+*/
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#iek22q
+Blockly.Blocks['tutorial_dht_show'] = {
+  init: function() {
+    this.appendValueInput("show")
+        .appendField("顯示")
+        .appendField(new Blockly.FieldDropdown([["溫度", "t"], ["濕度", "h"]]), "dht_")
+        .appendField("為");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};

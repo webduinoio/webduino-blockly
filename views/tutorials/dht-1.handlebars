@@ -1,0 +1,103 @@
+<link rel="stylesheet" href="tutorials.css">
+
+<style>
+  #show{
+    font-size:40px;
+    line-height: 50px;
+  }
+  #show b{
+    display:inline-block;
+    font-size:20px;
+    vertical-align: top;
+
+  }
+</style>
+
+<div id="demoArea">
+  <div id="demoTitle">{{demoTitle}}</div>
+  <div id="demoDescription">{{demoDescription}}</div>
+  <div id="show">
+    {{temperature}}<span id="temperature">0</span> <b>o</b>C<br/>
+    {{humidity}}<span id="humidity">0</span> %
+  </div>
+</div>
+<table width="60%" height="100%">
+<tr>
+  <td>
+    <h1>
+      <a href="index-tutorials.html"><span id="backIndex">{{backIndex}}</span></a> > 
+      <span id="title">...</span><span id="subTitle">{{subTitle}}</span>
+    </h1>
+  </td>
+  <td class="farSide">
+    <select id="languageMenu"></select>
+  </td>
+</tr>
+<tr>
+  <td colspan=2>
+    <table width="100%">
+      <tr id="tabRow" height="1em">
+        <td id="tab_blocks" class="tabon">{{blocks}}</td>
+        <td class="tabmin">&nbsp;</td>
+        <td id="tab_javascript" class="taboff">JavaScript</td>
+        <td class="tabmin">&nbsp;</td>
+        <td id="tab_xml" class="taboff" style="display:none;">XML</td>
+        <td class="tabmax">
+          <button id="trashButton" class="notext" title="{{trashTooltip}}">
+            <img src='media/1x1.gif' class="trash icon21">
+          </button>
+          <button id="linkButton" class="notext" title="{{linkTooltip}}">
+            <img src='media/1x1.gif' class="link icon21">
+          </button>
+          <button id="runButton" class="notext primary" title="{{runTooltip}}">
+            <img src='media/1x1.gif' class="run icon21">
+          </button>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+  <td height="99%" colspan=2 id="content_area">
+  </td>
+</tr>
+</table>
+
+<div id="content_blocks" class="content"></div>
+<pre id="content_javascript" class="content"></pre>
+<textarea id="content_xml" class="content" wrap="off"></textarea>
+
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <sep></sep>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category id="catDht">
+    <block type="variables_set">
+      <field name="VAR">dht</field>
+      <value name="VALUE">
+        <block type="dht_new">
+          <field name="pin_">11</field>
+        </block>
+      </value>
+    </block>
+    <block type="dht_get">
+      <value name="time">
+        <block type="math_number">
+          <field name="NUM">1000</field>
+        </block>
+      </value>
+    </block>
+    <block type="dht_get_number"></block>
+  </category>
+  <category id="catTutorials">
+    <block type="tutorial_dht_show"></block>
+  </category>
+  <sep></sep>
+</xml>

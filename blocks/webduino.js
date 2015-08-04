@@ -749,12 +749,12 @@ Blockly.Blocks['servo_new'] = {
 };
 
 Blockly.Blocks['servo_angle'] = {
-  init: function() {
+  init: function () {
     this.appendDummyInput()
-        .appendField(Blockly.Msg.WEBDUINO_SERVO_TEXT,"伺服馬達")
-        .appendField(new Blockly.FieldVariable("servo"), "var_")
-        .appendField(Blockly.Msg.WEBDUINO_SERVO_ANGLE,"  旋轉角度：")
-        .appendField(new Blockly.FieldAngle("90"), "angle_");
+      .appendField(Blockly.Msg.WEBDUINO_SERVO_TEXT, "伺服馬達")
+      .appendField(new Blockly.FieldVariable("servo"), "var_")
+      .appendField(Blockly.Msg.WEBDUINO_SERVO_ANGLE, "  旋轉角度：")
+      .appendField(new Blockly.FieldAngle("90"), "angle_");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -764,11 +764,11 @@ Blockly.Blocks['servo_angle'] = {
 };
 
 Blockly.Blocks['servo_angle_set'] = {
-  init: function() {
+  init: function () {
     this.appendValueInput("angle_")
-        .appendField(Blockly.Msg.WEBDUINO_SERVO_TEXT,"伺服馬達")
-        .appendField(new Blockly.FieldVariable("servo"), "var_")
-        .appendField(Blockly.Msg.WEBDUINO_SERVO_ANGLE,"  旋轉角度：");
+      .appendField(Blockly.Msg.WEBDUINO_SERVO_TEXT, "伺服馬達")
+      .appendField(new Blockly.FieldVariable("servo"), "var_")
+      .appendField(Blockly.Msg.WEBDUINO_SERVO_ANGLE, "  旋轉角度：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');

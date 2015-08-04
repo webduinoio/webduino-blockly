@@ -438,3 +438,25 @@ Blockly.JavaScript['button_game_user'] = function (block) {
   return code;
 };
 
+/*
+oooooooooo.   ooooo   ooooo ooooooooooooo 
+`888'   `Y8b  `888'   `888' 8'   888   `8 
+ 888      888  888     888       888      
+ 888      888  888ooooo888       888      
+ 888      888  888     888       888      
+ 888     d88'  888     888       888      
+o888bood8P'   o888o   o888o     o888o     
+*/
+
+Blockly.JavaScript['tutorial_dht_show'] = function(block) {
+  var dropdown_dht_ = block.getFieldValue('dht_');
+  var value_show = Blockly.JavaScript.valueToCode(block, 'show', Blockly.JavaScript.ORDER_ATOMIC);
+  var code;
+  if(dropdown_dht_=="t"){
+    code = 'document.getElementById("temperature").innerHTML = '+value_show+';\n'
+  }
+  if(dropdown_dht_=="h"){
+    code = 'document.getElementById("humidity").innerHTML = '+value_show+';\n'
+  }
+  return code;
+};
