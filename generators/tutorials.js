@@ -476,8 +476,6 @@ Blockly.JavaScript['tutorial_dht_areachart'] = function (block) {
     '    '+value_name_+'.areachart = true;\n' +
     '  }\n' +
     '});\n' +
-    'document.getElementById("chart_div1").style.display="none";\n'+
-    'document.getElementById("chart_div2").style.display="none";\n'+
     'function drawAreaChart(d) {\n' +
     '  if (!Array.isArray(d)) {\n' +
     '    return;\n' +
@@ -512,7 +510,6 @@ Blockly.JavaScript['tutorial_dht_gauge'] = function (block) {
     '    '+value_name_+'.gauge = true;\n' +
     '  }\n' +
     '});\n' +
-    'document.getElementById("chart_div").style.display="none";\n'+
     'function drawGuage(d1,d2) {\n' +
     '  if (!Array.isArray(d1)||!Array.isArray(d2)) {\n' +
     '    return;\n' +
@@ -554,6 +551,9 @@ Blockly.JavaScript['tutorial_dht_draw'] = function(block) {
     'var th = time.getHours();\n' +
     'var a = [];\n' +
     'if ('+variable_chart_+'.areachart) {\n' +
+    '  document.getElementById("chart_div").style.display="block";\n'+
+    '  document.getElementById("chart_div1").style.display="none";\n'+
+    '  document.getElementById("chart_div2").style.display="none";\n'+
     '  a[0] = th + ":" + tm + ":" + ts;\n' +
     '  a[1] = ' + value_t_ + ';\n' +
     '  a[2] = ' + value_h_ + ';\n' +
@@ -561,6 +561,9 @@ Blockly.JavaScript['tutorial_dht_draw'] = function(block) {
     '  drawAreaChart('+variable_chart_+'.origin);\n' +
     '}\n'+
     'if ('+variable_chart_+'.gauge) {\n' +
+    '  document.getElementById("chart_div").style.display="none";\n'+
+    '  document.getElementById("chart_div1").style.display="inline-block";\n'+
+    '  document.getElementById("chart_div2").style.display="inline-block";\n'+
     '  '+variable_chart_+'.origin1 = [["Label", "Value"],["humidity", '+value_h_+']];\n' +
     '  '+variable_chart_+'.origin2 = [["Label", "Value"],["temperature", '+value_t_+']];\n' +
     '  drawGuage('+variable_chart_+'.origin1,'+variable_chart_+'.origin2);\n' +
