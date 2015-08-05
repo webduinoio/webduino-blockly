@@ -553,9 +553,62 @@ o888bood8P'   o888o   o888o     o888o
 Blockly.Blocks['tutorial_dht_show'] = {
   init: function() {
     this.appendValueInput("show")
-        .appendField("顯示")
-        .appendField(new Blockly.FieldDropdown([["溫度", "t"], ["濕度", "h"]]), "dht_")
-        .appendField("為");
+        .appendField(Blockly.Msg.WEBDUINO_DHT_SHOW, "顯示")
+        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.WEBDUINO_DHT_SHOW_T, "t"], [Blockly.Msg.WEBDUINO_DHT_SHOW_H, "h"]]), "dht_")
+        .appendField(Blockly.Msg.WEBDUINO_DHT_SHOW_IS, "為");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#2vu2xz
+Blockly.Blocks['tutorial_dht_areachart'] = {
+  init: function() {
+    this.appendValueInput("name_")
+        .appendField(Blockly.Msg.WEBDUINO_DHT_ADD_AREACHART, "加入「區域折線圖」模組：");
+    this.appendValueInput("color_t_")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.WEBDUINO_DHT_ADD_TCOLOR, "溫度顏色：");
+    this.appendValueInput("color_h_")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.WEBDUINO_DHT_ADD_HCOLOR, "濕度顏色：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#2vu2xz
+Blockly.Blocks['tutorial_dht_gauge'] = {
+  init: function() {
+    this.appendValueInput("name_")
+        .appendField(Blockly.Msg.WEBDUINO_DHT_ADD_GUAGE, "加入「指針」模組：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#6k6o8o
+Blockly.Blocks['tutorial_dht_draw'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.WEBDUINO_DHT_USE, "使用")
+        .appendField(new Blockly.FieldVariable("areachart"), "chart_")
+        .appendField(Blockly.Msg.WEBDUINO_DHT_DRAW, "開始繪製");
+    this.appendValueInput("t_")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.WEBDUINO_DHT_DRAW_T, "溫度：");
+    this.appendValueInput("h_")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.WEBDUINO_DHT_DRAW_H,"濕度：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');

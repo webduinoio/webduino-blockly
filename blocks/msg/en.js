@@ -202,3 +202,16 @@ Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL_4 = "Hard";
 Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL_3 = "Normal";
 Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL_2 = "Easy";
 Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL_1 = "Very easy";
+
+Blockly.Msg.WEBDUINO_DHT_SHOW = "Show";
+Blockly.Msg.WEBDUINO_DHT_SHOW_IS = "=";
+Blockly.Msg.WEBDUINO_DHT_SHOW_T = "temperature( C )";
+Blockly.Msg.WEBDUINO_DHT_SHOW_H = "humidity ( % )";
+Blockly.Msg.WEBDUINO_DHT_ADD_AREACHART = "Add Area Chart";
+Blockly.Msg.WEBDUINO_DHT_ADD_TCOLOR = "temperature color:";
+Blockly.Msg.WEBDUINO_DHT_ADD_HCOLOR = "humidity color:";
+Blockly.Msg.WEBDUINO_DHT_ADD_GUAGE = "Add Guage";
+Blockly.Msg.WEBDUINO_DHT_USE = "Use";
+Blockly.Msg.WEBDUINO_DHT_DRAW = "draw";
+Blockly.Msg.WEBDUINO_DHT_DRAW_T = "temperature:";
+Blockly.Msg.WEBDUINO_DHT_DRAW_H = "humidity:";

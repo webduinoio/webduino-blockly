@@ -201,3 +201,16 @@ Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL_4 = "小威";
 Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL_3 = "普通";
 Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL_2 = "小弱";
 Blockly.Msg.WEBDUINO_BUTTON_GAME_NPC_LEVEL_1 = "超弱";
+
+Blockly.Msg.WEBDUINO_DHT_SHOW = "顯示";
+Blockly.Msg.WEBDUINO_DHT_SHOW_IS = "為";
+Blockly.Msg.WEBDUINO_DHT_SHOW_T = "溫度 (攝氏)";
+Blockly.Msg.WEBDUINO_DHT_SHOW_H = "濕度 (%)";
+Blockly.Msg.WEBDUINO_DHT_ADD_AREACHART = "加入「區域折線圖」模組：";
+Blockly.Msg.WEBDUINO_DHT_ADD_TCOLOR = "溫度顏色：";
+Blockly.Msg.WEBDUINO_DHT_ADD_HCOLOR = "濕度顏色：";
+Blockly.Msg.WEBDUINO_DHT_ADD_GUAGE = "加入「指針」模組：";
+Blockly.Msg.WEBDUINO_DHT_USE = "使用";
+Blockly.Msg.WEBDUINO_DHT_DRAW = "開始繪製";
+Blockly.Msg.WEBDUINO_DHT_DRAW_T = "溫度：";
+Blockly.Msg.WEBDUINO_DHT_DRAW_H = "濕度：";

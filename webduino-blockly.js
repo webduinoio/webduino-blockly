@@ -107,7 +107,7 @@ Car.prototype.stop = function (secs) {
   });
 };
 
-Blockly.JavaScript.addReservedWords('Car');
+//Blockly.JavaScript.addReservedWords('Car');
 
 function getPreviousBlock(block) {
   if (block && block.previousConnection && block.previousConnection.targetConnection) {
@@ -134,4 +134,52 @@ function promisifyBlockCode(block, code) {
     code += ';\n';
   }
   return code;
+}
+
+//DHT Area Chart
+function dhtAreaChart(tcolor, hcolor){
+  var areaChart = function(){
+    var loaded = false;
+    var origin = [
+      ['Time', 'temperature', 'humidity']
+    ];
+
+    google.load("visualization", "1", {
+      packages: ["corechart"],
+      callback: function() {
+        loaded = true;
+      }
+    });
+
+    function drawChart(d) {
+      if (!Array.isArray(d)) {
+        return;
+      }
+      var data = google.visualization.arrayToDataTable(d);
+
+      var options = {
+        title: "DHT Area Chart",
+        hAxis: {
+          title: '',
+          titleTextStyle: {
+            color: '#333'
+          }
+        },
+        vAxis: {
+          minValue: 0
+        },
+        chartArea: {
+          top: 50,
+          left: 50,
+          width: "70%",
+          height: "70%"
+        },
+        colors: ['"'+tcolor+'"', '"'+hcolor+'"']
+      };
+
+      var code = new google.visualization.AreaChart(document.getElementById('chart_div'));
+      return code.draw(data, options);
+    }
+  };
+  return areaChart();
 }
