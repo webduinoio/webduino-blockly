@@ -9,10 +9,6 @@ Blockly.Msg.CUSTOM_JS_CONSOLE = "Console:";
 Blockly.Msg.WEBDUINO_TIMER_AFTER = "After";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "seconds";
 Blockly.Msg.WEBDUINO_TIMER_DO = "do";
-Blockly.Msg.WEBDUINO_DO = "do";
-Blockly.Msg.WEBDUINO_EXEC_SEQ = "sequence";
-Blockly.Msg.WEBDUINO_EXEC_THEN = "then";
-Blockly.Msg.WEBDUINO_EXEC_THEN_STMS = "then";
 
 Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "Board";
 Blockly.Msg.WEBDUINO_BOARD_READY_DEVICE = "device";

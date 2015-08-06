@@ -68,38 +68,10 @@ Blockly.JavaScript['car_move'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['do'] = function (block) {
-  var value_return_ = Blockly.JavaScript.valueToCode(block, 'return_', Blockly.JavaScript.ORDER_NONE);
-  var code = value_return_.trim() + ';\n';
-  return code;
-};
-
 Blockly.JavaScript['timer'] = function (block) {
   var value_secs_ = Blockly.JavaScript.valueToCode(block, 'secs_', Blockly.JavaScript.ORDER_NONE);
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
   var code = 'setTimeout(function () {\n' + statements_do_ + '}, ' + 1000 * value_secs_ + ');\n';
-  return code;
-};
-
-Blockly.JavaScript['exec_seq'] = function (block) {
-  var statements_seq_ = Blockly.JavaScript.statementToCode(block, 'seq_');
-  var code = statements_seq_.trim();
-  return [code, Blockly.JavaScript.ORDER_NONE];
-};
-
-Blockly.JavaScript['exec_then'] = function (block) {
-  var value_then_ = Blockly.JavaScript.valueToCode(block, 'then_', Blockly.JavaScript.ORDER_NONE);
-  var code = '.then(function () {\n  return ' + value_then_ + ';\n})';
-  return code;
-};
-
-Blockly.JavaScript['exec_then_stms'] = function (block) {
-  var statements_then_ = Blockly.JavaScript.statementToCode(block, 'then_');
-  var code = '.then(function () {\n' + statements_then_ + '})';
-  var next = getNextBlock(block);
-  if (next === null || ['car_move', 'exec_then', 'exec_then_stms'].indexOf(next.type) === -1) {
-    code += ';\n';
-  }
   return code;
 };
 

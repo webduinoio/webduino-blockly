@@ -9,10 +9,6 @@ Blockly.Msg.CUSTOM_JS_CONSOLE = "控制台顯示";
 Blockly.Msg.WEBDUINO_TIMER_AFTER = "在";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "秒之後";
 Blockly.Msg.WEBDUINO_TIMER_DO = "執行";
-Blockly.Msg.WEBDUINO_DO = "執行";
-Blockly.Msg.WEBDUINO_EXEC_SEQ = "依序";
-Blockly.Msg.WEBDUINO_EXEC_THEN = "然後";
-Blockly.Msg.WEBDUINO_EXEC_THEN_STMS = "然後";
 
 Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "開發版";
 Blockly.Msg.WEBDUINO_BOARD_READY_DEVICE = "device";
