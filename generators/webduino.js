@@ -75,6 +75,13 @@ Blockly.JavaScript['timer'] = function (block) {
   return code;
 };
 
+Blockly.JavaScript['delay'] = function (block) {
+  var value_secs_ = Blockly.JavaScript.valueToCode(block, 'secs_', Blockly.JavaScript.ORDER_NONE);
+  var code = 'delay(' + value_secs_ + ');\n';
+  block.setPromise(true);
+  return code;
+};
+
 Blockly.JavaScript['ultrasonic_new'] = function (block) {
   var dropdown_trig_ = block.getFieldValue('trig_');
   var dropdown_echo_ = block.getFieldValue('echo_');

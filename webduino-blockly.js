@@ -154,3 +154,11 @@ function dhtAreaChart(tcolor, hcolor) {
   };
   return areaChart();
 }
+
+function delay(t) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      resolve();
+    }, 1000 * t);
+  });
+}

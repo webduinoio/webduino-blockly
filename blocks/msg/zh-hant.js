@@ -10,6 +10,9 @@ Blockly.Msg.WEBDUINO_TIMER_AFTER = "在";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "秒之後";
 Blockly.Msg.WEBDUINO_TIMER_DO = "執行";
 
+Blockly.Msg.WEBDUINO_DELAY = "延遲";
+Blockly.Msg.WEBDUINO_DELAY_SECONDS = "秒";
+
 Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "開發版";
 Blockly.Msg.WEBDUINO_BOARD_READY_DEVICE = "device";
 

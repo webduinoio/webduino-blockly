@@ -190,7 +190,7 @@ Blockly.Blocks['car_move'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(180);
+    this.setColour(65);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -199,15 +199,29 @@ Blockly.Blocks['car_move'] = {
 Blockly.Blocks['timer'] = {
   init: function () {
     this.appendValueInput("secs_")
-      .appendField(Blockly.Msg.WEBDUINO_TIMER_AFTER, "After");
+      .appendField(Blockly.Msg.WEBDUINO_TIMER_AFTER);
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_TIMER_SECOND, "second(s),");
+      .appendField(Blockly.Msg.WEBDUINO_TIMER_SECOND);
     this.appendStatementInput("do_")
       .appendField(Blockly.Msg.WEBDUINO_TIMER_DO, "do");
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(290);
+    this.setColour(180);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['delay'] = {
+  init: function () {
+    this.appendValueInput("secs_")
+      .appendField(Blockly.Msg.WEBDUINO_DELAY);
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_DELAY_SECONDS);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(180);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }

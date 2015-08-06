@@ -10,6 +10,9 @@ Blockly.Msg.WEBDUINO_TIMER_AFTER = "After";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "seconds";
 Blockly.Msg.WEBDUINO_TIMER_DO = "do";
 
+Blockly.Msg.WEBDUINO_DELAY = "delay";
+Blockly.Msg.WEBDUINO_DELAY_SECONDS = "seconds";
+
 Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "Board";
 Blockly.Msg.WEBDUINO_BOARD_READY_DEVICE = "device";
 
