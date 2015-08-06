@@ -500,6 +500,10 @@ Code.promisifyBlock = function (block, code) {
     next = block.getNextBlock(),
     type, ocurr, count;
 
+  if (block.promise && block.type !== 'controls_if' && block.type !== 'procedures_callnoreturn') {
+    code = 'return ' + code;
+  }
+
   if (prev !== null && prev.promise && prev.getNextBlock() === block) {
     count = 0;
     ocurr = code.match(/\n/g).length;
@@ -510,7 +514,7 @@ Code.promisifyBlock = function (block, code) {
       }
       return '\n';
     });
-    code = '.then(function () {\n  ' + (block.hasReturnValue_ ? 'return ' : '') + code + '})';
+    code = '.then(function () {\n  ' + (block.type === 'procedures_callnoreturn' ? 'return ' : '') + code + '})';
     block.promise = true;
     type = 1;
   } else {
@@ -599,10 +603,10 @@ Blockly.JavaScript.blockToCode = function (block) {
 };
 
 Blockly.Block.prototype.setPromise = function (isPromise) {
-  var block;
+  var block = this;
   this.promise = isPromise;
   if (isPromise) {
-    while ((block = this.getSurroundParent()) !== null) {
+    while ((block = block.getSurroundParent()) !== null) {
       if (block.type.indexOf('procedures_def') === 0) {
         block.promise = true;
         return;
