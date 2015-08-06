@@ -640,13 +640,38 @@ Blockly.Blocks['buzzer_play'] = {
 };
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#t2cidp
-Blockly.Blocks['buzzer_stop'] = {
+Blockly.Blocks['buzzer_event'] = {
   init: function () {
     this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_LET,"讓")
       .appendField(new Blockly.FieldVariable("buzzer"), "var_")
-      .appendField(Blockly.Msg.WEBDUINO_BUZZER_STOP, "停止播放");
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_BUZZER_EVENT_STOP, ".stop()"],
+        [Blockly.Msg.WEBDUINO_BUZZER_EVENT_PAUSE, ".pause()"],
+        [Blockly.Msg.WEBDUINO_BUZZER_EVENT_RESUMEPLAY, ".play()"]
+      ]), "event_")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_EVENT_PLAY,"播放");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#du7e52
+Blockly.Blocks['buzzer_state'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_CHECK,"判斷")
+      .appendField(new Blockly.FieldVariable("buzzer"), "var_")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_STATE,"的狀態為：")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_BUZZER_STATE_STOP,"stopped"],
+        [Blockly.Msg.WEBDUINO_BUZZER_STATE_PAUSE,"paused"],
+        [Blockly.Msg.WEBDUINO_BUZZER_STATE_PLAYING,"playing"]
+      ]), "state_");
+    this.setOutput(true);
     this.setTooltip('');
     this.setColour(65);
     this.setHelpUrl('http://www.example.com/');

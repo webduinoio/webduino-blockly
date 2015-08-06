@@ -280,12 +280,19 @@ Blockly.JavaScript['buzzer_play'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['buzzer_stop'] = function (block) {
+Blockly.JavaScript['buzzer_event'] = function(block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
-  var code = variable_var_ + '.stop();\n';
+  var dropdown_event_ = block.getFieldValue('event_');
+  var code = variable_var_+dropdown_event_+';\n';
   return code;
 };
 
+Blockly.JavaScript['buzzer_state'] = function(block) {
+  var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_state_ = block.getFieldValue('state_');
+  var code = variable_var_+'._state == "'+dropdown_state_+'"';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
 Blockly.JavaScript['buzzer_load_music'] = function (block) {
   var dropdown_music_ = block.getFieldValue('music_');
   var notes, tempos, a, b;

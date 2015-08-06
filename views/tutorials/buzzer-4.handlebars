@@ -1,20 +1,15 @@
 <link rel="stylesheet" href="tutorials.css">
 
 <style>
-  #demoArea button{
-    font-size:24px;
-    padding:10px;
-    margin:5px;
+  #show{
+    font-size:60px;
   }
 </style>
 
 <div id="demoArea">
   <div id="demoTitle">{{demoTitle}}</div>
   <div id="demoDescription">{{demoDescription}}</div>
-  <button id="m1">music 1</button>
-  <button id="m2">music 2</button>
-  <button id="m3">music 3</button><br/>
-  <button id="stop">stop</button>
+  <div id="show">text</div>
 </div>
 <table width="60%" height="100%">
 <tr>
@@ -69,6 +64,11 @@
   <category id="catText">
     <block type="text"></block>
   </category>
+  <category id="catLogic">
+    <block type="controls_if"></block>
+  </category>
+  <sep></sep>
+  <sep></sep>
   <category id="catBoard">
     <block type="board_ready">
       <value name="device_">
@@ -119,9 +119,23 @@
       </value>
     </block>
     <block type="buzzer_event"></block>
+    <block type="buzzer_state"></block>
   </category>
+  <category id="catButton">
+    <block type="variables_set">
+      <field name="VAR">button</field>
+      <value name="VALUE">
+        <block type="button_new">
+          <field name="pin_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="button_event"></block>
+  </category>
+  <sep></sep>
+  <sep></sep>
   <category id="catTutorials">
-    <block type="tutorial_buzzer_3"></block>
+    <block type="show_text"></block>
   </category>
   <sep></sep>
 </xml>
