@@ -260,6 +260,9 @@ Blockly.JavaScript['buzzer_notes_tempos'] = function (block) {
   var dropdown_tone_ = block.getFieldValue('tone_');
   var dropdown_pitch_ = block.getFieldValue('pitch_');
   var dropdown_tempos_ = block.getFieldValue('tempos_');
+  if(dropdown_tone_=='0'){
+    dropdown_pitch_='';
+  }
   var code = 'musicNotes.notes.push("' + dropdown_tone_ + dropdown_pitch_ + '");\n' +
     'musicNotes.tempos.push("' + dropdown_tempos_ + '");\n';
   return code;

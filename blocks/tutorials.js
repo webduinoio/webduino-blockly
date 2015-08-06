@@ -685,3 +685,49 @@ Blockly.Blocks['tutorial_servo_calculate'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
+/*
+oooooooooo.  ooooo     ooo  oooooooooooo  oooooooooooo oooooooooooo ooooooooo.   
+`888'   `Y8b `888'     `8' d'""""""d888' d'""""""d888' `888'     `8 `888   `Y88. 
+ 888     888  888       8        .888P         .888P    888          888   .d88' 
+ 888oooo888'  888       8       d888'         d888'     888oooo8     888ooo88P'  
+ 888    `88b  888       8     .888P         .888P       888    "     888`88b.    
+ 888    .88P  `88.    .8'    d888'    .P   d888'    .P  888       o  888  `88b.  
+o888bood8P'     `YbodP'    .8888888888P  .8888888888P  o888ooooood8 o888o  o888o 
+*/
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#s6hvit
+Blockly.Blocks['tutorial_buzzer_1'] = {
+  init: function () {
+    this.appendValueInput("var_")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_SHOW,"顯示");
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_SHOW_NOTESANDTEMPOS,"的音符和節奏");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#twivbo
+Blockly.Blocks['tutorial_buzzer_3'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_CLICK,"點選")
+      .appendField(new Blockly.FieldDropdown([
+        ["music1", "m1"],
+        ["music2", "m2"],
+        ["music3", "m3"],
+        ["stop", "stop"]
+      ]), "btn_");
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_DO,"執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};

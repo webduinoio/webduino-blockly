@@ -228,3 +228,8 @@ Blockly.Msg.WEBDUINO_SERVO_SET_ANGLE = "設定起始角度 ( 0-180 ) ";
 Blockly.Msg.WEBDUINO_SERVO_CURRENT_ANGLE = "當前角度";
 Blockly.Msg.WEBDUINO_SERVO_PLUS = "+";
 Blockly.Msg.WEBDUINO_SERVO_MINUS = "-";
+
+Blockly.Msg.WEBDUINO_BUZZER_SHOW = "顯示";
+Blockly.Msg.WEBDUINO_BUZZER_SHOW_NOTESANDTEMPOS = "的音符和節奏";
+Blockly.Msg.WEBDUINO_BUZZER_CLICK = "點選";
+Blockly.Msg.WEBDUINO_BUZZER_DO = "執行：";

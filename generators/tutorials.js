@@ -465,15 +465,15 @@ Blockly.JavaScript['tutorial_dht_areachart'] = function (block) {
   var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
   var value_color_t_ = Blockly.JavaScript.valueToCode(block, 'color_t_', Blockly.JavaScript.ORDER_ATOMIC);
   var value_color_h_ = Blockly.JavaScript.valueToCode(block, 'color_h_', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'var '+value_name_+' = {};\n' +
-    value_name_+'.areachart = false;\n' +
-    value_name_+'.origin = [\n' +
+  var code = 'var ' + value_name_ + ' = {};\n' +
+    value_name_ + '.areachart = false;\n' +
+    value_name_ + '.origin = [\n' +
     '  ["Time", "temperature", "humidity"]\n' +
     '];\n' +
     'google.load("visualization", "1", {\n' +
     '  packages: ["corechart"],\n' +
     '  callback: function() {\n' +
-    '    '+value_name_+'.areachart = true;\n' +
+    '    ' + value_name_ + '.areachart = true;\n' +
     '  }\n' +
     '});\n' +
     'function drawAreaChart(d) {\n' +
@@ -496,18 +496,18 @@ Blockly.JavaScript['tutorial_dht_areachart'] = function (block) {
 
 Blockly.JavaScript['tutorial_dht_gauge'] = function (block) {
   var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'var '+value_name_+' = {};\n' +
-    value_name_+'.guage = false;\n' +
-    value_name_+'.origin1 = [\n' +
+  var code = 'var ' + value_name_ + ' = {};\n' +
+    value_name_ + '.guage = false;\n' +
+    value_name_ + '.origin1 = [\n' +
     '  ["Label", "Value"],["humidity", 55]\n' +
     '];\n' +
-    value_name_+'.origin2 = [\n' +
+    value_name_ + '.origin2 = [\n' +
     '  ["Label", "Value"],["temperature", 30]\n' +
     '];\n' +
     'google.load("visualization", "1", {\n' +
     '  packages: ["gauge"],\n' +
     '  callback: function() {\n' +
-    '    '+value_name_+'.gauge = true;\n' +
+    '    ' + value_name_ + '.gauge = true;\n' +
     '  }\n' +
     '});\n' +
     'function drawGuage(d1,d2) {\n' +
@@ -522,14 +522,14 @@ Blockly.JavaScript['tutorial_dht_gauge'] = function (block) {
     '    yellowFrom:75, yellowTo: 90,\n' +
     '    minorTicks: 5,\n' +
     '    redColor:"#00f", yellowColor:"#9cf",\n' +
-    '    animation:{easing:"in"}\n'+
+    '    animation:{easing:"in"}\n' +
     '  };\n' +
     '  var options2 = {\n' +
     '    width: 400, height: 120,\n' +
     '    redFrom: 90, redTo: 100,\n' +
     '    yellowFrom:75, yellowTo: 90,\n' +
     '    minorTicks: 5,\n' +
-    '    animation:{easing:"in"}\n'+
+    '    animation:{easing:"in"}\n' +
     '  };\n' +
     'var chart1 = new google.visualization.Gauge(document.getElementById("chart_div1"));\n' +
     'chart1.draw(data1, options1);\n' +
@@ -539,7 +539,7 @@ Blockly.JavaScript['tutorial_dht_gauge'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['tutorial_dht_draw'] = function(block) {
+Blockly.JavaScript['tutorial_dht_draw'] = function (block) {
   var variable_chart_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('chart_'), Blockly.Variables.NAME_TYPE);
   var value_t_ = Blockly.JavaScript.valueToCode(block, 't_', Blockly.JavaScript.ORDER_ATOMIC);
   var value_h_ = Blockly.JavaScript.valueToCode(block, 'h_', Blockly.JavaScript.ORDER_ATOMIC);
@@ -550,23 +550,23 @@ Blockly.JavaScript['tutorial_dht_draw'] = function(block) {
     'var tm = time.getMinutes();\n' +
     'var th = time.getHours();\n' +
     'var a = [];\n' +
-    'if ('+variable_chart_+'.areachart) {\n' +
-    '  document.getElementById("chart_div").style.display="block";\n'+
-    '  document.getElementById("chart_div1").style.display="none";\n'+
-    '  document.getElementById("chart_div2").style.display="none";\n'+
+    'if (' + variable_chart_ + '.areachart) {\n' +
+    '  document.getElementById("chart_div").style.display="block";\n' +
+    '  document.getElementById("chart_div1").style.display="none";\n' +
+    '  document.getElementById("chart_div2").style.display="none";\n' +
     '  a[0] = th + ":" + tm + ":" + ts;\n' +
     '  a[1] = ' + value_t_ + ';\n' +
     '  a[2] = ' + value_h_ + ';\n' +
-    '  '+variable_chart_+'.origin.push(a);\n' +
-    '  drawAreaChart('+variable_chart_+'.origin);\n' +
-    '}\n'+
-    'if ('+variable_chart_+'.gauge) {\n' +
-    '  document.getElementById("chart_div").style.display="none";\n'+
-    '  document.getElementById("chart_div1").style.display="inline-block";\n'+
-    '  document.getElementById("chart_div2").style.display="inline-block";\n'+
-    '  '+variable_chart_+'.origin1 = [["Label", "Value"],["humidity", '+value_h_+']];\n' +
-    '  '+variable_chart_+'.origin2 = [["Label", "Value"],["temperature", '+value_t_+']];\n' +
-    '  drawGuage('+variable_chart_+'.origin1,'+variable_chart_+'.origin2);\n' +
+    '  ' + variable_chart_ + '.origin.push(a);\n' +
+    '  drawAreaChart(' + variable_chart_ + '.origin);\n' +
+    '}\n' +
+    'if (' + variable_chart_ + '.gauge) {\n' +
+    '  document.getElementById("chart_div").style.display="none";\n' +
+    '  document.getElementById("chart_div1").style.display="inline-block";\n' +
+    '  document.getElementById("chart_div2").style.display="inline-block";\n' +
+    '  ' + variable_chart_ + '.origin1 = [["Label", "Value"],["humidity", ' + value_h_ + ']];\n' +
+    '  ' + variable_chart_ + '.origin2 = [["Label", "Value"],["temperature", ' + value_t_ + ']];\n' +
+    '  drawGuage(' + variable_chart_ + '.origin1,' + variable_chart_ + '.origin2);\n' +
     '}\n';
   return code;
 };
@@ -581,39 +581,68 @@ oo     .d8P  888       o  888  `88b.       `888'      `88b    d88'
 8""88888P'  o888ooooood8 o888o  o888o       `8'        `Y8bood8P'  
 */
 
-Blockly.JavaScript['tutorial_servo_button'] = function(block) {
+Blockly.JavaScript['tutorial_servo_button'] = function (block) {
   var dropdown_btn_ = block.getFieldValue('btn_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'document.getElementById("'+dropdown_btn_+'").addEventListener("click",function(){\n'+
-                statements_do_+'\n'+
-              '});\n';
+  var code = 'document.getElementById("' + dropdown_btn_ + '").addEventListener("click",function(){\n' +
+    statements_do_ + '\n' +
+    '});\n';
   return code;
 };
 
-Blockly.JavaScript['tutorial_servo_button_set'] = function(block) {
+Blockly.JavaScript['tutorial_servo_button_set'] = function (block) {
   var angle_angle_ = block.getFieldValue('angle_');
-  if(angle_angle_>=180){angle_angle_=180;}
-  var code = 'document.getElementById("show").innerHTML = '+angle_angle_+';\n';
+  if (angle_angle_ >= 180) {
+    angle_angle_ = 180;
+  }
+  var code = 'document.getElementById("show").innerHTML = ' + angle_angle_ + ';\n';
   return code;
 };
 
-Blockly.JavaScript['tutorial_servo_calculate'] = function(block) {
+Blockly.JavaScript['tutorial_servo_calculate'] = function (block) {
   var dropdown_calculate_ = block.getFieldValue('calculate_');
   var value_angle_ = Blockly.JavaScript.valueToCode(block, 'angle_', Blockly.JavaScript.ORDER_ATOMIC);
   var varAngle = Blockly.JavaScript.variableDB_.getDistinctName(
     'varAngle', Blockly.Variables.NAME_TYPE);
   var a;
-  if(dropdown_calculate_=="plus"){
-    a=" + ";
+  if (dropdown_calculate_ == "plus") {
+    a = " + ";
   }
-  if(dropdown_calculate_=="minus"){
-    a=" - ";
+  if (dropdown_calculate_ == "minus") {
+    a = " - ";
   }
-  var code = '(function(){\n'+
-              '  var '+varAngle+' = document.getElementById("show").innerHTML;\n'+
-              '  '+varAngle+' = ( '+varAngle+'* 1 ) '+a+value_angle_ +';\n'+
-              '  document.getElementById("show").innerHTML = '+varAngle+';\n'+
-              '  return '+varAngle+';\n'+
-              '})()';
+  var code = '(function(){\n' +
+    '  var ' + varAngle + ' = document.getElementById("show").innerHTML;\n' +
+    '  ' + varAngle + ' = ( ' + varAngle + '* 1 ) ' + a + value_angle_ + ';\n' +
+    '  document.getElementById("show").innerHTML = ' + varAngle + ';\n' +
+    '  return ' + varAngle + ';\n' +
+    '})()';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+
+/*
+oooooooooo.  ooooo     ooo  oooooooooooo  oooooooooooo oooooooooooo ooooooooo.   
+`888'   `Y8b `888'     `8' d'""""""d888' d'""""""d888' `888'     `8 `888   `Y88. 
+ 888     888  888       8        .888P         .888P    888          888   .d88' 
+ 888oooo888'  888       8       d888'         d888'     888oooo8     888ooo88P'  
+ 888    `88b  888       8     .888P         .888P       888    "     888`88b.    
+ 888    .88P  `88.    .8'    d888'    .P   d888'    .P  888       o  888  `88b.  
+o888bood8P'     `YbodP'    .8888888888P  .8888888888P  o888ooooood8 o888o  o888o 
+*/
+
+Blockly.JavaScript['tutorial_buzzer_1'] = function (block) {
+  var value_var_ = Blockly.JavaScript.valueToCode(block, 'var_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'document.getElementById("buzzerNotes").innerHTML = ' + value_var_ + '.notes;\n' +
+    'document.getElementById("buzzerTempos").innerHTML = ' + value_var_ + '.tempos;\n';
+  return code;
+};
+
+Blockly.JavaScript['tutorial_buzzer_3'] = function (block) {
+  var dropdown_btn_ = block.getFieldValue('btn_');
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var code = 'document.getElementById("' + dropdown_btn_ + '").addEventListener("click",function(){\n' +
+    '  ' + statements_do_ + '\n' +
+    '});\n';
+  return code;
 };

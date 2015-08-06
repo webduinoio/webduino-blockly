@@ -229,3 +229,8 @@ Blockly.Msg.WEBDUINO_SERVO_SET_ANGLE = "Set angle (1-180)";
 Blockly.Msg.WEBDUINO_SERVO_CURRENT_ANGLE = "Current angle";
 Blockly.Msg.WEBDUINO_SERVO_PLUS = "+";
 Blockly.Msg.WEBDUINO_SERVO_MINUS = "-";
+
+Blockly.Msg.WEBDUINO_BUZZER_SHOW = "Show";
+Blockly.Msg.WEBDUINO_BUZZER_SHOW_NOTESANDTEMPOS = "'s notes and tempos";
+Blockly.Msg.WEBDUINO_BUZZER_CLICK = "Click";
+Blockly.Msg.WEBDUINO_BUZZER_DO = "do:";
