@@ -63,14 +63,8 @@ Blockly.JavaScript['car_move'] = function (block) {
   var variable_car_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('car_'), Blockly.Variables.NAME_TYPE);
   var dropdown_move_ = block.getFieldValue('move_');
   var value_secs_ = Blockly.JavaScript.valueToCode(block, 'secs_', Blockly.JavaScript.ORDER_NONE);
-  var code = variable_car_ + '.' + dropdown_move_ + '(' + value_secs_ + ')';
-  code = promisifyBlockCode(block, code);
-  return code;
-};
-
-Blockly.JavaScript['do'] = function (block) {
-  var value_return_ = Blockly.JavaScript.valueToCode(block, 'return_', Blockly.JavaScript.ORDER_NONE);
-  var code = value_return_.trim() + ';\n';
+  var code = variable_car_ + '.' + dropdown_move_ + '(' + value_secs_ + ');\n';
+  block.setPromise(true);
   return code;
 };
 
@@ -81,25 +75,10 @@ Blockly.JavaScript['timer'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['exec_seq'] = function (block) {
-  var statements_seq_ = Blockly.JavaScript.statementToCode(block, 'seq_');
-  var code = statements_seq_.trim();
-  return [code, Blockly.JavaScript.ORDER_NONE];
-};
-
-Blockly.JavaScript['exec_then'] = function (block) {
-  var value_then_ = Blockly.JavaScript.valueToCode(block, 'then_', Blockly.JavaScript.ORDER_NONE);
-  var code = '.then(function () {\n  return ' + value_then_ + ';\n})';
-  return code;
-};
-
-Blockly.JavaScript['exec_then_stms'] = function (block) {
-  var statements_then_ = Blockly.JavaScript.statementToCode(block, 'then_');
-  var code = '.then(function () {\n' + statements_then_ + '})';
-  var next = getNextBlock(block);
-  if (next === null || ['car_move', 'exec_then', 'exec_then_stms'].indexOf(next.type) === -1) {
-    code += ';\n';
-  }
+Blockly.JavaScript['delay'] = function (block) {
+  var value_secs_ = Blockly.JavaScript.valueToCode(block, 'secs_', Blockly.JavaScript.ORDER_NONE);
+  var code = 'delay(' + value_secs_ + ');\n';
+  block.setPromise(true);
   return code;
 };
 
@@ -119,6 +98,13 @@ Blockly.JavaScript['ultrasonic_get'] = function (block) {
     '  console.log(' + variable_var_ + '.distance);\n' +
     statements_do +
     '},' + value_time + ');\n';
+  return code;
+};
+
+Blockly.JavaScript['ultrasonic_get_promise'] = function (block) {
+  var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
+  var code = variable_var_ + '.ping();\n';
+  block.setPromise(true);
   return code;
 };
 

@@ -107,38 +107,9 @@ Car.prototype.stop = function (secs) {
   });
 };
 
-//Blockly.JavaScript.addReservedWords('Car');
-
-function getPreviousBlock(block) {
-  if (block && block.previousConnection && block.previousConnection.targetConnection) {
-    return block.previousConnection.targetConnection.sourceBlock_;
-  }
-  return null;
-}
-
-function getNextBlock(block) {
-  if (block && block.nextConnection && block.nextConnection.targetConnection) {
-    return block.nextConnection.targetConnection.sourceBlock_;
-  }
-  return null;
-}
-
-function promisifyBlockCode(block, code) {
-  var prev = getPreviousBlock(block),
-    next = getNextBlock(block);
-
-  if (prev && prev.type === 'car_move') {
-    code = '.then(function () {\n  return ' + code + ';\n})';
-  }
-  if (next === null || ['car_move', 'exec_then', 'exec_then_stms'].indexOf(next.type) === -1) {
-    code += ';\n';
-  }
-  return code;
-}
-
 //DHT Area Chart
-function dhtAreaChart(tcolor, hcolor){
-  var areaChart = function(){
+function dhtAreaChart(tcolor, hcolor) {
+  var areaChart = function () {
     var loaded = false;
     var origin = [
       ['Time', 'temperature', 'humidity']
@@ -146,7 +117,7 @@ function dhtAreaChart(tcolor, hcolor){
 
     google.load("visualization", "1", {
       packages: ["corechart"],
-      callback: function() {
+      callback: function () {
         loaded = true;
       }
     });
@@ -174,7 +145,7 @@ function dhtAreaChart(tcolor, hcolor){
           width: "70%",
           height: "70%"
         },
-        colors: ['"'+tcolor+'"', '"'+hcolor+'"']
+        colors: ['"' + tcolor + '"', '"' + hcolor + '"']
       };
 
       var code = new google.visualization.AreaChart(document.getElementById('chart_div'));
@@ -182,4 +153,12 @@ function dhtAreaChart(tcolor, hcolor){
     }
   };
   return areaChart();
+}
+
+function delay(t) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      resolve();
+    }, 1000 * t);
+  });
 }

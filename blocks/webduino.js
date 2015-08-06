@@ -190,7 +190,7 @@ Blockly.Blocks['car_move'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(180);
+    this.setColour(65);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -199,63 +199,29 @@ Blockly.Blocks['car_move'] = {
 Blockly.Blocks['timer'] = {
   init: function () {
     this.appendValueInput("secs_")
-      .appendField(Blockly.Msg.WEBDUINO_TIMER_AFTER, "After");
+      .appendField(Blockly.Msg.WEBDUINO_TIMER_AFTER);
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_TIMER_SECOND, "second(s),");
+      .appendField(Blockly.Msg.WEBDUINO_TIMER_SECOND);
     this.appendStatementInput("do_")
       .appendField(Blockly.Msg.WEBDUINO_TIMER_DO, "do");
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(290);
+    this.setColour(180);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
 };
 
-Blockly.Blocks['do'] = {
+Blockly.Blocks['delay'] = {
   init: function () {
-    this.appendValueInput("return_")
-      .appendField(Blockly.Msg.WEBDUINO_DO);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setColour(290);
-    this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
-  }
-};
-
-Blockly.Blocks['exec_seq'] = {
-  init: function () {
+    this.appendValueInput("secs_")
+      .appendField(Blockly.Msg.WEBDUINO_DELAY);
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_EXEC_SEQ);
-    this.appendStatementInput("seq_");
-    this.setOutput(true);
-    this.setColour(20);
-    this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
-  }
-};
-
-Blockly.Blocks['exec_then'] = {
-  init: function () {
-    this.appendValueInput("then_")
-      .appendField(Blockly.Msg.WEBDUINO_EXEC_THEN, "then");
+      .appendField(Blockly.Msg.WEBDUINO_DELAY_SECONDS);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(20);
-    this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
-  }
-};
-
-Blockly.Blocks['exec_then_stms'] = {
-  init: function () {
-    this.appendStatementInput("then_")
-      .appendField(Blockly.Msg.WEBDUINO_EXEC_THEN_STMS, "then");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setColour(20);
+    this.setColour(180);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -305,6 +271,19 @@ Blockly.Blocks['ultrasonic_get'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['ultrasonic_get_promise'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("ultrasonic"), "var_")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_GET);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
+    this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
 };

@@ -9,10 +9,9 @@ Blockly.Msg.CUSTOM_JS_CONSOLE = "Console:";
 Blockly.Msg.WEBDUINO_TIMER_AFTER = "After";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "seconds";
 Blockly.Msg.WEBDUINO_TIMER_DO = "do";
-Blockly.Msg.WEBDUINO_DO = "do";
-Blockly.Msg.WEBDUINO_EXEC_SEQ = "sequence";
-Blockly.Msg.WEBDUINO_EXEC_THEN = "then";
-Blockly.Msg.WEBDUINO_EXEC_THEN_STMS = "then";
+
+Blockly.Msg.WEBDUINO_DELAY = "delay";
+Blockly.Msg.WEBDUINO_DELAY_SECONDS = "seconds";
 
 Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "Board";
 Blockly.Msg.WEBDUINO_BOARD_READY_DEVICE = "device";
@@ -34,6 +33,7 @@ Blockly.Msg.WEBDUINO_RGBLED_SETCOLOR = "set color";
 
 Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_TRIG = "Ultrasonic, Trig:";
 Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_ECHO = "  Echo:";
+Blockly.Msg.WEBDUINO_ULTRASONIC_GET = "get distance";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DISTANCE = "get distance over every";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_TIME = "ms ( 1/1000 sec )";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DO = "do";
