@@ -1,0 +1,100 @@
+<link rel="stylesheet" href="tutorials.css">
+
+<style>
+  #image{
+    max-width:100%;
+  }
+</style>
+
+<div id="demoArea">
+  <div id="demoTitle">{{demoTitle}}</div>
+  <div id="demoDescription">{{demoDescription}}</div>
+  <img src="https://webduino.io/img/tutorials/tutorial-11-02.jpg" id="image">
+</div>
+<table width="60%" height="100%">
+<tr>
+  <td>
+    <h1>
+      <a href="index-tutorials.html"><span id="backIndex">{{backIndex}}</span></a> > 
+      <span id="title">...</span><span id="subTitle">{{subTitle}}</span>
+    </h1>
+  </td>
+  <td class="farSide">
+    <select id="languageMenu"></select>
+  </td>
+</tr>
+<tr>
+  <td colspan=2>
+    <table width="100%">
+      <tr id="tabRow" height="1em">
+        <td id="tab_blocks" class="tabon">{{blocks}}</td>
+        <td class="tabmin">&nbsp;</td>
+        <td id="tab_javascript" class="taboff">JavaScript</td>
+        <td class="tabmin">&nbsp;</td>
+        <td id="tab_xml" class="taboff" style="display:none;">XML</td>
+        <td class="tabmax">
+          <button id="trashButton" class="notext" title="{{trashTooltip}}">
+            <img src='media/1x1.gif' class="trash icon21">
+          </button>
+          <button id="linkButton" class="notext" title="{{linkTooltip}}">
+            <img src='media/1x1.gif' class="link icon21">
+          </button>
+          <button id="runButton" class="notext primary" title="{{runTooltip}}">
+            <img src='media/1x1.gif' class="run icon21">
+          </button>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+  <td height="99%" colspan=2 id="content_area">
+  </td>
+</tr>
+</table>
+
+<div id="content_blocks" class="content"></div>
+<pre id="content_javascript" class="content"></pre>
+<textarea id="content_xml" class="content" wrap="off"></textarea>
+
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <sep></sep>
+  <sep></sep>
+  <category id="catMath">
+    <block type="math_number">
+    </block>
+  </category>
+  <category id="catBoard">
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category id="catShock">
+    <block type="variables_set">
+      <field name="VAR">shock</field>
+      <value name="VALUE">
+        <block type="shock_new">
+          <field name="pin_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="shock_event"></block>
+  </category>
+  <category id="catTutorials">
+    <block type="ultrasonic_change_image_url">
+      <value name="url">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="button_change_image_position">
+      <value name="image_pos_">
+        <block type="math_number"></block>
+      </value>
+    </block>
+    <block type="button_reset_image_position"></block>
+  </category>
+  <sep></sep>
+</xml>
