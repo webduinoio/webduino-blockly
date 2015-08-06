@@ -101,6 +101,13 @@ Blockly.JavaScript['ultrasonic_get'] = function (block) {
   return code;
 };
 
+Blockly.JavaScript['ultrasonic_get_promise'] = function (block) {
+  var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
+  var code = variable_var_ + '.ping();\n';
+  block.setPromise(true);
+  return code;
+};
+
 Blockly.JavaScript['ultrasonic_distance'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
   var code = variable_var_ + '.distance';

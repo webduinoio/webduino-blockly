@@ -51,6 +51,7 @@ Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC4 = "超級瑪莉和弦";
 
 Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_TRIG = "超音波傳感器，Trig：";
 Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_ECHO = "  Echo：";
+Blockly.Msg.WEBDUINO_ULTRASONIC_GET = "擷取距離";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DISTANCE = "擷取距離，每";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_TIME = "豪秒 ( 1/1000 秒 ) 擷取一次";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DO = "執行：";

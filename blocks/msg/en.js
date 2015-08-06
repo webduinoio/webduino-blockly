@@ -33,6 +33,7 @@ Blockly.Msg.WEBDUINO_RGBLED_SETCOLOR = "set color";
 
 Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_TRIG = "Ultrasonic, Trig:";
 Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_ECHO = "  Echo:";
+Blockly.Msg.WEBDUINO_ULTRASONIC_GET = "get distance";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DISTANCE = "get distance over every";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_TIME = "ms ( 1/1000 sec )";
 Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DO = "do";

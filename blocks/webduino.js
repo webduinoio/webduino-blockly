@@ -275,6 +275,19 @@ Blockly.Blocks['ultrasonic_get'] = {
   }
 };
 
+Blockly.Blocks['ultrasonic_get_promise'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("ultrasonic"), "var_")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_GET);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vv8fx4
 Blockly.Blocks['ultrasonic_distance'] = {
   init: function () {
