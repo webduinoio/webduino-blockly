@@ -570,3 +570,50 @@ Blockly.JavaScript['tutorial_dht_draw'] = function(block) {
     '}\n';
   return code;
 };
+
+/*
+ .oooooo..o oooooooooooo ooooooooo.   oooooo     oooo   .oooooo.   
+d8P'    `Y8 `888'     `8 `888   `Y88.  `888.     .8'   d8P'  `Y8b  
+Y88bo.       888          888   .d88'   `888.   .8'   888      888 
+ `"Y8888o.   888oooo8     888ooo88P'     `888. .8'    888      888 
+     `"Y88b  888    "     888`88b.        `888.8'     888      888 
+oo     .d8P  888       o  888  `88b.       `888'      `88b    d88' 
+8""88888P'  o888ooooood8 o888o  o888o       `8'        `Y8bood8P'  
+*/
+
+Blockly.JavaScript['tutorial_servo_button'] = function(block) {
+  var dropdown_btn_ = block.getFieldValue('btn_');
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var code = 'document.getElementById("'+dropdown_btn_+'").addEventListener("click",function(){\n'+
+                statements_do_+'\n'+
+              '});\n';
+  return code;
+};
+
+Blockly.JavaScript['tutorial_servo_button_set'] = function(block) {
+  var angle_angle_ = block.getFieldValue('angle_');
+  if(angle_angle_>=180){angle_angle_=180;}
+  var code = 'document.getElementById("show").innerHTML = '+angle_angle_+';\n';
+  return code;
+};
+
+Blockly.JavaScript['tutorial_servo_calculate'] = function(block) {
+  var dropdown_calculate_ = block.getFieldValue('calculate_');
+  var value_angle_ = Blockly.JavaScript.valueToCode(block, 'angle_', Blockly.JavaScript.ORDER_ATOMIC);
+  var varAngle = Blockly.JavaScript.variableDB_.getDistinctName(
+    'varAngle', Blockly.Variables.NAME_TYPE);
+  var a;
+  if(dropdown_calculate_=="plus"){
+    a=" + ";
+  }
+  if(dropdown_calculate_=="minus"){
+    a=" - ";
+  }
+  var code = '(function(){\n'+
+              '  var '+varAngle+' = document.getElementById("show").innerHTML;\n'+
+              '  '+varAngle+' = ( '+varAngle+'* 1 ) '+a+value_angle_ +';\n'+
+              '  document.getElementById("show").innerHTML = '+varAngle+';\n'+
+              '  return '+varAngle+';\n'+
+              '})()';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};

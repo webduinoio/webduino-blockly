@@ -215,3 +215,17 @@ Blockly.Msg.WEBDUINO_DHT_USE = "Use";
 Blockly.Msg.WEBDUINO_DHT_DRAW = "draw";
 Blockly.Msg.WEBDUINO_DHT_DRAW_T = "temperature:";
 Blockly.Msg.WEBDUINO_DHT_DRAW_H = "humidity:";
+
+Blockly.Msg.WEBDUINO_SERVO_CLICKBTN = "Click button:";
+Blockly.Msg.WEBDUINO_SERVO_BTNLEFT90 = "Left 90 deg";
+Blockly.Msg.WEBDUINO_SERVO_BTNLEFT60 = "Left 60 deg";
+Blockly.Msg.WEBDUINO_SERVO_BTNLEFT30 = "Left 30 deg";
+Blockly.Msg.WEBDUINO_SERVO_BTNCENTER = "Center";
+Blockly.Msg.WEBDUINO_SERVO_BTNRIGHT30 = "Right 30 deg";
+Blockly.Msg.WEBDUINO_SERVO_BTNRIGHT60 = "Right 60 deg";
+Blockly.Msg.WEBDUINO_SERVO_BTNRIGHT90 = "Right 90 deg";
+Blockly.Msg.WEBDUINO_SERVO_DO = "do:";
+Blockly.Msg.WEBDUINO_SERVO_SET_ANGLE = "Set angle (1-180)";
+Blockly.Msg.WEBDUINO_SERVO_CURRENT_ANGLE = "Current angle";
+Blockly.Msg.WEBDUINO_SERVO_PLUS = "+";
+Blockly.Msg.WEBDUINO_SERVO_MINUS = "-";

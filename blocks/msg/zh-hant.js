@@ -214,3 +214,17 @@ Blockly.Msg.WEBDUINO_DHT_USE = "使用";
 Blockly.Msg.WEBDUINO_DHT_DRAW = "開始繪製";
 Blockly.Msg.WEBDUINO_DHT_DRAW_T = "溫度：";
 Blockly.Msg.WEBDUINO_DHT_DRAW_H = "濕度：";
+
+Blockly.Msg.WEBDUINO_SERVO_CLICKBTN = "點選按鈕";
+Blockly.Msg.WEBDUINO_SERVO_BTNLEFT90 = "左轉 90 度";
+Blockly.Msg.WEBDUINO_SERVO_BTNLEFT60 = "左轉 60 度";
+Blockly.Msg.WEBDUINO_SERVO_BTNLEFT30 = "左轉 30 度";
+Blockly.Msg.WEBDUINO_SERVO_BTNCENTER = "保持在中間";
+Blockly.Msg.WEBDUINO_SERVO_BTNRIGHT30 = "右轉 30 度";
+Blockly.Msg.WEBDUINO_SERVO_BTNRIGHT60 = "右轉 60 度";
+Blockly.Msg.WEBDUINO_SERVO_BTNRIGHT90 = "右轉 90 度";
+Blockly.Msg.WEBDUINO_SERVO_DO = "執行：";
+Blockly.Msg.WEBDUINO_SERVO_SET_ANGLE = "設定起始角度 ( 0-180 ) ";
+Blockly.Msg.WEBDUINO_SERVO_CURRENT_ANGLE = "當前角度";
+Blockly.Msg.WEBDUINO_SERVO_PLUS = "+";
+Blockly.Msg.WEBDUINO_SERVO_MINUS = "-";

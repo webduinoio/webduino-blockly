@@ -551,11 +551,14 @@ o888bood8P'   o888o   o888o     o888o
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#iek22q
 Blockly.Blocks['tutorial_dht_show'] = {
-  init: function() {
+  init: function () {
     this.appendValueInput("show")
-        .appendField(Blockly.Msg.WEBDUINO_DHT_SHOW, "顯示")
-        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.WEBDUINO_DHT_SHOW_T, "t"], [Blockly.Msg.WEBDUINO_DHT_SHOW_H, "h"]]), "dht_")
-        .appendField(Blockly.Msg.WEBDUINO_DHT_SHOW_IS, "為");
+      .appendField(Blockly.Msg.WEBDUINO_DHT_SHOW, "顯示")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_DHT_SHOW_T, "t"],
+        [Blockly.Msg.WEBDUINO_DHT_SHOW_H, "h"]
+      ]), "dht_")
+      .appendField(Blockly.Msg.WEBDUINO_DHT_SHOW_IS, "為");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -566,15 +569,15 @@ Blockly.Blocks['tutorial_dht_show'] = {
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#2vu2xz
 Blockly.Blocks['tutorial_dht_areachart'] = {
-  init: function() {
+  init: function () {
     this.appendValueInput("name_")
-        .appendField(Blockly.Msg.WEBDUINO_DHT_ADD_AREACHART, "加入「區域折線圖」模組：");
+      .appendField(Blockly.Msg.WEBDUINO_DHT_ADD_AREACHART, "加入「區域折線圖」模組：");
     this.appendValueInput("color_t_")
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(Blockly.Msg.WEBDUINO_DHT_ADD_TCOLOR, "溫度顏色：");
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.WEBDUINO_DHT_ADD_TCOLOR, "溫度顏色：");
     this.appendValueInput("color_h_")
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(Blockly.Msg.WEBDUINO_DHT_ADD_HCOLOR, "濕度顏色：");
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.WEBDUINO_DHT_ADD_HCOLOR, "濕度顏色：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -585,9 +588,9 @@ Blockly.Blocks['tutorial_dht_areachart'] = {
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#2vu2xz
 Blockly.Blocks['tutorial_dht_gauge'] = {
-  init: function() {
+  init: function () {
     this.appendValueInput("name_")
-        .appendField(Blockly.Msg.WEBDUINO_DHT_ADD_GUAGE, "加入「指針」模組：");
+      .appendField(Blockly.Msg.WEBDUINO_DHT_ADD_GUAGE, "加入「指針」模組：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -598,19 +601,85 @@ Blockly.Blocks['tutorial_dht_gauge'] = {
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#6k6o8o
 Blockly.Blocks['tutorial_dht_draw'] = {
-  init: function() {
+  init: function () {
     this.appendDummyInput()
-        .appendField(Blockly.Msg.WEBDUINO_DHT_USE, "使用")
-        .appendField(new Blockly.FieldVariable("areachart"), "chart_")
-        .appendField(Blockly.Msg.WEBDUINO_DHT_DRAW, "開始繪製");
+      .appendField(Blockly.Msg.WEBDUINO_DHT_USE, "使用")
+      .appendField(new Blockly.FieldVariable("areachart"), "chart_")
+      .appendField(Blockly.Msg.WEBDUINO_DHT_DRAW, "開始繪製");
     this.appendValueInput("t_")
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(Blockly.Msg.WEBDUINO_DHT_DRAW_T, "溫度：");
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.WEBDUINO_DHT_DRAW_T, "溫度：");
     this.appendValueInput("h_")
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(Blockly.Msg.WEBDUINO_DHT_DRAW_H,"濕度：");
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.WEBDUINO_DHT_DRAW_H, "濕度：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+/*
+ .oooooo..o oooooooooooo ooooooooo.   oooooo     oooo   .oooooo.   
+d8P'    `Y8 `888'     `8 `888   `Y88.  `888.     .8'   d8P'  `Y8b  
+Y88bo.       888          888   .d88'   `888.   .8'   888      888 
+ `"Y8888o.   888oooo8     888ooo88P'     `888. .8'    888      888 
+     `"Y88b  888    "     888`88b.        `888.8'     888      888 
+oo     .d8P  888       o  888  `88b.       `888'      `88b    d88' 
+8""88888P'  o888ooooood8 o888o  o888o       `8'        `Y8bood8P'  
+*/
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vzgdvn
+Blockly.Blocks['tutorial_servo_button'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_SERVO_CLICKBTN, "點選按鈕")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_SERVO_BTNLEFT90, "btnLeft90"],
+        [Blockly.Msg.WEBDUINO_SERVO_BTNLEFT60, "btnLeft60"],
+        [Blockly.Msg.WEBDUINO_SERVO_BTNLEFT30, "btnLeft30"],
+        [Blockly.Msg.WEBDUINO_SERVO_BTNCENTER, "btnCenter"],
+        [Blockly.Msg.WEBDUINO_SERVO_BTNRIGHT30, "btnRight30"],
+        [Blockly.Msg.WEBDUINO_SERVO_BTNRIGHT60, "btnRight60"],
+        [Blockly.Msg.WEBDUINO_SERVO_BTNRIGHT90, "btnRight90"]
+      ]), "btn_");
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_SERVO_DO, "執行：");
+    this.setTooltip('');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#58ie7n
+Blockly.Blocks['tutorial_servo_button_set'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_SERVO_SET_ANGLE, "設定起始角度 ( 0-180 ) ")
+      .appendField(new Blockly.FieldAngle("90"), "angle_");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#3fu4cx
+Blockly.Blocks['tutorial_servo_calculate'] = {
+  init: function () {
+    this.appendValueInput("angle_")
+      .setCheck("Number")
+      .appendField(Blockly.Msg.WEBDUINO_SERVO_CURRENT_ANGLE, "當前角度")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_SERVO_PLUS, "plus"],
+        [Blockly.Msg.WEBDUINO_SERVO_MINUS, "minus"]
+      ]), "calculate_");
+    this.appendDummyInput();
+    this.setOutput(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
     this.setHelpUrl('http://www.example.com/');
