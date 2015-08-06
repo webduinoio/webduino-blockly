@@ -30,3 +30,26 @@
 #title,#subTitle{
   font-size:20px;
 }
+#linkToBin{
+  position:absolute;
+  top:-34px;
+  right:-1px;
+  font-size:16px;
+  border-width:1px 1px 0;
+  border-color:#aaa;
+  border-style:dotted;
+  padding:6px 15px;
+  color:#000;
+}
+#linkToBin img{
+  height:22px;
+  margin-bottom:-4px;
+  margin-right:3px;
+}
+#linkToBin:link{
+  color:#000;
+  text-decoration: none;
+}
+#linkToBin:hover{
+  background:#eee;
+}
