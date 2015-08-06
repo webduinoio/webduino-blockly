@@ -1,8 +1,3 @@
-MSG.backIndex = "Webduino 積木教學";
-MSG.demoTitle = "Blockly 範例測試區";
-MSG.catTutorials = "教學積木";
-MSG.timerVariable = "計時器";
-
 MSG.subTitle = "課程 5-2：繪製溫濕度圖表";
 MSG.demoDescription = "使用溫濕度傳感器，利用溫度與濕度繪製視覺化圖表";
 MSG.temperature = "溫度：";

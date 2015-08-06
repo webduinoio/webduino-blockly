@@ -37,5 +37,9 @@ var MSG = {
   hashError: "對不起，「%1」並未對應任何已保存的程式。",
   xmlError: "未能載入您保存的檔案。或許它是由其他版本的Blockly創建？",
   badXml: "解析 XML 時出現錯誤：\n%1\n\n選擇'確定'以放棄您的更改，或選擇'取消'以進一步編輯 XML。",
-  catConsole: "控制台"
+  catConsole: "控制台",
+  backIndex: "Webduino 積木教學",
+  demoTitle: "Blockly 範例測試區",
+  catTutorials: "教學積木",
+  linkToBin: "程式編輯"
 };
