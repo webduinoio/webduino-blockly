@@ -92,7 +92,7 @@ Blockly.JavaScript['two_led_start_blinking'] = function (block) {
     '  \n}else{\n' + statements_status2 +
     '  }\n' +
     '  ' + value_timer + ' = setTimeout(' + blinkFunction + ',' + value_time + ');\n' +
-    '}\n' +
+    '};\n' +
     blinkFunction + '();\n';
   return code;
 };
@@ -388,8 +388,8 @@ Blockly.JavaScript['button_game'] = function (block) {
     '  btnGameUserSpeed_;\n' +
     '  \n' +
     'btnGameStart_.className = "";\n' +
-    'btnGameNpcImg_.setAttribute("src","media/tutorials/' + dropdown_npc_ + '");\n' +
-    'btnGameUserImg_.setAttribute("src","media/tutorials/' + dropdown_user_ + '");\n' +
+    'btnGameNpcImg_.setAttribute("src","http://webduinoio.github.io/webduino-blockly/media/tutorials/' + dropdown_npc_ + '");\n' +
+    'btnGameUserImg_.setAttribute("src","http://webduinoio.github.io/webduino-blockly/media/tutorials/' + dropdown_user_ + '");\n' +
     'btnGameGoal_.innerHTML = btnGameDistance_;\n' +
     'btnGameStart_.addEventListener("click",go);\n' +
     '  \n' +
