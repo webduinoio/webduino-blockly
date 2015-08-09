@@ -20,6 +20,7 @@ Blockly.Msg.WEBDUINO_LED = "LED 燈";
 Blockly.Msg.WEBDUINO_LED_PIN = "，腳位：";
 Blockly.Msg.WEBDUINO_LED_SET_STATE = "設定狀態";
 Blockly.Msg.WEBDUINO_LED_TOGGLE = "切換狀態";
+Blockly.Msg.WEBDUINO_LED_INTENSITY = "強度：";
 
 Blockly.Msg.WEBDUINO_RELAY = "繼電器，腳位：";
 Blockly.Msg.WEBDUINO_RELAY_SET_STATE = "設定狀態";

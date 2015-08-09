@@ -81,6 +81,20 @@ Blockly.Blocks['led_toggle'] = {
   }
 };
 
+Blockly.Blocks['led_intensity'] = {
+  init: function() {
+    this.appendValueInput("intensity_")
+        .setCheck("Number")
+        .appendField(new Blockly.FieldVariable("led"), "led_")
+        .appendField(Blockly.Msg.WEBDUINO_LED_INTENSITY, "強度 (0-1)：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 Blockly.Blocks['rgbled_new'] = {
   init: function () {
     this.appendDummyInput()

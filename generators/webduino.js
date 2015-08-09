@@ -35,6 +35,14 @@ Blockly.JavaScript['led_toggle'] = function (block) {
   return code;
 };
 
+
+Blockly.JavaScript['led_intensity'] = function(block) {
+  var variable_led_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('led_'), Blockly.Variables.NAME_TYPE);
+  var value_intensity_ = Blockly.JavaScript.valueToCode(block, 'intensity_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = variable_led_+'.intensity = '+value_intensity_+';\n';
+  return code;
+};
+
 Blockly.JavaScript['rgbled_new'] = function (block) {
   var dropdown_red_ = block.getFieldValue('red_');
   var dropdown_green_ = block.getFieldValue('green_');

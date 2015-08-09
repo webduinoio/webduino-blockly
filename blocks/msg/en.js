@@ -20,6 +20,7 @@ Blockly.Msg.WEBDUINO_LED = "LED";
 Blockly.Msg.WEBDUINO_LED_PIN = "pin";
 Blockly.Msg.WEBDUINO_LED_SET_STATE = "set state";
 Blockly.Msg.WEBDUINO_LED_TOGGLE = "toggle";
+Blockly.Msg.WEBDUINO_LED_INTENSITY = "intensity (0-1):";
 
 Blockly.Msg.WEBDUINO_RELAY = "Relay";
 Blockly.Msg.WEBDUINO_RELAY_PIN = "pin";
