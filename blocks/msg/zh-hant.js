@@ -126,7 +126,7 @@ Blockly.Msg.WEBDUINO_FIREBASE_IS = "為";
 Blockly.Msg.WEBDUINO_FIREBASE_READ = "取出";
 Blockly.Msg.WEBDUINO_FIREBASE_ATTR = "的屬性";
 Blockly.Msg.WEBDUINO_FIREBASE_TO = "到";
-Blockly.Msg.WEBDUINO_FIREBASE_CLEAR = "清空資料庫";
+Blockly.Msg.WEBDUINO_FIREBASE_CLEAR = "清空資料庫：";
 // LED
 
 Blockly.Msg.WEBDUINO_LIGHT = "燈泡";

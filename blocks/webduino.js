@@ -797,14 +797,14 @@ Blockly.Blocks['servo_angle_set'] = {
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#qyqz9n
 Blockly.Blocks['data_firebase'] = {
-  init: function() {
+  init: function () {
     this.appendValueInput("name_")
-        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME, "< Firebase > 名稱：");
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME, "< Firebase > 名稱：");
     this.appendDummyInput()
-        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_URL, "網址：")
-        .appendField(new Blockly.FieldTextInput("https://<YOUR-FIREBASE-APP>.firebaseio.com"), "url_");
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_URL, "網址：")
+      .appendField(new Blockly.FieldTextInput("https://<YOUR-FIREBASE-APP>.firebaseio.com"), "url_");
     this.appendStatementInput("do_")
-        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_DO, "執行：");
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_DO, "執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -814,10 +814,10 @@ Blockly.Blocks['data_firebase'] = {
 };
 
 Blockly.Blocks['data_firebase_write'] = {
-  init: function() {
+  init: function () {
     this.appendStatementInput("write_")
-        .appendField(new Blockly.FieldVariable("myFirebase"), "var_")
-        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITE, "寫入");
+      .appendField(new Blockly.FieldVariable("myFirebase"), "var_")
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITE, "寫入");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -827,10 +827,10 @@ Blockly.Blocks['data_firebase_write'] = {
 };
 
 Blockly.Blocks['data_firebase_data'] = {
-  init: function() {
+  init: function () {
     this.appendValueInput("data_")
-        .appendField(new Blockly.FieldTextInput("..."), "attr_")
-        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_IS, "為");
+      .appendField(new Blockly.FieldTextInput("..."), "attr_")
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_IS, "為");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -840,15 +840,15 @@ Blockly.Blocks['data_firebase_data'] = {
 };
 
 Blockly.Blocks['data_firebase_read'] = {
-  init: function() {
+  init: function () {
     this.appendValueInput("read_")
-        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_READ, "取出")
-        .appendField(new Blockly.FieldVariable("myFirebase"), "name_")
-        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_ATTR, "的屬性")
-        .appendField(new Blockly.FieldTextInput("..."), "attr_")
-        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_TO, "到");
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_READ, "取出")
+      .appendField(new Blockly.FieldVariable("myFirebase"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_ATTR, "的屬性")
+      .appendField(new Blockly.FieldTextInput("..."), "attr_")
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_TO, "到");
     this.appendStatementInput("do_")
-        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_DO, "執行");
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_DO, "執行");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -858,10 +858,10 @@ Blockly.Blocks['data_firebase_read'] = {
 };
 
 Blockly.Blocks['data_firebase_clear'] = {
-  init: function() {
+  init: function () {
     this.appendDummyInput()
-        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_CLEAR, "清空資料庫")
-        .appendField(new Blockly.FieldVariable("myFirebase"), "name_");
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_CLEAR, "清空資料庫")
+      .appendField(new Blockly.FieldVariable("myFirebase"), "name_");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');

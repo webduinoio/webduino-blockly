@@ -36,10 +36,10 @@ Blockly.JavaScript['led_toggle'] = function (block) {
 };
 
 
-Blockly.JavaScript['led_intensity'] = function(block) {
+Blockly.JavaScript['led_intensity'] = function (block) {
   var variable_led_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('led_'), Blockly.Variables.NAME_TYPE);
   var value_intensity_ = Blockly.JavaScript.valueToCode(block, 'intensity_', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = variable_led_+'.intensity = '+value_intensity_+';\n';
+  var code = variable_led_ + '.intensity = ' + value_intensity_ + ';\n';
   return code;
 };
 
@@ -251,8 +251,8 @@ Blockly.JavaScript['buzzer_notes_tempos'] = function (block) {
   var dropdown_tone_ = block.getFieldValue('tone_');
   var dropdown_pitch_ = block.getFieldValue('pitch_');
   var dropdown_tempos_ = block.getFieldValue('tempos_');
-  if(dropdown_tone_=='0'){
-    dropdown_pitch_='';
+  if (dropdown_tone_ == '0') {
+    dropdown_pitch_ = '';
   }
   var code = 'musicNotes.notes.push("' + dropdown_tone_ + dropdown_pitch_ + '");\n' +
     'musicNotes.tempos.push("' + dropdown_tempos_ + '");\n';
@@ -271,17 +271,17 @@ Blockly.JavaScript['buzzer_play'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['buzzer_event'] = function(block) {
+Blockly.JavaScript['buzzer_event'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
   var dropdown_event_ = block.getFieldValue('event_');
-  var code = variable_var_+dropdown_event_+';\n';
+  var code = variable_var_ + dropdown_event_ + ';\n';
   return code;
 };
 
-Blockly.JavaScript['buzzer_state'] = function(block) {
+Blockly.JavaScript['buzzer_state'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
   var dropdown_state_ = block.getFieldValue('state_');
-  var code = variable_var_+'._state == "'+dropdown_state_+'"';
+  var code = variable_var_ + '._state == "' + dropdown_state_ + '"';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 Blockly.JavaScript['buzzer_load_music'] = function (block) {
@@ -368,58 +368,58 @@ Blockly.JavaScript['servo_angle_set'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['data_firebase'] = function(block) {
+Blockly.JavaScript['data_firebase'] = function (block) {
   var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
   var text_url_ = block.getFieldValue('url_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code =  value_name_+' = new Firebase("'+text_url_+'");\n'+statements_do_;
+  var code = value_name_ + ' = new Firebase("' + text_url_ + '");\n' + statements_do_;
   return code;
 };
 
-Blockly.JavaScript['data_firebase_write'] = function(block) {
+Blockly.JavaScript['data_firebase_write'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
   var statements_write_ = Blockly.JavaScript.statementToCode(block, 'write_');
-  var code = variable_var_+'.push({\n'+
-            '  '+statements_write_+'\n'+
-            '});\n'+
-            'console.log("write ok");\n';
+  var code = variable_var_ + '.push({\n' +
+    '  ' + statements_write_ + '\n' +
+    '});\n' +
+    'console.log("write ok");\n';
   return code;
 };
 
-Blockly.JavaScript['data_firebase_data'] = function(block) {
+Blockly.JavaScript['data_firebase_data'] = function (block) {
   var text_attr_ = block.getFieldValue('attr_');
   var value_data_ = Blockly.JavaScript.valueToCode(block, 'data_', Blockly.JavaScript.ORDER_ATOMIC);
   var next = block.getNextBlock();
   var code;
   if (next === null) {
-    code = text_attr_+':'+value_data_;
-  }else{
-    code = text_attr_+':'+value_data_+',';
+    code = text_attr_ + ':' + value_data_;
+  } else {
+    code = text_attr_ + ':' + value_data_ + ',';
   }
   return code;
 };
 
-Blockly.JavaScript['data_firebase_read'] = function(block) {
+Blockly.JavaScript['data_firebase_read'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var text_attr_ = block.getFieldValue('attr_');
   var value_read_ = Blockly.JavaScript.valueToCode(block, 'read_', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = variable_name_+'.on("value", function(snapshot) {\n'+
-             '   var '+value_read_+'=[];\n'+
-             '     snapshot.forEach(function(data) {\n'+
-             '     '+value_read_+'.push(data.val().'+text_attr_+');\n'+
-             '   });\n'+
-             '   '+statements_do_+'\n'+
-             ' }, function (errorObject) {\n'+
-             '   console.log("The read failed: " + errorObject.code);\n'+
-            '});\n';
+  var code = variable_name_ + '.on("value", function(snapshot) {\n' +
+    '   var ' + value_read_ + '=[];\n' +
+    '     snapshot.forEach(function(data) {\n' +
+    '     ' + value_read_ + '.push(data.val().' + text_attr_ + ');\n' +
+    '   });\n' +
+    '   ' + statements_do_ + '\n' +
+    ' }, function (errorObject) {\n' +
+    '   console.log("The read failed: " + errorObject.code);\n' +
+    '});\n';
   return code;
 };
 
 
-Blockly.JavaScript['data_firebase_clear'] = function(block) {
+Blockly.JavaScript['data_firebase_clear'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
-  var code = variable_name_+'.set({});\n'+
-            'console.log("clear ok");\n';;
+  var code = variable_name_ + '.set({});\n' +
+    'console.log("clear ok");\n';;
   return code;
 };
