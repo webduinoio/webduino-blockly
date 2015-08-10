@@ -102,10 +102,9 @@ Blockly.JavaScript['ultrasonic_get'] = function (block) {
   var value_time = Blockly.JavaScript.valueToCode(block, 'time', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_do = Blockly.JavaScript.statementToCode(block, 'do');
   var code = variable_var_ + '.ping(function(cm){\n' +
-    '  ' + variable_var_ + '.distance = cm*1;\n' +
     '  console.log(' + variable_var_ + '.distance);\n' +
     statements_do +
-    '},' + value_time + ');\n';
+    '}, ' + value_time + ');\n';
   return code;
 };
 
@@ -199,10 +198,8 @@ Blockly.JavaScript['dht_get'] = function (block) {
   var value_time = Blockly.JavaScript.valueToCode(block, 'time', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_do = Blockly.JavaScript.statementToCode(block, 'do');
   var code = variable_var_ + '.read(function(evt){\n' +
-    '  ' + variable_var_ + '.temperature = evt.temperature;\n' +
-    '  ' + variable_var_ + '.humidity = evt.humidity;\n' +
     statements_do +
-    '},' + value_time + ');\n';
+    '}, ' + value_time + ');\n';
   return code;
 };
 
