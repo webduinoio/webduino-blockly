@@ -82,11 +82,11 @@ Blockly.Blocks['led_toggle'] = {
 };
 
 Blockly.Blocks['led_intensity'] = {
-  init: function() {
+  init: function () {
     this.appendValueInput("intensity_")
-        .setCheck("Number")
-        .appendField(new Blockly.FieldVariable("led"), "led_")
-        .appendField(Blockly.Msg.WEBDUINO_LED_INTENSITY, "強度 (0-1)：");
+      .setCheck("Number")
+      .appendField(new Blockly.FieldVariable("led"), "led_")
+      .appendField(Blockly.Msg.WEBDUINO_LED_INTENSITY, "強度 (0-1)：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -636,14 +636,14 @@ Blockly.Blocks['buzzer_play'] = {
 Blockly.Blocks['buzzer_event'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BUZZER_LET,"讓")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_LET, "讓")
       .appendField(new Blockly.FieldVariable("buzzer"), "var_")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.WEBDUINO_BUZZER_EVENT_STOP, ".stop()"],
         [Blockly.Msg.WEBDUINO_BUZZER_EVENT_PAUSE, ".pause()"],
         [Blockly.Msg.WEBDUINO_BUZZER_EVENT_RESUMEPLAY, ".play()"]
       ]), "event_")
-      .appendField(Blockly.Msg.WEBDUINO_BUZZER_EVENT_PLAY,"播放");
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_EVENT_PLAY, "播放");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -656,13 +656,13 @@ Blockly.Blocks['buzzer_event'] = {
 Blockly.Blocks['buzzer_state'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BUZZER_CHECK,"判斷")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_CHECK, "判斷")
       .appendField(new Blockly.FieldVariable("buzzer"), "var_")
-      .appendField(Blockly.Msg.WEBDUINO_BUZZER_STATE,"的狀態為：")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_STATE, "的狀態為：")
       .appendField(new Blockly.FieldDropdown([
-        [Blockly.Msg.WEBDUINO_BUZZER_STATE_STOP,"stopped"],
-        [Blockly.Msg.WEBDUINO_BUZZER_STATE_PAUSE,"paused"],
-        [Blockly.Msg.WEBDUINO_BUZZER_STATE_PLAYING,"playing"]
+        [Blockly.Msg.WEBDUINO_BUZZER_STATE_STOP, "stopped"],
+        [Blockly.Msg.WEBDUINO_BUZZER_STATE_PAUSE, "paused"],
+        [Blockly.Msg.WEBDUINO_BUZZER_STATE_PLAYING, "playing"]
       ]), "state_");
     this.setOutput(true);
     this.setTooltip('');
@@ -791,6 +791,81 @@ Blockly.Blocks['servo_angle_set'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#qyqz9n
+Blockly.Blocks['data_firebase'] = {
+  init: function() {
+    this.appendValueInput("name_")
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME, "< Firebase > 名稱：");
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_URL, "網址：")
+        .appendField(new Blockly.FieldTextInput("https://<YOUR-FIREBASE-APP>.firebaseio.com"), "url_");
+    this.appendStatementInput("do_")
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_DO, "執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(200);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['data_firebase_write'] = {
+  init: function() {
+    this.appendStatementInput("write_")
+        .appendField(new Blockly.FieldVariable("myFirebase"), "var_")
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITE, "寫入");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(160);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['data_firebase_data'] = {
+  init: function() {
+    this.appendValueInput("data_")
+        .appendField(new Blockly.FieldTextInput("..."), "attr_")
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_IS, "為");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(100);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['data_firebase_read'] = {
+  init: function() {
+    this.appendValueInput("read_")
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_READ, "取出")
+        .appendField(new Blockly.FieldVariable("myFirebase"), "name_")
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_ATTR, "的屬性")
+        .appendField(new Blockly.FieldTextInput("..."), "attr_")
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_TO, "到");
+    this.appendStatementInput("do_")
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_DO, "執行");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(160);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['data_firebase_clear'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_CLEAR, "清空資料庫")
+        .appendField(new Blockly.FieldVariable("myFirebase"), "name_");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(160);
     this.setHelpUrl('http://www.example.com/');
   }
 };

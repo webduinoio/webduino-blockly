@@ -41,5 +41,6 @@ var MSG = {
   backIndex: "Webduino 積木教學",
   demoTitle: "Blockly 範例測試區",
   catTutorials: "教學積木",
-  linkToBin: "程式編輯"
+  linkToBin: "程式編輯",
+  catDatabase: "資料庫"
 };

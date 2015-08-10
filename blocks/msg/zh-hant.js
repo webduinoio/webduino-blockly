@@ -118,6 +118,15 @@ Blockly.Msg.WEBDUINO_CAR_R = "右轉";
 Blockly.Msg.WEBDUINO_CAR_MOVE_FOR = "持續";
 Blockly.Msg.WEBDUINO_CAR_MOVE_SEC = "秒";
 
+Blockly.Msg.WEBDUINO_FIREBASE_NAME = "< Firebase > 名稱：";
+Blockly.Msg.WEBDUINO_FIREBASE_URL = "網址：";
+Blockly.Msg.WEBDUINO_FIREBASE_DO = "執行：";
+Blockly.Msg.WEBDUINO_FIREBASE_WRITE = "寫入";
+Blockly.Msg.WEBDUINO_FIREBASE_IS = "為";
+Blockly.Msg.WEBDUINO_FIREBASE_READ = "取出";
+Blockly.Msg.WEBDUINO_FIREBASE_ATTR = "的屬性";
+Blockly.Msg.WEBDUINO_FIREBASE_TO = "到";
+Blockly.Msg.WEBDUINO_FIREBASE_CLEAR = "清空資料庫";
 // LED
 
 Blockly.Msg.WEBDUINO_LIGHT = "燈泡";

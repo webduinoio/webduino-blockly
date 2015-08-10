@@ -261,6 +261,25 @@
   <category id="catConsole">
     <block type="console"></block>
   </category>
+  <category id="catDatabase">
+    <block type="data_firebase">
+      <value name="name_">
+        <block type="variables_get">
+          <field name="VAR">myFirebase</field>
+        </block>
+      </value>
+    </block>
+    <block type="data_firebase_write"></block>
+    <block type="data_firebase_data"></block>
+    <block type="data_firebase_read">
+      <value name="read_">
+        <block type="variables_get">
+          <field name="VAR">var</field>
+        </block>
+      </value>
+    </block>
+    <block type="data_firebase_clear"></block>
+  </category>
   <sep></sep>
   <category id="catBoard">
     <block type="board_ready">
