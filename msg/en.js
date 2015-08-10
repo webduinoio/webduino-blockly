@@ -41,5 +41,6 @@ var MSG = {
   backIndex: "Webduino Blockly Tutorials",
   demoTitle: "Blockly Demo Area",
   catTutorials: "Blockly",
-  linkToBin: "Let's Coding"
+  linkToBin: "Let's Coding",
+  catDatabase: "Data base"
 };

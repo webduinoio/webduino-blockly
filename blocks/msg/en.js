@@ -119,6 +119,16 @@ Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC2 = "DoReMi";
 Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC3 = "Big brother and father";
 Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC4 = "Super Mario Chord";
 
+Blockly.Msg.WEBDUINO_FIREBASE_NAME = "< Firebase > name:";
+Blockly.Msg.WEBDUINO_FIREBASE_URL = ",url:";
+Blockly.Msg.WEBDUINO_FIREBASE_DO = "do:";
+Blockly.Msg.WEBDUINO_FIREBASE_WRITE = "Write";
+Blockly.Msg.WEBDUINO_FIREBASE_IS = "is";
+Blockly.Msg.WEBDUINO_FIREBASE_READ = "Read";
+Blockly.Msg.WEBDUINO_FIREBASE_ATTR = "'s property";
+Blockly.Msg.WEBDUINO_FIREBASE_TO = "to";
+Blockly.Msg.WEBDUINO_FIREBASE_CLEAR = "Clear Database";
+
 // LED
 
 Blockly.Msg.WEBDUINO_LIGHT = "Light";
