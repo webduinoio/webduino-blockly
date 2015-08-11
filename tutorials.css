@@ -1,8 +1,8 @@
-table#tutorials-table{
+table#tutorials-table.nav{
   width:68%;
   margin:0 auto 0 15px;
 }
-table{
+table.nav{
   min-width:500px!important;
 }
 #demoArea{

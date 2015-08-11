@@ -244,32 +244,35 @@ header span a:hover{
   right:15px;
   top:5px;
 }
-table{
+table.nav{
   width:calc(100% - 30px);
   min-width:800px!important;
   height:calc(100vh - 95px);
   margin:0 auto;
 }
-table td{
+table.nav td{
   background:#fff;
 }
-table td.tabmax, table td.tabmin{
+table.nav td.tabmax, table td.tabmin{
   background-color:#333;
 }
-table td.tabmax{
+table.nav td.tabmax{
   padding-right:0;
 }
-table td.tabmax button{
+table.nav td.tabmax button{
   margin:-3px 1px 5px;
   padding:3px 15px;
   outline:none;
 }
-table td.tabmax button:hover{
+table.nav td.tabmax button:hover{
   box-shadow:none;
 }
-table table{
+table.nav table{
   height:auto;
   width:100%;
+}
+table.nav td.tabon{
+  background:#ddd;
 }
 .blocklyToolboxDiv{
   box-shadow: rgba(0,0,0,.3) 2px 5px 5px;
