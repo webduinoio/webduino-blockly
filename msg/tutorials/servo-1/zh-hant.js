@@ -1,3 +1,4 @@
+MSG.title = "Webduino Blockly 課程 8-1：伺服馬達";
 MSG.subTitle = "課程 8-1：伺服馬達";
 MSG.demoDescription = "點選按鈕使伺服馬達轉到對應的角度";
 MSG.btnLeft90 = "左轉 90 度";
