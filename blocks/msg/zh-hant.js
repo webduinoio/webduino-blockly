@@ -123,10 +123,12 @@ Blockly.Msg.WEBDUINO_FIREBASE_URL = "網址：";
 Blockly.Msg.WEBDUINO_FIREBASE_DO = "執行：";
 Blockly.Msg.WEBDUINO_FIREBASE_WRITE = "寫入";
 Blockly.Msg.WEBDUINO_FIREBASE_IS = "為";
-Blockly.Msg.WEBDUINO_FIREBASE_READ = "取出";
-Blockly.Msg.WEBDUINO_FIREBASE_ATTR = "的屬性";
+Blockly.Msg.WEBDUINO_FIREBASE_READ = "資料庫";
+Blockly.Msg.WEBDUINO_FIREBASE_ATTR = "有變動時，就取出屬性";
 Blockly.Msg.WEBDUINO_FIREBASE_TO = "到";
 Blockly.Msg.WEBDUINO_FIREBASE_CLEAR = "清空資料庫：";
+Blockly.Msg.WEBDUINO_FIREBASE_READONCE = "載入資料庫";
+Blockly.Msg.WEBDUINO_FIREBASE_ATTRONCE = "屬性";
 // LED
 
 Blockly.Msg.WEBDUINO_LIGHT = "燈泡";

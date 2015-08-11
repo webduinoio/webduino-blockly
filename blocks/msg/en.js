@@ -124,10 +124,12 @@ Blockly.Msg.WEBDUINO_FIREBASE_URL = ",url:";
 Blockly.Msg.WEBDUINO_FIREBASE_DO = "do:";
 Blockly.Msg.WEBDUINO_FIREBASE_WRITE = "Write";
 Blockly.Msg.WEBDUINO_FIREBASE_IS = "is";
-Blockly.Msg.WEBDUINO_FIREBASE_READ = "Read";
-Blockly.Msg.WEBDUINO_FIREBASE_ATTR = "'s property";
+Blockly.Msg.WEBDUINO_FIREBASE_READ = "If";
+Blockly.Msg.WEBDUINO_FIREBASE_ATTR = "changed, read property";
 Blockly.Msg.WEBDUINO_FIREBASE_TO = "to";
 Blockly.Msg.WEBDUINO_FIREBASE_CLEAR = "Clear Database";
+Blockly.Msg.WEBDUINO_FIREBASE_READONCE = "Read";
+Blockly.Msg.WEBDUINO_FIREBASE_ATTRONCE = "'s property";
 
 // LED
 

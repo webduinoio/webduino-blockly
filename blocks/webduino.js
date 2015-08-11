@@ -857,6 +857,24 @@ Blockly.Blocks['data_firebase_read'] = {
   }
 };
 
+Blockly.Blocks['data_firebase_readonce'] = {
+  init: function () {
+    this.appendValueInput("read_")
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_READONCE, "取出")
+      .appendField(new Blockly.FieldVariable("myFirebase"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_ATTRONCE, "的屬性")
+      .appendField(new Blockly.FieldTextInput("..."), "attr_")
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_TO, "到");
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_DO, "執行");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(160);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 Blockly.Blocks['data_firebase_clear'] = {
   init: function () {
     this.appendDummyInput()

@@ -4,7 +4,7 @@ body {
 }
 
 body {
-  background-color: #fff;
+  background-color: #333;
   font-family: sans-serif;
   margin: 0;
   overflow: hidden;
@@ -186,4 +186,91 @@ button {
 
 .run {
   background-position: -42px 0px;
+}
+
+header{
+  width:100%;
+  height:90px;
+  min-width:200px;
+  background-image:linear-gradient(top,#000 0%,#333 100%);
+  background-image:-moz-linear-gradient(top,#000 0%,#333 100%);
+  background-image:-webkit-linear-gradient(top,#000 0%,#333 100%);
+}
+header .logo{
+  position:relative;
+  margin:24px 5px 0 40px;
+}
+header h1{
+  vertical-align: top;
+  display:inline-block;
+  margin:0;
+  padding:32px 0 0;
+  color:#fff;
+}
+header span{
+  vertical-align: top;
+  display:inline-block;
+  padding:36px 5px 0;
+  color:#999;
+  font-size:16px;
+}
+header span a{
+  transition:.3s;
+  color:#999;
+}
+header span a:hover{
+  color:#fa0;
+}
+#languageMenu{
+  position:absolute;
+  right:0;
+  top:16px;
+  font-size:14px;
+  background:#444;
+  outline:none;
+  border:none;
+  color:#aaa;
+  height:32px;
+  width:100px;
+  transition:.3s;
+}
+#languageMenu:hover{
+  color:#fff;
+}
+#update{
+  position:absolute;
+  color:#555;
+  font-size:12px;
+  right:15px;
+  top:5px;
+}
+table{
+  width:calc(100% - 30px);
+  min-width:800px!important;
+  height:calc(100vh - 105px);
+  margin:0 auto;
+}
+table td{
+  background:#fff;
+}
+table td.tabmax, table td.tabmin{
+  background-color:#333;
+}
+table td.tabmax{
+  padding-right:0;
+}
+table td.tabmax button{
+  margin:-3px 1px 5px;
+  padding:3px 15px;
+  outline:none;
+}
+table td.tabmax button:hover{
+  box-shadow:none;
+}
+table table{
+  height:auto;
+  width:100%;
+}
+.blocklyToolboxDiv{
+  box-shadow: rgba(0,0,0,.3) 2px 5px 5px;
 }

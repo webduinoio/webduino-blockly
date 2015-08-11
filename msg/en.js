@@ -42,5 +42,6 @@ var MSG = {
   demoTitle: "Blockly Demo Area",
   catTutorials: "Blockly",
   linkToBin: "Let's Coding",
-  catDatabase: "Data base"
+  catDatabase: "Data base",
+  update: "update 2015.8.11"
 };

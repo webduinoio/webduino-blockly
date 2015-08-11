@@ -6,24 +6,21 @@
   }
 </style>
 
+<header>
+  <img class="logo" src="media/logo.png">
+  <h1>{{title}}</h1>
+  <span>( <a href="index-tutorials.html" target="_blank">{{backIndex}}</a> )</span>
+  <div id="update">{{update}}</div>
+  <select id="languageMenu"></select>
+</header>
 <div id="demoArea">
+<a href="https://webduino.io/" id="cuteman01" target="_blank"></a>
   <div id="demoTitle">{{demoTitle}}</div>
   <a href="http://bin.webduino.io/sibe/edit?html,css,js,output" id="linkToBin" target="_blank"><img src="media/dave.min.svg">{{linkToBin}}</a>
   <div id="demoDescription">{{demoDescription}}</div>
   <div id="show">0</div>
 </div>
-<table width="60%" height="100%">
-<tr>
-  <td>
-    <h1>
-      <a href="index-tutorials.html"><span id="backIndex">{{backIndex}}</span></a> > 
-      <span id="title">...</span><span id="subTitle">{{subTitle}}</span>
-    </h1>
-  </td>
-  <td class="farSide">
-    <select id="languageMenu"></select>
-  </td>
-</tr>
+<table id="tutorials-table">
 <tr>
   <td colspan=2>
     <table width="100%">

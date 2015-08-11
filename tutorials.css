@@ -1,27 +1,29 @@
-#title{
-  display:none;
+table#tutorials-table{
+  width:68%;
+  margin:0 auto 0 15px;
 }
-#languageMenu{
-  position:absolute;
-  top:0px;
-  right:0px;
-  font-size:20px;
+table{
+  min-width:500px!important;
 }
 #demoArea{
   position:absolute;
-  right:10px;
-  bottom:10px;
-  width:calc(40% - 20px);
-  height:calc(100% - 90px);
-  border:1px dotted #aaa;
+  right:15px;
+  bottom:15px;
+  width:calc(32% - 40px);
+  height:calc(100% - 136px);
   padding:20px;
+  background:#fff;
   box-sizing:border-box;
+  border-radius:0 0 100px 0;
 }
 #demoTitle{
   position:absolute;
-  top:-26px;
-  left:10px;
-  font-size:20px;
+  top:-33px;
+  left:0;
+  font-size:16px;
+  background:#fff;
+  padding:8px 20px;
+  border-bottom:1px solid #ddd;
 }
 #demoDescription{
 	line-height:22px;
@@ -32,17 +34,17 @@
 }
 #linkToBin{
   position:absolute;
-  top:-34px;
-  right:-1px;
+  top:-35px;
+  right:0px;
   font-size:16px;
-  border-width:1px 1px 0;
-  border-color:#aaa;
-  border-style:dotted;
-  padding:6px 15px;
+  padding:6px 15px 8px;
   color:#000;
+  background:#ddd;
+  transition:.3s;
+  border-radius:5px;
 }
 #linkToBin img{
-  height:22px;
+  height:18px;
   margin-bottom:-4px;
   margin-right:3px;
 }
@@ -51,5 +53,16 @@
   text-decoration: none;
 }
 #linkToBin:hover{
-  background:#eee;
+  background:#fff;
+}
+#cuteman01{
+  display:block;
+  position:absolute;
+  bottom:-15px;
+  right:-5px;
+  width:160px;
+  height:103px;
+  background:url(media/cuteman01.png);
+  background-size:cover;
+  cursor:pointer;
 }
