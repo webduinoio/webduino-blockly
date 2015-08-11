@@ -1,5 +1,5 @@
 var MSG = {
-  title: "Webduino 程式碼積木編輯器",
+  title: "Webduino Blockly 編輯器",
   gotoTutorials: "前往教學範例",
   blocks: "積木",
   linkTooltip: "儲存積木組並提供連結。",
