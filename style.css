@@ -190,7 +190,7 @@ button {
 
 header{
   width:100%;
-  height:90px;
+  height:80px;
   min-width:200px;
   background-image:linear-gradient(top,#000 0%,#333 100%);
   background-image:-moz-linear-gradient(top,#000 0%,#333 100%);
@@ -198,7 +198,7 @@ header{
 }
 header .logo{
   position:relative;
-  margin:24px 5px 0 40px;
+  margin:24px 5px 0 30px;
 }
 header h1{
   vertical-align: top;
@@ -224,7 +224,7 @@ header span a:hover{
 #languageMenu{
   position:absolute;
   right:0;
-  top:16px;
+  top:12px;
   font-size:14px;
   background:#444;
   outline:none;
@@ -247,7 +247,7 @@ header span a:hover{
 table{
   width:calc(100% - 30px);
   min-width:800px!important;
-  height:calc(100vh - 105px);
+  height:calc(100vh - 95px);
   margin:0 auto;
 }
 table td{
