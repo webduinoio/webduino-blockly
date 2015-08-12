@@ -210,6 +210,40 @@ Blockly.Blocks['car_move'] = {
   }
 };
 
+Blockly.Blocks['fish_new'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_FISH);
+    this.setOutput(true);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['fish_move'] = {
+  init: function () {
+    this.appendValueInput("secs_")
+      .appendField(new Blockly.FieldVariable(" "), "fish_")
+      .appendField(new Blockly.FieldDropdown([
+        ["↑", "soar"],
+        ["↓", "sink"],
+        ["move", "move"],
+        ["left", "left"],
+        ["right", "right"]
+      ]), "move_")
+      .appendField(Blockly.Msg.WEBDUINO_FISH_MOVE_FOR);
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_FISH_MOVE_SEC);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 Blockly.Blocks['timer'] = {
   init: function () {
     this.appendValueInput("secs_")

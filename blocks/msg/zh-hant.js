@@ -118,6 +118,10 @@ Blockly.Msg.WEBDUINO_CAR_R = "右轉";
 Blockly.Msg.WEBDUINO_CAR_MOVE_FOR = "持續";
 Blockly.Msg.WEBDUINO_CAR_MOVE_SEC = "秒";
 
+Blockly.Msg.WEBDUINO_FISH = "飛天魚";
+Blockly.Msg.WEBDUINO_FISH_MOVE_FOR = "持續";
+Blockly.Msg.WEBDUINO_FISH_MOVE_SEC = "秒";
+
 Blockly.Msg.WEBDUINO_FIREBASE_NAME = "< Firebase > 名稱：";
 Blockly.Msg.WEBDUINO_FIREBASE_URL = "網址：";
 Blockly.Msg.WEBDUINO_FIREBASE_DO = "執行：";

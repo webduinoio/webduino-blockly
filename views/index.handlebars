@@ -422,6 +422,23 @@
       </value>
     </block>
   </category>
+  <category id="catFish">
+    <block type="variables_set">
+      <field name="VAR">fish</field>
+      <value name="VALUE">
+        <block type="fish_new"></block>
+      </value>
+    </block>
+    <block type="fish_move">
+      <field name="fish_">fish</field>
+      <field name="move_">soar</field>
+      <value name="secs_">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+    </block>
+  </category>
   <sep></sep>
   <category id="catButton">
     <block type="variables_set">

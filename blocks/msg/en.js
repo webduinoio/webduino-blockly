@@ -91,6 +91,10 @@ Blockly.Msg.WEBDUINO_CAR_R = "Right";
 Blockly.Msg.WEBDUINO_CAR_MOVE_FOR = "for";
 Blockly.Msg.WEBDUINO_CAR_MOVE_SEC = "secs";
 
+Blockly.Msg.WEBDUINO_FISH = "Fish";
+Blockly.Msg.WEBDUINO_FISH_MOVE_FOR = "for";
+Blockly.Msg.WEBDUINO_FISH_MOVE_SEC = "secs";
+
 Blockly.Msg.WEBDUINO_BUZZER = "Buzzer , pin:";
 Blockly.Msg.WEBDUINO_BUZZER_MUSIC1 = "Add Music, name:";
 Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_EDIT = "Notes and Tempos:";

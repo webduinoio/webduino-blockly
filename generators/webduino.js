@@ -76,6 +76,20 @@ Blockly.JavaScript['car_move'] = function (block) {
   return code;
 };
 
+Blockly.JavaScript['fish_new'] = function (block) {
+  var code = 'getFish(board)';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['fish_move'] = function (block) {
+  var variable_fish_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('fish_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_move_ = block.getFieldValue('move_');
+  var value_secs_ = Blockly.JavaScript.valueToCode(block, 'secs_', Blockly.JavaScript.ORDER_NONE);
+  var code = variable_fish_ + '.' + dropdown_move_ + '(' + value_secs_ + ');\n';
+  block.setPromise(true);
+  return code;
+};
+
 Blockly.JavaScript['timer'] = function (block) {
   var value_secs_ = Blockly.JavaScript.valueToCode(block, 'secs_', Blockly.JavaScript.ORDER_NONE);
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
@@ -440,4 +454,3 @@ Blockly.JavaScript['data_firebase_clear'] = function (block) {
     'console.log("clear ok");\n';;
   return code;
 };
-
