@@ -121,6 +121,12 @@ Blockly.Msg.WEBDUINO_CAR_MOVE_SEC = "秒";
 Blockly.Msg.WEBDUINO_FISH = "飛天魚";
 Blockly.Msg.WEBDUINO_FISH_MOVE_FOR = "持續";
 Blockly.Msg.WEBDUINO_FISH_MOVE_SEC = "秒";
+Blockly.Msg.WEBDUINO_FISH_MOVE_SPEED = "， 速度";
+Blockly.Msg.WEBDUINO_FISH_SOAR = "(上升)";
+Blockly.Msg.WEBDUINO_FISH_SINK = "(下降)";
+Blockly.Msg.WEBDUINO_FISH_MOVE = "(前進)";
+Blockly.Msg.WEBDUINO_FISH_LEFT = "(左轉)";
+Blockly.Msg.WEBDUINO_FISH_RIGHT = "(右轉)";
 
 Blockly.Msg.WEBDUINO_FIREBASE_NAME = "< Firebase > 名稱：";
 Blockly.Msg.WEBDUINO_FIREBASE_URL = "網址：";

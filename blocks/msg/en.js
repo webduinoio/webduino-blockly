@@ -94,6 +94,12 @@ Blockly.Msg.WEBDUINO_CAR_MOVE_SEC = "secs";
 Blockly.Msg.WEBDUINO_FISH = "Fish";
 Blockly.Msg.WEBDUINO_FISH_MOVE_FOR = "for";
 Blockly.Msg.WEBDUINO_FISH_MOVE_SEC = "secs";
+Blockly.Msg.WEBDUINO_FISH_MOVE_SPEED = ", at speed";
+Blockly.Msg.WEBDUINO_FISH_SOAR = "(soar)";
+Blockly.Msg.WEBDUINO_FISH_SINK = "(sink)";
+Blockly.Msg.WEBDUINO_FISH_MOVE = "(move toward)";
+Blockly.Msg.WEBDUINO_FISH_LEFT = "(turn left)";
+Blockly.Msg.WEBDUINO_FISH_RIGHT = "(turn right)";
 
 Blockly.Msg.WEBDUINO_BUZZER = "Buzzer , pin:";
 Blockly.Msg.WEBDUINO_BUZZER_MUSIC1 = "Add Music, name:";

@@ -221,20 +221,46 @@ Blockly.Blocks['fish_new'] = {
   }
 };
 
+Blockly.Blocks['fish_angle'] = {
+  init: function () {
+    this.appendValueInput("secs_")
+      .appendField(new Blockly.FieldVariable(" "), "fish_")
+      .appendField(new Blockly.FieldDropdown([
+        ["➚ " + Blockly.Msg.WEBDUINO_FISH_SOAR, "soar"],
+        ["➘ " + Blockly.Msg.WEBDUINO_FISH_SINK, "sink"]
+      ]), "angle_")
+      .appendField(Blockly.Msg.WEBDUINO_FISH_MOVE_FOR);
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_FISH_MOVE_SEC);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 Blockly.Blocks['fish_move'] = {
   init: function () {
     this.appendValueInput("secs_")
       .appendField(new Blockly.FieldVariable(" "), "fish_")
       .appendField(new Blockly.FieldDropdown([
-        ["↑", "soar"],
-        ["↓", "sink"],
-        ["move", "move"],
-        ["left", "left"],
-        ["right", "right"]
+        ["↑ " + Blockly.Msg.WEBDUINO_FISH_MOVE, "move"],
+        ["↺ " + Blockly.Msg.WEBDUINO_FISH_LEFT, "left"],
+        ["↻ " + Blockly.Msg.WEBDUINO_FISH_RIGHT, "right"]
       ]), "move_")
       .appendField(Blockly.Msg.WEBDUINO_FISH_MOVE_FOR);
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_FISH_MOVE_SEC);
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_FISH_MOVE_SPEED)
+      .appendField(new Blockly.FieldDropdown([
+        ["1", "1"],
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"]
+      ]), "speed_");
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
