@@ -92,10 +92,10 @@ Blockly.JavaScript['fish_angle'] = function (block) {
 
 Blockly.JavaScript['fish_move'] = function (block) {
   var variable_fish_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('fish_'), Blockly.Variables.NAME_TYPE);
-  var dropdown_move_ = block.getFieldValue('move_');
+  var dropdown_direction_ = block.getFieldValue('direction_');
   var value_secs_ = Blockly.JavaScript.valueToCode(block, 'secs_', Blockly.JavaScript.ORDER_NONE);
   var dropdown_speed_ = block.getFieldValue('speed_');
-  var code = variable_fish_ + '.' + dropdown_move_ + '(' + value_secs_ + ', ' + dropdown_speed_ + ');\n';
+  var code = variable_fish_ + ".flap(" + value_secs_ + ", " + dropdown_speed_ + (dropdown_direction_.length ? ", " + dropdown_direction_ : '') + ");\n";
   block.setPromise(true);
   return code;
 };
@@ -189,9 +189,9 @@ Blockly.JavaScript['sound_status'] = function (block) {
   var dropdown_status_ = block.getFieldValue('status_');
   var statements_var_ = Blockly.JavaScript.statementToCode(block, 'var_');
   var code = variable_item_ + '.on("' + dropdown_status_ + '",function(){\n' +
-    '  setTimeout(function(){\n'+
-    '  '+statements_var_ + '\n' +
-    '  },300);\n'+
+    '  setTimeout(function(){\n' +
+    '  ' + statements_var_ + '\n' +
+    '  },300);\n' +
     '});\n';
   return code;
 };

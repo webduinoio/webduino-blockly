@@ -246,10 +246,10 @@ Blockly.Blocks['fish_move'] = {
     this.appendValueInput("secs_")
       .appendField(new Blockly.FieldVariable(" "), "fish_")
       .appendField(new Blockly.FieldDropdown([
-        ["↑ " + Blockly.Msg.WEBDUINO_FISH_MOVE, "move"],
-        ["↺ " + Blockly.Msg.WEBDUINO_FISH_LEFT, "left"],
-        ["↻ " + Blockly.Msg.WEBDUINO_FISH_RIGHT, "right"]
-      ]), "move_")
+        ["↑ " + Blockly.Msg.WEBDUINO_FISH_MOVE, ""],
+        ["↺ " + Blockly.Msg.WEBDUINO_FISH_LEFT, "1"],
+        ["↻ " + Blockly.Msg.WEBDUINO_FISH_RIGHT, "2"]
+      ]), "direction_")
       .appendField(Blockly.Msg.WEBDUINO_FISH_MOVE_FOR);
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_FISH_MOVE_SEC);
@@ -259,7 +259,9 @@ Blockly.Blocks['fish_move'] = {
         ["1", "1"],
         ["2", "2"],
         ["3", "3"],
-        ["4", "4"]
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"]
       ]), "speed_");
     this.setInputsInline(true);
     this.setPreviousStatement(true);

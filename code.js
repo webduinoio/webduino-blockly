@@ -518,7 +518,7 @@ Code.promisifyBlock = function (block, code) {
     block.promise = true;
     type = 1;
   } else {
-    if (block.promise && code.endsWith(';\n') && next !== null) {
+    if (block.promise && code.substring(code.length - 2) === ';\n' && next !== null) {
       code = code.substr(0, code.length - 2);
       type = 2;
     }

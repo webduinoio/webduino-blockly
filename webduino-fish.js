@@ -5,7 +5,6 @@ function getFish(board) {
 function Fish(board) {
   this._board = board;
   this._pins = [];
-  this._timer = null;
   var self = this;
   [0, 2, 4, 5, 12, 13, 14, 15].forEach(function (val) {
     var pin = new webduino.module.Led(board, board.getDigitalPin(val));
@@ -47,66 +46,19 @@ Fish.prototype.sink = function (secs) {
   });
 };
 
-Fish.prototype.left = function (secs, speed) {
-  var self = this;
-  return new Promise(function (resolve, reject) {
-    if (self._timer) {
-      self.stop();
-    }
-
-    self.flap('left', speed);
-    setTimeout(function () {
-      self.stop();
-      resolve();
-    }, secs * 1000);
-  });
-};
-
-Fish.prototype.right = function (secs, speed) {
-  var self = this;
-  return new Promise(function (resolve, reject) {
-    if (self._timer) {
-      self.stop();
-    }
-
-    self.flap('right', speed);
-    setTimeout(function () {
-      self.stop();
-      resolve();
-    }, secs * 1000);
-  });
-};
-
-Fish.prototype.move = function (secs, speed) {
-  var self = this;
-  return new Promise(function (resolve, reject) {
-    if (self._timer) {
-      self.stop();
-    }
-
-    self.flap(speed);
-    setTimeout(function () {
-      self.stop();
-      resolve();
-    }, secs * 1000);
-  });
-};
-
-Fish.prototype.flap = function (direction, speed) {
+Fish.prototype.flap = function (secs, speed, direction) {
   var lSpeed, rSpeed, self = this;
 
   if (isNaN(speed = parseInt(speed))) {
-    if (isNaN(speed = parseInt(direction))) {
-      speed = 1;
-    }
+    speed = 1;
   }
 
   switch (direction) {
-  case 'left':
+  case 1:
     lSpeed = 2 * speed;
     rSpeed = speed;
     break;
-  case 'right':
+  case 2:
     lSpeed = speed;
     rSpeed = 2 * speed;
     break;
@@ -115,30 +67,47 @@ Fish.prototype.flap = function (direction, speed) {
     break;
   }
 
-  self._pins[4].on();
-  self._pins[5].on();
-  self._pins[6].off();
-  self._pins[7].off();
-  self._timer = setTimeout(function () {
-    self._pins[4].off();
-    self._pins[5].off();
-    self._pins[6].on();
-    self._pins[7].on();
-    self._timer = setTimeout(function () {
-      if (self._timer) {
-        self.flap(direction, speed);
-      }
-    }, 1000 / lSpeed);
-  }, 1000 / rSpeed);
-};
+  return new Promise(function (resolve, reject) {
+    var flapping = true;
 
-Fish.prototype.stop = function () {
-  if (this._timer) {
-    clearTimeout(this._timer);
-    delete this._timer;
-    this._pins[4].off();
-    this._pins[5].off();
-    this._pins[6].off();
-    this._pins[7].off();
-  }
+    _flap(function () {
+      resolve();
+    });
+
+    setTimeout(function () {
+      flapping = false;
+    }, 1000 * secs);
+
+    function _flap(callback) {
+      if (flapping) {
+        self._pins[4].on();
+        self._pins[5].on();
+        self._pins[6].off();
+        self._pins[7].off();
+        setTimeout(function () {
+          if (flapping) {
+            self._pins[4].off();
+            self._pins[5].off();
+            self._pins[6].on();
+            self._pins[7].on();
+            setTimeout(function () {
+              _flap(callback);
+            }, 1000 / rSpeed);
+          } else {
+            self._pins[4].off();
+            self._pins[5].off();
+            self._pins[6].off();
+            self._pins[7].off();
+            callback();
+          }
+        }, 1000 / lSpeed);
+      } else {
+        self._pins[4].off();
+        self._pins[5].off();
+        self._pins[6].off();
+        self._pins[7].off();
+        callback();
+      }
+    }
+  });
 };
