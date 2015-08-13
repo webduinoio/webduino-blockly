@@ -263,9 +263,20 @@ table.nav td.tabmax button{
   margin:-3px 1px 5px;
   padding:3px 15px;
   outline:none;
+  cursor:pointer;
+  transition:.2s;
+  opacity:.9;
+}
+table.nav td.tabmax button img{
+  opacity:.8;
 }
 table.nav td.tabmax button:hover{
   box-shadow:none;
+  opacity:1;
+}
+table.nav td.tabmax button:active{
+  opacity:.7;
+  border:1px solid rgba(0,0,0,0)!important;
 }
 table.nav table{
   height:auto;
