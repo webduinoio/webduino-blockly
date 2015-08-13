@@ -288,3 +288,14 @@ table.nav td.tabon{
 .blocklyToolboxDiv{
   box-shadow: rgba(0,0,0,.3) 2px 5px 5px;
 }
+.blocklyToolboxDiv::-webkit-scrollbar {
+  width:8px;
+}
+.blocklyToolboxDiv::-webkit-scrollbar-track {
+  background:#ddd;
+  border-radius: 5px;
+}
+.blocklyToolboxDiv::-webkit-scrollbar-thumb {
+  background:#bbb;
+  border-radius: 5px;
+}
