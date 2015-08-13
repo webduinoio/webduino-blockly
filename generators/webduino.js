@@ -189,7 +189,9 @@ Blockly.JavaScript['sound_status'] = function (block) {
   var dropdown_status_ = block.getFieldValue('status_');
   var statements_var_ = Blockly.JavaScript.statementToCode(block, 'var_');
   var code = variable_item_ + '.on("' + dropdown_status_ + '",function(){\n' +
-    statements_var_ + '\n' +
+    '  setTimeout(function(){\n'+
+    '  '+statements_var_ + '\n' +
+    '  },300);\n'+
     '});\n';
   return code;
 };
