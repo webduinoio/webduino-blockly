@@ -373,7 +373,7 @@ Blockly.Blocks['ultrasonic_change_add_music'] = {
 Blockly.Blocks['tutorial_youtube'] = {
   init: function() {
     this.appendValueInput("name_")
-        .appendField("設定 Youtube：");
+        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE,"設定 Youtube：");
     this.appendDummyInput()
         .appendField("   ID：")
         .appendField(new Blockly.FieldTextInput("..."), "id_");
@@ -389,9 +389,9 @@ Blockly.Blocks['tutorial_youtube'] = {
 Blockly.Blocks['tutorial_youtube_volume'] = {
   init: function() {
     this.appendValueInput("volume_")
-        .appendField("設定")
+        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET,"設定")
         .appendField(new Blockly.FieldVariable("youtube"), "name_")
-        .appendField("音量：");
+        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_VOLUME,"音量：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
