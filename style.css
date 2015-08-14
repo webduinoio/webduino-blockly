@@ -125,7 +125,7 @@ table {
 
 td {
   padding: 0;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .content {
@@ -285,6 +285,52 @@ table.nav table{
 }
 table.nav td.tabon{
   background:#ddd;
+}
+td#copyCode{
+  background-image:linear-gradient(top,#ddd 0%,#fff 100%);
+  background-image:-moz-linear-gradient(top,#ddd 0%,#fff 100%);
+  background-image:-webkit-linear-gradient(top,#ddd 0%,#fff 100%);
+  cursor:pointer;
+}
+td#copyCode.zeroclipboard-is-hover{
+  position:relative;
+  background:#fff;
+}
+td#copyCode.zeroclipboard-is-hover:before{
+  content:'';
+  position:absolute;
+  display:block;
+  z-index:10;
+  width:0;
+  height:0;
+  border-width:3px 7px;
+  border-color:transparent rgba(255,255,255,.3) transparent transparent;
+  border-style:solid;
+  top:6px;
+  left:26px;
+}
+td#copyCode.zeroclipboard-is-hover:after{
+  content:attr(data-tooltip);
+  position:absolute;
+  display:block;
+  z-index:10;
+  background:rgba(255,255,255,.3);
+  top:0;
+  left:40px;
+  border-radius:3px;
+  color:#ddd;
+  font-size:12px;
+  padding:5px;
+  white-space:nowrap;
+  font-family:'verdana';
+}
+td#copyCode div{
+  width:30px;
+  padding:5px 0;
+  text-align: center;
+  height:100%;
+  font-size:14px;
+  pointer-events: none;
 }
 .blocklyToolboxDiv{
   box-shadow: rgba(0,0,0,.3) 2px 5px 5px;
