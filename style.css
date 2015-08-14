@@ -266,6 +266,7 @@ table.nav td.tabmax button{
   cursor:pointer;
   transition:.2s;
   opacity:.9;
+  vertical-align: bottom;
 }
 table.nav td.tabmax button img{
   opacity:.8;
@@ -298,4 +299,32 @@ table.nav td.tabon{
 .blocklyToolboxDiv::-webkit-scrollbar-thumb {
   background:#bbb;
   border-radius: 5px;
+}
+#indexLinkToBin{
+  display:inline-block;
+  font-size:16px;
+  height:29px;
+  color:#000;
+  background:#ddd;
+  transition:.3s;
+  border-radius:5px;
+  margin:-7px 1px 5px;
+  box-sizing:border-box;
+  padding:5px 15px;
+  vertical-align: bottom;
+}
+#indexLinkToBin img{
+  height:17px;
+  margin-bottom:-2px;
+  margin-right:3px;
+}
+#indexLinkToBin:link{
+  color:#000;
+  text-decoration: none;
+}
+#indexLinkToBin:hover{
+  background:#fff;
+}
+#indexLinkToBin:active{
+  opacity:.8;
 }
