@@ -369,6 +369,37 @@ Blockly.Blocks['ultrasonic_change_add_music'] = {
   }
 };
 
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#wbe3vd
+Blockly.Blocks['tutorial_youtube'] = {
+  init: function() {
+    this.appendValueInput("name_")
+        .appendField("設定 Youtube：");
+    this.appendDummyInput()
+        .appendField("   ID：")
+        .appendField(new Blockly.FieldTextInput("..."), "id_");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#kqjbv8
+Blockly.Blocks['tutorial_youtube_volume'] = {
+  init: function() {
+    this.appendValueInput("volume_")
+        .appendField("設定")
+        .appendField(new Blockly.FieldVariable("youtube"), "name_")
+        .appendField("音量：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 /*
 oooooooooo.  ooooo     ooo ooooooooooooo ooooooooooooo   .oooooo.   ooooo      ooo 
 `888'   `Y8b `888'     `8' 8'   888   `8 8'   888   `8  d8P'  `Y8b  `888b.     `8' 

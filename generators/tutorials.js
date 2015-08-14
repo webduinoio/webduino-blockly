@@ -265,6 +265,56 @@ Blockly.JavaScript['ultrasonic_change_add_music'] = function (block) {
   return code;
 };
 
+Blockly.JavaScript['tutorial_youtube'] = function (block) {
+  var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
+  var text_id_ = block.getFieldValue('id_');
+  var code = 'var checkYoutubeLoad=0;\n' +
+    'onYouTubeIframeAPIReady();\n'+
+    'function onYouTubeIframeAPIReady() {\n' +
+    '  ' + value_name_ + ' = new YT.Player("player", {\n' +
+    '    height: "240",\n' +
+    '    width: "100%",\n' +
+    '    videoId: "'+text_id_+'",\n' +
+    '    playerVars: {\n' +
+    '      "autoplay": 1,\n' +
+    '      "controls": 1},\n' +
+    '    events: {\n' +
+    '      "onReady": onPlayerReady,\n' +
+    '      "onStateChange": onPlayerStateChange\n' +
+    '    }\n' +
+    '  });\n' +
+    '}\n' +
+    'function onPlayerReady(event) {\n' +
+    '  event.target.playVideo();\n' +
+    '  checkYoutubeLoad=1;\n' +
+    '}\n' +
+    'var done = false;\n' +
+    'function onPlayerStateChange(event) {\n' +
+    '  if (event.data == YT.PlayerState.PLAYING && !done) {\n' +
+    '    done = true;\n' +
+    '  }\n' +
+    '}\n' +
+    'function stopVideo() {\n' +
+    '  ' + value_name_ + '.stopVideo();\n' +
+    '}\n';
+  return code;
+};
+
+Blockly.JavaScript['tutorial_youtube_volume'] = function(block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var value_volume_ = Blockly.JavaScript.valueToCode(block, 'volume_', Blockly.JavaScript.ORDER_ATOMIC);
+  var varA = Blockly.JavaScript.variableDB_.getDistinctName(
+    'varA', Blockly.Variables.NAME_TYPE);
+  var code = 'var '+varA+' = '+value_volume_+';\n'+
+              '  if('+varA+'>=100){\n'+
+              '    '+varA+'=100;\n'+
+              '  }\n'+
+              '  if(checkYoutubeLoad==1){\n'+
+              '    '+variable_name_+'.setVolume('+varA+');\n'+
+              '  }\n';
+  return code;
+};
+
 /*
 oooooooooo.  ooooo     ooo ooooooooooooo ooooooooooooo   .oooooo.   ooooo      ooo 
 `888'   `Y8b `888'     `8' 8'   888   `8 8'   888   `8  d8P'  `Y8b  `888b.     `8' 
