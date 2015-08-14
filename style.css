@@ -295,6 +295,11 @@ td#copyCode{
 td#copyCode.zeroclipboard-is-hover{
   position:relative;
   background:#fff;
+  cursor:pointer;
+}
+td#copyCode.zeroclipboard-is-hover.zeroclipboard-is-active{
+  background:#eee;
+  cursor:pointer;
 }
 td#copyCode.zeroclipboard-is-hover:before{
   content:'';
