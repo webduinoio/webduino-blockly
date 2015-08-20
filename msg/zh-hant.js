@@ -43,6 +43,6 @@ var MSG = {
   demoTitle: "Blockly 範例測試區",
   catTutorials: "教學積木",
   linkToBin: "程式編輯",
-  catDatabase: "資料庫",
+  catDatabase: "資料庫 - Firebase",
   update: "update 2015.8.11"
 };
