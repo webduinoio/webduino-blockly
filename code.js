@@ -334,7 +334,10 @@ Code.init = function () {
     },
     media: baseUrl + '/components/blockly/media/',
     rtl: rtl,
-    toolbox: toolbox
+    toolbox: toolbox,
+    zoom: {
+      enabled: true
+    }
   });
 
   // Add to reserved word list: Local variables in execution evironment (runJS)
