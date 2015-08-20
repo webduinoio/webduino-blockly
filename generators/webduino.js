@@ -37,19 +37,19 @@ Blockly.JavaScript['getdate'] = function (block) {
   } else if (dropdown_date_ == 4) {
     code = '(function(){\n' +
       '  var ' + varDate + ' = new Date();\n' +
-      '  var ' + varNow + ' = ' + varDate + '.getFullYear().toString();\n' +
+      '  var ' + varNow + ' = ' + varDate + '.getFullYear();\n' +
       '  return ' + varNow + ';\n' +
       '})()';
   } else if (dropdown_date_ == 5) {
     code = '(function(){\n' +
       '  var ' + varDate + ' = new Date();\n' +
-      '  var ' + varNow + ' = ' + varDate + '.getMonth().toString();\n' +
+      '  var ' + varNow + ' = ' + varDate + '.getMonth();\n' +
       '  return ' + varNow + ';\n' +
       '})()';
   } else if (dropdown_date_ == 6) {
     code = '(function(){\n' +
       '  var ' + varDate + ' = new Date();\n' +
-      '  var ' + varNow + ' = ' + varDate + '.getDate().toString();\n' +
+      '  var ' + varNow + ' = ' + varDate + '.getDate();\n' +
       '  return ' + varNow + ';\n' +
       '})()';
   }
@@ -72,19 +72,19 @@ Blockly.JavaScript['gettime'] = function (block) {
   } else if (dropdown_time_ == 2) {
     code = '(function(){\n' +
       '  var ' + varTime + ' = new Date();\n' +
-      '  var ' + varNow + ' = ' + varTime + '.getHours().toString();\n' +
+      '  var ' + varNow + ' = ' + varTime + '.getHours();\n' +
       '  return ' + varNow + ';\n' +
       '})()';
   } else if (dropdown_time_ == 3) {
     code = '(function(){\n' +
       '  var ' + varTime + ' = new Date();\n' +
-      '  var ' + varNow + ' = ' + varTime + '.getMinutes().toString();\n' +
+      '  var ' + varNow + ' = ' + varTime + '.getMinutes();\n' +
       '  return ' + varNow + ';\n' +
       '})()';
   } else if (dropdown_time_ == 4) {
     code = '(function(){\n' +
       '  var ' + varTime + ' = new Date();\n' +
-      '  var ' + varNow + ' = ' + varTime + '.getSeconds().toString();\n' +
+      '  var ' + varNow + ' = ' + varTime + '.getSeconds();\n' +
       '  return ' + varNow + ';\n' +
       '})()';
   }
