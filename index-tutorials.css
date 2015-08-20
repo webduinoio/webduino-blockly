@@ -1,0 +1,107 @@
+body {
+  margin: 0 0 30px;
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 30px;
+  margin: 0 auto 10px;
+  padding: 40px 0;
+  width: 100%;
+  background-image: linear-gradient(top, #000 0%, #333 100%);
+  background-image: -moz-linear-gradient(top, #000 0%, #333 100%);
+  background-image: -webkit-linear-gradient(top, #000 0%, #333 100%);
+  text-align: center;
+  color: #fff;
+}
+
+.logo {
+  position: relative;
+  margin: 0 10px -5px 0;
+}
+
+h2 {
+  max-width: 800px;
+  width: 80%;
+  margin: 40px auto 10px;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 30px;
+  margin: 30px auto 10px;
+  color: #d50;
+  max-width: 800px;
+  width: 80%;
+  clear: both;
+}
+
+ul {
+  margin: 0 auto;
+  padding-left: 0;
+  color: #ccc;
+  max-width: 800px;
+  width: 80%;
+  display:table;
+}
+
+li {
+  display: block;
+  width: 100%;
+  margin: 0 0 5px;
+}
+
+li h4 {
+  display: block;
+  line-height: 30px;
+  margin: 0 10px 0 0;
+  font-size: 20px;
+  color: #000;
+  max-width: 700px;
+  width: calc( 100% - 200px);
+  font-weight: normal;
+  float: left;
+}
+
+li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+li a:hover {
+  color: #bbb;
+}
+
+li h4 a {
+  color: #000;
+  padding-bottom: 3px;
+  border-bottom: 1px dotted #999;
+  font-size: 20px;
+}
+
+li h4 a:hover {
+  color: #f90;
+}
+
+li div {
+  width: 200px;
+  float: right;
+  text-align: right;
+  margin-top:-25px;
+  margin-bottom:15px;
+}
+
+@media (max-width: 800px) {
+  h1 span {
+    display: block;
+  }
+  h4 {
+    display: block;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  li {
+    padding-bottom: 10px;
+  }
+}
