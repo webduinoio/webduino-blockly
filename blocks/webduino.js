@@ -19,6 +19,45 @@ Blockly.Blocks['console'] = {
   }
 };
 
+/**
+ * date and time
+ * https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#rrm4nf
+ */
+Blockly.Blocks['getdate'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.CUSTOM_JS_Date,"現在的日期")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.CUSTOM_JS_Date_1, "1"],
+        [Blockly.Msg.CUSTOM_JS_Date_2, "2"],
+        [Blockly.Msg.CUSTOM_JS_Date_3, "3"],
+        [Blockly.Msg.CUSTOM_JS_Date_4, "4"],
+        [Blockly.Msg.CUSTOM_JS_Date_5, "5"],
+        [Blockly.Msg.CUSTOM_JS_Date_6, "6"]
+      ]), "date_");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(20);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+Blockly.Blocks['gettime'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.CUSTOM_JS_Time,"現在的時間")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.CUSTOM_JS_Time_1, "1"],
+        [Blockly.Msg.CUSTOM_JS_Time_2, "2"],
+        [Blockly.Msg.CUSTOM_JS_Time_3, "3"],
+        [Blockly.Msg.CUSTOM_JS_Time_4, "4"]
+      ]), "time_");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(20);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 Blockly.Blocks['board_ready'] = {
   init: function () {
     this.appendValueInput("device_")

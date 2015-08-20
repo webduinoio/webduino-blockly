@@ -5,6 +5,18 @@ goog.provide('Blockly.Msg.Webduino.en');
 goog.require('Blockly.Msg.Webduino');
 
 Blockly.Msg.CUSTOM_JS_CONSOLE = "Console:";
+Blockly.Msg.CUSTOM_JS_Date = "Date:";
+Blockly.Msg.CUSTOM_JS_Date_1 = "year / month / date";
+Blockly.Msg.CUSTOM_JS_Date_2 = "month / date / year";
+Blockly.Msg.CUSTOM_JS_Date_3 = "date / month / year";
+Blockly.Msg.CUSTOM_JS_Date_4 = "year";
+Blockly.Msg.CUSTOM_JS_Date_5 = "month";
+Blockly.Msg.CUSTOM_JS_Date_6 = "date";
+Blockly.Msg.CUSTOM_JS_Time = "Time:";
+Blockly.Msg.CUSTOM_JS_Time_1 = "hours : minutes : seconds";
+Blockly.Msg.CUSTOM_JS_Time_2 = "hours";
+Blockly.Msg.CUSTOM_JS_Time_3 = "minutes";
+Blockly.Msg.CUSTOM_JS_Time_4 = "seconds";
 
 Blockly.Msg.WEBDUINO_TIMER_AFTER = "After";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "seconds";

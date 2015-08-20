@@ -9,6 +9,88 @@ Blockly.JavaScript['console'] = function (block) {
   return code;
 };
 
+Blockly.JavaScript['getdate'] = function (block) {
+  var dropdown_date_ = block.getFieldValue('date_');
+  var varNow = Blockly.JavaScript.variableDB_.getDistinctName(
+    'varNow', Blockly.Variables.NAME_TYPE);
+  var varDate = Blockly.JavaScript.variableDB_.getDistinctName(
+    'varDate', Blockly.Variables.NAME_TYPE);
+  var code;
+  if (dropdown_date_ == 1) {
+    code = '(function(){\n' +
+      '  var ' + varDate + ' = new Date();\n' +
+      '  var ' + varNow + ' = ' + varDate + '.getFullYear().toString() + "/" + (' + varDate + '.getMonth()+1).toString() + "/" +' + varDate + '.getDate().toString();\n' +
+      '  return ' + varNow + ';\n' +
+      '})()';
+  } else if (dropdown_date_ == 2) {
+    code = '(function(){\n' +
+      '  var ' + varDate + ' = new Date();\n' +
+      '  var ' + varNow + ' = (' + varDate + '.getMonth()+1).toString() + "/" + ' + varDate + '.getDate().toString() + "/" +' + varDate + '.getFullYear().toString();\n' +
+      '  return ' + varNow + ';\n' +
+      '})()';
+  } else if (dropdown_date_ == 3) {
+    code = '(function(){\n' +
+      '  var ' + varDate + ' = new Date();\n' +
+      '  var ' + varNow + ' = ' + varDate + '.getDate().toString() + "/" + (' + varDate + '.getMonth()+1).toString() + "/" +' + varDate + '.getFullYear().toString();\n' +
+      '  return ' + varNow + ';\n' +
+      '})()';
+  } else if (dropdown_date_ == 4) {
+    code = '(function(){\n' +
+      '  var ' + varDate + ' = new Date();\n' +
+      '  var ' + varNow + ' = ' + varDate + '.getFullYear().toString();\n' +
+      '  return ' + varNow + ';\n' +
+      '})()';
+  } else if (dropdown_date_ == 5) {
+    code = '(function(){\n' +
+      '  var ' + varDate + ' = new Date();\n' +
+      '  var ' + varNow + ' = ' + varDate + '.getMonth().toString();\n' +
+      '  return ' + varNow + ';\n' +
+      '})()';
+  } else if (dropdown_date_ == 6) {
+    code = '(function(){\n' +
+      '  var ' + varDate + ' = new Date();\n' +
+      '  var ' + varNow + ' = ' + varDate + '.getDate().toString();\n' +
+      '  return ' + varNow + ';\n' +
+      '})()';
+  }
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['gettime'] = function (block) {
+  var dropdown_time_ = block.getFieldValue('time_');
+  var varNow = Blockly.JavaScript.variableDB_.getDistinctName(
+    'varNow', Blockly.Variables.NAME_TYPE);
+  var varTime = Blockly.JavaScript.variableDB_.getDistinctName(
+    'varTime', Blockly.Variables.NAME_TYPE);
+  var code;
+  if (dropdown_time_ == 1) {
+    code = '(function(){\n' +
+      '  var ' + varTime + ' = new Date();\n' +
+      '  var ' + varNow + ' = ' + varTime + '.getHours().toString() + ":" + ' + varTime + '.getMinutes().toString() + ":" +' + varTime + '.getSeconds().toString();\n' +
+      '  return ' + varNow + ';\n' +
+      '})()';
+  } else if (dropdown_time_ == 2) {
+    code = '(function(){\n' +
+      '  var ' + varTime + ' = new Date();\n' +
+      '  var ' + varNow + ' = ' + varTime + '.getHours().toString();\n' +
+      '  return ' + varNow + ';\n' +
+      '})()';
+  } else if (dropdown_time_ == 3) {
+    code = '(function(){\n' +
+      '  var ' + varTime + ' = new Date();\n' +
+      '  var ' + varNow + ' = ' + varTime + '.getMinutes().toString();\n' +
+      '  return ' + varNow + ';\n' +
+      '})()';
+  } else if (dropdown_time_ == 4) {
+    code = '(function(){\n' +
+      '  var ' + varTime + ' = new Date();\n' +
+      '  var ' + varNow + ' = ' + varTime + '.getSeconds().toString();\n' +
+      '  return ' + varNow + ';\n' +
+      '})()';
+  }
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 Blockly.JavaScript['board_ready'] = function (block) {
   var value_device_ = Blockly.JavaScript.valueToCode(block, 'device_', Blockly.JavaScript.ORDER_NONE);
   var statements_callbacks_ = Blockly.JavaScript.statementToCode(block, 'callbacks_');

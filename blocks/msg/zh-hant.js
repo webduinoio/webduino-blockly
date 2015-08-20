@@ -5,6 +5,18 @@ goog.provide('Blockly.Msg.Webduino.zh.hant');
 goog.require('Blockly.Msg.Webduino');
 
 Blockly.Msg.CUSTOM_JS_CONSOLE = "控制台顯示";
+Blockly.Msg.CUSTOM_JS_Date = "現在的日期";
+Blockly.Msg.CUSTOM_JS_Date_1 = "年 / 月 / 日";
+Blockly.Msg.CUSTOM_JS_Date_2 = "月 / 日 / 年";
+Blockly.Msg.CUSTOM_JS_Date_3 = "日 / 月 / 年";
+Blockly.Msg.CUSTOM_JS_Date_4 = "年";
+Blockly.Msg.CUSTOM_JS_Date_5 = "月";
+Blockly.Msg.CUSTOM_JS_Date_6 = "日";
+Blockly.Msg.CUSTOM_JS_Time = "現在的時間";
+Blockly.Msg.CUSTOM_JS_Time_1 = "時:分:秒";
+Blockly.Msg.CUSTOM_JS_Time_2 = "時";
+Blockly.Msg.CUSTOM_JS_Time_3 = "分";
+Blockly.Msg.CUSTOM_JS_Time_4 = "秒";
 
 Blockly.Msg.WEBDUINO_TIMER_AFTER = "在";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "秒之後";

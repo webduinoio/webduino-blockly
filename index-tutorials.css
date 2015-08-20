@@ -64,13 +64,13 @@ li h4 {
 }
 
 li a {
-  color: #ccc;
+  color: #bbb;
   text-decoration: none;
   font-size: 14px;
 }
 
 li a:hover {
-  color: #bbb;
+  color: #999;
 }
 
 li h4 a {
@@ -78,6 +78,59 @@ li h4 a {
   padding-bottom: 3px;
   border-bottom: 1px dotted #999;
   font-size: 20px;
+}
+li h4 i{
+  position:relative;
+  font-style: normal;
+  font-weight: normal;
+  display:inline-block;
+  padding:1px 4px 2px 2px;
+  background:#f00;
+  color:#fff;
+  font-size:12px;
+  line-height: 12px;
+  font-family: 'arial';
+  margin-left:10px;
+  margin-top:8px;
+  vertical-align: top;
+  animation:ai 1s infinite;
+  -moz-animation:ai 1s infinite;
+  -webkit-animation:ai 1s infinite;
+}
+@keyframes ai{
+  0%{
+    margin-left:10px;
+  }
+  50%{
+    margin-left:14px;
+  }
+}
+@-moz-keyframes ai{
+  0%{
+    margin-left:10px;
+  }
+  50%{
+    margin-left:14px;
+  }
+}
+@-webkit-keyframes ai{
+  0%{
+    margin-left:10px;
+  }
+  50%{
+    margin-left:14px;
+  }
+}
+li h4 i:before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-6px;
+  width:0;
+  height:0;
+  border-style:solid;
+  border-width:7px 6px 8px 0;
+  border-color:transparent #f00 transparent transparent;
 }
 
 li h4 a:hover {
