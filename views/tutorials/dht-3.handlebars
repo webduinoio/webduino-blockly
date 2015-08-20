@@ -29,13 +29,12 @@
   <div id="demoTitle">{{demoTitle}}</div>
   <a href="http://bin.webduino.io/jugo/edit?html,css,js,output" id="linkToBin" target="_blank"><img src="media/dave.min.svg">{{linkToBin}}</a>
   <div id="demoDescription">{{demoDescription}}</div>
+  firebase: <a href="https://www.firebase.com/" target="_blank">www.firebase.com</a>
+  <br/>
+  <br/>
   <div id="show">
     {{temperature}}<span id="temperature">0</span> <b>o</b>C<br/>
-    {{humidity}}<span id="humidity">0</span> %<br/>
-    <br/>
-    <div id="chart_div1" style=" height: 120px; display:inline-block;"></div>
-    <div id="chart_div2" style=" height: 120px;display:inline-block;"></div>
-    <div id="chart_div" style="width: 100%; height: 400px;"></div>
+    {{humidity}}<span id="humidity">0</span> %
   </div>
 </div>
 <table id="tutorials-table" class="nav">
@@ -76,43 +75,12 @@
 
 <xml id="toolbox" style="display: none">
   <category id="catVariables" custom="VARIABLE"></category>
-  <category id="catColour">
-    <block type="colour_picker"></block>
-  </category>  
-  <category id="catLoops">
-    <block type="controls_for">
-      <value name="FROM">
-        <block type="math_number">
-          <field name="NUM">1</field>
-        </block>
-      </value>
-      <value name="TO">
-        <block type="math_number">
-          <field name="NUM">10</field>
-        </block>
-      </value>
-      <value name="BY">
-        <block type="math_number">
-          <field name="NUM">1</field>
-        </block>
-      </value>
-    </block>
-  </category>
   <category id="catMath">
     <block type="math_number"></block>
   </category>
-    <category id="catLists">
-    <block type="lists_getIndex">
-      <value name="VALUE">
-        <block type="variables_get">
-          <field name="VAR" class="listVar">{{listVariable}}</field>
-        </block>
-      </value>
-    </block>
-    <block type="lists_length"></block>
-  </category>
   <category id="catConsole">
-    <block type="console"></block>
+    <block type="getdate"></block>
+    <block type="gettime"></block>
   </category>
   <sep></sep>
   <sep></sep>
@@ -151,42 +119,10 @@
     </block>
     <block type="data_firebase_write"></block>
     <block type="data_firebase_data"></block>
-    <block type="data_firebase_read">
-      <value name="read_">
-        <block type="variables_get">
-          <field name="VAR">val</field>
-        </block>
-      </value>
-    </block>
-    <block type="data_firebase_readonce">
-      <value name="read_">
-        <block type="variables_get">
-          <field name="VAR">val</field>
-        </block>
-      </value>
-    </block>
     <block type="data_firebase_clear"></block>
   </category>
   <category id="catTutorials">
     <block type="tutorial_dht_show"></block>
-    <block type="tutorial_dht_areachart">
-      <value name="name_">
-        <block type="variables_get">
-          <field name="VAR">areachart</field>
-        </block>
-      </value>
-      <value name="color_t_">
-        <block type="colour_picker">
-          <field name="COLOUR">#ff0000</field>
-        </block>
-      </value>
-      <value name="color_h_">
-        <block type="colour_picker">
-          <field name="COLOUR">#0000ff</field>
-        </block>
-      </value>
-    </block>
-    <block type="tutorial_dht_draw"></block>
   </category>
   <sep></sep>
 </xml>
