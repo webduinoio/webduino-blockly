@@ -388,6 +388,43 @@ Code.init = function () {
   onresize();
   // Lazy-load the syntax-highlighting.
   window.setTimeout(Code.importPrettify, 1);
+
+  /*  checkLoad();
+    function checkLoad() {
+      var cb = document.getElementById('content_blocks');
+      var bz = document.querySelector('.blocklyZoom');
+      var bt = document.querySelector('.blocklyTrash');
+      if (cb&&bz&&bt) {
+        blocklyTool(cb,bz,bt);
+      } else {
+        setTimeout(checkLoad,1000);
+      }
+    }
+
+    function blocklyTool(cb,bz,bt) {
+      console.log('go');
+      var bzClip = document.querySelectorAll('.blocklyZoom clippath rect');
+      var bzImage = document.querySelectorAll('.blocklyZoom image');
+      bzClip[0].setAttribute('style', '-webkit-transform:translateY(75px); cursor:pointer;');
+      bzImage[0].setAttribute('y', '-17');
+      bzImage[0].setAttribute('xlink:href', 'media/sprites.png');
+      bzClip[1].setAttribute('style', '-webkit-transform:translateY(-45px); cursor:pointer;');
+      bzImage[1].setAttribute('y', '-94');
+      bzImage[1].setAttribute('xlink:href', 'media/sprites.png');
+      bzClip[2].setAttribute('style', '-webkit-transform:translateY(-40px); cursor:pointer;');
+      bzImage[2].setAttribute('y', '-55');
+      bzImage[2].setAttribute('xlink:href', 'media/sprites.png');
+
+      zoomPosition();
+
+      function zoomPosition() {
+        var contentWidth = cb.offsetWidth;
+        var contentHeight = cb.offsetHeight;
+        bz.setAttribute('style', '-webkit-transform-origin:center center; -webkit-transform:translateY(20px) translateX(' + (contentWidth - 50) + 'px) scale(.9);');
+        bt.setAttribute('style', '-webkit-transform-origin:center center; -webkit-transform:translateY(' + (contentHeight - 90) + 'px) translateX(' + (contentWidth - 80) + 'px) scale(.8); opacity:0.4;');
+      }
+      window.addEventListener('resize', zoomPosition);
+    }*/
 };
 
 Code.renderPage = function (callback) {
@@ -638,6 +675,126 @@ Blockly.JavaScript['procedures_callnoreturn'] = function (block) {
   return code;
 };
 
+// ZoomControl icons position
+Blockly.ZoomControls.prototype.createDom = function () {
+  var workspace = this.workspace_;
+  this.svgGroup_ = Blockly.createSvgElement('g', {
+    'class': 'blocklyZoom'
+  }, null);
+  var rnd = String(Math.random()).substring(2);
+  var clip = Blockly.createSvgElement('clipPath', {
+      'id': 'blocklyZoomresetClipPath' + rnd
+    },
+    this.svgGroup_);
+  Blockly.createSvgElement('rect', {
+      'width': 32,
+      'height': 32,
+      'x': 40,
+      'y': 80
+    },
+    clip);
+  var zoomresetSvg = Blockly.createSvgElement('image', {
+      'width': Blockly.SPRITE.width,
+      'height': Blockly.SPRITE.height,
+      'x': 40,
+      'y': -12,
+      'clip-path': 'url(#blocklyZoomresetClipPath' + rnd + ')'
+    },
+    this.svgGroup_);
+  zoomresetSvg.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
+    'media/sprites.png');
+
+  var clip = Blockly.createSvgElement('clipPath', {
+      'id': 'blocklyZoominClipPath' + rnd
+    },
+    this.svgGroup_);
+  Blockly.createSvgElement('rect', {
+      'width': 32,
+      'height': 32,
+      'x': 0,
+      'y': 80
+    },
+    clip);
+  var zoominSvg = Blockly.createSvgElement('image', {
+      'width': Blockly.SPRITE.width,
+      'height': Blockly.SPRITE.height,
+      'x': -32,
+      'y': -12,
+      'clip-path': 'url(#blocklyZoominClipPath' + rnd + ')'
+    },
+    this.svgGroup_);
+  zoominSvg.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
+    'media/sprites.png');
+
+  var clip = Blockly.createSvgElement('clipPath', {
+      'id': 'blocklyZoomoutClipPath' + rnd
+    },
+    this.svgGroup_);
+  Blockly.createSvgElement('rect', {
+      'width': 32,
+      'height': 32,
+      'x': 80,
+      'y': 80
+    },
+    clip);
+  var zoomoutSvg = Blockly.createSvgElement('image', {
+      'width': Blockly.SPRITE.width,
+      'height': Blockly.SPRITE.height,
+      'x': 16,
+      'y': -12,
+      'clip-path': 'url(#blocklyZoomoutClipPath' + rnd + ')'
+    },
+    this.svgGroup_);
+  zoomoutSvg.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href',
+    'media/sprites.png');
+
+  Blockly.bindEvent_(zoomresetSvg, 'mousedown', workspace, workspace.zoomReset);
+  Blockly.bindEvent_(zoominSvg, 'mousedown', null, function () {
+    workspace.zoomCenter(1);
+  });
+  Blockly.bindEvent_(zoomoutSvg, 'mousedown', null, function () {
+    workspace.zoomCenter(-1);
+  });
+
+  return this.svgGroup_;
+};
+
+// ZoomControl position and size
+Blockly.ZoomControls.prototype.position = function () {
+  var metrics = this.workspace_.getMetrics();
+  if (!metrics) {
+    return;
+  }
+  if (this.workspace_.RTL) {
+    this.left_ = this.MARGIN_SIDE_;
+  } else {
+    this.left_ = metrics.absoluteLeft -
+      this.WIDTH_ - this.MARGIN_SIDE_ + 90;
+  }
+  this.top_ = metrics.viewHeight + metrics.absoluteTop -
+    this.HEIGHT_ - this.MARGIN_BOTTOM_ + 80;
+  this.svgGroup_.setAttribute('transform',
+    'translate(' + this.left_ + ',' + this.top_ + ')');
+};
+
+// trashcan position and size
+Blockly.Trashcan.prototype.position = function () {
+  var metrics = this.workspace_.getMetrics();
+  if (!metrics) {
+    return;
+  }
+  if (this.workspace_.RTL) {
+    this.left_ = this.MARGIN_SIDE_;
+  } else {
+    this.left_ = metrics.viewWidth + metrics.absoluteLeft -
+      this.WIDTH_ - this.MARGIN_SIDE_ + 20;
+  }
+  this.top_ = metrics.viewHeight + metrics.absoluteTop -
+    (this.BODY_HEIGHT_ + this.LID_HEIGHT_) - this.MARGIN_BOTTOM_ + 20;
+  this.svgGroup_.setAttribute('transform',
+    'translate(' + this.left_ + ',' + this.top_ + ') scale(.75)');
+};
+
 Blockly.JavaScript.depth = 0;
 
 // Load the Code demo's language strings.
@@ -655,5 +812,6 @@ if (Code.PAGE !== 'index') {
 window.addEventListener('load', function () {
   Code.renderPage(function () {
     Code.init();
+
   });
 });
