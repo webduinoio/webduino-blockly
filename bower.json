@@ -1,6 +1,6 @@
 {
   "name": "webduino-blockly",
   "dependencies": {
-    "blockly": "google/blockly#96d5987db1b45fb2c6740ac054b9c57acd1fc298"
+    "blockly": "google/blockly#53f54248018db2a5bb6f5133ee08ad20f78dbbc6"
   }
 }
