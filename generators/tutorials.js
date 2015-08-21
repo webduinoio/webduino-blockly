@@ -269,12 +269,12 @@ Blockly.JavaScript['tutorial_youtube'] = function (block) {
   var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
   var text_id_ = block.getFieldValue('id_');
   var code = 'var checkYoutubeLoad=0;\n' +
-    'onYouTubeIframeAPIReady();\n'+
+    'onYouTubeIframeAPIReady();\n' +
     'function onYouTubeIframeAPIReady() {\n' +
     '  ' + value_name_ + ' = new YT.Player("player", {\n' +
     '    height: "240",\n' +
     '    width: "100%",\n' +
-    '    videoId: "'+text_id_+'",\n' +
+    '    videoId: "' + text_id_ + '",\n' +
     '    playerVars: {\n' +
     '      "autoplay": 1,\n' +
     '      "controls": 1},\n' +
@@ -300,21 +300,30 @@ Blockly.JavaScript['tutorial_youtube'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['tutorial_youtube_volume'] = function(block) {
+Blockly.JavaScript['tutorial_youtube_volume'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var value_volume_ = Blockly.JavaScript.valueToCode(block, 'volume_', Blockly.JavaScript.ORDER_ATOMIC);
   var varA = Blockly.JavaScript.variableDB_.getDistinctName(
     'varA', Blockly.Variables.NAME_TYPE);
-  var code = 'var '+varA+' = '+value_volume_+';\n'+
-              '  if('+varA+'>=100){\n'+
-              '    '+varA+'=100;\n'+
-              '  }\n'+
-              '  if(checkYoutubeLoad==1){\n'+
-              '    '+variable_name_+'.setVolume('+varA+');\n'+
-              '  }\n';
+  var code = 'var ' + varA + ' = ' + value_volume_ + ';\n' +
+    '  if(' + varA + '>=100){\n' +
+    '    ' + varA + '=100;\n' +
+    '  }\n' +
+    '  if(checkYoutubeLoad==1){\n' +
+    '    ' + variable_name_ + '.setVolume(' + varA + ');\n' +
+    '  }\n';
   return code;
 };
 
+
+Blockly.JavaScript['tutorial_youtube_speed'] = function (block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_speed_ = block.getFieldValue('speed_');
+  var code = '  if(checkYoutubeLoad==1){\n' +
+    '    ' + variable_name_ + '.setPlaybackRate(' + dropdown_speed_ + ');\n' +
+    '  }\n';
+  return code;
+};
 /*
 oooooooooo.  ooooo     ooo ooooooooooooo ooooooooooooo   .oooooo.   ooooo      ooo 
 `888'   `Y8b `888'     `8' 8'   888   `8 8'   888   `8  d8P'  `Y8b  `888b.     `8' 

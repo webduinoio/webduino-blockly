@@ -371,12 +371,12 @@ Blockly.Blocks['ultrasonic_change_add_music'] = {
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#wbe3vd
 Blockly.Blocks['tutorial_youtube'] = {
-  init: function() {
+  init: function () {
     this.appendValueInput("name_")
-        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE,"設定 Youtube：");
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE, "設定 Youtube：");
     this.appendDummyInput()
-        .appendField("   ID：")
-        .appendField(new Blockly.FieldTextInput("..."), "id_");
+      .appendField("   ID：")
+      .appendField(new Blockly.FieldTextInput("..."), "id_");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -387,11 +387,33 @@ Blockly.Blocks['tutorial_youtube'] = {
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#kqjbv8
 Blockly.Blocks['tutorial_youtube_volume'] = {
-  init: function() {
+  init: function () {
     this.appendValueInput("volume_")
-        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET,"設定")
-        .appendField(new Blockly.FieldVariable("youtube"), "name_")
-        .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_VOLUME,"音量：");
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET, "設定")
+      .appendField(new Blockly.FieldVariable("youtube"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_VOLUME, "音量：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#tih6od
+Blockly.Blocks['tutorial_youtube_speed'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET, "設定")
+      .appendField(new Blockly.FieldVariable("youtube"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SPEED, " 的播放速度：")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SLOW, "0.5"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_NORMAL, "1"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_FAST, "1.25"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_VERYFAST, "1.5"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SUPERFAST, "2"]
+      ]), "speed_");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -731,9 +753,9 @@ o888bood8P'     `YbodP'    .8888888888P  .8888888888P  o888ooooood8 o888o  o888o
 Blockly.Blocks['tutorial_buzzer_1'] = {
   init: function () {
     this.appendValueInput("var_")
-      .appendField(Blockly.Msg.WEBDUINO_BUZZER_SHOW,"顯示");
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_SHOW, "顯示");
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BUZZER_SHOW_NOTESANDTEMPOS,"的音符和節奏");
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_SHOW_NOTESANDTEMPOS, "的音符和節奏");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -746,7 +768,7 @@ Blockly.Blocks['tutorial_buzzer_1'] = {
 Blockly.Blocks['tutorial_buzzer_3'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BUZZER_CLICK,"點選")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_CLICK, "點選")
       .appendField(new Blockly.FieldDropdown([
         ["music1", "m1"],
         ["music2", "m2"],
@@ -754,7 +776,7 @@ Blockly.Blocks['tutorial_buzzer_3'] = {
         ["stop", "stop"]
       ]), "btn_");
     this.appendStatementInput("do_")
-      .appendField(Blockly.Msg.WEBDUINO_BUZZER_DO,"執行：");
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_DO, "執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');

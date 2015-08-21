@@ -54,6 +54,12 @@ Blockly.Msg.WEBDUINO_ULTRASONIC_DISTANCE = "'s distance ( cm )";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE = "Set Youtube：";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET = "Set";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_VOLUME = "Volume:";
+Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SPEED = "Speed:";
+Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SLOW = "Slow";
+Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_NORMAL = "Normal";
+Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_FAST = "Fast";
+Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_VERYFAST = "Very Fast";
+Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SUPERFAST = "Super Fast";
 
 Blockly.Msg.WEBDUINO_DHT_NEW = "DHT , pin:";
 Blockly.Msg.WEBDUINO_DHT_GET = "detect temperature and humidity over every";
