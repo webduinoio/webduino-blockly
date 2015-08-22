@@ -385,6 +385,16 @@ Blockly.Blocks['tutorial_youtube'] = {
   }
 };
 
+/*
+oooooo   oooo                           .                .o8                 
+ `888.   .8'                          .o8               "888                 
+  `888. .8'    .ooooo.  oooo  oooo  .o888oo oooo  oooo   888oooo.   .ooooo.  
+   `888.8'    d88' `88b `888  `888    888   `888  `888   d88' `88b d88' `88b 
+    `888'     888   888  888   888    888    888   888   888   888 888ooo888 
+     888      888   888  888   888    888 .  888   888   888   888 888    .o 
+    o888o     `Y8bod8P'  `V88V"V8P'   "888"  `V88V"V8P'  `Y8bod8P' `Y8bod8P' 
+*/
+
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#kqjbv8
 Blockly.Blocks['tutorial_youtube_volume'] = {
   init: function () {
@@ -416,6 +426,45 @@ Blockly.Blocks['tutorial_youtube_speed'] = {
       ]), "speed_");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#tcfvai
+Blockly.Blocks['tutorial_youtube_control'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET, "設定")
+      .appendField(new Blockly.FieldVariable("youtube"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUS, " 的狀態為：")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SETPLAY, "1"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SETPAUSE, "2"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SETSTOP, "0"]
+      ]), "status_");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#metxhc
+Blockly.Blocks['tutorial_youtube_status'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("youtube"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUS, " 的狀態為：")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSPLAY, "1"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSPAUSE, "2"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSSTOP, "0"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSSTART, "-1"]
+      ]), "status_");
+    this.setOutput(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
     this.setHelpUrl('http://www.example.com/');

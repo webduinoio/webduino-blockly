@@ -265,6 +265,16 @@ Blockly.JavaScript['ultrasonic_change_add_music'] = function (block) {
   return code;
 };
 
+/*
+oooooo   oooo                           .                .o8                 
+ `888.   .8'                          .o8               "888                 
+  `888. .8'    .ooooo.  oooo  oooo  .o888oo oooo  oooo   888oooo.   .ooooo.  
+   `888.8'    d88' `88b `888  `888    888   `888  `888   d88' `88b d88' `88b 
+    `888'     888   888  888   888    888    888   888   888   888 888ooo888 
+     888      888   888  888   888    888 .  888   888   888   888 888    .o 
+    o888o     `Y8bod8P'  `V88V"V8P'   "888"  `V88V"V8P'  `Y8bod8P' `Y8bod8P' 
+*/
+
 Blockly.JavaScript['tutorial_youtube'] = function (block) {
   var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
   var text_id_ = block.getFieldValue('id_');
@@ -324,6 +334,35 @@ Blockly.JavaScript['tutorial_youtube_speed'] = function (block) {
     '  }\n';
   return code;
 };
+
+Blockly.JavaScript['tutorial_youtube_control'] = function (block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_status_ = block.getFieldValue('status_');
+  var code;
+  if(dropdown_status_=='1'){
+    code = '  if(checkYoutubeLoad==1){\n' +
+      '    ' + variable_name_ + '.playVideo();\n' +
+      '  }\n';
+  }else if(dropdown_status_=='2'){
+    code = '  if(checkYoutubeLoad==1){\n' +
+      '    ' + variable_name_ + '.pauseVideo();\n' +
+      '  }\n';
+  }else if(dropdown_status_=='0'){
+    code = '  if(checkYoutubeLoad==1){\n' +
+      '    ' + variable_name_ + '.stopVideo();\n' +
+      '    ' + variable_name_ + '.seekTo(0);\n' +
+      '  }\n';
+  }
+  return code;
+};
+
+Blockly.JavaScript['tutorial_youtube_status'] = function (block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_status_ = block.getFieldValue('status_');
+  var code = variable_name_ + '.getPlayerState()==' + dropdown_status_;
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
 /*
 oooooooooo.  ooooo     ooo ooooooooooooo ooooooooooooo   .oooooo.   ooooo      ooo 
 `888'   `Y8b `888'     `8' 8'   888   `8 8'   888   `8  d8P'  `Y8b  `888b.     `8' 

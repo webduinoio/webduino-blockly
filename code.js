@@ -389,42 +389,6 @@ Code.init = function () {
   // Lazy-load the syntax-highlighting.
   window.setTimeout(Code.importPrettify, 1);
 
-  /*  checkLoad();
-    function checkLoad() {
-      var cb = document.getElementById('content_blocks');
-      var bz = document.querySelector('.blocklyZoom');
-      var bt = document.querySelector('.blocklyTrash');
-      if (cb&&bz&&bt) {
-        blocklyTool(cb,bz,bt);
-      } else {
-        setTimeout(checkLoad,1000);
-      }
-    }
-
-    function blocklyTool(cb,bz,bt) {
-      console.log('go');
-      var bzClip = document.querySelectorAll('.blocklyZoom clippath rect');
-      var bzImage = document.querySelectorAll('.blocklyZoom image');
-      bzClip[0].setAttribute('style', '-webkit-transform:translateY(75px); cursor:pointer;');
-      bzImage[0].setAttribute('y', '-17');
-      bzImage[0].setAttribute('xlink:href', 'media/sprites.png');
-      bzClip[1].setAttribute('style', '-webkit-transform:translateY(-45px); cursor:pointer;');
-      bzImage[1].setAttribute('y', '-94');
-      bzImage[1].setAttribute('xlink:href', 'media/sprites.png');
-      bzClip[2].setAttribute('style', '-webkit-transform:translateY(-40px); cursor:pointer;');
-      bzImage[2].setAttribute('y', '-55');
-      bzImage[2].setAttribute('xlink:href', 'media/sprites.png');
-
-      zoomPosition();
-
-      function zoomPosition() {
-        var contentWidth = cb.offsetWidth;
-        var contentHeight = cb.offsetHeight;
-        bz.setAttribute('style', '-webkit-transform-origin:center center; -webkit-transform:translateY(20px) translateX(' + (contentWidth - 50) + 'px) scale(.9);');
-        bt.setAttribute('style', '-webkit-transform-origin:center center; -webkit-transform:translateY(' + (contentHeight - 90) + 'px) translateX(' + (contentWidth - 80) + 'px) scale(.8); opacity:0.4;');
-      }
-      window.addEventListener('resize', zoomPosition);
-    }*/
 };
 
 Code.renderPage = function (callback) {
