@@ -27,12 +27,20 @@ Blockly.Msg.WEBDUINO_DELAY_SECONDS = "seconds";
 
 Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "Board";
 Blockly.Msg.WEBDUINO_BOARD_READY_DEVICE = "device";
+Blockly.Msg.WEBDUINO_PIN_SET = "Set";
+Blockly.Msg.WEBDUINO_PIN_PIN = " pin:";
+Blockly.Msg.WEBDUINO_PIN_QUERY = "Get";
+Blockly.Msg.WEBDUINO_PIN_DO = "do:";
+Blockly.Msg.WEBDUINO_PIN_STATE = "'s state";
 
 Blockly.Msg.WEBDUINO_LED = "LED";
 Blockly.Msg.WEBDUINO_LED_PIN = "pin";
 Blockly.Msg.WEBDUINO_LED_SET_STATE = "set state";
 Blockly.Msg.WEBDUINO_LED_TOGGLE = "toggle";
 Blockly.Msg.WEBDUINO_LED_INTENSITY = "intensity (0-1):";
+Blockly.Msg.WEBDUINO_LED_IF = "Set";
+Blockly.Msg.WEBDUINO_LED_STATE_IS = "'s state:";
+Blockly.Msg.WEBDUINO_LED_STATE_DO = "then:";
 
 Blockly.Msg.WEBDUINO_RELAY = "Relay";
 Blockly.Msg.WEBDUINO_RELAY_PIN = "pin";

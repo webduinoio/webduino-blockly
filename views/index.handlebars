@@ -296,6 +296,15 @@
         <block type="text"></block>
       </value>
     </block>
+    <block type="set_pin_state">
+      <value name="var_">
+        <block type="variables_get">
+          <field name="VAR">boardPin</field>
+        </block>
+      </value>
+    </block>
+    <block type="query_pin_state"></block>
+    <block type="pin_state"></block>
   </category>
   <sep></sep>
   <category id="catLed">
@@ -321,6 +330,7 @@
         </block>
       </value>
     </block>
+    <block type="led_callback"></block>
   </category>
   <category id="catRGBLed">
     <block type="variables_set">

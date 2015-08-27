@@ -27,12 +27,20 @@ Blockly.Msg.WEBDUINO_DELAY_SECONDS = "秒";
 
 Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "開發版";
 Blockly.Msg.WEBDUINO_BOARD_READY_DEVICE = "device";
+Blockly.Msg.WEBDUINO_PIN_SET = "設定";
+Blockly.Msg.WEBDUINO_PIN_PIN = " 為腳位：";
+Blockly.Msg.WEBDUINO_PIN_QUERY = "偵測";
+Blockly.Msg.WEBDUINO_PIN_DO = "執行：";
+Blockly.Msg.WEBDUINO_PIN_STATE = "的狀態";
 
 Blockly.Msg.WEBDUINO_LED = "LED 燈";
 Blockly.Msg.WEBDUINO_LED_PIN = "，腳位：";
 Blockly.Msg.WEBDUINO_LED_SET_STATE = "設定狀態";
 Blockly.Msg.WEBDUINO_LED_TOGGLE = "切換狀態";
 Blockly.Msg.WEBDUINO_LED_INTENSITY = "強度：";
+Blockly.Msg.WEBDUINO_LED_IF = "設定";
+Blockly.Msg.WEBDUINO_LED_STATE_IS = " 的狀態為：";
+Blockly.Msg.WEBDUINO_LED_STATE_DO = "接著執行：";
 
 Blockly.Msg.WEBDUINO_RELAY = "繼電器，腳位：";
 Blockly.Msg.WEBDUINO_RELAY_SET_STATE = "設定狀態";

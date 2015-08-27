@@ -26,7 +26,7 @@ Blockly.Blocks['console'] = {
 Blockly.Blocks['getdate'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.CUSTOM_JS_Date,"現在的日期")
+      .appendField(Blockly.Msg.CUSTOM_JS_Date, "現在的日期")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.CUSTOM_JS_Date_1, "1"],
         [Blockly.Msg.CUSTOM_JS_Date_2, "2"],
@@ -44,7 +44,7 @@ Blockly.Blocks['getdate'] = {
 Blockly.Blocks['gettime'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.CUSTOM_JS_Time,"現在的時間")
+      .appendField(Blockly.Msg.CUSTOM_JS_Time, "現在的時間")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.CUSTOM_JS_Time_1, "1"],
         [Blockly.Msg.CUSTOM_JS_Time_2, "2"],
@@ -126,6 +126,27 @@ Blockly.Blocks['led_intensity'] = {
       .setCheck("Number")
       .appendField(new Blockly.FieldVariable("led"), "led_")
       .appendField(Blockly.Msg.WEBDUINO_LED_INTENSITY, "強度 (0-1)：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#u7a4oh
+Blockly.Blocks['led_callback'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_LED_IF, "如果")
+      .appendField(new Blockly.FieldVariable("led"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_LED_STATE_IS, " 的狀態為：")
+      .appendField(new Blockly.FieldDropdown([
+        ["on", "on"],
+        ["off", "off"]
+      ]), "state_");
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_LED_STATE_DO, "執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -985,6 +1006,64 @@ Blockly.Blocks['data_firebase_clear'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(160);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#dz2mvkh
+Blockly.Blocks['set_pin_state'] = {
+  init: function () {
+    this.appendValueInput("var_")
+      .appendField(Blockly.Msg.WEBDUINO_PIN_SET, "設定");
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_PIN_PIN, " 為腳位：")
+      .appendField(new Blockly.FieldDropdown([
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"],
+        ["12", "12"],
+        ["13", "13"]
+      ]), "pin_");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(290);
+    this.setColour(120);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#6zz5zv
+Blockly.Blocks['query_pin_state'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_PIN_QUERY, "偵測")
+      .appendField(new Blockly.FieldVariable("boardPin"), "name_");
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_PIN_DO, "執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['pin_state'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("boardPin"), "pin_")
+      .appendField(Blockly.Msg.WEBDUINO_PIN_STATE, "的狀態");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(65);
     this.setHelpUrl('http://www.example.com/');
   }
 };
