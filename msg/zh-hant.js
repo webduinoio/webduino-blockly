@@ -44,5 +44,8 @@ var MSG = {
   catTutorials: "教學積木",
   linkToBin: "程式編輯",
   catDatabase: "資料庫 - Firebase",
-  update: "update 2015.8.11"
+  update: "update 2015.8.11",
+  catCarTest: "自走車(demo)",
+  catBasic:"基本積木",
+  catWebduino:"Webduino 積木"
 };

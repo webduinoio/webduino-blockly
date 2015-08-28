@@ -304,3 +304,17 @@ Blockly.Msg.WEBDUINO_BUZZER_SHOW = "Show";
 Blockly.Msg.WEBDUINO_BUZZER_SHOW_NOTESANDTEMPOS = "'s notes and tempos";
 Blockly.Msg.WEBDUINO_BUZZER_CLICK = "Click";
 Blockly.Msg.WEBDUINO_BUZZER_DO = "do:";
+
+Blockly.Msg.WEBDUINO_TESTCAR = "Car";
+Blockly.Msg.WEBDUINO_TESTCAR_PINRF = "Pin: Right(f)";
+Blockly.Msg.WEBDUINO_TESTCAR_PINRB = "Right(b)";
+Blockly.Msg.WEBDUINO_TESTCAR_PINLF = "Left(f)";
+Blockly.Msg.WEBDUINO_TESTCAR_PINLB = "Left(b)";
+Blockly.Msg.WEBDUINO_TESTCAR_ACTION = " Action:";
+Blockly.Msg.WEBDUINO_TESTCAR_GOFRONT = "go front";
+Blockly.Msg.WEBDUINO_TESTCAR_GOBACK = "go back";
+Blockly.Msg.WEBDUINO_TESTCAR_GOLEFT = "go left";
+Blockly.Msg.WEBDUINO_TESTCAR_GORIGHT = "go right";
+Blockly.Msg.WEBDUINO_TESTCAR_TURNRIGHT = "turn right";
+Blockly.Msg.WEBDUINO_TESTCAR_TURNLEFT = "turn left";
+Blockly.Msg.WEBDUINO_TESTCAR_STOP = "stop";

@@ -1163,3 +1163,100 @@ Blockly.Blocks['pin_state'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#85nm6w
+Blockly.Blocks[Blockly.Msg.WEBDUINO_TESTCAR_NEW,'car_test_new'] = {
+  init: function () {
+    this.appendValueInput("var_")
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR,"自走車");
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINRF,"腳位設定：右前")
+      .appendField(new Blockly.FieldDropdown([
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"],
+        ["12", "12"],
+        ["13", "13"]
+      ]), "rf_")
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINRB,"右後")
+      .appendField(new Blockly.FieldDropdown([
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"],
+        ["12", "12"],
+        ["13", "13"]
+      ]), "rb_")
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINLF,"左前")
+      .appendField(new Blockly.FieldDropdown([
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"],
+        ["12", "12"],
+        ["13", "13"]
+      ]), "lf_")
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINLB,"左後")
+      .appendField(new Blockly.FieldDropdown([
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"],
+        ["12", "12"],
+        ["13", "13"]
+      ]), "lb_");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(200);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['car_test_move'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR,"自走車")
+      .appendField(new Blockly.FieldVariable("car"), "var_")
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_ACTION," 動作")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_TESTCAR_GOFRONT, "goFront_"],
+        [Blockly.Msg.WEBDUINO_TESTCAR_GOBACK, "goBack_"],
+        [Blockly.Msg.WEBDUINO_TESTCAR_GOLEFT, "goLeft_"],
+        [Blockly.Msg.WEBDUINO_TESTCAR_GORIGHT, "goRight_"],
+        [Blockly.Msg.WEBDUINO_TESTCAR_TURNRIGHT, "turnRight_"],
+        [Blockly.Msg.WEBDUINO_TESTCAR_TURNLEFT, "turnLeft_"],
+        [Blockly.Msg.WEBDUINO_TESTCAR_STOP, "stop_"]
+      ]), "move_");
+    this.setColour(200);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
