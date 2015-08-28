@@ -1,12 +1,12 @@
 {
   "name": "blockly",
   "homepage": "https://github.com/google/blockly",
-  "_release": "ffe49a7020",
+  "_release": "8aa8bbb53e",
   "_resolution": {
     "type": "commit",
-    "commit": "ffe49a70205efb2098384b3a82a868cdb194916c"
+    "commit": "8aa8bbb53efda394e694f52c3a20b512f0168e10"
   },
   "_source": "git://github.com/google/blockly.git",
-  "_target": "ffe49a70205efb2098384b3a82a868cdb194916c",
+  "_target": "8aa8bbb53efda394e694f52c3a20b512f0168e10",
   "_originalSource": "google/blockly"
 }
