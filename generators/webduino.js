@@ -587,3 +587,66 @@ Blockly.JavaScript['pin_state'] = function (block) {
   var code = variable_pin_ + '.pinNum_.state';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
+
+Blockly.JavaScript['car_test_new'] = function (block) {
+  var value_var_ = Blockly.JavaScript.valueToCode(block, 'var_', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_rf_ = block.getFieldValue('rf_');
+  var dropdown_rb_ = block.getFieldValue('rb_');
+  var dropdown_lf_ = block.getFieldValue('lf_');
+  var dropdown_lb_ = block.getFieldValue('lb_');
+  var code = value_var_ + ' = {};\n\n' +
+    value_var_ + '.rightFront_ = getLed(board, ' + dropdown_rf_ + ');\n' +
+    value_var_ + '.rightBack_ = getLed(board, ' + dropdown_rb_ + ');\n' +
+    value_var_ + '.leftFront_ = getLed(board, ' + dropdown_lf_ + ');\n' +
+    value_var_ + '.leftBack_ = getLed(board, ' + dropdown_lb_ + ');\n\n' +
+    value_var_ + '.goFront_ = function(){\n' +
+    '  ' + value_var_ + '.rightFront_.on();\n' +
+    '  ' + value_var_ + '.rightBack_.off();\n' +
+    '  ' + value_var_ + '.leftFront_.on();\n' +
+    '  ' + value_var_ + '.leftBack_.off();\n' +
+    '};\n' +
+    value_var_ + '.goBack_ = function(){\n' +
+    '  ' + value_var_ + '.rightFront_.off();\n' +
+    '  ' + value_var_ + '.rightBack_.on();\n' +
+    '  ' + value_var_ + '.leftFront_.off();\n' +
+    '  ' + value_var_ + '.leftBack_.on();\n' +
+    '};\n' +
+    value_var_ + '.goRight_ = function(){\n' +
+    '  ' + value_var_ + '.rightFront_.off();\n' +
+    '  ' + value_var_ + '.rightBack_.off();\n' +
+    '  ' + value_var_ + '.leftFront_.on();\n' +
+    '  ' + value_var_ + '.leftBack_.off();\n' +
+    '};\n' +
+    value_var_ + '.goLeft_ = function(){\n' +
+    '  ' + value_var_ + '.rightFront_.on();\n' +
+    '  ' + value_var_ + '.rightBack_.off();\n' +
+    '  ' + value_var_ + '.leftFront_.off();\n' +
+    '  ' + value_var_ + '.leftBack_.off();\n' +
+    '};\n' +
+    value_var_ + '.turnRight_ = function(){\n' +
+    '  ' + value_var_ + '.rightFront_.off();\n' +
+    '  ' + value_var_ + '.rightBack_.on();\n' +
+    '  ' + value_var_ + '.leftFront_.on();\n' +
+    '  ' + value_var_ + '.leftBack_.off();\n' +
+    '};\n' +
+    value_var_ + '.turnLeft_ = function(){\n' +
+    '  ' + value_var_ + '.rightFront_.on();\n' +
+    '  ' + value_var_ + '.rightBack_.off();\n' +
+    '  ' + value_var_ + '.leftFront_.off();\n' +
+    '  ' + value_var_ + '.leftBack_.on();\n' +
+    '};\n' +
+    value_var_ + '.stop_ = function(){\n' +
+    '  ' + value_var_ + '.rightFront_.off();\n' +
+    '  ' + value_var_ + '.rightBack_.off();\n' +
+    '  ' + value_var_ + '.leftFront_.off();\n' +
+    '  ' + value_var_ + '.leftBack_.off();\n' +
+    '};\n\n';
+    return code;
+};
+
+Blockly.JavaScript['car_test_move'] = function(block) {
+  var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_move_ = block.getFieldValue('move_');
+  var code = variable_var_+'.'+dropdown_move_+'();\n';
+  return code;
+};

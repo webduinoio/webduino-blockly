@@ -44,5 +44,6 @@ var MSG = {
   catTutorials: "Blockly",
   linkToBin: "Let's Coding",
   catDatabase: "Data base - Firebase",
-  update: "update 2015.8.11"
+  update: "update 2015.8.11",
+  catCarTest: "Car (demo)"
 };
