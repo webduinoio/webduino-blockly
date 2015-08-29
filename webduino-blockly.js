@@ -1,3 +1,12 @@
++(function (factory) {
+  if (typeof exports === 'undefined') {
+    factory(window);
+  } else {
+    module.exports = factory;
+  }
+}(function (scope) {
+  'use strict';
+
 function boardReady(device, callback) {
   var board = new webduino.WebArduino(device);
   board.on(webduino.BoardEvent.READY, callback.bind(null, board));
@@ -163,3 +172,21 @@ function delay(t) {
   });
 }
 
+scope.boardReady = boardReady;
+scope.getLed = getLed;
+scope.getRelay = getRelay;
+scope.getRGBLed = getRGBLed;
+scope.getUltrasonic = getUltrasonic;
+scope.getButton = getButton;
+scope.getPir = getPir;
+scope.getSound = getSound;
+scope.getShock = getShock;
+scope.getDht = getDht;
+scope.getBuzzer = getBuzzer;
+scope.getServo = getServo;
+scope.getCar = getCar;
+scope.Car = Car;
+scope.dhtAreaChart = dhtAreaChart;
+scope.delay = delay;
+
+}));
