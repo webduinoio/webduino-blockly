@@ -658,15 +658,15 @@ Blockly.JavaScript['car_test_new'] = function (block) {
     '  ' + value_var_ + '.leftBack_.on();\n' +
     '};\n' +
     value_var_ + '.goRight_ = function(){\n' +
-    '  ' + value_var_ + '.rightFront_.off();\n' +
-    '  ' + value_var_ + '.rightBack_.off();\n' +
-    '  ' + value_var_ + '.leftFront_.on();\n' +
-    '  ' + value_var_ + '.leftBack_.off();\n' +
-    '};\n' +
-    value_var_ + '.goLeft_ = function(){\n' +
     '  ' + value_var_ + '.rightFront_.on();\n' +
     '  ' + value_var_ + '.rightBack_.off();\n' +
     '  ' + value_var_ + '.leftFront_.off();\n' +
+    '  ' + value_var_ + '.leftBack_.off();\n' +
+    '};\n' +
+    value_var_ + '.goLeft_ = function(){\n' +
+    '  ' + value_var_ + '.rightFront_.off();\n' +
+    '  ' + value_var_ + '.rightBack_.off();\n' +
+    '  ' + value_var_ + '.leftFront_.on();\n' +
     '  ' + value_var_ + '.leftBack_.off();\n' +
     '};\n' +
     value_var_ + '.turnRight_ = function(){\n' +
@@ -680,6 +680,18 @@ Blockly.JavaScript['car_test_new'] = function (block) {
     '  ' + value_var_ + '.rightBack_.off();\n' +
     '  ' + value_var_ + '.leftFront_.off();\n' +
     '  ' + value_var_ + '.leftBack_.on();\n' +
+    '};\n' +
+    value_var_ + '.backLeft_ = function(){\n' +
+    '  ' + value_var_ + '.rightFront_.off();\n' +
+    '  ' + value_var_ + '.rightBack_.off();\n' +
+    '  ' + value_var_ + '.leftFront_.off();\n' +
+    '  ' + value_var_ + '.leftBack_.on();\n' +
+    '};\n' +
+    value_var_ + '.backRight_ = function(){\n' +
+    '  ' + value_var_ + '.rightFront_.off();\n' +
+    '  ' + value_var_ + '.rightBack_.on();\n' +
+    '  ' + value_var_ + '.leftFront_.off();\n' +
+    '  ' + value_var_ + '.leftBack_.off();\n' +
     '};\n' +
     value_var_ + '.stop_ = function(){\n' +
     '  ' + value_var_ + '.rightFront_.off();\n' +

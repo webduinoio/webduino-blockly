@@ -1277,6 +1277,8 @@ Blockly.Blocks['car_test_move'] = {
         [Blockly.Msg.WEBDUINO_TESTCAR_GOBACK, "goBack_"],
         [Blockly.Msg.WEBDUINO_TESTCAR_GOLEFT, "goLeft_"],
         [Blockly.Msg.WEBDUINO_TESTCAR_GORIGHT, "goRight_"],
+        [Blockly.Msg.WEBDUINO_TESTCAR_BACKLEFT, "backLeft_"],
+        [Blockly.Msg.WEBDUINO_TESTCAR_BACKRIGHT, "backRight_"],
         [Blockly.Msg.WEBDUINO_TESTCAR_TURNRIGHT, "turnRight_"],
         [Blockly.Msg.WEBDUINO_TESTCAR_TURNLEFT, "turnLeft_"],
         [Blockly.Msg.WEBDUINO_TESTCAR_STOP, "stop_"]
