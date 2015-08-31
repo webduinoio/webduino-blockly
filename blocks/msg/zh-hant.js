@@ -25,8 +25,10 @@ Blockly.Msg.WEBDUINO_TIMER_DO = "執行";
 Blockly.Msg.WEBDUINO_DELAY = "延遲";
 Blockly.Msg.WEBDUINO_DELAY_SECONDS = "秒";
 
-Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "開發版";
-Blockly.Msg.WEBDUINO_BOARD_READY_DEVICE = "device";
+Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "開發版 名稱：";
+Blockly.Msg.WEBDUINO_BOARD_CHAIN = "串聯";
+Blockly.Msg.WEBDUINO_BOARD_CHAIN_OK = "當開發板串連完成";
+Blockly.Msg.WEBDUINO_BOARD_CHAIN_DO = "執行：";
 Blockly.Msg.WEBDUINO_PIN_SET = "設定";
 Blockly.Msg.WEBDUINO_PIN_PIN = " 為腳位：";
 Blockly.Msg.WEBDUINO_PIN_QUERY = "偵測";

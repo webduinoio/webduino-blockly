@@ -25,8 +25,10 @@ Blockly.Msg.WEBDUINO_TIMER_DO = "do";
 Blockly.Msg.WEBDUINO_DELAY = "delay";
 Blockly.Msg.WEBDUINO_DELAY_SECONDS = "seconds";
 
-Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "Board";
-Blockly.Msg.WEBDUINO_BOARD_READY_DEVICE = "device";
+Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "Board device:";
+Blockly.Msg.WEBDUINO_BOARD_CHAIN = "chain";
+Blockly.Msg.WEBDUINO_BOARD_CHAIN_OK = "When all boards chain ready";
+Blockly.Msg.WEBDUINO_BOARD_CHAIN_DO = "do:";
 Blockly.Msg.WEBDUINO_PIN_SET = "Set";
 Blockly.Msg.WEBDUINO_PIN_PIN = " pin:";
 Blockly.Msg.WEBDUINO_PIN_QUERY = "Get";

@@ -58,7 +58,7 @@ Blockly.Blocks['gettime'] = {
   }
 };
 
-Blockly.Blocks['board_ready'] = {
+/*Blockly.Blocks['board_ready'] = {
   init: function () {
     this.appendValueInput("device_")
       .appendField(Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO)
@@ -66,6 +66,35 @@ Blockly.Blocks['board_ready'] = {
     this.appendStatementInput("callbacks_");
     this.setColour(290);
     this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};*/
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#bq2fue
+Blockly.Blocks['board_ready'] = {
+  init: function () {
+    this.appendValueInput("device_")
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO);
+    this.appendDummyInput()
+      .appendField("   ")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "check_")
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN,"串聯");
+    this.appendStatementInput("callbacks_");
+    this.setTooltip('');
+    this.setColour(290);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#ophu3b
+Blockly.Blocks['all_board_ready'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN_OK,"當開發板串連完成");
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN_DO,"執行：");
+    this.setTooltip('');
+    this.setColour(0);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -1130,7 +1159,6 @@ Blockly.Blocks['set_pin_state'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setColour(290);
     this.setColour(120);
     this.setHelpUrl('http://www.example.com/');
   }
@@ -1147,7 +1175,7 @@ Blockly.Blocks['query_pin_state'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setColour(65);
+    this.setColour(120);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -1159,18 +1187,18 @@ Blockly.Blocks['pin_state'] = {
       .appendField(Blockly.Msg.WEBDUINO_PIN_STATE, "的狀態");
     this.setOutput(true);
     this.setTooltip('');
-    this.setColour(65);
+    this.setColour(120);
     this.setHelpUrl('http://www.example.com/');
   }
 };
 
 //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#85nm6w
-Blockly.Blocks[Blockly.Msg.WEBDUINO_TESTCAR_NEW,'car_test_new'] = {
+Blockly.Blocks[Blockly.Msg.WEBDUINO_TESTCAR_NEW, 'car_test_new'] = {
   init: function () {
     this.appendValueInput("var_")
-      .appendField(Blockly.Msg.WEBDUINO_TESTCAR,"自走車");
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR, "自走車");
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINRF,"腳位設定：右前")
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINRF, "腳位設定：右前")
       .appendField(new Blockly.FieldDropdown([
         ["2", "2"],
         ["3", "3"],
@@ -1185,7 +1213,7 @@ Blockly.Blocks[Blockly.Msg.WEBDUINO_TESTCAR_NEW,'car_test_new'] = {
         ["12", "12"],
         ["13", "13"]
       ]), "rf_")
-      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINRB,"右後")
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINRB, "右後")
       .appendField(new Blockly.FieldDropdown([
         ["2", "2"],
         ["3", "3"],
@@ -1200,7 +1228,7 @@ Blockly.Blocks[Blockly.Msg.WEBDUINO_TESTCAR_NEW,'car_test_new'] = {
         ["12", "12"],
         ["13", "13"]
       ]), "rb_")
-      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINLF,"左前")
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINLF, "左前")
       .appendField(new Blockly.FieldDropdown([
         ["2", "2"],
         ["3", "3"],
@@ -1215,7 +1243,7 @@ Blockly.Blocks[Blockly.Msg.WEBDUINO_TESTCAR_NEW,'car_test_new'] = {
         ["12", "12"],
         ["13", "13"]
       ]), "lf_")
-      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINLB,"左後")
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINLB, "左後")
       .appendField(new Blockly.FieldDropdown([
         ["2", "2"],
         ["3", "3"],
@@ -1241,9 +1269,9 @@ Blockly.Blocks[Blockly.Msg.WEBDUINO_TESTCAR_NEW,'car_test_new'] = {
 Blockly.Blocks['car_test_move'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_TESTCAR,"自走車")
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR, "自走車")
       .appendField(new Blockly.FieldVariable("car"), "var_")
-      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_ACTION," 動作")
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_ACTION, " 動作")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.WEBDUINO_TESTCAR_GOFRONT, "goFront_"],
         [Blockly.Msg.WEBDUINO_TESTCAR_GOBACK, "goBack_"],
