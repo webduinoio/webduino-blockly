@@ -29,8 +29,6 @@ var MSG = {
   catSound: "Sound Detect",
   catBuzzer: "Buzzer",
   catServo: "Servo",
-  catCar: "Car",
-  catFish: "Fish",
   listVariable: "list",
   textVariable: "text",
   httpRequestError: "There was a problem with the request.",
@@ -43,7 +41,9 @@ var MSG = {
   demoTitle: "Blockly Demo Area",
   catTutorials: "Blockly",
   linkToBin: "Let's Coding",
-  catDatabase: "Data base (Firebase)",
+  catDatabase: "Data base - Firebase",
   update: "update 2015.8.11",
-  catCarTest: "Car (demo)"
+  catCarTest: "Demo - Car (2)",
+  catCar: "Demo - Car (1)",
+  catFish: "Demo - Fly Fish",
 };

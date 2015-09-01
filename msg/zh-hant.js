@@ -29,8 +29,6 @@ var MSG = {
   catSound: "聲音偵測",
   catBuzzer: "蜂鳴器",
   catServo: "伺服馬達",
-  catCar: "遙控車",
-  catFish: "飛天魚",
   listVariable: "列表",
   textVariable: "文字",
   httpRequestError: "命令出現錯誤。",
@@ -43,9 +41,11 @@ var MSG = {
   demoTitle: "Blockly 範例測試區",
   catTutorials: "教學積木",
   linkToBin: "程式編輯",
-  catDatabase: "資料庫 (Firebase)",
+  catDatabase: "資料庫 - Firebase",
   update: "update 2015.9.1",
-  catCarTest: "自走車 (demo)",
+  catCarTest: "應用 - 自走車 (2)",
+  catCar: "應用 - 自走車 (1)",
+  catFish: "應用 - 飛天魚",
   catBasic:"基本積木",
   catWebduino:"Webduino 積木"
 };

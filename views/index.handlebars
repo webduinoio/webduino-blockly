@@ -438,69 +438,6 @@
       </value>
     </block>
   </category>
-  <category id="catCar">
-    <block type="variables_set">
-      <field name="VAR">car</field>
-      <value name="VALUE">
-        <block type="car_new">
-          <field name="f_">9</field>
-          <field name="b_">8</field>
-          <field name="l_">6</field>
-          <field name="r_">7</field>
-        </block>
-      </value>
-    </block>
-    <block type="car_move">
-      <field name="car_">car</field>
-      <field name="move_">forward</field>
-      <value name="secs_">
-        <block type="math_number">
-          <field name="NUM">1</field>
-        </block>
-      </value>
-    </block>
-  </category>
-  <category id="catFish">
-    <block type="variables_set">
-      <field name="VAR">fish</field>
-      <value name="VALUE">
-        <block type="fish_new"></block>
-      </value>
-    </block>
-    <block type="fish_angle">
-      <field name="fish_">fish</field>
-      <field name="angle_">soar</field>
-      <value name="secs_">
-        <block type="math_number">
-          <field name="NUM">1</field>
-        </block>
-      </value>
-    </block>
-    <block type="fish_move">
-      <field name="fish_">fish</field>
-      <field name="direction_"></field>
-      <value name="secs_">
-        <block type="math_number">
-          <field name="NUM">1</field>
-        </block>
-      </value>
-      <field name="speed_">2</field>
-    </block>
-  </category>
-  <category id="catCarTest">
-    <block type="car_test_new">
-      <value name="var_">
-        <block type="variables_get">
-          <field name="VAR">car</field>
-        </block>
-      </value>
-      <field name="rf_">8</field>
-      <field name="rb_">9</field>
-      <field name="lf_">7</field>
-      <field name="lb_">6</field>
-    </block>
-    <block type="car_test_move"></block>
-  </category>
   <sep></sep>
   <category id="catButton">
     <block type="variables_set">
@@ -584,5 +521,69 @@
       </value>
     </block>
     <block type="sound_status"></block>
+  </category>
+  <sep></sep>
+  <category id="catCar">
+    <block type="variables_set">
+      <field name="VAR">car</field>
+      <value name="VALUE">
+        <block type="car_new">
+          <field name="f_">9</field>
+          <field name="b_">8</field>
+          <field name="l_">6</field>
+          <field name="r_">7</field>
+        </block>
+      </value>
+    </block>
+    <block type="car_move">
+      <field name="car_">car</field>
+      <field name="move_">forward</field>
+      <value name="secs_">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+    </block>
+  </category>
+  <category id="catCarTest">
+    <block type="car_test_new">
+      <value name="var_">
+        <block type="variables_get">
+          <field name="VAR">car</field>
+        </block>
+      </value>
+      <field name="rf_">8</field>
+      <field name="rb_">9</field>
+      <field name="lf_">7</field>
+      <field name="lb_">6</field>
+    </block>
+    <block type="car_test_move"></block>
+  </category>
+  <category id="catFish">
+    <block type="variables_set">
+      <field name="VAR">fish</field>
+      <value name="VALUE">
+        <block type="fish_new"></block>
+      </value>
+    </block>
+    <block type="fish_angle">
+      <field name="fish_">fish</field>
+      <field name="angle_">soar</field>
+      <value name="secs_">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+    </block>
+    <block type="fish_move">
+      <field name="fish_">fish</field>
+      <field name="direction_"></field>
+      <value name="secs_">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+      <field name="speed_">2</field>
+    </block>
   </category>
 </xml>
