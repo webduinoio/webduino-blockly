@@ -1296,16 +1296,16 @@ Blockly.Blocks['temp_data_set'] = {
   init: function () {
     this.appendValueInput("name_")
       .setCheck("String")
-      .appendField(Blockly.Msg.WEBDUINO_TEMP_SET,"設定暫存")
+      .appendField(Blockly.Msg.WEBDUINO_TEMP_SET, "設定暫存")
       .appendField(new Blockly.FieldDropdown([
         ["cookie", "1"],
         ["localStorage", "2"],
         ["sessionStorage", "3"]
       ]), "type_")
-      .appendField(Blockly.Msg.WEBDUINO_TEMP_SET_NAME,"   名稱：");
+      .appendField(Blockly.Msg.WEBDUINO_TEMP_SET_NAME, "   名稱：");
     this.appendValueInput("value_")
       .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField(Blockly.Msg.WEBDUINO_TEMP_SET_VALUE,"值：");
+      .appendField(Blockly.Msg.WEBDUINO_TEMP_SET_VALUE, "值：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -1319,15 +1319,15 @@ Blockly.Blocks['temp_data_get'] = {
   init: function () {
     this.appendValueInput("name_")
       .setCheck("String")
-      .appendField(Blockly.Msg.WEBDUINO_TEMP_GET,"讀取暫存")
+      .appendField(Blockly.Msg.WEBDUINO_TEMP_GET, "讀取暫存")
       .appendField(new Blockly.FieldDropdown([
         ["cookie", "1"],
         ["localStorage", "2"],
         ["sessionStorage", "3"]
       ]), "type_")
-      .appendField(Blockly.Msg.WEBDUINO_TEMP_GET_NAME,"名稱：");
+      .appendField(Blockly.Msg.WEBDUINO_TEMP_GET_NAME, "名稱：");
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_TEMP_GET_VALUE,"的值");
+      .appendField(Blockly.Msg.WEBDUINO_TEMP_GET_VALUE, "的值");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(200);
@@ -1335,3 +1335,32 @@ Blockly.Blocks['temp_data_get'] = {
   }
 };
 
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#s82qut
+Blockly.Blocks['sound_recognition'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_RECONGNITION, "開始語音辨識 ( 只適用桌上型 Chrome 瀏覽器 )");
+    this.appendStatementInput("recognition_");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(100);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#svda94
+Blockly.Blocks['sound_recognition_check'] = {
+  init: function () {
+    this.appendValueInput("text_")
+      .setCheck(["String", "Array"])
+      .appendField(Blockly.Msg.WEBDUINO_RECONGNITION_IF, "如果辨識的文字包含：");
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_RECONGNITION_DO, "執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(100);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};

@@ -110,17 +110,17 @@ Blockly.JavaScript['board_ready'] = function (block) {
   var value_device_ = Blockly.JavaScript.valueToCode(block, 'device_', Blockly.JavaScript.ORDER_ATOMIC);
   var checkbox_check_ = block.getFieldValue('check_');
   var statements_callbacks_ = Blockly.JavaScript.statementToCode(block, 'callbacks_');
-  var code ;
+  var code;
   if (checkbox_check_ == 'FALSE') {
     code = 'boardReady(' + value_device_ + ', function (board) {\n' +
       statements_callbacks_ +
       '});\n';
   } else if (checkbox_check_ == 'TRUE') {
-    code = 'if(window.readyBoardLength){\n'+
-      '  window.readyBoardLength = window.readyBoardLength + 1;\n'+
-      '}else{\n'+
-      '  window.readyBoardLength = 1;\n'+
-      '}\n\n'+
+    code = 'if(window.readyBoardLength){\n' +
+      '  window.readyBoardLength = window.readyBoardLength + 1;\n' +
+      '}else{\n' +
+      '  window.readyBoardLength = 1;\n' +
+      '}\n\n' +
       'boardReady(' + value_device_ + ', function (board) {\n' +
       statements_callbacks_ +
       '  if(window.boardReadyNumber){\n' +
@@ -134,13 +134,13 @@ Blockly.JavaScript['board_ready'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['all_board_ready'] = function(block) {
+Blockly.JavaScript['all_board_ready'] = function (block) {
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'function allBoardReady(boardReadyNumber){\n'+
-            '  if(window.boardReadyNumber==window.readyBoardLength){\n'+
-            '  '+statements_do_+
-            '  }\n'+
-            '}\n';
+  var code = 'function allBoardReady(boardReadyNumber){\n' +
+    '  if(window.boardReadyNumber==window.readyBoardLength){\n' +
+    '  ' + statements_do_ +
+    '  }\n' +
+    '}\n';
   return code;
 };
 
@@ -709,58 +709,117 @@ Blockly.JavaScript['car_test_move'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['temp_data_set'] = function(block) {
+Blockly.JavaScript['temp_data_set'] = function (block) {
   var dropdown_type_ = block.getFieldValue('type_');
   var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
   var value_value_ = Blockly.JavaScript.valueToCode(block, 'value_', Blockly.JavaScript.ORDER_ATOMIC);
   var setCookie = Blockly.JavaScript.variableDB_.getDistinctName(
     'setCookie', Blockly.Variables.NAME_TYPE);
   var code;
-  if(dropdown_type_==1){
-    code = 'function '+setCookie+'(c_name,value,expiredays){\n'+
-          '  var exdate=new Date();\n'+
-          '  exdate.setDate(exdate.getDate()+expiredays);\n'+
-          '  document.cookie=c_name+ "=" +escape(value)+\n'+
-          '  ((expiredays==null) ? "" : ";expires="+exdate.toGMTString());\n'+
-          '}\n'+
-          setCookie+'('+value_name_+','+value_value_+');\n';
-  }else if(dropdown_type_==2){
-    code = 'localStorage.'+value_name_+' = '+value_value_+';\n';
-  }else if(dropdown_type_==3){
-    code = 'sessionStorage.'+value_name_+' = '+value_value_+';\n';
+  if (dropdown_type_ == 1) {
+    code = 'function ' + setCookie + '(c_name,value,expiredays){\n' +
+      '  var exdate=new Date();\n' +
+      '  exdate.setDate(exdate.getDate()+expiredays);\n' +
+      '  document.cookie=c_name+ "=" +escape(value)+\n' +
+      '  ((expiredays==null) ? "" : ";expires="+exdate.toGMTString());\n' +
+      '}\n' +
+      setCookie + '(' + value_name_ + ',' + value_value_ + ');\n';
+  } else if (dropdown_type_ == 2) {
+    code = 'localStorage.' + value_name_ + ' = ' + value_value_ + ';\n';
+  } else if (dropdown_type_ == 3) {
+    code = 'sessionStorage.' + value_name_ + ' = ' + value_value_ + ';\n';
   }
   return code;
 };
 
-Blockly.JavaScript['temp_data_get'] = function(block) {
+Blockly.JavaScript['temp_data_get'] = function (block) {
   var dropdown_type_ = block.getFieldValue('type_');
   var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
   var getCookie = Blockly.JavaScript.variableDB_.getDistinctName(
     'getCookie', Blockly.Variables.NAME_TYPE);
   var code;
-  if(dropdown_type_==1){
-    code ='(function(){\n'+ 
-          '  function getCookie(c_name){\n'+
-          '    if (document.cookie.length>0){\n'+
-          '      var c_start=document.cookie.indexOf(c_name + "=");\n'+
-          '      if (c_start!=-1){\n'+
-          '        c_start=c_start + c_name.length+1;\n'+
-          '        var c_end=document.cookie.indexOf(";",c_start);\n'+
-          '        if (c_end==-1){\n'+
-          '          c_end=document.cookie.length;\n'+
-          '          return unescape(document.cookie.substring(c_start,c_end));\n'+
-          '        }\n'+
-          '      }\n'+
-          '    }\n'+
-          '    return "";\n'+
-          '  }\n'+
-          '  return '+getCookie+'('+value_name_+');\n'+
-          '})()';
-  }else if(dropdown_type_==2){
-    code = 'localStorage.'+value_name_+'\n';
-  }else if(dropdown_type_==3){
-    code = 'sessionStorage.'+value_name_+'\n';
+  if (dropdown_type_ == 1) {
+    code = '(function(){\n' +
+      '  function getCookie(c_name){\n' +
+      '    if (document.cookie.length>0){\n' +
+      '      var c_start=document.cookie.indexOf(c_name + "=");\n' +
+      '      if (c_start!=-1){\n' +
+      '        c_start=c_start + c_name.length+1;\n' +
+      '        var c_end=document.cookie.indexOf(";",c_start);\n' +
+      '        if (c_end==-1){\n' +
+      '          c_end=document.cookie.length;\n' +
+      '          return unescape(document.cookie.substring(c_start,c_end));\n' +
+      '        }\n' +
+      '      }\n' +
+      '    }\n' +
+      '    return "";\n' +
+      '  }\n' +
+      '  return ' + getCookie + '(' + value_name_ + ');\n' +
+      '})()';
+  } else if (dropdown_type_ == 2) {
+    code = 'localStorage.' + value_name_ + '\n';
+  } else if (dropdown_type_ == 3) {
+    code = 'sessionStorage.' + value_name_ + '\n';
   }
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.JavaScript['sound_recognition'] = function (block) {
+  var statements_recognition_ = Blockly.JavaScript.statementToCode(block, 'recognition_');
+  var recognizing = Blockly.JavaScript.variableDB_.getDistinctName(
+    'recognizing', Blockly.Variables.NAME_TYPE);
+  var recognition = Blockly.JavaScript.variableDB_.getDistinctName(
+    'recognition', Blockly.Variables.NAME_TYPE);
+  var code = 'var ' + recognizing + ' = false,\n' +
+    '    ' + recognition + ';\n' +
+    'if (!("webkitSpeechRecognition" in window)) {\n' +
+    '  alert("本瀏覽器不支援語音辨識，請更換瀏覽器！(Chrome 25 版以上才支援語音辨識)");\n' +
+    '} else{\n' +
+    '  ' + recognition + ' = new webkitSpeechRecognition();\n' +
+    '  ' + recognition + '.continuous = true;\n' +
+    '  ' + recognition + '.interimResults = true;\n' +
+    '  ' + recognition + '.lang = "cmn-Hant-TW";\n\n' +
+    '  ' + recognition + '.onstart = function() {\n' +
+    '    ' + recognizing + ' = true;\n' +
+    '    console.log("辨識中...");\n' +
+    '  };\n\n' +
+    '  ' + recognition + '.onend = function() {\n' +
+    '    ' + recognizing + ' = false;\n' +
+    '    console.log("停止辨識");\n' +
+    '  };\n\n' +
+    '  ' + recognition + '.onresult = function(event) {\n' +
+    '    var interim_transcript="";\n' +
+    '    for (var i = event.resultIndex; i < event.results.length; ++i){\n' +
+    '      interim_transcript += event.results[i][0].transcript;\n' +
+    '      console.log(interim_transcript);\n' +
+    statements_recognition_ +
+    '    }\n' +
+    '  };\n' +
+    '}\n\n' +
+    recognition + '.start();\n';
+  return code;
+};
+
+Blockly.JavaScript['sound_recognition_check'] = function (block) {
+  var value_text_ = Blockly.JavaScript.valueToCode(block, 'text_', Blockly.JavaScript.ORDER_ATOMIC);
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var a = value_text_.split("'");
+  value_text_ = a.splice(1, (a.length - 2)).join('');
+  var b = value_text_.split(', ');
+  var code;
+  if (b.length == 1) {
+    code = '      if(interim_transcript.indexOf("' + b[0] + '")!==-1){\n' +
+      '        ' + statements_do_ +
+      '      }\n';
+  } else {
+    code = '      if(interim_transcript.indexOf("' + b[0] + '")!==-1){\n' +
+      '        ' + statements_do_ +
+      '      }\n';
+    for (var i = 1; i < b.length; i++) {
+      code += '      if(interim_transcript.indexOf("' + b[i] + '")!==-1){\n' +
+        '        ' + statements_do_ +
+        '      }\n';
+    }
+  }
+  return code;
+};
