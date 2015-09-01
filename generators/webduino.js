@@ -823,3 +823,30 @@ Blockly.JavaScript['sound_recognition_check'] = function (block) {
   }
   return code;
 };
+
+
+Blockly.JavaScript['translate_speech'] = function(block) {
+  var dropdown_lang_ = block.getFieldValue('lang_');
+  var dropdown_sex_ = block.getFieldValue('sex_');
+  var value_speech_ = Blockly.JavaScript.valueToCode(block, 'speech_', Blockly.JavaScript.ORDER_ATOMIC);
+  var body = Blockly.JavaScript.variableDB_.getDistinctName(
+    'body', Blockly.Variables.NAME_TYPE);
+  var creatAudio = Blockly.JavaScript.variableDB_.getDistinctName(
+    'creatAudio', Blockly.Variables.NAME_TYPE);
+  var audio = Blockly.JavaScript.variableDB_.getDistinctName(
+    'audio', Blockly.Variables.NAME_TYPE);
+  var text = Blockly.JavaScript.variableDB_.getDistinctName(
+    'text', Blockly.Variables.NAME_TYPE);
+  var a = value_speech_.split('');
+  value_speech_ = a.splice(1, (a.length - 2)).join('');
+  var code = '(function(){\n'+
+              '  var '+body+' = document.querySelector("body");\n'+
+              '  var '+creatAudio+' = document.createElement("audio");\n'+
+              '  '+body+'.appendChild('+creatAudio+');\n'+
+              '  var '+audio+' = document.querySelector("audio");\n'+
+              '  '+audio+'.setAttribute("autoplay","true");\n'+
+              '  var '+text+' = encodeURI("'+value_speech_+'");\n'+
+              '  '+audio+'.setAttribute("src","http://api.microsofttranslator.com/v2/http.svc/speak?appId=TMXse1GmyYnY4U6jdDskPxJGke0UmpU5BznkpvoTSIyg*&language='+dropdown_lang_+'&format=audio/mp3&options=MinSize|'+dropdown_sex_+'&text='+value_speech_+'");\n'+
+              '})();\n';
+  return code;
+};

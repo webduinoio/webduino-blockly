@@ -1364,3 +1364,25 @@ Blockly.Blocks['sound_recognition_check'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#rbw7g9
+Blockly.Blocks['translate_speech'] = {
+  init: function () {
+    this.appendValueInput("speech_")
+      .setCheck("String")
+      .appendField(new Blockly.FieldDropdown([
+        ["中文", "zh-TW"],
+        ["English", "en-US"]
+      ]), "lang_")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_SPEECH_MALE, "male"],
+        [Blockly.Msg.WEBDUINO_SPEECH_FEMALE, "female"]
+      ]), "sex_")
+      .appendField(Blockly.Msg.WEBDUINO_SPEECH,"發音：");
+    this.setColour(50);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
