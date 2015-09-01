@@ -17,6 +17,12 @@ Blockly.Msg.CUSTOM_JS_Time_1 = "時:分:秒";
 Blockly.Msg.CUSTOM_JS_Time_2 = "時";
 Blockly.Msg.CUSTOM_JS_Time_3 = "分";
 Blockly.Msg.CUSTOM_JS_Time_4 = "秒";
+Blockly.Msg.WEBDUINO_TEMP_SET = "設定暫存";
+Blockly.Msg.WEBDUINO_TEMP_SET_NAME = "   名稱：";
+Blockly.Msg.WEBDUINO_TEMP_SET_VALUE = "值：";
+Blockly.Msg.WEBDUINO_TEMP_GET = "讀取暫存";
+Blockly.Msg.WEBDUINO_TEMP_GET_NAME = "名稱：";
+Blockly.Msg.WEBDUINO_TEMP_GET_VALUE = "的值";
 
 Blockly.Msg.WEBDUINO_TIMER_AFTER = "在";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "秒之後";

@@ -708,3 +708,59 @@ Blockly.JavaScript['car_test_move'] = function (block) {
   var code = variable_var_ + '.' + dropdown_move_ + '();\n';
   return code;
 };
+
+Blockly.JavaScript['temp_data_set'] = function(block) {
+  var dropdown_type_ = block.getFieldValue('type_');
+  var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_value_ = Blockly.JavaScript.valueToCode(block, 'value_', Blockly.JavaScript.ORDER_ATOMIC);
+  var setCookie = Blockly.JavaScript.variableDB_.getDistinctName(
+    'setCookie', Blockly.Variables.NAME_TYPE);
+  var code;
+  if(dropdown_type_==1){
+    code = 'function '+setCookie+'(c_name,value,expiredays){\n'+
+          '  var exdate=new Date();\n'+
+          '  exdate.setDate(exdate.getDate()+expiredays);\n'+
+          '  document.cookie=c_name+ "=" +escape(value)+\n'+
+          '  ((expiredays==null) ? "" : ";expires="+exdate.toGMTString());\n'+
+          '}\n'+
+          setCookie+'('+value_name_+','+value_value_+');\n';
+  }else if(dropdown_type_==2){
+    code = 'localStorage.'+value_name_+' = '+value_value_+';\n';
+  }else if(dropdown_type_==3){
+    code = 'sessionStorage.'+value_name_+' = '+value_value_+';\n';
+  }
+  return code;
+};
+
+Blockly.JavaScript['temp_data_get'] = function(block) {
+  var dropdown_type_ = block.getFieldValue('type_');
+  var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
+  var getCookie = Blockly.JavaScript.variableDB_.getDistinctName(
+    'getCookie', Blockly.Variables.NAME_TYPE);
+  var code;
+  if(dropdown_type_==1){
+    code ='(function(){\n'+ 
+          '  function getCookie(c_name){\n'+
+          '    if (document.cookie.length>0){\n'+
+          '      var c_start=document.cookie.indexOf(c_name + "=");\n'+
+          '      if (c_start!=-1){\n'+
+          '        c_start=c_start + c_name.length+1;\n'+
+          '        var c_end=document.cookie.indexOf(";",c_start);\n'+
+          '        if (c_end==-1){\n'+
+          '          c_end=document.cookie.length;\n'+
+          '          return unescape(document.cookie.substring(c_start,c_end));\n'+
+          '        }\n'+
+          '      }\n'+
+          '    }\n'+
+          '    return "";\n'+
+          '  }\n'+
+          '  return '+getCookie+'('+value_name_+');\n'+
+          '})()';
+  }else if(dropdown_type_==2){
+    code = 'localStorage.'+value_name_+'\n';
+  }else if(dropdown_type_==3){
+    code = 'sessionStorage.'+value_name_+'\n';
+  }
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+

@@ -78,7 +78,7 @@ Blockly.Blocks['board_ready'] = {
     this.appendDummyInput()
       .appendField("   ")
       .appendField(new Blockly.FieldCheckbox("FALSE"), "check_")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN,"串聯");
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, "串聯");
     this.appendStatementInput("callbacks_");
     this.setTooltip('');
     this.setColour(290);
@@ -90,9 +90,9 @@ Blockly.Blocks['board_ready'] = {
 Blockly.Blocks['all_board_ready'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN_OK,"當開發板串連完成");
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN_OK, "當開發板串連完成");
     this.appendStatementInput("do_")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN_DO,"執行：");
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN_DO, "執行：");
     this.setTooltip('');
     this.setColour(0);
     this.setHelpUrl('http://www.example.com/');
@@ -1290,3 +1290,48 @@ Blockly.Blocks['car_test_move'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#e4r57n
+Blockly.Blocks['temp_data_set'] = {
+  init: function () {
+    this.appendValueInput("name_")
+      .setCheck("String")
+      .appendField(Blockly.Msg.WEBDUINO_TEMP_SET,"設定暫存")
+      .appendField(new Blockly.FieldDropdown([
+        ["cookie", "1"],
+        ["localStorage", "2"],
+        ["sessionStorage", "3"]
+      ]), "type_")
+      .appendField(Blockly.Msg.WEBDUINO_TEMP_SET_NAME,"   名稱：");
+    this.appendValueInput("value_")
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.WEBDUINO_TEMP_SET_VALUE,"值：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(200);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#h7r3gt
+Blockly.Blocks['temp_data_get'] = {
+  init: function () {
+    this.appendValueInput("name_")
+      .setCheck("String")
+      .appendField(Blockly.Msg.WEBDUINO_TEMP_GET,"讀取暫存")
+      .appendField(new Blockly.FieldDropdown([
+        ["cookie", "1"],
+        ["localStorage", "2"],
+        ["sessionStorage", "3"]
+      ]), "type_")
+      .appendField(Blockly.Msg.WEBDUINO_TEMP_GET_NAME,"名稱：");
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_TEMP_GET_VALUE,"的值");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(200);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+

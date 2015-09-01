@@ -17,6 +17,12 @@ Blockly.Msg.CUSTOM_JS_Time_1 = "hours : minutes : seconds";
 Blockly.Msg.CUSTOM_JS_Time_2 = "hours";
 Blockly.Msg.CUSTOM_JS_Time_3 = "minutes";
 Blockly.Msg.CUSTOM_JS_Time_4 = "seconds";
+Blockly.Msg.WEBDUINO_TEMP_SET = "Set temp";
+Blockly.Msg.WEBDUINO_TEMP_SET_NAME = "   name:";
+Blockly.Msg.WEBDUINO_TEMP_SET_VALUE = "value:";
+Blockly.Msg.WEBDUINO_TEMP_GET = "Get temp";
+Blockly.Msg.WEBDUINO_TEMP_GET_NAME = "name:";
+Blockly.Msg.WEBDUINO_TEMP_GET_VALUE = "'s value";
 
 Blockly.Msg.WEBDUINO_TIMER_AFTER = "After";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "seconds";
