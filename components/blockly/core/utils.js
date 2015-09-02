@@ -28,9 +28,10 @@
 
 goog.provide('Blockly.utils');
 
-goog.require('goog.events.BrowserFeature');
-goog.require('goog.userAgent');
 goog.require('goog.dom');
+goog.require('goog.events.BrowserFeature');
+goog.require('goog.math.Coordinate');
+goog.require('goog.userAgent');
 
 
 /**
@@ -250,11 +251,11 @@ Blockly.isTargetInput_ = function(e) {
  * Return the coordinates of the top-left corner of this element relative to
  * its parent.  Only for SVG elements and children (e.g. rect, g, path).
  * @param {!Element} element SVG element to find the coordinates of.
- * @return {!Object} Object with .x and .y properties.
+ * @return {!goog.math.Coordinate} Object with .x and .y properties.
  * @private
  */
 Blockly.getRelativeXY_ = function(element) {
-  var xy = {x: 0, y: 0};
+  var xy = new goog.math.Coordinate(0, 0);
   // First, check for x and y attributes.
   var x = element.getAttribute('x');
   if (x) {
@@ -294,33 +295,31 @@ Blockly.getRelativeXY_.XY_REGEXP_ =
  * The origin (0,0) is the top-left corner of the Blockly SVG.
  * @param {!Element} element Element to find the coordinates of.
  * @param {!Blockly.Workspace} workspace Element must be in this workspace.
- * @return {!Object} Object with .x and .y properties.
+ * @return {!goog.math.Coordinate} Object with .x and .y properties.
  * @private
  */
 Blockly.getSvgXY_ = function(element, workspace) {
   var x = 0;
   var y = 0;
-  // Evaluate if element isn't child of a canvas.
-  var canvasFlag = !goog.dom.contains(workspace.getCanvas(), element) &&
-                   !goog.dom.contains(workspace.getBubbleCanvas(), element);
+  var scale = 1;
+  if (goog.dom.contains(workspace.getCanvas(), element) ||
+      goog.dom.contains(workspace.getBubbleCanvas(), element)) {
+    // Before the SVG canvas, scale the coordinates.
+    scale = workspace.scale;
+  }
   do {
     // Loop through this block and every parent.
     var xy = Blockly.getRelativeXY_(element);
     if (element == workspace.getCanvas() ||
         element == workspace.getBubbleCanvas()) {
-      canvasFlag = true;
+      // After the SVG canvas, don't scale the coordinates.
+      scale = 1;
     }
-    // Before the SVG canvas scale the coordinates.
-    if (canvasFlag) {
-      x += xy.x;
-      y += xy.y;
-    } else {
-      x += xy.x * workspace.scale;
-      y += xy.y * workspace.scale;
-    }
+    x += xy.x * scale;
+    y += xy.y * scale;
     element = element.parentNode;
   } while (element && element != workspace.options.svg);
-  return {x: x, y: y};
+  return new goog.math.Coordinate(x, y);
 };
 
 /**
