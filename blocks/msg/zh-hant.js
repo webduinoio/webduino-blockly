@@ -47,6 +47,8 @@ Blockly.Msg.WEBDUINO_PIN_PIN = " 為腳位：";
 Blockly.Msg.WEBDUINO_PIN_QUERY = "偵測";
 Blockly.Msg.WEBDUINO_PIN_DO = "執行：";
 Blockly.Msg.WEBDUINO_PIN_STATE = "的狀態";
+Blockly.Msg.WEBDUINO_BOARD_ERROR = "如果這塊板子斷線";
+Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "執行：";
 
 Blockly.Msg.WEBDUINO_LED = "LED 燈";
 Blockly.Msg.WEBDUINO_LED_PIN = "，腳位：";

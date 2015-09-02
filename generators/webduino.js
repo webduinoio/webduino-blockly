@@ -91,21 +91,6 @@ Blockly.JavaScript['gettime'] = function (block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-/*Blockly.JavaScript['board_ready'] = function (block) {
-  var value_device_ = Blockly.JavaScript.valueToCode(block, 'device_', Blockly.JavaScript.ORDER_NONE);
-  var statements_callbacks_ = Blockly.JavaScript.statementToCode(block, 'callbacks_');
-  var code = 'boardReady(' + value_device_ + ', function (board) {\n' +
-    '  ' + statements_callbacks_ +
-    '  if(window.boardReadyNumber){\n' +
-    '    window.boardReadyNumber = window.boardReadyNumber +1;\n' +
-    '  }else{\n' +
-    '    window.boardReadyNumber = 1;\n' +
-    '  }\n' +
-    '  window.allBoardReady(window.boardReadyNumber);\n' +
-    '});\n';
-  return code;
-};*/
-
 Blockly.JavaScript['board_ready'] = function (block) {
   var value_device_ = Blockly.JavaScript.valueToCode(block, 'device_', Blockly.JavaScript.ORDER_ATOMIC);
   var checkbox_check_ = block.getFieldValue('check_');
@@ -131,6 +116,14 @@ Blockly.JavaScript['board_ready'] = function (block) {
       '  allBoardReady(window.boardReadyNumber);\n' +
       '});\n';
   }
+  return code;
+};
+
+Blockly.JavaScript['board_error'] = function(block) {
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var code = 'board.on("error",function(){\n'+
+              statements_do_+
+              '});\n';
   return code;
 };
 

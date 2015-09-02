@@ -58,18 +58,6 @@ Blockly.Blocks['gettime'] = {
   }
 };
 
-/*Blockly.Blocks['board_ready'] = {
-  init: function () {
-    this.appendValueInput("device_")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO)
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_READY_DEVICE);
-    this.appendStatementInput("callbacks_");
-    this.setColour(290);
-    this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
-  }
-};*/
-
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#bq2fue
 Blockly.Blocks['board_ready'] = {
   init: function () {
@@ -82,6 +70,20 @@ Blockly.Blocks['board_ready'] = {
     this.appendStatementInput("callbacks_");
     this.setTooltip('');
     this.setColour(290);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#tzhs2o
+Blockly.Blocks['board_error'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_ERROR,"如果這塊板子斷線");
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_ERROR_DO,"執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
 };
