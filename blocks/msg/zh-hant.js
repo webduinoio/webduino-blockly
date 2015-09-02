@@ -24,6 +24,7 @@ Blockly.Msg.WEBDUINO_TEMP_GET = "讀取暫存";
 Blockly.Msg.WEBDUINO_TEMP_GET_NAME = "名稱：";
 Blockly.Msg.WEBDUINO_TEMP_GET_VALUE = "的值";
 Blockly.Msg.WEBDUINO_RECONGNITION = "開始語音辨識 ( 只適用桌上型 Chrome 瀏覽器 )";
+Blockly.Msg.WEBDUINO_RECONGNITION_LANG = "辨識語言：";
 Blockly.Msg.WEBDUINO_RECONGNITION_IF = "如果辨識的文字包含：";
 Blockly.Msg.WEBDUINO_RECONGNITION_DO = "執行：";
 Blockly.Msg.WEBDUINO_SPEECH_MALE = "男聲";

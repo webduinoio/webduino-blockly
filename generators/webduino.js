@@ -765,6 +765,7 @@ Blockly.JavaScript['temp_data_get'] = function (block) {
 };
 
 Blockly.JavaScript['sound_recognition'] = function (block) {
+  var dropdown_lang_ = block.getFieldValue('lang_');
   var statements_recognition_ = Blockly.JavaScript.statementToCode(block, 'recognition_');
   var recognizing = Blockly.JavaScript.variableDB_.getDistinctName(
     'recognizing', Blockly.Variables.NAME_TYPE);
@@ -778,14 +779,14 @@ Blockly.JavaScript['sound_recognition'] = function (block) {
     '  ' + recognition + ' = new webkitSpeechRecognition();\n' +
     '  ' + recognition + '.continuous = true;\n' +
     '  ' + recognition + '.interimResults = true;\n' +
-    '  ' + recognition + '.lang = "cmn-Hant-TW";\n\n' +
+    '  ' + recognition + '.lang = "'+dropdown_lang_+'";\n\n' +
     '  ' + recognition + '.onstart = function() {\n' +
     '    ' + recognizing + ' = true;\n' +
-    '    console.log("辨識中...");\n' +
+    '    console.log("Start recognize...");\n' +
     '  };\n\n' +
     '  ' + recognition + '.onend = function() {\n' +
     '    ' + recognizing + ' = false;\n' +
-    '    console.log("停止辨識");\n' +
+    '    console.log("Stop recognize");\n' +
     '  };\n\n' +
     '  ' + recognition + '.onresult = function(event) {\n' +
     '    var interim_transcript="";\n' +
@@ -837,6 +838,9 @@ Blockly.JavaScript['translate_speech'] = function(block) {
     'audio', Blockly.Variables.NAME_TYPE);
   var text = Blockly.JavaScript.variableDB_.getDistinctName(
     'text', Blockly.Variables.NAME_TYPE);
+  var appID = 'TMXse1GmyYnY4U6jdDskPxJGke0UmpU5BznkpvoTSIyg*';
+  var language = dropdown_lang_;
+  var format = 'audio/mp3&options=MinSize|'+dropdown_sex_;
   var a = value_speech_.split('');
   value_speech_ = a.splice(1, (a.length - 2)).join('');
   var code = '(function(){\n'+
@@ -846,7 +850,7 @@ Blockly.JavaScript['translate_speech'] = function(block) {
               '  var '+audio+' = document.querySelector("audio");\n'+
               '  '+audio+'.setAttribute("autoplay","true");\n'+
               '  var '+text+' = encodeURI("'+value_speech_+'");\n'+
-              '  '+audio+'.setAttribute("src","http://api.microsofttranslator.com/v2/http.svc/speak?appId=TMXse1GmyYnY4U6jdDskPxJGke0UmpU5BznkpvoTSIyg*&language='+dropdown_lang_+'&format=audio/mp3&options=MinSize|'+dropdown_sex_+'&text='+value_speech_+'");\n'+
+              '  '+audio+'.setAttribute("src","http://api.microsofttranslator.com/v2/http.svc/speak?appId='+appID+'&language='+language+'&format='+format+'&text='+value_speech_+'");\n'+
               '})();\n';
   return code;
 };

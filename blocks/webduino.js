@@ -1335,11 +1335,16 @@ Blockly.Blocks['temp_data_get'] = {
   }
 };
 
-// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#s82qut
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vodcqx
 Blockly.Blocks['sound_recognition'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_RECONGNITION, "開始語音辨識 ( 只適用桌上型 Chrome 瀏覽器 )");
+      .appendField(Blockly.Msg.WEBDUINO_RECONGNITION, "開始語音辨識 ( 只適用桌上型 Chrome 瀏覽器 )")
+      .appendField(Blockly.Msg.WEBDUINO_RECONGNITION_LANG, "辨識語言：")
+      .appendField(new Blockly.FieldDropdown([
+        ["中文", "cmn-Hant-TW"],
+        ["English", "en-US"]
+      ]), "lang_");
     this.appendStatementInput("recognition_");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -1378,8 +1383,8 @@ Blockly.Blocks['translate_speech'] = {
         [Blockly.Msg.WEBDUINO_SPEECH_MALE, "male"],
         [Blockly.Msg.WEBDUINO_SPEECH_FEMALE, "female"]
       ]), "sex_")
-      .appendField(Blockly.Msg.WEBDUINO_SPEECH,"發音：");
-    this.setColour(50);
+      .appendField(Blockly.Msg.WEBDUINO_SPEECH, "發音：");
+    this.setColour(230);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
