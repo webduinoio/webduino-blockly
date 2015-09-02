@@ -842,7 +842,6 @@ Blockly.JavaScript['translate_speech'] = function(block) {
               '  '+body+'.appendChild('+creatAudio+');\n'+
               '  var '+audio+' = document.querySelector("audio");\n'+
               '  '+audio+'.setAttribute("autoplay","true");\n'+
-              '  var '+text+' = encodeURI("'+value_speech_+'");\n'+
               '  '+audio+'.setAttribute("src","http://api.microsofttranslator.com/v2/http.svc/speak?appId='+appID+'&language='+language+'&format='+format+'&text='+value_speech_+'");\n'+
               '})();\n';
   return code;
