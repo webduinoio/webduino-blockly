@@ -29,7 +29,10 @@ Blockly.Msg.WEBDUINO_RECONGNITION_IF = "If words include text:";
 Blockly.Msg.WEBDUINO_RECONGNITION_DO = "do:";
 Blockly.Msg.WEBDUINO_SPEECH_MALE = "male";
 Blockly.Msg.WEBDUINO_SPEECH_FEMALE = "female";
-Blockly.Msg.WEBDUINO_SPEECH = "speech:";
+Blockly.Msg.WEBDUINO_SPEECH = "  speech:";
+Blockly.Msg.WEBDUINO_SPEECH_APPID = "AppID:";
+Blockly.Msg.WEBDUINO_SPEECH_SET = "Language:";
+Blockly.Msg.WEBDUINO_SPEECH_SEX = "   sex:";
 
 Blockly.Msg.WEBDUINO_TIMER_AFTER = "After";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "seconds";

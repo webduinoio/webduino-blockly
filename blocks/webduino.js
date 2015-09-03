@@ -78,9 +78,9 @@ Blockly.Blocks['board_ready'] = {
 Blockly.Blocks['board_error'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_ERROR,"如果這塊板子斷線");
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_ERROR, "如果這塊板子斷線");
     this.appendStatementInput("do_")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_ERROR_DO,"執行：");
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_ERROR_DO, "執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -1375,21 +1375,29 @@ Blockly.Blocks['sound_recognition_check'] = {
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#rbw7g9
 Blockly.Blocks['translate_speech'] = {
   init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_SPEECH_APPID, "語音 appID:")
+      .appendField(new Blockly.FieldTextInput(""), "id_");
     this.appendValueInput("speech_")
       .setCheck("String")
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.WEBDUINO_SPEECH_SET, "語音：")
       .appendField(new Blockly.FieldDropdown([
         ["中文", "zh-TW"],
+        ["廣東話", "zh-HK"],
+        ["日文", "ja-JP"],
         ["English", "en-US"]
       ]), "lang_")
+      .appendField(Blockly.Msg.WEBDUINO_SPEECH_SEX, "   性別：")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.WEBDUINO_SPEECH_MALE, "male"],
         [Blockly.Msg.WEBDUINO_SPEECH_FEMALE, "female"]
       ]), "sex_")
-      .appendField(Blockly.Msg.WEBDUINO_SPEECH, "發音：");
-    this.setColour(230);
+      .appendField(Blockly.Msg.WEBDUINO_SPEECH, "   發音：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
+    this.setColour(230);
     this.setHelpUrl('http://www.example.com/');
   }
 };

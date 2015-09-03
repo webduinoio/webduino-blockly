@@ -29,7 +29,10 @@ Blockly.Msg.WEBDUINO_RECONGNITION_IF = "如果辨識的文字包含：";
 Blockly.Msg.WEBDUINO_RECONGNITION_DO = "執行：";
 Blockly.Msg.WEBDUINO_SPEECH_MALE = "男聲";
 Blockly.Msg.WEBDUINO_SPEECH_FEMALE = "女聲";
-Blockly.Msg.WEBDUINO_SPEECH = "發音：";
+Blockly.Msg.WEBDUINO_SPEECH = "   發音：";
+Blockly.Msg.WEBDUINO_SPEECH_APPID = "語音 appID:";
+Blockly.Msg.WEBDUINO_SPEECH_SET = "語音：";
+Blockly.Msg.WEBDUINO_SPEECH_SEX = "   性別：";
 
 Blockly.Msg.WEBDUINO_TIMER_AFTER = "在";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "秒之後";
