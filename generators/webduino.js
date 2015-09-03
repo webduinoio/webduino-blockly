@@ -763,16 +763,18 @@ Blockly.JavaScript['sound_recognition'] = function (block) {
   var statements_recognition_ = Blockly.JavaScript.statementToCode(block, 'recognition_');
   var recognition = Blockly.JavaScript.variableDB_.getDistinctName(
     'recognition', Blockly.Variables.NAME_TYPE);
-  console.log(dropdown_interimresults_);
-  var inter1, inter2, mobile;
+  var inter1, inter2, consoleFinal1, consoleFinal2;
   if (dropdown_interimresults_ == 'on') {
     inter1 = 'false';
     inter2 = 'true';
+    consoleFinal1 = '';
+    consoleFinal2 = 'console.log("final");\n';
   } else if (dropdown_interimresults_ == 'off') {
     inter1 = 'true';
     inter2 = 'false';
+    consoleFinal1 = 'console.log("final");\n';
+    consoleFinal2 = '';
   }
-  console.log(dropdown_interimresults_);
   var code = '(function(){\n' +
     '  if (!("webkitSpeechRecognition" in window)) {\n' +
     '    alert("本瀏覽器不支援語音辨識，請更換瀏覽器！(Chrome 25 版以上才支援語音辨識)");\n' +
@@ -793,8 +795,9 @@ Blockly.JavaScript['sound_recognition'] = function (block) {
     '      if(event.results[resultLength].isFinal===' + inter1 + '){\n' +
     '        console.log(resultTranscript);\n' +
     '        ' + statements_recognition_ +
+    '        ' + consoleFinal1 +
     '      }else if(event.results[resultLength].isFinal===' + inter2 + '){\n' +
-    '        console.log("final");\n' +
+    '        ' + consoleFinal2 +
     '      }\n' +
     '    };\n' +
     '    ' + recognition + '.start();\n' +
@@ -811,15 +814,15 @@ Blockly.JavaScript['sound_recognition_check'] = function (block) {
   var b = value_text_.split(', ');
   var code;
   if (b.length == 1) {
-    code = '      if(resultTranscript.indexOf("' + b[0] + '")!==-1){\n' +
+    code = 'if(resultTranscript.indexOf("' + b[0] + '")!==-1){\n' +
       '        ' + statements_do_ +
       '      }\n';
   } else {
-    code = '      if(resultTranscript.indexOf("' + b[0] + '")!==-1){\n' +
+    code = 'if(resultTranscript.indexOf("' + b[0] + '")!==-1){\n' +
       '        ' + statements_do_ +
       '      }\n';
     for (var i = 1; i < b.length; i++) {
-      code += '      if(resultTranscript.indexOf("' + b[i] + '")!==-1){\n' +
+      code += 'if(resultTranscript.indexOf("' + b[i] + '")!==-1){\n' +
         '        ' + statements_do_ +
         '      }\n';
     }
