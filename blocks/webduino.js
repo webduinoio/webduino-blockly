@@ -1337,16 +1337,23 @@ Blockly.Blocks['temp_data_get'] = {
   }
 };
 
-// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vodcqx
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#shuqaz
 Blockly.Blocks['sound_recognition'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_RECONGNITION, "開始語音辨識 ( 只適用桌上型 Chrome 瀏覽器 )")
+      .appendField(Blockly.Msg.WEBDUINO_RECONGNITION, "開始語音辨識 ( 不支援 iOS )");
+    this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_RECONGNITION_LANG, "辨識語言：")
       .appendField(new Blockly.FieldDropdown([
         ["中文", "cmn-Hant-TW"],
         ["English", "en-US"]
-      ]), "lang_");
+      ]), "lang_")
+      .appendField(Blockly.Msg.WEBDUINO_RECONGNITION_INTER, "   即時辨識：")
+      .appendField(new Blockly.FieldDropdown([
+        ["on", "on"],
+        ["off", "off"]
+      ]), "interimResults_")
+      .appendField(Blockly.Msg.WEBDUINO_RECONGNITION_MOBILE, "( 行動裝置勾選 off )");
     this.appendStatementInput("recognition_");
     this.setPreviousStatement(true);
     this.setNextStatement(true);

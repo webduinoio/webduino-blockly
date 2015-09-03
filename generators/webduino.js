@@ -119,11 +119,11 @@ Blockly.JavaScript['board_ready'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['board_error'] = function(block) {
+Blockly.JavaScript['board_error'] = function (block) {
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'board.on("error",function(){\n'+
-              statements_do_+
-              '});\n';
+  var code = 'board.on("error",function(){\n' +
+    statements_do_ +
+    '});\n';
   return code;
 };
 
@@ -750,7 +750,7 @@ Blockly.JavaScript['temp_data_get'] = function (block) {
       '  return ' + getCookie + '(' + value_name_ + ');\n' +
       '})()';
   } else if (dropdown_type_ == 2) {
-    code = 'localStorage.' + value_name_ ;
+    code = 'localStorage.' + value_name_;
   } else if (dropdown_type_ == 3) {
     code = 'sessionStorage.' + value_name_;
   }
@@ -759,21 +759,30 @@ Blockly.JavaScript['temp_data_get'] = function (block) {
 
 Blockly.JavaScript['sound_recognition'] = function (block) {
   var dropdown_lang_ = block.getFieldValue('lang_');
+  var dropdown_interimresults_ = block.getFieldValue('interimResults_');
   var statements_recognition_ = Blockly.JavaScript.statementToCode(block, 'recognition_');
   var recognition = Blockly.JavaScript.variableDB_.getDistinctName(
     'recognition', Blockly.Variables.NAME_TYPE);
-  var code = '(function(){\n'+
+  console.log(dropdown_interimresults_);
+  var inter1, inter2, mobile;
+  if (dropdown_interimresults_ == 'on') {
+    inter1 = 'false';
+    inter2 = 'true';
+  } else if (dropdown_interimresults_ == 'off') {
+    inter1 = 'true';
+    inter2 = 'false';
+  }
+  console.log(dropdown_interimresults_);
+  var code = '(function(){\n' +
     '  if (!("webkitSpeechRecognition" in window)) {\n' +
     '    alert("本瀏覽器不支援語音辨識，請更換瀏覽器！(Chrome 25 版以上才支援語音辨識)");\n' +
     '  } else{\n' +
     '    var ' + recognition + ' = new webkitSpeechRecognition();\n' +
-    '    var checkFinal;\n' +
     '    ' + recognition + '.continuous = true;\n' +
     '    ' + recognition + '.interimResults = true;\n' +
-    '    ' + recognition + '.lang = "'+dropdown_lang_+'";\n\n' +
+    '    ' + recognition + '.lang = "' + dropdown_lang_ + '";\n\n' +
     '    ' + recognition + '.onstart = function() {\n' +
     '      console.log("Start recognize...");\n' +
-    '      checkFinal=0;\n'+
     '    };\n\n' +
     '    ' + recognition + '.onend = function() {\n' +
     '      console.log("Stop recognize");\n' +
@@ -781,16 +790,15 @@ Blockly.JavaScript['sound_recognition'] = function (block) {
     '    ' + recognition + '.onresult = function(event) {\n' +
     '      var resultLength = event.results.length-1;\n' +
     '      var resultTranscript = event.results[resultLength][0].transcript;\n' +
-    '      if(event.results[resultLength].isFinal===false){\n'+
-    '        console.log(resultTranscript);\n'+
-    '        '+statements_recognition_+
-    '      }else if(event.results[resultLength].isFinal===true){\n' +
-    '        checkFinal=0;\n'+
-    '        console.log("final");\n'+
-    '      }\n'+
+    '      if(event.results[resultLength].isFinal===' + inter1 + '){\n' +
+    '        console.log(resultTranscript);\n' +
+    '        ' + statements_recognition_ +
+    '      }else if(event.results[resultLength].isFinal===' + inter2 + '){\n' +
+    '        console.log("final");\n' +
+    '      }\n' +
     '    };\n' +
-    '    '+recognition + '.start();\n'+
-    '  }\n'+
+    '    ' + recognition + '.start();\n' +
+    '  }\n' +
     '})();\n';
   return code;
 };
@@ -803,18 +811,15 @@ Blockly.JavaScript['sound_recognition_check'] = function (block) {
   var b = value_text_.split(', ');
   var code;
   if (b.length == 1) {
-    code = '      if(resultTranscript.indexOf("' + b[0] + '")!==-1 && checkFinal===0){\n' +
-      '        checkFinal=1;\n'+
+    code = '      if(resultTranscript.indexOf("' + b[0] + '")!==-1){\n' +
       '        ' + statements_do_ +
       '      }\n';
   } else {
-    code = '      if(resultTranscript.indexOf("' + b[0] + '")!==-1 && checkFinal===0){\n' +
-      '        checkFinal=1;\n'+
+    code = '      if(resultTranscript.indexOf("' + b[0] + '")!==-1){\n' +
       '        ' + statements_do_ +
       '      }\n';
     for (var i = 1; i < b.length; i++) {
-      code += '      if(resultTranscript.indexOf("' + b[i] + '")!==-1 && checkFinal===0){\n' +
-      '        checkFinal=1;\n'+
+      code += '      if(resultTranscript.indexOf("' + b[i] + '")!==-1){\n' +
         '        ' + statements_do_ +
         '      }\n';
     }
@@ -823,7 +828,7 @@ Blockly.JavaScript['sound_recognition_check'] = function (block) {
 };
 
 
-Blockly.JavaScript['translate_speech'] = function(block) {
+Blockly.JavaScript['translate_speech'] = function (block) {
   var text_id_ = block.getFieldValue('id_');
   var dropdown_lang_ = block.getFieldValue('lang_');
   var dropdown_sex_ = block.getFieldValue('sex_');
@@ -838,16 +843,16 @@ Blockly.JavaScript['translate_speech'] = function(block) {
     'text', Blockly.Variables.NAME_TYPE);
   var appID = text_id_;
   var language = dropdown_lang_;
-  var format = 'audio/mp3&options=MinSize|'+dropdown_sex_;
+  var format = 'audio/mp3&options=MinSize|' + dropdown_sex_;
   var a = value_speech_.split('');
   value_speech_ = a.splice(1, (a.length - 2)).join('');
-  var code = '(function(){\n'+
-              '  var '+body+' = document.querySelector("body");\n'+
-              '  var '+creatAudio+' = document.createElement("audio");\n'+
-              '  '+body+'.appendChild('+creatAudio+');\n'+
-              '  var '+audio+' = document.querySelector("audio");\n'+
-              '  '+audio+'.setAttribute("autoplay","true");\n'+
-              '  '+audio+'.setAttribute("src","http://api.microsofttranslator.com/v2/http.svc/speak?appId='+appID+'&language='+language+'&format='+format+'&text='+value_speech_+'");\n'+
-              '})();\n';
+  var code = '(function(){\n' +
+    '  var ' + body + ' = document.querySelector("body");\n' +
+    '  var ' + creatAudio + ' = document.createElement("audio");\n' +
+    '  ' + body + '.appendChild(' + creatAudio + ');\n' +
+    '  var ' + audio + ' = document.querySelector("audio");\n' +
+    '  ' + audio + '.setAttribute("autoplay","true");\n' +
+    '  ' + audio + '.setAttribute("src","http://api.microsofttranslator.com/v2/http.svc/speak?appId=' + appID + '&language=' + language + '&format=' + format + '&text=' + value_speech_ + '");\n' +
+    '})();\n';
   return code;
 };
