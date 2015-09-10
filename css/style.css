@@ -17,6 +17,7 @@ body {
 html[dir="RTL"] .farSide {
   text-align: left;
 }
+
 /* Buttons */
 
 button {
@@ -173,7 +174,7 @@ button {
 .icon21 {
   height: 21px;
   width: 21px;
-  background-image: url(media/icons.png);
+  background-image: url(../media/icons.png);
 }
 
 .trash {

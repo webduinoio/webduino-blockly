@@ -16,7 +16,7 @@ var MSG = {
   catColour: "顏色",
   catVariables: "變量",
   catFunctions: "流程",
-  catExec: "執行",
+  catExec: "延遲 & 執行",
   catBoard: "開發板",
   catLed: "LED 燈",
   catRelay: "繼電器",
@@ -47,5 +47,8 @@ var MSG = {
   catCar: "應用 - 自走車 (1)",
   catFish: "應用 - 飛天魚",
   catBasic:"基本積木",
-  catWebduino:"Webduino 積木"
+  catWebduino:"Webduino 積木",
+  catMenu1: "電子零件",
+  catMenu2: "傳感器",
+  catMenu3: "玩具應用"
 };

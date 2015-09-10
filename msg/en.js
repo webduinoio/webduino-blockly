@@ -16,7 +16,7 @@ var MSG = {
   catColour: "Colour",
   catVariables: "Variables",
   catFunctions: "Functions",
-  catExec: "Execute",
+  catExec: "Delay & Execute",
   catBoard: "Board",
   catLed: "Led",
   catRelay: "Relay",
@@ -46,4 +46,7 @@ var MSG = {
   catCarTest: "Demo - Car (2)",
   catCar: "Demo - Car (1)",
   catFish: "Demo - Fly Fish",
+  catMenu1: "Component",
+  catMenu2: "Sensor",
+  catMenu3: "Toies"
 };

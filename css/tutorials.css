@@ -62,7 +62,7 @@ table.nav{
   right:-5px;
   width:160px;
   height:103px;
-  background:url(media/cuteman01.png);
+  background:url(../media/cuteman01.png);
   background-size:cover;
   cursor:pointer;
 }
