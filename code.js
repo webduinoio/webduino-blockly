@@ -302,6 +302,7 @@ Code.init = function () {
 
   var rtl = Code.isRtl();
   var container = document.getElementById('content_area');
+  var blocklyMenu;
   var onresize = function (e) {
     var bBox = Code.getBBox_(container);
     for (var i = 0; i < Code.TABS_.length; i++) {
@@ -315,12 +316,20 @@ Code.init = function () {
       el.style.width = bBox.width + 'px';
       el.style.width = (2 * bBox.width - el.offsetWidth) + 'px';
     }
-    // Make the 'Blocks' tab line up with the toolbox.
     if (Code.workspace.toolbox_.width) {
-      document.getElementById('tab_blocks').style.minWidth =
-        (Code.workspace.toolbox_.width - 38) + 'px';
-      // Account for the 19 pixel margin and on each side.
+      blocklyMenu = document.querySelector('.blocklyTreeRow.blocklyTreeSelected');
+      if(blocklyMenu){
+        document.getElementById('tab_blocks').style.minWidth = (blocklyMenu.offsetWidth - 38) + 'px';
+      }else{
+        document.getElementById('tab_blocks').style.minWidth = (Code.workspace.toolbox_.width - 38) + 'px';
+      }
     }
+    // Make the 'Blocks' tab line up with the toolbox.
+    //if (Code.workspace.toolbox_.width) {
+      //document.getElementById('tab_blocks').style.minWidth =
+        //(Code.workspace.toolbox_.width - 38) + 'px';
+      // Account for the 19 pixel margin and on each side.
+    //}
   };
   window.addEventListener('resize', onresize, false);
 

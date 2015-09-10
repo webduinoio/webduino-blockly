@@ -41,12 +41,14 @@ var MSG = {
   demoTitle: "Blockly Demo Area",
   catTutorials: "Blockly",
   linkToBin: "Let's Coding",
-  catDatabase: "Data base - Firebase",
+  catDatabase: "Data base",
+  catFirebase: "Firebase",
   update: "update 2015.8.11",
-  catCarTest: "Demo - Car (2)",
-  catCar: "Demo - Car (1)",
-  catFish: "Demo - Fly Fish",
-  catMenu1: "Component",
-  catMenu2: "Sensor",
-  catMenu3: "Toies"
+  catCarTest: "Car (2)",
+  catCar: "Car (1)",
+  catFish: "Fly Fish",
+  catMenu1: "Components",
+  catMenu2: "Sensors",
+  catMenu3: "Toies",
+  catPlus: "Control"
 };

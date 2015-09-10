@@ -255,29 +255,16 @@
   <category id="catVariables" custom="VARIABLE"></category>
   <category id="catFunctions" custom="PROCEDURE"></category>
   <sep></sep>
-  <sep></sep>
-  <category id="catExec">
-    <block type="timer"></block>
-    <block type="delay"></block>
-  </category>
   <category id="catConsole">
     <block type="console"></block>
     <block type="getdate"></block>
     <block type="gettime"></block>
-    <block type="temp_data_set">
-      <value name="name_">
-        <block type="text">
-          <field name="TEXT">temp</field>
-        </block>
-      </value>
-    </block>
-    <block type="temp_data_get">
-      <value name="name_">
-        <block type="text">
-          <field name="TEXT">temp</field>
-        </block>
-      </value>
-    </block>
+  </category>
+  <category id="catExec">
+    <block type="timer"></block>
+    <block type="delay"></block>
+  </category>
+  <category id="catPlus">
     <block type="sound_recognition"></block>
     <block type="sound_recognition_check">
       <value name="text_">
@@ -293,32 +280,20 @@
         </block>
       </value>
     </block>
-  </category>
-  <category id="catDatabase">
-    <block type="data_firebase">
+    <block type="temp_data_set">
       <value name="name_">
-        <block type="variables_get">
-          <field name="VAR">myFirebase</field>
+        <block type="text">
+          <field name="TEXT">temp</field>
         </block>
       </value>
     </block>
-    <block type="data_firebase_write"></block>
-    <block type="data_firebase_data"></block>
-    <block type="data_firebase_read">
-      <value name="read_">
-        <block type="variables_get">
-          <field name="VAR">val</field>
+    <block type="temp_data_get">
+      <value name="name_">
+        <block type="text">
+          <field name="TEXT">temp</field>
         </block>
       </value>
     </block>
-    <block type="data_firebase_readonce">
-      <value name="read_">
-        <block type="variables_get">
-          <field name="VAR">val</field>
-        </block>
-      </value>
-    </block>
-    <block type="data_firebase_clear"></block>
   </category>
   <sep></sep>
   <category id="catBoard">
@@ -608,5 +583,34 @@
       </block>
     </category>
   <sep></sep>
+  </category>
+  <category id="catDatabase">
+    <category id="catFirebase">
+      <block type="data_firebase">
+        <value name="name_">
+          <block type="variables_get">
+            <field name="VAR">myFirebase</field>
+          </block>
+        </value>
+      </block>
+      <block type="data_firebase_write"></block>
+      <block type="data_firebase_data"></block>
+      <block type="data_firebase_read">
+        <value name="read_">
+          <block type="variables_get">
+            <field name="VAR">val</field>
+          </block>
+        </value>
+      </block>
+      <block type="data_firebase_readonce">
+        <value name="read_">
+          <block type="variables_get">
+            <field name="VAR">val</field>
+          </block>
+        </value>
+      </block>
+      <block type="data_firebase_clear"></block>
+    </category>
+    <sep></sep>
   </category>
 </xml>
