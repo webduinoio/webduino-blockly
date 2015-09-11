@@ -172,7 +172,7 @@ Code.importPrettify = function () {
   //<script src="../prettify.js"></script>
   var link = document.createElement('link');
   link.setAttribute('rel', 'stylesheet');
-  link.setAttribute('href', baseUrl + '/prettify.css');
+  link.setAttribute('href', baseUrl + '/prettify-tomorrow.css');
   link.onload = function () {
     Blockly.fireUiEvent(window, 'resize');
   };
@@ -766,6 +766,18 @@ Blockly.Trashcan.prototype.position = function () {
     (this.BODY_HEIGHT_ + this.LID_HEIGHT_) - this.MARGIN_BOTTOM_ + 20;
   this.svgGroup_.setAttribute('transform',
     'translate(' + this.left_ + ',' + this.top_ + ') scale(.75)');
+};
+
+//remove inject css
+Blockly.Css.inject = function(hasCss, pathToMedia) {
+  if (Blockly.Css.styleSheet_) {
+    return;
+  }
+  var text = '.blocklyDraggable {}\n';
+  Blockly.Css.mediaPath_ = pathToMedia.replace(/[\\\/]$/, '');
+  text = text.replace(/<<<PATH>>>/g, Blockly.Css.mediaPath_);
+  Blockly.Css.styleSheet_ = goog.cssom.addCssText(text).sheet;
+  Blockly.Css.setCursor(Blockly.Css.Cursor.OPEN);
 };
 
 Blockly.JavaScript.depth = 0;
