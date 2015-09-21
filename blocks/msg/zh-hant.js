@@ -332,7 +332,6 @@ Blockly.Msg.WEBDUINO_TESTCAR_PINRF = "腳位設定：右前";
 Blockly.Msg.WEBDUINO_TESTCAR_PINRB = "右後";
 Blockly.Msg.WEBDUINO_TESTCAR_PINLF = "左前";
 Blockly.Msg.WEBDUINO_TESTCAR_PINLB = "左後";
-Blockly.Msg.WEBDUINO_TESTCAR = "自走車";
 Blockly.Msg.WEBDUINO_TESTCAR_ACTION = " 動作";
 Blockly.Msg.WEBDUINO_TESTCAR_GOFRONT = "前進";
 Blockly.Msg.WEBDUINO_TESTCAR_GOBACK = "後退";
