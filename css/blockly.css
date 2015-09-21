@@ -413,4 +413,15 @@
   padding: 0;
 }
 
+/* menu color */
+/*.blocklyTreeRoot>div:last-child>div:nth-child(1) .blocklyTreeRow{
+  background-image:-webkit-linear-gradient(left, #5b80a5 3%, #ddd 3%);
+}
+.blocklyTreeRoot>div:last-child>div:nth-child(1):hover .blocklyTreeRow{
+  background-image:-webkit-linear-gradient(left, #5b80a5 3%, #eee 3%);
+}
+.blocklyTreeRoot>div:last-child>div:nth-child(1) .blocklyTreeRow.blocklyTreeSelected{
+  background-image:-webkit-linear-gradient(left, #5b80a5 0%, #5b80a5 100%);
+}*/
+
 

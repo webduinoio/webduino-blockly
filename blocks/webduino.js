@@ -1408,3 +1408,4 @@ Blockly.Blocks['translate_speech'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
