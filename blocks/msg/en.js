@@ -52,7 +52,8 @@ Blockly.Msg.WEBDUINO_PIN_PIN = " pin:";
 Blockly.Msg.WEBDUINO_PIN_QUERY = "Get";
 Blockly.Msg.WEBDUINO_PIN_DO = "do:";
 Blockly.Msg.WEBDUINO_PIN_STATE = "'s state";
-Blockly.Msg.WEBDUINO_BOARD_ERROR = "If this board offline";
+Blockly.Msg.WEBDUINO_BOARD_ERROR_IF = "If";
+Blockly.Msg.WEBDUINO_BOARD_ERROR = "offine";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "do:";
 
 Blockly.Msg.WEBDUINO_LED = "LED";

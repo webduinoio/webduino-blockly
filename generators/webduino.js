@@ -120,10 +120,11 @@ Blockly.JavaScript['board_ready'] = function (block) {
 };
 
 Blockly.JavaScript['board_error'] = function (block) {
-  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'board.on("error",function(){\n' +
-    statements_do_ +
-    '});\n';
+  var value_device_ = Blockly.JavaScript.valueToCode(block, 'device_', Blockly.JavaScript.ORDER_ATOMIC);
+  var statements_callbacks_ = Blockly.JavaScript.statementToCode(block, 'callbacks_');
+  var code = 'boardError(' + value_device_ + ', function (board) {\n' +
+      statements_callbacks_ +
+      '});\n';
   return code;
 };
 

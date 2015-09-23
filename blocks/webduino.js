@@ -77,16 +77,28 @@ Blockly.Blocks['board_ready'] = {
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#tzhs2o
 Blockly.Blocks['board_error'] = {
   init: function () {
+    this.appendValueInput("device_")
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_ERROR_IF);
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_ERROR, "如果這塊板子斷線");
-    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_ERROR);
+    this.appendStatementInput("callbacks_")
       .appendField(Blockly.Msg.WEBDUINO_BOARD_ERROR_DO, "執行：");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
 };
+// Blockly.Blocks['board_error'] = {
+//   init: function () {
+//     this.appendDummyInput()
+//       .appendField(Blockly.Msg.WEBDUINO_BOARD_ERROR, "如果這塊板子斷線");
+//     this.appendStatementInput("do_")
+//       .appendField(Blockly.Msg.WEBDUINO_BOARD_ERROR_DO, "執行：");
+//     this.setPreviousStatement(true);
+//     this.setNextStatement(true);
+//     this.setTooltip('');
+//     this.setHelpUrl('http://www.example.com/');
+//   }
+// };
 
 //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#ophu3b
 Blockly.Blocks['all_board_ready'] = {

@@ -12,6 +12,11 @@ function boardReady(device, callback) {
   board.on(webduino.BoardEvent.READY, callback.bind(null, board));
 }
 
+function boardError(device, callback) {
+  var board = new webduino.WebArduino(device);
+  board.on(webduino.BoardEvent.ERROR, callback.bind(null, board));
+}
+
 function getLed(board, pin) {
   return new webduino.module.Led(board, board.getDigitalPin(pin));
 }
@@ -173,6 +178,7 @@ function delay(t) {
 }
 
 scope.boardReady = boardReady;
+scope.boardError = boardError;
 scope.getLed = getLed;
 scope.getRelay = getRelay;
 scope.getRGBLed = getRGBLed;
