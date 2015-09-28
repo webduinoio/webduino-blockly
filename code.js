@@ -318,17 +318,17 @@ Code.init = function () {
     }
     if (Code.workspace.toolbox_.width) {
       blocklyMenu = document.querySelector('.blocklyTreeRow.blocklyTreeSelected');
-      if(blocklyMenu){
+      if (blocklyMenu) {
         document.getElementById('tab_blocks').style.minWidth = (blocklyMenu.offsetWidth - 38) + 'px';
-      }else{
+      } else {
         document.getElementById('tab_blocks').style.minWidth = (Code.workspace.toolbox_.width - 38) + 'px';
       }
     }
     // Make the 'Blocks' tab line up with the toolbox.
     //if (Code.workspace.toolbox_.width) {
-      //document.getElementById('tab_blocks').style.minWidth =
-        //(Code.workspace.toolbox_.width - 38) + 'px';
-      // Account for the 19 pixel margin and on each side.
+    //document.getElementById('tab_blocks').style.minWidth =
+    //(Code.workspace.toolbox_.width - 38) + 'px';
+    // Account for the 19 pixel margin and on each side.
     //}
   };
   window.addEventListener('resize', onresize, false);
@@ -361,7 +361,6 @@ Code.init = function () {
   }
 
   Code.tabClick(Code.selected);
-  Blockly.fireUiEvent(window, 'resize');
 
   Code.bindClick('trashButton',
     function () {
@@ -769,7 +768,7 @@ Blockly.Trashcan.prototype.position = function () {
 };
 
 //remove inject css
-Blockly.Css.inject = function(hasCss, pathToMedia) {
+Blockly.Css.inject = function (hasCss, pathToMedia) {
   if (Blockly.Css.styleSheet_) {
     return;
   }

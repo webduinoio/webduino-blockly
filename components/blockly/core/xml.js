@@ -227,6 +227,7 @@ Blockly.Xml.domToWorkspace = function(workspace, xml) {
   if (workspace.RTL) {
     width = workspace.getWidth();
   }
+  Blockly.Field.startCache();
   // Safari 7.1.3 is known to provide node lists with extra references to
   // children beyond the lists' length.  Trust the length, do not use the
   // looping pattern of checking the index for an object.
@@ -242,6 +243,7 @@ Blockly.Xml.domToWorkspace = function(workspace, xml) {
       }
     }
   }
+  Blockly.Field.stopCache();
 };
 
 /**
@@ -375,13 +377,21 @@ Blockly.Xml.domToBlockHeadless_ =
         // Titles were renamed to field in December 2013.
         // Fall through.
       case 'field':
-        block.setFieldValue(xmlChild.textContent, name);
+        var field = block.getField(name);
+        if (!field) {
+          console.warn('Ignoring non-existent field ' + name + ' in block ' +
+                       prototypeName);
+          break;
+        }
+        field.setValue(xmlChild.textContent);
         break;
       case 'value':
       case 'statement':
         input = block.getInput(name);
         if (!input) {
-          throw 'Input ' + name + ' does not exist in block ' + prototypeName;
+          console.warn('Ignoring non-existent input ' + name + ' in block ' +
+                       prototypeName);
+          break;
         }
         if (firstRealGrandchild &&
             firstRealGrandchild.nodeName.toLowerCase() == 'block') {
@@ -415,7 +425,7 @@ Blockly.Xml.domToBlockHeadless_ =
         break;
       default:
         // Unknown tag; ignore.  Same principle as HTML parsers.
-        console.log('Ignoring unknown tag: ' + xmlChild.nodeName);
+        console.warn('Ignoring unknown tag: ' + xmlChild.nodeName);
     }
   }
 
