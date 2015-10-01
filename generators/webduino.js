@@ -138,6 +138,21 @@ Blockly.JavaScript['all_board_ready'] = function (block) {
   return code;
 };
 
+Blockly.JavaScript['board_query_pin_state'] = function(block) {
+  var dropdown_pin_ = block.getFieldValue('pin_');
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var code = 'board.queryPinState('+dropdown_pin_+',function(){\n'+
+            '  var _localPinVar_ = board.getDigitalPin('+dropdown_pin_+');\n'+
+            statements_do_+'\n'+
+            '});\n';
+  return code;
+};
+
+Blockly.JavaScript['board_pin_state'] = function(block) {
+  var code = '_localPinVar_.state';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 Blockly.JavaScript['led_new'] = function (block) {
   var dropdown_pin_ = block.getFieldValue('pin_');
   var code = 'getLed(board, ' + dropdown_pin_ + ')';
@@ -595,37 +610,6 @@ Blockly.JavaScript['data_firebase_clear'] = function (block) {
   var code = variable_name_ + '.set({});\n' +
     'console.log("clear ok");\n';;
   return code;
-};
-
-Blockly.JavaScript['set_pin_state'] = function (block) {
-  var value_var_ = Blockly.JavaScript.valueToCode(block, 'var_', Blockly.JavaScript.ORDER_ATOMIC);
-  var dropdown_pin_ = block.getFieldValue('pin_');
-  var code = value_var_ + '= {};\n' +
-    value_var_ + '.board_ = board;\n' +
-    value_var_ + '.pin_ = ' + dropdown_pin_ + ';\n';
-  return code;
-};
-
-Blockly.JavaScript['query_pin_state'] = function (block) {
-  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
-  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var pinNum = Blockly.JavaScript.variableDB_.getDistinctName(
-    'pinNum', Blockly.Variables.NAME_TYPE);
-  var code = 'var ' + pinNum + '=' + variable_name_ + '.pin_;\n' +
-    variable_name_ + '.queryPinState_ = function(' + pinNum + ') {\n' +
-    '  ' + variable_name_ + '.pinNum_ = ' + variable_name_ + '.board_.getDigitalPin(' + pinNum + ');\n' +
-    '  ' + variable_name_ + '.board_.queryPinState(' + variable_name_ + '.pinNum_,function(){\n' +
-    '     ' + statements_do_ + '\n' +
-    '  });\n' +
-    '};\n' +
-    variable_name_ + '.queryPinState_(' + pinNum + ');\n';
-  return code;
-};
-
-Blockly.JavaScript['pin_state'] = function (block) {
-  var variable_pin_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('pin_'), Blockly.Variables.NAME_TYPE);
-  var code = variable_pin_ + '.pinNum_.state';
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 Blockly.JavaScript['car_test_new'] = function (block) {

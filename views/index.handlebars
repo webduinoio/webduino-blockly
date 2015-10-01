@@ -303,15 +303,8 @@
       </value>
     </block>
     <block type="all_board_ready"></block>
-    <block type="set_pin_state">
-      <value name="var_">
-        <block type="variables_get">
-          <field name="VAR">boardPin</field>
-        </block>
-      </value>
-    </block>
-    <block type="query_pin_state"></block>
-    <block type="pin_state"></block>
+    <block type="board_query_pin_state"></block>
+    <block type="board_pin_state"></block>
     <block type="board_error">
       <value name="device_">
         <block type="text"></block>

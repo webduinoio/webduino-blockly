@@ -87,18 +87,6 @@ Blockly.Blocks['board_error'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
-// Blockly.Blocks['board_error'] = {
-//   init: function () {
-//     this.appendDummyInput()
-//       .appendField(Blockly.Msg.WEBDUINO_BOARD_ERROR, "如果這塊板子斷線");
-//     this.appendStatementInput("do_")
-//       .appendField(Blockly.Msg.WEBDUINO_BOARD_ERROR_DO, "執行：");
-//     this.setPreviousStatement(true);
-//     this.setNextStatement(true);
-//     this.setTooltip('');
-//     this.setHelpUrl('http://www.example.com/');
-//   }
-// };
 
 //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#ophu3b
 Blockly.Blocks['all_board_ready'] = {
@@ -109,6 +97,47 @@ Blockly.Blocks['all_board_ready'] = {
       .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN_DO, "執行：");
     this.setTooltip('');
     this.setColour(0);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#jo278f
+Blockly.Blocks['board_query_pin_state'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_QUERY_PIN, "偵測開發板")
+      .appendField(new Blockly.FieldDropdown([
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"],
+        ["12", "12"],
+        ["13", "13"]
+      ]), "pin_")
+      .appendField(Blockly.Msg.WEBDUINO_QUERY_PIN_NUM, "號 腳位");
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_PIN_DO, "執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(120);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['board_pin_state'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_PIN_STATE, "腳位狀態");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(120);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -1149,63 +1178,6 @@ Blockly.Blocks['data_firebase_clear'] = {
   }
 };
 
-//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#dz2mvkh
-Blockly.Blocks['set_pin_state'] = {
-  init: function () {
-    this.appendValueInput("var_")
-      .appendField(Blockly.Msg.WEBDUINO_PIN_SET, "設定");
-    this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_PIN_PIN, " 為腳位：")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"]
-      ]), "pin_");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip('');
-    this.setColour(120);
-    this.setHelpUrl('http://www.example.com/');
-  }
-};
-
-//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#6zz5zv
-Blockly.Blocks['query_pin_state'] = {
-  init: function () {
-    this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_PIN_QUERY, "偵測")
-      .appendField(new Blockly.FieldVariable("boardPin"), "name_");
-    this.appendStatementInput("do_")
-      .appendField(Blockly.Msg.WEBDUINO_PIN_DO, "執行：");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip('');
-    this.setColour(120);
-    this.setHelpUrl('http://www.example.com/');
-  }
-};
-
-Blockly.Blocks['pin_state'] = {
-  init: function () {
-    this.appendDummyInput()
-      .appendField(new Blockly.FieldVariable("boardPin"), "pin_")
-      .appendField(Blockly.Msg.WEBDUINO_PIN_STATE, "的狀態");
-    this.setOutput(true);
-    this.setTooltip('');
-    this.setColour(120);
-    this.setHelpUrl('http://www.example.com/');
-  }
-};
-
 //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#85nm6w
 Blockly.Blocks[Blockly.Msg.WEBDUINO_TESTCAR_NEW, 'car_test_new'] = {
   init: function () {
@@ -1420,4 +1392,3 @@ Blockly.Blocks['translate_speech'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
-
