@@ -741,10 +741,10 @@ Blockly.ZoomControls.prototype.position = function () {
     this.left_ = this.MARGIN_SIDE_;
   } else {
     this.left_ = metrics.absoluteLeft -
-      this.WIDTH_ - this.MARGIN_SIDE_ + 90;
+      this.WIDTH_ - this.MARGIN_SIDE_ + 70;
   }
   this.top_ = metrics.viewHeight + metrics.absoluteTop -
-    this.HEIGHT_ - this.MARGIN_BOTTOM_ + 80;
+    this.HEIGHT_ - this.MARGIN_BOTTOM_ + 5;
   this.svgGroup_.setAttribute('transform',
     'translate(' + this.left_ + ',' + this.top_ + ')');
 };
@@ -759,10 +759,10 @@ Blockly.Trashcan.prototype.position = function () {
     this.left_ = this.MARGIN_SIDE_;
   } else {
     this.left_ = metrics.viewWidth + metrics.absoluteLeft -
-      this.WIDTH_ - this.MARGIN_SIDE_ + 20;
+      this.WIDTH_ - this.MARGIN_SIDE_ + 10;
   }
   this.top_ = metrics.viewHeight + metrics.absoluteTop -
-    (this.BODY_HEIGHT_ + this.LID_HEIGHT_) - this.MARGIN_BOTTOM_ + 20;
+    (this.BODY_HEIGHT_ + this.LID_HEIGHT_) - this.MARGIN_BOTTOM_ + 10;
   this.svgGroup_.setAttribute('transform',
     'translate(' + this.left_ + ',' + this.top_ + ') scale(.75)');
 };
