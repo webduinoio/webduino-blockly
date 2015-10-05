@@ -123,8 +123,8 @@ Blockly.JavaScript['board_error'] = function (block) {
   var value_device_ = Blockly.JavaScript.valueToCode(block, 'device_', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_callbacks_ = Blockly.JavaScript.statementToCode(block, 'callbacks_');
   var code = 'boardError(' + value_device_ + ', function (board) {\n' +
-      statements_callbacks_ +
-      '});\n';
+    statements_callbacks_ +
+    '});\n';
   return code;
 };
 
@@ -138,17 +138,17 @@ Blockly.JavaScript['all_board_ready'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['board_query_pin_state'] = function(block) {
+Blockly.JavaScript['board_query_pin_state'] = function (block) {
   var dropdown_pin_ = block.getFieldValue('pin_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'board.queryPinState('+dropdown_pin_+',function(){\n'+
-            '  var _localPinVar_ = board.getDigitalPin('+dropdown_pin_+');\n'+
-            statements_do_+'\n'+
-            '});\n';
+  var code = 'board.queryPinState(' + dropdown_pin_ + ',function(){\n' +
+    '  var _localPinVar_ = board.getDigitalPin(' + dropdown_pin_ + ');\n' +
+    statements_do_ + '\n' +
+    '});\n';
   return code;
 };
 
-Blockly.JavaScript['board_pin_state'] = function(block) {
+Blockly.JavaScript['board_pin_state'] = function (block) {
   var code = '_localPinVar_.state';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
@@ -334,16 +334,16 @@ Blockly.JavaScript['sound_status'] = function (block) {
   var dropdown_status_ = block.getFieldValue('status_');
   var statements_var_ = Blockly.JavaScript.statementToCode(block, 'var_');
   var code;
-  if(dropdown_status_=='detected'){
+  if (dropdown_status_ == 'detected') {
     code = variable_item_ + '.on("' + dropdown_status_ + '",function(){\n' +
-    '  ' + statements_var_ + '\n' +
-    '});\n';
-  }else{
-  code = variable_item_ + '.on("' + dropdown_status_ + '",function(){\n' +
-    '  setTimeout(function(){\n' +
-    '  ' + statements_var_ + '\n' +
-    '  },300);\n' +
-    '});\n';
+      '  ' + statements_var_ + '\n' +
+      '});\n';
+  } else {
+    code = variable_item_ + '.on("' + dropdown_status_ + '",function(){\n' +
+      '  setTimeout(function(){\n' +
+      '  ' + statements_var_ + '\n' +
+      '  },300);\n' +
+      '});\n';
   }
   return code;
 };
@@ -850,4 +850,90 @@ Blockly.JavaScript['translate_speech'] = function (block) {
     '  ' + audio + '.setAttribute("src","http://api.microsofttranslator.com/v2/http.svc/speak?appId=' + appID + '&language=' + language + '&format=' + format + '&text=' + value_speech_ + '");\n' +
     '})();\n';
   return code;
+};
+
+Blockly.JavaScript['status_repeat'] = function (block) {
+  var value_times_ = Blockly.JavaScript.valueToCode(block, 'times_', Blockly.JavaScript.ORDER_ATOMIC);
+  var repeat = Blockly.JavaScript.variableDB_.getDistinctName(
+    'repeat', Blockly.Variables.NAME_TYPE);
+  var repeatNum = Blockly.JavaScript.variableDB_.getDistinctName(
+    'repeatNum', Blockly.Variables.NAME_TYPE);
+  var timer = Blockly.JavaScript.variableDB_.getDistinctName(
+    'timer', Blockly.Variables.NAME_TYPE);
+  var time = Blockly.JavaScript.variableDB_.getDistinctName(
+    'time', Blockly.Variables.NAME_TYPE);
+  var repeatDelay = Blockly.JavaScript.variableDB_.getDistinctName(
+    'repeatDelay', Blockly.Variables.NAME_TYPE);
+  var repeatPromise = Blockly.JavaScript.variableDB_.getDistinctName(
+    'repeatPromise', Blockly.Variables.NAME_TYPE);
+  var code;
+  var codeArray = {};
+  codeArray.code = [];
+  codeArray.argument = [];
+  codeArray.delayTime = [];
+  if (value_times_ == 0) {
+    value_times_ = 1;
+  }
+  if (block.itemCount_ == 0) {
+    return code = '';
+  } else if (block.itemCount_ == 1) {
+    var argument0 = Blockly.JavaScript.statementToCode(block, 'ADD0');
+    var time0 = block.getFieldValue('time0');
+    if (isNaN(time0 * 1)) {
+      code = 'alert("時間格式錯誤！請填入數字！");';
+    } else {
+      code = 'var ' + timer + ', ' + repeatNum + '=0;\n' +
+        'var ' + repeat + ' = function(){\n' +
+        '  if(' + repeatNum + '<' + value_times_ + '){\n' +
+        '  ' + argument0 +
+        '    ' + repeatNum + ' = ' + repeatNum + ' + 1;\n' +
+        '    ' + timer + ' = setTimeout(' + repeat + ',' + (time0 * 1000) + ');\n' +
+        '  }else{\n' +
+        '    ' + repeatNum + '=0;\n' +
+        '    clearTimeout(' + timer + ');\n' +
+        '  }\n' +
+        '};\n' +
+        '' + repeat + '();\n';
+    }
+    return code;
+  } else {
+    for (var n = 0; n < block.itemCount_; n++) {
+      codeArray.argument[n] = Blockly.JavaScript.statementToCode(block, 'ADD' + n);
+      codeArray.delayTime[n] = block.getFieldValue('time' + n);
+      if (isNaN(codeArray.delayTime[n] * 1)) {
+        codeArray.code[n] = '.then(function(){\n' +
+          '      alert("時間格式錯誤！請填入數字！");\n' +
+          '    })';
+      } else {
+        codeArray.code[n] = '.then(function(){\n' +
+          '      ' + codeArray.argument[n] +
+          '      return ' + repeatDelay + '(' + (1000 * codeArray.delayTime[n]) + ');\n' +
+          '    })';
+      }
+    }
+    var codeContent = codeArray.code.join('');
+    code = 'var ' + timer + ', ' + repeatNum + '=0;\n' +
+      'var ' + repeat + ' = function(){\n' +
+      '  var ' + time + ';\n' +
+      '  var ' + repeatDelay + ' = function(' + time + '){\n' +
+      '    return new Promise(function(resolve){\n' +
+      '      ' + timer + ' = setTimeout(resolve,' + time + ');\n' +
+      '    });\n' +
+      '  };\n' +
+      '  var ' + repeatPromise + ' = function(){\n' +
+      '    ' + repeatDelay + '(1)' + codeContent + '.then(function(){\n' +
+      '      if(' + repeatNum + '<' + (value_times_ - 1) + '){\n' +
+      '        ' + repeatNum + ' = ' + repeatNum + ' + 1;\n' +
+      '        ' + repeatPromise + '();\n' +
+      '      }else{\n' +
+      '        ' + repeatNum + '=0;\n' +
+      '        clearTimeout(' + timer + ');\n' +
+      '      }\n' +
+      '    });\n' +
+      '  };\n' +
+      '  ' + repeatPromise + '();\n' +
+      '};\n' +
+      '' + repeat + '();\n';
+    return code;
+  }
 };

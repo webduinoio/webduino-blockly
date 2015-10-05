@@ -16,7 +16,7 @@ var MSG = {
   catColour: "Colour",
   catVariables: "Variables",
   catFunctions: "Functions",
-  catExec: "Delay & Execute",
+  catExec: "Delay & Change",
   catBoard: "Board",
   catLed: "Led",
   catRelay: "Relay",

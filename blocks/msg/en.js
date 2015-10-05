@@ -43,6 +43,14 @@ Blockly.Msg.WEBDUINO_TIMER_DO = "do";
 Blockly.Msg.WEBDUINO_DELAY = "delay";
 Blockly.Msg.WEBDUINO_DELAY_SECONDS = "seconds";
 
+Blockly.Msg.WEBDUINO_STATUS_REPEAT = "Status Change, repeat:";
+Blockly.Msg.WEBDUINO_STATUS_NUM = "";
+Blockly.Msg.WEBDUINO_STATUS_REPEAT_STATUSNUM = "Status ";
+Blockly.Msg.WEBDUINO_STATUS_REPEAT_DELAY = " for";
+Blockly.Msg.WEBDUINO_STATUS_REPEAT_SECS = "seconds:";
+Blockly.Msg.WEBDUINO_STATUS_REPEAT_ADD = "Add Status";
+Blockly.Msg.WEBDUINO_STATUS_REPEAT_STATUS = "Status";
+
 Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "Board device:";
 Blockly.Msg.WEBDUINO_BOARD_CHAIN = "chain";
 Blockly.Msg.WEBDUINO_BOARD_CHAIN_OK = "When all boards chain ready";

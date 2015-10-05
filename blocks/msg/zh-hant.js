@@ -3,7 +3,7 @@
 goog.provide('Blockly.Msg.Webduino.zh.hant');
 
 goog.require('Blockly.Msg.Webduino');
-  
+
 Blockly.Msg.VARIABLES_SET = "設定 %1 為 %2";
 
 Blockly.Msg.CUSTOM_JS_CONSOLE = "控制台顯示";
@@ -41,6 +41,14 @@ Blockly.Msg.WEBDUINO_SPEECH_SEX = "   性別：";
 Blockly.Msg.WEBDUINO_TIMER_AFTER = "在";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "秒之後";
 Blockly.Msg.WEBDUINO_TIMER_DO = "執行";
+
+Blockly.Msg.WEBDUINO_STATUS_REPEAT = "狀態切換，重複";
+Blockly.Msg.WEBDUINO_STATUS_NUM = "次";
+Blockly.Msg.WEBDUINO_STATUS_REPEAT_STATUSNUM = "狀態 ";
+Blockly.Msg.WEBDUINO_STATUS_REPEAT_DELAY = " 持續";
+Blockly.Msg.WEBDUINO_STATUS_REPEAT_SECS = "秒：";
+Blockly.Msg.WEBDUINO_STATUS_REPEAT_ADD = "加入狀態";
+Blockly.Msg.WEBDUINO_STATUS_REPEAT_STATUS = "狀態";
 
 Blockly.Msg.WEBDUINO_DELAY = "延遲";
 Blockly.Msg.WEBDUINO_DELAY_SECONDS = "秒";

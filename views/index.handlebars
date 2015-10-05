@@ -126,9 +126,9 @@
     <block type="math_random_float"></block>
   </category>
   <category id="catText">
+    <block type="text_print"></block>
     <block type="text"></block>
     <block type="text_join"></block>
-    <block type="text_print"></block>
     <block type="text_append">
       <value name="TEXT">
         <block type="text"></block>
@@ -263,6 +263,13 @@
   <category id="catExec">
     <block type="timer"></block>
     <block type="delay"></block>
+    <block type="status_repeat">
+      <value name="times_">
+        <block type="math_number">
+          <field name="NUM">10</field>
+        </block>
+      </value>
+    </block>
   </category>
   <category id="catPlus">
     <block type="sound_recognition"></block>
