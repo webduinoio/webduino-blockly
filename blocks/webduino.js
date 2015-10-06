@@ -1393,8 +1393,6 @@ Blockly.Blocks['translate_speech'] = {
   }
 };
 
-
-
 Blockly.Blocks['status_repeat'] = {
   init: function () {
     this.appendValueInput("times_")
@@ -1511,5 +1509,116 @@ Blockly.Blocks['status_repeat_join_item'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.contextMenu = false;
+  }
+};
+
+
+
+Blockly.Blocks['status_repeat_forever'] = {
+  init: function () {
+    this.appendValueInput("name_")
+      .appendField(Blockly.Msg.WEBDUINO_STATUS_FOREVER, "狀態重複切換")
+      .appendField(Blockly.Msg.WEBDUINO_STATUS_FOREVER_NAME, "名稱：");
+    this.appendDummyInput();
+    this.setColour(100);
+    this.itemCount_ = 2;
+    this.updateShape_();
+    this.setMutator(new Blockly.Mutator(['status_repeat_join_item']));
+    this.setTooltip('');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setHelpUrl('http://www.example.com/');
+  },
+  mutationToDom: function () {
+    var container = document.createElement('mutation');
+    container.setAttribute('items', this.itemCount_);
+    return container;
+  },
+  domToMutation: function (xmlElement) {
+    this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
+    this.updateShape_();
+  },
+  decompose: function (workspace) {
+    var containerBlock = Blockly.Block.obtain(workspace,
+      'status_repeat_join_container');
+    containerBlock.initSvg();
+    var connection = containerBlock.getInput('STACK').connection;
+    for (var i = 0; i < this.itemCount_; i++) {
+      var itemBlock = Blockly.Block.obtain(workspace, 'status_repeat_join_item');
+      itemBlock.initSvg();
+      connection.connect(itemBlock.previousConnection);
+      connection = itemBlock.nextConnection;
+    }
+    return containerBlock;
+  },
+  compose: function (containerBlock) {
+    var itemBlock = containerBlock.getInputTargetBlock('STACK');
+    var connections = [];
+    while (itemBlock) {
+      connections.push(itemBlock.valueConnection_);
+      itemBlock = itemBlock.nextConnection &&
+        itemBlock.nextConnection.targetBlock();
+    }
+    this.itemCount_ = connections.length;
+    this.updateShape_();
+    for (var i = 0; i < this.itemCount_; i++) {
+      if (connections[i]) {
+        this.getInput('ADD' + i).connection.connect(connections[i]);
+      }
+    }
+  },
+  saveConnections: function (containerBlock) {
+    var itemBlock = containerBlock.getInputTargetBlock('STACK');
+    var i = 0;
+    while (itemBlock) {
+      var input = this.getInput('ADD' + i);
+      itemBlock.valueConnection_ = input && input.connection.targetConnection;
+      i++;
+      itemBlock = itemBlock.nextConnection &&
+        itemBlock.nextConnection.targetBlock();
+    }
+  },
+  updateShape_: function () {
+    var v = [];
+    if (this.getInput('EMPTY')) {
+      this.removeInput('EMPTY');
+    } else {
+      var i = 0;
+      while (this.getInput('ADD' + i)) {
+        v[i] = this.getInput('ADD' + i).fieldRow[1].text_;
+        this.removeInput('ADD' + i);
+        i++;
+      }
+    }
+    if (this.itemCount_ == 0) {} else {
+      for (var i = 0; i < this.itemCount_; i++) {
+        if (v[i]) {
+          this.appendStatementInput('ADD' + i)
+            .appendField(Blockly.Msg.WEBDUINO_STATUS_REPEAT_STATUSNUM + (i + 1) + Blockly.Msg.WEBDUINO_STATUS_REPEAT_DELAY)
+            .appendField(new Blockly.FieldTextInput(v[i]), "time" + i)
+            .appendField(Blockly.Msg.WEBDUINO_STATUS_REPEAT_SECS, "秒：");
+        } else {
+          this.appendStatementInput('ADD' + i)
+            .appendField(Blockly.Msg.WEBDUINO_STATUS_REPEAT_STATUSNUM + (i + 1) + Blockly.Msg.WEBDUINO_STATUS_REPEAT_DELAY)
+            .appendField(new Blockly.FieldTextInput("1"), "time" + i)
+            .appendField(Blockly.Msg.WEBDUINO_STATUS_REPEAT_SECS, "秒：");
+        }
+      }
+    }
+  },
+  newQuote_: Blockly.Blocks['text'].newQuote_
+};
+
+Blockly.Blocks['status_repeat_stop'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOP, "停止")
+      .appendField(new Blockly.FieldVariable("timer"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOPCONTENT, "的重複切換");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(100);
+    this.setHelpUrl('http://www.example.com/');
   }
 };

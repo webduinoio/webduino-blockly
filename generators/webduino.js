@@ -873,6 +873,8 @@ Blockly.JavaScript['status_repeat'] = function (block) {
   codeArray.delayTime = [];
   if (value_times_ == 0) {
     value_times_ = 1;
+  } else if (value_times_ == 1) {
+    value_times_ = 2;
   }
   if (block.itemCount_ == 0) {
     return code = '';
@@ -880,7 +882,7 @@ Blockly.JavaScript['status_repeat'] = function (block) {
     var argument0 = Blockly.JavaScript.statementToCode(block, 'ADD0');
     var time0 = block.getFieldValue('time0');
     if (isNaN(time0 * 1)) {
-      code = 'alert("時間格式錯誤！請填入數字！");';
+      code = 'alert("時間格式錯誤！請填入數字！Time format error! Please enter number!");';
     } else {
       code = 'var ' + timer + ', ' + repeatNum + '=0;\n' +
         'var ' + repeat + ' = function(){\n' +
@@ -902,7 +904,7 @@ Blockly.JavaScript['status_repeat'] = function (block) {
       codeArray.delayTime[n] = block.getFieldValue('time' + n);
       if (isNaN(codeArray.delayTime[n] * 1)) {
         codeArray.code[n] = '.then(function(){\n' +
-          '      alert("時間格式錯誤！請填入數字！");\n' +
+          '      alert("時間格式錯誤！請填入數字！Time format error! Please enter number!");\n' +
           '    })';
       } else {
         codeArray.code[n] = '.then(function(){\n' +
@@ -936,4 +938,75 @@ Blockly.JavaScript['status_repeat'] = function (block) {
       '' + repeat + '();\n';
     return code;
   }
+};
+
+Blockly.JavaScript['status_repeat_forever'] = function (block) {
+  var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
+  var repeat = Blockly.JavaScript.variableDB_.getDistinctName(
+    'repeat', Blockly.Variables.NAME_TYPE);
+  var time = Blockly.JavaScript.variableDB_.getDistinctName(
+    'time', Blockly.Variables.NAME_TYPE);
+  var repeatDelay = Blockly.JavaScript.variableDB_.getDistinctName(
+    'repeatDelay', Blockly.Variables.NAME_TYPE);
+  var repeatPromise = Blockly.JavaScript.variableDB_.getDistinctName(
+    'repeatPromise', Blockly.Variables.NAME_TYPE);
+  var code;
+  var codeArray = {};
+  codeArray.code = [];
+  codeArray.argument = [];
+  codeArray.delayTime = [];
+  if (block.itemCount_ == 0) {
+    return code = '';
+  } else if (block.itemCount_ == 1) {
+    var argument0 = Blockly.JavaScript.statementToCode(block, 'ADD0');
+    var time0 = block.getFieldValue('time0');
+    if (isNaN(time0 * 1)) {
+      code = 'alert("時間格式錯誤！請填入數字！Time format error! Please enter number!");';
+    } else {
+      code = 'var ' + repeat + ' = function(){\n' +
+        '  ' + argument0 +
+        '    ' + value_name_ + ' = setTimeout(' + repeat + ',' + (time0 * 1000) + ');\n' +
+        '};\n' +
+        '' + repeat + '();\n';
+    }
+    return code;
+  } else {
+    for (var n = 0; n < block.itemCount_; n++) {
+      codeArray.argument[n] = Blockly.JavaScript.statementToCode(block, 'ADD' + n);
+      codeArray.delayTime[n] = block.getFieldValue('time' + n);
+      if (isNaN(codeArray.delayTime[n] * 1)) {
+        codeArray.code[n] = '.then(function(){\n' +
+          '      alert("時間格式錯誤！請填入數字！Time format error! Please enter number!");\n' +
+          '    })';
+      } else {
+        codeArray.code[n] = '.then(function(){\n' +
+          '      ' + codeArray.argument[n] +
+          '      return ' + repeatDelay + '(' + (1000 * codeArray.delayTime[n]) + ');\n' +
+          '    })';
+      }
+    }
+    var codeContent = codeArray.code.join('');
+    code = 'var ' + repeat + ' = function(){\n' +
+      '  var ' + time + ';\n' +
+      '  var ' + repeatDelay + ' = function(' + time + '){\n' +
+      '    return new Promise(function(resolve){\n' +
+      '      ' + value_name_ + ' = setTimeout(resolve,' + time + ');\n' +
+      '    });\n' +
+      '  };\n' +
+      '  var ' + repeatPromise + ' = function(){\n' +
+      '    ' + repeatDelay + '(1)' + codeContent + '.then(function(){\n' +
+      '        ' + repeatPromise + '();\n' +
+      '    });\n' +
+      '  };\n' +
+      '  ' + repeatPromise + '();\n' +
+      '};\n' +
+      '' + repeat + '();\n';
+    return code;
+  }
+};
+
+Blockly.JavaScript['status_repeat_stop'] = function (block) {
+  var value_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var code = 'clearTimeout(' + value_name_ + ');\n';
+  return code;
 };

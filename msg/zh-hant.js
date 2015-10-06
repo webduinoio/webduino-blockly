@@ -16,7 +16,8 @@ var MSG = {
   catColour: "顏色",
   catVariables: "變量",
   catFunctions: "流程",
-  catExec: "延遲 & 切換",
+  catExec: "延遲",
+  catRepeat: "重複",
   catBoard: "開發板",
   catLed: "LED 燈",
   catRelay: "繼電器",
@@ -52,5 +53,7 @@ var MSG = {
   catMenu1: "元件模組",
   catMenu2: "傳感器",
   catMenu3: "玩具應用",
-  catPlus: "進階控制"
+  catControl: "控制",
+  catPlus: "進階功能",
+  catStandard: "基本功能"
 };

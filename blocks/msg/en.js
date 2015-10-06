@@ -50,6 +50,10 @@ Blockly.Msg.WEBDUINO_STATUS_REPEAT_DELAY = " for";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_SECS = "seconds:";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_ADD = "Add Status";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_STATUS = "Status";
+Blockly.Msg.WEBDUINO_STATUS_FOREVER = "Status repeat switch";
+Blockly.Msg.WEBDUINO_STATUS_FOREVER_NAME = ", name:";
+Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOP = "Stop";
+Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOPCONTENT = "";
 
 Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "Board device:";
 Blockly.Msg.WEBDUINO_BOARD_CHAIN = "chain";

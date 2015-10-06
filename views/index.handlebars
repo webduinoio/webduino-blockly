@@ -44,263 +44,277 @@
 <textarea id="content_xml" class="content" wrap="off"></textarea>
 
 <xml id="toolbox" style="display: none">
-  <category id="catLogic">
-    <block type="controls_if"></block>
-    <block type="logic_compare"></block>
-    <block type="logic_operation"></block>
-    <block type="logic_negate"></block>
-    <block type="logic_boolean"></block>
-    <block type="logic_null"></block>
-    <block type="logic_ternary"></block>
-  </category>
-  <category id="catLoops">
-    <block type="controls_repeat_ext">
-      <value name="TIMES">
-        <block type="math_number">
-          <field name="NUM">10</field>
-        </block>
-      </value>
-    </block>
-    <block type="controls_whileUntil"></block>
-    <block type="controls_for">
-      <value name="FROM">
-        <block type="math_number">
-          <field name="NUM">1</field>
-        </block>
-      </value>
-      <value name="TO">
-        <block type="math_number">
-          <field name="NUM">10</field>
-        </block>
-      </value>
-      <value name="BY">
-        <block type="math_number">
-          <field name="NUM">1</field>
-        </block>
-      </value>
-    </block>
-    <block type="controls_forEach"></block>
-    <block type="controls_flow_statements"></block>
-  </category>
-  <category id="catMath">
-    <block type="math_number"></block>
-    <block type="math_arithmetic"></block>
-    <block type="math_single"></block>
-    <block type="math_trig"></block>
-    <block type="math_constant"></block>
-    <block type="math_number_property"></block>
-    <block type="math_change">
-      <value name="DELTA">
-        <block type="math_number">
-          <field name="NUM">1</field>
-        </block>
-      </value>
-    </block>
-    <block type="math_round"></block>
-    <block type="math_on_list"></block>
-    <block type="math_modulo"></block>
-    <block type="math_constrain">
-      <value name="LOW">
-        <block type="math_number">
-          <field name="NUM">1</field>
-        </block>
-      </value>
-      <value name="HIGH">
-        <block type="math_number">
-          <field name="NUM">100</field>
-        </block>
-      </value>
-    </block>
-    <block type="math_random_int">
-      <value name="FROM">
-        <block type="math_number">
-          <field name="NUM">1</field>
-        </block>
-      </value>
-      <value name="TO">
-        <block type="math_number">
-          <field name="NUM">100</field>
-        </block>
-      </value>
-    </block>
-    <block type="math_random_float"></block>
-  </category>
-  <category id="catText">
-    <block type="text_print"></block>
-    <block type="text"></block>
-    <block type="text_join"></block>
-    <block type="text_append">
-      <value name="TEXT">
-        <block type="text"></block>
-      </value>
-    </block>
-    <block type="text_length"></block>
-    <block type="text_isEmpty"></block>
-    <block type="text_indexOf">
-      <value name="VALUE">
-        <block type="variables_get">
-          <field name="VAR" class="textVar">{{textVariable}}</field>
-        </block>
-      </value>
-    </block>
-    <block type="text_charAt">
-      <value name="VALUE">
-        <block type="variables_get">
-          <field name="VAR" class="textVar">{{textVariable}}</field>
-        </block>
-      </value>
-    </block>
-    <block type="text_getSubstring">
-      <value name="STRING">
-        <block type="variables_get">
-          <field name="VAR" class="textVar">{{textVariable}}</field>
-        </block>
-      </value>
-    </block>
-    <block type="text_changeCase"></block>
-    <block type="text_trim"></block>
-    <block type="text_prompt_ext">
-      <value name="TEXT">
-        <block type="text"></block>
-      </value>
-    </block>
-  </category>
-  <category id="catLists">
-    <block type="lists_create_empty"></block>
-    <block type="lists_create_with"></block>
-    <block type="lists_repeat">
-      <value name="NUM">
-        <block type="math_number">
-          <field name="NUM">5</field>
-        </block>
-      </value>
-    </block>
-    <block type="lists_length"></block>
-    <block type="lists_isEmpty"></block>
-    <block type="lists_indexOf">
-      <value name="VALUE">
-        <block type="variables_get">
-          <field name="VAR" class="listVar">{{listVariable}}</field>
-        </block>
-      </value>
-    </block>
-    <block type="lists_getIndex">
-      <value name="VALUE">
-        <block type="variables_get">
-          <field name="VAR" class="listVar">{{listVariable}}</field>
-        </block>
-      </value>
-    </block>
-    <block type="lists_setIndex">
-      <value name="LIST">
-        <block type="variables_get">
-          <field name="VAR" class="listVar">{{listVariable}}</field>
-        </block>
-      </value>
-    </block>
-    <block type="lists_getSublist">
-      <value name="LIST">
-        <block type="variables_get">
-          <field name="VAR" class="listVar">{{listVariable}}</field>
-        </block>
-      </value>
-    </block>
-    <block type="lists_split">
-      <value name="DELIM">
-        <block type="text">
-          <field name="TEXT">,</field>
-        </block>
-      </value>
-    </block>
-  </category>
-  <category id="catColour">
-    <block type="colour_picker"></block>
-    <block type="colour_random"></block>
-    <block type="colour_rgb">
-      <value name="RED">
-        <block type="math_number">
-          <field name="NUM">100</field>
-        </block>
-      </value>
-      <value name="GREEN">
-        <block type="math_number">
-          <field name="NUM">50</field>
-        </block>
-      </value>
-      <value name="BLUE">
-        <block type="math_number">
-          <field name="NUM">0</field>
-        </block>
-      </value>
-    </block>
-    <block type="colour_blend">
-      <value name="COLOUR1">
-        <block type="colour_picker">
-          <field name="COLOUR">#ff0000</field>
-        </block>
-      </value>
-      <value name="COLOUR2">
-        <block type="colour_picker">
-          <field name="COLOUR">#3333ff</field>
-        </block>
-      </value>
-      <value name="RATIO">
-        <block type="math_number">
-          <field name="NUM">0.5</field>
-        </block>
-      </value>
-    </block>
-  </category>
-  <sep></sep>
   <category id="catVariables" custom="VARIABLE"></category>
   <category id="catFunctions" custom="PROCEDURE"></category>
-  <sep></sep>
-  <category id="catConsole">
-    <block type="console"></block>
-    <block type="getdate"></block>
-    <block type="gettime"></block>
-  </category>
-  <category id="catExec">
-    <block type="timer"></block>
-    <block type="delay"></block>
-    <block type="status_repeat">
-      <value name="times_">
-        <block type="math_number">
-          <field name="NUM">10</field>
-        </block>
-      </value>
-    </block>
+  <category id="catStandard">
+    <category id="catLogic">
+      <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+      <block type="logic_negate"></block>
+      <block type="logic_boolean"></block>
+      <block type="logic_null"></block>
+      <block type="logic_ternary"></block>
+    </category>
+    <category id="catLoops">
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="controls_whileUntil"></block>
+      <block type="controls_for">
+        <value name="FROM">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+        <value name="BY">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <block type="controls_forEach"></block>
+      <block type="controls_flow_statements"></block>
+    </category>
+    <category id="catMath">
+      <block type="math_number"></block>
+      <block type="math_arithmetic"></block>
+      <block type="math_single"></block>
+      <block type="math_trig"></block>
+      <block type="math_constant"></block>
+      <block type="math_number_property"></block>
+      <block type="math_change">
+        <value name="DELTA">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <block type="math_round"></block>
+      <block type="math_on_list"></block>
+      <block type="math_modulo"></block>
+      <block type="math_constrain">
+        <value name="LOW">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="HIGH">
+          <block type="math_number">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+      </block>
+      <block type="math_random_int">
+        <value name="FROM">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+        <value name="TO">
+          <block type="math_number">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+      </block>
+      <block type="math_random_float"></block>
+    </category>
+    <category id="catText">
+      <block type="text_print"></block>
+      <block type="text"></block>
+      <block type="text_join"></block>
+      <block type="text_append">
+        <value name="TEXT">
+          <block type="text"></block>
+        </value>
+      </block>
+      <block type="text_length"></block>
+      <block type="text_isEmpty"></block>
+      <block type="text_indexOf">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR" class="textVar">{{textVariable}}</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_charAt">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR" class="textVar">{{textVariable}}</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_getSubstring">
+        <value name="STRING">
+          <block type="variables_get">
+            <field name="VAR" class="textVar">{{textVariable}}</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_changeCase"></block>
+      <block type="text_trim"></block>
+      <block type="text_prompt_ext">
+        <value name="TEXT">
+          <block type="text"></block>
+        </value>
+      </block>
+    </category>
+    <category id="catLists">
+      <block type="lists_create_empty"></block>
+      <block type="lists_create_with"></block>
+      <block type="lists_repeat">
+        <value name="NUM">
+          <block type="math_number">
+            <field name="NUM">5</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_length"></block>
+      <block type="lists_isEmpty"></block>
+      <block type="lists_indexOf">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR" class="listVar">{{listVariable}}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_getIndex">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR" class="listVar">{{listVariable}}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_setIndex">
+        <value name="LIST">
+          <block type="variables_get">
+            <field name="VAR" class="listVar">{{listVariable}}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_getSublist">
+        <value name="LIST">
+          <block type="variables_get">
+            <field name="VAR" class="listVar">{{listVariable}}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_split">
+        <value name="DELIM">
+          <block type="text">
+            <field name="TEXT">,</field>
+          </block>
+        </value>
+      </block>
+    </category>
+    <category id="catColour">
+      <block type="colour_picker"></block>
+      <block type="colour_random"></block>
+      <block type="colour_rgb">
+        <value name="RED">
+          <block type="math_number">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+        <value name="GREEN">
+          <block type="math_number">
+            <field name="NUM">50</field>
+          </block>
+        </value>
+        <value name="BLUE">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+      </block>
+      <block type="colour_blend">
+        <value name="COLOUR1">
+          <block type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </block>
+        </value>
+        <value name="COLOUR2">
+          <block type="colour_picker">
+            <field name="COLOUR">#3333ff</field>
+          </block>
+        </value>
+        <value name="RATIO">
+          <block type="math_number">
+            <field name="NUM">0.5</field>
+          </block>
+        </value>
+      </block>
+    </category>
+  <sep></sep>  
   </category>
   <category id="catPlus">
-    <block type="sound_recognition"></block>
-    <block type="sound_recognition_check">
-      <value name="text_">
-        <block type="text">
-          <field name="TEXT"></field>
-        </block>
-      </value>
-    </block>
-    <block type="translate_speech">
-      <value name="speech_">
-        <block type="text">
-          <field name="TEXT"></field>
-        </block>
-      </value>
-    </block>
-    <block type="temp_data_set">
-      <value name="name_">
-        <block type="text">
-          <field name="TEXT">temp</field>
-        </block>
-      </value>
-    </block>
-    <block type="temp_data_get">
-      <value name="name_">
-        <block type="text">
-          <field name="TEXT">temp</field>
-        </block>
-      </value>
-    </block>
+    <category id="catConsole">
+      <block type="console"></block>
+      <block type="getdate"></block>
+      <block type="gettime"></block>
+    </category>
+    <category id="catExec">
+      <block type="timer"></block>
+      <block type="delay"></block>
+    </category>
+    <category id="catRepeat">
+      <block type="status_repeat">
+        <value name="times_">
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="status_repeat_forever">
+        <value name="name_">
+          <block type="variables_get">
+            <field name="VAR">timer</field>
+          </block>
+        </value>
+      </block>
+      <block type="status_repeat_stop"></block>
+    </category>
+    <category id="catControl">
+      <block type="sound_recognition"></block>
+      <block type="sound_recognition_check">
+        <value name="text_">
+          <block type="text">
+            <field name="TEXT"></field>
+          </block>
+        </value>
+      </block>
+      <block type="translate_speech">
+        <value name="speech_">
+          <block type="text">
+            <field name="TEXT"></field>
+          </block>
+        </value>
+      </block>
+      <block type="temp_data_set">
+        <value name="name_">
+          <block type="text">
+            <field name="TEXT">temp</field>
+          </block>
+        </value>
+      </block>
+      <block type="temp_data_get">
+        <value name="name_">
+          <block type="text">
+            <field name="TEXT">temp</field>
+          </block>
+        </value>
+      </block>
+    </category>
+  <sep></sep>  
   </category>
   <sep></sep>
   <category id="catBoard">
