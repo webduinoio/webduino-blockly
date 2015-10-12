@@ -56,5 +56,6 @@ var MSG = {
   catStandard: "Standard",
   catMax7219: "LED Matrix",
   catPhotocell: "Photocell",
-  catIRRecv: "IR Recv"
+  catIRRecv: "IR Recv",
+  catIRLed: "IR Launch"
 };

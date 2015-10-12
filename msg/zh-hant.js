@@ -58,5 +58,6 @@ var MSG = {
   catStandard: "基本功能",
   catMax7219: "LED 點矩陣",
   catPhotocell: "光敏電阻",
-  catIRRecv: "紅外線接收"
+  catIRRecv: "紅外線接收",
+  catIRLed: "紅外線發射"
 };

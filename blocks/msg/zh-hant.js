@@ -379,3 +379,6 @@ Blockly.Msg.WEBDUINO_IRRECV_CODE = "接收的代碼";
 Blockly.Msg.WEBDUINO_IRRECV_OFF = "停止接收";
 Blockly.Msg.WEBDUINO_IRRECV_DO = "執行：";
 
+Blockly.Msg.WEBDUINO_IRLED = "紅外線發射，腳位：";
+Blockly.Msg.WEBDUINO_IRLED_LAUNCHCODE = "發射代碼 ( 十六進位，八碼 )：";
+

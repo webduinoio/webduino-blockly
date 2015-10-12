@@ -1876,3 +1876,43 @@ Blockly.Blocks['irrecv_off'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
+
+Blockly.Blocks['irled_new'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_IRLED,"紅外線發射，腳位：")
+      .appendField(new Blockly.FieldDropdown([
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"],
+        ["12", "12"],
+        ["13", "13"]
+      ]), "pin_");
+    this.setOutput(true);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['irled_launch'] = {
+  init: function () {
+    this.appendValueInput("code_")
+      .setCheck("String")
+      .appendField(new Blockly.FieldVariable("irled"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_IRLED_LAUNCHCODE,"發射代碼 ( 十六進位，八碼 )：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};

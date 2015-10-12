@@ -485,12 +485,29 @@
       <block type="max7219_stop"></block>
       <block type="max7219_off"></block>
     </category>
+    <category id="catIRLed">
+      <block type="variables_set">
+        <field name="VAR">irled</field>
+        <value name="VALUE">
+          <block type="irled_new">
+            <field name="pin_">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="irled_launch">
+        <value name="code_">
+          <block type="text">
+            <field name="TEXT">AABBCCDD</field>
+          </block>
+        </value>
+      </block>
+    </category>
     <category id="catIRRecv">
       <block type="variables_set">
         <field name="VAR">irrecv</field>
         <value name="VALUE">
           <block type="irrecv_new">
-            <field name="pin_">10</field>
+            <field name="pin_">11</field>
           </block>
         </value>
       </block>

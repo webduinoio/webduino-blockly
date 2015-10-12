@@ -73,6 +73,10 @@ function getIRRecv(board, pin) {
   return new webduino.module.IRRecv(board, board.getDigitalPin(pin));
 }
 
+function getIRLed(board, pin) {
+  return new webduino.module.IRLed(board, board.getDigitalPin(pin));
+}
+
 function getCar(board, F, B, L, R) {
   return new Car(board, F, B, L, R);
 }
@@ -209,5 +213,6 @@ scope.delay = delay;
 scope.getMax7219 = getMax7219;
 scope.getPhotocell = getPhotocell;
 scope.getIRRecv = getIRRecv;
+scope.getIRLed = getIRLed;
 
 }));
