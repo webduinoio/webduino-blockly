@@ -1752,7 +1752,7 @@ Blockly.Blocks['max7219_off'] = {
 Blockly.Blocks['photocell_new'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL,"光敏電阻，類比腳位：")
+      .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL, "光敏電阻，類比腳位：")
       .appendField(new Blockly.FieldDropdown([
         ["A0", "0"],
         ["A1", "1"],
@@ -1773,9 +1773,9 @@ Blockly.Blocks['photocell_detected'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("photocell"), "name_")
-      .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL_DETECTED,"開始偵測");
+      .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL_DETECTED, "開始偵測");
     this.appendStatementInput("detected_")
-      .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL_DO,"執行：");
+      .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL_DO, "執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(65);
@@ -1789,7 +1789,7 @@ Blockly.Blocks['photocell_val'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("photocell"), "name_")
-      .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL_VAL,"偵測的數值");
+      .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL_VAL, "偵測的數值");
     this.setOutput(true);
     this.setColour(65);
     this.setTooltip('');
@@ -1802,7 +1802,73 @@ Blockly.Blocks['photocell_stop'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("photocell"), "name_")
-      .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL_STOP,"停止偵測");
+      .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL_STOP, "停止偵測");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+
+Blockly.Blocks['irrecv_new'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_IRRECV, "紅外線接收，腳位：")
+      .appendField(new Blockly.FieldDropdown([
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"],
+        ["12", "12"],
+        ["13", "13"]
+      ]), "pin_");
+    this.setOutput(true);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['irrecv_on'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("irrecv"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_IRRECV_ON,"開始接收");
+    this.appendStatementInput("on_")
+      .appendField(Blockly.Msg.WEBDUINO_IRRECV_DO,"執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['irrecv_val'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("irrecv"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_IRRECV_CODE,"接收的代碼");
+    this.setOutput(true);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['irrecv_off'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("irrecv"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_IRRECV_OFF,"停止接收");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(65);

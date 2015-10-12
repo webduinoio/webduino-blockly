@@ -485,6 +485,19 @@
       <block type="max7219_stop"></block>
       <block type="max7219_off"></block>
     </category>
+    <category id="catIRRecv">
+      <block type="variables_set">
+        <field name="VAR">irrecv</field>
+        <value name="VALUE">
+          <block type="irrecv_new">
+            <field name="pin_">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="irrecv_on"></block>
+      <block type="irrecv_val"></block>
+      <block type="irrecv_off"></block>
+    </category>
     <category id="catButton">
       <block type="variables_set">
         <field name="VAR">button</field>

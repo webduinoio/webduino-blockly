@@ -69,6 +69,10 @@ function getPhotocell(board, analogpin) {
   return new webduino.module.Photocell(board, board.getAnalogPin(analogpin));
 }
 
+function getIRRecv(board, pin) {
+  return new webduino.module.IRRecv(board, board.getDigitalPin(pin));
+}
+
 function getCar(board, F, B, L, R) {
   return new Car(board, F, B, L, R);
 }
@@ -204,5 +208,6 @@ scope.dhtAreaChart = dhtAreaChart;
 scope.delay = delay;
 scope.getMax7219 = getMax7219;
 scope.getPhotocell = getPhotocell;
+scope.getIRRecv = getIRRecv;
 
 }));

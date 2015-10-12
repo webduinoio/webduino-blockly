@@ -356,9 +356,9 @@ Blockly.Msg.WEBDUINO_TESTCAR_TURNLEFT = "原地左轉";
 Blockly.Msg.WEBDUINO_TESTCAR_STOP = "停止";
 
 Blockly.Msg.WEBDUINO_MATRIX = "LED 點矩陣 ( Max7219 ) ";
-Blockly.Msg.WEBDUINO_MATRIX_DIN = "din：";
-Blockly.Msg.WEBDUINO_MATRIX_CS = "cs：";
-Blockly.Msg.WEBDUINO_MATRIX_CLK = "clk：";
+Blockly.Msg.WEBDUINO_MATRIX_DIN = "din";
+Blockly.Msg.WEBDUINO_MATRIX_CS = "  cs";
+Blockly.Msg.WEBDUINO_MATRIX_CLK = "  clk";
 Blockly.Msg.WEBDUINO_MATRIX_CODE = "顯示圖形，圖形代碼：";
 Blockly.Msg.WEBDUINO_MATRIX_TIMES = "顯示動畫，切換時間 (毫秒)：";
 Blockly.Msg.WEBDUINO_MATRIX_DUR = "持續時間 (毫秒)：";
@@ -372,4 +372,10 @@ Blockly.Msg.WEBDUINO_PHOTOCELL_DETECTED = "開始偵測";
 Blockly.Msg.WEBDUINO_PHOTOCELL_DO = "執行：";
 Blockly.Msg.WEBDUINO_PHOTOCELL_VAL = "偵測的數值";
 Blockly.Msg.WEBDUINO_PHOTOCELL_STOP = "停止偵測";
+
+Blockly.Msg.WEBDUINO_IRRECV = "紅外線接收，腳位：";
+Blockly.Msg.WEBDUINO_IRRECV_ON = "開始接收";
+Blockly.Msg.WEBDUINO_IRRECV_CODE = "接收的代碼";
+Blockly.Msg.WEBDUINO_IRRECV_OFF = "停止接收";
+Blockly.Msg.WEBDUINO_IRRECV_DO = "執行：";
 

@@ -372,3 +372,9 @@ Blockly.Msg.WEBDUINO_PHOTOCELL_DETECTED = "detected";
 Blockly.Msg.WEBDUINO_PHOTOCELL_DO = "do:";
 Blockly.Msg.WEBDUINO_PHOTOCELL_VAL = "'s value";
 Blockly.Msg.WEBDUINO_PHOTOCELL_STOP = "stop detected";
+
+Blockly.Msg.WEBDUINO_IRRECV = "IR receiver, pin:";
+Blockly.Msg.WEBDUINO_IRRECV_ON = "start receiving";
+Blockly.Msg.WEBDUINO_IRRECV_CODE = "receive code";
+Blockly.Msg.WEBDUINO_IRRECV_OFF = "stop receiving";
+Blockly.Msg.WEBDUINO_IRRECV_DO = "do:";
