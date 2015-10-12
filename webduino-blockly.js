@@ -61,6 +61,10 @@ function getServo(board, pin) {
   return new webduino.module.Servo(board, board.getDigitalPin(pin));
 }
 
+function getMax7219(board, din, cs, clk) {
+  return new webduino.module.Max7219(board, board.getDigitalPin(din), board.getDigitalPin(cs), board.getDigitalPin(clk));
+}
+
 function getCar(board, F, B, L, R) {
   return new Car(board, F, B, L, R);
 }
@@ -194,5 +198,6 @@ scope.getCar = getCar;
 scope.Car = Car;
 scope.dhtAreaChart = dhtAreaChart;
 scope.delay = delay;
+scope.getMax7219 = getMax7219;
 
 }));

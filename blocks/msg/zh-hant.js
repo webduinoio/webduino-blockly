@@ -354,3 +354,16 @@ Blockly.Msg.WEBDUINO_TESTCAR_BACKRIGHT = "右後";
 Blockly.Msg.WEBDUINO_TESTCAR_TURNRIGHT = "原地右轉";
 Blockly.Msg.WEBDUINO_TESTCAR_TURNLEFT = "原地左轉";
 Blockly.Msg.WEBDUINO_TESTCAR_STOP = "停止";
+
+Blockly.Msg.WEBDUINO_MATRIX = "LED 點矩陣 ( Max7219 ) ";
+Blockly.Msg.WEBDUINO_MATRIX_DIN = "din：";
+Blockly.Msg.WEBDUINO_MATRIX_CS = "cs：";
+Blockly.Msg.WEBDUINO_MATRIX_CLK = "clk：";
+Blockly.Msg.WEBDUINO_MATRIX_CODE = "顯示圖形，圖形代碼：";
+Blockly.Msg.WEBDUINO_MATRIX_TIMES = "顯示動畫，切換時間 (毫秒)：";
+Blockly.Msg.WEBDUINO_MATRIX_DUR = "持續時間 (毫秒)：";
+Blockly.Msg.WEBDUINO_MATRIX_LIST = "動畫代碼 (列表)：";
+Blockly.Msg.WEBDUINO_MATRIX_STOP = "停止";
+Blockly.Msg.WEBDUINO_MATRIX_ANIMATE = "動畫";
+Blockly.Msg.WEBDUINO_MATRIX_CLOSE = "關閉";
+

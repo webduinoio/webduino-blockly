@@ -1010,3 +1010,44 @@ Blockly.JavaScript['status_repeat_stop'] = function (block) {
   var code = 'clearTimeout(' + value_name_ + ');\n';
   return code;
 };
+
+
+
+Blockly.JavaScript['max7219_new'] = function (block) {
+  var dropdown_din_ = block.getFieldValue('din_');
+  var dropdown_cs_ = block.getFieldValue('cs_');
+  var dropdown_clk_ = block.getFieldValue('clk_');
+  var code = 'getMax7219(board, ' + dropdown_din_ + ', ' + dropdown_cs_ + ', ' + dropdown_clk_ + ')';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['max7219_draw'] = function(block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var value_code_ = Blockly.JavaScript.valueToCode(block, 'code_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = variable_name_+'.on('+value_code_+');\n';
+  return code;
+};
+
+Blockly.JavaScript['max7219_animate'] = function(block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var value_times_ = Blockly.JavaScript.valueToCode(block, 'times_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_duration_ = Blockly.JavaScript.valueToCode(block, 'duration_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_list_ = Blockly.JavaScript.valueToCode(block, 'list_', Blockly.JavaScript.ORDER_ATOMIC);
+  var varData = Blockly.JavaScript.variableDB_.getDistinctName(
+    'varData', Blockly.Variables.NAME_TYPE);
+  var code = varData+' = '+value_list_+';\n'+
+            variable_name_+'.animate('+varData+','+value_times_+','+value_duration_+');\n';
+  return code;
+};
+
+Blockly.JavaScript['max7219_stop'] = function(block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var code = variable_name_+'.animateStop();\n';
+  return code;
+};
+
+Blockly.JavaScript['max7219_off'] = function(block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var code = variable_name_+'.off();\n';
+  return code;
+};

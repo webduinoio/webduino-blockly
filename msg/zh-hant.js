@@ -55,5 +55,6 @@ var MSG = {
   catMenu3: "玩具應用",
   catControl: "控制",
   catPlus: "進階功能",
-  catStandard: "基本功能"
+  catStandard: "基本功能",
+  catMax7219: "LED 點矩陣"
 };

@@ -53,5 +53,6 @@ var MSG = {
   catMenu3: "Toies",
   catControl: "Control",
   catPlus: "Advanced",
-  catStandard: "Standard"
+  catStandard: "Standard",
+  catMax7219: "LED Matrix"
 };

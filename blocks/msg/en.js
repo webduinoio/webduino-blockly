@@ -354,3 +354,15 @@ Blockly.Msg.WEBDUINO_TESTCAR_BACKRIGHT = "back right";
 Blockly.Msg.WEBDUINO_TESTCAR_TURNRIGHT = "turn right";
 Blockly.Msg.WEBDUINO_TESTCAR_TURNLEFT = "turn left";
 Blockly.Msg.WEBDUINO_TESTCAR_STOP = "stop";
+
+Blockly.Msg.WEBDUINO_MATRIX = "LED Matrix (Max7219) ";
+Blockly.Msg.WEBDUINO_MATRIX_DIN = "din:";
+Blockly.Msg.WEBDUINO_MATRIX_CS = "cs:";
+Blockly.Msg.WEBDUINO_MATRIX_CLK = "clk:";
+Blockly.Msg.WEBDUINO_MATRIX_CODE = "Show image, code:";
+Blockly.Msg.WEBDUINO_MATRIX_TIMES = "time (ms):";
+Blockly.Msg.WEBDUINO_MATRIX_DUR = "duration (ms):";
+Blockly.Msg.WEBDUINO_MATRIX_LIST = "code (list):";
+Blockly.Msg.WEBDUINO_MATRIX_STOP = "Stop";
+Blockly.Msg.WEBDUINO_MATRIX_ANIMATE = "animate";
+Blockly.Msg.WEBDUINO_MATRIX_CLOSE = "Close";
