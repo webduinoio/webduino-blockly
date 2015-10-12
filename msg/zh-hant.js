@@ -56,5 +56,6 @@ var MSG = {
   catControl: "控制",
   catPlus: "進階功能",
   catStandard: "基本功能",
-  catMax7219: "LED 點矩陣"
+  catMax7219: "LED 點矩陣",
+  catPhotocell: "光敏電阻"
 };

@@ -570,6 +570,19 @@
       </block>
       <block type="sound_status"></block>
     </category>
+    <category id="catPhotocell">
+      <block type="variables_set">
+        <field name="VAR">photocell</field>
+        <value name="VALUE">
+          <block type="photocell_new">
+            <field name="pin_">A5</field>
+          </block>
+        </value>
+      </block>
+      <block type="photocell_detected"></block>
+      <block type="photocell_val"></block>
+      <block type="photocell_stop"></block>
+    </category>
   <sep></sep>
   </category>
   <category id="catMenu3">

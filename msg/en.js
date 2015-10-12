@@ -54,5 +54,6 @@ var MSG = {
   catControl: "Control",
   catPlus: "Advanced",
   catStandard: "Standard",
-  catMax7219: "LED Matrix"
+  catMax7219: "LED Matrix",
+  catPhotocell: "Photocell"
 };

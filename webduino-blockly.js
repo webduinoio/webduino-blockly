@@ -65,6 +65,10 @@ function getMax7219(board, din, cs, clk) {
   return new webduino.module.Max7219(board, board.getDigitalPin(din), board.getDigitalPin(cs), board.getDigitalPin(clk));
 }
 
+function getPhotocell(board, analogpin) {
+  return new webduino.module.Photocell(board, board.getAnalogPin(analogpin));
+}
+
 function getCar(board, F, B, L, R) {
   return new Car(board, F, B, L, R);
 }
@@ -199,5 +203,6 @@ scope.Car = Car;
 scope.dhtAreaChart = dhtAreaChart;
 scope.delay = delay;
 scope.getMax7219 = getMax7219;
+scope.getPhotocell = getPhotocell;
 
 }));

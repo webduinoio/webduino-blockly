@@ -1703,15 +1703,15 @@ Blockly.Blocks['max7219_animate'] = {
       .setCheck("Number")
       .setAlign(Blockly.ALIGN_RIGHT)
       .appendField(new Blockly.FieldVariable("matrix"), "name_")
-      .appendField(Blockly.Msg.WEBDUINO_MATRIX_TIMES,"顯示動畫，切換時間 (毫秒)：");
+      .appendField(Blockly.Msg.WEBDUINO_MATRIX_TIMES, "顯示動畫，切換時間 (毫秒)：");
     this.appendValueInput("duration_")
       .setCheck("Number")
       .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField(Blockly.Msg.WEBDUINO_MATRIX_DUR,"持續時間 (毫秒)：");
+      .appendField(Blockly.Msg.WEBDUINO_MATRIX_DUR, "持續時間 (毫秒)：");
     this.appendValueInput("list_")
       .setCheck("Array")
       .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField(Blockly.Msg.WEBDUINO_MATRIX_LIST,"動畫代碼 (列表)：");
+      .appendField(Blockly.Msg.WEBDUINO_MATRIX_LIST, "動畫代碼 (列表)：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(65);
@@ -1723,9 +1723,9 @@ Blockly.Blocks['max7219_animate'] = {
 Blockly.Blocks['max7219_stop'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_MATRIX_STOP,"停止")
+      .appendField(Blockly.Msg.WEBDUINO_MATRIX_STOP, "停止")
       .appendField(new Blockly.FieldVariable("matrix"), "name_")
-      .appendField(Blockly.Msg.WEBDUINO_MATRIX_ANIMATE,"動畫");
+      .appendField(Blockly.Msg.WEBDUINO_MATRIX_ANIMATE, "動畫");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(65);
@@ -1737,12 +1737,76 @@ Blockly.Blocks['max7219_stop'] = {
 Blockly.Blocks['max7219_off'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_MATRIX_CLOSE,"關閉")
+      .appendField(Blockly.Msg.WEBDUINO_MATRIX_CLOSE, "關閉")
       .appendField(new Blockly.FieldVariable("matrix"), "name_");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+
+
+Blockly.Blocks['photocell_new'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL,"光敏電阻，類比腳位：")
+      .appendField(new Blockly.FieldDropdown([
+        ["A0", "0"],
+        ["A1", "1"],
+        ["A2", "2"],
+        ["A3", "3"],
+        ["A4", "4"],
+        ["A5", "5"]
+      ]), "pin_");
+    this.setOutput(true);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#xqkech
+Blockly.Blocks['photocell_detected'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("photocell"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL_DETECTED,"開始偵測");
+    this.appendStatementInput("detected_")
+      .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL_DO,"執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#syxm8m
+Blockly.Blocks['photocell_val'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("photocell"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL_VAL,"偵測的數值");
+    this.setOutput(true);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#pdtd2m
+Blockly.Blocks['photocell_stop'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("photocell"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL_STOP,"停止偵測");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
+    this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
 };

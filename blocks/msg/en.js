@@ -366,3 +366,9 @@ Blockly.Msg.WEBDUINO_MATRIX_LIST = "code (list):";
 Blockly.Msg.WEBDUINO_MATRIX_STOP = "Stop";
 Blockly.Msg.WEBDUINO_MATRIX_ANIMATE = "animate";
 Blockly.Msg.WEBDUINO_MATRIX_CLOSE = "Close";
+
+Blockly.Msg.WEBDUINO_PHOTOCELL = "Photocell, analog pin:";
+Blockly.Msg.WEBDUINO_PHOTOCELL_DETECTED = "detected";
+Blockly.Msg.WEBDUINO_PHOTOCELL_DO = "do:";
+Blockly.Msg.WEBDUINO_PHOTOCELL_VAL = "'s value";
+Blockly.Msg.WEBDUINO_PHOTOCELL_STOP = "stop detected";

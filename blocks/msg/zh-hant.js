@@ -367,3 +367,9 @@ Blockly.Msg.WEBDUINO_MATRIX_STOP = "停止";
 Blockly.Msg.WEBDUINO_MATRIX_ANIMATE = "動畫";
 Blockly.Msg.WEBDUINO_MATRIX_CLOSE = "關閉";
 
+Blockly.Msg.WEBDUINO_PHOTOCELL = "光敏電阻，類比腳位：";
+Blockly.Msg.WEBDUINO_PHOTOCELL_DETECTED = "開始偵測";
+Blockly.Msg.WEBDUINO_PHOTOCELL_DO = "執行：";
+Blockly.Msg.WEBDUINO_PHOTOCELL_VAL = "偵測的數值";
+Blockly.Msg.WEBDUINO_PHOTOCELL_STOP = "停止偵測";
+
