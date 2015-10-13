@@ -1841,9 +1841,9 @@ Blockly.Blocks['irrecv_on'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("irrecv"), "name_")
-      .appendField(Blockly.Msg.WEBDUINO_IRRECV_ON,"開始接收");
+      .appendField(Blockly.Msg.WEBDUINO_IRRECV_ON, "開始接收");
     this.appendStatementInput("on_")
-      .appendField(Blockly.Msg.WEBDUINO_IRRECV_DO,"執行：");
+      .appendField(Blockly.Msg.WEBDUINO_IRRECV_DO, "執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(65);
@@ -1856,7 +1856,7 @@ Blockly.Blocks['irrecv_val'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("irrecv"), "name_")
-      .appendField(Blockly.Msg.WEBDUINO_IRRECV_CODE,"接收的代碼");
+      .appendField(Blockly.Msg.WEBDUINO_IRRECV_CODE, "接收的代碼");
     this.setOutput(true);
     this.setColour(65);
     this.setTooltip('');
@@ -1868,7 +1868,7 @@ Blockly.Blocks['irrecv_off'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("irrecv"), "name_")
-      .appendField(Blockly.Msg.WEBDUINO_IRRECV_OFF,"停止接收");
+      .appendField(Blockly.Msg.WEBDUINO_IRRECV_OFF, "停止接收");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(65);
@@ -1881,20 +1881,9 @@ Blockly.Blocks['irrecv_off'] = {
 Blockly.Blocks['irled_new'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_IRLED,"紅外線發射，腳位：")
+      .appendField(Blockly.Msg.WEBDUINO_IRLED, "紅外線發射，腳位：")
       .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"]
+        ["9", "9"]
       ]), "pin_");
     this.setOutput(true);
     this.setColour(230);
@@ -1908,11 +1897,72 @@ Blockly.Blocks['irled_launch'] = {
     this.appendValueInput("code_")
       .setCheck("String")
       .appendField(new Blockly.FieldVariable("irled"), "name_")
-      .appendField(Blockly.Msg.WEBDUINO_IRLED_LAUNCHCODE,"發射代碼 ( 十六進位，八碼 )：");
+      .appendField(Blockly.Msg.WEBDUINO_IRLED_LAUNCHCODE, "發射代碼 ( 十六進位 )：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+
+Blockly.Blocks['adxl345_new'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("三軸加速度計，SDA")
+      .appendField(new Blockly.FieldDropdown([
+        ["A4", "4"]
+      ]), "sda_")
+      .appendField("  SCL")
+      .appendField(new Blockly.FieldDropdown([
+        ["A5", "5"]
+      ]), "scl_");
+    this.setOutput(true);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['adxl345_on'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("adxl"), "name_")
+      .appendField("開始偵測");
+    this.appendStatementInput("on_")
+      .appendField("執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['adxl345_val'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldVariable("adxl"), "name_")
+        .appendField("的")
+        .appendField(new Blockly.FieldDropdown([["x", "_x"], ["y", "_y"], ["z", "_z"], ["roll", "_r"], ["pitch", "_p"]]), "val_")
+        .appendField("數值");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['adxl345_off'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("adxl"), "name_")
+      .appendField("停止偵測");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
+    this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
 };

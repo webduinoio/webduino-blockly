@@ -490,14 +490,14 @@
         <field name="VAR">irled</field>
         <value name="VALUE">
           <block type="irled_new">
-            <field name="pin_">10</field>
+            <field name="pin_">9</field>
           </block>
         </value>
       </block>
       <block type="irled_launch">
         <value name="code_">
           <block type="text">
-            <field name="TEXT">AABBCCDD</field>
+            <field name="TEXT"></field>
           </block>
         </value>
       </block>
@@ -507,7 +507,7 @@
         <field name="VAR">irrecv</field>
         <value name="VALUE">
           <block type="irrecv_new">
-            <field name="pin_">11</field>
+            <field name="pin_">10</field>
           </block>
         </value>
       </block>
@@ -612,6 +612,20 @@
       <block type="photocell_detected"></block>
       <block type="photocell_val"></block>
       <block type="photocell_stop"></block>
+    </category>
+    <category id="catADXL345">
+      <block type="variables_set">
+        <field name="VAR">adxl</field>
+        <value name="VALUE">
+          <block type="adxl345_new">
+            <field name="sda_">A4</field>
+            <field name="scl_">A5</field>
+          </block>
+        </value>
+      </block>
+      <block type="adxl345_on"></block>
+      <block type="adxl345_val"></block>
+      <block type="adxl345_off"></block>
     </category>
   <sep></sep>
   </category>

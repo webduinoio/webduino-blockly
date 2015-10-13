@@ -44,7 +44,7 @@ var MSG = {
   linkToBin: "程式編輯",
   catDatabase: "資料庫",
   catFirebase: "Firebase",
-  update: "update 2015.9.1",
+  update: "update 2015.10.12",
   catCarTest: "自走車 (2)",
   catCar: "自走車 (1)",
   catFish: "飛天魚",
@@ -59,5 +59,6 @@ var MSG = {
   catMax7219: "LED 點矩陣",
   catPhotocell: "光敏電阻",
   catIRRecv: "紅外線接收",
-  catIRLed: "紅外線發射"
+  catIRLed: "紅外線發射",
+  catADXL345: "三軸加速度計"
 };

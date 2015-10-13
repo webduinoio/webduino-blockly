@@ -380,4 +380,4 @@ Blockly.Msg.WEBDUINO_IRRECV_OFF = "stop receiving";
 Blockly.Msg.WEBDUINO_IRRECV_DO = "do:";
 
 Blockly.Msg.WEBDUINO_IRLED = "IR launch, pin:";
-Blockly.Msg.WEBDUINO_IRLED_LAUNCHCODE = "Launch codes (m-16, eight):";
+Blockly.Msg.WEBDUINO_IRLED_LAUNCHCODE = "Launch codes (m-16):";
