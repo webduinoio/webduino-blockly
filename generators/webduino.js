@@ -1162,3 +1162,39 @@ Blockly.JavaScript['adxl345_off'] = function(block) {
   var code = variable_name_+'.off();\n';
   return code;
 };
+
+
+
+Blockly.JavaScript['joystick_new'] = function (block) {
+  var dropdown_vrx_ = block.getFieldValue('vrx_');
+  var dropdown_vry_ = block.getFieldValue('vry_');
+  var dropdown_sw_ = block.getFieldValue('sw_');
+  var code = 'getJoystick(board, ' + dropdown_vrx_ + ', ' + dropdown_vry_ + ', ' + dropdown_sw_ + ')';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['joystick_on'] = function(block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var statements_on_ = Blockly.JavaScript.statementToCode(block, 'on_');
+  var code =  variable_name_+'.on("message",_read_);\n'+
+              'function _read_(_x, _y, _z){\n'+
+              '  '+variable_name_+'._x = _x;\n'+
+              '  '+variable_name_+'._y = _y;\n'+
+              '  '+variable_name_+'._z = _z;\n'+
+              statements_on_+
+              '}\n';
+  return code;
+};
+
+Blockly.JavaScript['joystick_val'] = function(block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_val_ = block.getFieldValue('val_');
+  var code = variable_name_+'.'+dropdown_val_;
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['joystick_off'] = function(block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var code = variable_name_+'.off("message",_read_);\n';
+  return code;
+};

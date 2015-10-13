@@ -58,5 +58,6 @@ var MSG = {
   catPhotocell: "Photocell",
   catIRRecv: "IR Recv",
   catIRLed: "IR Launch",
-  catADXL345: "ADXL345"
+  catADXL345: "ADXL345",
+  catJoystick: "Joystick"
 };

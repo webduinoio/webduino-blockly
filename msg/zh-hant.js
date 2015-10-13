@@ -60,5 +60,6 @@ var MSG = {
   catPhotocell: "光敏電阻",
   catIRRecv: "紅外線接收",
   catIRLed: "紅外線發射",
-  catADXL345: "三軸加速度計"
+  catADXL345: "三軸加速度計",
+  catJoystick: "搖桿"
 };

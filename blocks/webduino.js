@@ -1941,12 +1941,18 @@ Blockly.Blocks['adxl345_on'] = {
 };
 
 Blockly.Blocks['adxl345_val'] = {
-  init: function() {
+  init: function () {
     this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("adxl"), "name_")
-        .appendField("的")
-        .appendField(new Blockly.FieldDropdown([["x", "_x"], ["y", "_y"], ["z", "_z"], ["roll", "_r"], ["pitch", "_p"]]), "val_")
-        .appendField("數值");
+      .appendField(new Blockly.FieldVariable("adxl"), "name_")
+      .appendField("的")
+      .appendField(new Blockly.FieldDropdown([
+        ["x", "_x"],
+        ["y", "_y"],
+        ["z", "_z"],
+        ["roll", "_r"],
+        ["pitch", "_p"]
+      ]), "val_")
+      .appendField("數值");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(65);
@@ -1958,6 +1964,96 @@ Blockly.Blocks['adxl345_off'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("adxl"), "name_")
+      .appendField("停止偵測");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+
+Blockly.Blocks['joystick_new'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("搖桿，X")
+      .appendField(new Blockly.FieldDropdown([
+        ["A0", "0"],
+        ["A1", "1"],
+        ["A2", "2"],
+        ["A3", "3"],
+        ["A4", "4"],
+        ["A5", "5"]
+      ]), "vrx_")
+      .appendField("  Y")
+      .appendField(new Blockly.FieldDropdown([
+        ["A0", "0"],
+        ["A1", "1"],
+        ["A2", "2"],
+        ["A3", "3"],
+        ["A4", "4"],
+        ["A5", "5"]
+      ]), "vry_")
+      .appendField("  SW")
+      .appendField(new Blockly.FieldDropdown([
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"],
+        ["12", "12"],
+        ["13", "13"]
+      ]), "sw_");
+    this.setOutput(true);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['joystick_on'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("joystick"), "name_")
+      .appendField("開始偵測");
+    this.appendStatementInput("on_")
+      .appendField("執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['joystick_val'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("joystick"), "name_")
+      .appendField("的")
+      .appendField(new Blockly.FieldDropdown([
+        ["X", "_x"],
+        ["Y", "_y"],
+        ["SW", "_z"]
+      ]), "val_")
+      .appendField("數值");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['joystick_off'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("joystick"), "name_")
       .appendField("停止偵測");
     this.setPreviousStatement(true);
     this.setNextStatement(true);

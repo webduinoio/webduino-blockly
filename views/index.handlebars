@@ -537,6 +537,21 @@
       </block>
       <block type="shock_event"></block>
     </category>
+    <category id="catJoystick">
+      <block type="variables_set">
+        <field name="VAR">joystick</field>
+        <value name="VALUE">
+          <block type="joystick_new">
+            <field name="vrx_">4</field>
+            <field name="vry_">5</field>
+            <field name="sw_">11</field>
+          </block>
+        </value>
+      </block>
+      <block type="joystick_on"></block>
+      <block type="joystick_val"></block>
+      <block type="joystick_off"></block>
+    </category>
   <sep></sep>
   </category>
   <category id="catMenu2">
@@ -605,7 +620,7 @@
         <field name="VAR">photocell</field>
         <value name="VALUE">
           <block type="photocell_new">
-            <field name="pin_">A5</field>
+            <field name="pin_">5</field>
           </block>
         </value>
       </block>
@@ -618,8 +633,8 @@
         <field name="VAR">adxl</field>
         <value name="VALUE">
           <block type="adxl345_new">
-            <field name="sda_">A4</field>
-            <field name="scl_">A5</field>
+            <field name="sda_">4</field>
+            <field name="scl_">5</field>
           </block>
         </value>
       </block>

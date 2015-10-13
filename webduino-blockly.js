@@ -81,6 +81,10 @@ function getADXL345(board) {
   return new webduino.module.ADXL345(board);
 }
 
+function getJoystick(board, vrx, vry, sw) {
+  return new webduino.module.Joystick(board, board.getAnalogPin(vrx), board.getAnalogPin(vry), board.getDigitalPin(sw));
+}
+
 function getCar(board, F, B, L, R) {
   return new Car(board, F, B, L, R);
 }
@@ -219,5 +223,5 @@ scope.getPhotocell = getPhotocell;
 scope.getIRRecv = getIRRecv;
 scope.getIRLed = getIRLed;
 scope.getADXL345 = getADXL345;
-
+scope.getJoystick = getJoystick;
 }));
