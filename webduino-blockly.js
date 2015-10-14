@@ -66,7 +66,7 @@ function getMax7219(board, din, cs, clk) {
 }
 
 function getPhotocell(board, analogpin) {
-  return new webduino.module.Photocell(board, board.getAnalogPin(analogpin));
+  return new webduino.module.Photocell(board, analogpin);
 }
 
 function getIRRecv(board, pin) {

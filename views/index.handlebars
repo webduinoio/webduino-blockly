@@ -467,7 +467,7 @@
           </block>
         </value>
       </block>
-      <block type="max7219_animate">
+<!--       <block type="max7219_animate">
         <value name="times_">
           <block type="math_number">
             <field name="NUM">100</field>
@@ -482,7 +482,7 @@
           <block type="lists_create_with"></block>
         </value>
       </block>
-      <block type="max7219_stop"></block>
+      <block type="max7219_stop"></block> -->
       <block type="max7219_off"></block>
     </category>
     <category id="catIRLed">
@@ -536,21 +536,6 @@
         </value>
       </block>
       <block type="shock_event"></block>
-    </category>
-    <category id="catJoystick">
-      <block type="variables_set">
-        <field name="VAR">joystick</field>
-        <value name="VALUE">
-          <block type="joystick_new">
-            <field name="vrx_">4</field>
-            <field name="vry_">5</field>
-            <field name="sw_">11</field>
-          </block>
-        </value>
-      </block>
-      <block type="joystick_on"></block>
-      <block type="joystick_val"></block>
-      <block type="joystick_off"></block>
     </category>
   <sep></sep>
   </category>
@@ -708,6 +693,21 @@
         <field name="speed_">2</field>
       </block>
     </category>
+<!--     <category id="catJoystick">
+      <block type="variables_set">
+        <field name="VAR">joystick</field>
+        <value name="VALUE">
+          <block type="joystick_new">
+            <field name="vrx_">4</field>
+            <field name="vry_">5</field>
+            <field name="sw_">11</field>
+          </block>
+        </value>
+      </block>
+      <block type="joystick_on"></block>
+      <block type="joystick_val"></block>
+      <block type="joystick_off"></block>
+    </category> -->
   <sep></sep>
   </category>
   <category id="catDatabase">
