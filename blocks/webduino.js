@@ -1738,6 +1738,30 @@ Blockly.Blocks['max7219_animate'] = {
   }
 };
 
+Blockly.Blocks['max7219_animate_horse'] = {
+  init: function () {
+    this.appendValueInput("times_")
+      .setCheck("Number")
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(new Blockly.FieldVariable("matrix"), "name_")
+      .appendField("跑馬燈")
+      .appendField(new Blockly.FieldDropdown([
+        ["往左", "left"],
+        ["往右", "right"]
+      ]), "state_")
+      .appendField("，速度 (格/毫秒)：");
+    this.appendValueInput("code_")
+      .setCheck("String")
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField("代碼 (最少十六碼)：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('http://webduinoio.github.io/samples/content/max7219/genLED.html');
+  }
+};
+
 Blockly.Blocks['max7219_stop'] = {
   init: function () {
     this.appendDummyInput()
