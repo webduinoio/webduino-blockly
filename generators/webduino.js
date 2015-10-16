@@ -1035,8 +1035,14 @@ Blockly.JavaScript['max7219_animate'] = function(block) {
   var value_list_ = Blockly.JavaScript.valueToCode(block, 'list_', Blockly.JavaScript.ORDER_ATOMIC);
   var varData = Blockly.JavaScript.variableDB_.getDistinctName(
     'varData', Blockly.Variables.NAME_TYPE);
-  var code = 'var '+varData+' = '+value_list_+';\n'+
+  var code;
+  if(value_duration_){
+    code = 'var '+varData+' = '+value_list_+';\n'+
             variable_name_+'.animate('+varData+','+value_times_+','+value_duration_+');\n';
+  }else{
+    code = 'var '+varData+' = '+value_list_+';\n'+
+            variable_name_+'.animate('+varData+','+value_times_+');\n';
+  }
   return code;
 };
 

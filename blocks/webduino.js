@@ -1704,10 +1704,6 @@ Blockly.Blocks['max7219_animate'] = {
       .setAlign(Blockly.ALIGN_RIGHT)
       .appendField(new Blockly.FieldVariable("matrix"), "name_")
       .appendField(Blockly.Msg.WEBDUINO_MATRIX_TIMES, "顯示動畫，切換時間 (毫秒)：");
-    this.appendValueInput("duration_")
-      .setCheck("Number")
-      .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField(Blockly.Msg.WEBDUINO_MATRIX_DUR, "持續時間 (毫秒)：");
     this.appendValueInput("list_")
       .setCheck("Array")
       .setAlign(Blockly.ALIGN_RIGHT)
