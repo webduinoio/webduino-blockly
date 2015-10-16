@@ -7,8 +7,19 @@
 }(function (scope) {
   'use strict';
 
-function boardReady(device, callback) {
-  var board = new webduino.WebArduino(device);
+function boardReady(options, callback) {
+  var board;
+
+  if (typeof options === 'string') {
+    options = {
+      device: options
+    };
+  }
+  if (options.path) {
+    board = new webduino.Arduino(options);
+  } else {
+    board = new webduino.WebArduino(options);
+  }
   board.on(webduino.BoardEvent.READY, callback.bind(null, board));
 }
 
