@@ -80,16 +80,15 @@ Blockly.Blocks['board_ready_serial_port'] = {
   init: function () {
     this.appendValueInput("path_")
       .setCheck("String")
-      .appendField("開發板 路徑：");
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_READY_PATH,"開發板 路徑：");
     this.appendValueInput("baudrate_")
       .setCheck("Number")
       .appendField("baudRate");
     this.appendDummyInput()
       .appendField("   ")
       .appendField(new Blockly.FieldCheckbox("FALSE"), "check_")
-      .appendField("串聯");
-    this.appendStatementInput("callbacks_")
-      .appendField("執行：");
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, "串聯");
+    this.appendStatementInput("callbacks_");
     this.setTooltip('');
     this.setColour(290);
     this.setHelpUrl('http://www.example.com/');
@@ -1744,16 +1743,16 @@ Blockly.Blocks['max7219_animate_horse'] = {
       .setCheck("Number")
       .setAlign(Blockly.ALIGN_RIGHT)
       .appendField(new Blockly.FieldVariable("matrix"), "name_")
-      .appendField("跑馬燈")
+      .appendField(Blockly.Msg.WEBDUINO_MATRIX_HORSE, "跑馬燈")
       .appendField(new Blockly.FieldDropdown([
-        ["往左", "left"],
-        ["往右", "right"]
+        [Blockly.Msg.WEBDUINO_MATRIX_LEFT, "left"],
+        [Blockly.Msg.WEBDUINO_MATRIX_RIGHT, "right"]
       ]), "state_")
-      .appendField("，速度 (格/毫秒)：");
+      .appendField(Blockly.Msg.WEBDUINO_MATRIX_SPEED, "，速度 (格/毫秒)：");
     this.appendValueInput("code_")
       .setCheck("String")
       .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField("代碼 (最少十六碼)：");
+      .appendField(Blockly.Msg.WEBDUINO_MATRIX_HORSEODE, "代碼 (最少十六碼)：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(65);
@@ -1952,11 +1951,11 @@ Blockly.Blocks['irled_launch'] = {
 Blockly.Blocks['adxl345_new'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField("三軸加速度計，SDA")
+      .appendField(Blockly.Msg.WEBDUINO_ADXL345, "三軸加速度計，SDA")
       .appendField(new Blockly.FieldDropdown([
         ["A4", "4"]
       ]), "sda_")
-      .appendField("  SCL")
+      .appendField(Blockly.Msg.WEBDUINO_ADXL345_SCL, "  SCL")
       .appendField(new Blockly.FieldDropdown([
         ["A5", "5"]
       ]), "scl_");
@@ -1971,9 +1970,9 @@ Blockly.Blocks['adxl345_on'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("adxl"), "name_")
-      .appendField("開始偵測");
+      .appendField(Blockly.Msg.WEBDUINO_ADXL345_ON, "開始偵測");
     this.appendStatementInput("on_")
-      .appendField("執行：");
+      .appendField(Blockly.Msg.WEBDUINO_ADXL345_DO, "執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(65);
@@ -1986,7 +1985,7 @@ Blockly.Blocks['adxl345_val'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("adxl"), "name_")
-      .appendField("的")
+      .appendField(Blockly.Msg.WEBDUINO_ADXL345_S, "的")
       .appendField(new Blockly.FieldDropdown([
         ["x", "_x"],
         ["y", "_y"],
@@ -1994,7 +1993,7 @@ Blockly.Blocks['adxl345_val'] = {
         ["roll", "_r"],
         ["pitch", "_p"]
       ]), "val_")
-      .appendField("數值");
+      .appendField(Blockly.Msg.WEBDUINO_ADXL345_VAL, "數值");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(65);
@@ -2006,7 +2005,7 @@ Blockly.Blocks['adxl345_off'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("adxl"), "name_")
-      .appendField("停止偵測");
+      .appendField(Blockly.Msg.WEBDUINO_ADXL345_OFF, "停止偵測");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(65);

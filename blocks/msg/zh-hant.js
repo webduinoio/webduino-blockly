@@ -57,7 +57,7 @@ Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOPCONTENT = "的重複切換";
 Blockly.Msg.WEBDUINO_DELAY = "延遲";
 Blockly.Msg.WEBDUINO_DELAY_SECONDS = "秒";
 
-Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "開發版 名稱：";
+Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "開發版，名稱：";
 Blockly.Msg.WEBDUINO_BOARD_CHAIN = "串聯";
 Blockly.Msg.WEBDUINO_BOARD_CHAIN_OK = "當開發板串連完成";
 Blockly.Msg.WEBDUINO_BOARD_CHAIN_DO = "執行：";
@@ -68,6 +68,7 @@ Blockly.Msg.WEBDUINO_PIN_STATE = "腳位狀態";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_IF = "如果";
 Blockly.Msg.WEBDUINO_BOARD_ERROR = "斷線";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "執行：";
+Blockly.Msg.WEBDUINO_BOARD_READY_PATH = "開發板，路徑：";
 
 Blockly.Msg.WEBDUINO_LED = "LED 燈";
 Blockly.Msg.WEBDUINO_LED_PIN = "，腳位：";
@@ -366,6 +367,11 @@ Blockly.Msg.WEBDUINO_MATRIX_LIST = "動畫代碼 (列表)：";
 Blockly.Msg.WEBDUINO_MATRIX_STOP = "停止";
 Blockly.Msg.WEBDUINO_MATRIX_ANIMATE = "動畫";
 Blockly.Msg.WEBDUINO_MATRIX_CLOSE = "關閉";
+Blockly.Msg.WEBDUINO_MATRIX_HORSE = "跑馬燈";
+Blockly.Msg.WEBDUINO_MATRIX_LEFT = "向左";
+Blockly.Msg.WEBDUINO_MATRIX_RIGHT = "向右";
+Blockly.Msg.WEBDUINO_MATRIX_SPEED = "，速度 (格/毫秒)：";
+Blockly.Msg.WEBDUINO_MATRIX_HORSEODE = "代碼 (最少十六碼)：";
 
 Blockly.Msg.WEBDUINO_PHOTOCELL = "光敏電阻，類比腳位：";
 Blockly.Msg.WEBDUINO_PHOTOCELL_DETECTED = "開始偵測";
@@ -382,3 +388,10 @@ Blockly.Msg.WEBDUINO_IRRECV_DO = "執行：";
 Blockly.Msg.WEBDUINO_IRLED = "紅外線發射，腳位：";
 Blockly.Msg.WEBDUINO_IRLED_LAUNCHCODE = "發射代碼 ( 十六進位 )：";
 
+Blockly.Msg.WEBDUINO_ADXL345 = "三軸加速度計，SDA";
+Blockly.Msg.WEBDUINO_ADXL345_SCL = "  SCL";
+Blockly.Msg.WEBDUINO_ADXL345_ON = "開始偵測";
+Blockly.Msg.WEBDUINO_ADXL345_DO = "執行：";
+Blockly.Msg.WEBDUINO_ADXL345_S = "的";
+Blockly.Msg.WEBDUINO_ADXL345_VAL = "數值";
+Blockly.Msg.WEBDUINO_ADXL345_OFF = "停止偵測";

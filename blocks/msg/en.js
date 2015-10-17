@@ -66,6 +66,7 @@ Blockly.Msg.WEBDUINO_PIN_STATE = "Pin state";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_IF = "If";
 Blockly.Msg.WEBDUINO_BOARD_ERROR = "offine";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "do:";
+Blockly.Msg.WEBDUINO_BOARD_READY_PATH = "Board path:";
 
 Blockly.Msg.WEBDUINO_LED = "LED";
 Blockly.Msg.WEBDUINO_LED_PIN = "pin";
@@ -366,6 +367,11 @@ Blockly.Msg.WEBDUINO_MATRIX_LIST = "code (list):";
 Blockly.Msg.WEBDUINO_MATRIX_STOP = "Stop";
 Blockly.Msg.WEBDUINO_MATRIX_ANIMATE = "animate";
 Blockly.Msg.WEBDUINO_MATRIX_CLOSE = "Close";
+Blockly.Msg.WEBDUINO_MATRIX_HORSE = "News ticker";
+Blockly.Msg.WEBDUINO_MATRIX_LEFT = "Left";
+Blockly.Msg.WEBDUINO_MATRIX_RIGHT = "Right";
+Blockly.Msg.WEBDUINO_MATRIX_SPEED = ", speed (frame/ms):";
+Blockly.Msg.WEBDUINO_MATRIX_HORSEODE = "code:";
 
 Blockly.Msg.WEBDUINO_PHOTOCELL = "Photocell, analog pin:";
 Blockly.Msg.WEBDUINO_PHOTOCELL_DETECTED = "detected";
@@ -381,3 +387,11 @@ Blockly.Msg.WEBDUINO_IRRECV_DO = "do:";
 
 Blockly.Msg.WEBDUINO_IRLED = "IR launch, pin:";
 Blockly.Msg.WEBDUINO_IRLED_LAUNCHCODE = "Launch codes (m-16):";
+
+Blockly.Msg.WEBDUINO_ADXL345 = "ADXL345, SDA";
+Blockly.Msg.WEBDUINO_ADXL345_SCL = "  SCL";
+Blockly.Msg.WEBDUINO_ADXL345_ON = "start detect";
+Blockly.Msg.WEBDUINO_ADXL345_DO = "do:";
+Blockly.Msg.WEBDUINO_ADXL345_S = "'s";
+Blockly.Msg.WEBDUINO_ADXL345_VAL = "value";
+Blockly.Msg.WEBDUINO_ADXL345_OFF = "stop detect";
