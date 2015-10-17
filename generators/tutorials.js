@@ -760,7 +760,28 @@ Blockly.JavaScript['photocell_show_number'] = function (block) {
   var value_number_ = Blockly.JavaScript.valueToCode(block, 'number_', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'document.getElementById("show").innerHTML = ' + value_number_ + ';\n';
   return code;
+};                                                                                                                   
+
+/*
+ooo        ooooo       .o.       ooooooo  ooooo  ooooooooo   .oooo.     .o   .ooooo.   
+`88.       .888'      .888.       `8888    d8'  d"""""""8' .dP""Y88b  o888  888' `Y88. 
+ 888b     d'888      .8"888.        Y888..8P          .8'        ]8P'  888  888    888 
+ 8 Y88. .P  888     .8' `888.        `8888'          .8'       .d8P'   888   `Vbood888 
+ 8  `888'   888    .88ooo8888.      .8PY888.        .8'      .dP'      888        888' 
+ 8    Y     888   .8'     `888.    d8'  `888b      .8'     .oP     .o  888      .88P'  
+o8o        o888o o88o     o8888o o888o  o88888o   .8'      8888888888 o888o   .oP'     
+*/
+
+Blockly.JavaScript['tutorial_max7219_button'] = function (block) {
+  var dropdown_btn_ = block.getFieldValue('btn_');
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var code = 'document.getElementById("' + dropdown_btn_ + '").addEventListener("click",function(){\n' +
+    statements_do_ + '\n' +
+    '});\n';
+  return code;
 };
+
+
 
 
 

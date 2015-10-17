@@ -399,3 +399,13 @@ Blockly.Msg.WEBDUINO_ADXL345_OFF = "stop detect";
 // Tutorials - Photcell
 
 Blockly.Msg.WEBDUINO_PHOTOCELL_SHOW = "Show Value:";
+
+// Tutorials - Max7219
+
+Blockly.Msg.WEBDUINO_MAX7219_CLICKBTN = "Click";
+Blockly.Msg.WEBDUINO_MAX7219_BTN1 = "Button 1";
+Blockly.Msg.WEBDUINO_MAX7219_BTN2 = "Button 2";
+Blockly.Msg.WEBDUINO_MAX7219_BTN3 = "Button 3";
+Blockly.Msg.WEBDUINO_MAX7219_BTNSTOP = "Stop";
+Blockly.Msg.WEBDUINO_MAX7219_BTNOFF = "Turn off";
+Blockly.Msg.WEBDUINO_MAX7219_DO = "do:";

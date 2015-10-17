@@ -857,3 +857,33 @@ Blockly.Blocks['photocell_show_number'] = {
   }
 };                                                                                                                     
 
+/*
+ooo        ooooo       .o.       ooooooo  ooooo  ooooooooo   .oooo.     .o   .ooooo.   
+`88.       .888'      .888.       `8888    d8'  d"""""""8' .dP""Y88b  o888  888' `Y88. 
+ 888b     d'888      .8"888.        Y888..8P          .8'        ]8P'  888  888    888 
+ 8 Y88. .P  888     .8' `888.        `8888'          .8'       .d8P'   888   `Vbood888 
+ 8  `888'   888    .88ooo8888.      .8PY888.        .8'      .dP'      888        888' 
+ 8    Y     888   .8'     `888.    d8'  `888b      .8'     .oP     .o  888      .88P'  
+o8o        o888o o88o     o8888o o888o  o88888o   .8'      8888888888 o888o   .oP'     
+*/
+
+Blockly.Blocks['tutorial_max7219_button'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_MAX7219_CLICKBTN, "點選按鈕")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_MAX7219_BTN1, "btn1"],
+        [Blockly.Msg.WEBDUINO_MAX7219_BTN2, "btn2"],
+        [Blockly.Msg.WEBDUINO_MAX7219_BTN3, "btn3"],
+        [Blockly.Msg.WEBDUINO_MAX7219_BTNSTOP, "btnStop"],
+        [Blockly.Msg.WEBDUINO_MAX7219_BTNOFF, "btnOff"]
+      ]), "btn_");
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_MAX7219_DO, "執行：");
+    this.setTooltip('');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};

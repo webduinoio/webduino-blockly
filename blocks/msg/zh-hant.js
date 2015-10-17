@@ -468,3 +468,13 @@ Blockly.Msg.WEBDUINO_BUZZER_DO = "執行：";
 // Tutorials - Photcell
 
 Blockly.Msg.WEBDUINO_PHOTOCELL_SHOW = "顯示數值：";
+
+// Tutorials - Max7219
+
+Blockly.Msg.WEBDUINO_MAX7219_CLICKBTN = "點選按鈕";
+Blockly.Msg.WEBDUINO_MAX7219_BTN1 = "按鈕 1";
+Blockly.Msg.WEBDUINO_MAX7219_BTN2 = "按鈕 2";
+Blockly.Msg.WEBDUINO_MAX7219_BTN3 = "按鈕 3";
+Blockly.Msg.WEBDUINO_MAX7219_BTNSTOP = "停止動畫";
+Blockly.Msg.WEBDUINO_MAX7219_BTNOFF = "關閉";
+Blockly.Msg.WEBDUINO_MAX7219_DO = "執行：";

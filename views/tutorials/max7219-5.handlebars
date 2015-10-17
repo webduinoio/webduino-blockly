@@ -4,20 +4,7 @@
 
 <style>
   #show{
-    font-size:60px;
-  }
-  #light{
-    width:60%;
-  }
-  #light img{
-    width:100%;
-    display:none;
-  }
-  #light.off img:first-child{
-    display:inline-block;
-  }
-  #light.on img:last-child{
-    display:inline-block;
+    font-size:120px;
   }
 </style>
 
@@ -30,14 +17,12 @@
 </header>
 <div id="demoArea">
 <a href="https://webduino.io/" id="cuteman01" target="_blank"></a>
-  <div id="demoTitle">{{demoTitle}}</div>
-  <a href="http://bin.webduino.io/jiyis/6/edit?html,js,output" id="linkToBin" target="_blank"><img src="media/dave.min.svg">{{linkToBin}}</a>
-  <div id="demoDescription">{{demoDescription}}</div>
+<div id="demoTitle">{{demoTitle}}</div>
+  <a href="http://bin.webduino.io/jara/6/edit?html,js,output" id="linkToBin" target="_blank"><img src="media/dave.min.svg">{{linkToBin}}</a>
+
+<div id="demoDescription">{{demoDescription}}</div>
+  <a href="http://webduinoio.github.io/samples/content/max7219/genLED.html" target="_blank">genLED.html</a>
   <div id="show">0</div>
-  <div id="light" class="off">
-  <img src='media/off.png'></img>
-  <img src='media/on.png'></img>
-</div>
 </div>
 <table id="tutorials-table" class="nav">
 <tr>
@@ -76,22 +61,28 @@
 <textarea id="content_xml" class="content" wrap="off"></textarea>
 
 <xml id="toolbox" style="display: none">
-  <category id="catVariables" custom="VARIABLE"></category>
+<category id="catVariables" custom="VARIABLE"></category>
   <category id="catLogic">
     <block type="controls_if"></block>
     <block type="logic_compare"></block>
+    <block type="logic_operation"></block>
   </category>
   <category id="catMath">
     <block type="math_number"></block>
   </category>
-  <sep></sep>
-  <sep></sep>
-  <category id="catBoard">
-    <block type="board_ready">
-      <value name="device_">
-        <block type="text"></block>
-      </value>
-    </block>
+  <category id="catText">
+    <block type="text"></block>
+  </category>
+  <category id="catLists">
+    <block type="lists_create_with"></block>
+  </category>
+<sep></sep>
+<category id="catBoard">
+  <block type="board_ready">
+    <value name="device_">
+      <block type="text"></block>
+    </value>
+  </block>
     <block type="board_ready_serial_port">
       <value name="path_">
         <block type="text"></block>
@@ -102,36 +93,71 @@
         </block>
       </value>
     </block>
+</category>
+<category id="catMax7219">
+  <block type="variables_set">
+    <field name="VAR">matrix</field>
+    <value name="VALUE">
+      <block type="max7219_new">
+        <field name="din_">9</field>
+        <field name="cs_">10</field>
+        <field name="clk_">11</field>
+      </block>
+    </value>
+  </block>
+  <block type="max7219_draw">
+    <value name="code_">
+      <block type="text">
+        <field name="TEXT">1026464040462610</field>
+      </block>
+    </value>
+  </block>
+  <block type="max7219_animate">
+    <value name="times_">
+      <block type="math_number">
+        <field name="NUM">100</field>
+      </block>
+    </value>
+    <value name="list_">
+      <block type="lists_create_with"></block>
+    </value>
+  </block>
+  <block type="max7219_animate_horse">
+    <value name="times_">
+      <block type="math_number">
+        <field name="NUM">100</field>
+      </block>
+    </value>
+    <value name="code_">
+      <block type="text">
+        <field name="TEXT">1026464040462610</field>
+      </block>
+    </value>
+  </block>
+  <block type="max7219_stop"></block>
+  <block type="max7219_off"></block>
+</category>
+  <category id="catUltraSonic">
+    <block type="variables_set">
+      <field name="VAR">ultrasonic</field>
+      <value name="VALUE">
+        <block type="ultrasonic_new">
+          <field name="trig_">11</field>
+          <field name="echo_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_get">
+      <value name="time">
+        <block type="math_number">
+          <field name="NUM">500</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_distance"></block>
   </category>
-    <category id="catLed">
-      <block type="variables_set">
-        <field name="VAR">led</field>
-        <value name="VALUE">
-          <block type="led_new">
-            <field name="pin_">10</field>
-          </block>
-        </value>
-      </block>
-      <block type="led_state">
-        <field name="led_">led</field>
-      </block>
-    </category>
-    <category id="catPhotocell">
-      <block type="variables_set">
-        <field name="VAR">photocell</field>
-        <value name="VALUE">
-          <block type="photocell_new">
-            <field name="pin_">5</field>
-          </block>
-        </value>
-      </block>
-      <block type="photocell_detected"></block>
-      <block type="photocell_val"></block>
-      <block type="photocell_stop"></block>
-    </category>
   <category id="catTutorials">
-    <block type="photocell_show_number"></block>
-    <block type="light"></block>
+    <block type="ultrasonic_set_number"></block>
   </category>
-  <sep></sep>
+<sep></sep>
 </xml>
