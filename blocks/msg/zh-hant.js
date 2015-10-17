@@ -5,6 +5,8 @@ goog.provide('Blockly.Msg.Webduino.zh.hant');
 goog.require('Blockly.Msg.Webduino');
 
 Blockly.Msg.VARIABLES_SET = "設定 %1 為 %2";
+Blockly.Msg.LISTS_CREATE_WITH_INPUT_WITH = "建立列表";
+Blockly.Msg.TEXT_JOIN_TITLE_CREATEWITH = "建立字串";
 
 Blockly.Msg.CUSTOM_JS_CONSOLE = "控制台顯示";
 Blockly.Msg.CUSTOM_JS_Date = "現在的日期";
