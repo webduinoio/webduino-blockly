@@ -1,0 +1,10 @@
+blocks/
+components/
+css/
+generators/
+lib/
+media/
+msg/
+views/
+*.css
+*.html

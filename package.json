@@ -1,6 +1,6 @@
 {
   "name": "webduino-blockly",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "description": "The Visual Programming Editor for Webduino",
   "repository": "https://github.com/webduinoio/webduino-blockly.git",
@@ -12,6 +12,6 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "webduino-js": "~ 0.1.8"
+    "webduino-js": "*"
   }
 }
