@@ -842,8 +842,8 @@ ooooooooo.   ooooo   ooooo   .oooooo.   ooooooooooooo   .oooooo.     .oooooo.   
  888          888     888  888      888      888      888      888 888           888    "     888          888         
  888          888     888  `88b    d88'      888      `88b    d88' `88b    ooo   888       o  888       o  888       o 
 o888o        o888o   o888o  `Y8bood8P'      o888o      `Y8bood8P'   `Y8bood8P'  o888ooooood8 o888ooooood8 o888ooooood8 
-*/                                                                                                                      
-  
+*/
+
 Blockly.Blocks['photocell_show_number'] = {
   init: function () {
     this.appendValueInput("number_")
@@ -855,7 +855,7 @@ Blockly.Blocks['photocell_show_number'] = {
     this.setColour(Blockly.Blocks.colour.HUE);
     this.setHelpUrl('http://www.example.com/');
   }
-};                                                                                                                     
+};
 
 /*
 ooo        ooooo       .o.       ooooooo  ooooo  ooooooooo   .oooo.     .o   .ooooo.   
@@ -883,6 +883,49 @@ Blockly.Blocks['tutorial_max7219_button'] = {
     this.setTooltip('');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+/*
+                .o8              oooo    .oooo.         .o     oooooooo 
+               "888              `888  .dP""Y88b      .d88    dP""""""" 
+ .oooo.    .oooo888  oooo    ooo  888        ]8P'   .d'888   d88888b.   
+`P  )88b  d88' `888   `88b..8P'   888      <88b.  .d'  888       `Y88b  
+ .oP"888  888   888     Y888'     888       `88b. 88ooo888oo       ]88  
+d8(  888  888   888   .o8"'88b    888  o.   .88P       888   o.   .88P  
+`Y888""8o `Y8bod88P" o88'   888o o888o `8bd88P'       o888o  `8bd88P'   
+*/
+
+Blockly.Blocks['tutorial_adxl345_show'] = {
+  init: function () {
+    this.appendValueInput("show_")
+      .appendField(Blockly.Msg.WEBDUINO_ADXL_SHOW, "顯示")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_ADXL_SHOW_X, "x"],
+        [Blockly.Msg.WEBDUINO_ADXL_SHOW_Y, "y"],
+        [Blockly.Msg.WEBDUINO_ADXL_SHOW_Z, "z"],
+        [Blockly.Msg.WEBDUINO_ADXL_SHOW_R, "r"],
+        [Blockly.Msg.WEBDUINO_ADXL_SHOW_P, "p"]
+      ]), "value_")
+      .appendField(Blockly.Msg.WEBDUINO_ADXL_SHOW_IS, "為");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#iy27yf
+Blockly.Blocks['adxl345_image_angle'] = {
+  init: function () {
+    this.appendValueInput("angle_")
+      .appendField(Blockly.Msg.WEBDUINO_ADXL_ANGLE, "圖片旋轉的角度 =");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
     this.setHelpUrl('http://www.example.com/');
   }

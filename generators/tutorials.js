@@ -781,6 +781,30 @@ Blockly.JavaScript['tutorial_max7219_button'] = function (block) {
   return code;
 };
 
+/*
+                .o8              oooo    .oooo.         .o     oooooooo 
+               "888              `888  .dP""Y88b      .d88    dP""""""" 
+ .oooo.    .oooo888  oooo    ooo  888        ]8P'   .d'888   d88888b.   
+`P  )88b  d88' `888   `88b..8P'   888      <88b.  .d'  888       `Y88b  
+ .oP"888  888   888     Y888'     888       `88b. 88ooo888oo       ]88  
+d8(  888  888   888   .o8"'88b    888  o.   .88P       888   o.   .88P  
+`Y888""8o `Y8bod88P" o88'   888o o888o `8bd88P'       o888o  `8bd88P'   
+*/
+
+Blockly.JavaScript['tutorial_adxl345_show'] = function (block) {
+  var dropdown_value_ = block.getFieldValue('value_');
+  var value_show_ = Blockly.JavaScript.valueToCode(block, 'show_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code= 'document.getElementById("'+dropdown_value_+'").innerHTML = ' + value_show_ + ';\n';
+  return code;
+};
+
+Blockly.JavaScript['adxl345_image_angle'] = function(block) {
+  var value_angle_ = Blockly.JavaScript.valueToCode(block, 'angle_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'document.getElementById("image").style.transform = "rotate("+'+value_angle_+'+"deg)";\n';
+  return code;
+};
+
+
 
 
 

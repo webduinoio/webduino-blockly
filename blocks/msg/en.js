@@ -409,3 +409,14 @@ Blockly.Msg.WEBDUINO_MAX7219_BTN3 = "Button 3";
 Blockly.Msg.WEBDUINO_MAX7219_BTNSTOP = "Stop";
 Blockly.Msg.WEBDUINO_MAX7219_BTNOFF = "Turn off";
 Blockly.Msg.WEBDUINO_MAX7219_DO = "do:";
+
+// Tutorials - ADXL345
+
+Blockly.Msg.WEBDUINO_ADXL_SHOW = "Show";
+Blockly.Msg.WEBDUINO_ADXL_SHOW_X = "x";
+Blockly.Msg.WEBDUINO_ADXL_SHOW_Y = "y";
+Blockly.Msg.WEBDUINO_ADXL_SHOW_Z = "z";
+Blockly.Msg.WEBDUINO_ADXL_SHOW_R = "roll";
+Blockly.Msg.WEBDUINO_ADXL_SHOW_P = "pitch";
+Blockly.Msg.WEBDUINO_ADXL_SHOW_IS = "is";
+Blockly.Msg.WEBDUINO_ADXL_ANGLE = "Image rotate =";

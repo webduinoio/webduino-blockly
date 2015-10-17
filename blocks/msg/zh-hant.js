@@ -478,3 +478,14 @@ Blockly.Msg.WEBDUINO_MAX7219_BTN3 = "按鈕 3";
 Blockly.Msg.WEBDUINO_MAX7219_BTNSTOP = "停止動畫";
 Blockly.Msg.WEBDUINO_MAX7219_BTNOFF = "關閉";
 Blockly.Msg.WEBDUINO_MAX7219_DO = "執行：";
+
+// Tutorials - ADXL345
+
+Blockly.Msg.WEBDUINO_ADXL_SHOW = "顯示";
+Blockly.Msg.WEBDUINO_ADXL_SHOW_X = "x";
+Blockly.Msg.WEBDUINO_ADXL_SHOW_Y = "y";
+Blockly.Msg.WEBDUINO_ADXL_SHOW_Z = "z";
+Blockly.Msg.WEBDUINO_ADXL_SHOW_R = "roll";
+Blockly.Msg.WEBDUINO_ADXL_SHOW_P = "pitch";
+Blockly.Msg.WEBDUINO_ADXL_SHOW_IS = "為";
+Blockly.Msg.WEBDUINO_ADXL_ANGLE = "圖片旋轉的角度 =";
