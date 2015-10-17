@@ -1,0 +1,128 @@
+<script src="copyCode.js"></script>
+
+<link rel="stylesheet" href="css/tutorials.css">
+
+<style>
+  #show{
+    font-size:30px;
+  }
+  #area{
+    width:100px;
+    height:100px;
+    background:#ccc;
+  }
+</style>
+
+<header>
+  <a href="index.html" title="Webduino Blockly"><img class="logo" src="media/logo.png"></a>
+  <h1>Webduino Blockly {{subTitle}}</h1>
+  <span>( <a href="index-tutorials.html" target="_blank">{{backIndex}}</a> )</span>
+  <div id="update">{{update}}</div>
+  <select id="languageMenu"></select>
+</header>
+<div id="demoArea">
+<a href="https://webduino.io/" id="cuteman01" target="_blank"></a>
+  <div id="demoTitle">{{demoTitle}}</div>
+  <a href="http://bin.webduino.io/kep/5/edit?html,css,js,output" id="linkToBin" target="_blank"><img src="media/dave.min.svg">{{linkToBin}}</a>
+  <div id="demoDescription">{{demoDescription}}</div>
+  <div id="show">
+  code: <span id="code"></span>
+  </div>
+  <div id="player"></div>
+</div>
+<table id="tutorials-table" class="nav">
+<tr>
+  <td colspan=2>
+    <table width="100%">
+      <tr id="tabRow" height="1em">
+        <td id="tab_blocks" class="tabon">{{blocks}}</td>
+        <td class="tabmin">&nbsp;</td>
+        <td id="tab_javascript" class="taboff">JavaScript</td>
+          <td id="copyCode" class="jsClick" style="display:none;" data-clipboard-target="content_javascript" data-tooltip="Copy to clipboard"><div><img src="media/copy.png"></div></td>
+        <td class="tabmin">&nbsp;</td>
+        <td id="tab_xml" class="taboff" style="display:none;">XML</td>
+        <td class="tabmax">
+          <button id="trashButton" class="notext" title="{{trashTooltip}}">
+            <img src='media/1x1.gif' class="trash icon21">
+          </button>
+          <button id="linkButton" class="notext" title="{{linkTooltip}}">
+            <img src='media/1x1.gif' class="link icon21">
+          </button>
+          <button id="runButton" class="notext primary" title="{{runTooltip}}">
+            <img src='media/1x1.gif' class="run icon21">
+          </button>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+  <td height="99%" colspan=2 id="content_area">
+  </td>
+</tr>
+</table>
+
+<div id="content_blocks" class="content"></div>
+<pre id="content_javascript" class="content"></pre>
+<textarea id="content_xml" class="content" wrap="off"></textarea>
+
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+    <category id="catLogic">
+      <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+    </category>
+    <category id="catText">
+      <block type="text"></block>
+    </category>
+    <category id="catMath">
+      <block type="math_number"></block>
+    </category>
+  <sep></sep>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="board_ready_serial_port">
+      <value name="path_">
+        <block type="text"></block>
+      </value>
+      <value name="baudrate_">
+        <block type="math_number">
+          <field name="NUM">115200</field>
+        </block>
+      </value>
+    </block>
+  </category>
+    <category id="catIRRecv">
+      <block type="variables_set">
+        <field name="VAR">irrecv</field>
+        <value name="VALUE">
+          <block type="irrecv_new">
+            <field name="pin_">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="irrecv_on"></block>
+      <block type="irrecv_val"></block>
+      <block type="irrecv_off"></block>
+    </category>
+  <category id="catTutorials">
+    <block type="tutorial_irrecv_code"></block>
+    <block type="tutorial_youtube">
+      <value name="name_">
+        <block type="variables_get">
+          <field name="VAR">youtube</field>
+        </block>
+      </value>
+    </block>
+    <block type="tutorial_youtube_control"></block>
+    <block type="tutorial_youtube_status"></block>
+    <block type="tutorial_youtube_volume"></block>
+    <block type="tutorial_youtube_speed"></block>
+  </category>
+  <sep></sep>
+</xml>

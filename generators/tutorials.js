@@ -804,6 +804,30 @@ Blockly.JavaScript['adxl345_image_angle'] = function(block) {
   return code;
 };
 
+/*
+ o8o                                                    
+ `"'                                                    
+oooo  oooo d8b oooo d8b  .ooooo.   .ooooo.  oooo    ooo 
+`888  `888""8P `888""8P d88' `88b d88' `"Y8  `88.  .8'  
+ 888   888      888     888ooo888 888         `88..8'   
+ 888   888      888     888    .o 888   .o8    `888'    
+o888o d888b    d888b    `Y8bod8P' `Y8bod8P'     `8'     
+*/
+
+Blockly.JavaScript['tutorial_irrecv_code'] = function (block) {
+  var value_code_ = Blockly.JavaScript.valueToCode(block, 'code_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'document.getElementById("code").innerHTML = ' + value_code_ + ';\n';
+  return code;
+};  
+
+Blockly.JavaScript['tutorial_irrecv_color'] = function (block) {
+  var value_code_ = Blockly.JavaScript.valueToCode(block, 'code_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'document.getElementById("area").style.background = ' + value_code_ + ';\n';
+  return code;
+}; 
+
+
+
 
 
 

@@ -420,3 +420,8 @@ Blockly.Msg.WEBDUINO_ADXL_SHOW_R = "roll";
 Blockly.Msg.WEBDUINO_ADXL_SHOW_P = "pitch";
 Blockly.Msg.WEBDUINO_ADXL_SHOW_IS = "is";
 Blockly.Msg.WEBDUINO_ADXL_ANGLE = "Image rotate =";
+
+// Tutorials - irrecv
+
+Blockly.Msg.WEBDUINO_IRRRECV_SHOW = "Show code:";
+Blockly.Msg.WEBDUINO_IRRRECV_COLOR = "Area color:";

@@ -489,3 +489,8 @@ Blockly.Msg.WEBDUINO_ADXL_SHOW_R = "roll";
 Blockly.Msg.WEBDUINO_ADXL_SHOW_P = "pitch";
 Blockly.Msg.WEBDUINO_ADXL_SHOW_IS = "為";
 Blockly.Msg.WEBDUINO_ADXL_ANGLE = "圖片旋轉的角度 =";
+
+// Tutorials - irrecv
+
+Blockly.Msg.WEBDUINO_IRRRECV_SHOW = "紅外線代碼：";
+Blockly.Msg.WEBDUINO_IRRRECV_COLOR = "區域顏色：";

@@ -930,3 +930,37 @@ Blockly.Blocks['adxl345_image_angle'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
+/*
+ o8o                                                    
+ `"'                                                    
+oooo  oooo d8b oooo d8b  .ooooo.   .ooooo.  oooo    ooo 
+`888  `888""8P `888""8P d88' `88b d88' `"Y8  `88.  .8'  
+ 888   888      888     888ooo888 888         `88..8'   
+ 888   888      888     888    .o 888   .o8    `888'    
+o888o d888b    d888b    `Y8bod8P' `Y8bod8P'     `8'     
+*/
+
+Blockly.Blocks['tutorial_irrecv_code'] = {
+  init: function () {
+    this.appendValueInput("code_")
+      .appendField(Blockly.Msg.WEBDUINO_IRRRECV_SHOW, "show code:");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['tutorial_irrecv_color'] = {
+  init: function () {
+    this.appendValueInput("code_")
+      .appendField(Blockly.Msg.WEBDUINO_IRRRECV_COLOR, "區域顏色：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
