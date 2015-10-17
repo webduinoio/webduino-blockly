@@ -464,3 +464,7 @@ Blockly.Msg.WEBDUINO_BUZZER_SHOW = "顯示";
 Blockly.Msg.WEBDUINO_BUZZER_SHOW_NOTESANDTEMPOS = "的音符和節奏";
 Blockly.Msg.WEBDUINO_BUZZER_CLICK = "點選";
 Blockly.Msg.WEBDUINO_BUZZER_DO = "執行：";
+
+// Tutorials - Photcell
+
+Blockly.Msg.WEBDUINO_PHOTOCELL_SHOW = "顯示數值：";

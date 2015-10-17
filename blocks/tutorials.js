@@ -833,3 +833,27 @@ Blockly.Blocks['tutorial_buzzer_3'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
+/*
+ooooooooo.   ooooo   ooooo   .oooooo.   ooooooooooooo   .oooooo.     .oooooo.   oooooooooooo ooooo        ooooo        
+`888   `Y88. `888'   `888'  d8P'  `Y8b  8'   888   `8  d8P'  `Y8b   d8P'  `Y8b  `888'     `8 `888'        `888'        
+ 888   .d88'  888     888  888      888      888      888      888 888           888          888          888         
+ 888ooo88P'   888ooooo888  888      888      888      888      888 888           888oooo8     888          888         
+ 888          888     888  888      888      888      888      888 888           888    "     888          888         
+ 888          888     888  `88b    d88'      888      `88b    d88' `88b    ooo   888       o  888       o  888       o 
+o888o        o888o   o888o  `Y8bood8P'      o888o      `Y8bood8P'   `Y8bood8P'  o888ooooood8 o888ooooood8 o888ooooood8 
+*/                                                                                                                      
+  
+Blockly.Blocks['photocell_show_number'] = {
+  init: function () {
+    this.appendValueInput("number_")
+      .setCheck("Number")
+      .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL_SHOW, "show distance:");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};                                                                                                                     
+

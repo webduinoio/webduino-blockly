@@ -395,3 +395,7 @@ Blockly.Msg.WEBDUINO_ADXL345_DO = "do:";
 Blockly.Msg.WEBDUINO_ADXL345_S = "'s";
 Blockly.Msg.WEBDUINO_ADXL345_VAL = "value";
 Blockly.Msg.WEBDUINO_ADXL345_OFF = "stop detect";
+
+// Tutorials - Photcell
+
+Blockly.Msg.WEBDUINO_PHOTOCELL_SHOW = "Show Value:";

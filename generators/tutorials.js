@@ -744,3 +744,23 @@ Blockly.JavaScript['tutorial_buzzer_3'] = function (block) {
     '});\n';
   return code;
 };
+
+
+/*
+ooooooooo.   oooo                      .                                 oooo  oooo  
+`888   `Y88. `888                    .o8                                 `888  `888  
+ 888   .d88'  888 .oo.    .ooooo.  .o888oo  .ooooo.   .ooooo.   .ooooo.   888   888  
+ 888ooo88P'   888P"Y88b  d88' `88b   888   d88' `88b d88' `"Y8 d88' `88b  888   888  
+ 888          888   888  888   888   888   888   888 888       888ooo888  888   888  
+ 888          888   888  888   888   888 . 888   888 888   .o8 888    .o  888   888  
+o888o        o888o o888o `Y8bod8P'   "888" `Y8bod8P' `Y8bod8P' `Y8bod8P' o888o o888o 
+*/
+
+Blockly.JavaScript['photocell_show_number'] = function (block) {
+  var value_number_ = Blockly.JavaScript.valueToCode(block, 'number_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'document.getElementById("show").innerHTML = ' + value_number_ + ';\n';
+  return code;
+};
+
+
+
