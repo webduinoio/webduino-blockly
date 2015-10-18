@@ -3,6 +3,188 @@
 goog.provide('Blockly.Blocks.webduino');
 goog.require('Blockly.Blocks');
 
+Blockly.Blocks.colour.HUE = 120;
+
+/* demo */
+
+Blockly.Blocks['demo_show_text'] = {
+  init: function () {
+    this.appendValueInput("show_")
+      .appendField("顯示文字：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_image_url'] = {
+  init: function () {
+    this.appendValueInput("url_")
+      .setCheck("String")
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField("圖片網址");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_image_click'] = {
+  init: function () {
+    this.appendStatementInput("do_")
+      .appendField("點擊圖片，執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_button_click'] = {
+  init: function () {
+    this.appendStatementInput("do_")
+      .appendField("點選")
+      .appendField(new Blockly.FieldDropdown([
+        ["按鈕1", "1"],
+        ["按鈕2", "2"],
+        ["按鈕3", "3"],
+        ["按鈕4", "4"],
+        ["按鈕5", "5"]
+      ]), "name_")
+      .appendField("執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_area_color'] = {
+  init: function () {
+    this.appendValueInput("color_")
+      .appendField("設定區域顏色：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#wbe3vd
+Blockly.Blocks['tutorial_youtube'] = {
+  init: function () {
+    this.appendValueInput("name_")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE, "設定 Youtube：");
+    this.appendDummyInput()
+      .appendField("   ID：")
+      .appendField(new Blockly.FieldTextInput("..."), "id_");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#kqjbv8
+Blockly.Blocks['tutorial_youtube_volume'] = {
+  init: function () {
+    this.appendValueInput("volume_")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET, "設定")
+      .appendField(new Blockly.FieldVariable("youtube"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_VOLUME, "音量：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#tih6od
+Blockly.Blocks['tutorial_youtube_speed'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET, "設定")
+      .appendField(new Blockly.FieldVariable("youtube"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SPEED, " 的播放速度：")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SLOW, "0.5"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_NORMAL, "1"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_FAST, "1.25"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_VERYFAST, "1.5"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SUPERFAST, "2"]
+      ]), "speed_");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#tcfvai
+Blockly.Blocks['tutorial_youtube_control'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET, "設定")
+      .appendField(new Blockly.FieldVariable("youtube"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUS, " 的狀態為：")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SETPLAY, "1"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SETPAUSE, "2"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SETSTOP, "0"]
+      ]), "status_");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#metxhc
+Blockly.Blocks['tutorial_youtube_status'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("youtube"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUS, " 的狀態為：")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSPLAY, "1"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSPAUSE, "2"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSSTOP, "0"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSSTART, "-1"]
+      ]), "status_");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vcm5tv
+Blockly.Blocks['tutorial_youtube_id'] = {
+  init: function () {
+    this.appendValueInput("id_")
+      .appendField("更換")
+      .appendField(new Blockly.FieldVariable("youtube"), "name_")
+      .appendField("影片，要更換的 id：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 /**
  * console
  * https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vnzmgi
@@ -80,7 +262,7 @@ Blockly.Blocks['board_ready_serial_port'] = {
   init: function () {
     this.appendValueInput("path_")
       .setCheck("String")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_READY_PATH,"開發板 路徑：");
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_READY_PATH, "開發板 路徑：");
     this.appendValueInput("baudrate_")
       .setCheck("Number")
       .appendField("baudRate");

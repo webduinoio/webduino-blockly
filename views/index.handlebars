@@ -19,6 +19,9 @@
           <td class="tabmin">&nbsp;</td>
           <td class="tabmax">
             <a href="http://bin.webduino.io/yupu/edit?html,js,output" id="indexLinkToBin" target="_blank"><img src="media/dave.min.svg">{{linkToBin}}</a>
+            <button id="demoButton" class="notext" title="{{demoTooltip}}">
+              <img src='media/1x1.gif' class="demo icon21">
+            </button>
             <button id="trashButton" class="notext" title="{{trashTooltip}}">
               <img src='media/1x1.gif' class="trash icon21">
             </button>
@@ -41,6 +44,68 @@
 
 <div id="content_blocks" class="content"></div>
 <pre id="content_javascript" class="content"></pre>
+<div id="demo-area">
+  <div class="close-btn"></div>
+  <h4>網頁互動測試</h4>
+  <span>請選擇一種互動方式：</span>
+  <select id="demo-select">
+    <option value="1">文字顯示</option>
+    <option value="2">燈泡圖片</option>
+    <option value="3">區域顏色</option>
+    <option value="4">多顆按鈕</option>
+    <option value="5">Youtube 影片</option>
+  </select>
+  <div id="demo-area-01" class="da show">
+    <br/>
+    <span id="demo-area-01-show">123</span>
+    <br/><br/>
+    <h5>HTML 程式碼：</h5>
+    <pre class="demo-pre">
+&lt;span id=&quot;demo-area-01-show&quot;&gt;要顯示的文字&lt;/span&gt;
+    </pre>
+  </div>
+  <div id="demo-area-02" class="da">
+    <img src="../media/off.png" id="demo-area-02-image">
+    <br/><br/>
+    <h5>HTML 程式碼：</h5>
+    <pre class="demo-pre">
+&lt;img src=&quot;圖片網址&quot; id=&quot;demo-area-02-image&quot;&gt;
+    </pre>
+  </div>
+  <div id="demo-area-03" class="da">
+    <div id="demo-area-03-area"></div>
+    <br/><br/>
+    <h5>HTML 程式碼：</h5>
+    <pre class="demo-pre">
+&lt;div id=&quot;demo-area-03-area&quot;&gt;&lt;/div&gt;
+    </pre>
+  </div>
+  <div id="demo-area-04" class="da">
+    <button id="demo-area-04-btn1" class="db4">按鈕 1</button>
+    <button id="demo-area-04-btn2" class="db4">按鈕 2</button>
+    <button id="demo-area-04-btn3" class="db4">按鈕 3</button>
+    <button id="demo-area-04-btn4" class="db4">按鈕 4</button>
+    <button id="demo-area-04-btn5" class="db4">按鈕 5</button>
+    <br/><br/>
+    <h5>HTML 程式碼：</h5>
+    <pre class="demo-pre">
+&lt;button id=&quot;demo-area-04-btn1&quot; class=&quot;db4&quot;&gt;&#25353;&#37397; 1&lt;/button&gt;
+&lt;button id=&quot;demo-area-04-btn2&quot; class=&quot;db4&quot;&gt;&#25353;&#37397; 2&lt;/button&gt;
+&lt;button id=&quot;demo-area-04-btn3&quot; class=&quot;db4&quot;&gt;&#25353;&#37397; 3&lt;/button&gt;
+&lt;button id=&quot;demo-area-04-btn4&quot; class=&quot;db4&quot;&gt;&#25353;&#37397; 4&lt;/button&gt;
+&lt;button id=&quot;demo-area-04-btn5&quot; class=&quot;db4&quot;&gt;&#25353;&#37397; 5&lt;/button&gt;
+    </pre>
+  </div>
+  <div id="demo-area-05" class="da">
+    <div id="player"></div>
+    <span style="font-size:12px;">youtube 影片會顯示在上方，必須另外載入「<strong>https://www.youtube.com/iframe_api</strong>」</span>
+    <br/><br/>
+    <h5>HTML 程式碼：</h5>
+    <pre class="demo-pre">
+&lt;div id=&quot;player&quot;&gt;&lt;/div&gt;
+    </pre>
+  </div>
+</div>
 <textarea id="content_xml" class="content" wrap="off"></textarea>
 
 <xml id="toolbox" style="display: none">
@@ -381,6 +446,11 @@
       </block>
       <block type="rgbled_setcolor">
         <field name="rgbled_">rgbled</field>
+        <value name="color_">
+          <block type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </block>
+        </value>
       </block>
     </category>
     <category id="catBuzzer">
@@ -755,5 +825,59 @@
       <block type="data_firebase_clear"></block>
     </category>
     <sep></sep>
+  </category>
+  <sep></sep>
+  <category id="catDemo">
+    <category id="catDemoBasic">
+      <block type="demo_show_text">
+        <value name="show_">
+          <block type="text">
+            <field name="TEXT">...</field>
+          </block>
+        </value>
+      </block>
+      <block type="demo_image_url">
+        <value name="url_">
+          <block type="text">
+            <field name="TEXT">http://blockly.webduino.io/media/off.png</field>
+          </block>
+        </value>
+      </block>
+      <block type="demo_image_click"></block>
+      <block type="demo_area_color">
+          <value name="color_">
+            <block type="colour_picker">
+              <field name="COLOUR">#ff0000</field>
+            </block>
+          </value>
+      </block>
+      <block type="demo_button_click"></block>
+    </category>
+    <category id="catDemoYoutube">
+      <block type="tutorial_youtube">
+        <value name="name_">
+          <block type="variables_get">
+            <field name="VAR">youtube</field>
+          </block>
+        </value>
+      </block>
+      <block type="tutorial_youtube_id">
+        <value name="id_">
+            <block type="text">
+              <field name="TEXT">...</field>
+            </block>
+        </value>
+      </block>
+      <block type="tutorial_youtube_control"></block>
+      <block type="tutorial_youtube_status"></block>
+      <block type="tutorial_youtube_volume">
+        <value name="volume_">
+          <block type="math_number">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+      </block>
+      <block type="tutorial_youtube_speed"></block>
+    </category>
   </category>
 </xml>

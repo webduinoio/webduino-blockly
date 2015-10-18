@@ -8,6 +8,7 @@ var MSG = {
   timeout: "超過最大執行數。",
   discard: "刪除共%1個積木？",
   trashTooltip: "捨棄所有積木。",
+  demoTooltip: "開啟網頁互動區",
   catLogic: "邏輯",
   catLoops: "迴圈",
   catMath: "數學式",
@@ -61,5 +62,8 @@ var MSG = {
   catIRRecv: "紅外線接收",
   catIRLed: "紅外線發射",
   catADXL345: "三軸加速度計",
-  catJoystick: "搖桿"
+  catJoystick: "搖桿",
+  catDemo: "網頁互動",
+  catDemoBasic: "網頁元素",
+  catDemoYoutube: "YouTube"
 };

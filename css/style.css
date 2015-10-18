@@ -168,7 +168,7 @@ pre.content {
 /* Buttons */
 
 button {
-  padding: 1px 10px;
+  padding: 1px 5px;
   margin: 1px 5px;
 }
 /* Sprited icons. */
@@ -189,6 +189,10 @@ button {
 
 .run {
   background-position: -42px 0px;
+}
+
+.demo {
+  background-position: -61px 0px;
 }
 
 header{
@@ -263,8 +267,8 @@ table.nav td.tabmax{
   padding-right:0;
 }
 table.nav td.tabmax button{
-  margin:-3px 1px 5px;
-  padding:3px 15px;
+  margin:-3px 0 4px;
+  padding:3px 12px;
   outline:none;
   cursor:pointer;
   transition:.2s;
@@ -362,9 +366,9 @@ td#copyCode div{
   background:#ddd;
   transition:.3s;
   border-radius:5px;
-  margin:-7px 1px 5px;
+  margin:-7px 0 4px;
   box-sizing:border-box;
-  padding:5px 15px;
+  padding:5px 13px;
   vertical-align: bottom;
 }
 #indexLinkToBin img{
@@ -381,4 +385,86 @@ td#copyCode div{
 }
 #indexLinkToBin:active{
   opacity:.8;
+}
+
+/* demo area */
+#demo-area{
+  display:none;
+  z-index:99;
+  position:absolute;
+  right:40px;
+  top:135px;
+  width:400px;
+  height:400px;
+  background:rgba(255,255,255,.8);
+  border-radius:20px;
+  border:10px solid #ccc;
+  overflow: auto;
+}
+#demo-area.show{
+  display:block;
+}
+#demo-area .close-btn{
+  position:absolute;
+  right:5px;
+  top:5px;
+  width:22px;
+  height:22px;
+  background:#fff;
+  background-image:url(../media/icons.png);
+  background-position: -82px 0px;
+  opacity:0.4;
+  transition:.3s;
+  cursor:pointer;
+}
+#demo-area .close-btn:hover{
+  opacity:1;
+}
+#demo-area>h4{
+  font-size:20px;
+  margin: 15px;
+}
+#demo-area>span{
+  display:inline-block;
+  margin: 0 0 10px 15px;
+  font-size:16px;
+}
+#demo-area select{
+  outline:none;
+  border:1px solid #ccc;
+  margin: 0;
+  font-size:16px;
+}
+#demo-area .da{
+  display:none;
+  margin:15px;
+  line-height:20px;
+}
+#demo-area .da.show{
+  display:block;
+}
+#demo-area h5{
+  font-size:16px;
+  margin: 15px 0 0;
+}
+#demo-area .demo-pre{
+  background:#eee;
+  padding:10px 10px 0;
+  overflow: auto;
+}
+#demo-area-01-show{
+  font-size:60px;
+}
+#demo-area-02-image{
+  max-height:150px;
+}
+#demo-area-03-area{
+  width:250px;
+  height:150px;
+  background:#ccc;
+}
+#demo-area-04 .db4{
+  font-size:24px;
+  outline:none;
+  margin:0 10px 10px 0;
 }

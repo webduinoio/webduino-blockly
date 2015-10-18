@@ -369,6 +369,16 @@ Blockly.Blocks['ultrasonic_change_add_music'] = {
   }
 };
 
+/*
+oooooo   oooo                           .                .o8                 
+ `888.   .8'                          .o8               "888                 
+  `888. .8'    .ooooo.  oooo  oooo  .o888oo oooo  oooo   888oooo.   .ooooo.  
+   `888.8'    d88' `88b `888  `888    888   `888  `888   d88' `88b d88' `88b 
+    `888'     888   888  888   888    888    888   888   888   888 888ooo888 
+     888      888   888  888   888    888 .  888   888   888   888 888    .o 
+    o888o     `Y8bod8P'  `V88V"V8P'   "888"  `V88V"V8P'  `Y8bod8P' `Y8bod8P' 
+*/
+
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#wbe3vd
 Blockly.Blocks['tutorial_youtube'] = {
   init: function () {
@@ -384,16 +394,6 @@ Blockly.Blocks['tutorial_youtube'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
-
-/*
-oooooo   oooo                           .                .o8                 
- `888.   .8'                          .o8               "888                 
-  `888. .8'    .ooooo.  oooo  oooo  .o888oo oooo  oooo   888oooo.   .ooooo.  
-   `888.8'    d88' `88b `888  `888    888   `888  `888   d88' `88b d88' `88b 
-    `888'     888   888  888   888    888    888   888   888   888 888ooo888 
-     888      888   888  888   888    888 .  888   888   888   888 888    .o 
-    o888o     `Y8bod8P'  `V88V"V8P'   "888"  `V88V"V8P'  `Y8bod8P' `Y8bod8P' 
-*/
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#kqjbv8
 Blockly.Blocks['tutorial_youtube_volume'] = {

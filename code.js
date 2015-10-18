@@ -796,6 +796,27 @@ if (Code.PAGE !== 'index') {
 window.addEventListener('load', function () {
   Code.renderPage(function () {
     Code.init();
-
+    var btnDemo = document.getElementById('demoButton');
+    var demoArea = document.getElementById('demo-area');
+    var demoSelect = document.getElementById('demo-select');
+    var closeBtn = document.querySelector('.close-btn');
+    var da = document.querySelectorAll('.da');
+    var contentHeight = document.getElementById('content_blocks').offsetHeight;
+    demoArea.style.height = (contentHeight - 110) + 'px';
+    btnDemo.onclick = function () {
+      demoArea.className = demoArea.className.replace("show", "");
+      demoArea.className = demoArea.className + "show";
+    };
+    closeBtn.onclick = function () {
+      demoArea.className = demoArea.className.replace("show", "");
+    };
+    demoSelect.addEventListener('change',function(){
+      var v = this.value;
+      var thisId = 'demo-area-0'+v;
+      for(var dai=0; dai<da.length; dai++){
+        da[dai].className = da[dai].className.replace("show", "");
+      }
+      document.getElementById(thisId).className = document.getElementById(thisId).className + " show"
+    });
   });
 });

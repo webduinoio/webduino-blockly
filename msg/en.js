@@ -8,6 +8,7 @@ var MSG = {
   timeout: "Maximum execution iterations exceeded.",
   discard: "Delete all %1 blocks?",
   trashTooltip: "Discard all blocks.",
+  demoTooltip: "Web Demo",
   catLogic: "Logic",
   catLoops: "Loops",
   catMath: "Math",
@@ -60,4 +61,7 @@ var MSG = {
   catIRLed: "IR Launch",
   catADXL345: "ADXL345",
   catJoystick: "Joystick"
+  catDemo: "Web Demo",
+  catDemoBasic: "Basic",
+  catDemoYoutube: "YouTube"
 };
