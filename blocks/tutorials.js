@@ -471,6 +471,21 @@ Blockly.Blocks['tutorial_youtube_status'] = {
   }
 };
 
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vcm5tv
+Blockly.Blocks['tutorial_youtube_id'] = {
+  init: function () {
+    this.appendValueInput("id_")
+      .appendField("更換")
+      .appendField(new Blockly.FieldVariable("youtube"), "name_")
+      .appendField("影片，要更換的 id：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 /*
 oooooooooo.  ooooo     ooo ooooooooooooo ooooooooooooo   .oooooo.   ooooo      ooo 
 `888'   `Y8b `888'     `8' 8'   888   `8 8'   888   `8  d8P'  `Y8b  `888b.     `8' 
