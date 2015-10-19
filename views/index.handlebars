@@ -46,64 +46,109 @@
 <pre id="content_javascript" class="content"></pre>
 <div id="demo-area">
   <div class="close-btn"></div>
-  <h4>網頁互動測試</h4>
-  <span>請選擇一種互動方式：</span>
+  <h4>{{demoAreaTitle}}</h4>
+  <span>{{demoAreaChoose}}</span>
   <select id="demo-select">
-    <option value="1">文字顯示</option>
-    <option value="2">燈泡圖片</option>
-    <option value="3">區域顏色</option>
-    <option value="4">多顆按鈕</option>
-    <option value="5">Youtube 影片</option>
+    <option value="1">{{demoAreaSelect1}}</option>
+    <option value="2">{{demoAreaSelect2}}</option>
+    <option value="3">{{demoAreaSelect3}}</option>
+    <option value="4">{{demoAreaSelect4}}</option>
+    <option value="5">{{demoAreaSelect5}}</option>
+    <option value="6">{{demoAreaSelect6}}</option>
   </select>
   <div id="demo-area-01" class="da show">
     <br/>
     <span id="demo-area-01-show">123</span>
     <br/><br/>
-    <h5>HTML 程式碼：</h5>
+    <h5>HTML:</h5>
     <pre class="demo-pre">
-&lt;span id=&quot;demo-area-01-show&quot;&gt;要顯示的文字&lt;/span&gt;
-    </pre>
+&lt;span id=&quot;demo-area-01-show&quot;&gt;要顯示的文字&lt;/span&gt;</pre>
   </div>
   <div id="demo-area-02" class="da">
-    <img src="../media/off.png" id="demo-area-02-image">
-    <br/><br/>
-    <h5>HTML 程式碼：</h5>
+    <div id="demo-area-02-light" class="off">
+      <img src="../media/off.png" id="demo-area-02-off">
+      <img src="../media/on.png" id="demo-area-02-on">
+    </div>
+    <br/>
+    <h5>HTML:</h5>
     <pre class="demo-pre">
-&lt;img src=&quot;圖片網址&quot; id=&quot;demo-area-02-image&quot;&gt;
-    </pre>
+&lt;div id=&quot;demo-area-02-light&quot; class=&quot;off&quot;&gt;
+  &lt;img src=&quot;http://blockly.webduino.io/media/off.png&quot; id=&quot;demo-area-02-off&quot;&gt;
+  &lt;img src=&quot;http://blockly.webduino.io/media/on.png&quot; id=&quot;demo-area-02-on&quot;&gt;
+&lt;/div&gt;</pre>
+    <h5>CSS:</h5>
+    <pre class="demo-pre">
+#demo-area-02-light img{
+  height:200px;
+  display:none;
+}
+#demo-area-02-light.on #demo-area-02-on{
+  display:inline-block;
+}
+#demo-area-02-light.off #demo-area-02-off{
+  display:inline-block;
+}</pre>
   </div>
   <div id="demo-area-03" class="da">
-    <div id="demo-area-03-area"></div>
-    <br/><br/>
-    <h5>HTML 程式碼：</h5>
+    <div id="demo-area-03-container">
+      <img src="../media/webduino-logo.jpg" id="demo-area-03-image">
+    </div>
+    <br/>
+    <h5>HTML:</h5>
     <pre class="demo-pre">
-&lt;div id=&quot;demo-area-03-area&quot;&gt;&lt;/div&gt;
-    </pre>
+&lt;div id=&quot;demo-area-03-container&quot;&gt;
+  &lt;img src=&quot;../media/webduino-logo.jpg&quot; id=&quot;demo-area-03-image&quot;&gt;
+&lt;/div&gt;</pre>
+    <h5>CSS:</h5>
+    <pre class="demo-pre">
+#demo-area-03-container{
+  position:relative;
+  width:150px;
+  height:150px;
+}
+#demo-area-03-image{
+  position:absolute;
+  top:0;
+  left:0;
+  width:150px;
+  height:150px;
+  transition:.3s;
+  -webkit-transition:.3s;
+  -moz-transition:.3s;
+  transform-origin:75px 75px;
+  -webkit-transform-origin:75px 75px;
+  -moz-transform-origin:75px 75px;
+}</pre>
   </div>
   <div id="demo-area-04" class="da">
-    <button id="demo-area-04-btn1" class="db4">按鈕 1</button>
-    <button id="demo-area-04-btn2" class="db4">按鈕 2</button>
-    <button id="demo-area-04-btn3" class="db4">按鈕 3</button>
-    <button id="demo-area-04-btn4" class="db4">按鈕 4</button>
-    <button id="demo-area-04-btn5" class="db4">按鈕 5</button>
+    <div id="demo-area-04-area"></div>
     <br/><br/>
-    <h5>HTML 程式碼：</h5>
+    <h5>HTML:</h5>
     <pre class="demo-pre">
-&lt;button id=&quot;demo-area-04-btn1&quot; class=&quot;db4&quot;&gt;&#25353;&#37397; 1&lt;/button&gt;
-&lt;button id=&quot;demo-area-04-btn2&quot; class=&quot;db4&quot;&gt;&#25353;&#37397; 2&lt;/button&gt;
-&lt;button id=&quot;demo-area-04-btn3&quot; class=&quot;db4&quot;&gt;&#25353;&#37397; 3&lt;/button&gt;
-&lt;button id=&quot;demo-area-04-btn4&quot; class=&quot;db4&quot;&gt;&#25353;&#37397; 4&lt;/button&gt;
-&lt;button id=&quot;demo-area-04-btn5&quot; class=&quot;db4&quot;&gt;&#25353;&#37397; 5&lt;/button&gt;
-    </pre>
+&lt;div id=&quot;demo-area-04-area&quot;&gt;&lt;/div&gt;</pre>
   </div>
   <div id="demo-area-05" class="da">
-    <div id="player"></div>
-    <span style="font-size:12px;">youtube 影片會顯示在上方，必須另外載入「<strong>https://www.youtube.com/iframe_api</strong>」</span>
+    <button id="demo-area-05-btn1" class="db5">{{demoAreaBtn1}}</button>
+    <button id="demo-area-05-btn2" class="db5">{{demoAreaBtn2}}</button>
+    <button id="demo-area-05-btn3" class="db5">{{demoAreaBtn3}}</button>
+    <button id="demo-area-05-btn4" class="db5">{{demoAreaBtn4}}</button>
+    <button id="demo-area-05-btn5" class="db5">{{demoAreaBtn5}}</button>
     <br/><br/>
-    <h5>HTML 程式碼：</h5>
+    <h5>HTML:</h5>
     <pre class="demo-pre">
-&lt;div id=&quot;player&quot;&gt;&lt;/div&gt;
-    </pre>
+&lt;button id=&quot;demo-area-05-btn1&quot; class=&quot;db5&quot;&gt;&#25353;&#37397; 1&lt;/button&gt;
+&lt;button id=&quot;demo-area-05-btn2&quot; class=&quot;db5&quot;&gt;&#25353;&#37397; 2&lt;/button&gt;
+&lt;button id=&quot;demo-area-05-btn3&quot; class=&quot;db5&quot;&gt;&#25353;&#37397; 3&lt;/button&gt;
+&lt;button id=&quot;demo-area-05-btn4&quot; class=&quot;db5&quot;&gt;&#25353;&#37397; 4&lt;/button&gt;
+&lt;button id=&quot;demo-area-05-btn5&quot; class=&quot;db5&quot;&gt;&#25353;&#37397; 5&lt;/button&gt;</pre>
+  </div>
+  <div id="demo-area-06" class="da">
+    <div id="player"></div>
+    <span style="font-size:12px;">{{demoAreaYoutube1}}<br/>{{demoAreaYoutube2}}<strong>https://www.youtube.com/iframe_api</strong></span>
+    <br/><br/>
+    <h5>HTML:</h5>
+    <pre class="demo-pre">
+&lt;div id=&quot;player&quot;&gt;&lt;/div&gt;</pre>
   </div>
 </div>
 <textarea id="content_xml" class="content" wrap="off"></textarea>
@@ -780,21 +825,6 @@
         <field name="speed_">2</field>
       </block>
     </category>
-<!--     <category id="catJoystick">
-      <block type="variables_set">
-        <field name="VAR">joystick</field>
-        <value name="VALUE">
-          <block type="joystick_new">
-            <field name="vrx_">4</field>
-            <field name="vry_">5</field>
-            <field name="sw_">11</field>
-          </block>
-        </value>
-      </block>
-      <block type="joystick_on"></block>
-      <block type="joystick_val"></block>
-      <block type="joystick_off"></block>
-    </category> -->
   <sep></sep>
   </category>
   <category id="catDatabase">
@@ -828,22 +858,45 @@
   </category>
   <sep></sep>
   <category id="catDemo">
-    <category id="catDemoBasic">
-      <block type="demo_show_text">
-        <value name="show_">
-          <block type="text">
-            <field name="TEXT">...</field>
-          </block>
-        </value>
-      </block>
+    <category id="catDemoText">
+      <block type="demo_show_text"></block>
+    </category>
+    <category id="catDemoLight">
+      <block type="demo_light_click"></block>
+      <block type="demo_light_state"></block>
+      <block type="demo_light_ifelse"></block>
+    </category>
+    <category id="catDemoImage">
       <block type="demo_image_url">
         <value name="url_">
           <block type="text">
-            <field name="TEXT">http://blockly.webduino.io/media/off.png</field>
+            <field name="TEXT">圖片網址</field>
           </block>
         </value>
       </block>
-      <block type="demo_image_click"></block>
+      <block type="demo_image_size">
+        <value name="size_">
+          <block type="math_number">
+            <field name="NUM">200</field>
+          </block>
+        </value>
+      </block>
+      <block type="demo_image_rotate">
+        <value name="deg_">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+      </block>
+      <block type="demo_image_position">
+        <value name="position_">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+      </block>
+    </category>
+    <category id="catDemoArea">
       <block type="demo_area_color">
           <value name="color_">
             <block type="colour_picker">
@@ -851,33 +904,35 @@
             </block>
           </value>
       </block>
+    </category>
+    <category id="catDemoButton">
       <block type="demo_button_click"></block>
     </category>
     <category id="catDemoYoutube">
-      <block type="tutorial_youtube">
+      <block type="demo_youtube">
         <value name="name_">
           <block type="variables_get">
             <field name="VAR">youtube</field>
           </block>
         </value>
       </block>
-      <block type="tutorial_youtube_id">
+      <block type="demo_youtube_id">
         <value name="id_">
             <block type="text">
               <field name="TEXT">...</field>
             </block>
         </value>
       </block>
-      <block type="tutorial_youtube_control"></block>
-      <block type="tutorial_youtube_status"></block>
-      <block type="tutorial_youtube_volume">
+      <block type="demo_youtube_control"></block>
+      <block type="demo_youtube_status"></block>
+      <block type="demo_youtube_volume">
         <value name="volume_">
           <block type="math_number">
             <field name="NUM">100</field>
           </block>
         </value>
       </block>
-      <block type="tutorial_youtube_speed"></block>
+      <block type="demo_youtube_speed"></block>
     </category>
   </category>
 </xml>

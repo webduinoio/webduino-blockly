@@ -5,12 +5,83 @@ goog.require('Blockly.Blocks');
 
 Blockly.Blocks.colour.HUE = 120;
 
-/* demo */
+/* 
+      .o8                                        
+     "888                                        
+ .oooo888   .ooooo.  ooo. .oo.  .oo.    .ooooo.  
+d88' `888  d88' `88b `888P"Y88bP"Y88b  d88' `88b 
+888   888  888ooo888  888   888   888  888   888 
+888   888  888    .o  888   888   888  888   888 
+`Y8bod88P" `Y8bod8P' o888o o888o o888o `Y8bod8P' 
+*/
 
 Blockly.Blocks['demo_show_text'] = {
   init: function () {
     this.appendValueInput("show_")
-      .appendField("顯示文字：");
+      .appendField(Blockly.Msg.DEMO_SHOW, "顯示：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_light_click'] = {
+  init: function () {
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.DEMO_LIGHT_CLICK, "點擊燈泡，執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_light_state'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.DEMO_LIGHT_STATE, "設定燈泡狀態為：")
+      .appendField(new Blockly.FieldDropdown([
+        ["on", "on"],
+        ["off", "off"]
+      ]), "state_");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_light_ifelse'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.DEMO_LIGHT_IFELSE, "燈泡現在的狀態是")
+      .appendField(new Blockly.FieldDropdown([
+        ["on", "on"],
+        ["off", "off"]
+      ]), "state_");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_button_click'] = {
+  init: function () {
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.DEMO_BUTTON_CLICK, "點選")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.DEMO_BUTTON_BTN1, "1"],
+        [Blockly.Msg.DEMO_BUTTON_BTN2, "2"],
+        [Blockly.Msg.DEMO_BUTTON_BTN3, "3"],
+        [Blockly.Msg.DEMO_BUTTON_BTN4, "4"],
+        [Blockly.Msg.DEMO_BUTTON_BTN5, "5"]
+      ]), "name_")
+      .appendField(Blockly.Msg.DEMO_BUTTON_CLICK_DO, "執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -24,7 +95,7 @@ Blockly.Blocks['demo_image_url'] = {
     this.appendValueInput("url_")
       .setCheck("String")
       .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField("圖片網址");
+      .appendField(Blockly.Msg.DEMO_IMAGE_URL, "圖片網址");
     this.setInputsInline(false);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -34,10 +105,10 @@ Blockly.Blocks['demo_image_url'] = {
   }
 };
 
-Blockly.Blocks['demo_image_click'] = {
+Blockly.Blocks['demo_image_size'] = {
   init: function () {
-    this.appendStatementInput("do_")
-      .appendField("點擊圖片，執行：");
+    this.appendValueInput("size_")
+      .appendField(Blockly.Msg.DEMO_IMAGE_SIZE, "圖片尺寸：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -46,18 +117,29 @@ Blockly.Blocks['demo_image_click'] = {
   }
 };
 
-Blockly.Blocks['demo_button_click'] = {
+Blockly.Blocks['demo_image_rotate'] = {
   init: function () {
-    this.appendStatementInput("do_")
-      .appendField("點選")
+    this.appendValueInput("deg_")
+      .appendField(Blockly.Msg.DEMO_IMAGE_ROTATE, "圖片旋轉角度：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_image_position'] = {
+  init: function () {
+    this.appendValueInput("position_")
+      .appendField(Blockly.Msg.DEMO_IMAGE_POS, "圖片")
       .appendField(new Blockly.FieldDropdown([
-        ["按鈕1", "1"],
-        ["按鈕2", "2"],
-        ["按鈕3", "3"],
-        ["按鈕4", "4"],
-        ["按鈕5", "5"]
-      ]), "name_")
-      .appendField("執行：");
+        [Blockly.Msg.DEMO_IMAGE_X, "x"],
+        [Blockly.Msg.DEMO_IMAGE_Y, "y"]
+      ]), "direction_")
+      .appendField(Blockly.Msg.DEMO_IMAGE_MOVE,"移動：");
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.DEMO_IMAGE_PIXEL,"像素");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -69,7 +151,7 @@ Blockly.Blocks['demo_button_click'] = {
 Blockly.Blocks['demo_area_color'] = {
   init: function () {
     this.appendValueInput("color_")
-      .appendField("設定區域顏色：");
+      .appendField(Blockly.Msg.DEMO_AREA_COLOR,"設定區域顏色：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -79,7 +161,7 @@ Blockly.Blocks['demo_area_color'] = {
 };
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#wbe3vd
-Blockly.Blocks['tutorial_youtube'] = {
+Blockly.Blocks['demo_youtube'] = {
   init: function () {
     this.appendValueInput("name_")
       .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE, "設定 Youtube：");
@@ -95,7 +177,7 @@ Blockly.Blocks['tutorial_youtube'] = {
 };
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#kqjbv8
-Blockly.Blocks['tutorial_youtube_volume'] = {
+Blockly.Blocks['demo_youtube_volume'] = {
   init: function () {
     this.appendValueInput("volume_")
       .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET, "設定")
@@ -110,7 +192,7 @@ Blockly.Blocks['tutorial_youtube_volume'] = {
 };
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#tih6od
-Blockly.Blocks['tutorial_youtube_speed'] = {
+Blockly.Blocks['demo_youtube_speed'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET, "設定")
@@ -132,7 +214,7 @@ Blockly.Blocks['tutorial_youtube_speed'] = {
 };
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#tcfvai
-Blockly.Blocks['tutorial_youtube_control'] = {
+Blockly.Blocks['demo_youtube_control'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET, "設定")
@@ -152,7 +234,7 @@ Blockly.Blocks['tutorial_youtube_control'] = {
 };
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#metxhc
-Blockly.Blocks['tutorial_youtube_status'] = {
+Blockly.Blocks['demo_youtube_status'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("youtube"), "name_")
@@ -171,7 +253,7 @@ Blockly.Blocks['tutorial_youtube_status'] = {
 };
 
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vcm5tv
-Blockly.Blocks['tutorial_youtube_id'] = {
+Blockly.Blocks['demo_youtube_id'] = {
   init: function () {
     this.appendValueInput("id_")
       .appendField("更換")
@@ -185,10 +267,18 @@ Blockly.Blocks['tutorial_youtube_id'] = {
   }
 };
 
-/**
- * console
- * https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vnzmgi
- */
+/*
+                             o8o              
+                             `"'              
+ooo. .oo.  .oo.    .oooo.   oooo  ooo. .oo.   
+`888P"Y88bP"Y88b  `P  )88b  `888  `888P"Y88b  
+ 888   888   888   .oP"888   888   888   888  
+ 888   888   888  d8(  888   888   888   888  
+o888o o888o o888o `Y888""8o o888o o888o o888o 
+*/
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vnzmgi
+
 Blockly.Blocks['console'] = {
   init: function () {
     this.appendValueInput('console')
@@ -201,10 +291,8 @@ Blockly.Blocks['console'] = {
   }
 };
 
-/**
- * date and time
- * https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#rrm4nf
- */
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#rrm4nf
+
 Blockly.Blocks['getdate'] = {
   init: function () {
     this.appendDummyInput()

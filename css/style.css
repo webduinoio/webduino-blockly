@@ -394,8 +394,9 @@ td#copyCode div{
   position:absolute;
   right:40px;
   top:135px;
-  width:400px;
-  height:400px;
+  width:20%;
+  max-width:600px;
+  min-width:400px;
   background:rgba(255,255,255,.8);
   border-radius:20px;
   border:10px solid #ccc;
@@ -449,21 +450,46 @@ td#copyCode div{
 }
 #demo-area .demo-pre{
   background:#eee;
-  padding:10px 10px 0;
+  padding:10px;
   overflow: auto;
 }
 #demo-area-01-show{
   font-size:60px;
 }
-#demo-area-02-image{
-  max-height:150px;
+#demo-area-02-light img{
+  height:200px;
+  display:none;
 }
-#demo-area-03-area{
+#demo-area-02-light.on #demo-area-02-on{
+  display:inline-block;
+}
+#demo-area-02-light.off #demo-area-02-off{
+  display:inline-block;
+}
+#demo-area-03-container{
+  position:relative;
+  width:150px;
+  height:150px;
+}
+#demo-area-03-image{
+  position:absolute;
+  top:0;
+  left:0;
+  width:150px;
+  height:150px;
+  transition:.3s;
+  -webkit-transition:.3s;
+  -moz-transition:.3s;
+  transform-origin:75px 75px;
+  -webkit-transform-origin:75px 75px;
+  -moz-transform-origin:75px 75px;
+}
+#demo-area-04-area{
   width:250px;
   height:150px;
   background:#ccc;
 }
-#demo-area-04 .db4{
+#demo-area-05 .db5{
   font-size:24px;
   outline:none;
   margin:0 10px 10px 0;

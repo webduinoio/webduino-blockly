@@ -3,7 +3,15 @@
 goog.provide('Blockly.JavaScript.webduino');
 goog.require('Blockly.JavaScript');
 
-/* demo */
+/* 
+      .o8                                        
+     "888                                        
+ .oooo888   .ooooo.  ooo. .oo.  .oo.    .ooooo.  
+d88' `888  d88' `88b `888P"Y88bP"Y88b  d88' `88b 
+888   888  888ooo888  888   888   888  888   888 
+888   888  888    .o  888   888   888  888   888 
+`Y8bod88P" `Y8bod8P' o888o o888o o888o `Y8bod8P' 
+*/
 
 Blockly.JavaScript['demo_show_text'] = function(block) {
   var value_show_ = Blockly.JavaScript.valueToCode(block, 'show_', Blockly.JavaScript.ORDER_ATOMIC);
@@ -16,32 +24,74 @@ Blockly.JavaScript['demo_image_url'] = function (block) {
   if (value_url_ == '\'\'' || !value_url_) {
     value_url_ = '"http://blockly.webduino.io/media/off.png"';
   }
-  var code = 'document.getElementById("demo-area-02-image").setAttribute("src",' + value_url_ + ');\n';
+  var code = 'document.getElementById("demo-area-03-image").setAttribute("src",' + value_url_ + ');\n';
   return code;
 };
 
-Blockly.JavaScript['demo_image_click'] = function(block) {
+Blockly.JavaScript['demo_light_click'] = function(block) {
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'document.getElementById("demo-area-02-image").addEventListener("click",function(){\n'+
+  var code = 'document.getElementById("demo-area-02-light").addEventListener("click",function(){\n'+
             statements_do_+
             '});\n';
   return code;
 };
+
+Blockly.JavaScript['demo_light_state'] = function(block) {
+  var dropdown_state_ = block.getFieldValue('state_');
+  var code = 'document.getElementById("demo-area-02-light").className = "'+dropdown_state_+'";\n';
+  return code;
+};
+
+Blockly.JavaScript['demo_light_ifelse'] = function(block) {
+  var dropdown_state_ = block.getFieldValue('state_');
+  var code = 'document.getElementById("demo-area-02-light").className == "'+dropdown_state_+'"';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['demo_image_size'] = function(block) {
+  var value_size_ = Blockly.JavaScript.valueToCode(block, 'size_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'document.getElementById("demo-area-03-image").style.width = '+value_size_+'+"px";\n'+
+            'document.getElementById("demo-area-03-image").style.height = '+value_size_+'+"px";\n';
+  return code;
+};
+
+Blockly.JavaScript['demo_image_rotate'] = function(block) {
+  var value_deg_ = Blockly.JavaScript.valueToCode(block, 'deg_', Blockly.JavaScript.ORDER_ATOMIC);
+  var deg = Blockly.JavaScript.variableDB_.getDistinctName(
+  'deg', Blockly.Variables.NAME_TYPE);
+  var code = 'var '+deg+' = '+value_deg_+';\n'+
+          'document.getElementById("demo-area-03-image").style.transform = "rotate("+'+deg+'+"deg)";\n';
+  return code;
+};
+
+Blockly.JavaScript['demo_image_position'] = function(block) {
+  var dropdown_direction_ = block.getFieldValue('direction_');
+  var value_position_ = Blockly.JavaScript.valueToCode(block, 'position_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code;
+  if(dropdown_direction_=='x'){
+    code = 'document.getElementById("demo-area-03-image").style.left = '+value_position_+'+"px";\n';
+  }else{
+    code = 'document.getElementById("demo-area-03-image").style.top = '+value_position_+'+"px";\n';
+  }
+  return code;
+};
+
 Blockly.JavaScript['demo_button_click'] = function(block) {
   var dropdown_name_ = block.getFieldValue('name_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'document.getElementById("demo-area-04-btn'+dropdown_name_+'").addEventListener("click",function(){\n'+
+  var code = 'document.getElementById("demo-area-05-btn'+dropdown_name_+'").addEventListener("click",function(){\n'+
             statements_do_+
             '});\n';
   return code;
 };
+
 Blockly.JavaScript['demo_area_color'] = function(block) {
   var value_color_ = Blockly.JavaScript.valueToCode(block, 'color_', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'document.getElementById("demo-area-03-area").style.background = '+value_color_+';\n';
+  var code = 'document.getElementById("demo-area-04-area").style.background = '+value_color_+';\n';
   return code;
 };
 
-Blockly.JavaScript['tutorial_youtube'] = function (block) {
+Blockly.JavaScript['demo_youtube'] = function (block) {
   var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
   var text_id_ = block.getFieldValue('id_');
   var code = 'var checkYoutubeLoad=0;\n' +
@@ -76,7 +126,7 @@ Blockly.JavaScript['tutorial_youtube'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['tutorial_youtube_volume'] = function (block) {
+Blockly.JavaScript['demo_youtube_volume'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var value_volume_ = Blockly.JavaScript.valueToCode(block, 'volume_', Blockly.JavaScript.ORDER_ATOMIC);
   var varA = Blockly.JavaScript.variableDB_.getDistinctName(
@@ -92,7 +142,7 @@ Blockly.JavaScript['tutorial_youtube_volume'] = function (block) {
 };
 
 
-Blockly.JavaScript['tutorial_youtube_speed'] = function (block) {
+Blockly.JavaScript['demo_youtube_speed'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var dropdown_speed_ = block.getFieldValue('speed_');
   var code = '  if(checkYoutubeLoad==1){\n' +
@@ -101,7 +151,7 @@ Blockly.JavaScript['tutorial_youtube_speed'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['tutorial_youtube_control'] = function (block) {
+Blockly.JavaScript['demo_youtube_control'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var dropdown_status_ = block.getFieldValue('status_');
   var code;
@@ -122,21 +172,29 @@ Blockly.JavaScript['tutorial_youtube_control'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['tutorial_youtube_status'] = function (block) {
+Blockly.JavaScript['demo_youtube_status'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var dropdown_status_ = block.getFieldValue('status_');
   var code = variable_name_ + '.getPlayerState()==' + dropdown_status_;
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
-Blockly.JavaScript['tutorial_youtube_id'] = function(block) {
+Blockly.JavaScript['demo_youtube_id'] = function(block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var value_id_ = Blockly.JavaScript.valueToCode(block, 'id_', Blockly.JavaScript.ORDER_ATOMIC);
   var code = variable_name_+'.loadVideoById('+value_id_+');\n';
   return code;
 };
 
-/* main */
+/*
+                             o8o              
+                             `"'              
+ooo. .oo.  .oo.    .oooo.   oooo  ooo. .oo.   
+`888P"Y88bP"Y88b  `P  )88b  `888  `888P"Y88b  
+ 888   888   888   .oP"888   888   888   888  
+ 888   888   888  d8(  888   888   888   888  
+o888o o888o o888o `Y888""8o o888o o888o o888o 
+*/
 
 Blockly.JavaScript['console'] = function (block) {
   var value_console = Blockly.JavaScript.valueToCode(block, 'console', Blockly.JavaScript.ORDER_ATOMIC);

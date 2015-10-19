@@ -64,6 +64,26 @@ var MSG = {
   catADXL345: "三軸加速度計",
   catJoystick: "搖桿",
   catDemo: "網頁互動",
-  catDemoBasic: "網頁元素",
-  catDemoYoutube: "YouTube"
+  catDemoText: "顯示文字",
+  catDemoLight: "點擊燈泡",
+  catDemoImage: "圖片控制",
+  catDemoArea: "區域顏色",
+  catDemoButton: "多顆按鈕",
+  catDemoYoutube: "YouTube",
+  demoAreaTitle: "網頁互動測試",
+  demoAreaChoose: "請選擇一種互動方式：",
+  demoAreaSelect1: "顯示文字",
+  demoAreaSelect2: "點擊燈泡",
+  demoAreaSelect3: "控制圖片",
+  demoAreaSelect4: "區域顏色",
+  demoAreaSelect5: "多顆按鈕",
+  demoAreaSelect6: "Youtube",
+  demoAreaBtn1: "按鈕 1",
+  demoAreaBtn2: "按鈕 2",
+  demoAreaBtn3: "按鈕 3",
+  demoAreaBtn4: "按鈕 4",
+  demoAreaBtn5: "按鈕 5",
+  demoAreaYoutube1: "YouTube 影片會顯示在上方",
+  demoAreaYoutube2: "必須另外載入："
+
 };

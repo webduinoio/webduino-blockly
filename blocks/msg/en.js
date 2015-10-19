@@ -4,6 +4,29 @@ goog.provide('Blockly.Msg.Webduino.en');
 
 goog.require('Blockly.Msg.Webduino');
 
+// Demo
+
+Blockly.Msg.DEMO_SHOW = "Show:";
+Blockly.Msg.DEMO_LIGHT_CLICK = "Click light, do:";
+Blockly.Msg.DEMO_LIGHT_STATE = "Set light state:";
+Blockly.Msg.DEMO_LIGHT_IFELSE = "light's state is:";
+Blockly.Msg.DEMO_BUTTON_CLICK = "Click";
+Blockly.Msg.DEMO_BUTTON_BTN1 = "Button1";
+Blockly.Msg.DEMO_BUTTON_BTN2 = "Button2";
+Blockly.Msg.DEMO_BUTTON_BTN3 = "Button3";
+Blockly.Msg.DEMO_BUTTON_BTN4 = "Button4";
+Blockly.Msg.DEMO_BUTTON_BTN5 = "Button5";
+Blockly.Msg.DEMO_BUTTON_CLICK_DO = "do:";
+Blockly.Msg.DEMO_IMAGE_URL = "Image URL:";
+Blockly.Msg.DEMO_IMAGE_SIZE = "Image size:";
+Blockly.Msg.DEMO_IMAGE_ROTATE = "Image rotate:";
+Blockly.Msg.DEMO_IMAGE_POS = "Image ";
+Blockly.Msg.DEMO_IMAGE_X = "Horizontal";
+Blockly.Msg.DEMO_IMAGE_Y = "Vertical";
+Blockly.Msg.DEMO_IMAGE_MOVE = "move:";
+Blockly.Msg.DEMO_IMAGE_PIXEL = "pixels";
+Blockly.Msg.DEMO_AREA_COLOR = "Set area's color:";
+
 Blockly.Msg.CUSTOM_JS_CONSOLE = "Console:";
 Blockly.Msg.CUSTOM_JS_Date = "Date:";
 Blockly.Msg.CUSTOM_JS_Date_1 = "year / month / date";

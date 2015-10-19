@@ -8,6 +8,30 @@ Blockly.Msg.VARIABLES_SET = "設定 %1 為 %2";
 Blockly.Msg.LISTS_CREATE_WITH_INPUT_WITH = "建立列表";
 Blockly.Msg.TEXT_JOIN_TITLE_CREATEWITH = "建立字串";
 
+// Demo
+
+Blockly.Msg.DEMO_SHOW = "顯示：";
+Blockly.Msg.DEMO_LIGHT_CLICK = "點擊燈泡，執行：";
+Blockly.Msg.DEMO_LIGHT_STATE = "設定燈泡狀態為：";
+Blockly.Msg.DEMO_LIGHT_IFELSE = "燈泡現在的狀態是";
+Blockly.Msg.DEMO_BUTTON_CLICK = "點選";
+Blockly.Msg.DEMO_BUTTON_BTN1 = "按鈕1";
+Blockly.Msg.DEMO_BUTTON_BTN2 = "按鈕2";
+Blockly.Msg.DEMO_BUTTON_BTN3 = "按鈕3";
+Blockly.Msg.DEMO_BUTTON_BTN4 = "按鈕4";
+Blockly.Msg.DEMO_BUTTON_BTN5 = "按鈕5";
+Blockly.Msg.DEMO_BUTTON_CLICK_DO = "執行：";
+Blockly.Msg.DEMO_IMAGE_URL = "圖片網址";
+Blockly.Msg.DEMO_IMAGE_SIZE = "圖片尺寸：";
+Blockly.Msg.DEMO_IMAGE_ROTATE = "圖片旋轉角度：";
+Blockly.Msg.DEMO_IMAGE_POS = "圖片";
+Blockly.Msg.DEMO_IMAGE_X = "水平";
+Blockly.Msg.DEMO_IMAGE_Y = "垂直";
+Blockly.Msg.DEMO_IMAGE_MOVE = "移動：";
+Blockly.Msg.DEMO_IMAGE_PIXEL = "像素";
+Blockly.Msg.DEMO_AREA_COLOR = "設定區域顏色：";
+
+
 // Console
 
 Blockly.Msg.CUSTOM_JS_CONSOLE = "控制台顯示";
