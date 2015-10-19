@@ -55,6 +55,7 @@
     <option value="4">{{demoAreaSelect4}}</option>
     <option value="5">{{demoAreaSelect5}}</option>
     <option value="6">{{demoAreaSelect6}}</option>
+    <option value="7">{{demoAreaSelect7}}</option>
   </select>
   <div id="demo-area-01" class="da show">
     <br/>
@@ -121,10 +122,14 @@
 }</pre>
   </div>
   <div id="demo-area-04" class="da">
+    選擇顏色：<input id="demo-area-04-color" type="color">
+    <br/>
+    <br/>
     <div id="demo-area-04-area"></div>
     <br/><br/>
     <h5>HTML:</h5>
     <pre class="demo-pre">
+選擇顏色：&lt;input id=&quot;demo-area-04-color&quot; type=&quot;color&quot;&gt;
 &lt;div id=&quot;demo-area-04-area&quot;&gt;&lt;/div&gt;</pre>
   </div>
   <div id="demo-area-05" class="da">
@@ -143,6 +148,16 @@
 &lt;button id=&quot;demo-area-05-btn5&quot; class=&quot;db5&quot;&gt;&#25353;&#37397; 5&lt;/button&gt;</pre>
   </div>
   <div id="demo-area-06" class="da">
+    數值：<span id="demo-area-06-input-value">90</span>
+    <br/>
+    拉霸：<input type="range" min="0" max="180" step="5" value="90" id="demo-area-06-input">
+    <br/><br/>
+    <h5>HTML:</h5>
+    <pre class="demo-pre">
+&#25976;&#20540;&#65306;&lt;span id=&quot;demo-area-06-input-value&quot;&gt;90&lt;/span&gt;
+&#25289;&#38712;&#65306;&lt;input type=&quot;range&quot; min=&quot;0&quot; max=&quot;180&quot; step=&quot;5&quot; value=&quot;90&quot; id=&quot;demo-area-06-input&quot;&gt;</pre>
+  </div>
+  <div id="demo-area-07" class="da">
     <div id="player"></div>
     <span style="font-size:12px;">{{demoAreaYoutube1}}<br/>{{demoAreaYoutube2}}<strong>https://www.youtube.com/iframe_api</strong></span>
     <br/><br/>
@@ -897,6 +912,8 @@
       </block>
     </category>
     <category id="catDemoArea">
+      <block type="demo_area_input"></block>
+      <block type="demo_area_input_color"></block>
       <block type="demo_area_color">
           <value name="color_">
             <block type="colour_picker">
@@ -907,6 +924,32 @@
     </category>
     <category id="catDemoButton">
       <block type="demo_button_click"></block>
+    </category>
+    <category id="catDemoRange">
+      <block type="demo_range_set">
+        <value name="min_">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="max_">
+          <block type="math_number">
+            <field name="NUM">180</field>
+          </block>
+        </value>
+        <value name="step_">
+          <block type="math_number">
+            <field name="NUM">5</field>
+          </block>
+        </value>
+        <value name="value_">
+          <block type="math_number">
+            <field name="NUM">90</field>
+          </block>
+        </value>
+      </block>
+      <block type="demo_range_show"></block>
+      <block type="demo_range_input_value"></block>
     </category>
     <category id="catDemoYoutube">
       <block type="demo_youtube">

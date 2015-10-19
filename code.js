@@ -276,6 +276,8 @@ Code.loadDemoArea = function(demo){
     demo.content(5);
   }else if(localStorage.demoAreaSelect==6){
     demo.content(6);
+  }else if(localStorage.demoAreaSelect==7){
+    demo.content(7);
   }
 }
 

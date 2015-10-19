@@ -137,11 +137,34 @@ Blockly.Blocks['demo_image_position'] = {
         [Blockly.Msg.DEMO_IMAGE_X, "x"],
         [Blockly.Msg.DEMO_IMAGE_Y, "y"]
       ]), "direction_")
-      .appendField(Blockly.Msg.DEMO_IMAGE_MOVE,"移動：");
+      .appendField(Blockly.Msg.DEMO_IMAGE_MOVE, "移動：");
     this.appendDummyInput()
-      .appendField(Blockly.Msg.DEMO_IMAGE_PIXEL,"像素");
+      .appendField(Blockly.Msg.DEMO_IMAGE_PIXEL, "像素");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_area_input'] = {
+  init: function () {
+    this.appendStatementInput("do_")
+      .appendField("選擇顏色，執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_area_input_color'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("選擇的顏色");
+    this.setOutput(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
     this.setHelpUrl('http://www.example.com/');
@@ -151,9 +174,55 @@ Blockly.Blocks['demo_image_position'] = {
 Blockly.Blocks['demo_area_color'] = {
   init: function () {
     this.appendValueInput("color_")
-      .appendField(Blockly.Msg.DEMO_AREA_COLOR,"設定區域顏色：");
+      .appendField(Blockly.Msg.DEMO_AREA_COLOR, "設定區域顏色：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_range_set'] = {
+  init: function () {
+    this.appendValueInput("min_")
+      .appendField("拉霸設定，最小值");
+    this.appendDummyInput();
+    this.appendValueInput("max_")
+      .appendField("最大值");
+    this.appendDummyInput();
+    this.appendValueInput("step_")
+      .appendField("間距");
+    this.appendDummyInput();
+    this.appendValueInput("value_")
+      .appendField("預設值");
+    this.appendStatementInput("do_")
+      .appendField("調整拉霸，執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_range_show'] = {
+  init: function () {
+    this.appendValueInput("show_")
+      .appendField("數值顯示：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_range_input_value'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("拉霸的數值");
+    this.setOutput(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
     this.setHelpUrl('http://www.example.com/');
