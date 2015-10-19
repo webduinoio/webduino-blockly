@@ -213,36 +213,70 @@ Code.loadDemoArea = function(demo){
   demo.select = document.getElementById('demo-select');
   demo.close = document.querySelector('.close-btn');
   demo.da = document.querySelectorAll('.da');
+  demo.option = document.querySelectorAll('#demo-select option');
   demo.contentHeight = document.getElementById('content_blocks').offsetHeight;
   demo.area.style.height = (demo.contentHeight - 130) + 'px';
-  demo.c = 0;
   window.addEventListener('resize',function(){
     demo.contentHeight = document.getElementById('content_blocks').offsetHeight;
     demo.area.style.height = (demo.contentHeight - 130) + 'px';
   });
+
+  demo.content = function(p,s){
+    s={};
+    for(s.i=0; s.i<demo.da.length; s.i++){
+      demo.da[s.i].className = demo.da[s.i].className.replace("show", "");
+    }
+    demo.option[p-1].selected = true;
+    document.getElementById('demo-area-0'+p).className = document.getElementById('demo-area-0'+p).className + " show";
+    localStorage.demoAreaSelect = p;
+  }
+
   demo.btn.onclick = function () {
-    if(demo.c == 0){
+    if(localStorage.demoArea=='open'){
       demo.area.className = demo.area.className.replace("show", "");
-      demo.area.className = demo.area.className + "show";
-      demo.c = 1;
+      localStorage.demoArea = 'close';
     }else{
       demo.area.className = demo.area.className.replace("show", "");
-      demo.c = 0;
+      demo.area.className = demo.area.className + "show";
+      localStorage.demoArea = 'open';
     }
   };
   demo.close.onclick = function () {
     demo.area.className = demo.area.className.replace("show", "");
-    demo.c = 0;
+    localStorage.demoArea = 'close';
   };
+
   demo.select.addEventListener('change',function(s){
     s={};
     s.selectValue = this.value;
     s.selectId = 'demo-area-0'+s.selectValue;
+    localStorage.demoAreaSelect = s.selectValue;
     for(s.i=0; s.i<demo.da.length; s.i++){
       demo.da[s.i].className = demo.da[s.i].className.replace("show", "");
     }
     document.getElementById(s.selectId).className = document.getElementById(s.selectId).className + " show"
   });
+
+  if(localStorage.demoArea=='open'){
+    demo.area.className = demo.area.className.replace("show", "");
+    demo.area.className = demo.area.className + "show";
+  }else{
+    demo.area.className = demo.area.className.replace("show", "");
+  }
+
+  if(localStorage.demoAreaSelect==1){
+    demo.content(1);
+  }else if(localStorage.demoAreaSelect==2){
+    demo.content(2);
+  }else if(localStorage.demoAreaSelect==3){
+    demo.content(3);
+  }else if(localStorage.demoAreaSelect==4){
+    demo.content(4);
+  }else if(localStorage.demoAreaSelect==5){
+    demo.content(5);
+  }else if(localStorage.demoAreaSelect==6){
+    demo.content(6);
+  }
 }
 
 /**
