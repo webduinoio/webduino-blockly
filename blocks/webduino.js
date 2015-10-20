@@ -27,6 +27,42 @@ Blockly.Blocks['demo_show_text'] = {
   }
 };
 
+Blockly.Blocks['demo_text_size'] = {
+  init: function () {
+    this.appendValueInput("size_")
+      .appendField(Blockly.Msg.DEMO_TEXT_SIZE, "文字大小");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_text_lineheight'] = {
+  init: function () {
+    this.appendValueInput("lineheight_")
+      .appendField(Blockly.Msg.DEMO_TEXT_LINEHEIGHT, "文字行高");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_text_color'] = {
+  init: function () {
+    this.appendValueInput("color_")
+      .appendField(Blockly.Msg.DEMO_TEXT_COLOR, "文字顏色");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 Blockly.Blocks['demo_light_click'] = {
   init: function () {
     this.appendStatementInput("do_")
@@ -64,6 +100,18 @@ Blockly.Blocks['demo_light_ifelse'] = {
         ["off", "off"]
       ]), "state_");
     this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_light_toggle'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.DEMO_LIGHT_TOGGLE, "燈泡狀態切換");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
     this.setHelpUrl('http://www.example.com/');
@@ -151,7 +199,7 @@ Blockly.Blocks['demo_image_position'] = {
 Blockly.Blocks['demo_area_input'] = {
   init: function () {
     this.appendStatementInput("do_")
-      .appendField("選擇顏色，執行：");
+      .appendField(Blockly.Msg.DEMO_AREA_COLOR_INPUT, "選擇顏色，執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -163,7 +211,7 @@ Blockly.Blocks['demo_area_input'] = {
 Blockly.Blocks['demo_area_input_color'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField("選擇的顏色");
+      .appendField(Blockly.Msg.DEMO_AREA_COLOR_CHOOSE, "選擇的顏色");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
@@ -186,18 +234,18 @@ Blockly.Blocks['demo_area_color'] = {
 Blockly.Blocks['demo_range_set'] = {
   init: function () {
     this.appendValueInput("min_")
-      .appendField("拉霸設定，最小值");
+      .appendField(Blockly.Msg.DEMO_RANGE_MIN, "拉霸設定，最小值");
     this.appendDummyInput();
     this.appendValueInput("max_")
-      .appendField("最大值");
+      .appendField(Blockly.Msg.DEMO_RANGE_MAX, "最大值");
     this.appendDummyInput();
     this.appendValueInput("step_")
-      .appendField("間距");
+      .appendField(Blockly.Msg.DEMO_RANGE_STEP, "間距");
     this.appendDummyInput();
     this.appendValueInput("value_")
-      .appendField("預設值");
+      .appendField(Blockly.Msg.DEMO_RANGE_DEFAULT, "預設值");
     this.appendStatementInput("do_")
-      .appendField("調整拉霸，執行：");
+      .appendField(Blockly.Msg.DEMO_RANGE_INPUT, "調整拉霸，執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -209,7 +257,7 @@ Blockly.Blocks['demo_range_set'] = {
 Blockly.Blocks['demo_range_show'] = {
   init: function () {
     this.appendValueInput("show_")
-      .appendField("數值顯示：");
+      .appendField(Blockly.Msg.DEMO_RANGE_SHOW, "數值顯示：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -221,7 +269,7 @@ Blockly.Blocks['demo_range_show'] = {
 Blockly.Blocks['demo_range_input_value'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField("拉霸的數值");
+      .appendField(Blockly.Msg.DEMO_RANGE_VALUE, "拉霸的數值");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);

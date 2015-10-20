@@ -11,9 +11,13 @@ Blockly.Msg.TEXT_JOIN_TITLE_CREATEWITH = "建立字串";
 // Demo
 
 Blockly.Msg.DEMO_SHOW = "顯示：";
+Blockly.Msg.DEMO_TEXT_SIZE = "文字大小";
+Blockly.Msg.DEMO_TEXT_LINEHEIGHT = "文字行高";
+Blockly.Msg.DEMO_TEXT_COLOR = "文字顏色";
 Blockly.Msg.DEMO_LIGHT_CLICK = "點擊燈泡，執行：";
 Blockly.Msg.DEMO_LIGHT_STATE = "設定燈泡狀態為：";
 Blockly.Msg.DEMO_LIGHT_IFELSE = "燈泡現在的狀態是";
+Blockly.Msg.DEMO_LIGHT_TOGGLE = "燈泡狀態切換";
 Blockly.Msg.DEMO_BUTTON_CLICK = "點選";
 Blockly.Msg.DEMO_BUTTON_BTN1 = "按鈕1";
 Blockly.Msg.DEMO_BUTTON_BTN2 = "按鈕2";
@@ -30,6 +34,15 @@ Blockly.Msg.DEMO_IMAGE_Y = "垂直";
 Blockly.Msg.DEMO_IMAGE_MOVE = "移動：";
 Blockly.Msg.DEMO_IMAGE_PIXEL = "像素";
 Blockly.Msg.DEMO_AREA_COLOR = "設定區域顏色：";
+Blockly.Msg.DEMO_AREA_COLOR_INPUT = "選擇顏色，執行：";
+Blockly.Msg.DEMO_AREA_COLOR_CHOOSE = "選擇的顏色";
+Blockly.Msg.DEMO_RANGE_MIN = "拉霸設定，最小值";
+Blockly.Msg.DEMO_RANGE_MAX = "最大值";
+Blockly.Msg.DEMO_RANGE_STEP = "間距";
+Blockly.Msg.DEMO_RANGE_DEFAULT = "預設值";
+Blockly.Msg.DEMO_RANGE_INPUT = "調整拉霸，執行：";
+Blockly.Msg.DEMO_RANGE_SHOW = "數值顯示：";
+Blockly.Msg.DEMO_RANGE_VALUE = "拉霸的數值";
 
 
 // Console

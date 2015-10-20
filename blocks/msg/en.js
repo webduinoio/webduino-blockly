@@ -7,9 +7,13 @@ goog.require('Blockly.Msg.Webduino');
 // Demo
 
 Blockly.Msg.DEMO_SHOW = "Show:";
+Blockly.Msg.DEMO_TEXT_SIZE = "Text size";
+Blockly.Msg.DEMO_TEXT_LINEHEIGHT = "Line height";
+Blockly.Msg.DEMO_TEXT_COLOR = "Text color";
 Blockly.Msg.DEMO_LIGHT_CLICK = "Click light, do:";
 Blockly.Msg.DEMO_LIGHT_STATE = "Set light state:";
 Blockly.Msg.DEMO_LIGHT_IFELSE = "light's state is:";
+Blockly.Msg.DEMO_LIGHT_TOGGLE = "Light toggle";
 Blockly.Msg.DEMO_BUTTON_CLICK = "Click";
 Blockly.Msg.DEMO_BUTTON_BTN1 = "Button1";
 Blockly.Msg.DEMO_BUTTON_BTN2 = "Button2";
@@ -26,6 +30,15 @@ Blockly.Msg.DEMO_IMAGE_Y = "Vertical";
 Blockly.Msg.DEMO_IMAGE_MOVE = "move:";
 Blockly.Msg.DEMO_IMAGE_PIXEL = "pixels";
 Blockly.Msg.DEMO_AREA_COLOR = "Set area's color:";
+Blockly.Msg.DEMO_AREA_COLOR_INPUT = "Choose color, do:";
+Blockly.Msg.DEMO_AREA_COLOR_CHOOSE = "color:";
+Blockly.Msg.DEMO_RANGE_MIN = "Set range, min:";
+Blockly.Msg.DEMO_RANGE_MAX = "max:";
+Blockly.Msg.DEMO_RANGE_STEP = "step:";
+Blockly.Msg.DEMO_RANGE_DEFAULT = "default:";
+Blockly.Msg.DEMO_RANGE_INPUT = "Slider range, do:";
+Blockly.Msg.DEMO_RANGE_SHOW = "Show value:";
+Blockly.Msg.DEMO_RANGE_VALUE = "value:";
 
 Blockly.Msg.CUSTOM_JS_CONSOLE = "Console:";
 Blockly.Msg.CUSTOM_JS_Date = "Date:";

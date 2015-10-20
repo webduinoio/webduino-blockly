@@ -875,11 +875,33 @@
   <category id="catDemo">
     <category id="catDemoText">
       <block type="demo_show_text"></block>
+      <block type="demo_text_size">
+        <value name="size_">
+          <block type="math_number">
+            <field name="NUM">20</field>
+          </block>
+        </value>
+      </block>
+      <block type="demo_text_lineheight">
+        <value name="lineheight_">
+          <block type="math_number">
+            <field name="NUM">20</field>
+          </block>
+        </value>
+      </block>
+      <block type="demo_text_color">
+          <value name="color_">
+            <block type="colour_picker">
+              <field name="COLOUR">#ff0000</field>
+            </block>
+          </value>
+      </block>
     </category>
     <category id="catDemoLight">
       <block type="demo_light_click"></block>
       <block type="demo_light_state"></block>
       <block type="demo_light_ifelse"></block>
+      <block type="demo_light_toggle"></block>
     </category>
     <category id="catDemoImage">
       <block type="demo_image_url">
