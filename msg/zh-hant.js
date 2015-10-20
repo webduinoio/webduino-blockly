@@ -1,6 +1,8 @@
 var MSG = {
+  update: "update 2015.10.20",
   title: "Webduino Blockly 編輯器",
-  gotoTutorials: "前往教學範例",
+  gotoTutorials: "教學範例",
+  gotoWebSite: "官方網站",
   blocks: "積木",
   linkTooltip: "儲存積木組並提供連結。",
   runTooltip: "於工作區中執行積木組所定義的程式。",
@@ -45,7 +47,6 @@ var MSG = {
   linkToBin: "程式編輯",
   catDatabase: "資料庫",
   catFirebase: "Firebase",
-  update: "update 2015.10.12",
   catCarTest: "自走車 (2)",
   catCar: "自走車 (1)",
   catFish: "飛天魚",

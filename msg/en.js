@@ -1,6 +1,8 @@
 var MSG = {
+  update: "update 2015.10.20",
   title: "Webduino Blockly Editor",
-  gotoTutorials: "Go to Tutorials",
+  gotoTutorials: "Tutorials",
+  gotoWebSite: "Official site",
   blocks: "Blocks",
   linkTooltip: "Save and link to blocks.",
   runTooltip: "Run the program defined by the blocks in the workspace.",
@@ -45,7 +47,6 @@ var MSG = {
   linkToBin: "Let's Coding",
   catDatabase: "Data base",
   catFirebase: "Firebase",
-  update: "update 2015.8.11",
   catCarTest: "Car (2)",
   catCar: "Car (1)",
   catFish: "Fly Fish",
