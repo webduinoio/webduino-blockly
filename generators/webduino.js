@@ -1010,6 +1010,8 @@ Blockly.JavaScript['temp_data_set'] = function (block) {
   var value_value_ = Blockly.JavaScript.valueToCode(block, 'value_', Blockly.JavaScript.ORDER_ATOMIC);
   var setCookie = Blockly.JavaScript.variableDB_.getDistinctName(
     'setCookie', Blockly.Variables.NAME_TYPE);
+  var a = value_name_.split('');
+  value_name_ = a.splice(1, (a.length - 2)).join('');
   var code;
   if (dropdown_type_ == 1) {
     code = 'function ' + setCookie + '(c_name,value,expiredays){\n' +
@@ -1018,7 +1020,7 @@ Blockly.JavaScript['temp_data_set'] = function (block) {
       '  document.cookie=c_name+ "=" +escape(value)+\n' +
       '  ((expiredays==null) ? "" : ";expires="+exdate.toGMTString());\n' +
       '}\n' +
-      setCookie + '(' + value_name_ + ',' + value_value_ + ');\n';
+      setCookie + '("' + value_name_ + '",' + value_value_ + ');\n';
   } else if (dropdown_type_ == 2) {
     code = 'localStorage.' + value_name_ + ' = ' + value_value_ + ';\n';
   } else if (dropdown_type_ == 3) {
@@ -1032,6 +1034,8 @@ Blockly.JavaScript['temp_data_get'] = function (block) {
   var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
   var getCookie = Blockly.JavaScript.variableDB_.getDistinctName(
     'getCookie', Blockly.Variables.NAME_TYPE);
+  var a = value_name_.split('');
+  value_name_ = a.splice(1, (a.length - 2)).join('');
   var code;
   if (dropdown_type_ == 1) {
     code = '(function(){\n' +
@@ -1049,7 +1053,7 @@ Blockly.JavaScript['temp_data_get'] = function (block) {
       '    }\n' +
       '    return "";\n' +
       '  }\n' +
-      '  return ' + getCookie + '(' + value_name_ + ');\n' +
+      '  return ' + getCookie + '("' + value_name_ + '");\n' +
       '})()';
   } else if (dropdown_type_ == 2) {
     code = 'localStorage.' + value_name_;
