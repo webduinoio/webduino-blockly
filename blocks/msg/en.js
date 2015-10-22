@@ -79,6 +79,17 @@ Blockly.Msg.WEBDUINO_TIMER_DO = "do";
 Blockly.Msg.WEBDUINO_DELAY = "delay";
 Blockly.Msg.WEBDUINO_DELAY_SECONDS = "seconds";
 
+// Keyboard
+
+Blockly.Msg.WEBDUINO_KEYBOARD = "Keyboard event";
+Blockly.Msg.WEBDUINO_KEYBOARD_KEYDOWN = "If press";
+Blockly.Msg.WEBDUINO_KEYBOARD_DO = ", do:";
+Blockly.Msg.WEBDUINO_KEYBOARD_SPACE = "space";
+Blockly.Msg.WEBDUINO_KEYBOARD_UP = "up";
+Blockly.Msg.WEBDUINO_KEYBOARD_DOWN = "down";
+Blockly.Msg.WEBDUINO_KEYBOARD_LEFT = "left";
+Blockly.Msg.WEBDUINO_KEYBOARD_RIGHT = "right";
+
 Blockly.Msg.WEBDUINO_STATUS_REPEAT = "Status Change, repeat:";
 Blockly.Msg.WEBDUINO_STATUS_NUM = "";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_STATUSNUM = "Status ";
@@ -237,6 +248,10 @@ Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC1 = "Super Mario";
 Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC2 = "DoReMi";
 Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC3 = "Big brother and father";
 Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC4 = "Super Mario Chord";
+Blockly.Msg.WEBDUINO_BUZZER_SINGLE = "Use";
+Blockly.Msg.WEBDUINO_BUZZER_SINGLE_TONE = "play single sound, tone";
+Blockly.Msg.WEBDUINO_BUZZER_SINGLE_PITCH = "pitch";
+Blockly.Msg.WEBDUINO_BUZZER_SINGLE_TEMPOS = "tempo";
 
 Blockly.Msg.WEBDUINO_FIREBASE_NAME = "< Firebase > name:";
 Blockly.Msg.WEBDUINO_FIREBASE_URL = ",url:";

@@ -96,6 +96,17 @@ Blockly.Msg.WEBDUINO_STATUS_FOREVER_NAME = "名稱：";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOP = "停止";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOPCONTENT = "的不停重複";
 
+// Keyboard
+
+Blockly.Msg.WEBDUINO_KEYBOARD = "偵測鍵盤行為";
+Blockly.Msg.WEBDUINO_KEYBOARD_KEYDOWN = "如果按下";
+Blockly.Msg.WEBDUINO_KEYBOARD_DO = "，執行：";
+Blockly.Msg.WEBDUINO_KEYBOARD_SPACE = "空白鍵";
+Blockly.Msg.WEBDUINO_KEYBOARD_UP = "上";
+Blockly.Msg.WEBDUINO_KEYBOARD_DOWN = "下";
+Blockly.Msg.WEBDUINO_KEYBOARD_LEFT = "左";
+Blockly.Msg.WEBDUINO_KEYBOARD_RIGHT = "右";
+
 // Delay
 
 Blockly.Msg.WEBDUINO_TIMER_AFTER = "在";
@@ -172,6 +183,10 @@ Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC1 = "超級瑪莉";
 Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC2 = "真善美";
 Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC3 = "哥哥爸爸真偉大";
 Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC4 = "超級瑪莉和弦";
+Blockly.Msg.WEBDUINO_BUZZER_SINGLE = "使用";
+Blockly.Msg.WEBDUINO_BUZZER_SINGLE_TONE = "播放單音，音調";
+Blockly.Msg.WEBDUINO_BUZZER_SINGLE_PITCH = "音高";
+Blockly.Msg.WEBDUINO_BUZZER_SINGLE_TEMPOS = "節奏";
 
 // Ultrasonic
 

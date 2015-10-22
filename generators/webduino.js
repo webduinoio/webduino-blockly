@@ -737,6 +737,16 @@ Blockly.JavaScript['buzzer_notes_tempos'] = function (block) {
   return code;
 };
 
+Blockly.JavaScript['buzzer_single'] = function(block) {
+  var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_tone_ = block.getFieldValue('tone_');
+  var dropdown_pitch_ = block.getFieldValue('pitch_');
+  var dropdown_tempos_ = block.getFieldValue('tempos_');
+  var code = variable_var_+'.play(["'+dropdown_tone_+dropdown_pitch_+'"],['+dropdown_tempos_+']);\n';
+  return code;
+
+};
+
 Blockly.JavaScript['buzzer_play'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
   var value_play_music_ = Blockly.JavaScript.valueToCode(block, 'play_music_', Blockly.JavaScript.ORDER_ATOMIC);
@@ -1545,5 +1555,35 @@ Blockly.JavaScript['joystick_val'] = function (block) {
 Blockly.JavaScript['joystick_off'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var code = variable_name_ + '.off("message",_read_);\n';
+  return code;
+};
+
+Blockly.JavaScript['document_onkeydown'] = function (block) {
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var code = 'document.onkeydown = function(e,c){\n' +
+    '  c = e.keyCode;\n' +
+    '  console.log(c);\n' +
+    '  switch(c){\n' +
+    statements_do_ +
+    '  }\n' +
+    '};\n';
+  return code;
+};
+
+Blockly.JavaScript['document_alphabet_keycode'] = function (block) {
+  var dropdown_keycode_ = block.getFieldValue('keycode_');
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var code = '  case ' + dropdown_keycode_ + ':\n' +
+    '  ' + statements_do_ +
+    '  break;\n';
+  return code;
+};
+
+Blockly.JavaScript['document_other_keycode'] = function (block) {
+  var dropdown_keycode_ = block.getFieldValue('keycode_');
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var code = '  case ' + dropdown_keycode_ + ':\n' +
+    '  ' + statements_do_ +
+    '  break;\n';
   return code;
 };

@@ -1303,6 +1303,58 @@ Blockly.Blocks['buzzer_notes_tempos'] = {
   }
 };
 
+Blockly.Blocks['buzzer_single'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_SINGLE, "使用")
+      .appendField(new Blockly.FieldVariable("buzzer"), "var_")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_SINGLE_TONE, "播放單音，音調")
+      .appendField(new Blockly.FieldDropdown([
+        ["C", "C"],
+        ["CS", "CS"],
+        ["D", "D"],
+        ["DS", "DS"],
+        ["E", "E"],
+        ["F", "F"],
+        ["FS", "FS"],
+        ["G", "G"],
+        ["GS", "GS"],
+        ["A", "A"],
+        ["AS", "AS"],
+        ["B", "B"]
+      ]), "tone_")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_SINGLE_PITCH, "音高")
+      .appendField(new Blockly.FieldDropdown([
+        ["1", "1"],
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"]
+      ]), "pitch_")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_SINGLE_TEMPOS, "節奏")
+      .appendField(new Blockly.FieldDropdown([
+        ["1", "1"],
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"]
+      ]), "tempos_");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vnhdso
 Blockly.Blocks['buzzer_play'] = {
   init: function () {
@@ -2487,6 +2539,111 @@ Blockly.Blocks['joystick_off'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+
+Blockly.Blocks['document_onkeydown'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_KEYBOARD, "偵測鍵盤行為");
+    this.appendStatementInput("do_");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(15);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['document_alphabet_keycode'] = {
+  init: function () {
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_KEYBOARD_KEYDOWN, "如果按下")
+      .appendField(new Blockly.FieldDropdown([
+        ["A", "65"],
+        ["B", "66"],
+        ["C", "67"],
+        ["D", "68"],
+        ["E", "69"],
+        ["F", "70"],
+        ["G", "71"],
+        ["H", "72"],
+        ["I", "73"],
+        ["J", "74"],
+        ["K", "75"],
+        ["L", "76"],
+        ["M", "77"],
+        ["N", "78"],
+        ["O", "79"],
+        ["P", "80"],
+        ["Q", "81"],
+        ["R", "82"],
+        ["S", "83"],
+        ["T", "84"],
+        ["U", "85"],
+        ["V", "86"],
+        ["W", "87"],
+        ["X", "88"],
+        ["Y", "89"],
+        ["Z", "90"]
+      ]), "keycode_")
+      .appendField(Blockly.Msg.WEBDUINO_KEYBOARD_DO, "，執行：");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(35);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['document_other_keycode'] = {
+  init: function () {
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_KEYBOARD_KEYDOWN, "如果按下")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_KEYBOARD_SPACE, "32"],
+        ["enter", "13"],
+        [Blockly.Msg.WEBDUINO_KEYBOARD_UP, , "38"],
+        [Blockly.Msg.WEBDUINO_KEYBOARD_DOWN, , "40"],
+        [Blockly.Msg.WEBDUINO_KEYBOARD_LEFT, , "37"],
+        [Blockly.Msg.WEBDUINO_KEYBOARD_RIGHT, , "39"],
+        ["0", "48"],
+        ["1", "49"],
+        ["2", "50"],
+        ["3", "51"],
+        ["4", "52"],
+        ["5", "53"],
+        ["6", "54"],
+        ["7", "55"],
+        ["8", "56"],
+        ["9", "57"],
+        ["shift", "16"],
+        ["alt", "18"],
+        ["ctrl", "17"],
+        ["command(R)", "93"],
+        ["command(L)", "91"],
+        ["tab", "9"],
+        ["+ -", "187"],
+        ["- _", "189"],
+        ["{ [", "219"],
+        ["} ]", "221"],
+        ["|", "220"],
+        ["; :", "186"],
+        ["\' \"", "222"],
+        ["< ,", "188"],
+        ["> .", "190"],
+        ["? /", "191"]
+      ]), "keycode_")
+      .appendField(Blockly.Msg.WEBDUINO_KEYBOARD_DO, "，執行：");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(35);
     this.setHelpUrl('http://www.example.com/');
   }
 };

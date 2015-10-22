@@ -386,6 +386,20 @@
       <block type="console"></block>
       <block type="getdate"></block>
       <block type="gettime"></block>
+      <block type="temp_data_set">
+        <value name="name_">
+          <block type="text">
+            <field name="TEXT">temp</field>
+          </block>
+        </value>
+      </block>
+      <block type="temp_data_get">
+        <value name="name_">
+          <block type="text">
+            <field name="TEXT">temp</field>
+          </block>
+        </value>
+      </block>
     </category>
     <category id="catExec">
       <block type="timer"></block>
@@ -408,7 +422,12 @@
       </block>
       <block type="status_repeat_stop"></block>
     </category>
-    <category id="catControl">
+    <category id="catKeyCode">
+        <block type="document_onkeydown"></block>
+        <block type="document_alphabet_keycode"></block>
+        <block type="document_other_keycode"></block>
+    </category>
+    <category id="catSpeech">
       <block type="sound_recognition"></block>
       <block type="sound_recognition_check">
         <value name="text_">
@@ -421,20 +440,6 @@
         <value name="speech_">
           <block type="text">
             <field name="TEXT"></field>
-          </block>
-        </value>
-      </block>
-      <block type="temp_data_set">
-        <value name="name_">
-          <block type="text">
-            <field name="TEXT">temp</field>
-          </block>
-        </value>
-      </block>
-      <block type="temp_data_get">
-        <value name="name_">
-          <block type="text">
-            <field name="TEXT">temp</field>
           </block>
         </value>
       </block>
@@ -555,6 +560,7 @@
           </block>
         </value>
       </block>
+      <block type="buzzer_single"></block>
       <block type="buzzer_event"></block>
       <block type="buzzer_state"></block>
     </category>
