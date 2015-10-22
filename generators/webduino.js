@@ -1560,10 +1560,11 @@ Blockly.JavaScript['joystick_off'] = function (block) {
 
 Blockly.JavaScript['document_onkeydown'] = function (block) {
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'document.onkeydown = function(e,c){\n' +
-    '  c = e.keyCode;\n' +
-    '  console.log(c);\n' +
-    '  switch(c){\n' +
+  var e = Blockly.JavaScript.variableDB_.getDistinctName(
+    'e', Blockly.Variables.NAME_TYPE);
+  var code = 'document.onkeydown = function('+e+'){\n' +
+    '  console.log('+e+'.keyCode);\n' +
+    '  switch('+e+'.keyCode){\n' +
     statements_do_ +
     '  }\n' +
     '};\n';
