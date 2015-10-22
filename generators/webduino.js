@@ -76,9 +76,10 @@ Blockly.JavaScript['demo_light_toggle'] = function (block) {
 };
 
 Blockly.JavaScript['demo_image_size'] = function (block) {
-  var value_size_ = Blockly.JavaScript.valueToCode(block, 'size_', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'document.getElementById("demo-area-03-image").style.width = ' + value_size_ + '+"px";\n' +
-    'document.getElementById("demo-area-03-image").style.height = ' + value_size_ + '+"px";\n';
+  var value_w_ = Blockly.JavaScript.valueToCode(block, 'w_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_h_ = Blockly.JavaScript.valueToCode(block, 'h_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'document.getElementById("demo-area-03-image").style.width = "' + value_w_ + 'px";\n' +
+    'document.getElementById("demo-area-03-image").style.height = "' + value_h_ + 'px";\n';
   return code;
 };
 

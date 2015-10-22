@@ -155,8 +155,11 @@ Blockly.Blocks['demo_image_url'] = {
 
 Blockly.Blocks['demo_image_size'] = {
   init: function () {
-    this.appendValueInput("size_")
-      .appendField(Blockly.Msg.DEMO_IMAGE_SIZE, "圖片尺寸：");
+    this.appendValueInput("w_")
+      .appendField(Blockly.Msg.DEMO_IMAGE_WIDTH, "圖片寬度");
+    this.appendValueInput("h_")
+      .appendField(Blockly.Msg.DEMO_IMAGE_HEIGHT, "高度");
+    this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -164,6 +167,7 @@ Blockly.Blocks['demo_image_size'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
 
 Blockly.Blocks['demo_image_rotate'] = {
   init: function () {

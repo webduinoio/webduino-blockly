@@ -68,7 +68,7 @@ var MSG = {
   catDemo: "網頁互動",
   catDemoText: "顯示文字",
   catDemoLight: "點擊燈泡",
-  catDemoImage: "圖片控制",
+  catDemoImage: "控制圖片",
   catDemoArea: "顏色調整",
   catDemoButton: "按鈕行為",
   catDemoRange: "拉霸操作",
