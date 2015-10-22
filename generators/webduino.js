@@ -1571,6 +1571,11 @@ Blockly.JavaScript['document_onkeydown'] = function (block) {
   return code;
 };
 
+Blockly.JavaScript['document_onkeydown_stop'] = function (block) {
+  var code = 'document.onkeydown = function(){};\n';
+  return code;
+};
+
 Blockly.JavaScript['document_alphabet_keycode'] = function (block) {
   var dropdown_keycode_ = block.getFieldValue('keycode_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');

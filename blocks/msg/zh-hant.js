@@ -98,7 +98,8 @@ Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOPCONTENT = "的不停重複";
 
 // Keyboard
 
-Blockly.Msg.WEBDUINO_KEYBOARD = "偵測鍵盤行為";
+Blockly.Msg.WEBDUINO_KEYBOARD = "開始偵測 鍵盤行為";
+Blockly.Msg.WEBDUINO_KEYBOARD_STOP = "停止偵測 鍵盤行為";
 Blockly.Msg.WEBDUINO_KEYBOARD_KEYDOWN = "如果按下";
 Blockly.Msg.WEBDUINO_KEYBOARD_DO = "，執行：";
 Blockly.Msg.WEBDUINO_KEYBOARD_SPACE = "空白鍵";

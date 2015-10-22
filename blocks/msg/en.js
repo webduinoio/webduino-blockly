@@ -81,7 +81,8 @@ Blockly.Msg.WEBDUINO_DELAY_SECONDS = "seconds";
 
 // Keyboard
 
-Blockly.Msg.WEBDUINO_KEYBOARD = "Keyboard event";
+Blockly.Msg.WEBDUINO_KEYBOARD = "Start keyboard event";
+Blockly.Msg.WEBDUINO_KEYBOARD_STOP = "Stop keyboard event";
 Blockly.Msg.WEBDUINO_KEYBOARD_KEYDOWN = "If press";
 Blockly.Msg.WEBDUINO_KEYBOARD_DO = ", do:";
 Blockly.Msg.WEBDUINO_KEYBOARD_SPACE = "space";

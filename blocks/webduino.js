@@ -2547,13 +2547,26 @@ Blockly.Blocks['joystick_off'] = {
 Blockly.Blocks['document_onkeydown'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_KEYBOARD, "偵測鍵盤行為");
+      .appendField(Blockly.Msg.WEBDUINO_KEYBOARD, "開始偵測 鍵盤行為");
     this.appendStatementInput("do_");
     this.setInputsInline(false);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setColour(15);
+    this.setColour(5);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['document_onkeydown_stop'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_KEYBOARD_STOP, "停止偵測 鍵盤行為");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(5);
     this.setHelpUrl('http://www.example.com/');
   }
 };
