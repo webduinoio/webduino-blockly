@@ -78,8 +78,14 @@ Blockly.JavaScript['demo_light_toggle'] = function (block) {
 Blockly.JavaScript['demo_image_size'] = function (block) {
   var value_w_ = Blockly.JavaScript.valueToCode(block, 'w_', Blockly.JavaScript.ORDER_ATOMIC);
   var value_h_ = Blockly.JavaScript.valueToCode(block, 'h_', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'document.getElementById("demo-area-03-image").style.width = "' + value_w_ + 'px";\n' +
-    'document.getElementById("demo-area-03-image").style.height = "' + value_h_ + 'px";\n';
+  var imageWidth = Blockly.JavaScript.variableDB_.getDistinctName(
+    'imageWidth', Blockly.Variables.NAME_TYPE);
+  var imageHeight = Blockly.JavaScript.variableDB_.getDistinctName(
+    'imageHeight', Blockly.Variables.NAME_TYPE);
+  var code = 'var ' + imageWidth + ' = ' + value_w_ + ';\n' +
+    'var ' + imageHeight + ' = ' + value_h_ + ';\n' +
+    'document.getElementById("demo-area-03-image").style.width = ' + imageWidth + '+"px";\n' +
+    'document.getElementById("demo-area-03-image").style.height = ' + imageHeight + '+"px";\n';
   return code;
 };
 
@@ -738,12 +744,12 @@ Blockly.JavaScript['buzzer_notes_tempos'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['buzzer_single'] = function(block) {
+Blockly.JavaScript['buzzer_single'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
   var dropdown_tone_ = block.getFieldValue('tone_');
   var dropdown_pitch_ = block.getFieldValue('pitch_');
   var dropdown_tempos_ = block.getFieldValue('tempos_');
-  var code = variable_var_+'.play(["'+dropdown_tone_+dropdown_pitch_+'"],['+dropdown_tempos_+']);\n';
+  var code = variable_var_ + '.play(["' + dropdown_tone_ + dropdown_pitch_ + '"],[' + dropdown_tempos_ + ']);\n';
   return code;
 
 };
@@ -1567,9 +1573,9 @@ Blockly.JavaScript['document_onkeydown'] = function (block) {
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
   var e = Blockly.JavaScript.variableDB_.getDistinctName(
     'e', Blockly.Variables.NAME_TYPE);
-  var code = 'document.onkeydown = function('+e+'){\n' +
-    '  console.log('+e+'.keyCode);\n' +
-    '  switch('+e+'.keyCode){\n' +
+  var code = 'document.onkeydown = function(' + e + '){\n' +
+    '  console.log(' + e + '.keyCode);\n' +
+    '  switch(' + e + '.keyCode){\n' +
     statements_do_ +
     '  }\n' +
     '};\n';
