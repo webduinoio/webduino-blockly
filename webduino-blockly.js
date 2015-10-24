@@ -8,6 +8,8 @@
 
   'use strict';
 
+  var boards = [];
+
   function boardReady(options, callback) {
     var board;
 
@@ -22,11 +24,45 @@
       board = new webduino.WebArduino(options);
     }
     board.on(webduino.BoardEvent.READY, callback.bind(null, board));
+
+    boards.push(board);
   }
 
   function boardError(device, callback) {
     var board = new webduino.WebArduino(device);
     board.on(webduino.BoardEvent.ERROR, callback.bind(null, board));
+  }
+
+  function disconnectBoards(callback) {
+    var promises = boards.map(whenClosed);
+    Promise.all(promises).then(function (results) {
+      boards = [];
+      callback(results);
+    }).catch(function (reason) {
+      boards = [];
+      callback(reason);
+    });
+  }
+
+  function whenClosed(board) {
+    return new Promise(function (resolve, reject) {
+      try {
+        if (board._transport.isOpen) {
+          board._transport.on('close', function () {
+            resolve(true);
+          });
+          board.close();
+        } else {
+          resolve(true);
+        }
+      } catch (e) {
+        reject(e);
+      }
+    });
+  }
+
+  function getBoards() {
+    return boards;
   }
 
   function getLed(board, pin) {
@@ -215,6 +251,8 @@
 
   scope.boardReady = boardReady;
   scope.boardError = boardError;
+  scope.disconnectBoards = disconnectBoards;
+  scope.getBoards = getBoards;
   scope.getLed = getLed;
   scope.getRelay = getRelay;
   scope.getRGBLed = getRGBLed;
