@@ -276,7 +276,7 @@ Blockly.Msg.WEBDUINO_MATRIX_HORSEODE = "代碼 (最少十六碼)：";
 
 // Photocell
 
-Blockly.Msg.WEBDUINO_PHOTOCELL = "光敏電阻，類比腳位：";
+Blockly.Msg.WEBDUINO_PHOTOCELL = "光敏(可變)電阻，類比腳位：";
 Blockly.Msg.WEBDUINO_PHOTOCELL_DETECTED = "開始偵測";
 Blockly.Msg.WEBDUINO_PHOTOCELL_DO = "執行：";
 Blockly.Msg.WEBDUINO_PHOTOCELL_VAL = "偵測的數值";
