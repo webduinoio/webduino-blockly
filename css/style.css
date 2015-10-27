@@ -394,18 +394,41 @@ td#copyCode div{
   position:absolute;
   right:40px;
   top:135px;
-  width:20%;
-  max-width:600px;
-  min-width:400px;
+  width:400px;
+  min-width:225px;
+  max-width:70%;
   background:rgba(255,255,255,.8);
   border-radius:20px;
   border:10px solid #ccc;
-  overflow: auto;
+  transition:opacity .3s;
 }
 #demo-area.show{
   display:block;
 }
-#demo-area .close-btn{
+#demo-resize-bar{
+  height:calc(100% - 40px);
+  width:10px;
+  background:#ccc;
+  position:absolute;
+  left:-10px;
+  top:20px;
+  cursor:col-resize;
+}
+#demo-area.resize{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#demo-area .demo-area-content{
+  position:relative;
+  overflow:auto;
+  width:100%;
+  height:100%;
+  padding:0 20px 20px;
+  box-sizing:border-box;
+}
+#demo-area .demo-area-content .close-btn{
   position:absolute;
   right:5px;
   top:5px;
@@ -418,37 +441,36 @@ td#copyCode div{
   transition:.3s;
   cursor:pointer;
 }
-#demo-area .close-btn:hover{
+#demo-area .demo-area-content .close-btn:hover{
   opacity:1;
 }
-#demo-area>h4{
+#demo-area .demo-area-content>h4{
   font-size:20px;
-  margin: 15px;
+  margin:25px 0 15px;
 }
-#demo-area>span{
+#demo-area .demo-area-content>span{
   display:inline-block;
-  margin: 0 0 10px 15px;
   font-size:16px;
+  line-height: 24px;
+  margin:0 0 10px;
 }
-#demo-area select{
+#demo-area .demo-area-content select{
   outline:none;
   border:1px solid #ccc;
-  margin: 0;
+  margin:0 0 15px;
   font-size:16px;
 }
-#demo-area .da{
+#demo-area .demo-area-content .da{
   display:none;
-  margin:15px;
   line-height:20px;
 }
-#demo-area .da.show{
+#demo-area .demo-area-content .da.show{
   display:block;
 }
-#demo-area h5{
+#demo-area .demo-area-content h5{
   font-size:16px;
-  margin: 15px 0 0;
 }
-#demo-area .demo-pre{
+#demo-area .demo-area-content .demo-pre{
   background:#eee;
   padding:10px;
   overflow: auto;
@@ -485,7 +507,7 @@ td#copyCode div{
   -moz-transform-origin:75px 75px;
 }
 #demo-area-04-area{
-  width:250px;
+  width:90%;
   height:150px;
   background:#ccc;
 }

@@ -216,10 +216,35 @@ Code.loadDemoArea = function(demo){
   demo.option = document.querySelectorAll('#demo-select option');
   demo.contentHeight = document.getElementById('content_blocks').offsetHeight;
   demo.area.style.height = (demo.contentHeight - 130) + 'px';
+  demo.resizeBar = document.getElementById('demo-resize-bar');
+
+  if(localStorage.demoAreaWidth){
+    demo.area.style.width = localStorage.demoAreaWidth;
+  }
+
   window.addEventListener('resize',function(){
     demo.contentHeight = document.getElementById('content_blocks').offsetHeight;
     demo.area.style.height = (demo.contentHeight - 130) + 'px';
   });
+
+  demo.resizeBar.onmousedown = function(e,dr){
+    demo.area.style.opacity = '0.4';
+    dr={};
+    dr.ox = e.pageX;
+    dr.dw = demo.area.offsetWidth;
+    demo.area.className = demo.area.className + " resize";
+    document.onmousemove = function(event){
+      dr.rx = event.pageX;
+      demo.area.style.width = dr.dw-dr.rx+dr.ox-20+'px';
+      localStorage.demoAreaWidth = demo.area.style.width;
+    }
+  }
+
+  document.onmouseup = function(){
+    demo.area.style.opacity = '1';
+    demo.area.className = demo.area.className.replace(" resize", "");
+    document.onmousemove = null;
+  }
 
   demo.content = function(p,s){
     s={};
