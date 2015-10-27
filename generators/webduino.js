@@ -1088,7 +1088,7 @@ Blockly.JavaScript['sound_recognition'] = function (block) {
     consoleFinal1 = 'console.log("final");\n';
     consoleFinal2 = '';
   }
-  var code = '(function(){\n' +
+  var code = '(function(speechContent){\n' +
     '  if (!("webkitSpeechRecognition" in window)) {\n' +
     '    alert("本瀏覽器不支援語音辨識，請更換瀏覽器！(Chrome 25 版以上才支援語音辨識)");\n' +
     '  } else{\n' +
@@ -1141,6 +1141,11 @@ Blockly.JavaScript['sound_recognition_check'] = function (block) {
     }
   }
   return code;
+};
+
+Blockly.JavaScript['sound_recognition_text'] = function(block) {
+  var code = 'resultTranscript';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 

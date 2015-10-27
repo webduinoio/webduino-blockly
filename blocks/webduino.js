@@ -1827,6 +1827,17 @@ Blockly.Blocks['sound_recognition_check'] = {
   }
 };
 
+Blockly.Blocks['sound_recognition_text'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_RECONGNITION_CONTENT, "辨識的文字");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(100);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#rbw7g9
 Blockly.Blocks['translate_speech'] = {
   init: function () {

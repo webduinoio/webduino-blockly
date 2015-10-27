@@ -66,6 +66,7 @@ Blockly.Msg.WEBDUINO_RECONGNITION_MOBILE = "(Mobile checked: off)";
 Blockly.Msg.WEBDUINO_RECONGNITION_LANG = "Language:";
 Blockly.Msg.WEBDUINO_RECONGNITION_IF = "If words include text:";
 Blockly.Msg.WEBDUINO_RECONGNITION_DO = "do:";
+Blockly.Msg.WEBDUINO_RECONGNITION_CONTENT = "Recognized text";
 Blockly.Msg.WEBDUINO_SPEECH_MALE = "male";
 Blockly.Msg.WEBDUINO_SPEECH_FEMALE = "female";
 Blockly.Msg.WEBDUINO_SPEECH = "  speech:";

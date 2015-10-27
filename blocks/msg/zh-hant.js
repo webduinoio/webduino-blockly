@@ -76,6 +76,7 @@ Blockly.Msg.WEBDUINO_RECONGNITION_MOBILE = "( 行動裝置勾選 off )";
 Blockly.Msg.WEBDUINO_RECONGNITION_LANG = "辨識語言：";
 Blockly.Msg.WEBDUINO_RECONGNITION_IF = "如果辨識的文字包含：";
 Blockly.Msg.WEBDUINO_RECONGNITION_DO = "執行：";
+Blockly.Msg.WEBDUINO_RECONGNITION_CONTENT = "辨識的文字";
 Blockly.Msg.WEBDUINO_SPEECH_MALE = "男聲";
 Blockly.Msg.WEBDUINO_SPEECH_FEMALE = "女聲";
 Blockly.Msg.WEBDUINO_SPEECH = "   發音：";
