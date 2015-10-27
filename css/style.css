@@ -469,11 +469,15 @@ td#copyCode div{
 }
 #demo-area .demo-area-content h5{
   font-size:16px;
+  margin:0;
 }
 #demo-area .demo-area-content .demo-pre{
   background:#eee;
-  padding:10px;
+  padding:15px;
   overflow: auto;
+  word-wrap:break-word;
+  white-space:pre-wrap;
+  margin-bottom:25px;
 }
 #demo-area-01-show{
   font-size:60px;
