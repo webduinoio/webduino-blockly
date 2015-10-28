@@ -25,6 +25,7 @@ Blockly.Msg.DEMO_IMAGE_URL = "Image URL:";
 Blockly.Msg.DEMO_IMAGE_WIDTH = "Image width";
 Blockly.Msg.DEMO_IMAGE_HEIGHT = "height";
 Blockly.Msg.DEMO_IMAGE_ROTATE = "Image rotate:";
+Blockly.Msg.DEMO_IMAGE_OPACITY = "Image opacity:";
 Blockly.Msg.DEMO_IMAGE_POS = "Image ";
 Blockly.Msg.DEMO_IMAGE_X = "Horizontal";
 Blockly.Msg.DEMO_IMAGE_Y = "Vertical";

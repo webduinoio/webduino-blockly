@@ -98,6 +98,12 @@ Blockly.JavaScript['demo_image_rotate'] = function (block) {
   return code;
 };
 
+Blockly.JavaScript['demo_image_opacity'] = function(block) {
+  var value_opacity_ = Blockly.JavaScript.valueToCode(block, 'opacity_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'document.getElementById("demo-area-03-image").style.opacity = '+value_opacity_+';\n';
+  return code;
+};
+
 Blockly.JavaScript['demo_image_position'] = function (block) {
   var dropdown_direction_ = block.getFieldValue('direction_');
   var value_position_ = Blockly.JavaScript.valueToCode(block, 'position_', Blockly.JavaScript.ORDER_ATOMIC);

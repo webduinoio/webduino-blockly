@@ -181,6 +181,18 @@ Blockly.Blocks['demo_image_rotate'] = {
   }
 };
 
+Blockly.Blocks['demo_image_opacity'] = {
+  init: function () {
+    this.appendValueInput("opacity_")
+      .appendField(Blockly.Msg.DEMO_IMAGE_OPACITY, "圖片透明度：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 Blockly.Blocks['demo_image_position'] = {
   init: function () {
     this.appendValueInput("position_")

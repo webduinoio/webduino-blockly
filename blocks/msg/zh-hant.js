@@ -29,6 +29,7 @@ Blockly.Msg.DEMO_IMAGE_URL = "圖片網址";
 Blockly.Msg.DEMO_IMAGE_WIDTH = "圖片寬度";
 Blockly.Msg.DEMO_IMAGE_HEIGHT = "高度";
 Blockly.Msg.DEMO_IMAGE_ROTATE = "圖片旋轉角度：";
+Blockly.Msg.DEMO_IMAGE_OPACITY = "圖片透明度：";
 Blockly.Msg.DEMO_IMAGE_POS = "圖片";
 Blockly.Msg.DEMO_IMAGE_X = "水平";
 Blockly.Msg.DEMO_IMAGE_Y = "垂直";
