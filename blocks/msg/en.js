@@ -4,6 +4,12 @@ goog.provide('Blockly.Msg.Webduino.en');
 
 goog.require('Blockly.Msg.Webduino');
 
+Blockly.Msg.WEBDUINO_MATH_ROUND = "round";
+Blockly.Msg.WEBDUINO_MATH_ROUND_UP = "round up";
+Blockly.Msg.WEBDUINO_MATH_ROUND_DOWN = "round down";
+Blockly.Msg.WEBDUINO_MATH_ROUND_TO = "to a decimal point";
+Blockly.Msg.WEBDUINO_MATH_ROUND_NUM = "";
+
 // Demo
 
 Blockly.Msg.DEMO_SHOW = "Show:";

@@ -7,6 +7,11 @@ goog.require('Blockly.Msg.Webduino');
 Blockly.Msg.VARIABLES_SET = "設定 %1 為 %2";
 Blockly.Msg.LISTS_CREATE_WITH_INPUT_WITH = "建立列表";
 Blockly.Msg.TEXT_JOIN_TITLE_CREATEWITH = "建立字串";
+Blockly.Msg.WEBDUINO_MATH_ROUND = "四捨五入";
+Blockly.Msg.WEBDUINO_MATH_ROUND_UP = "無條件進位";
+Blockly.Msg.WEBDUINO_MATH_ROUND_DOWN = "無條件捨去";
+Blockly.Msg.WEBDUINO_MATH_ROUND_TO = "到小數點";
+Blockly.Msg.WEBDUINO_MATH_ROUND_NUM = "位";
 
 // Demo
 

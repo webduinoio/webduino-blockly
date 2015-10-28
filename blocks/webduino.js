@@ -401,6 +401,42 @@ Blockly.Blocks['demo_youtube_id'] = {
 };
 
 /*
+                                .   oooo        
+                              .o8   `888        
+ooo. .oo.  .oo.    .oooo.   .o888oo  888 .oo.   
+`888P"Y88bP"Y88b  `P  )88b    888    888P"Y88b  
+ 888   888   888   .oP"888    888    888   888  
+ 888   888   888  d8(  888    888 .  888   888  
+o888o o888o o888o `Y888""8o   "888" o888o o888o 
+*/
+
+Blockly.Blocks['math_round_digit'] = {
+  init: function () {
+    this.appendValueInput("round_")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_MATH_ROUND, "round"],
+        [Blockly.Msg.WEBDUINO_MATH_ROUND_UP,  "floor"],
+        [Blockly.Msg.WEBDUINO_MATH_ROUND_DOWN,  "ceil"]
+      ]), "type_")
+      .appendField(Blockly.Msg.WEBDUINO_MATH_ROUND_TO, "到小數點")
+      .appendField(new Blockly.FieldDropdown([
+        ["0", "0"],
+        ["1", "1"],
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"]
+      ]), "digit_")
+      .appendField(Blockly.Msg.WEBDUINO_MATH_ROUND_NUM, "位");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(230);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+
+/*
                              o8o              
                              `"'              
 ooo. .oo.  .oo.    .oooo.   oooo  ooo. .oo.   

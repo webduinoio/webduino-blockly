@@ -267,7 +267,7 @@ Blockly.JavaScript['demo_youtube_status'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var dropdown_status_ = block.getFieldValue('status_');
   var code = variable_name_ + '.getPlayerState()==' + dropdown_status_;
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 Blockly.JavaScript['demo_youtube_id'] = function (block) {
@@ -276,6 +276,31 @@ Blockly.JavaScript['demo_youtube_id'] = function (block) {
   var code = variable_name_ + '.loadVideoById(' + value_id_ + ');\n';
   return code;
 };
+
+/*
+                                .   oooo        
+                              .o8   `888        
+ooo. .oo.  .oo.    .oooo.   .o888oo  888 .oo.   
+`888P"Y88bP"Y88b  `P  )88b    888    888P"Y88b  
+ 888   888   888   .oP"888    888    888   888  
+ 888   888   888  d8(  888    888 .  888   888  
+o888o o888o o888o `Y888""8o   "888" o888o o888o 
+*/
+
+Blockly.JavaScript['math_round_digit'] = function(block) {
+  var dropdown_type_ = block.getFieldValue('type_');
+  var dropdown_digit_ = block.getFieldValue('digit_');
+  var value_round_ = Blockly.JavaScript.valueToCode(block, 'round_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code;
+  if(dropdown_digit_==0){
+    code = 'Math.'+dropdown_type_+'('+value_round_+')';
+  }else{
+    var a = Math.pow(10,dropdown_digit_);
+    code = '(Math.'+dropdown_type_+'(('+value_round_+')*'+a+'))/'+a;
+  }
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 
 /*
                              o8o              
