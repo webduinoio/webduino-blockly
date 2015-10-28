@@ -98,9 +98,9 @@ Blockly.JavaScript['demo_image_rotate'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['demo_image_opacity'] = function(block) {
+Blockly.JavaScript['demo_image_opacity'] = function (block) {
   var value_opacity_ = Blockly.JavaScript.valueToCode(block, 'opacity_', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'document.getElementById("demo-area-03-image").style.opacity = '+value_opacity_+';\n';
+  var code = 'document.getElementById("demo-area-03-image").style.opacity = ' + value_opacity_ + ';\n';
   return code;
 };
 
@@ -378,10 +378,12 @@ Blockly.JavaScript['gettime'] = function (block) {
 Blockly.JavaScript['board_ready'] = function (block) {
   var value_device_ = Blockly.JavaScript.valueToCode(block, 'device_', Blockly.JavaScript.ORDER_ATOMIC);
   var checkbox_check_ = block.getFieldValue('check_');
+  var dropdown_rate_ = block.getFieldValue('rate_');
   var statements_callbacks_ = Blockly.JavaScript.statementToCode(block, 'callbacks_');
   var code;
   if (checkbox_check_ == 'FALSE') {
     code = 'boardReady(' + value_device_ + ', function (board) {\n' +
+      '  board.samplingInterval = ' + dropdown_rate_ + ';\n' +
       statements_callbacks_ +
       '});\n';
   } else if (checkbox_check_ == 'TRUE') {
@@ -391,6 +393,7 @@ Blockly.JavaScript['board_ready'] = function (block) {
       '  window.readyBoardLength = 1;\n' +
       '}\n\n' +
       'boardReady(' + value_device_ + ', function (board) {\n' +
+      '  board.samplingInterval = ' + dropdown_rate_ + ';\n' +
       statements_callbacks_ +
       '  if(window.boardReadyNumber){\n' +
       '    window.boardReadyNumber = window.boardReadyNumber +1;\n' +
@@ -406,11 +409,13 @@ Blockly.JavaScript['board_ready'] = function (block) {
 Blockly.JavaScript['board_ready_serial_port'] = function (block) {
   var value_path_ = Blockly.JavaScript.valueToCode(block, 'path_', Blockly.JavaScript.ORDER_ATOMIC);
   var value_baudrate_ = Blockly.JavaScript.valueToCode(block, 'baudrate_', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_rate_ = block.getFieldValue('rate_');
   var checkbox_check_ = block.getFieldValue('check_');
   var statements_callbacks_ = Blockly.JavaScript.statementToCode(block, 'callbacks_');
   var code;
   if (checkbox_check_ == 'FALSE') {
     code = 'boardReady({ path:' + value_path_ + ' , baudRate: ' + value_baudrate_ + ' }, function (board) {\n' +
+      '  board.samplingInterval = ' + dropdown_rate_ + ';\n' +
       statements_callbacks_ +
       '});\n';
   } else if (checkbox_check_ == 'TRUE') {
@@ -420,6 +425,7 @@ Blockly.JavaScript['board_ready_serial_port'] = function (block) {
       '  window.readyBoardLength = 1;\n' +
       '}\n\n' +
       'boardReady({ path:' + value_path_ + ' , baudRate: ' + value_baudrate_ + ' }, function (board) {\n' +
+      '  board.samplingInterval = ' + dropdown_rate_ + ';\n' +
       statements_callbacks_ +
       '  if(window.boardReadyNumber){\n' +
       '    window.boardReadyNumber = window.boardReadyNumber +1;\n' +
@@ -1083,9 +1089,9 @@ Blockly.JavaScript['sound_recognition'] = function (block) {
   var resultLength = Blockly.JavaScript.variableDB_.getDistinctName(
     'resultLength', Blockly.Variables.NAME_TYPE);
   var resultTranscript = Blockly.JavaScript.variableDB_.getDistinctName(
-  'resultTranscript', Blockly.Variables.NAME_TYPE);
+    'resultTranscript', Blockly.Variables.NAME_TYPE);
   var speechRecognition = Blockly.JavaScript.variableDB_.getDistinctName(
-  'speechRecognition', Blockly.Variables.NAME_TYPE);
+    'speechRecognition', Blockly.Variables.NAME_TYPE);
   var inter1, inter2, consoleFinal1, consoleFinal2;
   if (dropdown_interimresults_ == 'on') {
     inter1 = 'false';
@@ -1098,7 +1104,7 @@ Blockly.JavaScript['sound_recognition'] = function (block) {
     consoleFinal1 = 'console.log("final");\n';
     consoleFinal2 = '';
   }
-  var code = 'function '+speechRecognition+'(){\n' +
+  var code = 'function ' + speechRecognition + '(){\n' +
     '  if (!("webkitSpeechRecognition" in window)) {\n' +
     '    alert("本瀏覽器不支援語音辨識，請更換瀏覽器！(Chrome 25 版以上才支援語音辨識)");\n' +
     '  } else{\n' +
@@ -1113,7 +1119,7 @@ Blockly.JavaScript['sound_recognition'] = function (block) {
     '      console.log("Stop recognize");\n' +
     '    };\n\n' +
     '    window._recognition.onresult = function(event,result) {\n' +
-    '      result = {};\n'+
+    '      result = {};\n' +
     '      result.resultLength = event.results.length-1;\n' +
     '      result.resultTranscript = event.results[result.resultLength][0].transcript;\n' +
     '      if(event.results[result.resultLength].isFinal===' + inter1 + '){\n' +
@@ -1126,8 +1132,8 @@ Blockly.JavaScript['sound_recognition'] = function (block) {
     '    };\n' +
     '    window._recognition.start();\n' +
     '  }\n' +
-    '}\n'+
-    speechRecognition+'();\n';
+    '}\n' +
+    speechRecognition + '();\n';
   return code;
 };
 
@@ -1155,7 +1161,7 @@ Blockly.JavaScript['sound_recognition_check'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['sound_recognition_stop'] = function(block) {
+Blockly.JavaScript['sound_recognition_stop'] = function (block) {
   var code = 'window._recognition.stop();\n';
   return code;
 };

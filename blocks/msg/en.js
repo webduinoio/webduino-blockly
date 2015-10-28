@@ -119,6 +119,7 @@ Blockly.Msg.WEBDUINO_BOARD_ERROR_IF = "If";
 Blockly.Msg.WEBDUINO_BOARD_ERROR = "offine";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "do:";
 Blockly.Msg.WEBDUINO_BOARD_READY_PATH = "Board path:";
+Blockly.Msg.WEBDUINO_BOARD_SAMPLING = "  Sampling";
 
 Blockly.Msg.WEBDUINO_LED = "LED";
 Blockly.Msg.WEBDUINO_LED_PIN = "pin";

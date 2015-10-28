@@ -468,9 +468,15 @@ Blockly.Blocks['board_ready'] = {
       .setCheck("String")
       .appendField(Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO);
     this.appendDummyInput()
-      .appendField("   ")
-      .appendField(new Blockly.FieldCheckbox("FALSE"), "check_")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, "串聯");
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_SAMPLING, "  類比取樣")
+      .appendField(new Blockly.FieldDropdown([
+        ["20 ms", "20"],
+        ["50 ms", "50"],
+        ["75 ms", "75"],
+        ["100 ms", "100"]
+      ]), "rate_")
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, "串聯")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "check_");
     this.appendStatementInput("callbacks_");
     this.setTooltip('');
     this.setColour(290);
@@ -488,9 +494,15 @@ Blockly.Blocks['board_ready_serial_port'] = {
       .setCheck("Number")
       .appendField("baudRate");
     this.appendDummyInput()
-      .appendField("   ")
-      .appendField(new Blockly.FieldCheckbox("FALSE"), "check_")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, "串聯");
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_SAMPLING, "  類比取樣")
+      .appendField(new Blockly.FieldDropdown([
+        ["20 ms", "20"],
+        ["50 ms", "50"],
+        ["75 ms", "75"],
+        ["100 ms", "100"]
+      ]), "rate_")
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, "串聯")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "check_");
     this.appendStatementInput("callbacks_");
     this.setTooltip('');
     this.setColour(290);
