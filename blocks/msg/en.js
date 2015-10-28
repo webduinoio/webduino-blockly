@@ -9,6 +9,11 @@ Blockly.Msg.WEBDUINO_MATH_ROUND_UP = "round up";
 Blockly.Msg.WEBDUINO_MATH_ROUND_DOWN = "round down";
 Blockly.Msg.WEBDUINO_MATH_ROUND_TO = "to a decimal point";
 Blockly.Msg.WEBDUINO_MATH_ROUND_NUM = "";
+Blockly.Msg.WEBDUINO_MATH_SCALE = "Scale conversion, source";
+Blockly.Msg.WEBDUINO_MATH_SCALE_OMIN = "(origin) min";
+Blockly.Msg.WEBDUINO_MATH_SCALE_OMAX = "(origin) max";
+Blockly.Msg.WEBDUINO_MATH_SCALE_CMIN = "(conversion) min";
+Blockly.Msg.WEBDUINO_MATH_SCALE_CMAX = "(conversion) max";
 
 // Demo
 

@@ -7,11 +7,19 @@ goog.require('Blockly.Msg.Webduino');
 Blockly.Msg.VARIABLES_SET = "設定 %1 為 %2";
 Blockly.Msg.LISTS_CREATE_WITH_INPUT_WITH = "建立列表";
 Blockly.Msg.TEXT_JOIN_TITLE_CREATEWITH = "建立字串";
+
+// Math
+
 Blockly.Msg.WEBDUINO_MATH_ROUND = "四捨五入";
 Blockly.Msg.WEBDUINO_MATH_ROUND_UP = "無條件進位";
 Blockly.Msg.WEBDUINO_MATH_ROUND_DOWN = "無條件捨去";
 Blockly.Msg.WEBDUINO_MATH_ROUND_TO = "到小數點";
 Blockly.Msg.WEBDUINO_MATH_ROUND_NUM = "位";
+Blockly.Msg.WEBDUINO_MATH_SCALE = "尺度轉換，數值來源";
+Blockly.Msg.WEBDUINO_MATH_SCALE_OMIN = "(原始) 最小值";
+Blockly.Msg.WEBDUINO_MATH_SCALE_OMAX = "(原始) 最大值";
+Blockly.Msg.WEBDUINO_MATH_SCALE_CMIN = "(轉換後) 最小值";
+Blockly.Msg.WEBDUINO_MATH_SCALE_CMAX = "(轉換後) 最大值";
 
 // Demo
 

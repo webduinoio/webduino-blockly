@@ -415,8 +415,8 @@ Blockly.Blocks['math_round_digit'] = {
     this.appendValueInput("round_")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.WEBDUINO_MATH_ROUND, "round"],
-        [Blockly.Msg.WEBDUINO_MATH_ROUND_UP,  "floor"],
-        [Blockly.Msg.WEBDUINO_MATH_ROUND_DOWN,  "ceil"]
+        [Blockly.Msg.WEBDUINO_MATH_ROUND_UP, "floor"],
+        [Blockly.Msg.WEBDUINO_MATH_ROUND_DOWN, "ceil"]
       ]), "type_")
       .appendField(Blockly.Msg.WEBDUINO_MATH_ROUND_TO, "到小數點")
       .appendField(new Blockly.FieldDropdown([
@@ -428,6 +428,31 @@ Blockly.Blocks['math_round_digit'] = {
         ["5", "5"]
       ]), "digit_")
       .appendField(Blockly.Msg.WEBDUINO_MATH_ROUND_NUM, "位");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(230);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#goxzmb
+Blockly.Blocks['math_value_conversion'] = {
+  init: function () {
+    this.appendValueInput("source_")
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.WEBDUINO_MATH_SCALE, "尺度轉換，數值來源");
+    this.appendValueInput("omin_")
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.WEBDUINO_MATH_SCALE_OMIN, "(原始) 最小值");
+    this.appendValueInput("omax_")
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.WEBDUINO_MATH_SCALE_OMAX, "(原始) 最大值");
+    this.appendValueInput("cmin_")
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.WEBDUINO_MATH_SCALE_CMIN, "(轉換後) 最小值");
+    this.appendValueInput("cmax_")
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField(Blockly.Msg.WEBDUINO_MATH_SCALE_CMAX, "(轉換後) 最大值");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);

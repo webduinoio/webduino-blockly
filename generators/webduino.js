@@ -301,6 +301,16 @@ Blockly.JavaScript['math_round_digit'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.JavaScript['math_value_conversion'] = function(block) {
+  var value_source_ = Blockly.JavaScript.valueToCode(block, 'source_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_omin_ = Blockly.JavaScript.valueToCode(block, 'omin_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_omax_ = Blockly.JavaScript.valueToCode(block, 'omax_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_cmin_ = Blockly.JavaScript.valueToCode(block, 'cmin_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_cmax_ = Blockly.JavaScript.valueToCode(block, 'cmax_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = '(('+value_source_+' - ('+value_omin_+')) * (1/(('+value_omax_+')-('+value_omin_+')))) * (('+value_cmax_+')-('+value_cmin_+')) + ('+value_cmin_+')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
 
 /*
                              o8o              
