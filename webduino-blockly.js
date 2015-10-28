@@ -18,10 +18,10 @@
         device: options
       };
     }
-    if (options.path) {
-      board = new webduino.Arduino(options);
-    } else {
+    if (options.device) {
       board = new webduino.WebArduino(options);
+    } else {
+      board = new webduino.Arduino(options);
     }
     board.on(webduino.BoardEvent.READY, callback.bind(null, board));
 
