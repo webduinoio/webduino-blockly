@@ -207,102 +207,104 @@ Code.getBBox_ = function (element) {
 };
 
 Code.loadDemoArea = function(demo){
-  demo = {};
-  demo.btn = document.getElementById('demoButton');
-  demo.area = document.getElementById('demo-area');
-  demo.select = document.getElementById('demo-select');
-  demo.close = document.querySelector('.close-btn');
-  demo.da = document.querySelectorAll('.da');
-  demo.option = document.querySelectorAll('#demo-select option');
-  demo.contentHeight = document.getElementById('content_blocks').offsetHeight;
-  demo.area.style.height = (demo.contentHeight - 130) + 'px';
-  demo.resizeBar = document.getElementById('demo-resize-bar');
-
-  if(localStorage.demoAreaWidth){
-    demo.area.style.width = localStorage.demoAreaWidth;
-  }
-
-  window.addEventListener('resize',function(){
+  if(document.getElementById('demo-area')){
+    demo = {};
+    demo.btn = document.getElementById('demoButton');
+    demo.area = document.getElementById('demo-area');
+    demo.select = document.getElementById('demo-select');
+    demo.close = document.querySelector('.close-btn');
+    demo.da = document.querySelectorAll('.da');
+    demo.option = document.querySelectorAll('#demo-select option');
     demo.contentHeight = document.getElementById('content_blocks').offsetHeight;
     demo.area.style.height = (demo.contentHeight - 130) + 'px';
-  });
+    demo.resizeBar = document.getElementById('demo-resize-bar');
 
-  demo.resizeBar.onmousedown = function(e,dr){
-    demo.area.style.opacity = '0.4';
-    dr={};
-    dr.ox = e.pageX;
-    dr.dw = demo.area.offsetWidth;
-    demo.area.className = demo.area.className + " resize";
-    document.onmousemove = function(event){
-      dr.rx = event.pageX;
-      demo.area.style.width = dr.dw-dr.rx+dr.ox-20+'px';
-      localStorage.demoAreaWidth = demo.area.style.width;
+    if(localStorage.demoAreaWidth){
+      demo.area.style.width = localStorage.demoAreaWidth;
     }
-  }
 
-  document.onmouseup = function(){
-    demo.area.style.opacity = '1';
-    demo.area.className = demo.area.className.replace(" resize", "");
-    document.onmousemove = null;
-  }
+    window.addEventListener('resize',function(){
+      demo.contentHeight = document.getElementById('content_blocks').offsetHeight;
+      demo.area.style.height = (demo.contentHeight - 130) + 'px';
+    });
 
-  demo.content = function(p,s){
-    s={};
-    for(s.i=0; s.i<demo.da.length; s.i++){
-      demo.da[s.i].className = demo.da[s.i].className.replace("show", "");
+    demo.resizeBar.onmousedown = function(e,dr){
+      demo.area.style.opacity = '0.4';
+      dr={};
+      dr.ox = e.pageX;
+      dr.dw = demo.area.offsetWidth;
+      demo.area.className = demo.area.className + " resize";
+      document.onmousemove = function(event){
+        dr.rx = event.pageX;
+        demo.area.style.width = dr.dw-dr.rx+dr.ox-20+'px';
+        localStorage.demoAreaWidth = demo.area.style.width;
+      }
     }
-    demo.option[p-1].selected = true;
-    document.getElementById('demo-area-0'+p).className = document.getElementById('demo-area-0'+p).className + " show";
-    localStorage.demoAreaSelect = p;
-  }
 
-  demo.btn.onclick = function () {
-    if(localStorage.demoArea=='open'){
+    document.onmouseup = function(){
+      demo.area.style.opacity = '1';
+      demo.area.className = demo.area.className.replace(" resize", "");
+      document.onmousemove = null;
+    }
+
+    demo.content = function(p,s){
+      s={};
+      for(s.i=0; s.i<demo.da.length; s.i++){
+        demo.da[s.i].className = demo.da[s.i].className.replace("show", "");
+      }
+      demo.option[p-1].selected = true;
+      document.getElementById('demo-area-0'+p).className = document.getElementById('demo-area-0'+p).className + " show";
+      localStorage.demoAreaSelect = p;
+    }
+
+    demo.btn.onclick = function () {
+      if(localStorage.demoArea=='open'){
+        demo.area.className = demo.area.className.replace("show", "");
+        localStorage.demoArea = 'close';
+      }else{
+        demo.area.className = demo.area.className.replace("show", "");
+        demo.area.className = demo.area.className + "show";
+        localStorage.demoArea = 'open';
+      }
+    };
+    demo.close.onclick = function () {
       demo.area.className = demo.area.className.replace("show", "");
       localStorage.demoArea = 'close';
-    }else{
+    };
+
+    demo.select.addEventListener('change',function(s){
+      s={};
+      s.selectValue = this.value;
+      s.selectId = 'demo-area-0'+s.selectValue;
+      localStorage.demoAreaSelect = s.selectValue;
+      for(s.i=0; s.i<demo.da.length; s.i++){
+        demo.da[s.i].className = demo.da[s.i].className.replace("show", "");
+      }
+      document.getElementById(s.selectId).className = document.getElementById(s.selectId).className + " show"
+    });
+
+    if(localStorage.demoArea=='open'){
       demo.area.className = demo.area.className.replace("show", "");
       demo.area.className = demo.area.className + "show";
-      localStorage.demoArea = 'open';
+    }else{
+      demo.area.className = demo.area.className.replace("show", "");
     }
-  };
-  demo.close.onclick = function () {
-    demo.area.className = demo.area.className.replace("show", "");
-    localStorage.demoArea = 'close';
-  };
 
-  demo.select.addEventListener('change',function(s){
-    s={};
-    s.selectValue = this.value;
-    s.selectId = 'demo-area-0'+s.selectValue;
-    localStorage.demoAreaSelect = s.selectValue;
-    for(s.i=0; s.i<demo.da.length; s.i++){
-      demo.da[s.i].className = demo.da[s.i].className.replace("show", "");
+    if(localStorage.demoAreaSelect==1){
+      demo.content(1);
+    }else if(localStorage.demoAreaSelect==2){
+      demo.content(2);
+    }else if(localStorage.demoAreaSelect==3){
+      demo.content(3);
+    }else if(localStorage.demoAreaSelect==4){
+      demo.content(4);
+    }else if(localStorage.demoAreaSelect==5){
+      demo.content(5);
+    }else if(localStorage.demoAreaSelect==6){
+      demo.content(6);
+    }else if(localStorage.demoAreaSelect==7){
+      demo.content(7);
     }
-    document.getElementById(s.selectId).className = document.getElementById(s.selectId).className + " show"
-  });
-
-  if(localStorage.demoArea=='open'){
-    demo.area.className = demo.area.className.replace("show", "");
-    demo.area.className = demo.area.className + "show";
-  }else{
-    demo.area.className = demo.area.className.replace("show", "");
-  }
-
-  if(localStorage.demoAreaSelect==1){
-    demo.content(1);
-  }else if(localStorage.demoAreaSelect==2){
-    demo.content(2);
-  }else if(localStorage.demoAreaSelect==3){
-    demo.content(3);
-  }else if(localStorage.demoAreaSelect==4){
-    demo.content(4);
-  }else if(localStorage.demoAreaSelect==5){
-    demo.content(5);
-  }else if(localStorage.demoAreaSelect==6){
-    demo.content(6);
-  }else if(localStorage.demoAreaSelect==7){
-    demo.content(7);
   }
 }
 

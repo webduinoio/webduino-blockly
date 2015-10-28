@@ -118,7 +118,10 @@ Blockly.Msg.WEBDUINO_STATUS_FOREVER_NAME = ", name:";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOP = "Stop";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOPCONTENT = "";
 
-Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "(Wi-Fi) Board device:";
+Blockly.Msg.WEBDUINO_BOARD = "Board";
+Blockly.Msg.WEBDUINO_BOARD_WIFI = "Wi-Fi";
+Blockly.Msg.WEBDUINO_BOARD_SERIAL = "Serial Port";
+Blockly.Msg.WEBDUINO_BOARD_BLUETOOTH = "Bluetooth";
 Blockly.Msg.WEBDUINO_BOARD_CHAIN = "chain";
 Blockly.Msg.WEBDUINO_BOARD_CHAIN_OK = "When all boards chain ready";
 Blockly.Msg.WEBDUINO_BOARD_CHAIN_DO = "do:";
@@ -129,9 +132,7 @@ Blockly.Msg.WEBDUINO_PIN_STATE = "Pin state";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_IF = "If";
 Blockly.Msg.WEBDUINO_BOARD_ERROR = "offine";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "do:";
-Blockly.Msg.WEBDUINO_BOARD_READY_PATH = "(Serial Port) Board path:";
 Blockly.Msg.WEBDUINO_BOARD_SAMPLING = "  Sampling";
-Blockly.Msg.WEBDUINO_BOARD_READY_ADDRESS = "(Bluetooth) Board address:";
 
 Blockly.Msg.WEBDUINO_LED = "LED";
 Blockly.Msg.WEBDUINO_LED_PIN = "pin";

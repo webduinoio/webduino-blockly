@@ -527,53 +527,13 @@ Blockly.Blocks['board_ready'] = {
   init: function () {
     this.appendValueInput("device_")
       .setCheck("String")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO);
-    this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_SAMPLING, "  類比取樣")
+      .appendField(Blockly.Msg.WEBDUINO_BOARD, "開發板")
       .appendField(new Blockly.FieldDropdown([
-        ["20 ms", "20"],
-        ["50 ms", "50"],
-        ["75 ms", "75"],
-        ["100 ms", "100"]
-      ]), "rate_")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, "串聯")
-      .appendField(new Blockly.FieldCheckbox("FALSE"), "check_");
-    this.appendStatementInput("callbacks_");
-    this.setTooltip('');
-    this.setColour(290);
-    this.setHelpUrl('http://www.example.com/');
-  }
-};
-
-// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#gkt6j9
-Blockly.Blocks['board_ready_serial_port'] = {
-  init: function () {
-    this.appendValueInput("path_")
-      .setCheck("String")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_READY_PATH, "開發板 路徑：");
-    this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_SAMPLING, "  類比取樣")
-      .appendField(new Blockly.FieldDropdown([
-        ["20 ms", "20"],
-        ["50 ms", "50"],
-        ["75 ms", "75"],
-        ["100 ms", "100"]
-      ]), "rate_")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, "串聯")
-      .appendField(new Blockly.FieldCheckbox("FALSE"), "check_");
-    this.appendStatementInput("callbacks_");
-    this.setTooltip('');
-    this.setColour(290);
-    this.setHelpUrl('http://www.example.com/');
-  }
-};
-
-// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#gkt6j9
-Blockly.Blocks['board_ready_address'] = {
-  init: function () {
-    this.appendValueInput("address_")
-      .setCheck("String")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_READY_ADDRESS, "開發板 位址：");
+        [Blockly.Msg.WEBDUINO_BOARD_WIFI, "1"],
+        [Blockly.Msg.WEBDUINO_BOARD_SERIAL, "2"],
+        [Blockly.Msg.WEBDUINO_BOARD_BLUETOOTH, "3"]
+      ]), "type_")
+      .appendField(":");
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_BOARD_SAMPLING, "  類比取樣")
       .appendField(new Blockly.FieldDropdown([
