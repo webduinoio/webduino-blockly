@@ -443,13 +443,12 @@ Blockly.JavaScript['board_ready'] = function (block) {
 
 Blockly.JavaScript['board_ready_serial_port'] = function (block) {
   var value_path_ = Blockly.JavaScript.valueToCode(block, 'path_', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_baudrate_ = Blockly.JavaScript.valueToCode(block, 'baudrate_', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_rate_ = block.getFieldValue('rate_');
   var checkbox_check_ = block.getFieldValue('check_');
   var statements_callbacks_ = Blockly.JavaScript.statementToCode(block, 'callbacks_');
   var code;
   if (checkbox_check_ == 'FALSE') {
-    code = 'boardReady({ path:' + value_path_ + ' , baudRate: ' + value_baudrate_ + ' }, function (board) {\n' +
+    code = 'boardReady({ transport: \'serial\', path:' + value_path_ + ' }, function (board) {\n' +
       '  board.samplingInterval = ' + dropdown_rate_ + ';\n' +
       statements_callbacks_ +
       '});\n';
@@ -459,7 +458,38 @@ Blockly.JavaScript['board_ready_serial_port'] = function (block) {
       '}else{\n' +
       '  window.readyBoardLength = 1;\n' +
       '}\n\n' +
-      'boardReady({ path:' + value_path_ + ' , baudRate: ' + value_baudrate_ + ' }, function (board) {\n' +
+      'boardReady({ transport: \'serial\', path:' + value_path_ + ' }, function (board) {\n' +
+      '  board.samplingInterval = ' + dropdown_rate_ + ';\n' +
+      statements_callbacks_ +
+      '  if(window.boardReadyNumber){\n' +
+      '    window.boardReadyNumber = window.boardReadyNumber +1;\n' +
+      '  }else{\n' +
+      '    window.boardReadyNumber = 1;\n' +
+      '  }\n' +
+      '  allBoardReady(window.boardReadyNumber);\n' +
+      '});\n';
+  }
+  return code;
+};
+
+Blockly.JavaScript['board_ready_address'] = function (block) {
+  var value_address_ = Blockly.JavaScript.valueToCode(block, 'address_', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_rate_ = block.getFieldValue('rate_');
+  var checkbox_check_ = block.getFieldValue('check_');
+  var statements_callbacks_ = Blockly.JavaScript.statementToCode(block, 'callbacks_');
+  var code;
+  if (checkbox_check_ == 'FALSE') {
+    code = 'boardReady({ transport: \'bluetooth\', address:' + value_address_ + ' }, function (board) {\n' +
+      '  board.samplingInterval = ' + dropdown_rate_ + ';\n' +
+      statements_callbacks_ +
+      '});\n';
+  } else if (checkbox_check_ == 'TRUE') {
+    code = 'if(window.readyBoardLength){\n' +
+      '  window.readyBoardLength = window.readyBoardLength + 1;\n' +
+      '}else{\n' +
+      '  window.readyBoardLength = 1;\n' +
+      '}\n\n' +
+      'boardReady({ transport: \'bluetooth\', address:' + value_address_ + ' }, function (board) {\n' +
       '  board.samplingInterval = ' + dropdown_rate_ + ';\n' +
       statements_callbacks_ +
       '  if(window.boardReadyNumber){\n' +

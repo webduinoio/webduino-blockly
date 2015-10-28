@@ -135,7 +135,7 @@ Blockly.Msg.WEBDUINO_DELAY_SECONDS = "秒";
 
 // Board
 
-Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "開發版，名稱";
+Blockly.Msg.WEBDUINO_BOARD_READY_WEBDUINO = "( Wi-Fi ) 開發版，名稱";
 Blockly.Msg.WEBDUINO_BOARD_CHAIN = "  串聯";
 Blockly.Msg.WEBDUINO_BOARD_CHAIN_OK = "當開發板串連完成";
 Blockly.Msg.WEBDUINO_BOARD_CHAIN_DO = "執行";
@@ -146,8 +146,9 @@ Blockly.Msg.WEBDUINO_PIN_STATE = "腳位狀態";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_IF = "如果";
 Blockly.Msg.WEBDUINO_BOARD_ERROR = "斷線";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "執行";
-Blockly.Msg.WEBDUINO_BOARD_READY_PATH = "開發板，路徑";
+Blockly.Msg.WEBDUINO_BOARD_READY_PATH = "( 序列埠 ) 開發板，路徑";
 Blockly.Msg.WEBDUINO_BOARD_SAMPLING = "  類比取樣";
+Blockly.Msg.WEBDUINO_BOARD_READY_ADDRESS = "( 藍芽 ) 開發板，路徑";
 
 // LED
 

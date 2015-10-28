@@ -551,9 +551,29 @@ Blockly.Blocks['board_ready_serial_port'] = {
     this.appendValueInput("path_")
       .setCheck("String")
       .appendField(Blockly.Msg.WEBDUINO_BOARD_READY_PATH, "開發板 路徑：");
-    this.appendValueInput("baudrate_")
-      .setCheck("Number")
-      .appendField("baudRate");
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_SAMPLING, "  類比取樣")
+      .appendField(new Blockly.FieldDropdown([
+        ["20 ms", "20"],
+        ["50 ms", "50"],
+        ["75 ms", "75"],
+        ["100 ms", "100"]
+      ]), "rate_")
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, "串聯")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "check_");
+    this.appendStatementInput("callbacks_");
+    this.setTooltip('');
+    this.setColour(290);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#gkt6j9
+Blockly.Blocks['board_ready_address'] = {
+  init: function () {
+    this.appendValueInput("address_")
+      .setCheck("String")
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_READY_ADDRESS, "開發板 位址：");
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_BOARD_SAMPLING, "  類比取樣")
       .appendField(new Blockly.FieldDropdown([
