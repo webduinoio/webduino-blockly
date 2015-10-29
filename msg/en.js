@@ -11,6 +11,8 @@ var MSG = {
   discard: "Delete all %1 blocks?",
   trashTooltip: "Discard all blocks.",
   demoTooltip: "Web Demo",
+  openJsbin: "Open Code editor",
+  checkDeviceOnline: "Quickly check device online status (Wi-Fi)",
   catLogic: "Logic",
   catLoops: "Loops",
   catMath: "Math",
