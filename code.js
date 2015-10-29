@@ -205,9 +205,68 @@ Code.getBBox_ = function (element) {
     y: y
   };
 };
+Code.checkDeviceOnline = function (device) {
+  device = {};
+  device.inputArea = document.getElementById('input-device');
+  device.btn = document.getElementById('check-btn');
+  device.icon = document.getElementById('check-icon');
 
-Code.loadDemoArea = function(demo){
-  if(document.getElementById('demo-area')){
+  if (!localStorage.boardCheckOpen) {
+    localStorage.boardCheckOpen = 0;
+  }
+
+  device.btn.onclick = function () {
+    if (localStorage.boardCheckOpen == 1) {
+      localStorage.boardCheckOpen = 0;
+      device.inputArea.className = device.inputArea.className.replace("open", "");
+    } else {
+      localStorage.boardCheckOpen = 1;
+      device.inputArea.className = device.inputArea.className + "open";
+    }
+  };
+
+  device.check = function (v) {
+    device.boardEvent = webduino.BoardEvent,
+      device.board = new webduino.WebArduino(v);
+    device.icon.setAttribute('class', 'check icon21 board-error');
+
+    device.board.on(device.boardEvent.READY, function () {
+      console.log(v + ' : ok');
+      device.icon.setAttribute('class', 'check icon21 board-online');
+    });
+
+    device.board.on(device.boardEvent.ERROR, function () {
+      device.icon.setAttribute('class', 'check icon21 board-error');
+    });
+  }
+
+  device.inputArea.oninput = function () {
+    localStorage.boardState = this.value;
+    if (this.value.length > 3) {
+      device.check(this.value.toString());
+    } else {
+      device.icon.setAttribute('class', 'check icon21');
+    }
+  };
+
+  if (localStorage.boardState) {
+    device.inputArea.value = localStorage.boardState;
+    device.inputArea.oninput();
+  }
+
+  if (localStorage.boardCheckOpen == 0) {
+    device.inputArea.className = device.inputArea.className.replace("open", "");
+  } else if (localStorage.boardCheckOpen == 1 && device.inputArea.value.length < 4) {
+    localStorage.boardCheckOpen = 0;
+    device.inputArea.className = device.inputArea.className.replace("open", "");
+  } else {
+    device.inputArea.className = device.inputArea.className + "open";
+  }
+
+}
+
+Code.loadDemoArea = function (demo) {
+  if (document.getElementById('demo-area')) {
     demo = {};
     demo.btn = document.getElementById('demoButton');
     demo.area = document.getElementById('demo-area');
@@ -219,49 +278,49 @@ Code.loadDemoArea = function(demo){
     demo.area.style.height = (demo.contentHeight - 130) + 'px';
     demo.resizeBar = document.getElementById('demo-resize-bar');
 
-    if(localStorage.demoAreaWidth){
+    if (localStorage.demoAreaWidth) {
       demo.area.style.width = localStorage.demoAreaWidth;
     }
 
-    window.addEventListener('resize',function(){
+    window.addEventListener('resize', function () {
       demo.contentHeight = document.getElementById('content_blocks').offsetHeight;
       demo.area.style.height = (demo.contentHeight - 130) + 'px';
     });
 
-    demo.resizeBar.onmousedown = function(e,dr){
+    demo.resizeBar.onmousedown = function (e, dr) {
       demo.area.style.opacity = '0.4';
-      dr={};
+      dr = {};
       dr.ox = e.pageX;
       dr.dw = demo.area.offsetWidth;
       demo.area.className = demo.area.className + " resize";
-      document.onmousemove = function(event){
+      document.onmousemove = function (event) {
         dr.rx = event.pageX;
-        demo.area.style.width = dr.dw-dr.rx+dr.ox-20+'px';
+        demo.area.style.width = dr.dw - dr.rx + dr.ox - 20 + 'px';
         localStorage.demoAreaWidth = demo.area.style.width;
       }
     }
 
-    document.onmouseup = function(){
+    document.onmouseup = function () {
       demo.area.style.opacity = '1';
       demo.area.className = demo.area.className.replace(" resize", "");
       document.onmousemove = null;
     }
 
-    demo.content = function(p,s){
-      s={};
-      for(s.i=0; s.i<demo.da.length; s.i++){
+    demo.content = function (p, s) {
+      s = {};
+      for (s.i = 0; s.i < demo.da.length; s.i++) {
         demo.da[s.i].className = demo.da[s.i].className.replace("show", "");
       }
-      demo.option[p-1].selected = true;
-      document.getElementById('demo-area-0'+p).className = document.getElementById('demo-area-0'+p).className + " show";
+      demo.option[p - 1].selected = true;
+      document.getElementById('demo-area-0' + p).className = document.getElementById('demo-area-0' + p).className + " show";
       localStorage.demoAreaSelect = p;
     }
 
     demo.btn.onclick = function () {
-      if(localStorage.demoArea=='open'){
+      if (localStorage.demoArea == 'open') {
         demo.area.className = demo.area.className.replace("show", "");
         localStorage.demoArea = 'close';
-      }else{
+      } else {
         demo.area.className = demo.area.className.replace("show", "");
         demo.area.className = demo.area.className + "show";
         localStorage.demoArea = 'open';
@@ -272,37 +331,37 @@ Code.loadDemoArea = function(demo){
       localStorage.demoArea = 'close';
     };
 
-    demo.select.addEventListener('change',function(s){
-      s={};
+    demo.select.addEventListener('change', function (s) {
+      s = {};
       s.selectValue = this.value;
-      s.selectId = 'demo-area-0'+s.selectValue;
+      s.selectId = 'demo-area-0' + s.selectValue;
       localStorage.demoAreaSelect = s.selectValue;
-      for(s.i=0; s.i<demo.da.length; s.i++){
+      for (s.i = 0; s.i < demo.da.length; s.i++) {
         demo.da[s.i].className = demo.da[s.i].className.replace("show", "");
       }
       document.getElementById(s.selectId).className = document.getElementById(s.selectId).className + " show"
     });
 
-    if(localStorage.demoArea=='open'){
+    if (localStorage.demoArea == 'open') {
       demo.area.className = demo.area.className.replace("show", "");
       demo.area.className = demo.area.className + "show";
-    }else{
+    } else {
       demo.area.className = demo.area.className.replace("show", "");
     }
 
-    if(localStorage.demoAreaSelect==1){
+    if (localStorage.demoAreaSelect == 1) {
       demo.content(1);
-    }else if(localStorage.demoAreaSelect==2){
+    } else if (localStorage.demoAreaSelect == 2) {
       demo.content(2);
-    }else if(localStorage.demoAreaSelect==3){
+    } else if (localStorage.demoAreaSelect == 3) {
       demo.content(3);
-    }else if(localStorage.demoAreaSelect==4){
+    } else if (localStorage.demoAreaSelect == 4) {
       demo.content(4);
-    }else if(localStorage.demoAreaSelect==5){
+    } else if (localStorage.demoAreaSelect == 5) {
       demo.content(5);
-    }else if(localStorage.demoAreaSelect==6){
+    } else if (localStorage.demoAreaSelect == 6) {
       demo.content(6);
-    }else if(localStorage.demoAreaSelect==7){
+    } else if (localStorage.demoAreaSelect == 7) {
       demo.content(7);
     }
   }
@@ -499,6 +558,7 @@ Code.init = function () {
   // Lazy-load the syntax-highlighting.
   window.setTimeout(Code.importPrettify, 1);
   window.setTimeout(Code.loadDemoArea, 1);
+  window.setTimeout(Code.checkDeviceOnline, 1);
 
 };
 
