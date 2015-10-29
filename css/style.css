@@ -190,7 +190,7 @@ pre.content {
   border-radius:3px;
   background:#333;
   color:#fff;
-  margin:0 3px 12px -5px;
+  margin:-1px 3px 12px -5px;
   vertical-align: middle;
   opacity:0;
 }
@@ -354,16 +354,16 @@ td#copyCode{
   background-image:-webkit-linear-gradient(top,#ddd 0%,#fff 100%);
   cursor:pointer;
 }
-td#copyCode.zeroclipboard-is-hover{
+td#copyCode:hover{
   position:relative;
   background:#fff;
   cursor:pointer;
 }
-td#copyCode.zeroclipboard-is-hover.zeroclipboard-is-active{
+td#copyCode:active{
   background:#eee;
   cursor:pointer;
 }
-td#copyCode.zeroclipboard-is-hover:before{
+td#copyCode:hover:before{
   content:'';
   position:absolute;
   display:block;
@@ -376,7 +376,7 @@ td#copyCode.zeroclipboard-is-hover:before{
   top:6px;
   left:26px;
 }
-td#copyCode.zeroclipboard-is-hover:after{
+td#copyCode:hover:after{
   content:attr(data-tooltip);
   position:absolute;
   display:block;

@@ -265,6 +265,29 @@ Code.checkDeviceOnline = function (device) {
 
 }
 
+Code.copyCode = function(copy){
+  copy = {};
+  copy.jsTab = document.getElementById('tab_javascript');
+  copy.copyBtn = document.getElementById('copyCode');
+
+  copy.clipboard = new Clipboard('#copyCode');
+
+  copy.clipboard.on('success', function(e) {
+      copy.copyBtn.setAttribute('data-tooltip','Copied!!!');
+  });
+  copy.copyBtn.addEventListener('mouseleave',function(){
+      copy.copyBtn.setAttribute('data-tooltip','Copy to clipboard');
+  });
+
+  copy.jsTab.addEventListener('click',function(){
+    copy.copyBtn.style.display = 'table-cell';
+  });
+
+  document.getElementById('tab_blocks').addEventListener('click',function(){
+    copy.copyBtn.style.display = 'none';
+  });
+}
+
 Code.loadDemoArea = function (demo) {
   if (document.getElementById('demo-area')) {
     demo = {};
@@ -559,6 +582,7 @@ Code.init = function () {
   window.setTimeout(Code.importPrettify, 1);
   window.setTimeout(Code.loadDemoArea, 1);
   window.setTimeout(Code.checkDeviceOnline, 1);
+  window.setTimeout(Code.copyCode, 1);
 
 };
 
