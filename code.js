@@ -227,7 +227,10 @@ Code.checkDeviceOnline = function (device) {
 
   device.check = function (v) {
     device.boardEvent = webduino.BoardEvent,
-      device.board = new webduino.WebArduino(v);
+      device.board = new webduino.WebArduino({
+        device: v,
+        multi: true
+      });
     device.icon.setAttribute('class', 'check icon21 board-error');
 
     device.board.on(device.boardEvent.READY, function () {
