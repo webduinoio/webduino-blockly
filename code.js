@@ -532,7 +532,8 @@ Code.init = function () {
     rtl: rtl,
     toolbox: toolbox,
     zoom: {
-      enabled: true
+      controls: true,
+      wheel: true
     }
   });
 
@@ -965,7 +966,12 @@ Blockly.Css.inject = function (hasCss, pathToMedia) {
   var text = '.blocklyDraggable {}\n';
   Blockly.Css.mediaPath_ = pathToMedia.replace(/[\\\/]$/, '');
   text = text.replace(/<<<PATH>>>/g, Blockly.Css.mediaPath_);
-  Blockly.Css.styleSheet_ = goog.cssom.addCssText(text).sheet;
+  // Inject CSS tag.
+  var cssNode = document.createElement('style');
+  document.head.appendChild(cssNode);
+  var cssTextNode = document.createTextNode(text);
+  cssNode.appendChild(cssTextNode);
+  Blockly.Css.styleSheet_ = cssNode.sheet;
   Blockly.Css.setCursor(Blockly.Css.Cursor.OPEN);
 };
 
