@@ -177,9 +177,9 @@
         <video id="demo-area-08-video" preload autoplay loop muted controls></video>
         <canvas id="demo-area-08-canvas" ></canvas>
       </div>
-      <span style="font-size:12px;"><strong>tracking-min.js</strong></span>
+      <span style="font-size:12px;"><a href="http://blockly.webduino.io/lib/tracking-min.js" target="_blank">tracking-min.js</a></span>
       <br/>
-      <span style="font-size:12px;"><strong>face-min.js</strong></span>
+      <span style="font-size:12px;"><a href="http://blockly.webduino.io/lib/face-min.js" target="_blank">face-min.js</a></span>
       <br/><br/>
       <h5>HTML:</h5>
       <pre class="demo-pre">&lt;div id=&quot;demo-area-08-content&quot;&gt;
@@ -1081,11 +1081,16 @@
       <block type="demo_youtube_speed"></block>
     </category>
     <category id="catTracking">
-      <block type="demo_tracking"></block>
-      <block type="demo_tracking_on"></block>
-      <block type="demo_tracking_run"></block>
-      <block type="demo_tracking_stop"></block>
+      <block type="demo_tracking">
+        <value name="var_">
+          <block type="variables_get">
+            <field name="VAR">track</field>
+          </block>
+        </value>
+      </block>
+      <block type="demo_tracking_action"></block>
       <block type="demo_tracking_val"></block>
+      <block type="demo_tracking_face"></block>
     </category>
   </category>
 </xml>

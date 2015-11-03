@@ -273,7 +273,9 @@ Blockly.JavaScript['demo_youtube_status'] = function (block) {
 Blockly.JavaScript['demo_youtube_id'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var value_id_ = Blockly.JavaScript.valueToCode(block, 'id_', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = variable_name_ + '.loadVideoById(' + value_id_ + ');\n';
+  var code;
+
+  variable_name_ + '.loadVideoById(' + value_id_ + ');\n';
   return code;
 };
 
@@ -312,94 +314,96 @@ Blockly.JavaScript['math_value_conversion'] = function (block) {
 };
 
 Blockly.JavaScript['demo_tracking'] = function (block) {
+  var value_var_ = Blockly.JavaScript.valueToCode(block, 'var_', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_type_ = block.getFieldValue('type_');
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var share = value_var_ + '.myTracker.on("track", function(event) {\n' +
+    '  if (event.data.length === 0) {\n' +
+    '    ' + value_var_ + '.context.clearRect(0, 0, ' + value_var_ + '.canvas.width, ' + value_var_ + '.canvas.height);\n' +
+    '  } else {\n' +
+    '    ' + value_var_ + '.context.clearRect(0, 0, ' + value_var_ + '.canvas.width, ' + value_var_ + '.canvas.height);\n' +
+    '    event.data.forEach(function(data) {\n' +
+    '    ' + statements_do_ +
+    '      if(data.color){\n' +
+    '        ' + value_var_ + '.context.strokeStyle = ' + value_var_ + '.storkColor[data.color];\n' +
+    '      }else{\n' +
+    '        ' + value_var_ + '.context.strokeStyle = "#f00";\n' +
+    '      }\n' +
+    '      ' + value_var_ + '.context.lineWidth = 5;\n' +
+    '      ' + value_var_ + '.context.strokeRect(data.x, data.y, data.width, data.height-30);\n' +
+    '      ' + value_var_ + '.context.font = "11px Helvetica";\n' +
+    '      ' + value_var_ + '.context.fillStyle = "#fff";\n' +
+    '    });\n' +
+    '  }\n' +
+    '});\n' +
+    value_var_ + '.trackerTask = tracking.track("#demo-area-08-video", ' + value_var_ + '.myTracker, {\n' +
+    '  camera: true\n' +
+    '});\n\n';
   var code;
   if (dropdown_type_ == 'color') {
-    code = 'var canvas = document.getElementById("demo-area-08-canvas");\n' +
-      'var context = canvas.getContext("2d");\n' +
+    code = value_var_ + ' = {};\n' +
+      value_var_ + '.canvas = document.getElementById("demo-area-08-canvas");\n' +
+      value_var_ + '.context = ' + value_var_ + '.canvas.getContext("2d");\n' +
       'tracking.ColorTracker.registerColor("red", function(r, g, b) {\n' +
-      '  if (r > 150 && g < 50 && b < 50) {\n' +
-      '    return true;\n' +
-      '  }\n' +
-      '  return false;\n' +
-      '});\n' +
-      'tracking.ColorTracker.registerColor("black", function(r, g, b) {\n' +
-      '  if (r < 50 && g < 50 && b < 50) {\n' +
-      '    return true;\n' +
-      '  }\n' +
-      '  return false;\n' +
-      '});\n' +
-      'tracking.ColorTracker.registerColor("white", function(r, g, b) {\n' +
-      '  if (r > 200 && g > 200 && b > 200) {\n' +
+      '  if (r > 160 && g < 80 && b < 80) {\n' +
       '    return true;\n' +
       '  }\n' +
       '  return false;\n' +
       '});\n' +
       'tracking.ColorTracker.registerColor("green", function(r, g, b) {\n' +
-      '  if (r < 50 && g > 150 && b < 50) {\n' +
+      '  if (r < 80 && g > 160 && b < 80) {\n' +
       '    return true;\n' +
       '  }\n' +
       '  return false;\n' +
       '});\n\n' +
-      'var myTracker = new tracking.ColorTracker(["magenta", "cyan", "yellow", "red", "black", "white", "green"]);\n' +
-      'var storkColor = {\n' +
-      '  magenta: "#f09",\n' +
+      'tracking.ColorTracker.registerColor("blue", function(r, g, b) {\n' +
+      '  if (r < 80 && g < 80 && b > 160) {\n' +
+      '    return true;\n' +
+      '  }\n' +
+      '  return false;\n' +
+      '});\n\n' +
+      value_var_ + '.myTracker = new tracking.ColorTracker(["magenta", "cyan", "yellow", "red", "green", "blue"]);\n' +
+      value_var_ + '.storkColor = {\n' +
+      '  magenta: "#f0a",\n' +
       '  red: "#f00",\n' +
       '  cyan: "#0ff",\n' +
       '  yellow: "#ff0",\n' +
-      '  black: "#000",\n' +
-      '  white: "#fff",\n' +
-      '  green: "#0c0"\n' +
-      '};\n\n';
+      '  green: "#0c0",\n' +
+      '  blue: "#00f"\n' +
+      '};\n\n' +
+      share;
   } else if (dropdown_type_ == 'face') {
-    code = 'var canvas = document.getElementById("demo-area-08-canvas");\n' +
-      'var context = canvas.getContext("2d");\n\n' +
-      'var myTracker = new tracking.ObjectTracker("face");\n' +
-      'myTracker.setInitialScale(3);\n' +
-      'myTracker.setStepSize(1.5);\n' +
-      'myTracker.setEdgesDensity(0.1);\n\n';
+    code = value_var_ + ' = {};\n' +
+      value_var_ + '.canvas = document.getElementById("demo-area-08-canvas");\n' +
+      value_var_ + '.context = ' + value_var_ + '.canvas.getContext("2d");\n' +
+      value_var_ + '.myTracker = new tracking.ObjectTracker("face");\n' +
+      value_var_ + '.myTracker.setInitialScale(4);\n' +
+      value_var_ + '.myTracker.setStepSize(0.5);\n' +
+      value_var_ + '.myTracker.setEdgesDensity(0.1);\n\n' +
+      share;
   }
   return code;
 };
 
-Blockly.JavaScript['demo_tracking_on'] = function (block) {
-  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'myTracker.on("track", function(event) {\n' +
-    '  if (event.data.length === 0) {\n' +
-    '    context.clearRect(0, 0, canvas.width, canvas.height);\n' +
-    '  } else {\n' +
-    '    context.clearRect(0, 0, canvas.width, canvas.height);\n' +
-    '    event.data.forEach(function(data) {\n' +
-    '    '+statements_do_+
-    '      if(data.color){\n' +
-    '        context.strokeStyle = storkColor[data.color];\n' +
-    '      }else{\n' +
-    '        context.strokeStyle = "#f00";\n' +
-    '      }\n' +
-    '      context.lineWidth = 5;\n' +
-    '      context.strokeRect(data.x, data.y, data.width, data.height-30);\n' +
-    '      context.font = "11px Helvetica";\n' +
-    '      context.fillStyle = "#fff";\n' +
-    '    });\n' +
-    '  }\n' +
-    '});\n' +
-    'var trackerTask = tracking.track("#demo-area-08-video", myTracker, {\n' +
-    '  camera: true\n' +
-    '});\n\n' +
-    'trackerTask.run();\n';
+Blockly.JavaScript['demo_tracking_face'] = function (block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_ed_ = block.getFieldValue('ed_');
+  var dropdown_ss_ = block.getFieldValue('ss_');
+  var dropdown_is_ = block.getFieldValue('is_');
+  var code = variable_name_ + '.myTracker.setInitialScale('+dropdown_is_+');\n' +
+      variable_name_ + '.myTracker.setStepSize('+dropdown_ss_+');\n' +
+      variable_name_ + '.myTracker.setEdgesDensity('+dropdown_ed_+');\n\n';
   return code;
 };
 
-Blockly.JavaScript['demo_tracking_run'] = function (block) {
-  var code = 'trackerTask.run();\n';
+Blockly.JavaScript['demo_tracking_action'] = function (block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_action_ = block.getFieldValue('action_');
+  var code = variable_name_ + '.context.clearRect(0, 0, ' + variable_name_ + '.canvas.width, ' + variable_name_ + '.canvas.height);\n' +
+    variable_name_ + '.trackerTask.' + dropdown_action_ + '();\n';
   return code;
 };
 
-Blockly.JavaScript['demo_tracking_stop'] = function (block) {
-  var code = 'context.clearRect(0, 0, canvas.width, canvas.height);\n' +
-    'trackerTask.stop();\n';
-  return code;
-};
 
 Blockly.JavaScript['demo_tracking_val'] = function (block) {
   var dropdown_val_ = block.getFieldValue('val_');

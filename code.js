@@ -389,6 +389,8 @@ Code.loadDemoArea = function (demo) {
       demo.content(6);
     } else if (localStorage.demoAreaSelect == 7) {
       demo.content(7);
+    } else if (localStorage.demoAreaSelect == 8) {
+      demo.content(8);
     }
   }
 }
