@@ -58,6 +58,19 @@ Blockly.Msg.DEMO_RANGE_DEFAULT = "預設值";
 Blockly.Msg.DEMO_RANGE_INPUT = "調整拉霸，執行";
 Blockly.Msg.DEMO_RANGE_SHOW = "數值顯示";
 Blockly.Msg.DEMO_RANGE_VALUE = "拉霸的數值";
+Blockly.Msg.DEMO_YOUTUBE_CHANGEID = "更換";
+Blockly.Msg.DEMO_YOUTUBE_CHANGEID_ID = "影片，要更換的 id：";
+Blockly.Msg.DEMO_TRACKING_SET = "載入追蹤";
+Blockly.Msg.DEMO_TRACKING_COLOR = "顏色";
+Blockly.Msg.DEMO_TRACKING_FACE = "臉";
+Blockly.Msg.DEMO_TRACKING_MODULE = "模組";
+Blockly.Msg.DEMO_TRACKING_START = "開始追蹤";
+Blockly.Msg.DEMO_TRACKING_DO = "執行 ( 可不填 )";
+Blockly.Msg.DEMO_TRACKING_RUN = "繼續追蹤";
+Blockly.Msg.DEMO_TRACKING_STOP = "停止追蹤";
+Blockly.Msg.DEMO_TRACKING_VAL = "追蹤數值";
+Blockly.Msg.DEMO_TRACKING_VALTOTAL = "total ( 臉 )";
+Blockly.Msg.DEMO_TRACKING_VALCOLOR = "color ( 顏色 )";
 
 
 // Console

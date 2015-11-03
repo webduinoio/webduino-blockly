@@ -62,6 +62,7 @@
       <option value="5">{{demoAreaSelect5}}</option>
       <option value="6">{{demoAreaSelect6}}</option>
       <option value="7">{{demoAreaSelect7}}</option>
+      <option value="8">{{demoAreaSelect8}}</option>
     </select>
     <div id="demo-area-01" class="da show">
       <br/>
@@ -170,6 +171,43 @@
       <h5>HTML:</h5>
       <pre class="demo-pre">
 &lt;div id=&quot;player&quot;&gt;&lt;/div&gt;</pre>
+    </div>
+    <div id="demo-area-08" class="da">
+      <div id="demo-area-08-content">
+        <video id="demo-area-08-video" preload autoplay loop muted controls></video>
+        <canvas id="demo-area-08-canvas" ></canvas>
+      </div>
+      <span style="font-size:12px;"><strong>tracking-min.js</strong></span>
+      <br/>
+      <span style="font-size:12px;"><strong>face-min.js</strong></span>
+      <br/><br/>
+      <h5>HTML:</h5>
+      <pre class="demo-pre">&lt;div id=&quot;demo-area-08-content&quot;&gt;
+  &lt;video id=&quot;demo-area-08-video&quot; preload autoplay loop muted controls&gt;&lt;/video&gt;
+  &lt;canvas id=&quot;demo-area-08-canvas&quot; &gt;&lt;/canvas&gt;
+&lt;/div&gt;</pre>
+      <h5>CSS:</h5>
+      <pre class="demo-pre">#demo-area-08-content{
+  position: relative;
+  width:100%;
+  max-width:300px;
+  height:200px;
+}
+#demo-area-08-video{
+  top:0;
+  left:0;
+  position: absolute;
+  width:100%;
+  height:100%;
+}
+
+#demo-area-08-canvas{
+  top:0;
+  left:0;
+  position: absolute;
+  width:100%;
+  height:100%;
+}</pre>
     </div>
   </div>
 </div>
@@ -1041,6 +1079,13 @@
         </value>
       </block>
       <block type="demo_youtube_speed"></block>
+    </category>
+    <category id="catTracking">
+      <block type="demo_tracking"></block>
+      <block type="demo_tracking_on"></block>
+      <block type="demo_tracking_run"></block>
+      <block type="demo_tracking_stop"></block>
+      <block type="demo_tracking_val"></block>
     </category>
   </category>
 </xml>

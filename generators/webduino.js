@@ -287,28 +287,124 @@ ooo. .oo.  .oo.    .oooo.   .o888oo  888 .oo.
 o888o o888o o888o `Y888""8o   "888" o888o o888o 
 */
 
-Blockly.JavaScript['math_round_digit'] = function(block) {
+Blockly.JavaScript['math_round_digit'] = function (block) {
   var dropdown_type_ = block.getFieldValue('type_');
   var dropdown_digit_ = block.getFieldValue('digit_');
   var value_round_ = Blockly.JavaScript.valueToCode(block, 'round_', Blockly.JavaScript.ORDER_ATOMIC);
   var code;
-  if(dropdown_digit_==0){
-    code = 'Math.'+dropdown_type_+'('+value_round_+')';
-  }else{
-    var a = Math.pow(10,dropdown_digit_);
-    code = '(Math.'+dropdown_type_+'(('+value_round_+')*'+a+'))/'+a;
+  if (dropdown_digit_ == 0) {
+    code = 'Math.' + dropdown_type_ + '(' + value_round_ + ')';
+  } else {
+    var a = Math.pow(10, dropdown_digit_);
+    code = '(Math.' + dropdown_type_ + '((' + value_round_ + ')*' + a + '))/' + a;
   }
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['math_value_conversion'] = function(block) {
+Blockly.JavaScript['math_value_conversion'] = function (block) {
   var value_source_ = Blockly.JavaScript.valueToCode(block, 'source_', Blockly.JavaScript.ORDER_ATOMIC);
   var value_omin_ = Blockly.JavaScript.valueToCode(block, 'omin_', Blockly.JavaScript.ORDER_ATOMIC);
   var value_omax_ = Blockly.JavaScript.valueToCode(block, 'omax_', Blockly.JavaScript.ORDER_ATOMIC);
   var value_cmin_ = Blockly.JavaScript.valueToCode(block, 'cmin_', Blockly.JavaScript.ORDER_ATOMIC);
   var value_cmax_ = Blockly.JavaScript.valueToCode(block, 'cmax_', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = '(('+value_source_+' - ('+value_omin_+')) * (1/(('+value_omax_+')-('+value_omin_+')))) * (('+value_cmax_+')-('+value_cmin_+')) + ('+value_cmin_+')';
+  var code = '((' + value_source_ + ' - (' + value_omin_ + ')) * (1/((' + value_omax_ + ')-(' + value_omin_ + ')))) * ((' + value_cmax_ + ')-(' + value_cmin_ + ')) + (' + value_cmin_ + ')';
   return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['demo_tracking'] = function (block) {
+  var dropdown_type_ = block.getFieldValue('type_');
+  var code;
+  if (dropdown_type_ == 'color') {
+    code = 'var canvas = document.getElementById("demo-area-08-canvas");\n' +
+      'var context = canvas.getContext("2d");\n' +
+      'tracking.ColorTracker.registerColor("red", function(r, g, b) {\n' +
+      '  if (r > 150 && g < 50 && b < 50) {\n' +
+      '    return true;\n' +
+      '  }\n' +
+      '  return false;\n' +
+      '});\n' +
+      'tracking.ColorTracker.registerColor("black", function(r, g, b) {\n' +
+      '  if (r < 50 && g < 50 && b < 50) {\n' +
+      '    return true;\n' +
+      '  }\n' +
+      '  return false;\n' +
+      '});\n' +
+      'tracking.ColorTracker.registerColor("white", function(r, g, b) {\n' +
+      '  if (r > 200 && g > 200 && b > 200) {\n' +
+      '    return true;\n' +
+      '  }\n' +
+      '  return false;\n' +
+      '});\n' +
+      'tracking.ColorTracker.registerColor("green", function(r, g, b) {\n' +
+      '  if (r < 50 && g > 150 && b < 50) {\n' +
+      '    return true;\n' +
+      '  }\n' +
+      '  return false;\n' +
+      '});\n\n' +
+      'var myTracker = new tracking.ColorTracker(["magenta", "cyan", "yellow", "red", "black", "white", "green"]);\n' +
+      'var storkColor = {\n' +
+      '  magenta: "#f09",\n' +
+      '  red: "#f00",\n' +
+      '  cyan: "#0ff",\n' +
+      '  yellow: "#ff0",\n' +
+      '  black: "#000",\n' +
+      '  white: "#fff",\n' +
+      '  green: "#0c0"\n' +
+      '};\n\n';
+  } else if (dropdown_type_ == 'face') {
+    code = 'var canvas = document.getElementById("demo-area-08-canvas");\n' +
+      'var context = canvas.getContext("2d");\n\n' +
+      'var myTracker = new tracking.ObjectTracker("face");\n' +
+      'myTracker.setInitialScale(3);\n' +
+      'myTracker.setStepSize(1.5);\n' +
+      'myTracker.setEdgesDensity(0.1);\n\n';
+  }
+  return code;
+};
+
+Blockly.JavaScript['demo_tracking_on'] = function (block) {
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var code = 'myTracker.on("track", function(event) {\n' +
+    '  if (event.data.length === 0) {\n' +
+    '    context.clearRect(0, 0, canvas.width, canvas.height);\n' +
+    '  } else {\n' +
+    '    context.clearRect(0, 0, canvas.width, canvas.height);\n' +
+    '    event.data.forEach(function(data) {\n' +
+    '    '+statements_do_+
+    '      if(data.color){\n' +
+    '        context.strokeStyle = storkColor[data.color];\n' +
+    '      }else{\n' +
+    '        context.strokeStyle = "#f00";\n' +
+    '      }\n' +
+    '      context.lineWidth = 5;\n' +
+    '      context.strokeRect(data.x, data.y, data.width, data.height-30);\n' +
+    '      context.font = "11px Helvetica";\n' +
+    '      context.fillStyle = "#fff";\n' +
+    '    });\n' +
+    '  }\n' +
+    '});\n' +
+    'var trackerTask = tracking.track("#demo-area-08-video", myTracker, {\n' +
+    '  camera: true\n' +
+    '});\n\n' +
+    'trackerTask.run();\n';
+  return code;
+};
+
+Blockly.JavaScript['demo_tracking_run'] = function (block) {
+  var code = 'trackerTask.run();\n';
+  return code;
+};
+
+Blockly.JavaScript['demo_tracking_stop'] = function (block) {
+  var code = 'context.clearRect(0, 0, canvas.width, canvas.height);\n' +
+    'trackerTask.stop();\n';
+  return code;
+};
+
+Blockly.JavaScript['demo_tracking_val'] = function (block) {
+  var dropdown_val_ = block.getFieldValue('val_');
+  var code = 'data.' + dropdown_val_;
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 
@@ -416,13 +512,13 @@ Blockly.JavaScript['board_ready'] = function (block) {
   var checkbox_check_ = block.getFieldValue('check_');
   var dropdown_rate_ = block.getFieldValue('rate_');
   var statements_callbacks_ = Blockly.JavaScript.statementToCode(block, 'callbacks_');
-  
+
   var type;
-  if(checkbox_type_=='1'){
+  if (checkbox_type_ == '1') {
     type = 'boardReady(' + value_device_ + ', function (board) {\n';
-  }else if(checkbox_type_=='2'){
+  } else if (checkbox_type_ == '2') {
     type = 'boardReady({ transport: \'serial\', path:' + value_device_ + ' }, function (board) {\n';
-  }else if(checkbox_type_=='3'){
+  } else if (checkbox_type_ == '3') {
     type = 'boardReady({ transport: \'bluetooth\', address:' + value_device_ + ' }, function (board) {\n';
   }
 

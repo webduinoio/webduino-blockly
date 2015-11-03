@@ -576,3 +576,24 @@ td#copyCode div{
   outline:none;
   margin:0 10px 10px 0;
 }
+#demo-area-08-content{
+  position: relative;
+  width:100%;
+  max-width:300px;
+  height:200px;
+}
+#demo-area-08-video{
+  top:0;
+  left:0;
+  position: absolute;
+  width:100%;
+  height:100%;
+}
+
+#demo-area-08-canvas{
+  top:0;
+  left:0;
+  position: absolute;
+  width:100%;
+  height:100%;
+}

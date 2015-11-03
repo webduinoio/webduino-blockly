@@ -389,11 +389,85 @@ Blockly.Blocks['demo_youtube_status'] = {
 Blockly.Blocks['demo_youtube_id'] = {
   init: function () {
     this.appendValueInput("id_")
-      .appendField("更換")
+      .appendField(Blockly.Msg.DEMO_YOUTUBE_CHANGEID,"更換")
       .appendField(new Blockly.FieldVariable("youtube"), "name_")
-      .appendField("影片，要更換的 id：");
+      .appendField(Blockly.Msg.DEMO_YOUTUBE_CHANGEID_ID,"影片，要更換的 id：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_tracking'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.DEMO_TRACKING_SET,"載入辨識")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.DEMO_TRACKING_COLOR, "color"],
+        [Blockly.Msg.DEMO_TRACKING_FACE, "face"]
+      ]), "type_")
+      .appendField(Blockly.Msg.DEMO_TRACKING_MODULE,"模組");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_tracking_on'] = {
+  init: function () {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.DEMO_TRACKING_START,"開始辨識");
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.DEMO_TRACKING_DO,"執行 ( 可不填 )");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_tracking_run'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.DEMO_TRACKING_RUN,"繼續辨識");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_tracking_stop'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.DEMO_TRACKING_STOP,"停止辨識");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_tracking_val'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.DEMO_TRACKING_VAL,"辨識數值")
+      .appendField(new Blockly.FieldDropdown([
+        ["x", "x"],
+        ["y", "y"],
+        ["width", "width"],
+        ["height", "height"],
+        [Blockly.Msg.DEMO_TRACKING_VALTOTAL, "total"],
+        [Blockly.Msg.DEMO_TRACKING_VALCOLOR,  "color"]
+      ]), "val_");
+    this.setOutput(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
     this.setHelpUrl('http://www.example.com/');

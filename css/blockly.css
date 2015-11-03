@@ -223,7 +223,7 @@
   padding-left:5px!important;
 }
 .blocklyTreeRoot>div>div>div>div>.blocklyTreeRow{
-  padding-left:15px!important;
+  padding-left:5px!important;
 }
 .blocklyToolboxDiv[dir="RTL"] .blocklyTreeRow {
   padding-right: 0;
