@@ -240,6 +240,7 @@ button {
 .check{
   display:inline-block;
   background-position: -107px 0px;
+  opacity:.8;
 }
 
 .check.board-online{
