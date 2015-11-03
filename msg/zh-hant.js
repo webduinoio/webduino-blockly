@@ -1,5 +1,5 @@
 var MSG = {
-  update: "update 2015.10.20",
+  update: "update 2015.11.04",
   title: "Webduino Blockly 編輯器",
   gotoTutorials: "教學範例",
   gotoWebSite: "官方網站",

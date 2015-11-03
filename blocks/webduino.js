@@ -2735,10 +2735,14 @@ Blockly.Blocks['joystick_off'] = {
 };
 
 
-Blockly.Blocks['document_onkeydown'] = {
+Blockly.Blocks['document_keyboard'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_KEYBOARD, "開始偵測 鍵盤行為");
+      .appendField(Blockly.Msg.WEBDUINO_KEYBOARD, "開始偵測 鍵盤")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_KEYBOARD_KEYDOWN, "onkeydown"],
+        [Blockly.Msg.WEBDUINO_KEYBOARD_KEYUP, "onkeyup"]
+      ]), "event_")
     this.appendStatementInput("do_");
     this.setInputsInline(false);
     this.setPreviousStatement(true);
@@ -2749,7 +2753,7 @@ Blockly.Blocks['document_onkeydown'] = {
   }
 };
 
-Blockly.Blocks['document_onkeydown_stop'] = {
+Blockly.Blocks['document_keyboard_stop'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_KEYBOARD_STOP, "停止偵測 鍵盤行為");
@@ -2762,10 +2766,10 @@ Blockly.Blocks['document_onkeydown_stop'] = {
   }
 };
 
-Blockly.Blocks['document_alphabet_keycode'] = {
+Blockly.Blocks['document_keycode'] = {
   init: function () {
     this.appendStatementInput("do_")
-      .appendField(Blockly.Msg.WEBDUINO_KEYBOARD_KEYDOWN, "如果按下")
+      .appendField(Blockly.Msg.WEBDUINO_KEYBOARD_KEY, "如果是")
       .appendField(new Blockly.FieldDropdown([
         ["A", "65"],
         ["B", "66"],
@@ -2792,23 +2796,7 @@ Blockly.Blocks['document_alphabet_keycode'] = {
         ["W", "87"],
         ["X", "88"],
         ["Y", "89"],
-        ["Z", "90"]
-      ]), "keycode_")
-      .appendField(Blockly.Msg.WEBDUINO_KEYBOARD_DO, "，執行：");
-    this.setInputsInline(false);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setTooltip('');
-    this.setColour(35);
-    this.setHelpUrl('http://www.example.com/');
-  }
-};
-
-Blockly.Blocks['document_other_keycode'] = {
-  init: function () {
-    this.appendStatementInput("do_")
-      .appendField(Blockly.Msg.WEBDUINO_KEYBOARD_KEYDOWN, "如果按下")
-      .appendField(new Blockly.FieldDropdown([
+        ["Z", "90"],
         [Blockly.Msg.WEBDUINO_KEYBOARD_SPACE, "32"],
         ["enter", "13"],
         [Blockly.Msg.WEBDUINO_KEYBOARD_UP, , "38"],

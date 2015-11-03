@@ -1711,11 +1711,12 @@ Blockly.JavaScript['joystick_off'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['document_onkeydown'] = function (block) {
+Blockly.JavaScript['document_keyboard'] = function (block) {
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var dropdown_event_ = block.getFieldValue('event_');
   var e = Blockly.JavaScript.variableDB_.getDistinctName(
     'e', Blockly.Variables.NAME_TYPE);
-  var code = 'document.onkeydown = function(' + e + '){\n' +
+  var code = 'document.'+dropdown_event_+' = function(' + e + '){\n' +
     '  console.log(' + e + '.keyCode);\n' +
     '  switch(' + e + '.keyCode){\n' +
     statements_do_ +
@@ -1724,21 +1725,13 @@ Blockly.JavaScript['document_onkeydown'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['document_onkeydown_stop'] = function (block) {
-  var code = 'document.onkeydown = function(){};\n';
+Blockly.JavaScript['document_keyboard_stop'] = function (block) {
+  var code = 'document.onkeydown = function(){};\n'+
+            'document.onkeyup = function(){};\n';
   return code;
 };
 
-Blockly.JavaScript['document_alphabet_keycode'] = function (block) {
-  var dropdown_keycode_ = block.getFieldValue('keycode_');
-  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = '  case ' + dropdown_keycode_ + ':\n' +
-    '  ' + statements_do_ +
-    '  break;\n';
-  return code;
-};
-
-Blockly.JavaScript['document_other_keycode'] = function (block) {
+Blockly.JavaScript['document_keycode'] = function (block) {
   var dropdown_keycode_ = block.getFieldValue('keycode_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
   var code = '  case ' + dropdown_keycode_ + ':\n' +

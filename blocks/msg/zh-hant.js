@@ -129,9 +129,11 @@ Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOPCONTENT = "的不停重複";
 
 // Keyboard
 
-Blockly.Msg.WEBDUINO_KEYBOARD = "開始偵測 鍵盤行為";
+Blockly.Msg.WEBDUINO_KEYBOARD = "開始偵測 鍵盤";
+Blockly.Msg.WEBDUINO_KEYBOARD_KEYDOWN = "按下";
+Blockly.Msg.WEBDUINO_KEYBOARD_KEYUP = "放開";
 Blockly.Msg.WEBDUINO_KEYBOARD_STOP = "停止偵測 鍵盤行為";
-Blockly.Msg.WEBDUINO_KEYBOARD_KEYDOWN = "如果按下";
+Blockly.Msg.WEBDUINO_KEYBOARD_KEY = "按鍵";
 Blockly.Msg.WEBDUINO_KEYBOARD_DO = "，執行";
 Blockly.Msg.WEBDUINO_KEYBOARD_SPACE = "空白鍵";
 Blockly.Msg.WEBDUINO_KEYBOARD_UP = "上";
