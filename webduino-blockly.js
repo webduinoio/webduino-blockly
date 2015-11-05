@@ -8,7 +8,8 @@
 
   'use strict';
 
-  var boards = [];
+  var boards = [],
+    undef = void 0;
 
   function boardReady(options, callback) {
     var board;
@@ -23,14 +24,14 @@
     } else {
       board = new webduino.Arduino(options);
     }
-    board.on(webduino.BoardEvent.READY, callback.bind(null, board));
+    board.on(webduino.BoardEvent.READY, callback.bind(undef));
 
     boards.push(board);
   }
 
   function boardError(device, callback) {
     var board = new webduino.WebArduino(device);
-    board.on(webduino.BoardEvent.ERROR, callback.bind(null, board));
+    board.on(webduino.BoardEvent.ERROR, callback.bind(undef));
   }
 
   function disconnectBoards(callback) {
@@ -48,10 +49,10 @@
     return new Promise(function (resolve, reject) {
       try {
         if (board._transport.isOpen) {
-          board._transport.on('close', function () {
+          board.on(webduino.BoardEvent.DISCONNECT, function () {
             resolve(true);
           });
-          board.close();
+          board.disconnect();
         } else {
           resolve(true);
         }
