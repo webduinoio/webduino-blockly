@@ -1764,7 +1764,11 @@ Blockly.Blocks['data_firebase_read'] = {
       .appendField(new Blockly.FieldVariable("myFirebase"), "name_")
       .appendField(Blockly.Msg.WEBDUINO_FIREBASE_ATTR, "的屬性")
       .appendField(new Blockly.FieldTextInput("..."), "attr_")
-      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_TO, "到");
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_TO, "到")
+      .appendField(new Blockly.FieldDropdown([
+        ["完整的內容", '1'],
+        ["最後更新的值", '2']
+      ]), "type_");
     this.appendStatementInput("do_")
       .appendField(Blockly.Msg.WEBDUINO_FIREBASE_DO, "執行");
     this.setPreviousStatement(true);

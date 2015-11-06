@@ -1023,9 +1023,12 @@ Blockly.JavaScript['data_firebase_data'] = function (block) {
 Blockly.JavaScript['data_firebase_read'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var text_attr_ = block.getFieldValue('attr_');
-  var value_read_ = Blockly.JavaScript.valueToCode(block, 'read_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_read_ = Blockly.JavaScript.valueToCode(block, 'read_', Blockly.JavaScript.ORDER_ATOMIC); 
+  var dropdown_type_ = block.getFieldValue('type_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = variable_name_ + '.on("value", function(snapshot) {\n' +
+  var code;
+  if(dropdown_type_==1){
+    code = variable_name_ + '.on("value", function(snapshot) {\n' +
     '   ' + value_read_ + '=[];\n' +
     '     snapshot.forEach(function(data) {\n' +
     '     ' + value_read_ + '.push(data.val().' + text_attr_ + ');\n' +
@@ -1034,6 +1037,18 @@ Blockly.JavaScript['data_firebase_read'] = function (block) {
     ' }, function (errorObject) {\n' +
     '   console.log("The read failed: " + errorObject.code);\n' +
     '});\n';
+  }else{
+    code = variable_name_ + '.on("value", function(snapshot) {\n' +
+    '   ' + value_read_ + '=[];\n' +
+    '     snapshot.forEach(function(data) {\n' +
+    '     ' + value_read_ + '.push(data.val().' + text_attr_ + ');\n' +
+    '   });\n' +
+    '   ' + value_read_ + '='+value_read_+'['+value_read_+'.length-1];\n' +
+    '   ' + statements_do_ + '\n' +
+    ' }, function (errorObject) {\n' +
+    '   console.log("The read failed: " + errorObject.code);\n' +
+    '});\n';
+  }
   return code;
 };
 
