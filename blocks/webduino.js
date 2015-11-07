@@ -653,12 +653,12 @@ Blockly.Blocks['board_ready'] = {
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#tzhs2o
 Blockly.Blocks['board_error'] = {
   init: function () {
-    this.appendValueInput("device_")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_ERROR_IF);
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_ERROR);
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_IF_ERROR);
     this.appendStatementInput("callbacks_")
       .appendField(Blockly.Msg.WEBDUINO_BOARD_ERROR_DO, "執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }

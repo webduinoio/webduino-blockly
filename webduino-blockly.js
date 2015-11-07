@@ -29,11 +29,6 @@
     boards.push(board);
   }
 
-  function boardError(device, callback) {
-    var board = new webduino.WebArduino(device);
-    board.on(webduino.BoardEvent.ERROR, callback.bind(undef));
-  }
-
   function disconnectBoards(callback) {
     var promises = boards.map(whenClosed);
     Promise.all(promises).then(function (results) {
@@ -251,7 +246,6 @@
   }
 
   scope.boardReady = boardReady;
-  scope.boardError = boardError;
   scope.disconnectBoards = disconnectBoards;
   scope.getBoards = getBoards;
   scope.getLed = getLed;

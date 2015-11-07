@@ -161,8 +161,7 @@ Blockly.Msg.WEBDUINO_QUERY_PIN = "偵測開發板";
 Blockly.Msg.WEBDUINO_QUERY_PIN_NUM = "號 腳位";
 Blockly.Msg.WEBDUINO_PIN_DO = "執行";
 Blockly.Msg.WEBDUINO_PIN_STATE = "腳位狀態";
-Blockly.Msg.WEBDUINO_BOARD_ERROR_IF = "如果";
-Blockly.Msg.WEBDUINO_BOARD_ERROR = "斷線";
+Blockly.Msg.WEBDUINO_BOARD_IF_ERROR = "如果斷線";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "執行";
 Blockly.Msg.WEBDUINO_BOARD_SAMPLING = "  類比取樣";
 

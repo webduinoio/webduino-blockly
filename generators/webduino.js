@@ -553,11 +553,10 @@ Blockly.JavaScript['board_ready'] = function (block) {
 };
 
 Blockly.JavaScript['board_error'] = function (block) {
-  var value_device_ = Blockly.JavaScript.valueToCode(block, 'device_', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_callbacks_ = Blockly.JavaScript.statementToCode(block, 'callbacks_');
-  var code = 'boardError(' + value_device_ + ', function (board) {\n' +
+  var code = "board.on('error', function (err) {\n  board.error = err;\n" +
     statements_callbacks_ +
-    '});\n';
+    "});\n";
   return code;
 };
 

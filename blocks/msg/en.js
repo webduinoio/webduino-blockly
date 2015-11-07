@@ -145,8 +145,7 @@ Blockly.Msg.WEBDUINO_QUERY_PIN = "Query Pin:";
 Blockly.Msg.WEBDUINO_QUERY_PIN_NUM = "'s state";
 Blockly.Msg.WEBDUINO_PIN_DO = "Do:";
 Blockly.Msg.WEBDUINO_PIN_STATE = "Pin state";
-Blockly.Msg.WEBDUINO_BOARD_ERROR_IF = "If";
-Blockly.Msg.WEBDUINO_BOARD_ERROR = "offine";
+Blockly.Msg.WEBDUINO_BOARD_IF_ERROR = "When board goes offline";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "do:";
 Blockly.Msg.WEBDUINO_BOARD_SAMPLING = "  Sampling";
 
