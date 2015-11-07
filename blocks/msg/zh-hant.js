@@ -127,6 +127,14 @@ Blockly.Msg.WEBDUINO_STATUS_FOREVER_NAME = "名稱";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOP = "停止";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOPCONTENT = "的不停重複";
 
+// Text logic
+
+Blockly.Msg.TEXTLOGIC_INSIDE = "裡面";
+Blockly.Msg.TEXTLOGIC_HAS = "包含";
+Blockly.Msg.TEXTLOGIC_NO = "沒有";
+Blockly.Msg.TEXTLOGIC_TEXT = "文字";
+
+
 // Keyboard
 
 Blockly.Msg.WEBDUINO_KEYBOARD = "開始偵測 鍵盤";
@@ -150,6 +158,7 @@ Blockly.Msg.WEBDUINO_DELAY = "延遲";
 Blockly.Msg.WEBDUINO_DELAY_SECONDS = "秒";
 
 // Board
+
 Blockly.Msg.WEBDUINO_BOARD = "開發板";
 Blockly.Msg.WEBDUINO_BOARD_WIFI = "Wi-Fi";
 Blockly.Msg.WEBDUINO_BOARD_SERIAL = "序列埠";

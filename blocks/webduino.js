@@ -408,8 +408,8 @@ Blockly.Blocks['demo_tracking'] = {
     this.appendDummyInput()
       .appendField(Blockly.Msg.DEMO_TRACKING, "追蹤")
       .appendField(new Blockly.FieldDropdown([
-        [Blockly.Msg.DEMO_TRACKING_FACE,  "face"],
-        [Blockly.Msg.DEMO_TRACKING_COLOR,  "color"]
+        [Blockly.Msg.DEMO_TRACKING_FACE, "face"],
+        [Blockly.Msg.DEMO_TRACKING_COLOR, "color"]
       ]), "type_");
     this.appendStatementInput("do_")
       .appendField(Blockly.Msg.DEMO_TRACKING_DO, "追蹤成功時，將會執行");
@@ -426,8 +426,8 @@ Blockly.Blocks['demo_tracking_action'] = {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("track"), "name_")
       .appendField(new Blockly.FieldDropdown([
-        [Blockly.Msg.DEMO_TRACKING_RUN,  "run"],
-        [Blockly.Msg.DEMO_TRACKING_STOP,  "stop"]
+        [Blockly.Msg.DEMO_TRACKING_RUN, "run"],
+        [Blockly.Msg.DEMO_TRACKING_STOP, "stop"]
       ]), "action_")
       .appendField(Blockly.Msg.DEMO_TRACKING_TRACK, "追蹤");
     this.setPreviousStatement(true);
@@ -2840,6 +2840,28 @@ Blockly.Blocks['document_keycode'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(35);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#k2cao2
+Blockly.Blocks['text_indexof'] = {
+  init: function () {
+    this.appendValueInput("input_")
+      .setCheck("String");
+    this.appendValueInput("indexof_")
+      .setCheck("String")
+      .appendField(Blockly.Msg.TEXTLOGIC_INSIDE, "裡面")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.TEXTLOGIC_HAS, "!=-1"],
+        [Blockly.Msg.TEXTLOGIC_NO,  "==-1"]
+      ]), "state_")
+      .appendField(Blockly.Msg.TEXTLOGIC_TEXT, "文字");
+    this.setInputsInline(true);
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(210);
     this.setHelpUrl('http://www.example.com/');
   }
 };

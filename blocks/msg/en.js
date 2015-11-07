@@ -122,6 +122,13 @@ Blockly.Msg.WEBDUINO_KEYBOARD_DOWN = "down";
 Blockly.Msg.WEBDUINO_KEYBOARD_LEFT = "left";
 Blockly.Msg.WEBDUINO_KEYBOARD_RIGHT = "right";
 
+// Text logic
+
+Blockly.Msg.TEXTLOGIC_INSIDE = "";
+Blockly.Msg.TEXTLOGIC_HAS = "Contains";
+Blockly.Msg.TEXTLOGIC_NO = "Does not contain";
+Blockly.Msg.TEXTLOGIC_TEXT = "words";
+
 Blockly.Msg.WEBDUINO_STATUS_REPEAT = "Status Change, repeat:";
 Blockly.Msg.WEBDUINO_STATUS_NUM = "";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_STATUSNUM = "Status ";
