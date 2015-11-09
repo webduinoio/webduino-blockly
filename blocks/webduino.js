@@ -788,11 +788,11 @@ Blockly.Blocks['led_intensity'] = {
   }
 };
 
+
 //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#u7a4oh
 Blockly.Blocks['led_callback'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_LED_IF, "如果")
       .appendField(new Blockly.FieldVariable("led"), "name_")
       .appendField(Blockly.Msg.WEBDUINO_LED_STATE_IS, " 的狀態為：")
       .appendField(new Blockly.FieldDropdown([
@@ -801,6 +801,42 @@ Blockly.Blocks['led_callback'] = {
       ]), "state_");
     this.appendStatementInput("do_")
       .appendField(Blockly.Msg.WEBDUINO_LED_STATE_DO, "執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+
+Blockly.Blocks['led_blink'] = {
+  init: function() {
+    this.appendValueInput("time_")
+        .setCheck("String")
+        .appendField(new Blockly.FieldVariable("led"), "name_")
+        .appendField(Blockly.Msg.WEBDUINO_LED_BLINK, "閃爍，閃爍時間");
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.WEBDUINO_LED_BLINK_SEC, "秒");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+
+Blockly.Blocks['led_blink_callback'] = {
+  init: function () {
+    this.appendValueInput("time_")
+        .setCheck("String")
+        .appendField(new Blockly.FieldVariable("led"), "name_")
+        .appendField(Blockly.Msg.WEBDUINO_LED_BLINK, "閃爍，閃爍時間");
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.WEBDUINO_LED_BLINK_SEC, "秒");
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_LED_BLINK_DO, "每次閃爍執行");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
