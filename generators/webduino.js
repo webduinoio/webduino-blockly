@@ -643,6 +643,13 @@ Blockly.JavaScript['led_toggle'] = function (block) {
   return code;
 };
 
+Blockly.JavaScript['led_blink'] = function(block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var value_time_ = Blockly.JavaScript.valueToCode(block, 'time_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = variable_name_+'.blink('+value_time_+'*1000);\n';
+  return code;
+};
+
 
 Blockly.JavaScript['led_intensity'] = function (block) {
   var variable_led_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('led_'), Blockly.Variables.NAME_TYPE);
@@ -657,6 +664,15 @@ Blockly.JavaScript['led_callback'] = function (block) {
   var dropdown_state_ = block.getFieldValue('state_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
   var code = variable_name_ + '.' + dropdown_state_ + '(function(){\n  ' + statements_do_ + '\n});\n';
+  return code;
+};
+
+
+Blockly.JavaScript['led_blink_callback'] = function (block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var value_time_ = Blockly.JavaScript.valueToCode(block, 'time_', Blockly.JavaScript.ORDER_ATOMIC);
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var code = variable_name_ + '.blink('+value_time_*1000+', function(){\n  ' + statements_do_ + '\n});\n';
   return code;
 };
 

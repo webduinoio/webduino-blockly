@@ -552,6 +552,21 @@
       <block type="led_state">
         <field name="led_">led</field>
       </block>
+      <block type="led_callback"></block>
+      <block type="led_blink">
+        <value name="time_">
+          <block type="math_number">
+            <field name="NUM">0.5</field>
+          </block>
+        </value>
+      </block>
+      <block type="led_blink_callback">
+        <value name="time_">
+          <block type="math_number">
+            <field name="NUM">0.5</field>
+          </block>
+        </value>
+      </block>
       <block type="led_toggle">
         <field name="led_">led</field>
       </block>
@@ -563,7 +578,6 @@
           </block>
         </value>
       </block>
-      <block type="led_callback"></block>
     </category>
     <category id="catRGBLed">
       <block type="variables_set">
