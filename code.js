@@ -530,7 +530,7 @@ Code.init = function () {
       colour: '#ccc',
       snap: true
     },
-    media: baseUrl + '/components/blockly/media/',
+    media: baseUrl + '/components/blockly-src/media/',
     rtl: rtl,
     toolbox: toolbox,
     zoom: {
@@ -982,7 +982,7 @@ Blockly.JavaScript.depth = 0;
 // Load the Code demo's language strings.
 document.write('<script src="' + baseUrl + '/msg/' + Code.LANG + '.js"></script>\n');
 // Load Blockly's language strings.
-document.write('<script src="' + baseUrl + '/components/blockly/msg/js/' + Code.LANG + '.js"></script>\n');
+document.write('<script src="' + baseUrl + '/components/blockly-src/msg/js/' + Code.LANG + '.js"></script>\n');
 document.write('<script src="' + baseUrl + '/blocks/msg/' + Code.LANG + '.js"></script>\n');
 
 if (Code.PAGE !== 'index') {
