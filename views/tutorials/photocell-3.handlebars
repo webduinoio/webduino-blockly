@@ -4,6 +4,19 @@
   #show{
     font-size:60px;
   }
+  #light{
+    width:60%;
+  }
+  #light img{
+    width:100%;
+    display:none;
+  }
+  #light.off img:first-child{
+    display:inline-block;
+  }
+  #light.on img:last-child{
+    display:inline-block;
+  }
 </style>
 
 <header>
@@ -19,6 +32,10 @@
   <a href="http://bin.webduino.io/jiyis/6/edit?html,js,output" id="linkToBin" target="_blank"><img src="media/dave.min.svg">{{linkToBin}}</a>
   <div id="demoDescription">{{demoDescription}}</div>
   <div id="show">0</div>
+  <div id="light" class="off">
+  <img src='media/off.png'></img>
+  <img src='media/on.png'></img>
+</div>
 </div>
 </div>
 <table id="tutorials-table" class="nav">
@@ -65,6 +82,13 @@
 
 <xml id="toolbox" style="display: none">
   <category id="catVariables" custom="VARIABLE"></category>
+  <category id="catLogic">
+    <block type="controls_if"></block>
+    <block type="logic_compare"></block>
+  </category>
+  <category id="catMath">
+    <block type="math_number"></block>
+  </category>
   <sep></sep>
   <sep></sep>
   <category id="catBoard">
@@ -74,6 +98,19 @@
       </value>
     </block>
   </category>
+    <category id="catLed">
+      <block type="variables_set">
+        <field name="VAR">led</field>
+        <value name="VALUE">
+          <block type="led_new">
+            <field name="pin_">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="led_state">
+        <field name="led_">led</field>
+      </block>
+    </category>
     <category id="catPhotocell">
       <block type="variables_set">
         <field name="VAR">photocell</field>
@@ -111,6 +148,7 @@
           </block>
         </value>
       </block>
+    <block type="light"></block>
   </category>
   <sep></sep>
 </xml>
