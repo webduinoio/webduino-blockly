@@ -694,6 +694,15 @@ Blockly.JavaScript['rgbled_setcolor'] = function (block) {
 };
 
 
+Blockly.JavaScript['rgbled_setcolor_callback'] = function (block) {
+  var variable_rgbled_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('rgbled_'), Blockly.Variables.NAME_TYPE);
+  var value_color_ = Blockly.JavaScript.valueToCode(block, 'color_', Blockly.JavaScript.ORDER_NONE);
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var code = variable_rgbled_ + '.setColor(' + value_color_ + ' , function(){\n  ' + statements_do_ + '\n});\n';
+  return code;
+};
+
+
 Blockly.JavaScript['car_new'] = function (block) {
   var dropdown_f_ = block.getFieldValue('f_');
   var dropdown_b_ = block.getFieldValue('b_');
