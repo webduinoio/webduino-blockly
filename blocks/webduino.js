@@ -896,6 +896,21 @@ Blockly.Blocks['rgbled_setcolor'] = {
   }
 };
 
+Blockly.Blocks['rgbled_setcolor_callback'] = {
+  init: function () {
+    this.appendValueInput("color_")
+      .appendField(new Blockly.FieldVariable(" "), "rgbled_")
+      .appendField(Blockly.Msg.WEBDUINO_RGBLED_SETCOLOR, "set color");
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_LED_STATE_DO, "執行：");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 Blockly.Blocks['car_new'] = {
   init: function () {
     this.appendDummyInput()
