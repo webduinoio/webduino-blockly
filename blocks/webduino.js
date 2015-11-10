@@ -560,6 +560,26 @@ Blockly.Blocks['math_value_conversion'] = {
 };
 
 
+Blockly.Blocks['number_to_string'] = {
+  init: function () {
+    this.appendValueInput("number_")
+      .setCheck("Number")
+      .appendField(Blockly.Msg.NUMBER_CONVERT, "轉換為")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.NUMBER_BINARY, "2"],
+        [Blockly.Msg.NUMBER_OCTAL, "8"],
+        [Blockly.Msg.NUMBER_DECTIMAL, ""],
+        [Blockly.Msg.NUMBER_HEX, "16"]
+      ]), "string_")
+      .appendField(Blockly.Msg.NUMBER_STRING, "字串");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(160);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+
 /*
                              o8o              
                              `"'              
@@ -811,13 +831,13 @@ Blockly.Blocks['led_callback'] = {
 
 
 Blockly.Blocks['led_blink'] = {
-  init: function() {
+  init: function () {
     this.appendValueInput("time_")
-        .setCheck("String")
-        .appendField(new Blockly.FieldVariable("led"), "name_")
-        .appendField(Blockly.Msg.WEBDUINO_LED_BLINK, "閃爍，閃爍時間");
+      .setCheck("String")
+      .appendField(new Blockly.FieldVariable("led"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_LED_BLINK, "閃爍，閃爍時間");
     this.appendDummyInput()
-        .appendField(Blockly.Msg.WEBDUINO_LED_BLINK_SEC, "秒");
+      .appendField(Blockly.Msg.WEBDUINO_LED_BLINK_SEC, "秒");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -830,11 +850,11 @@ Blockly.Blocks['led_blink'] = {
 Blockly.Blocks['led_blink_callback'] = {
   init: function () {
     this.appendValueInput("time_")
-        .setCheck("String")
-        .appendField(new Blockly.FieldVariable("led"), "name_")
-        .appendField(Blockly.Msg.WEBDUINO_LED_BLINK, "閃爍，閃爍時間");
+      .setCheck("String")
+      .appendField(new Blockly.FieldVariable("led"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_LED_BLINK, "閃爍，閃爍時間");
     this.appendDummyInput()
-        .appendField(Blockly.Msg.WEBDUINO_LED_BLINK_SEC, "秒");
+      .appendField(Blockly.Msg.WEBDUINO_LED_BLINK_SEC, "秒");
     this.appendStatementInput("do_")
       .appendField(Blockly.Msg.WEBDUINO_LED_BLINK_DO, "每次閃爍執行");
     this.setPreviousStatement(true);
@@ -2907,7 +2927,7 @@ Blockly.Blocks['text_indexof'] = {
       .appendField(Blockly.Msg.TEXTLOGIC_INSIDE, "裡面")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.TEXTLOGIC_HAS, "!=-1"],
-        [Blockly.Msg.TEXTLOGIC_NO,  "==-1"]
+        [Blockly.Msg.TEXTLOGIC_NO, "==-1"]
       ]), "state_")
       .appendField(Blockly.Msg.TEXTLOGIC_TEXT, "文字");
     this.setInputsInline(true);

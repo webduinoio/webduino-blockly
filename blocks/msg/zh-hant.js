@@ -20,6 +20,12 @@ Blockly.Msg.WEBDUINO_MATH_SCALE_OMIN = "(原始) 最小值";
 Blockly.Msg.WEBDUINO_MATH_SCALE_OMAX = "(原始) 最大值";
 Blockly.Msg.WEBDUINO_MATH_SCALE_CMIN = "(轉換後) 最小值";
 Blockly.Msg.WEBDUINO_MATH_SCALE_CMAX = "(轉換後) 最大值";
+Blockly.Msg.NUMBER_CONVERT = "轉換為";
+Blockly.Msg.NUMBER_BINARY = "二進位";
+Blockly.Msg.NUMBER_OCTAL = "八進位";
+Blockly.Msg.NUMBER_DECTIMAL = "十進位";
+Blockly.Msg.NUMBER_HEX = "十六進位";
+Blockly.Msg.NUMBER_STRING = "字串";
 
 // Demo
 

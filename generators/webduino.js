@@ -336,9 +336,27 @@ Blockly.JavaScript['math_value_conversion'] = function (block) {
   var value_cmin_ = Blockly.JavaScript.valueToCode(block, 'cmin_', Blockly.JavaScript.ORDER_ATOMIC);
   var value_cmax_ = Blockly.JavaScript.valueToCode(block, 'cmax_', Blockly.JavaScript.ORDER_ATOMIC);
   var code = '((' + value_source_ + ' - (' + value_omin_ + ')) * (1/((' + value_omax_ + ')-(' + value_omin_ + ')))) * ((' + value_cmax_ + ')-(' + value_cmin_ + ')) + (' + value_cmin_ + ')';
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+
+Blockly.JavaScript['number_to_string'] = function (block) {
+  var value_number_ = Blockly.JavaScript.valueToCode(block, 'number_', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_string_ = block.getFieldValue('string_');
+  var code = '(' + value_number_ + ').toString(' + dropdown_string_ + ')';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+
+/*
+    .                                oooo        
+  .o8                                `888        
+.o888oo oooo d8b  .oooo.    .ooooo.   888  oooo  
+  888   `888""8P `P  )88b  d88' `"Y8  888 .8P'   
+  888    888      .oP"888  888        888888.    
+  888 .  888     d8(  888  888   .o8  888 `88b.  
+  "888" d888b    `Y888""8o `Y8bod8P' o888o o888o 
+*/
 
 Blockly.JavaScript['demo_tracking'] = function (block) {
   var value_var_ = Blockly.JavaScript.valueToCode(block, 'var_', Blockly.JavaScript.ORDER_ATOMIC);
@@ -643,10 +661,10 @@ Blockly.JavaScript['led_toggle'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['led_blink'] = function(block) {
+Blockly.JavaScript['led_blink'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var value_time_ = Blockly.JavaScript.valueToCode(block, 'time_', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = variable_name_+'.blink('+value_time_+'*1000);\n';
+  var code = variable_name_ + '.blink(' + value_time_ + '*1000);\n';
   return code;
 };
 
@@ -672,7 +690,7 @@ Blockly.JavaScript['led_blink_callback'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var value_time_ = Blockly.JavaScript.valueToCode(block, 'time_', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = variable_name_ + '.blink('+value_time_*1000+', function(){\n  ' + statements_do_ + '\n});\n';
+  var code = variable_name_ + '.blink(' + value_time_ * 1000 + ', function(){\n  ' + statements_do_ + '\n});\n';
   return code;
 };
 
@@ -1899,6 +1917,6 @@ Blockly.JavaScript['text_indexof'] = function (block) {
   var value_input_ = Blockly.JavaScript.valueToCode(block, 'input_', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_state_ = block.getFieldValue('state_');
   var value_indexof_ = Blockly.JavaScript.valueToCode(block, 'indexof_', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = value_input_+'.indexOf('+value_indexof_+')'+dropdown_state_;
+  var code = value_input_ + '.indexOf(' + value_indexof_ + ')' + dropdown_state_;
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };

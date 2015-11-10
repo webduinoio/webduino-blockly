@@ -14,6 +14,12 @@ Blockly.Msg.WEBDUINO_MATH_SCALE_OMIN = "(origin) min";
 Blockly.Msg.WEBDUINO_MATH_SCALE_OMAX = "(origin) max";
 Blockly.Msg.WEBDUINO_MATH_SCALE_CMIN = "(conversion) min";
 Blockly.Msg.WEBDUINO_MATH_SCALE_CMAX = "(conversion) max";
+Blockly.Msg.NUMBER_CONVERT = "convert to";
+Blockly.Msg.NUMBER_BINARY = "Binary";
+Blockly.Msg.NUMBER_OCTAL = "Octal";
+Blockly.Msg.NUMBER_DECTIMAL = "Dectimal";
+Blockly.Msg.NUMBER_HEX = "Hexadecimal";
+Blockly.Msg.NUMBER_STRING = "string";
 
 // Demo
 
