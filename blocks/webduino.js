@@ -1901,7 +1901,13 @@ Blockly.Blocks[Blockly.Msg.WEBDUINO_TESTCAR_NEW, 'car_test_new'] = {
         ["10", "10"],
         ["11", "11"],
         ["12", "12"],
-        ["13", "13"]
+        ["13", "13"],
+        ["14 ( A0 )", "14"],
+        ["15 ( A1 )", "15"],
+        ["16 ( A2 )", "16"],
+        ["17 ( A3 )", "17"],
+        ["18 ( A4 )", "18"],
+        ["19 ( A5 )", "19"]
       ]), "rf_")
       .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINRB, "右後")
       .appendField(new Blockly.FieldDropdown([
@@ -1916,7 +1922,13 @@ Blockly.Blocks[Blockly.Msg.WEBDUINO_TESTCAR_NEW, 'car_test_new'] = {
         ["10", "10"],
         ["11", "11"],
         ["12", "12"],
-        ["13", "13"]
+        ["13", "13"],
+        ["14 ( A0 )", "14"],
+        ["15 ( A1 )", "15"],
+        ["16 ( A2 )", "16"],
+        ["17 ( A3 )", "17"],
+        ["18 ( A4 )", "18"],
+        ["19 ( A5 )", "19"]
       ]), "rb_")
       .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINLF, "左前")
       .appendField(new Blockly.FieldDropdown([
@@ -1931,7 +1943,13 @@ Blockly.Blocks[Blockly.Msg.WEBDUINO_TESTCAR_NEW, 'car_test_new'] = {
         ["10", "10"],
         ["11", "11"],
         ["12", "12"],
-        ["13", "13"]
+        ["13", "13"],
+        ["14 ( A0 )", "14"],
+        ["15 ( A1 )", "15"],
+        ["16 ( A2 )", "16"],
+        ["17 ( A3 )", "17"],
+        ["18 ( A4 )", "18"],
+        ["19 ( A5 )", "19"]
       ]), "lf_")
       .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINLB, "左後")
       .appendField(new Blockly.FieldDropdown([
@@ -1946,7 +1964,13 @@ Blockly.Blocks[Blockly.Msg.WEBDUINO_TESTCAR_NEW, 'car_test_new'] = {
         ["10", "10"],
         ["11", "11"],
         ["12", "12"],
-        ["13", "13"]
+        ["13", "13"],
+        ["14 ( A0 )", "14"],
+        ["15 ( A1 )", "15"],
+        ["16 ( A2 )", "16"],
+        ["17 ( A3 )", "17"],
+        ["18 ( A4 )", "18"],
+        ["19 ( A5 )", "19"]
       ]), "lb_");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
