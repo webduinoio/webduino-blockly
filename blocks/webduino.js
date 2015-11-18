@@ -1204,6 +1204,19 @@ Blockly.Blocks['ultrasonic_distance'] = {
   }
 };
 
+Blockly.Blocks['ultrasonic_stop'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("ultrasonic"), "var_")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_STOP, "停止擷取距離");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#nrzdoq
 Blockly.Blocks['button_new'] = {
   init: function () {
