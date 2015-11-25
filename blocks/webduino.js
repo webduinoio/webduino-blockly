@@ -299,7 +299,7 @@ Blockly.Blocks['demo_youtube'] = {
     this.appendValueInput("name_")
       .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE, "設定 Youtube：");
     this.appendDummyInput()
-      .appendField("   ID：")
+      .appendField(Blockly.Msg.DEMO_YOUTUBE_VIDEO_ID, "   預設影片 id：")
       .appendField(new Blockly.FieldTextInput("..."), "id_");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -391,7 +391,7 @@ Blockly.Blocks['demo_youtube_id'] = {
     this.appendValueInput("id_")
       .appendField(Blockly.Msg.DEMO_YOUTUBE_CHANGEID, "更換")
       .appendField(new Blockly.FieldVariable("youtube"), "name_")
-      .appendField(Blockly.Msg.DEMO_YOUTUBE_CHANGEID_ID, "影片，要更換的 id：");
+      .appendField(Blockly.Msg.DEMO_YOUTUBE_CHANGEID_ID, "影片，要更換的影片 id：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -1199,7 +1199,7 @@ Blockly.Blocks['ultrasonic_distance'] = {
       .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_DISTANCE, "'s distance");
     this.setOutput(true);
     this.setTooltip('');
-    this.setColour(65);
+    this.setColour(35);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -1459,7 +1459,7 @@ Blockly.Blocks['dht_get_number'] = {
       ]), "dht_");
     this.setOutput(true);
     this.setTooltip('');
-    this.setColour(65);
+    this.setColour(35);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -1550,7 +1550,7 @@ Blockly.Blocks['buzzer_notes_tempos'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setColour(65);
+    this.setColour(35);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -2575,7 +2575,7 @@ Blockly.Blocks['photocell_val'] = {
       .appendField(new Blockly.FieldVariable("photocell"), "name_")
       .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL_VAL, "偵測的數值");
     this.setOutput(true);
-    this.setColour(65);
+    this.setColour(35);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -2642,7 +2642,7 @@ Blockly.Blocks['irrecv_val'] = {
       .appendField(new Blockly.FieldVariable("irrecv"), "name_")
       .appendField(Blockly.Msg.WEBDUINO_IRRECV_CODE, "接收的代碼");
     this.setOutput(true);
-    this.setColour(65);
+    this.setColour(35);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -2739,7 +2739,7 @@ Blockly.Blocks['adxl345_val'] = {
       .appendField(Blockly.Msg.WEBDUINO_ADXL345_VAL, "數值");
     this.setOutput(true);
     this.setTooltip('');
-    this.setColour(65);
+    this.setColour(35);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -2971,6 +2971,104 @@ Blockly.Blocks['text_indexof'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(210);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+
+Blockly.Blocks['rfid_new'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("RFID，SDA")
+      .appendField(new Blockly.FieldDropdown([
+        ["10", "10"]
+      ]), "sda_")
+      .appendField("  SCK")
+      .appendField(new Blockly.FieldDropdown([
+        ["13", "13"]
+      ]), "sck_")
+      .appendField("  MOSI")
+      .appendField(new Blockly.FieldDropdown([
+        ["11", "11"]
+      ]), "mosi_")
+      .appendField("  MISO")
+      .appendField(new Blockly.FieldDropdown([
+        ["12", "12"]
+      ]), "miso_");
+    this.setOutput(true);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['rfid_on'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("rfid"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_RFID_ON, "開始偵測");
+    this.appendStatementInput("on_");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['rfid_uid'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("rfid"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_RFID_UID, "偵測到的代碼");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(35);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['rfid_in'] = {
+  init: function () {
+    this.appendValueInput("uid_")
+      .appendField(Blockly.Msg.WEBDUINO_RFID_IF, "如果")
+      .appendField(new Blockly.FieldVariable("rfid"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_RFID_UIDIS, "偵測到的代碼為");
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_RFID_DO, "執行");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(35);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['rfid_out'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_RFID_IF, "如果")
+      .appendField(new Blockly.FieldVariable("rfid"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_RFID_OUT, "離開偵測範圍");
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_RFID_DO, "執行");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(35);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['rfid_off'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("rfid"), "name_")
+      .appendField(Blockly.Msg.WEBDUINO_RFID_OFF, "停止偵測");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
+    this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
 };

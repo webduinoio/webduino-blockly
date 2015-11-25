@@ -877,6 +877,24 @@
       <block type="adxl345_val"></block>
       <block type="adxl345_off"></block>
     </category>
+    <category id="catRFID">
+      <block type="variables_set">
+        <field name="VAR">rfid</field>
+        <value name="VALUE">
+          <block type="rfid_new">
+            <field name="sda_">10</field>
+            <field name="sck_">13</field>
+            <field name="mosi_">11</field>
+            <field name="miso_">12</field>
+          </block>
+        </value>
+      </block>
+      <block type="rfid_on"></block>
+      <block type="rfid_uid"></block>
+      <block type="rfid_in"></block>
+      <block type="rfid_out"></block>
+      <block type="rfid_off"></block>
+    </category>
   <sep></sep>
   </category>
   <category id="catMenu3">

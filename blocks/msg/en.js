@@ -194,6 +194,8 @@ Blockly.Msg.WEBDUINO_ULTRASONIC_DISTANCE = "'s distance ( cm )";
 Blockly.Msg.WEBDUINO_ULTRASONIC_STOP = "stop get distance";
 
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE = "Set Youtube：";
+Blockly.Msg.DEMO_YOUTUBE_VIDEO_ID = " default video id："; 
+Blockly.Msg.DEMO_YOUTUBE_CHANGEID_ID = "change id：";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET = "Set";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_VOLUME = "Volume:";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SPEED = "Speed:";
@@ -367,6 +369,16 @@ Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY_PLAY = "Paly";
 Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY_PAUSE = "Pause";
 Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY_STOP = "Stop";
 Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_ADD = "Add Music";
+
+// RFID
+
+Blockly.Msg.WEBDUINO_RFID_ON = "start detect";
+Blockly.Msg.WEBDUINO_RFID_UID = "'s uid";
+Blockly.Msg.WEBDUINO_RFID_UIDIS = "'s uid is";
+Blockly.Msg.WEBDUINO_RFID_IF = "If";
+Blockly.Msg.WEBDUINO_RFID_DO = "do";
+Blockly.Msg.WEBDUINO_RFID_OUT = "left detection range";
+Blockly.Msg.WEBDUINO_RFID_OFF = "stop detect";
 
 // Button
 

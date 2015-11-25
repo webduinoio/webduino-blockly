@@ -412,6 +412,16 @@ Blockly.Msg.WEBDUINO_FIREBASE_CLEAR = "清空資料庫";
 Blockly.Msg.WEBDUINO_FIREBASE_READONCE = "載入資料庫";
 Blockly.Msg.WEBDUINO_FIREBASE_ATTRONCE = "屬性";
 
+// RFID
+
+Blockly.Msg.WEBDUINO_RFID_ON = "開始偵測";
+Blockly.Msg.WEBDUINO_RFID_UID = "偵測到的代碼";
+Blockly.Msg.WEBDUINO_RFID_UIDIS = "偵測到的代碼為";
+Blockly.Msg.WEBDUINO_RFID_IF = "如果";
+Blockly.Msg.WEBDUINO_RFID_DO = "執行";
+Blockly.Msg.WEBDUINO_RFID_OUT = "離開偵測範圍";
+Blockly.Msg.WEBDUINO_RFID_OFF = "停止偵測";
+
 /*
     .                   .                       o8o            oooo  
   .o8                 .o8                       `"'            `888  
@@ -474,7 +484,9 @@ Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY_PAUSE = "暫停";
 Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY_STOP = "停止";
 Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_ADD = "放入音樂";
 
-Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE = "設定 Youtube";
+Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE = "載入 Youtube 模組";
+Blockly.Msg.DEMO_YOUTUBE_VIDEO_ID = " 預設的影片 id："; 
+Blockly.Msg.DEMO_YOUTUBE_CHANGEID_ID = "影片，要更換的影片 id：";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET = "設定";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_VOLUME = "音量";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SPEED = " 的播放速度";

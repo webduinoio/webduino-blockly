@@ -67,6 +67,7 @@ var MSG = {
   catIRRecv: "IR Recv",
   catIRLed: "IR Launch",
   catADXL345: "ADXL345",
+  catRFID: "RFID",
   catJoystick: "Joystick",
   catDemo: "Web Demo",
   catDemoText: "Show Text",

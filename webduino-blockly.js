@@ -129,6 +129,10 @@
     return new webduino.module.Joystick(board, board.getAnalogPin(vrx), board.getAnalogPin(vry), board.getDigitalPin(sw));
   }
 
+  function getRFID(board) {
+    return new webduino.module.RFID(board);
+  }
+
   function getCar(board, F, B, L, R) {
     return new Car(board, F, B, L, R);
   }
@@ -269,5 +273,6 @@
   scope.getIRLed = getIRLed;
   scope.getADXL345 = getADXL345;
   scope.getJoystick = getJoystick;
+  scope.getRFID = getRFID;
 
 }));

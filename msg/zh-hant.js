@@ -69,6 +69,7 @@ var MSG = {
   catIRRecv: "紅外線接收",
   catIRLed: "紅外線發射",
   catADXL345: "三軸加速度計",
+  catRFID: "RFID",
   catJoystick: "搖桿",
   catDemo: "網頁互動",
   catDemoText: "顯示文字",
