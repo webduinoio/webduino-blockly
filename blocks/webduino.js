@@ -3002,12 +3002,13 @@ Blockly.Blocks['rfid_new'] = {
   }
 };
 
-Blockly.Blocks['rfid_on'] = {
+Blockly.Blocks['rfid_enter'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("rfid"), "name_")
       .appendField(Blockly.Msg.WEBDUINO_RFID_ON, "開始偵測");
-    this.appendStatementInput("on_");
+    this.appendStatementInput("on_")
+      .appendField(Blockly.Msg.WEBDUINO_RFID_DO, "執行");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(65);
@@ -3028,7 +3029,7 @@ Blockly.Blocks['rfid_uid'] = {
   }
 };
 
-Blockly.Blocks['rfid_in'] = {
+Blockly.Blocks['rfid_if'] = {
   init: function () {
     this.appendValueInput("uid_")
       .appendField(Blockly.Msg.WEBDUINO_RFID_IF, "如果")
@@ -3044,7 +3045,7 @@ Blockly.Blocks['rfid_in'] = {
   }
 };
 
-Blockly.Blocks['rfid_out'] = {
+Blockly.Blocks['rfid_leave'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_RFID_IF, "如果")
@@ -3055,12 +3056,12 @@ Blockly.Blocks['rfid_out'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setColour(35);
+    this.setColour(65);
     this.setHelpUrl('http://www.example.com/');
   }
 };
 
-Blockly.Blocks['rfid_off'] = {
+Blockly.Blocks['rfid_stopread'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("rfid"), "name_")
