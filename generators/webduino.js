@@ -1978,6 +1978,6 @@ Blockly.JavaScript['rfid_leave'] = function(block) {
 
 Blockly.JavaScript['rfid_stopread'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
-  var code = variable_name_ + '.off();\n';
+  var code = variable_name_ + '.stopRead();\n';
   return code;
 };
