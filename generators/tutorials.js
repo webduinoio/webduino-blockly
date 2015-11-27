@@ -833,7 +833,21 @@ Blockly.JavaScript['tutorial_irrecv_color'] = function (block) {
   return code;
 }; 
 
+/*
+ooooooooo.   oooooooooooo ooooo oooooooooo.   
+`888   `Y88. `888'     `8 `888' `888'   `Y8b  
+ 888   .d88'  888          888   888      888 
+ 888ooo88P'   888oooo8     888   888      888 
+ 888`88b.     888    "     888   888      888 
+ 888  `88b.   888          888   888     d88' 
+o888o  o888o o888o        o888o o888bood8P'   
+*/
 
+Blockly.JavaScript['tutorial_rfid_code'] = function (block) {
+  var value_code_ = Blockly.JavaScript.valueToCode(block, 'code_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'document.getElementById("show").innerHTML = ' + value_code_ + ';\n';
+  return code;
+}; 
 
 
 

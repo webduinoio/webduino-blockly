@@ -979,3 +979,25 @@ Blockly.Blocks['tutorial_irrecv_color'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
+/*
+ooooooooo.   oooooooooooo ooooo oooooooooo.   
+`888   `Y88. `888'     `8 `888' `888'   `Y8b  
+ 888   .d88'  888          888   888      888 
+ 888ooo88P'   888oooo8     888   888      888 
+ 888`88b.     888    "     888   888      888 
+ 888  `88b.   888          888   888     d88' 
+o888o  o888o o888o        o888o o888bood8P'   
+*/
+
+Blockly.Blocks['tutorial_rfid_code'] = {
+  init: function () {
+    this.appendValueInput("code_")
+      .appendField(Blockly.Msg.WEBDUINO_RFID_SHOW, "show code:");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};

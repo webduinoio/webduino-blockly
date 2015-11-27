@@ -539,3 +539,7 @@ Blockly.Msg.WEBDUINO_ADXL_ANGLE = "Image rotate =";
 
 Blockly.Msg.WEBDUINO_IRRRECV_SHOW = "Show code:";
 Blockly.Msg.WEBDUINO_IRRRECV_COLOR = "Area color:";
+
+// Tutorials - RFID
+
+Blockly.Msg.WEBDUINO_RFID_SHOW = "Show RFID code";

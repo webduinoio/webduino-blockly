@@ -611,5 +611,9 @@ Blockly.Msg.WEBDUINO_ADXL_ANGLE = "圖片旋轉的角度 =";
 
 // Tutorials - irrecv
 
-Blockly.Msg.WEBDUINO_IRRRECV_SHOW = "紅外線代碼";
+Blockly.Msg.WEBDUINO_IRRRECV_SHOW = "顯示紅外線代碼";
 Blockly.Msg.WEBDUINO_IRRRECV_COLOR = "區域顏色";
+
+// Tutorials - RFID
+
+Blockly.Msg.WEBDUINO_RFID_SHOW = "顯示 RFID 代碼";
