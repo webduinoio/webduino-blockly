@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <script src="components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <script src="lib/jquery-1.9.1.js"></script>
+  <script src="launcher.js"></script>
+</head>
+
+<body>
+  <script>
+  var url = window.location.href.split('#')[0],
+    config = JSON.parse(localStorage.getItem(url) || '{"data":{}}'),
+    tpl = getParam('tpl', (config.tpl || 'default'));
+
+  loadTemplate(tpl, function(data) {
+    $.extend(config.data, data);
+    launchers['jsbin'](config);
+  });
+
+  function getParam(name, defaultValue) {
+    var val = location.search.match(new RegExp('[?&]' + name + '=([^&]+)'));
+    return val ? decodeURIComponent(val[1].replace(/\+/g, '%20')) : defaultValue;
+  }
+
+  function loadTemplate(id, callback) {
+    var link = document.createElement('link');
+    link.rel = 'import';
+    link.href = 'templates/' + id + '.html';
+    link.onload = function() {
+      var imp = link.import,
+        head = imp.querySelector('#head'),
+        body = imp.querySelector('#body'),
+        css = imp.querySelector('#css');
+
+      callback({
+        html: '<!doctype html>\n<html>\n\n<head>' + (head ? head.innerHTML : '') + '</head>\n\n<body>' + (body ? body.innerHTML : '') + '</body>\n\n</html>',
+        css: css ? css.innerHTML.trim() : ''
+      });
+    };
+    document.head.appendChild(link);
+  }
+  </script>
+</body>
+
+</html>

@@ -414,7 +414,7 @@ td#copyCode div{
   background:#bbb;
   border-radius: 5px;
 }
-#indexLinkToBin{
+#linkToBin{
   display:inline-block;
   font-size:16px;
   height:29px;
@@ -427,19 +427,19 @@ td#copyCode div{
   padding:5px 13px;
   vertical-align: bottom;
 }
-#indexLinkToBin img{
+#linkToBin img{
   height:17px;
   margin-bottom:-2px;
   margin-right:3px;
 }
-#indexLinkToBin:link{
+#linkToBin:link{
   color:#000;
   text-decoration: none;
 }
-#indexLinkToBin:hover{
+#linkToBin:hover{
   background:#fff;
 }
-#indexLinkToBin:active{
+#linkToBin:active{
   opacity:.8;
 }
 

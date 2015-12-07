@@ -81,6 +81,17 @@ Code.getPage = function () {
   return page;
 };
 
+Code.getDemoPage = function () {
+  var area = document.querySelector('#demo-area.show');
+  if (area) {
+    var demo = area.querySelector('.da.show');
+    if (demo) {
+      return demo.id;
+    }
+  }
+  return '';
+};
+
 /**
  * Is the current language (Code.LANG) an RTL language?
  * @return {boolean} True if RTL, false if LTR.
@@ -551,6 +562,19 @@ Code.init = function () {
   }
 
   Code.tabClick(Code.selected);
+
+  Code.bindClick('linkToBin', function () {
+    var page = Code.getPage(),
+      config = {
+        tpl: page === 'index' ? Code.getDemoPage() : page,
+        modes: 'html,js,output',
+        data: {
+          js: Blockly.JavaScript.workspaceToCode(Code.workspace)
+        }
+      };
+
+    localStorage.setItem(location.protocol + '//' + location.host + '/launcher.html', JSON.stringify(config));
+  });
 
   Code.bindClick('trashButton',
     function () {
