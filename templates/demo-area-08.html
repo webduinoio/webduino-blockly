@@ -1,0 +1,39 @@
+<template id="head">
+  <meta charset="utf-8">
+  <title>Webduino Blockly Demo 08</title>
+  <!-- webduino -->
+  <script src="https://webduino.io/components/webduino-js/dist/webduino-all.min.js"></script>
+  <script src="https://webduinoio.github.io/webduino-blockly/webduino-blockly.js"></script>
+  <script src="http://blockly.webduino.io/lib/tracking-min.js"></script>
+  <script src="http://blockly.webduino.io/lib/face-min.js"></script>
+</template>
+<template id="css">
+#demo-area-08-content {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  height: 200px;
+}
+
+#demo-area-08-video {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#demo-area-08-canvas {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+</template>
+<template id="body">
+  <div id="demo-area-08-content">
+    <video id="demo-area-08-video" preload autoplay loop muted controls></video>
+    <canvas id="demo-area-08-canvas"></canvas>
+  </div>
+</template>

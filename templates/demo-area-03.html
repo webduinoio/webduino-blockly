@@ -1,0 +1,33 @@
+<template id="head">
+  <meta charset="utf-8">
+  <title>Webduino Blockly Demo 03</title>
+  <!-- webduino -->
+  <script src="https://webduino.io/components/webduino-js/dist/webduino-all.min.js"></script>
+  <script src="https://webduinoio.github.io/webduino-blockly/webduino-blockly.js"></script>
+</template>
+<template id="css">
+#demo-area-03-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+#demo-area-03-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  transition: .3s;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  transform-origin: 75px 75px;
+  -webkit-transform-origin: 75px 75px;
+  -moz-transform-origin: 75px 75px;
+}
+</template>
+<template id="body">
+  <div id="demo-area-03-container">
+    <img src="http://blockly.webduino.io/media/webduino-logo.jpg" id="demo-area-03-image">
+  </div>
+</template>
