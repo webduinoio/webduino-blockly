@@ -2441,7 +2441,7 @@ Blockly.Blocks['max7219_new'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
+    this.setHelpUrl('http://webduinoio.github.io/demo/max7219/');
   }
 };
 
@@ -2456,7 +2456,7 @@ Blockly.Blocks['max7219_draw'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('http://webduinoio.github.io/samples/content/max7219/genLED.html');
+    this.setHelpUrl('http://webduinoio.github.io/demo/max7219/');
   }
 };
 
@@ -2476,7 +2476,7 @@ Blockly.Blocks['max7219_animate'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('http://webduinoio.github.io/samples/content/max7219/genLED.html');
+    this.setHelpUrl('http://webduinoio.github.io/demo/max7219/');
   }
 };
 
@@ -2500,7 +2500,7 @@ Blockly.Blocks['max7219_animate_horse'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('http://webduinoio.github.io/samples/content/max7219/genLED.html');
+    this.setHelpUrl('http://webduinoio.github.io/demo/max7219/');
   }
 };
 

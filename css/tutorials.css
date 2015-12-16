@@ -43,6 +43,9 @@ table.nav{
   transition:.3s;
   border-radius:5px;
 }
+#linkToBin.demoLinktoBin{
+  top:-27px;
+}
 #linkToBin img{
   height:18px;
   margin-bottom:-4px;
