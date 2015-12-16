@@ -659,7 +659,9 @@ Blockly.Blocks['board_ready'] = {
         ["20 ms", "20"],
         ["50 ms", "50"],
         ["75 ms", "75"],
-        ["100 ms", "100"]
+        ["100 ms", "100"],
+        ["500 ms", "500"],
+        ["1 sec", "1000"]
       ]), "rate_")
       .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, "串聯")
       .appendField(new Blockly.FieldCheckbox("FALSE"), "check_");
