@@ -558,6 +558,12 @@ Blockly.JavaScript['gettime'] = function (block) {
 };
 
 
+Blockly.JavaScript['board_server'] = function(block) {
+  var value_server_ = Blockly.JavaScript.valueToCode(block, 'server_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'webduino.WebArduino.DEFAULT_SERVER = ' + value_server_ + ';\n';
+  return code;
+};
+
 Blockly.JavaScript['board_ready'] = function (block) {
   var value_device_ = Blockly.JavaScript.valueToCode(block, 'device_', Blockly.JavaScript.ORDER_ATOMIC);
   var checkbox_type_ = block.getFieldValue('type_');

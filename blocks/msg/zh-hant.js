@@ -166,6 +166,7 @@ Blockly.Msg.WEBDUINO_DELAY_SECONDS = "秒";
 // Board
 
 Blockly.Msg.WEBDUINO_BOARD = "開發板";
+Blockly.Msg.WEBDUINO_BOARD_SERVER = "私有雲 Server";
 Blockly.Msg.WEBDUINO_BOARD_WIFI = "Wi-Fi";
 Blockly.Msg.WEBDUINO_BOARD_SERIAL = "序列埠";
 Blockly.Msg.WEBDUINO_BOARD_BLUETOOTH = "藍芽";

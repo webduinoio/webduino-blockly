@@ -148,6 +148,7 @@ Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOP = "Stop";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOPCONTENT = "";
 
 Blockly.Msg.WEBDUINO_BOARD = "Board";
+Blockly.Msg.WEBDUINO_BOARD_SERVER = "Private Server";
 Blockly.Msg.WEBDUINO_BOARD_WIFI = "Wi-Fi";
 Blockly.Msg.WEBDUINO_BOARD_SERIAL = "Serial Port";
 Blockly.Msg.WEBDUINO_BOARD_BLUETOOTH = "Bluetooth";

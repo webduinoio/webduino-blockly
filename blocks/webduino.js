@@ -641,6 +641,17 @@ Blockly.Blocks['gettime'] = {
   }
 };
 
+Blockly.Blocks['board_server'] = {
+  init: function() {
+    this.appendValueInput("server_")
+        .appendField(Blockly.Msg.WEBDUINO_BOARD_SERVER);
+    this.setInputsInline(true);
+    this.setColour(300);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#bq2fue
 Blockly.Blocks['board_ready'] = {
   init: function () {
