@@ -644,9 +644,10 @@ Blockly.Blocks['gettime'] = {
 Blockly.Blocks['board_server'] = {
   init: function() {
     this.appendValueInput("server_")
-        .appendField(Blockly.Msg.WEBDUINO_BOARD_SERVER);
+        .appendField(Blockly.Msg.WEBDUINO_BOARD_SERVER)
+        .appendField(":");
     this.setInputsInline(true);
-    this.setColour(300);
+    this.setColour(250);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -727,7 +728,13 @@ Blockly.Blocks['board_query_pin_state'] = {
         ["10", "10"],
         ["11", "11"],
         ["12", "12"],
-        ["13", "13"]
+        ["13", "13"],
+        ["14 ( A0 )", "14"],
+        ["15 ( A1 )", "15"],
+        ["16 ( A2 )", "16"],
+        ["17 ( A3 )", "17"],
+        ["18 ( A4 )", "18"],
+        ["19 ( A5 )", "19"]
       ]), "pin_")
       .appendField(Blockly.Msg.WEBDUINO_QUERY_PIN_NUM, "號 腳位");
     this.appendStatementInput("do_")
@@ -746,7 +753,7 @@ Blockly.Blocks['board_pin_state'] = {
       .appendField(Blockly.Msg.WEBDUINO_PIN_STATE, "腳位狀態");
     this.setOutput(true);
     this.setTooltip('');
-    this.setColour(120);
+    this.setColour(160);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -768,7 +775,13 @@ Blockly.Blocks['led_new'] = {
         ["10", "10"],
         ["11", "11"],
         ["12", "12"],
-        ["13", "13"]
+        ["13", "13"],
+        ["14 ( A0 )", "14"],
+        ["15 ( A1 )", "15"],
+        ["16 ( A2 )", "16"],
+        ["17 ( A3 )", "17"],
+        ["18 ( A4 )", "18"],
+        ["19 ( A5 )", "19"]
       ]), "pin_");
     this.setOutput(true);
     this.setColour(230);
@@ -1247,7 +1260,13 @@ Blockly.Blocks['button_new'] = {
         ["10", "10"],
         ["11", "11"],
         ["12", "12"],
-        ["13", "13"]
+        ["13", "13"],
+        ["14 ( A0 )", "14"],
+        ["15 ( A1 )", "15"],
+        ["16 ( A2 )", "16"],
+        ["17 ( A3 )", "17"],
+        ["18 ( A4 )", "18"],
+        ["19 ( A5 )", "19"]
       ]), "pin_");
     this.setOutput(true);
     this.setTooltip('');
@@ -1387,7 +1406,13 @@ Blockly.Blocks['shock_new'] = {
         ["10", "10"],
         ["11", "11"],
         ["12", "12"],
-        ["13", "13"]
+        ["13", "13"],
+        ["14 ( A0 )", "14"],
+        ["15 ( A1 )", "15"],
+        ["16 ( A2 )", "16"],
+        ["17 ( A3 )", "17"],
+        ["18 ( A4 )", "18"],
+        ["19 ( A5 )", "19"]
       ]), "pin_");
     this.setOutput(true);
     this.setTooltip('');
@@ -1494,12 +1519,12 @@ Blockly.Blocks['buzzer_new'] = {
         ["11", "11"],
         ["12", "12"],
         ["13", "13"],
-        ["14", "14"],
-        ["15", "15"],
-        ["16", "16"],
-        ["17", "17"],
-        ["18", "18"],
-        ["19", "19"]
+        ["14 ( A0 )", "14"],
+        ["15 ( A1 )", "15"],
+        ["16 ( A2 )", "16"],
+        ["17 ( A3 )", "17"],
+        ["18 ( A4 )", "18"],
+        ["19 ( A5 )", "19"]
       ]), "pin_");
     this.setOutput(true);
     this.setTooltip('');
@@ -1736,7 +1761,13 @@ Blockly.Blocks['relay_new'] = {
         ["10", "10"],
         ["11", "11"],
         ["12", "12"],
-        ["13", "13"]
+        ["13", "13"],
+        ["14 ( A0 )", "14"],
+        ["15 ( A1 )", "15"],
+        ["16 ( A2 )", "16"],
+        ["17 ( A3 )", "17"],
+        ["18 ( A4 )", "18"],
+        ["19 ( A5 )", "19"]
       ]), "pin_");
     this.setOutput(true);
     this.setTooltip('');
@@ -1778,7 +1809,13 @@ Blockly.Blocks['servo_new'] = {
         ["10", "10"],
         ["11", "11"],
         ["12", "12"],
-        ["13", "13"]
+        ["13", "13"],
+        ["14 ( A0 )", "14"],
+        ["15 ( A1 )", "15"],
+        ["16 ( A2 )", "16"],
+        ["17 ( A3 )", "17"],
+        ["18 ( A4 )", "18"],
+        ["19 ( A5 )", "19"]
       ]), "pin_");
     this.setOutput(true);
     this.setTooltip('');
@@ -2425,7 +2462,13 @@ Blockly.Blocks['max7219_new'] = {
         ["10", "10"],
         ["11", "11"],
         ["12", "12"],
-        ["13", "13"]
+        ["13", "13"],
+        ["14 ( A0 )", "14"],
+        ["15 ( A1 )", "15"],
+        ["16 ( A2 )", "16"],
+        ["17 ( A3 )", "17"],
+        ["18 ( A4 )", "18"],
+        ["19 ( A5 )", "19"]
       ]), "din_")
       .appendField(Blockly.Msg.WEBDUINO_MATRIX_CS, "cs")
       .appendField(new Blockly.FieldDropdown([
@@ -2440,7 +2483,13 @@ Blockly.Blocks['max7219_new'] = {
         ["10", "10"],
         ["11", "11"],
         ["12", "12"],
-        ["13", "13"]
+        ["13", "13"],
+        ["14 ( A0 )", "14"],
+        ["15 ( A1 )", "15"],
+        ["16 ( A2 )", "16"],
+        ["17 ( A3 )", "17"],
+        ["18 ( A4 )", "18"],
+        ["19 ( A5 )", "19"]
       ]), "cs_")
       .appendField(Blockly.Msg.WEBDUINO_MATRIX_CLK, "clk")
       .appendField(new Blockly.FieldDropdown([
@@ -2455,7 +2504,13 @@ Blockly.Blocks['max7219_new'] = {
         ["10", "10"],
         ["11", "11"],
         ["12", "12"],
-        ["13", "13"]
+        ["13", "13"],
+        ["14 ( A0 )", "14"],
+        ["15 ( A1 )", "15"],
+        ["16 ( A2 )", "16"],
+        ["17 ( A3 )", "17"],
+        ["18 ( A4 )", "18"],
+        ["19 ( A5 )", "19"]
       ]), "clk_");
     this.setOutput(true);
     this.setColour(230);
@@ -2631,7 +2686,13 @@ Blockly.Blocks['irrecv_new'] = {
         ["10", "10"],
         ["11", "11"],
         ["12", "12"],
-        ["13", "13"]
+        ["13", "13"],
+        ["14 ( A0 )", "14"],
+        ["15 ( A1 )", "15"],
+        ["16 ( A2 )", "16"],
+        ["17 ( A3 )", "17"],
+        ["18 ( A4 )", "18"],
+        ["19 ( A5 )", "19"]
       ]), "pin_");
     this.setOutput(true);
     this.setColour(230);
@@ -2811,7 +2872,13 @@ Blockly.Blocks['joystick_new'] = {
         ["10", "10"],
         ["11", "11"],
         ["12", "12"],
-        ["13", "13"]
+        ["13", "13"],
+        ["14 ( A0 )", "14"],
+        ["15 ( A1 )", "15"],
+        ["16 ( A2 )", "16"],
+        ["17 ( A3 )", "17"],
+        ["18 ( A4 )", "18"],
+        ["19 ( A5 )", "19"]
       ]), "sw_");
     this.setOutput(true);
     this.setColour(230);
