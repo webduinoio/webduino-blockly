@@ -371,6 +371,7 @@ Code.loadDemoArea = function (demo) {
     demo.select.addEventListener('change', function (s) {
       s = {};
       s.selectValue = this.value;
+      ga('send', 'event', 'Webduino-blockly', 'demo select' ,s.selectValue);
       s.selectId = 'demo-area-0' + s.selectValue;
       localStorage.demoAreaSelect = s.selectValue;
       for (s.i = 0; s.i < demo.da.length; s.i++) {
@@ -470,6 +471,20 @@ Code.tabClick = function (clickedName) {
   }
   Blockly.fireUiEvent(window, 'resize');
 };
+
+Code.ga = function(blockArea,toolManu,i){
+  blockArea = document.querySelector('.blocklySvg');
+  toolManu = document.querySelectorAll('.toolMenu');
+  blockArea.addEventListener('mouseup',function(){
+    ga('send', 'event', 'Webduino-blockly', 'editing');
+  });
+  for(i=0;i<toolManu.length;i++){
+    toolManu[i].addEventListener('click',function(){
+      var thisID = this.getAttribute('id');
+      ga('send', 'event', 'Webduino-blockly', 'menu click' ,thisID);
+    });
+  }
+} 
 
 /**
  * Populate the currently selected pane with content generated from the blocks.
@@ -613,6 +628,7 @@ Code.init = function () {
   window.setTimeout(Code.loadDemoArea, 1);
   window.setTimeout(Code.checkDeviceOnline, 1);
   window.setTimeout(Code.copyCode, 1);
+  window.setTimeout(Code.ga, 1);
 
 };
 

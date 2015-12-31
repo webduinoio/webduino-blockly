@@ -30,7 +30,7 @@
   <script src="blocks/webduino.js"></script>
   <script src="generators/webduino.js"></script>
   <script src="lib/jquery-1.9.1.js"></script>
-  <script src='lib/firebase.js'></script>
+  <script src="lib/firebase.js"></script>
   <script src="lib/iframe_api"></script>
   <script src="lib/clipboard.js"></script>
   <script src="lib/tracking-min.js"></script>
@@ -47,6 +47,17 @@
   ga('create', 'UA-62202920-1', 'auto');
   ga('send', 'pageview');
 
+</script>
+<script>
+  $(function(){
+    $m = $('.blocklyTreeLabel');
+    $m.each(function(){
+      $(this).on('click',function(){console.log('1');});
+    });
+    function _gaTrack(e,d) {
+      ga('send', 'event', e, d);
+    }
+  });
 </script>
 </body>
 
