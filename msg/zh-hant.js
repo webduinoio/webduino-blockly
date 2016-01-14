@@ -60,7 +60,6 @@ var MSG = {
   catMenu2: "傳感器",
   catMenu3: "玩具應用",
   catSpeech: "語音聲控",
-  catTracking: "影像追蹤",
   catKeyCode: "鍵盤行為",
   catPlus: "進階功能",
   catStandard: "基本功能",
@@ -79,6 +78,8 @@ var MSG = {
   catDemoButton: "按鈕行為",
   catDemoRange: "拉霸操作",
   catDemoYoutube: "YouTube",
+  catDemoTracking: "影像追蹤",
+  catDemoChart: "繪製圖表",
   demoAreaTitle: "網頁互動測試",
   demoAreaChoose: "請選擇互動方式：",
   demoAreaSelect1: "顯示文字",
@@ -89,12 +90,13 @@ var MSG = {
   demoAreaSelect6: "拉霸操作",
   demoAreaSelect7: "Youtube",
   demoAreaSelect8: "影像追蹤",
+  demoAreaSelect9: "繪製圖表",
   demoAreaBtn1: "按鈕 1",
   demoAreaBtn2: "按鈕 2",
   demoAreaBtn3: "按鈕 3",
   demoAreaBtn4: "按鈕 4",
   demoAreaBtn5: "按鈕 5",
-  demoAreaYoutube1: "YouTube 影片會顯示在上方",
+  demoAreaYoutube1: "YouTube 影片會顯示在這邊",
   demoAreaYoutube2: "必須另外載入："
 
 };
