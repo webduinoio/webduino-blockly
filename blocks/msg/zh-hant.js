@@ -203,6 +203,7 @@ Blockly.Msg.WEBDUINO_RELAY_SET_STATE = "設定狀態";
 // RGB
 
 Blockly.Msg.WEBDUINO_RGBLED = "三色 LED";
+Blockly.Msg.WEBDUINO_RGBLED_CATHODE = "三色共陰 LED";
 Blockly.Msg.WEBDUINO_RGBLED_RED = "紅";
 Blockly.Msg.WEBDUINO_RGBLED_GREEN = "綠";
 Blockly.Msg.WEBDUINO_RGBLED_BLUE = "藍";

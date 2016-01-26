@@ -180,6 +180,7 @@ Blockly.Msg.WEBDUINO_RELAY_PIN = "pin";
 Blockly.Msg.WEBDUINO_RELAY_SET_STATE = "set state";
 
 Blockly.Msg.WEBDUINO_RGBLED = "RGB LED";
+Blockly.Msg.WEBDUINO_RGBLED_CATHODE = "RGB LED (CATHODE)";
 Blockly.Msg.WEBDUINO_RGBLED_RED = "Red";
 Blockly.Msg.WEBDUINO_RGBLED_GREEN = "Green";
 Blockly.Msg.WEBDUINO_RGBLED_BLUE = "Blue";

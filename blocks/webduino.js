@@ -929,6 +929,44 @@ Blockly.Blocks['rgbled_new'] = {
   }
 };
 
+Blockly.Blocks['rgbled_new_cathode'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_RGBLED_CATHODE, "RGBLed")
+      .appendField(Blockly.Msg.WEBDUINO_RGBLED_RED, "red")
+      .appendField(new Blockly.FieldDropdown([
+        ["3", "3"],
+        ["5", "5"],
+        ["6", "6"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"]
+      ]), "red_")
+      .appendField(Blockly.Msg.WEBDUINO_RGBLED_GREEN, "green")
+      .appendField(new Blockly.FieldDropdown([
+        ["3", "3"],
+        ["5", "5"],
+        ["6", "6"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"]
+      ]), "green_")
+      .appendField(Blockly.Msg.WEBDUINO_RGBLED_BLUE, "blue")
+      .appendField(new Blockly.FieldDropdown([
+        ["3", "3"],
+        ["5", "5"],
+        ["6", "6"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"]
+      ]), "blue_");
+    this.setOutput(true);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 Blockly.Blocks['rgbled_setcolor'] = {
   init: function () {
     this.appendValueInput("color_")

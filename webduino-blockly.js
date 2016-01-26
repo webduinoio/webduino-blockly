@@ -73,6 +73,10 @@
     return new webduino.module.RGBLed(board, board.getDigitalPin(red), board.getDigitalPin(green), board.getDigitalPin(blue));
   }
 
+  function getRGBLedCathode(board, red, green, blue) {
+    return new webduino.module.RGBLed(board, board.getDigitalPin(red), board.getDigitalPin(green), board.getDigitalPin(blue), webduino.module.RGBLed.COMMON_CATHODE);
+  }
+
   function getUltrasonic(board, trig, echo) {
     return new webduino.module.Ultrasonic(board, board.getDigitalPin(trig), board.getDigitalPin(echo));
   }
@@ -255,6 +259,7 @@
   scope.getLed = getLed;
   scope.getRelay = getRelay;
   scope.getRGBLed = getRGBLed;
+  scope.getRGBLedCathode = getRGBLedCathode;
   scope.getUltrasonic = getUltrasonic;
   scope.getButton = getButton;
   scope.getPir = getPir;
