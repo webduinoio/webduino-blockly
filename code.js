@@ -582,7 +582,7 @@ Code.init = function () {
     var page = Code.getPage(),
       config = {
         tpl: page === 'index' ? Code.getDemoPage() : page,
-        modes: 'html,js,output',
+        modes: 'html,css,js,output',
         data: {
           js: Blockly.JavaScript.workspaceToCode(Code.workspace)
         }

@@ -1,0 +1,29 @@
+<template id="head">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Webduino Blockly - 偵測人體紅外線點亮 LED 燈</title>
+  <!-- webduino -->
+  <script src="https://webduino.io/components/webduino-js/dist/webduino-all.min.js"></script>
+  <script src="https://webduinoio.github.io/webduino-blockly/webduino-blockly.js"></script>
+</template>
+<template id="body">
+	<div id="light" class="off">
+	  <img src='http://i.imgur.com/T5H4MHE.png'></img>
+	  <img src='http://i.imgur.com/8qFj2Ou.png'></img>
+	</div>
+</template>
+<template id="css">
+#light{
+  width:60%;
+}
+#light img{
+  width:100%;
+  display:none;
+}
+#light.off img:first-child{
+  display:inline-block;
+}
+#light.on img:last-child{
+  display:inline-block; 
+}
+</template>

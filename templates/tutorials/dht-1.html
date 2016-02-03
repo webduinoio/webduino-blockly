@@ -1,0 +1,25 @@
+<template id="head">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Webduino Blockly - 溫濕度傳感器</title>
+  <!-- webduino -->
+  <script src="https://webduino.io/components/webduino-js/dist/webduino-all.min.js"></script>
+  <script src="https://webduinoio.github.io/webduino-blockly/webduino-blockly.js"></script>
+</template>
+<template id="body">
+  <div id="show">
+    溫度：<span id="temperature">0</span> <b>o</b>C<br/>
+    濕度：<span id="humidity">0</span> %
+  </div>
+</template>
+<template id="css">
+#show{
+  font-size:40px;
+}
+#show b{
+  display:inline-block;
+  font-size:20px;
+  vertical-align: top;
+
+}
+</template>

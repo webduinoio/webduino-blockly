@@ -72,7 +72,8 @@
         data[config.jsPreprocessor] = data.js;
         delete data.js;
       }
-      config.modes = config.modes || 'html,js,output';
+
+      config.modes = config.modes || 'html,css,js,output';
 
       post('http://bin.webduino.io?' + config.modes, data);
     }
