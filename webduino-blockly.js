@@ -130,7 +130,7 @@
   }
 
   function getJoystick(board, vrx, vry, sw) {
-    return new webduino.module.Joystick(board, board.getAnalogPin(vrx), board.getAnalogPin(vry), board.getDigitalPin(sw));
+    return new webduino.module.Joystick(board, vrx, vry, board.getDigitalPin(sw));
   }
 
   function getRFID(board) {
