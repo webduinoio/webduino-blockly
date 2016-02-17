@@ -3,6 +3,8 @@ var MSG = {
   title: "Webduino Blockly Editor",
   gotoTutorials: "Tutorials",
   gotoWebSite: "Official site",
+  cleanUpBlocks: "Clean up Blocks",
+  exportImage: "Download image",
   blocks: "Blocks",
   linkTooltip: "Save and link to blocks.",
   runTooltip: "Run the program defined by the blocks in the workspace.",

@@ -3,6 +3,8 @@ var MSG = {
   title: "Webduino Blockly 編輯器",
   gotoTutorials: "教學範例",
   gotoWebSite: "官方網站",
+  cleanUpBlocks: "整理積木",
+  exportImage: "下載圖片",
   blocks: "積木",
   linkTooltip: "儲存積木組並提供連結。",
   runTooltip: "於工作區中執行積木組所定義的程式。",

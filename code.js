@@ -786,6 +786,11 @@ Code.debug = function () {
   console.log.apply(console, [space].concat(Array.prototype.slice.apply(arguments)));
 };
 
+Code.exportImage = function() {
+  Code.workspace.zoomReset(document.createEvent('MouseEvents'));
+  saveSvgAsPng(Code.workspace.getCanvas(), 'webduino-blocks.png');
+};
+
 Blockly.JavaScript.blockToCode = function (block) {
   if (!block) {
     return '';
@@ -1015,6 +1020,79 @@ Blockly.Css.inject = function (hasCss, pathToMedia) {
   cssNode.appendChild(cssTextNode);
   Blockly.Css.styleSheet_ = cssNode.sheet;
   Blockly.Css.setCursor(Blockly.Css.Cursor.OPEN);
+};
+
+Blockly.WorkspaceSvg.prototype.showContextMenu_ = function(e) {
+  if (this.options.readOnly) {
+    return;
+  }
+  var menuOptions = [];
+  var topBlocks = this.getTopBlocks(true);
+  // Option to clean up blocks.
+  var cleanOption = {};
+  cleanOption.text = MSG.cleanUpBlocks;
+  cleanOption.enabled = topBlocks.length > 1;
+  cleanOption.callback = this.cleanUp_.bind(this);
+  menuOptions.push(cleanOption);
+
+  var imgOption = {};
+  imgOption.text = MSG.exportImage;
+  imgOption.enabled = topBlocks.length > 0;
+  imgOption.callback = Code.exportImage.bind(Code);
+  menuOptions.push(imgOption);
+
+  // Add a little animation to collapsing and expanding.
+  var COLLAPSE_DELAY = 10;
+  if (this.options.collapse) {
+    var hasCollapsedBlocks = false;
+    var hasExpandedBlocks = false;
+    for (var i = 0; i < topBlocks.length; i++) {
+      var block = topBlocks[i];
+      while (block) {
+        if (block.isCollapsed()) {
+          hasCollapsedBlocks = true;
+        } else {
+          hasExpandedBlocks = true;
+        }
+        block = block.getNextBlock();
+      }
+    }
+
+    /*
+     * Option to collapse or expand top blocks
+     * @param {boolean} shouldCollapse Whether a block should collapse.
+     * @private
+     */
+    var toggleOption = function(shouldCollapse) {
+      var ms = 0;
+      for (var i = 0; i < topBlocks.length; i++) {
+        var block = topBlocks[i];
+        while (block) {
+          setTimeout(block.setCollapsed.bind(block, shouldCollapse), ms);
+          block = block.getNextBlock();
+          ms += COLLAPSE_DELAY;
+        }
+      }
+    };
+
+    // Option to collapse top blocks.
+    var collapseOption = {enabled: hasExpandedBlocks};
+    collapseOption.text = Blockly.Msg.COLLAPSE_ALL;
+    collapseOption.callback = function() {
+      toggleOption(true);
+    };
+    menuOptions.push(collapseOption);
+
+    // Option to expand top blocks.
+    var expandOption = {enabled: hasCollapsedBlocks};
+    expandOption.text = Blockly.Msg.EXPAND_ALL;
+    expandOption.callback = function() {
+      toggleOption(false);
+    };
+    menuOptions.push(expandOption);
+  }
+
+  Blockly.ContextMenu.show(e, menuOptions, this.RTL);
 };
 
 Blockly.JavaScript.depth = 0;
