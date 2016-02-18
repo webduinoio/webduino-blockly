@@ -579,7 +579,8 @@ Code.init = function () {
   Code.tabClick(Code.selected);
 
   Code.bindClick('linkToBin', function () {
-    var page = Code.getPage(),
+    var urls = window.location.href.split('#')[0].split('/'),
+      page = Code.getPage(),
       config = {
         tpl: page === 'index' ? Code.getDemoPage() : page,
         modes: 'html,css,js,output',
@@ -588,7 +589,8 @@ Code.init = function () {
         }
       };
 
-    localStorage.setItem(location.protocol + '//' + location.host + '/launcher.html', JSON.stringify(config));
+    urls.pop();
+    localStorage.setItem(urls.join('/') + '/launcher.html', JSON.stringify(config));
   });
 
   Code.bindClick('trashButton',
