@@ -242,15 +242,15 @@ Code.checkDeviceOnline = function (device) {
         device: v,
         multi: true
       });
-    device.icon.setAttribute('class', 'check icon21 board-error');
+    device.icon.setAttribute('class', 'check board-error icon-power');
 
     device.board.on(device.boardEvent.READY, function () {
       console.log(v + ' : ok');
-      device.icon.setAttribute('class', 'check icon21 board-online');
+      device.icon.setAttribute('class', 'check board-online icon-power');
     });
 
     device.board.on(device.boardEvent.ERROR, function () {
-      device.icon.setAttribute('class', 'check icon21 board-error');
+      device.icon.setAttribute('class', 'check board-error icon-power');
     });
   }
 
@@ -259,7 +259,7 @@ Code.checkDeviceOnline = function (device) {
     if (this.value.length > 3) {
       device.check(this.value.toString());
     } else {
-      device.icon.setAttribute('class', 'check icon21');
+      device.icon.setAttribute('class', 'check icon-power');
     }
   };
 

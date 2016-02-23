@@ -1,9 +1,13 @@
 <header>
-  <img class="logo" src="media/logo.png" id="logo">
+  <a href="https://webduino.io" target="_blank"><img class="logo" src="media/logo.png" id="logo"></a>
   <h1>{{title}}</h1>
-  <span>( <a href="index-tutorials.html" target="_blank" class="toolMenu" id="blockly-to-tutorials">{{gotoTutorials}}</a>、<a href="https://webduino.io" target="_blank" class="toolMenu" id="blockly-to-website">{{gotoWebSite}}</a> )</span>
-  <div id="update">{{update}}</div>
-  <select id="languageMenu"></select>
+  <div id="userMenu">
+
+      <a href="index-tutorials.html" target="_blank" id="blockly-to-website"><i class="icon-book"></i> <b>{{userMenuTutorials}}</b></a>
+      <a href="https://webduino.io" target="_blank" id="blockly-to-tutorials"><i class="icon-info"></i> <b>{{userMenuWebSite}}</b></a>
+      <span><i class="icon-earth"></i> <select id="languageMenu"></select></span>
+
+  </div>
 </header>
 <table width="100%" height="100%" class="nav">
   <tr>
@@ -13,27 +17,27 @@
           <td id="tab_blocks" class="tabon">{{blocks}}</td>
           <td class="tabmin">&nbsp;</td>
           <td id="tab_javascript" class="taboff">JavaScript</td>
-          <td id="copyCode" style="display:none;" data-clipboard-target="#content_javascript" data-tooltip="Copy to clipboard" class="toolMenu"><div><img src="media/copy.png"></div></td>
+          <td id="copyCode" style="display:none;" data-clipboard-target="#content_javascript" data-tooltip="Copy to clipboard" class="toolMenu"><i class="icon-copy"></i></td>
           <td class="tabmin">&nbsp;</td>
           <td class="tabmax">
-            <a href="launcher.html" target="_blank" id="linkToBin" title="{{openJsbin}}" class="toolMenu"><img src="media/dave.min.svg">{{linkToBin}}</a>
+            <a href="launcher.html" target="_blank" id="linkToBin" class="toolMenu"><i class="icon-embed2"></i> <div>{{openJsbin}}</div></a>
             <div id="check-device-online" class="toolMenu">
               <input id="input-device" class="">
-              <span id="check-btn" class="check-btn" title="{{checkDeviceOnline}}">
-                <i id="check-icon" class="check icon21"></i>
-              </span>
+              <span id="check-btn" class="check-btn">
+                <i class="icon-power" id="check-icon"></i> 
+              </span> <div>{{checkDeviceOnline}}</div>
             </div>
-            <button id="demoButton" class="notext toolMenu" title="{{demoTooltip}}">
-              <img src='media/1x1.gif' class="demo icon21">
+            <button id="demoButton" class="notext toolMenu">
+              <i class="icon-lab"></i> <div>{{demoTooltip}}</div>
             </button>
-            <button id="trashButton" class="notext toolMenu" title="{{trashTooltip}}">
-              <img src='media/1x1.gif' class="trash icon21">
+            <button id="trashButton" class="notext toolMenu">
+              <i class="icon-bin"></i>  <div>{{trashTooltip}}</div>
             </button>
-            <button id="linkButton" class="notext toolMenu" title="{{linkTooltip}}">
-              <img src='media/1x1.gif' class="link icon21">
+            <button id="linkButton" class="notext toolMenu">
+              <i class="icon-link"></i>  <div>{{linkTooltip}}</div>
             </button>
-            <button id="runButton" class="notext primary toolMenu" title="{{runTooltip}}">
-              <img src='media/1x1.gif' class="run icon21">
+            <button id="runButton" class="notext primary toolMenu">
+              <i class="icon-play3"></i>  <div>{{runTooltip}}</div>
             </button>
           </td>
         </tr>
@@ -99,7 +103,6 @@
     </div>
     <div id="demo-area-07" class="da">
       <div id="player"></div>
-      <span style="font-size:12px;">{{demoAreaYoutube1}}</span>
     </div>
     <div id="demo-area-08" class="da">
       <div id="demo-area-08-content">
