@@ -3,6 +3,8 @@ var MSG = {
   title: "Webduino Blockly 編輯器",
   gotoTutorials: "教學範例",
   gotoWebSite: "官方網站",
+  cleanUpBlocks: "整理積木",
+  exportImage: "下載圖片",
   userMenuDashboard: "專案管理",
   userMenuTutorials: "教學",
   userMenuWebSite: "支援",
@@ -58,12 +60,13 @@ var MSG = {
   catCarTest: "自走車 (2)",
   catCar: "自走車 (1)",
   catFish: "飛天魚",
-  catBasic:"基本積木",
-  catWebduino:"Webduino 積木",
+  catBasic: "基本積木",
+  catWebduino: "Webduino 積木",
   catMenu1: "元件模組",
   catMenu2: "傳感器",
   catMenu3: "玩具應用",
   catSpeech: "語音聲控",
+  catTracking: "影像辨識",
   catKeyCode: "鍵盤行為",
   catPlus: "進階功能",
   catStandard: "基本功能",
@@ -100,5 +103,4 @@ var MSG = {
   demoAreaBtn5: "按鈕 5",
   demoAreaYoutube1: "YouTube 影片會顯示在上方",
   demoAreaYoutube2: "必須另外載入："
-
 };
