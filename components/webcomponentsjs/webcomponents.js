@@ -7,7 +7,7 @@
  * Code distributed by Google as part of the polymer project is also
  * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
  */
-// @version 0.7.19
+// @version 0.7.21
 (function() {
   window.WebComponents = window.WebComponents || {
     flags: {}
@@ -352,6 +352,7 @@ if (WebComponents.flags.shadow) {
         });
       });
     }
+    scope.addForwardingProperties = addForwardingProperties;
     scope.assert = assert;
     scope.constructorTable = constructorTable;
     scope.defineGetter = defineGetter;
@@ -3306,6 +3307,7 @@ if (WebComponents.flags.shadow) {
   })(window.ShadowDOMPolyfill);
   (function(scope) {
     "use strict";
+    var addForwardingProperties = scope.addForwardingProperties;
     var mixin = scope.mixin;
     var registerWrapper = scope.registerWrapper;
     var setWrapper = scope.setWrapper;
@@ -3330,6 +3332,10 @@ if (WebComponents.flags.shadow) {
         unsafeUnwrap(this).texSubImage2D.apply(unsafeUnwrap(this), arguments);
       }
     });
+    var OriginalWebGLRenderingContextBase = Object.getPrototypeOf(OriginalWebGLRenderingContext.prototype);
+    if (OriginalWebGLRenderingContextBase !== Object.prototype) {
+      addForwardingProperties(OriginalWebGLRenderingContextBase, WebGLRenderingContext.prototype);
+    }
     var instanceProperties = /WebKit/.test(navigator.userAgent) ? {
       drawingBufferHeight: null,
       drawingBufferWidth: null
@@ -4112,7 +4118,6 @@ if (WebComponents.flags.shadow) {
       if (!unwrappedActiveElement || !unwrappedActiveElement.nodeType) return null;
       var activeElement = wrap(unwrappedActiveElement);
       while (!this.contains(activeElement)) {
-        var lastHost = activeElement;
         while (activeElement.parentNode) {
           activeElement = activeElement.parentNode;
         }
@@ -5908,6 +5913,7 @@ window.HTMLImports = window.HTMLImports || {
     if (importCount) {
       for (var i = 0, imp; i < importCount && (imp = imports[i]); i++) {
         if (isImportLoaded(imp)) {
+          newImports.push(this);
           parsedCount++;
           checkDone();
         } else {
@@ -6359,7 +6365,7 @@ window.HTMLImports.addModule(function(scope) {
       if (doc && this._mayParse.indexOf(doc) < 0) {
         this._mayParse.push(doc);
         var nodes = doc.querySelectorAll(this.parseSelectorsForNode(doc));
-        for (var i = 0, l = nodes.length, p = 0, n; i < l && (n = nodes[i]); i++) {
+        for (var i = 0, l = nodes.length, n; i < l && (n = nodes[i]); i++) {
           if (!this.isParsed(n)) {
             if (this.hasResource(n)) {
               return nodeIsImport(n) ? this.nextToParseInDoc(n.__doc, n) : n;

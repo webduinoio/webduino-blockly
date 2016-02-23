@@ -14,7 +14,6 @@ var MSG = {
   runTooltip: "執行組合",
   badCode: "程式錯誤：\n%1",
   timeout: "超過最大執行數",
-  discard: "刪除共%1個積木？",
   trashTooltip: "刪除所有積木",
   demoTooltip: "網頁互動區域",
   openJsbin: "打開程式編輯",

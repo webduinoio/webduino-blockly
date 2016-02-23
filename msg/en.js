@@ -14,7 +14,6 @@ var MSG = {
   runTooltip: "Run blocks in the workspace.",
   badCode: "Program error:\n%1",
   timeout: "Maximum execution iterations exceeded.",
-  discard: "Delete all %1 blocks?",
   trashTooltip: "Discard all blocks.",
   demoTooltip: "Web demo area",
   openJsbin: "Open Code editor",

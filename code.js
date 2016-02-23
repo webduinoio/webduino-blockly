@@ -743,9 +743,11 @@ Code.transform = function (code) {
 Code.discard = function () {
   var count = Code.workspace.getAllBlocks().length;
   if (count < 2 ||
-    window.confirm(MSG['discard'].replace('%1', count))) {
+    window.confirm(Blockly.Msg.DELETE_ALL_BLOCKS.replace('%1', count))) {
     Code.workspace.clear();
-    window.location.hash = '';
+    if (window.location.hash) {
+      window.location.hash = '';
+    }
   }
 };
 
@@ -986,8 +988,8 @@ Blockly.Css.inject = function (hasCss, pathToMedia) {
   Blockly.Css.setCursor(Blockly.Css.Cursor.OPEN);
 };
 
-Blockly.WorkspaceSvg.prototype.showContextMenu_ = function (e) {
-  if (this.options.readOnly) {
+Blockly.WorkspaceSvg.prototype.showContextMenu_ = function(e) {
+  if (this.options.readOnly || this.isFlyout) {
     return;
   }
   var menuOptions = [];
@@ -1006,7 +1008,7 @@ Blockly.WorkspaceSvg.prototype.showContextMenu_ = function (e) {
   menuOptions.push(imgOption);
 
   // Add a little animation to collapsing and expanding.
-  var COLLAPSE_DELAY = 10;
+  var DELAY = 10;
   if (this.options.collapse) {
     var hasCollapsedBlocks = false;
     var hasExpandedBlocks = false;
@@ -1034,7 +1036,7 @@ Blockly.WorkspaceSvg.prototype.showContextMenu_ = function (e) {
         while (block) {
           setTimeout(block.setCollapsed.bind(block, shouldCollapse), ms);
           block = block.getNextBlock();
-          ms += COLLAPSE_DELAY;
+          ms += DELAY;
         }
       }
     };
@@ -1059,6 +1061,47 @@ Blockly.WorkspaceSvg.prototype.showContextMenu_ = function (e) {
     };
     menuOptions.push(expandOption);
   }
+
+  // Option to delete all blocks.
+  // Count the number of blocks that are deletable.
+  var deleteList = [];
+  function addDeletableBlocks(block) {
+    if (block.isDeletable()) {
+      deleteList = deleteList.concat(block.getDescendants());
+    } else {
+      var children = block.getChildren();
+      for (var i = 0; i < children.length; i++) {
+        addDeletableBlocks(children[i]);
+      }
+    }
+  }
+  for (var i = 0; i < topBlocks.length; i++) {
+    addDeletableBlocks(topBlocks[i]);
+  }
+  var deleteOption = {
+    text: deleteList.length <= 1 ? Blockly.Msg.DELETE_BLOCK :
+        Blockly.Msg.DELETE_X_BLOCKS.replace('%1', String(deleteList.length)),
+    enabled: deleteList.length > 0,
+    callback: function() {
+      if (deleteList.length < 2 ||
+          window.confirm(Blockly.Msg.DELETE_ALL_BLOCKS.replace('%1',
+          String(deleteList.length)))) {
+        deleteNext();
+      }
+    }
+  };
+  function deleteNext() {
+    var block = deleteList.shift();
+    if (block) {
+      if (block.workspace) {
+        block.dispose(false, true);
+        setTimeout(deleteNext, DELAY);
+      } else {
+        deleteNext();
+      }
+    }
+  }
+  menuOptions.push(deleteOption);
 
   Blockly.ContextMenu.show(e, menuOptions, this.RTL);
 };

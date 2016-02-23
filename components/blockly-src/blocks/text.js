@@ -47,7 +47,13 @@ Blockly.Blocks['text'] = {
         .appendField(new Blockly.FieldTextInput(''), 'TEXT')
         .appendField(this.newQuote_(false));
     this.setOutput(true, 'String');
-    this.setTooltip(Blockly.Msg.TEXT_TEXT_TOOLTIP);
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    var thisBlock = this;
+    // Text block is trivial.  Use tooltip of parent block if it exists.
+    this.setTooltip(function() {
+      var parent = thisBlock.getParent();
+      return (parent && parent.tooltip) || Blockly.Msg.TEXT_TEXT_TOOLTIP;
+    });
   },
   /**
    * Create an image of an open or closed quote.
@@ -106,12 +112,11 @@ Blockly.Blocks['text_join'] = {
    * @this Blockly.Block
    */
   decompose: function(workspace) {
-    var containerBlock = Blockly.Block.obtain(workspace,
-                                           'text_create_join_container');
+    var containerBlock = workspace.newBlock('text_create_join_container');
     containerBlock.initSvg();
     var connection = containerBlock.getInput('STACK').connection;
     for (var i = 0; i < this.itemCount_; i++) {
-      var itemBlock = Blockly.Block.obtain(workspace, 'text_create_join_item');
+      var itemBlock = workspace.newBlock('text_create_join_item');
       itemBlock.initSvg();
       connection.connect(itemBlock.previousConnection);
       connection = itemBlock.nextConnection;
