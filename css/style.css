@@ -166,7 +166,7 @@ pre.content {
   background: #eee;
   opacity: .9;
   box-sizing: border-box;
-  padding: 0 7px 0;
+  padding: 0 0 0 5px;
   margin: -7px 0 4px;
   border-radius: 5px;
   vertical-align: bottom;
@@ -198,7 +198,7 @@ pre.content {
 
 #check-btn{
   display:inline-block;
-  padding:7px 5px 5px;
+  padding:7px 12px 5px 5px;
 }
 
 .check-btn {
@@ -397,6 +397,8 @@ a.toolMenu:hover div,div.toolMenu:hover div{
   outline: none;
   border: none;
   color: #777;
+  padding-left:18px;
+  margin-left:-18px;
   transition: .3s;
 }
 
