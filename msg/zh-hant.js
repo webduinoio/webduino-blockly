@@ -7,7 +7,7 @@ var MSG = {
   exportImage: "下載圖片",
   userMenuDashboard: "專案管理",
   userMenuTutorials: "教學",
-  userMenuWebSite: "支援",
+  userMenuWebSite: "資訊",
   userMenuLogout: "登出",
   blocks: "積木",
   linkTooltip: "儲存並產生連結",

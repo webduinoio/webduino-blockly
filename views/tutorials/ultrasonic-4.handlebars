@@ -12,15 +12,22 @@
 
 <header>
   <a href="index.html" title="Webduino Blockly"><img class="logo" src="media/logo.png"></a>
-  <h1>Webduino Blockly {{subTitle}}</h1>
-  <span>( <a href="index-tutorials.html" target="_blank">{{backIndex}}</a> )</span>
-  <div id="update">{{update}}</div>
-  <select id="languageMenu"></select>
+    <h1>Webduino Blockly {{subTitle}}</h1>
+  <span>( <a href="index-tutorials.html" target="_blank"><i class="icon-undo2"></i> {{backIndex}}</a> )</span>
+  <div id="userMenu">
+
+      <a href="index-tutorials.html" target="_blank" id="blockly-to-website"><i class="icon-book"></i> <b>{{userMenuTutorials}}</b></a>
+      <a href="https://webduino.io" target="_blank" id="blockly-to-tutorials"><i class="icon-info"></i> <b>{{userMenuWebSite}}</b></a>
+      <span><i class="icon-earth"></i> <select id="languageMenu"></select></span>
+
+  </div>
+ 
 </header>
 <div id="demoArea">
 <a href="https://webduino.io/" id="cuteman01" target="_blank"></a>
   <div id="demoTitle">{{demoTitle}}</div>
-<a href="launcher.html" id="linkToBin" class="demoLinktoBin" target="_blank"><img src="media/dave.min.svg">{{linkToBin}}</a>
+
+<a href="launcher.html" target="_blank" id="linkToBin" class="toolMenu" style="top:-25px; padding:6px 12px 5px;"><i class="icon-embed2"></i> <div>{{openJsbin}}</div></a>
   <div id="demoDescription">{{demoDescription}}</div>
   <div id="show"></div>
 </div>
@@ -32,25 +39,25 @@
         <td id="tab_blocks" class="tabon">{{blocks}}</td>
         <td class="tabmin">&nbsp;</td>
         <td id="tab_javascript" class="taboff">JavaScript</td>
-          <td id="copyCode" class="jsClick" style="display:none;" data-clipboard-target="#content_javascript" data-tooltip="Copy to clipboard"><div><img src="media/copy.png"></div></td>
+         <td id="copyCode" style="display:none;" data-clipboard-target="#content_javascript" data-tooltip="Copy to clipboard" class="toolMenu"><i class="icon-copy"></i></td>
         <td class="tabmin">&nbsp;</td>
         <td id="tab_xml" class="taboff" style="display:none;">XML</td>
         <td class="tabmax">
-          <div id="check-device-online">
-            <input id="input-device" class="">
-            <span id="check-btn" class="check-btn" title="{{checkDeviceOnline}}">
-              <i id="check-icon" class="check icon21"></i>
-            </span>
-          </div>
-          <button id="trashButton" class="notext" title="{{trashTooltip}}">
-            <img src='media/1x1.gif' class="trash icon21">
-          </button>
-          <button id="linkButton" class="notext" title="{{linkTooltip}}">
-            <img src='media/1x1.gif' class="link icon21">
-          </button>
-          <button id="runButton" class="notext primary" title="{{runTooltip}}">
-            <img src='media/1x1.gif' class="run icon21">
-          </button>
+            <div id="check-device-online" class="toolMenu">
+              <input id="input-device" class="">
+              <span id="check-btn" class="check-btn">
+                <i class="icon-power" id="check-icon"></i> 
+              </span> <div>{{checkDeviceOnline}}</div>
+            </div>
+            <button id="trashButton" class="notext toolMenu">
+              <i class="icon-bin"></i>  <div>{{trashTooltip}}</div>
+            </button>
+            <button id="linkButton" class="notext toolMenu">
+              <i class="icon-link"></i>  <div>{{linkTooltip}}</div>
+            </button>
+            <button id="runButton" class="notext primary toolMenu">
+              <i class="icon-play3"></i>  <div>{{runTooltip}}</div>
+            </button>
         </td>
       </tr>
     </table>
