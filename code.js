@@ -579,7 +579,7 @@ Code.init = function () {
   Code.tabClick(Code.selected);
 
   Code.bindClick('linkToBin', function () {
-    var urls = window.location.href.split('#')[0].split('/'),
+    var urls = (location.protocol + '//' + location.host + location.pathname).split('/'),
       page = Code.getPage(),
       config = {
         tpl: page === 'index' ? Code.getDemoPage() : page,
