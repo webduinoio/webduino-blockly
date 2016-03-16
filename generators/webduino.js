@@ -558,7 +558,7 @@ Blockly.JavaScript['gettime'] = function (block) {
 };
 
 
-Blockly.JavaScript['board_server'] = function(block) {
+Blockly.JavaScript['board_server'] = function (block) {
   var value_server_ = Blockly.JavaScript.valueToCode(block, 'server_', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'webduino.WebArduino.DEFAULT_SERVER = ' + value_server_ + ';\n';
   return code;
@@ -1735,11 +1735,54 @@ Blockly.JavaScript['max7219_off'] = function (block) {
   return code;
 };
 
+Blockly.JavaScript['max7219_88'] = function (block) {
+  var a = [];
+  for (var i = 1; i < 65; i++) {
+    var j = 'm'+i;
+    a[i - 1] = block.getFieldValue(j) == 'TRUE'
+  }
+  var array = [
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0]
+  ];
+  for (var k = 0; k < 64; k++) {
+    if (a[k] == true) {
+      array[Math.floor((k) / 8)][((k + 8) % 8)] = 1;
+    }
+  }
+  var b = '';
+  var c = '';
+  for (var p = 0; p < 8; p++) {
+    for (var q = 7; q > -1; q--) {
+      b = b + array[q][p];
+    }
+    console.log(b);
+    var b2 = parseInt(b, 2);
+    var b10 = b2.toString(10);
+    var b16 = b2.toString(16);
+    if(b10*1<16){
+      b16 = '0'+b16;
+    }
+    c = c+b16;
+    console.log(c);
+    b = '';
+  }
+  var code;
+  code = '"'+c+'"';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 
 Blockly.JavaScript['photocell_new'] = function (block) {
   var dropdown_pin_ = block.getFieldValue('pin_');
   var code = 'getPhotocell(board, ' + dropdown_pin_ + ')';
-  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 
@@ -1952,39 +1995,39 @@ Blockly.JavaScript['rfid_new'] = function (block) {
 Blockly.JavaScript['rfid_enter'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var statements_on_ = Blockly.JavaScript.statementToCode(block, 'on_');
-  var code = variable_name_+'.read();\n'+
-          variable_name_+'.on("enter",function(_uid){\n'+
-          '  ' + variable_name_ + '._uid = _uid;\n' +
-          statements_on_+
-          '});\n';
+  var code = variable_name_ + '.read();\n' +
+    variable_name_ + '.on("enter",function(_uid){\n' +
+    '  ' + variable_name_ + '._uid = _uid;\n' +
+    statements_on_ +
+    '});\n';
   return code;
 };
 
 
-Blockly.JavaScript['rfid_uid'] = function(block) {
+Blockly.JavaScript['rfid_uid'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
-  var code = variable_name_+'._uid';
+  var code = variable_name_ + '._uid';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 
-Blockly.JavaScript['rfid_if'] = function(block) {
+Blockly.JavaScript['rfid_if'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var value_uid_ = Blockly.JavaScript.valueToCode(block, 'uid_', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'if('+variable_name_+'._uid == '+value_uid_+'){\n'+
-              statements_do_+
-              '}\n';
+  var code = 'if(' + variable_name_ + '._uid == ' + value_uid_ + '){\n' +
+    statements_do_ +
+    '}\n';
   return code;
 };
 
 
-Blockly.JavaScript['rfid_leave'] = function(block) {
+Blockly.JavaScript['rfid_leave'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = variable_name_+'.on("leave",function(_uid){\n'+
-          statements_do_+
-          '});\n';
+  var code = variable_name_ + '.on("leave",function(_uid){\n' +
+    statements_do_ +
+    '});\n';
   return code;
 };
 

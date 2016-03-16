@@ -642,10 +642,10 @@ Blockly.Blocks['gettime'] = {
 };
 
 Blockly.Blocks['board_server'] = {
-  init: function() {
+  init: function () {
     this.appendValueInput("server_")
-        .appendField(Blockly.Msg.WEBDUINO_BOARD_SERVER)
-        .appendField(":");
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_SERVER)
+      .appendField(":");
     this.setInputsInline(true);
     this.setColour(250);
     this.setTooltip('');
@@ -2639,6 +2639,88 @@ Blockly.Blocks['max7219_off'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#p3cgep
+Blockly.Blocks['max7219_88'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m1")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m2")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m3")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m4")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m5")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m6")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m7")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m8");
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m9")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m10")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m11")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m12")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m13")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m14")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m15")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m16");
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m17")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m18")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m19")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m20")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m21")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m22")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m23")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m24");
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m25")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m26")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m27")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m28")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m29")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m30")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m31")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m32");
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m33")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m34")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m35")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m36")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m37")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m38")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m39")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m40");
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m41")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m42")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m43")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m44")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m45")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m46")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m47")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m48");
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m49")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m50")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m51")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m52")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m53")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m54")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m55")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m56");
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m57")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m58")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m59")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m60")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m61")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m62")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m63")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "m64");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(45);
     this.setHelpUrl('http://www.example.com/');
   }
 };
