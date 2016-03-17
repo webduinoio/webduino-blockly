@@ -522,39 +522,28 @@ Blockly.JavaScript['getdate'] = function (block) {
 };
 
 
+
+
 Blockly.JavaScript['gettime'] = function (block) {
   var dropdown_time_ = block.getFieldValue('time_');
-  var varNow = Blockly.JavaScript.variableDB_.getDistinctName(
-    'varNow', Blockly.Variables.NAME_TYPE);
-  var varTime = Blockly.JavaScript.variableDB_.getDistinctName(
-    'varTime', Blockly.Variables.NAME_TYPE);
-  var code;
-  if (dropdown_time_ == 1) {
-    code = '(function(){\n' +
-      '  var ' + varTime + ' = new Date();\n' +
-      '  var ' + varNow + ' = ' + varTime + '.getHours().toString() + ":" + ' + varTime + '.getMinutes().toString() + ":" +' + varTime + '.getSeconds().toString();\n' +
-      '  return ' + varNow + ';\n' +
-      '})()';
-  } else if (dropdown_time_ == 2) {
-    code = '(function(){\n' +
-      '  var ' + varTime + ' = new Date();\n' +
-      '  var ' + varNow + ' = ' + varTime + '.getHours();\n' +
-      '  return ' + varNow + ';\n' +
-      '})()';
-  } else if (dropdown_time_ == 3) {
-    code = '(function(){\n' +
-      '  var ' + varTime + ' = new Date();\n' +
-      '  var ' + varNow + ' = ' + varTime + '.getMinutes();\n' +
-      '  return ' + varNow + ';\n' +
-      '})()';
-  } else if (dropdown_time_ == 4) {
-    code = '(function(){\n' +
-      '  var ' + varTime + ' = new Date();\n' +
-      '  var ' + varNow + ' = ' + varTime + '.getSeconds();\n' +
-      '  return ' + varNow + ';\n' +
-      '})()';
-  }
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+  var functionName = Blockly.JavaScript.provideFunction_(
+      'get_time',
+      [ 'function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(t) {',
+      '  var varTime = new Date();',
+      '  var varNow;',
+      '  if(t=="t"){',
+      '    varNow =  varTime.getHours().toString() + ":" + varTime.getMinutes().toString() + ":" + varTime.getSeconds().toString();',      
+      '  }else if(t=="h"){',
+      '    varNow = varTime.getHours().toString();',      
+      '  }else if(t=="m"){',
+      '    varNow = varTime.getMinutes().toString();',      
+      '  }else if(t=="s"){',     
+      '    varNow = varTime.getSeconds().toString();', 
+      '  }',
+      '  return varNow;',
+      '}']);
+  var code = functionName + '("'+ dropdown_time_ +'")';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
 

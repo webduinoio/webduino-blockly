@@ -629,10 +629,10 @@ Blockly.Blocks['gettime'] = {
     this.appendDummyInput()
       .appendField(Blockly.Msg.CUSTOM_JS_Time, "現在的時間")
       .appendField(new Blockly.FieldDropdown([
-        [Blockly.Msg.CUSTOM_JS_Time_1, "1"],
-        [Blockly.Msg.CUSTOM_JS_Time_2, "2"],
-        [Blockly.Msg.CUSTOM_JS_Time_3, "3"],
-        [Blockly.Msg.CUSTOM_JS_Time_4, "4"]
+        [Blockly.Msg.CUSTOM_JS_Time_1, "t"],
+        [Blockly.Msg.CUSTOM_JS_Time_2, "h"],
+        [Blockly.Msg.CUSTOM_JS_Time_3, "m"],
+        [Blockly.Msg.CUSTOM_JS_Time_4, "s"]
       ]), "time_");
     this.setOutput(true);
     this.setTooltip('');
