@@ -859,7 +859,7 @@ Blockly.Blocks['led_callback'] = {
 Blockly.Blocks['led_blink'] = {
   init: function () {
     this.appendValueInput("time_")
-      .setCheck("String")
+      .setCheck("Number")
       .appendField(new Blockly.FieldVariable("led"), "name_")
       .appendField(Blockly.Msg.WEBDUINO_LED_BLINK, "閃爍，閃爍時間");
     this.appendDummyInput()
@@ -876,7 +876,7 @@ Blockly.Blocks['led_blink'] = {
 Blockly.Blocks['led_blink_callback'] = {
   init: function () {
     this.appendValueInput("time_")
-      .setCheck("String")
+      .setCheck("Number")
       .appendField(new Blockly.FieldVariable("led"), "name_")
       .appendField(Blockly.Msg.WEBDUINO_LED_BLINK, "閃爍，閃爍時間");
     this.appendDummyInput()
