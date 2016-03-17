@@ -611,12 +611,12 @@ Blockly.Blocks['getdate'] = {
     this.appendDummyInput()
       .appendField(Blockly.Msg.CUSTOM_JS_Date, "現在的日期")
       .appendField(new Blockly.FieldDropdown([
-        [Blockly.Msg.CUSTOM_JS_Date_1, "1"],
-        [Blockly.Msg.CUSTOM_JS_Date_2, "2"],
-        [Blockly.Msg.CUSTOM_JS_Date_3, "3"],
-        [Blockly.Msg.CUSTOM_JS_Date_4, "4"],
-        [Blockly.Msg.CUSTOM_JS_Date_5, "5"],
-        [Blockly.Msg.CUSTOM_JS_Date_6, "6"]
+        [Blockly.Msg.CUSTOM_JS_Date_1, "f1"],
+        [Blockly.Msg.CUSTOM_JS_Date_2, "f2"],
+        [Blockly.Msg.CUSTOM_JS_Date_3, "f3"],
+        [Blockly.Msg.CUSTOM_JS_Date_4, "y"],
+        [Blockly.Msg.CUSTOM_JS_Date_5, "m"],
+        [Blockly.Msg.CUSTOM_JS_Date_6, "d"]
       ]), "date_");
     this.setOutput(true);
     this.setTooltip('');

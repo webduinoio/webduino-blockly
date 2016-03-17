@@ -476,49 +476,31 @@ Blockly.JavaScript['console'] = function (block) {
 
 Blockly.JavaScript['getdate'] = function (block) {
   var dropdown_date_ = block.getFieldValue('date_');
-  var varNow = Blockly.JavaScript.variableDB_.getDistinctName(
-    'varNow', Blockly.Variables.NAME_TYPE);
-  var varDate = Blockly.JavaScript.variableDB_.getDistinctName(
-    'varDate', Blockly.Variables.NAME_TYPE);
-  var code;
-  if (dropdown_date_ == 1) {
-    code = '(function(){\n' +
-      '  var ' + varDate + ' = new Date();\n' +
-      '  var ' + varNow + ' = ' + varDate + '.getFullYear().toString() + "/" + (' + varDate + '.getMonth()+1).toString() + "/" +' + varDate + '.getDate().toString();\n' +
-      '  return ' + varNow + ';\n' +
-      '})()';
-  } else if (dropdown_date_ == 2) {
-    code = '(function(){\n' +
-      '  var ' + varDate + ' = new Date();\n' +
-      '  var ' + varNow + ' = (' + varDate + '.getMonth()+1).toString() + "/" + ' + varDate + '.getDate().toString() + "/" +' + varDate + '.getFullYear().toString();\n' +
-      '  return ' + varNow + ';\n' +
-      '})()';
-  } else if (dropdown_date_ == 3) {
-    code = '(function(){\n' +
-      '  var ' + varDate + ' = new Date();\n' +
-      '  var ' + varNow + ' = ' + varDate + '.getDate().toString() + "/" + (' + varDate + '.getMonth()+1).toString() + "/" +' + varDate + '.getFullYear().toString();\n' +
-      '  return ' + varNow + ';\n' +
-      '})()';
-  } else if (dropdown_date_ == 4) {
-    code = '(function(){\n' +
-      '  var ' + varDate + ' = new Date();\n' +
-      '  var ' + varNow + ' = ' + varDate + '.getFullYear();\n' +
-      '  return ' + varNow + ';\n' +
-      '})()';
-  } else if (dropdown_date_ == 5) {
-    code = '(function(){\n' +
-      '  var ' + varDate + ' = new Date();\n' +
-      '  var ' + varNow + ' = ' + varDate + '.getMonth();\n' +
-      '  return ' + varNow + ';\n' +
-      '})()';
-  } else if (dropdown_date_ == 6) {
-    code = '(function(){\n' +
-      '  var ' + varDate + ' = new Date();\n' +
-      '  var ' + varNow + ' = ' + varDate + '.getDate();\n' +
-      '  return ' + varNow + ';\n' +
-      '})()';
-  }
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+  var functionName = Blockly.JavaScript.provideFunction_(
+      'get_date',
+      [ 'function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(t) {',
+      '  var varDay = new Date();',
+      '  var varYear = varDay.getFullYear();',
+      '  var varMonth = varDay.getMonth()+1;',
+      '  var varDate = varDay.getDate();',
+      '  var varNow;',
+      '  if(t=="f1"){',
+      '    varNow =  varYear + "/" + varMonth + "/" + varDate;',      
+      '  }else if(t=="f2"){',
+      '    varNow =  varMonth + "/" + varDate + "/" + varYear;',     
+      '  }else if(t=="f3"){',
+      '    varNow =  varDate + "/" + varMonth + "/" + varYear;',       
+      '  }else if(t=="y"){',
+      '    varNow =  varYear;',       
+      '  }else if(t=="m"){',
+      '    varNow =  varMonth;',      
+      '  }else if(t=="d"){',     
+      '    varNow =  varDate;',  
+      '  }',
+      '  return varNow;',
+      '}']);
+  var code = functionName + '("'+ dropdown_date_ +'")';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
 
@@ -530,15 +512,18 @@ Blockly.JavaScript['gettime'] = function (block) {
       'get_time',
       [ 'function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(t) {',
       '  var varTime = new Date();',
+      '  var varHours = varTime.getHours();',
+      '  var varMinutes = varTime.getMinutes();',
+      '  var varSeconds = varTime.getSeconds();',
       '  var varNow;',
       '  if(t=="t"){',
-      '    varNow =  varTime.getHours().toString() + ":" + varTime.getMinutes().toString() + ":" + varTime.getSeconds().toString();',      
+      '    varNow = varHours + ":" + varMinutes + ":" + varSeconds;',      
       '  }else if(t=="h"){',
-      '    varNow = varTime.getHours().toString();',      
+      '    varNow = varHours;',    
       '  }else if(t=="m"){',
-      '    varNow = varTime.getMinutes().toString();',      
+      '    varNow = varMinutes;',      
       '  }else if(t=="s"){',     
-      '    varNow = varTime.getSeconds().toString();', 
+      '    varNow = varSeconds;', 
       '  }',
       '  return varNow;',
       '}']);
