@@ -1590,7 +1590,7 @@ Blockly.Blocks['buzzer_music'] = {
 Blockly.Blocks['buzzer_notes_tempos'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_TONE, "音調：")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_TONE, "音符：")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_NO, "0"],
         ["C", "C"],
@@ -1606,7 +1606,6 @@ Blockly.Blocks['buzzer_notes_tempos'] = {
         ["AS", "AS"],
         ["B", "B"]
       ]), "tone_")
-      .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_PITCH, "   音高：")
       .appendField(new Blockly.FieldDropdown([
         ["1", "1"],
         ["2", "2"],
@@ -1642,7 +1641,7 @@ Blockly.Blocks['buzzer_single'] = {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_BUZZER_SINGLE, "使用")
       .appendField(new Blockly.FieldVariable("buzzer"), "var_")
-      .appendField(Blockly.Msg.WEBDUINO_BUZZER_SINGLE_TONE, "播放單音，音調")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_SINGLE_TONE, "播放單音，音符")
       .appendField(new Blockly.FieldDropdown([
         ["C", "C"],
         ["CS", "CS"],
@@ -1657,7 +1656,6 @@ Blockly.Blocks['buzzer_single'] = {
         ["AS", "AS"],
         ["B", "B"]
       ]), "tone_")
-      .appendField(Blockly.Msg.WEBDUINO_BUZZER_SINGLE_PITCH, "音高")
       .appendField(new Blockly.FieldDropdown([
         ["1", "1"],
         ["2", "2"],
@@ -1746,9 +1744,6 @@ Blockly.Blocks['buzzer_state'] = {
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#tgex67
 Blockly.Blocks['buzzer_music_array'] = {
   init: function () {
-    this.appendValueInput("music_name_")
-      .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC2, "快速建立音樂，音樂名稱：");
     this.appendValueInput("notes_")
       .setCheck("String")
       .setAlign(Blockly.ALIGN_RIGHT)
@@ -1760,7 +1755,7 @@ Blockly.Blocks['buzzer_music_array'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setColour(65);
+    this.setColour(35);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -1776,9 +1771,10 @@ Blockly.Blocks['buzzer_load_music'] = {
         [Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC2, "m2"],
         [Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC3, "m3"]
       ]), "music_");
-    this.setOutput(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
     this.setTooltip('');
-    this.setColour(65);
+    this.setColour(35);
     this.setHelpUrl('http://www.example.com/');
   }
 };

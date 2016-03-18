@@ -539,7 +539,6 @@
           </block>
         </value>
       </block>
-      <block type="buzzer_load_music"></block>
       <block type="buzzer_music">
         <value name="music_name_">
           <block type="variables_get">
@@ -549,11 +548,6 @@
       </block>
       <block type="buzzer_notes_tempos"></block>
       <block type="buzzer_music_array">
-        <value name="music_name_">
-          <block type="variables_get">
-            <field name="VAR">music</field>
-          </block>
-        </value>
         <value name="notes_">
           <block type="text">
             <field name="TEXT">C6,D6,E6,F6,G6,A6,B6</field>
@@ -565,6 +559,7 @@
           </block>
         </value>
       </block>
+      <block type="buzzer_load_music"></block>
       <block type="buzzer_play">
         <value name="play_music_">
           <block type="variables_get">

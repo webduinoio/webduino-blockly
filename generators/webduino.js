@@ -476,7 +476,6 @@ Blockly.JavaScript['console'] = function (block) {
 
 Blockly.JavaScript['getdate'] = function (block) {
   var dropdown_date_ = block.getFieldValue('date_');
-
   var functionName = Blockly.JavaScript.provideFunction_(
       'get_date',
       [ 'function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(t) {',
@@ -934,56 +933,71 @@ Blockly.JavaScript['buzzer_music'] = function (block) {
   var value_music_name_ = Blockly.JavaScript.valueToCode(block, 'music_name_', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_music_ = Blockly.JavaScript.statementToCode(block, 'music_');
   var functionName = Blockly.JavaScript.provideFunction_(
-      'get_date',
-      [ 'function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(t) {',
-      '  var varDay = new Date();',
-      '  var varYear = varDay.getFullYear();',
-      '  var varMonth = varDay.getMonth()+1;',
-      '  var varDate = varDay.getDate();',
-      '  var varNow;',
-      '  if(t=="f1"){',
-      '    varNow =  varYear + "/" + varMonth + "/" + varDate;',      
-      '  }else if(t=="f2"){',
-      '    varNow =  varMonth + "/" + varDate + "/" + varYear;',     
-      '  }else if(t=="f3"){',
-      '    varNow =  varDate + "/" + varMonth + "/" + varYear;',       
-      '  }else if(t=="y"){',
-      '    varNow =  varYear;',       
-      '  }else if(t=="m"){',
-      '    varNow =  varMonth;',      
-      '  }else if(t=="d"){',     
-      '    varNow =  varDate;',  
-      '  }',
-      '  return varNow;',
-      '}']);
-  var code = functionName + '("'+ dropdown_date_ +'")';
-  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
-  var code = 'var ' + value_music_name_ + '={};\n' +
-    '(function(){\n' +
-    '  var musicNotes = {};\n' +
-    '  musicNotes.notes = [];\n' +
-    '  musicNotes.tempos = [];\n' +
-    statements_music_ + '\n' +
-    '  ' + value_music_name_ + '.notes = musicNotes.notes;\n' +
-    '  ' + value_music_name_ + '.tempos = musicNotes.tempos;\n' +
-    '})();\n';
+      'buzzer_music',
+      [ 'function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(m) {',
+      _buzzer_music.toString().replace('function _buzzer_music(m){\n','')]);
+  var code = value_music_name_ + ' = ' +functionName + '(['+ statements_music_ +']);\n';
   return code;
 };
+
+function _buzzer_music(m){
+  var musicNotes = {};
+  musicNotes.notes = [];
+  musicNotes.tempos = [];
+  if(m.length>1){
+    for(var i=0; i<m.length; i++){
+      if(Array.isArray(m[i].notes)){
+        var cn = musicNotes.notes.concat(m[i].notes);
+        musicNotes.notes = cn;
+      }else{
+        musicNotes.notes.push(m[i].notes);
+      }
+      if(Array.isArray(m[i].tempos)){
+        var ct = musicNotes.tempos.concat(m[i].tempos);
+        musicNotes.tempos = ct;
+      }else{
+        musicNotes.tempos.push(m[i].tempos);
+      }
+    }
+  }else{
+    musicNotes.notes = m[0].notes;
+    musicNotes.tempos = m[0].tempos;
+  }
+  return musicNotes;
+}
 
 
 Blockly.JavaScript['buzzer_music_array'] = function (block) {
   var value_music_name_ = Blockly.JavaScript.valueToCode(block, 'music_name_', Blockly.JavaScript.ORDER_ATOMIC);
   var value_notes_ = Blockly.JavaScript.valueToCode(block, 'notes_', Blockly.JavaScript.ORDER_ATOMIC);
   var value_tempos_ = Blockly.JavaScript.valueToCode(block, 'tempos_', Blockly.JavaScript.ORDER_ATOMIC);
-  var a = value_notes_.split(',');
-  value_notes_ = '[' + a.join('\',\'') + ']';
-  var b = value_tempos_.split(',');
-  value_tempos_ = '[' + b.join('\',\'') + ']';
-  var code = 'var ' + value_music_name_ + '={};\n' +
-    '(function(){\n' +
-    '  ' + value_music_name_ + '.notes = ' + value_notes_ + ';\n' +
-    '  ' + value_music_name_ + '.tempos = ' + value_tempos_ + ';\n' +
-    '})();\n';
+  var next = block.getNextBlock();
+  var notes = value_notes_.replace(/\'/g,'');
+  var tempos = value_tempos_.replace(/\'/g,'');
+  var notesGen = notes.split(',');
+  var temposGen = tempos.split(',');
+  if(notesGen.length>temposGen.length){
+    var nt = notesGen.length - temposGen.length;
+    var tl = temposGen.length - 1;
+    for(var i=0; i<nt; i++){
+      temposGen.push(temposGen[tl])
+    }
+  }else if(notesGen.length<temposGen.length){
+    var nb = temposGen.length - notesGen.length;
+    temposGen.splice(notesGen.length,nb);
+  }
+  for(var i=0; i<notesGen.length; i++){
+    notesGen[i] = '"'+notesGen[i]+'"';
+  }
+  for(var i=0; i<temposGen.length; i++){
+    temposGen[i] = '"'+temposGen[i]+'"';
+  }
+  var code;
+  if (next === null) {
+    code = '{notes : [' + notesGen + '] , tempos : [' + temposGen + '] }';
+  } else {
+    code = '{notes : [' + notesGen + '] , tempos : [' + temposGen + '] },';
+  }
   return code;
 };
 
@@ -992,11 +1006,16 @@ Blockly.JavaScript['buzzer_notes_tempos'] = function (block) {
   var dropdown_tone_ = block.getFieldValue('tone_');
   var dropdown_pitch_ = block.getFieldValue('pitch_');
   var dropdown_tempos_ = block.getFieldValue('tempos_');
+  var next = block.getNextBlock();
+  var code;
   if (dropdown_tone_ == '0') {
     dropdown_pitch_ = '';
   }
-  var code = 'musicNotes.notes.push("' + dropdown_tone_ + dropdown_pitch_ + '");\n' +
-    'musicNotes.tempos.push("' + dropdown_tempos_ + '");\n';
+  if (next === null) {
+    code = '{notes:"'+dropdown_tone_+dropdown_pitch_+'",tempos:"'+dropdown_tempos_+'"}';
+  } else {
+    code = '{notes:"'+dropdown_tone_+dropdown_pitch_+'",tempos:"'+dropdown_tempos_+'"},';
+  }
   return code;
 };
 
@@ -1043,35 +1062,28 @@ Blockly.JavaScript['buzzer_state'] = function (block) {
 
 Blockly.JavaScript['buzzer_load_music'] = function (block) {
   var dropdown_music_ = block.getFieldValue('music_');
-  var notes, tempos, a, b;
-  var m = function () {
-    a = notes.split(',');
-    notes = '["' + a.join('","') + '"]';
-    b = tempos.split(',');
-    tempos = '["' + b.join('","') + '"]';
-  }
+  var notes, tempos;
+  var next = block.getNextBlock();
   if (dropdown_music_ == 'm1') {
-    notes = "E7,E7,0,E7,0,C7,E7,0,G7,0,0,0,G6,0,0,0,C7,0,0,G6,0,0,E6,0,0,A6,0,B6,0,AS6,A6,0,G6,E7,0,G7,A7,0,F7,G7,0,E7,0,C7,D7,B6,0,0,C7,0,0,G6,0,0,E6,0,0,A6,0,B6,0,AS6,A6,0,G6,E7,0,G7,A7,0,F7,G7,0,E7,0,C7,D7,B6,0,0";
-    tempos = "8";
-    m();
+    notes = '["E7","E7","0","E7","0","C7","E7","0","G7","0","0","0","G6","0","0","0","C7","0","0","G6","0","0","E6","0","0","A6","0","B6","0","AS6","A6","0","G6","E7","0","G7","A7","0","F7","G7","0","E7","0","C7","D7","B6","0","0","C7","0","0","G6","0","0","E6","0","0","A6","0","B6","0","AS6","A6","0","G6","E7","0","G7","A7","0","F7","G7","0","E7","0","C7","D7","B6","0","0"]';
+    tempos = '["8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8"]';
+  }else if (dropdown_music_ == 'm2') {
+    notes = '["c4","e4","e4","0","e4","g4","g4","0","d4","f4","f4","0","a4","b4","b4","0","c4","d4","e4","c4","e4","c4","e4","0","d4","e4","f4","f4","e4","d4","f4","0","e4","f4","g4","e4","g4","e4","g4","0","f4","g4","a4","a4","g4","f4","a4","0","g4","c4","d4","e4","f4","g4","a4","0","a4","d4","e4","f4","g4","a4","b4","0","b4","e4","f4","g4","a4","b4","c5","0","c5","b4","a4","f4","b4","g4","c5"]';
+    tempos = '["6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6"]';
+  }else if (dropdown_music_ == 'm3') {
+    notes = '["C5","C5","G4","G4","A4","A4","G4","0","E4","G4","C5","A4","G4","0","0","A4","0","G4","0","E4","A4","G4","0","E4","0","G4","0","E4","D4","C4","0","E4","E4","G4","G4","A4","A4","G4","G4","0","D5","0","C5","A4","G4","A4","C5","G4","0","A4","A4","G4","A4","C5","G4","0","A4","A4","G4","A4","D5","C5"]';
+    tempos = '["6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6"]';
+  }else if (dropdown_music_ == 'm4') {
+    notes = '["FS6","FS6","0","FS6","0","D6","FS6","0","B6","0","0","0","G6","0","0","0","G6","0","0","E6","0","0","C6","0","0","F6","0","G6","0","FS6","F6","0","E6","C7","0","E7","F7","0","D7","E7","0","C7","0","A6","B6","G6","0","0","G6","0","0","E6","0","0","C6","0","0","F6","0","G6","0","FS6","F6","0","E6","G6","0","E7","F7","0","D7","E7","0","C7","0","A6","B6","G6","0","0"]';
+    tempos = '["8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8"]';
   }
-  if (dropdown_music_ == 'm2') {
-    notes = "c4,e4,e4,0,e4,g4,g4,0,d4,f4,f4,0,a4,b4,b4,0,c4,d4,e4,c4,e4,c4,e4,0,d4,e4,f4,f4,e4,d4,f4,0,e4,f4,g4,e4,g4,e4,g4,0,f4,g4,a4,a4,g4,f4,a4,0,g4,c4,d4,e4,f4,g4,a4,0,a4,d4,e4,f4,g4,a4,b4,0,b4,e4,f4,g4,a4,b4,c5,0,c5,b4,a4,f4,b4,g4,c5";
-    tempos = "6, 6, 6,6,6 ,6 ,6 ,6,6 ,6 ,6 ,6,6 ,6 ,6 ,6 ,6 ,6 ,6 ,6 ,6 ,6 ,6,6,6 ,6 ,6 ,6 ,6 ,6 ,6 ,6,6 ,6 ,6 , 6, 6, 6, 6,6, 6, 6, 6, 6, 6, 6, 6,6, 6, 6, 6, 6,6 ,6 ,6 ,6,6 ,6 ,6 ,6 ,6 ,6 ,6 ,6,6 ,6 ,6 ,6 ,6 ,6 ,6 ,6,6 ,6 ,6 ,6 ,6 ,6 ,6";
-    m();
+  var code;
+  if (next === null) {
+    code = '{notes:'+ notes + ' , tempos:' + tempos + '}';
+  } else {
+    code = '{notes:'+ notes + ' , tempos:' + tempos + '},';
   }
-  if (dropdown_music_ == 'm3') {
-    notes = "C5,C5,G4,G4,A4,A4,G4,0,E4,G4,C5,A4,G4,0,0,A4,0,G4,0,E4,A4,G4,0,E4,0,G4,0,E4,D4,C4,0,E4,E4,G4,G4,A4,A4,G4,G4,0,D5,0,C5,A4,G4,A4,C5,G4,0,A4,A4,G4,A4,C5,G4,0,A4,A4,G4,A4,D5,C5";
-    tempos = "6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6";
-    m();
-  }
-  if (dropdown_music_ == 'm4') {
-    notes = "FS6,FS6,0,FS6,0,D6,FS6,0,B6,0,0,0,G6,0,0,0,G6,0,0,E6,0,0,C6,0,0,F6,0,G6,0,FS6,F6,0,E6,C7,0,E7,F7,0,D7,E7,0,C7,0,A6,B6,G6,0,0,G6,0,0,E6,0,0,C6,0,0,F6,0,G6,0,FS6,F6,0,E6,G6,0,E7,F7,0,D7,E7,0,C7,0,A6,B6,G6,0,0";
-    tempos = "8";
-    m();
-  }
-  var code = notes + ',' + tempos;
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+  return code;
 };
 
 
