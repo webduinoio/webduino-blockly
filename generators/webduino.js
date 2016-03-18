@@ -476,33 +476,36 @@ Blockly.JavaScript['console'] = function (block) {
 
 Blockly.JavaScript['getdate'] = function (block) {
   var dropdown_date_ = block.getFieldValue('date_');
+
   var functionName = Blockly.JavaScript.provideFunction_(
       'get_date',
       [ 'function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(t) {',
-      '  var varDay = new Date();',
-      '  var varYear = varDay.getFullYear();',
-      '  var varMonth = varDay.getMonth()+1;',
-      '  var varDate = varDay.getDate();',
-      '  var varNow;',
-      '  if(t=="f1"){',
-      '    varNow =  varYear + "/" + varMonth + "/" + varDate;',      
-      '  }else if(t=="f2"){',
-      '    varNow =  varMonth + "/" + varDate + "/" + varYear;',     
-      '  }else if(t=="f3"){',
-      '    varNow =  varDate + "/" + varMonth + "/" + varYear;',       
-      '  }else if(t=="y"){',
-      '    varNow =  varYear;',       
-      '  }else if(t=="m"){',
-      '    varNow =  varMonth;',      
-      '  }else if(t=="d"){',     
-      '    varNow =  varDate;',  
-      '  }',
-      '  return varNow;',
-      '}']);
+      _getdate.toString().replace('function _getdate(){\n','')]);
   var code = functionName + '("'+ dropdown_date_ +'")';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
+function _getdate(){
+  var varDay = new Date(),
+      varYear = varDay.getFullYear(),
+      varMonth = varDay.getMonth() + 1,
+      varDate = varDay.getDate();
+  var varNow;
+  if(t=="ymd"){
+    varNow =  varYear + "/" + varMonth + "/" + varDate;
+  }else if(t=="mdy"){
+    varNow =  varMonth + "/" + varDate + "/" + varYear;
+  }else if(t=="dmy"){
+    varNow =  varDate + "/" + varMonth + "/" + varYear;
+  }else if(t=="y"){
+    varNow =  varYear;
+  }else if(t=="m"){
+    varNow =  varMonth;
+  }else if(t=="d"){
+    varNow =  varDate;
+  }
+  return varNow;
+}
 
 
 
@@ -511,25 +514,28 @@ Blockly.JavaScript['gettime'] = function (block) {
   var functionName = Blockly.JavaScript.provideFunction_(
       'get_time',
       [ 'function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(t) {',
-      '  var varTime = new Date();',
-      '  var varHours = varTime.getHours();',
-      '  var varMinutes = varTime.getMinutes();',
-      '  var varSeconds = varTime.getSeconds();',
-      '  var varNow;',
-      '  if(t=="t"){',
-      '    varNow = varHours + ":" + varMinutes + ":" + varSeconds;',      
-      '  }else if(t=="h"){',
-      '    varNow = varHours;',    
-      '  }else if(t=="m"){',
-      '    varNow = varMinutes;',      
-      '  }else if(t=="s"){',     
-      '    varNow = varSeconds;', 
-      '  }',
-      '  return varNow;',
-      '}']);
+      _gettime.toString().replace('function _gettime(){\n','')]);
   var code = functionName + '("'+ dropdown_time_ +'")';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
+
+function _gettime(){
+  var varTime = new Date(),
+      varHours = varTime.getHours(),
+      varMinutes = varTime.getMinutes(),
+      varSeconds = varTime.getSeconds();
+  var varNow;
+  if(t=="hms"){
+    varNow = varHours + ":" + varMinutes + ":" + varSeconds;
+  }else if(t=="h"){
+    varNow = varHours;
+  }else if(t=="m"){
+    varNow = varMinutes;
+  }else if(t=="s"){
+    varNow = varSeconds;
+  }
+  return varNow;
+}
 
 
 Blockly.JavaScript['board_server'] = function (block) {
@@ -927,6 +933,31 @@ Blockly.JavaScript['buzzer_new'] = function (block) {
 Blockly.JavaScript['buzzer_music'] = function (block) {
   var value_music_name_ = Blockly.JavaScript.valueToCode(block, 'music_name_', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_music_ = Blockly.JavaScript.statementToCode(block, 'music_');
+  var functionName = Blockly.JavaScript.provideFunction_(
+      'get_date',
+      [ 'function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(t) {',
+      '  var varDay = new Date();',
+      '  var varYear = varDay.getFullYear();',
+      '  var varMonth = varDay.getMonth()+1;',
+      '  var varDate = varDay.getDate();',
+      '  var varNow;',
+      '  if(t=="f1"){',
+      '    varNow =  varYear + "/" + varMonth + "/" + varDate;',      
+      '  }else if(t=="f2"){',
+      '    varNow =  varMonth + "/" + varDate + "/" + varYear;',     
+      '  }else if(t=="f3"){',
+      '    varNow =  varDate + "/" + varMonth + "/" + varYear;',       
+      '  }else if(t=="y"){',
+      '    varNow =  varYear;',       
+      '  }else if(t=="m"){',
+      '    varNow =  varMonth;',      
+      '  }else if(t=="d"){',     
+      '    varNow =  varDate;',  
+      '  }',
+      '  return varNow;',
+      '}']);
+  var code = functionName + '("'+ dropdown_date_ +'")';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
   var code = 'var ' + value_music_name_ + '={};\n' +
     '(function(){\n' +
     '  var musicNotes = {};\n' +

@@ -611,9 +611,9 @@ Blockly.Blocks['getdate'] = {
     this.appendDummyInput()
       .appendField(Blockly.Msg.CUSTOM_JS_Date, "現在的日期")
       .appendField(new Blockly.FieldDropdown([
-        [Blockly.Msg.CUSTOM_JS_Date_1, "f1"],
-        [Blockly.Msg.CUSTOM_JS_Date_2, "f2"],
-        [Blockly.Msg.CUSTOM_JS_Date_3, "f3"],
+        [Blockly.Msg.CUSTOM_JS_Date_1, "ymd"],
+        [Blockly.Msg.CUSTOM_JS_Date_2, "dmy"],
+        [Blockly.Msg.CUSTOM_JS_Date_3, "mdy"],
         [Blockly.Msg.CUSTOM_JS_Date_4, "y"],
         [Blockly.Msg.CUSTOM_JS_Date_5, "m"],
         [Blockly.Msg.CUSTOM_JS_Date_6, "d"]
@@ -629,7 +629,7 @@ Blockly.Blocks['gettime'] = {
     this.appendDummyInput()
       .appendField(Blockly.Msg.CUSTOM_JS_Time, "現在的時間")
       .appendField(new Blockly.FieldDropdown([
-        [Blockly.Msg.CUSTOM_JS_Time_1, "t"],
+        [Blockly.Msg.CUSTOM_JS_Time_1, "hms"],
         [Blockly.Msg.CUSTOM_JS_Time_2, "h"],
         [Blockly.Msg.CUSTOM_JS_Time_3, "m"],
         [Blockly.Msg.CUSTOM_JS_Time_4, "s"]
