@@ -209,73 +209,74 @@
   overflow-y: auto;
   position: absolute;
 }
-.blocklyTreeRoot {
+.blocklyTreeRoot.blocklyTreeRoot {
   padding: 4px 0;
 }
-.blocklyTreeRoot:focus {
+.blocklyTreeRoot.blocklyTreeRoot:focus {
   outline: none;
 }
-.blocklyTreeRow {
+.blocklyTreeRow.blocklyTreeRow {
   line-height: 22px;
   height: 22px;
+  margin-bottom: 0;
   padding-right: 25px;
   white-space: nowrap;
   padding-left:5px!important;
 }
-.blocklyTreeRoot>div>div>div>div>.blocklyTreeRow{
+.blocklyTreeRoot.blocklyTreeRoot>div>div>div>div>.blocklyTreeRow{
   padding-left:5px!important;
 }
 .blocklyToolboxDiv[dir="RTL"] .blocklyTreeRow {
   padding-right: 0;
   padding-left: 1em !important;
 }
-.blocklyTreeRow:hover {
+.blocklyTreeRow.blocklyTreeRow:hover {
   background-color: #e4e4e4;
 }
-.blocklyTreeSeparator {
+.blocklyTreeSeparator.blocklyTreeSeparator {
   border-bottom: solid #e5e5e5 1px;
   height: 0px;
   margin: 5px 0;
 }
-.blocklyTreeIcon {
+.blocklyTreeIcon.blocklyTreeIcon {
   background-image: url(../media/sprites.png);
   height: 10px;
   vertical-align: middle;
   width: 10px;
 }
-.blocklyTreeIconClosedLtr {
+.blocklyTreeIconClosedLtr.blocklyTreeIconClosedLtr {
   background-position: -85px -3px;
 }
-.blocklyTreeIconClosedRtl {
+.blocklyTreeIconClosedRtl.blocklyTreeIconClosedRtl {
   background-position: 0px -1px;
 }
-.blocklyTreeIconOpen {
+.blocklyTreeIconOpen.blocklyTreeIconOpen {
   background-position: -77px -2px;
 }
-.blocklyTreeSelected>.blocklyTreeIconClosedLtr {
+.blocklyTreeSelected.blocklyTreeSelected>.blocklyTreeIconClosedLtr {
   background-position: -85px -3px;
 }
-.blocklyTreeSelected>.blocklyTreeIconClosedRtl {
+.blocklyTreeSelected.blocklyTreeSelected>.blocklyTreeIconClosedRtl {
   background-position: 0px -17px;
 }
-.blocklyTreeSelected>.blocklyTreeIconOpen {
+.blocklyTreeSelected.blocklyTreeSelected>.blocklyTreeIconOpen {
   background-position: -77px -14px;
 }
-.blocklyTreeIconNone,
-.blocklyTreeSelected>.blocklyTreeIconNone {
+.blocklyTreeIconNone.blocklyTreeIconNone,
+.blocklyTreeSelected.blocklyTreeSelected>.blocklyTreeIconNone {
   background-position: -48px -1px;
 }
-.blocklyTreeLabel {
+.blocklyTreeLabel.blocklyTreeLabel {
   cursor: default;
   font-family: sans-serif;
   font-size: 16px;
   padding: 0 3px;
   vertical-align: middle;
 }
-.blocklyTreeSelected  {
+.blocklyTreeSelected.blocklyTreeSelected  {
   background-color: #57e !important;
 }
-.blocklyTreeSelected .blocklyTreeLabel {
+.blocklyTreeSelected.blocklyTreeSelected .blocklyTreeLabel {
   color: #fff;
 }
 .blocklyWidgetDiv .goog-palette {

@@ -1008,11 +1008,36 @@ Blockly.Trashcan.prototype.position = function () {
 };
 
 //remove inject css
-Blockly.Css.inject = function (hasCss, pathToMedia) {
+// Blockly.Css.inject = function (hasCss, pathToMedia) {
+//   if (Blockly.Css.styleSheet_) {
+//     return;
+//   }
+//   var text = '.blocklyDraggable {}\n';
+//   Blockly.Css.mediaPath_ = pathToMedia.replace(/[\\\/]$/, '');
+//   text = text.replace(/<<<PATH>>>/g, Blockly.Css.mediaPath_);
+//   // Inject CSS tag.
+//   var cssNode = document.createElement('style');
+//   document.head.appendChild(cssNode);
+//   var cssTextNode = document.createTextNode(text);
+//   cssNode.appendChild(cssTextNode);
+//   Blockly.Css.styleSheet_ = cssNode.sheet;
+//   Blockly.Css.setCursor(Blockly.Css.Cursor.OPEN);
+// };
+
+Blockly.Css.inject = function(hasCss, pathToMedia) {
+  // Only inject the CSS once.
   if (Blockly.Css.styleSheet_) {
     return;
   }
+  // Placeholder for cursor rule.  Must be first rule (index 0).
   var text = '.blocklyDraggable {}\n';
+  if (hasCss) {
+    text += Blockly.Css.CONTENT.join('\n');
+    if (Blockly.FieldDate) {
+      text += Blockly.FieldDate.CSS.join('\n');
+    }
+  }
+  // Strip off any trailing slash (either Unix or Windows).
   Blockly.Css.mediaPath_ = pathToMedia.replace(/[\\\/]$/, '');
   text = text.replace(/<<<PATH>>>/g, Blockly.Css.mediaPath_);
   // Inject CSS tag.
