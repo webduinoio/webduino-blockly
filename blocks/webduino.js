@@ -759,6 +759,37 @@ Blockly.Blocks['board_pin_state'] = {
   }
 };
 
+Blockly.Blocks['pin_new'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_PIN, "pin")
+      .appendField(new Blockly.FieldDropdown([
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"],
+        ["11", "11"],
+        ["12", "12"],
+        ["13", "13"],
+        ["14 ( A0 )", "14"],
+        ["15 ( A1 )", "15"],
+        ["16 ( A2 )", "16"],
+        ["17 ( A3 )", "17"],
+        ["18 ( A4 )", "18"],
+        ["19 ( A5 )", "19"]
+      ]), "pin_");
+    this.setOutput(true);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 Blockly.Blocks['led_new'] = {
   init: function () {
     this.appendDummyInput()
@@ -898,30 +929,48 @@ Blockly.Blocks['rgbled_new'] = {
       .appendField(Blockly.Msg.WEBDUINO_RGBLED, "RGBLed")
       .appendField(Blockly.Msg.WEBDUINO_RGBLED_RED, "red")
       .appendField(new Blockly.FieldDropdown([
-        ["3", "3"],
-        ["5", "5"],
-        ["6", "6"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"]
+        ["2", "2"],
+        ["3 ~", "3"],
+        ["4", "4"],
+        ["5 ~", "5"],
+        ["6 ~", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9 ~", "9"],
+        ["10 ~", "10"],
+        ["11 ~", "11"],
+        ["12", "12"],
+        ["13", "13"]
       ]), "red_")
       .appendField(Blockly.Msg.WEBDUINO_RGBLED_GREEN, "green")
       .appendField(new Blockly.FieldDropdown([
-        ["3", "3"],
-        ["5", "5"],
-        ["6", "6"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"]
+        ["2", "2"],
+        ["3 ~", "3"],
+        ["4", "4"],
+        ["5 ~", "5"],
+        ["6 ~", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9 ~", "9"],
+        ["10 ~", "10"],
+        ["11 ~", "11"],
+        ["12", "12"],
+        ["13", "13"]
       ]), "green_")
       .appendField(Blockly.Msg.WEBDUINO_RGBLED_BLUE, "blue")
       .appendField(new Blockly.FieldDropdown([
-        ["3", "3"],
-        ["5", "5"],
-        ["6", "6"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"]
+        ["2", "2"],
+        ["3 ~", "3"],
+        ["4", "4"],
+        ["5 ~", "5"],
+        ["6 ~", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9 ~", "9"],
+        ["10 ~", "10"],
+        ["11 ~", "11"],
+        ["12", "12"],
+        ["13", "13"]
       ]), "blue_");
     this.setOutput(true);
     this.setColour(230);
@@ -936,30 +985,48 @@ Blockly.Blocks['rgbled_new_cathode'] = {
       .appendField(Blockly.Msg.WEBDUINO_RGBLED_CATHODE, "RGBLed")
       .appendField(Blockly.Msg.WEBDUINO_RGBLED_RED, "red")
       .appendField(new Blockly.FieldDropdown([
-        ["3", "3"],
-        ["5", "5"],
-        ["6", "6"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"]
+        ["2", "2"],
+        ["3 ~", "3"],
+        ["4", "4"],
+        ["5 ~", "5"],
+        ["6 ~", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9 ~", "9"],
+        ["10 ~", "10"],
+        ["11 ~", "11"],
+        ["12", "12"],
+        ["13", "13"]
       ]), "red_")
       .appendField(Blockly.Msg.WEBDUINO_RGBLED_GREEN, "green")
       .appendField(new Blockly.FieldDropdown([
-        ["3", "3"],
-        ["5", "5"],
-        ["6", "6"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"]
+        ["2", "2"],
+        ["3 ~", "3"],
+        ["4", "4"],
+        ["5 ~", "5"],
+        ["6 ~", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9 ~", "9"],
+        ["10 ~", "10"],
+        ["11 ~", "11"],
+        ["12", "12"],
+        ["13", "13"]
       ]), "green_")
       .appendField(Blockly.Msg.WEBDUINO_RGBLED_BLUE, "blue")
       .appendField(new Blockly.FieldDropdown([
-        ["3", "3"],
-        ["5", "5"],
-        ["6", "6"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"]
+        ["2", "2"],
+        ["3 ~", "3"],
+        ["4", "4"],
+        ["5 ~", "5"],
+        ["6 ~", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9 ~", "9"],
+        ["10 ~", "10"],
+        ["11 ~", "11"],
+        ["12", "12"],
+        ["13", "13"]
       ]), "blue_");
     this.setOutput(true);
     this.setColour(230);
@@ -1919,7 +1986,7 @@ Blockly.Blocks['data_firebase_write_item'] = {
   init: function () {
     this.setColour(100);
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_COLUMN,'欄位');
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_COLUMN, '欄位');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -1931,7 +1998,7 @@ Blockly.Blocks['data_firebase_write'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("myFirebase"), "var_")
-      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATA,"寫入資料");
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATA, "寫入資料");
     this.setColour(160);
     this.itemCount_ = 2;
     this.updateShape_();
