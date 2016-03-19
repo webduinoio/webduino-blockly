@@ -309,16 +309,24 @@ Blockly.Msg.WEBDUINO_BUZZER_SINGLE_PITCH = "pitch";
 Blockly.Msg.WEBDUINO_BUZZER_SINGLE_TEMPOS = "tempo";
 
 Blockly.Msg.WEBDUINO_FIREBASE_NAME = "< Firebase > name:";
+Blockly.Msg.WEBDUINO_FIREBASE_ADDCOLUMN = 'Add Column';
+Blockly.Msg.WEBDUINO_FIREBASE_COLUMN = 'column';
+Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATA = "Add data";
+Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATACOLUMN = 'column ';
+Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATANAME = ' name:';
+Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATAVAL = '  value:';
 Blockly.Msg.WEBDUINO_FIREBASE_URL = ",url:";
 Blockly.Msg.WEBDUINO_FIREBASE_DO = "do:";
 Blockly.Msg.WEBDUINO_FIREBASE_WRITE = "Write";
-Blockly.Msg.WEBDUINO_FIREBASE_IS = "is";
+Blockly.Msg.WEBDUINO_FIREBASE_S = "is";
 Blockly.Msg.WEBDUINO_FIREBASE_READ = "If";
 Blockly.Msg.WEBDUINO_FIREBASE_ATTR = "changed, read property";
 Blockly.Msg.WEBDUINO_FIREBASE_TO = "to";
 Blockly.Msg.WEBDUINO_FIREBASE_CLEAR = "Clear Database";
 Blockly.Msg.WEBDUINO_FIREBASE_READONCE = "Read";
 Blockly.Msg.WEBDUINO_FIREBASE_ATTRONCE = "'s property";
+Blockly.Msg.WEBDUINO_FIREBASE_DATAALL = "All";
+Blockly.Msg.WEBDUINO_FIREBASE_DATALAST = "Last one";
 
 // LED
 

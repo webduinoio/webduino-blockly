@@ -1145,10 +1145,18 @@ Blockly.JavaScript['data_firebase'] = function (block) {
 Blockly.JavaScript['data_firebase_write'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
   var statements_write_ = Blockly.JavaScript.statementToCode(block, 'write_');
-  var code = variable_var_ + '.push({\n' +
-    '  ' + statements_write_ + '\n' +
-    '});\n' +
-    'console.log("write ok");\n';
+  var c = '';
+  for (var n = 0; n < block.itemCount_; n++) {
+    var name = block.getFieldValue('name_' + n) || 'unknow';
+    var val = Blockly.JavaScript.valueToCode(block, 'data_' + n) || '""';
+    if(n<(block.itemCount_-1)){
+      c = c + '  ' + name +':'+val +',\n';
+    }else{
+      c = c + '  ' + name +':'+val +'\n';
+    }
+  }
+  var code = variable_var_ + '.push({\n'+c+
+  '});\n';
   return code;
 };
 

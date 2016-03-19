@@ -401,7 +401,13 @@ Blockly.Msg.WEBDUINO_FISH_RIGHT = "(右轉)";
 
 // Firebase
 
-Blockly.Msg.WEBDUINO_FIREBASE_NAME = "< Firebase > 名稱";
+Blockly.Msg.WEBDUINO_FIREBASE_NAME = "載入 Firebase 資料庫";
+Blockly.Msg.WEBDUINO_FIREBASE_ADDCOLUMN = '增加資料欄位';
+Blockly.Msg.WEBDUINO_FIREBASE_COLUMN = '欄位';
+Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATA = "寫入資料";
+Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATACOLUMN = '欄位 ';
+Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATANAME = ' 名稱:';
+Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATAVAL = '  值:';
 Blockly.Msg.WEBDUINO_FIREBASE_URL = "網址";
 Blockly.Msg.WEBDUINO_FIREBASE_DO = "執行";
 Blockly.Msg.WEBDUINO_FIREBASE_WRITE = "寫入";
@@ -413,6 +419,8 @@ Blockly.Msg.WEBDUINO_FIREBASE_TO = "到";
 Blockly.Msg.WEBDUINO_FIREBASE_CLEAR = "清空資料庫";
 Blockly.Msg.WEBDUINO_FIREBASE_READONCE = "載入資料庫";
 Blockly.Msg.WEBDUINO_FIREBASE_ATTRONCE = "屬性";
+Blockly.Msg.WEBDUINO_FIREBASE_DATAALL = "完整內容";
+Blockly.Msg.WEBDUINO_FIREBASE_DATALAST = "最後一筆更新";
 
 // RFID
 

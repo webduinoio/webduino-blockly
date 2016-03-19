@@ -1891,12 +1891,10 @@ Blockly.Blocks['servo_angle_set'] = {
 Blockly.Blocks['data_firebase'] = {
   init: function () {
     this.appendValueInput("name_")
-      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME, "< Firebase > 名稱：");
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME, "使用 firebase 資料庫");
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_FIREBASE_URL, "網址：")
       .appendField(new Blockly.FieldTextInput("https://<YOUR-FIREBASE-APP>.firebaseio.com"), "url_");
-    this.appendStatementInput("do_")
-      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_DO, "執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -1905,17 +1903,115 @@ Blockly.Blocks['data_firebase'] = {
   }
 };
 
-Blockly.Blocks['data_firebase_write'] = {
+Blockly.Blocks['data_firebase_write_container'] = {
   init: function () {
-    this.appendStatementInput("write_")
-      .appendField(new Blockly.FieldVariable("myFirebase"), "var_")
-      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITE, "寫入");
+    this.setColour(100);
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_ADDCOLUMN, '增加資料欄位');
+    this.appendStatementInput('STACK');
+    this.setTooltip('');
+    this.contextMenu = false;
+  }
+};
+
+Blockly.Blocks['data_firebase_write_item'] = {
+  init: function () {
+    this.setColour(100);
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_COLUMN,'欄位');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setColour(160);
-    this.setHelpUrl('http://www.example.com/');
+    this.contextMenu = false;
   }
+};
+
+Blockly.Blocks['data_firebase_write'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldVariable("myFirebase"), "var_")
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATA,"寫入資料");
+    this.setColour(160);
+    this.itemCount_ = 2;
+    this.updateShape_();
+    this.setMutator(new Blockly.Mutator(['data_firebase_write_item']));
+    this.setTooltip('');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setHelpUrl('http://www.example.com/');
+  },
+  mutationToDom: function () {
+    var container = document.createElement('mutation');
+    container.setAttribute('items', this.itemCount_);
+    return container;
+  },
+  domToMutation: function (xmlElement) {
+    this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
+    this.updateShape_();
+  },
+  decompose: function (workspace) {
+    var containerBlock = Blockly.Block.obtain(workspace,
+      'data_firebase_write_container');
+    containerBlock.initSvg();
+    var connection = containerBlock.getInput('STACK').connection;
+    for (var i = 0; i < this.itemCount_; i++) {
+      var itemBlock = Blockly.Block.obtain(workspace, 'data_firebase_write_item');
+      itemBlock.initSvg();
+      connection.connect(itemBlock.previousConnection);
+      connection = itemBlock.nextConnection;
+    }
+    return containerBlock;
+  },
+  compose: function (containerBlock) {
+    var itemBlock = containerBlock.getInputTargetBlock('STACK');
+    var connections = [];
+    while (itemBlock) {
+      connections.push(itemBlock.valueConnection_);
+      itemBlock = itemBlock.nextConnection &&
+        itemBlock.nextConnection.targetBlock();
+    }
+    this.itemCount_ = connections.length;
+    this.updateShape_();
+    for (var i = 0; i < this.itemCount_; i++) {
+      if (connections[i]) {
+        this.getInput('data_' + i).connection.connect(connections[i]);
+      }
+    }
+  },
+  saveConnections: function (containerBlock) {
+    var itemBlock = containerBlock.getInputTargetBlock('STACK');
+    var i = 0;
+    while (itemBlock) {
+      var input = this.getInput('data_' + i);
+      itemBlock.valueConnection_ = input && input.connection.targetConnection;
+      i++;
+      itemBlock = itemBlock.nextConnection &&
+        itemBlock.nextConnection.targetBlock();
+    }
+  },
+  updateShape_: function () {
+    var v = [];
+    if (this.getInput('EMPTY')) {
+      this.removeInput('EMPTY');
+    } else {
+      var i = 0;
+      while (this.getInput('data_' + i)) {
+        v[i] = this.getInput('data_' + i).fieldRow[1].text_;
+        this.removeInput('data_' + i);
+        i++;
+      }
+    }
+    if (this.itemCount_ == 0) {} else {
+      for (var i = 0; i < this.itemCount_; i++) {
+        this.appendValueInput('data_' + i)
+          .setAlign(Blockly.ALIGN_RIGHT)
+          .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATACOLUMN + (i + 1) + Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATANAME)
+          .appendField(new Blockly.FieldTextInput('...'), "name_" + i)
+          .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATAVAL);
+      }
+    }
+  },
+  newQuote_: Blockly.Blocks['text'].newQuote_
 };
 
 Blockly.Blocks['data_firebase_data'] = {
@@ -1940,8 +2036,8 @@ Blockly.Blocks['data_firebase_read'] = {
       .appendField(new Blockly.FieldTextInput("..."), "attr_")
       .appendField(Blockly.Msg.WEBDUINO_FIREBASE_S, "的")
       .appendField(new Blockly.FieldDropdown([
-        ["完整內容", '1'],
-        ["最後一筆更新", '2']
+        [Blockly.Msg.WEBDUINO_FIREBASE_DATAALL, '1'],
+        [Blockly.Msg.WEBDUINO_FIREBASE_DATALAST, '2']
       ]), "type_")
       .appendField(Blockly.Msg.WEBDUINO_FIREBASE_TO, "到");
     this.appendStatementInput("do_")
