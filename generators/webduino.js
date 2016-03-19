@@ -206,9 +206,7 @@ Blockly.JavaScript['demo_range_input_value'] = function (block) {
 Blockly.JavaScript['demo_youtube'] = function (block) {
   var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
   var text_id_ = block.getFieldValue('id_');
-  var code = 'var checkYoutubeLoad=0;\n' +
-    'onYouTubeIframeAPIReady();\n' +
-    'function onYouTubeIframeAPIReady() {\n' +
+  var code = 'function onYouTubeIframeAPIReady() {\n' +
     '  ' + value_name_ + ' = new YT.Player("player", {\n' +
     '    height: "240",\n' +
     '    width: "96%",\n' +
@@ -218,23 +216,15 @@ Blockly.JavaScript['demo_youtube'] = function (block) {
     '      "controls": 1},\n' +
     '    events: {\n' +
     '      "onReady": onPlayerReady,\n' +
-    '      "onStateChange": onPlayerStateChange\n' +
-    '    }\n' +
+    '    },\n' +
+    '    playerReady: false\n'+
     '  });\n' +
-    '}\n' +
-    'function onPlayerReady(event) {\n' +
-    '  event.target.playVideo();\n' +
-    '  checkYoutubeLoad=1;\n' +
-    '}\n' +
-    'var done = false;\n' +
-    'function onPlayerStateChange(event) {\n' +
-    '  if (event.data == YT.PlayerState.PLAYING && !done) {\n' +
-    '    done = true;\n' +
-    '  }\n' +
-    '}\n' +
-    'function stopVideo() {\n' +
-    '  ' + value_name_ + '.stopVideo();\n' +
-    '}\n';
+    '  function onPlayerReady(event) {\n' +
+    '    event.target.playVideo();\n' +
+    '    ' + value_name_ + '.playerReady=true;\n' +
+    '  }\n'+
+    '}\n\n'+
+    'onYouTubeIframeAPIReady();\n\n';
   return code;
 };
 
@@ -248,7 +238,7 @@ Blockly.JavaScript['demo_youtube_volume'] = function (block) {
     '  if(' + varA + '>=100){\n' +
     '    ' + varA + '=100;\n' +
     '  }\n' +
-    '  if(checkYoutubeLoad==1){\n' +
+    '  if('+variable_name_+'.playerReady){\n' +
     '    ' + variable_name_ + '.setVolume(' + varA + ');\n' +
     '  }\n';
   return code;
@@ -258,7 +248,7 @@ Blockly.JavaScript['demo_youtube_volume'] = function (block) {
 Blockly.JavaScript['demo_youtube_speed'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var dropdown_speed_ = block.getFieldValue('speed_');
-  var code = '  if(checkYoutubeLoad==1){\n' +
+  var code = '  if('+variable_name_+'.playerReady){\n' +
     '    ' + variable_name_ + '.setPlaybackRate(' + dropdown_speed_ + ');\n' +
     '  }\n';
   return code;
@@ -270,17 +260,17 @@ Blockly.JavaScript['demo_youtube_control'] = function (block) {
   var dropdown_status_ = block.getFieldValue('status_');
   var code;
   if (dropdown_status_ == '1') {
-    code = '  if(checkYoutubeLoad==1){\n' +
+    code = '  if('+variable_name_+'.playerReady){\n' +
       '    ' + variable_name_ + '.playVideo();\n' +
       '  }\n';
   } else if (dropdown_status_ == '2') {
-    code = '  if(checkYoutubeLoad==1){\n' +
+    code = '  if('+variable_name_+'.playerReady){\n' +
       '    ' + variable_name_ + '.pauseVideo();\n' +
       '  }\n';
   } else if (dropdown_status_ == '0') {
-    code = '  if(checkYoutubeLoad==1){\n' +
-      '    ' + variable_name_ + '.stopVideo();\n' +
+    code = '  if('+variable_name_+'.playerReady){\n' +
       '    ' + variable_name_ + '.seekTo(0);\n' +
+      '    ' + variable_name_ + '.stopVideo();\n' +
       '  }\n';
   }
   return code;
@@ -960,8 +950,8 @@ function _buzzer_music(m){
       }
     }
   }else{
-    musicNotes.notes = m[0].notes;
-    musicNotes.tempos = m[0].tempos;
+    musicNotes.notes = [m[0].notes];
+    musicNotes.tempos = [m[0].tempos];
   }
   return musicNotes;
 }
