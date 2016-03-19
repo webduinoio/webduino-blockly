@@ -4,6 +4,7 @@ goog.provide('Blockly.Blocks.webduino');
 goog.require('Blockly.Blocks');
 
 Blockly.Blocks.colour.HUE = 120;
+Blockly.Blocks.colour.HUESON = 70;
 
 /* 
       .o8                                        
@@ -86,7 +87,7 @@ Blockly.Blocks['demo_light_state'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setColour(Blockly.Blocks.colour.HUESON);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -101,7 +102,7 @@ Blockly.Blocks['demo_light_ifelse'] = {
       ]), "state_");
     this.setOutput(true);
     this.setTooltip('');
-    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setColour(Blockly.Blocks.colour.HUESON);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -113,7 +114,7 @@ Blockly.Blocks['demo_light_toggle'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setColour(Blockly.Blocks.colour.HUESON);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -230,7 +231,7 @@ Blockly.Blocks['demo_area_input_color'] = {
       .appendField(Blockly.Msg.DEMO_AREA_COLOR_CHOOSE, "選擇的顏色");
     this.setOutput(true);
     this.setTooltip('');
-    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setColour(Blockly.Blocks.colour.HUESON);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -242,7 +243,7 @@ Blockly.Blocks['demo_area_color'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setColour(Blockly.Blocks.colour.HUESON);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -277,7 +278,7 @@ Blockly.Blocks['demo_range_show'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setColour(Blockly.Blocks.colour.HUESON);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -288,7 +289,7 @@ Blockly.Blocks['demo_range_input_value'] = {
       .appendField(Blockly.Msg.DEMO_RANGE_VALUE, "拉霸的數值");
     this.setOutput(true);
     this.setTooltip('');
-    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setColour(Blockly.Blocks.colour.HUESON);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -494,7 +495,7 @@ Blockly.Blocks['demo_tracking_val'] = {
       ]), "val_");
     this.setOutput(true);
     this.setTooltip('');
-    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setColour(Blockly.Blocks.colour.HUESON);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -2285,7 +2286,7 @@ Blockly.Blocks['sound_recognition_check'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setColour(100);
+    this.setColour(60);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -2308,7 +2309,7 @@ Blockly.Blocks['sound_recognition_text'] = {
       .appendField(Blockly.Msg.WEBDUINO_RECONGNITION_CONTENT, "辨識的文字");
     this.setOutput(true);
     this.setTooltip('');
-    this.setColour(100);
+    this.setColour(60);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -3127,7 +3128,7 @@ Blockly.Blocks['joystick_val'] = {
       .appendField("數值");
     this.setOutput(true);
     this.setTooltip('');
-    this.setColour(65);
+    this.setColour(35);
     this.setHelpUrl('http://www.example.com/');
   }
 };
