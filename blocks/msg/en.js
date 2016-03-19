@@ -164,6 +164,7 @@ Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "do:";
 Blockly.Msg.WEBDUINO_BOARD_SAMPLING = "  Sampling";
 
 Blockly.Msg.WEBDUINO_LED = "LED";
+Blockly.Msg.WEBDUINO_PIN = "pin";
 Blockly.Msg.WEBDUINO_LED_PIN = "pin";
 Blockly.Msg.WEBDUINO_LED_SET_STATE = "set state";
 Blockly.Msg.WEBDUINO_LED_TOGGLE = "toggle";
