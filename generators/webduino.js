@@ -542,7 +542,7 @@ Blockly.JavaScript['board_ready'] = function (block) {
 
   var type;
   if (checkbox_type_ == '1') {
-    type = 'boardReady(' + value_device_ + ', function (board) {\n';
+    type = 'boardReady('+value_device_+', function (board) {\n';
   } else if (checkbox_type_ == '2') {
     type = 'boardReady({ transport: \'serial\', path:' + value_device_ + ' }, function (board) {\n';
   } else if (checkbox_type_ == '3') {
@@ -1246,65 +1246,7 @@ Blockly.JavaScript['car_test_new'] = function (block) {
   var dropdown_rb_ = block.getFieldValue('rb_');
   var dropdown_lf_ = block.getFieldValue('lf_');
   var dropdown_lb_ = block.getFieldValue('lb_');
-  var code = value_var_ + ' = {};\n\n' +
-    value_var_ + '.rightFront_ = getLed(board, ' + dropdown_rf_ + ');\n' +
-    value_var_ + '.rightBack_ = getLed(board, ' + dropdown_rb_ + ');\n' +
-    value_var_ + '.leftFront_ = getLed(board, ' + dropdown_lf_ + ');\n' +
-    value_var_ + '.leftBack_ = getLed(board, ' + dropdown_lb_ + ');\n\n' +
-    value_var_ + '.goFront_ = function(){\n' +
-    '  ' + value_var_ + '.rightFront_.on();\n' +
-    '  ' + value_var_ + '.rightBack_.off();\n' +
-    '  ' + value_var_ + '.leftFront_.on();\n' +
-    '  ' + value_var_ + '.leftBack_.off();\n' +
-    '};\n' +
-    value_var_ + '.goBack_ = function(){\n' +
-    '  ' + value_var_ + '.rightFront_.off();\n' +
-    '  ' + value_var_ + '.rightBack_.on();\n' +
-    '  ' + value_var_ + '.leftFront_.off();\n' +
-    '  ' + value_var_ + '.leftBack_.on();\n' +
-    '};\n' +
-    value_var_ + '.goRight_ = function(){\n' +
-    '  ' + value_var_ + '.rightFront_.on();\n' +
-    '  ' + value_var_ + '.rightBack_.off();\n' +
-    '  ' + value_var_ + '.leftFront_.off();\n' +
-    '  ' + value_var_ + '.leftBack_.off();\n' +
-    '};\n' +
-    value_var_ + '.goLeft_ = function(){\n' +
-    '  ' + value_var_ + '.rightFront_.off();\n' +
-    '  ' + value_var_ + '.rightBack_.off();\n' +
-    '  ' + value_var_ + '.leftFront_.on();\n' +
-    '  ' + value_var_ + '.leftBack_.off();\n' +
-    '};\n' +
-    value_var_ + '.turnRight_ = function(){\n' +
-    '  ' + value_var_ + '.rightFront_.off();\n' +
-    '  ' + value_var_ + '.rightBack_.on();\n' +
-    '  ' + value_var_ + '.leftFront_.on();\n' +
-    '  ' + value_var_ + '.leftBack_.off();\n' +
-    '};\n' +
-    value_var_ + '.turnLeft_ = function(){\n' +
-    '  ' + value_var_ + '.rightFront_.on();\n' +
-    '  ' + value_var_ + '.rightBack_.off();\n' +
-    '  ' + value_var_ + '.leftFront_.off();\n' +
-    '  ' + value_var_ + '.leftBack_.on();\n' +
-    '};\n' +
-    value_var_ + '.backLeft_ = function(){\n' +
-    '  ' + value_var_ + '.rightFront_.off();\n' +
-    '  ' + value_var_ + '.rightBack_.off();\n' +
-    '  ' + value_var_ + '.leftFront_.off();\n' +
-    '  ' + value_var_ + '.leftBack_.on();\n' +
-    '};\n' +
-    value_var_ + '.backRight_ = function(){\n' +
-    '  ' + value_var_ + '.rightFront_.off();\n' +
-    '  ' + value_var_ + '.rightBack_.on();\n' +
-    '  ' + value_var_ + '.leftFront_.off();\n' +
-    '  ' + value_var_ + '.leftBack_.off();\n' +
-    '};\n' +
-    value_var_ + '.stop_ = function(){\n' +
-    '  ' + value_var_ + '.rightFront_.off();\n' +
-    '  ' + value_var_ + '.rightBack_.off();\n' +
-    '  ' + value_var_ + '.leftFront_.off();\n' +
-    '  ' + value_var_ + '.leftBack_.off();\n' +
-    '};\n\n';
+  var code = value_var_+' = getToyCar(board,'+dropdown_rf_+','+dropdown_rb_+','+dropdown_lf_+','+dropdown_lb_+');\n';
   return code;
 };
 

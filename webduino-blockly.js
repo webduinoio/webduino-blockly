@@ -137,6 +137,81 @@
     return new webduino.module.RFID(board);
   }
 
+  function toyCar(board,RF,RB,LF,LB){
+    this._rf = getLed(board, RF);
+    this._rb = getLed(board, RB);
+    this._lf = getLed(board, LF);
+    this._lb = getLed(board, LB);
+  }
+
+  toyCar.prototype.goFront = function(){
+      var self = this;
+      self._rf.on();
+      self._rb.off();
+      self._lf.on();
+      self._lb.off();
+  };
+  toyCar.prototype.goBack = function(){
+      var self = this;
+      self._rf.off();
+      self._rb.on();
+      self._lf.off();
+      self._lb.on();
+  };
+  toyCar.prototype.goRight = function(){
+      var self = this;
+      self._rf.on();
+      self._rb.off();
+      self._lf.off();
+      self._lb.off();
+  };
+  toyCar.prototype.goLeft = function(){
+      var self = this;
+      self._rf.off();
+      self._rb.off();
+      self._lf.on();
+      self._lb.off();
+  };
+  toyCar.prototype.turnRight = function(){
+      var self = this;
+      self._rf.off();
+      self._rb.on();
+      self._lf.on();
+      self._lb.off();
+  };
+  toyCar.prototype.turnLeft = function(){
+      var self = this;
+      self._rf.on();
+      self._rb.off();
+      self._lf.off();
+      self._lb.on();
+  };
+  toyCar.prototype.backLeft = function(){
+      var self = this;
+      self._rf.off();
+      self._rb.off();
+      self._lf.off();
+      self._lb.on();
+  };
+  toyCar.prototype.backRight = function(){
+      var self = this;
+      self._rf.off();
+      self._rb.on();
+      self._lf.off();
+      self._lb.off();
+  };
+  toyCar.prototype.stop = function(){
+      var self = this;
+      self._rf.off();
+      self._rb.off();
+      self._lf.off();
+      self._lb.off();
+  };
+
+  function getToyCar(board,RF,RB,LF,LB) {
+    return new toyCar(board,RF,RB,LF,LB);
+  }
+
   function getCar(board, F, B, L, R) {
     return new Car(board, F, B, L, R);
   }
@@ -279,5 +354,6 @@
   scope.getADXL345 = getADXL345;
   scope.getJoystick = getJoystick;
   scope.getRFID = getRFID;
+  scope.getToyCar = getToyCar;
 
 }));

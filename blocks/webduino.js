@@ -2255,15 +2255,15 @@ Blockly.Blocks['car_test_move'] = {
       .appendField(new Blockly.FieldVariable("car"), "var_")
       .appendField(Blockly.Msg.WEBDUINO_TESTCAR_ACTION, " 動作")
       .appendField(new Blockly.FieldDropdown([
-        [Blockly.Msg.WEBDUINO_TESTCAR_GOFRONT, "goFront_"],
-        [Blockly.Msg.WEBDUINO_TESTCAR_GOBACK, "goBack_"],
-        [Blockly.Msg.WEBDUINO_TESTCAR_GOLEFT, "goLeft_"],
-        [Blockly.Msg.WEBDUINO_TESTCAR_GORIGHT, "goRight_"],
-        [Blockly.Msg.WEBDUINO_TESTCAR_BACKLEFT, "backLeft_"],
-        [Blockly.Msg.WEBDUINO_TESTCAR_BACKRIGHT, "backRight_"],
-        [Blockly.Msg.WEBDUINO_TESTCAR_TURNRIGHT, "turnRight_"],
-        [Blockly.Msg.WEBDUINO_TESTCAR_TURNLEFT, "turnLeft_"],
-        [Blockly.Msg.WEBDUINO_TESTCAR_STOP, "stop_"]
+        [Blockly.Msg.WEBDUINO_TESTCAR_GOFRONT, "goFront"],
+        [Blockly.Msg.WEBDUINO_TESTCAR_GOBACK, "goBack"],
+        [Blockly.Msg.WEBDUINO_TESTCAR_GOLEFT, "goLeft"],
+        [Blockly.Msg.WEBDUINO_TESTCAR_GORIGHT, "goRight"],
+        [Blockly.Msg.WEBDUINO_TESTCAR_BACKLEFT, "backLeft"],
+        [Blockly.Msg.WEBDUINO_TESTCAR_BACKRIGHT, "backRight"],
+        [Blockly.Msg.WEBDUINO_TESTCAR_TURNRIGHT, "turnRight"],
+        [Blockly.Msg.WEBDUINO_TESTCAR_TURNLEFT, "turnLeft"],
+        [Blockly.Msg.WEBDUINO_TESTCAR_STOP, "stop"]
       ]), "move_");
     this.setColour(200);
     this.setPreviousStatement(true);
