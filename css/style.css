@@ -412,7 +412,7 @@ a.toolMenu:hover div,div.toolMenu:hover div{
 
 table.nav {
   width: calc(100% - 30px);
-  min-width: 800px!important;
+  min-width: 600px!important;
   height: calc(100vh - 95px);
   margin: 0 auto;
 }

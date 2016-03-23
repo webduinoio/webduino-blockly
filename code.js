@@ -561,7 +561,7 @@ Code.init = function () {
     toolbox: toolbox,
     zoom: {
       controls: true,
-      wheel: true
+      wheel: false
     }
   });
 
