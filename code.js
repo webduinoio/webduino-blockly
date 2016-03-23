@@ -193,9 +193,6 @@ Code.importPrettify = function () {
   document.head.appendChild(script);
 };
 
-/* remove mouse wheel event in workspaceSVG ( zoom ) */
-delete Blockly.WorkspaceSvg.prototype.onMouseWheel_;
-
 /**
  * Compute the absolute coordinates and dimensions of an HTML element.
  * @param {!Element} element Element to match.
@@ -564,7 +561,7 @@ Code.init = function () {
     toolbox: toolbox,
     zoom: {
       controls: true,
-      wheel: true
+      wheel: false
     }
   });
 
