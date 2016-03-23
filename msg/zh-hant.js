@@ -30,6 +30,7 @@ var MSG = {
   catExec: "等待",
   catRepeat: "重複",
   catBoard: "開發板",
+  catPin: "I/O 腳位",
   catLed: "LED 燈",
   catRelay: "繼電器",
   catRGBLed: "三色 LED",

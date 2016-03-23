@@ -612,19 +612,44 @@ Blockly.JavaScript['board_pin_state'] = function (block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.JavaScript['pin_get'] = function (block) {
+  var dropdown_pin_ = block.getFieldValue('pin_');
+  var code = 'getPin(board, ' + dropdown_pin_ + ')';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['pin_get_num'] = function (block) {
+  var value_board_ = Blockly.JavaScript.valueToCode(block, 'board_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_number_ = Blockly.JavaScript.valueToCode(block, 'number_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'getPin(' + value_board_ + ', ' + value_number_ + ')';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['pin_set_mode'] = function (block) {
+  var variable_pin_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('pin_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_mode_ = block.getFieldValue('mode_');
+  var code = variable_pin_ + '.setMode(' + dropdown_mode_ + ');\n';
+  return code;
+};
+
+Blockly.JavaScript['pin_read'] = function (block) {
+  var variable_pin_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('pin_'), Blockly.Variables.NAME_TYPE);
+  var code = 'await ' + variable_pin_ + '.read()';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['pin_write'] = function (block) {
+  var variable_pin_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('pin_'), Blockly.Variables.NAME_TYPE);
+  var value_value_ = Blockly.JavaScript.valueToCode(block, 'value_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = variable_pin_ + '.write(' + value_value_ + ');\n';
+  return code;
+};
 
 Blockly.JavaScript['led_new'] = function (block) {
   var dropdown_pin_ = block.getFieldValue('pin_');
   var code = 'getLed(board, ' + dropdown_pin_ + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
-
-Blockly.JavaScript['pin_new'] = function (block) {
-  var dropdown_pin_ = block.getFieldValue('pin_');
-  var code = 'getLed(board, ' + dropdown_pin_ + ')';
-  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
-};
-
 
 Blockly.JavaScript['led_state'] = function (block) {
   var variable_led_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('led_'), Blockly.Variables.NAME_TYPE);

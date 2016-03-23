@@ -30,6 +30,7 @@ var MSG = {
   catExec: "Delay",
   catRepeat: "Repeat",
   catBoard: "Board",
+  catPin: "I/O Pins",
   catLed: "Led",
   catRelay: "Relay",
   catRGBLed: "RGBLed",

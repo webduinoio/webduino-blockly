@@ -61,6 +61,19 @@
     return boards;
   }
 
+  function getPin(board, pinNum) {
+    if (typeof board === 'string') {
+      boards.some(function (b) {
+        var match = b._options.device === board;
+        if (match) {
+          board = b;
+        }
+        return match;
+      });
+    }
+    return board ? board.getPin(pinNum) : undef;
+  }
+
   function getLed(board, pin) {
     return new webduino.module.Led(board, board.getDigitalPin(pin));
   }
@@ -331,6 +344,7 @@
   scope.boardReady = boardReady;
   scope.disconnectBoards = disconnectBoards;
   scope.getBoards = getBoards;
+  scope.getPin = getPin;
   scope.getLed = getLed;
   scope.getRelay = getRelay;
   scope.getRGBLed = getRGBLed;

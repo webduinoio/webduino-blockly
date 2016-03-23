@@ -164,6 +164,18 @@ Blockly.Msg.WEBDUINO_BOARD_IF_ERROR = "When board goes offline";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "do:";
 Blockly.Msg.WEBDUINO_BOARD_SAMPLING = "  Sampling";
 
+Blockly.Msg.WEBDUINO_PIN = "Pin";
+Blockly.Msg.WEBDUINO_PIN_ON = "On";
+Blockly.Msg.WEBDUINO_PIN_READ = "Read";
+Blockly.Msg.WEBDUINO_PIN_WRITE = "Write";
+Blockly.Msg.WEBDUINO_PIN_VALUE = "value";
+Blockly.Msg.WEBDUINO_PIN_SET = "Set";
+Blockly.Msg.WEBDUINO_PIN_MODE = "Mode";
+Blockly.Msg.WEBDUINO_PIN_DIN = "Digital Input";
+Blockly.Msg.WEBDUINO_PIN_DOUT = "Digital Output";
+Blockly.Msg.WEBDUINO_PIN_AIN = "Analog Input";
+Blockly.Msg.WEBDUINO_PIN_AOUT = "Analog Output (PWM)";
+
 Blockly.Msg.WEBDUINO_LED = "LED";
 Blockly.Msg.WEBDUINO_PIN = "pin";
 Blockly.Msg.WEBDUINO_LED_PIN = "pin";

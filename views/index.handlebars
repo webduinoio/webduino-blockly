@@ -446,11 +446,46 @@
       <value name="device_">
         <block type="text"></block>
       </value>
+      <field name="rate_">250</field>
     </block>
     <block type="all_board_ready"></block>
     <block type="board_query_pin_state"></block>
     <block type="board_pin_state"></block>
     <block type="board_error"></block>
+  </category>
+  <category id="catPin">
+    <block type="variables_set">
+      <field name="VAR">pin</field>
+      <value name="VALUE">
+        <block type="pin_get">
+          <field name="pin_">12</field>
+        </block>
+      </value>
+    </block>
+    <block type="variables_set">
+      <field name="VAR">pin</field>
+      <value name="VALUE">
+        <block type="pin_get_num">
+          <value name="board_">
+            <block type="text"></block>
+          </value>
+          <value name="number_">
+            <block type="math_number">
+              <field name="NUM">12</field>
+            </block>
+          </value>
+        </block>
+      </value>
+    </block>
+    <block type="pin_set_mode"></block>
+    <block type="pin_read"></block>
+    <block type="pin_write">
+      <value name="value_">
+        <block type="math_number">
+          <field name="NUM">0</field>
+        </block>
+      </value>
+    </block>
   </category>
   <category id="catMenu1">
     <category id="catLed">
@@ -458,14 +493,6 @@
         <field name="VAR">led</field>
         <value name="VALUE">
           <block type="led_new">
-            <field name="pin_">10</field>
-          </block>
-        </value>
-      </block>
-      <block type="variables_set">
-        <field name="VAR">pin</field>
-        <value name="VALUE">
-          <block type="pin_new">
             <field name="pin_">10</field>
           </block>
         </value>

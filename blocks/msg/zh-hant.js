@@ -182,6 +182,20 @@ Blockly.Msg.WEBDUINO_BOARD_IF_ERROR = "如果斷線";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "執行";
 Blockly.Msg.WEBDUINO_BOARD_SAMPLING = "  類比取樣";
 
+// I/O Pins
+
+Blockly.Msg.WEBDUINO_PIN = "腳位";
+Blockly.Msg.WEBDUINO_PIN_ON = "於";
+Blockly.Msg.WEBDUINO_PIN_READ = "讀取";
+Blockly.Msg.WEBDUINO_PIN_WRITE = "寫入";
+Blockly.Msg.WEBDUINO_PIN_VALUE = "數值";
+Blockly.Msg.WEBDUINO_PIN_SET = "設定";
+Blockly.Msg.WEBDUINO_PIN_MODE = "模式";
+Blockly.Msg.WEBDUINO_PIN_DIN = "數位輸入";
+Blockly.Msg.WEBDUINO_PIN_DOUT = "數位輸出";
+Blockly.Msg.WEBDUINO_PIN_AIN = "類比輸入";
+Blockly.Msg.WEBDUINO_PIN_AOUT = "類比輸出 (PWM)";
+
 // LED
 
 Blockly.Msg.WEBDUINO_LED = "LED 燈";

@@ -673,6 +673,7 @@ Blockly.Blocks['board_ready'] = {
         ["50 ms", "50"],
         ["75 ms", "75"],
         ["100 ms", "100"],
+        ["250 ms", "250"],
         ["500 ms", "500"],
         ["1 sec", "1000"]
       ]), "rate_")
@@ -759,10 +760,10 @@ Blockly.Blocks['board_pin_state'] = {
   }
 };
 
-Blockly.Blocks['pin_new'] = {
+Blockly.Blocks['pin_get'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_PIN, "pin")
+      .appendField(Blockly.Msg.WEBDUINO_PIN, "Pin")
       .appendField(new Blockly.FieldDropdown([
         ["2", "2"],
         ["3", "3"],
@@ -785,6 +786,71 @@ Blockly.Blocks['pin_new'] = {
       ]), "pin_");
     this.setOutput(true);
     this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['pin_get_num'] = {
+  init: function () {
+    this.appendValueInput("number_")
+      .setCheck("Number")
+      .appendField(Blockly.Msg.WEBDUINO_PIN, "Pin");
+    this.appendValueInput("board_")
+      .setCheck("String")
+      .appendField(Blockly.Msg.WEBDUINO_PIN_ON, "On")
+      .appendField(Blockly.Msg.WEBDUINO_BOARD, "Board");
+    this.setInputsInline(true);
+    this.setOutput(true);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['pin_set_mode'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_PIN_SET, "Set")
+      .appendField(new Blockly.FieldVariable("pin"), "pin_")
+      .appendField(Blockly.Msg.WEBDUINO_PIN_MODE, "Mode")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_PIN_DIN, "0"],
+        [Blockly.Msg.WEBDUINO_PIN_DOUT, "1"],
+        [Blockly.Msg.WEBDUINO_PIN_AIN, "2"],
+        [Blockly.Msg.WEBDUINO_PIN_AOUT, "3"]
+      ]), "mode_");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['pin_read'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_PIN_READ)
+      .appendField(new Blockly.FieldVariable("pin"), "pin_")
+      .appendField(Blockly.Msg.WEBDUINO_PIN_VALUE);
+    this.setOutput(true);
+    this.setColour(65);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['pin_write'] = {
+  init: function () {
+    this.appendValueInput("value_")
+      .appendField(Blockly.Msg.WEBDUINO_PIN_WRITE)
+      .appendField(new Blockly.FieldVariable("pin"), "pin_")
+      .appendField(Blockly.Msg.WEBDUINO_PIN_VALUE);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(65);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
