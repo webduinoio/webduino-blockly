@@ -27,7 +27,7 @@ var MSG = {
   catColour: "顏色",
   catVariables: "變量",
   catFunctions: "流程",
-  catExec: "延遲",
+  catExec: "等待",
   catRepeat: "重複",
   catBoard: "開發板",
   catLed: "LED 燈",
