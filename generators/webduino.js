@@ -542,11 +542,11 @@ Blockly.JavaScript['board_ready'] = function (block) {
 
   var type;
   if (checkbox_type_ == '1') {
-    type = 'boardReady('+value_device_+', function (board) {\n';
+    type = 'boardReady(' + value_device_ + ', async function (board) {\n';
   } else if (checkbox_type_ == '2') {
-    type = 'boardReady({ transport: \'serial\', path:' + value_device_ + ' }, function (board) {\n';
+    type = 'boardReady({ transport: \'serial\', path:' + value_device_ + ' }, async function (board) {\n';
   } else if (checkbox_type_ == '3') {
-    type = 'boardReady({ transport: \'bluetooth\', address:' + value_device_ + ' }, function (board) {\n';
+    type = 'boardReady({ transport: \'bluetooth\', address:' + value_device_ + ' }, async function (board) {\n';
   }
 
   var code;
@@ -721,8 +721,7 @@ Blockly.JavaScript['car_move'] = function (block) {
   var variable_car_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('car_'), Blockly.Variables.NAME_TYPE);
   var dropdown_move_ = block.getFieldValue('move_');
   var value_secs_ = Blockly.JavaScript.valueToCode(block, 'secs_', Blockly.JavaScript.ORDER_NONE);
-  var code = variable_car_ + '.' + dropdown_move_ + '(' + value_secs_ + ');\n';
-  block.setPromise(true);
+  var code = 'await ' + variable_car_ + '.' + dropdown_move_ + '(' + value_secs_ + ');\n';
   return code;
 };
 
@@ -737,8 +736,7 @@ Blockly.JavaScript['fish_angle'] = function (block) {
   var variable_fish_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('fish_'), Blockly.Variables.NAME_TYPE);
   var dropdown_angle_ = block.getFieldValue('angle_');
   var value_secs_ = Blockly.JavaScript.valueToCode(block, 'secs_', Blockly.JavaScript.ORDER_NONE);
-  var code = variable_fish_ + '.' + dropdown_angle_ + '(' + value_secs_ + ');\n';
-  block.setPromise(true);
+  var code = 'await ' + variable_fish_ + '.' + dropdown_angle_ + '(' + value_secs_ + ');\n';
   return code;
 };
 
@@ -748,8 +746,7 @@ Blockly.JavaScript['fish_move'] = function (block) {
   var dropdown_direction_ = block.getFieldValue('direction_');
   var value_secs_ = Blockly.JavaScript.valueToCode(block, 'secs_', Blockly.JavaScript.ORDER_NONE);
   var dropdown_speed_ = block.getFieldValue('speed_');
-  var code = variable_fish_ + ".flap(" + value_secs_ + ", " + dropdown_speed_ + (dropdown_direction_.length ? ", " + dropdown_direction_ : '') + ");\n";
-  block.setPromise(true);
+  var code = 'await ' + variable_fish_ + ".flap(" + value_secs_ + ", " + dropdown_speed_ + (dropdown_direction_.length ? ", " + dropdown_direction_ : '') + ");\n";
   return code;
 };
 
@@ -764,8 +761,7 @@ Blockly.JavaScript['timer'] = function (block) {
 
 Blockly.JavaScript['delay'] = function (block) {
   var value_secs_ = Blockly.JavaScript.valueToCode(block, 'secs_', Blockly.JavaScript.ORDER_NONE);
-  var code = 'delay(' + value_secs_ + ');\n';
-  block.setPromise(true);
+  var code = 'await delay(' + value_secs_ + ');\n';
   return code;
 };
 
@@ -792,8 +788,7 @@ Blockly.JavaScript['ultrasonic_get'] = function (block) {
 
 Blockly.JavaScript['ultrasonic_get_promise'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
-  var code = variable_var_ + '.ping();\n';
-  block.setPromise(true);
+  var code = 'await ' + variable_var_ + '.ping();\n';
   return code;
 };
 

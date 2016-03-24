@@ -157,10 +157,10 @@ Blockly.Msg.WEBDUINO_KEYBOARD_RIGHT = "右";
 
 // Delay
 
-Blockly.Msg.WEBDUINO_TIMER_AFTER = "在";
+Blockly.Msg.WEBDUINO_TIMER_AFTER = "等待";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "秒之後";
 Blockly.Msg.WEBDUINO_TIMER_DO = "執行";
-Blockly.Msg.WEBDUINO_DELAY = "延遲";
+Blockly.Msg.WEBDUINO_DELAY = "等待";
 Blockly.Msg.WEBDUINO_DELAY_SECONDS = "秒";
 
 // Board
