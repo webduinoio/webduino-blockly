@@ -75,7 +75,7 @@
 
       config.modes = config.modes || 'html,css,js,output';
 
-      post('http://bin.webduino.io?' + config.modes, data);
+      post('https://bin.webduino.io?' + config.modes, data);
     }
   };
 
