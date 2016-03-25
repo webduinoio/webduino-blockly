@@ -449,8 +449,6 @@
       <field name="rate_">250</field>
     </block>
     <block type="all_board_ready"></block>
-    <block type="board_query_pin_state"></block>
-    <block type="board_pin_state"></block>
     <block type="board_error"></block>
   </category>
   <category id="catPin">
@@ -458,7 +456,11 @@
       <field name="VAR">pin</field>
       <value name="VALUE">
         <block type="pin_get">
-          <field name="pin_">12</field>
+          <value name="pin">
+            <block type="pin_num">
+              <field name="pin_">10</field>
+            </block>
+          </value>
         </block>
       </value>
     </block>
@@ -471,11 +473,14 @@
           </value>
           <value name="number_">
             <block type="math_number">
-              <field name="NUM">12</field>
+              <field name="NUM">10</field>
             </block>
           </value>
         </block>
       </value>
+    </block>
+    <block type="pin_num">
+      <field name="pin_">10</field>
     </block>
     <block type="pin_set_mode"></block>
     <block type="pin_read"></block>

@@ -151,74 +151,74 @@
   }
 
   function toyCar(board,RF,RB,LF,LB){
-    this._rf = getLed(board, RF);
-    this._rb = getLed(board, RB);
-    this._lf = getLed(board, LF);
-    this._lb = getLed(board, LB);
+    this._rf = getPin(board, RF);
+    this._rb = getPin(board, RB);
+    this._lf = getPin(board, LF);
+    this._lb = getPin(board, LB);
   }
 
   toyCar.prototype.goFront = function(){
       var self = this;
-      self._rf.on();
-      self._rb.off();
-      self._lf.on();
-      self._lb.off();
+      self._rf.write(1);
+      self._rb.write(0);
+      self._lf.write(1);
+      self._lb.write(0);
   };
   toyCar.prototype.goBack = function(){
       var self = this;
-      self._rf.off();
-      self._rb.on();
-      self._lf.off();
-      self._lb.on();
+      self._rf.write(0);
+      self._rb.write(1);
+      self._lf.write(0);
+      self._lb.write(1);
   };
   toyCar.prototype.goRight = function(){
       var self = this;
-      self._rf.on();
-      self._rb.off();
-      self._lf.off();
-      self._lb.off();
+      self._rf.write(1);
+      self._rb.write(0);
+      self._lf.write(0);
+      self._lb.write(0);
   };
   toyCar.prototype.goLeft = function(){
       var self = this;
-      self._rf.off();
-      self._rb.off();
-      self._lf.on();
-      self._lb.off();
+      self._rf.write(0);
+      self._rb.write(0);
+      self._lf.write(1);
+      self._lb.write(0);
   };
   toyCar.prototype.turnRight = function(){
       var self = this;
-      self._rf.off();
-      self._rb.on();
-      self._lf.on();
-      self._lb.off();
+      self._rf.write(0);
+      self._rb.write(1);
+      self._lf.write(1);
+      self._lb.write(0);
   };
   toyCar.prototype.turnLeft = function(){
       var self = this;
-      self._rf.on();
-      self._rb.off();
-      self._lf.off();
-      self._lb.on();
+      self._rf.write(1);
+      self._rb.write(0);
+      self._lf.write(0);
+      self._lb.write(1);
   };
   toyCar.prototype.backLeft = function(){
       var self = this;
-      self._rf.off();
-      self._rb.off();
-      self._lf.off();
-      self._lb.on();
+      self._rf.write(0);
+      self._rb.write(0);
+      self._lf.write(0);
+      self._lb.write(1);
   };
   toyCar.prototype.backRight = function(){
       var self = this;
-      self._rf.off();
-      self._rb.on();
-      self._lf.off();
-      self._lb.off();
+      self._rf.write(0);
+      self._rb.write(1);
+      self._lf.write(0);
+      self._lb.write(0);
   };
   toyCar.prototype.stop = function(){
       var self = this;
-      self._rf.off();
-      self._rb.off();
-      self._lf.off();
-      self._lb.off();
+      self._rf.write(0);
+      self._rb.write(0);
+      self._lf.write(0);
+      self._lb.write(0);
   };
 
   function getToyCar(board,RF,RB,LF,LB) {

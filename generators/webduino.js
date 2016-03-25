@@ -597,10 +597,10 @@ Blockly.JavaScript['all_board_ready'] = function (block) {
 
 
 Blockly.JavaScript['board_query_pin_state'] = function (block) {
-  var dropdown_pin_ = block.getFieldValue('pin_');
+  var value_pin = Blockly.JavaScript.valueToCode(block, 'pin', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'board.queryPinState(' + dropdown_pin_ + ',function(){\n' +
-    '  var _localPinVar_ = board.getDigitalPin(' + dropdown_pin_ + ');\n' +
+  var code = 'board.queryPinState(' + value_pin + ',function(){\n' +
+    '  var _localPinVar_ = board.getDigitalPin(' + value_pin + ');\n' +
     statements_do_ + '\n' +
     '});\n';
   return code;
@@ -613,9 +613,15 @@ Blockly.JavaScript['board_pin_state'] = function (block) {
 };
 
 Blockly.JavaScript['pin_get'] = function (block) {
-  var dropdown_pin_ = block.getFieldValue('pin_');
-  var code = 'getPin(board, ' + dropdown_pin_ + ')';
+  var value_pin = Blockly.JavaScript.valueToCode(block, 'pin', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'getPin(board, ' + value_pin + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['pin_num'] = function(block) {
+  var dropdown_pin_ = block.getFieldValue('pin_');
+  var code = dropdown_pin_;
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 Blockly.JavaScript['pin_get_num'] = function (block) {
