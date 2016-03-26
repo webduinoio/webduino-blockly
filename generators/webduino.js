@@ -1656,6 +1656,7 @@ Blockly.JavaScript['max7219_animate'] = function (block) {
   var varData = Blockly.JavaScript.variableDB_.getDistinctName(
     'varData', Blockly.Variables.NAME_TYPE);
   var code = 'var ' + varData + ' = ' + value_list_ + ';\n' +
+    variable_name_ + '.animateStop();\n'+
     variable_name_ + '.animate(' + varData + ',' + value_times_ + ');\n';
   return code;
 };
@@ -1696,7 +1697,8 @@ Blockly.JavaScript['max7219_animate_horse'] = function (block) {
       '}'
     ]);
   //var code = 'console.log('+functionName+'('+dropdown_state_+','+value_code_ +'));\n';
-  var code = variable_name_ + '.animate(' + functionName + '(' + dropdown_state_ + ',' + value_code_ + '),' + value_times_ + ');\n';
+  var code = variable_name_ + '.animateStop();\n'+
+             variable_name_ + '.animate(' + functionName + '(' + dropdown_state_ + ',' + value_code_ + '),' + value_times_ + ');\n';
   return code;
 
 };
@@ -1711,7 +1713,8 @@ Blockly.JavaScript['max7219_stop'] = function (block) {
 
 Blockly.JavaScript['max7219_off'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
-  var code = variable_name_ + '.off();\n';
+  var code = variable_name_ + '.animateStop();\n'+
+             variable_name_ + '.off();\n';
   return code;
 };
 
