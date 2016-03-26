@@ -1368,7 +1368,7 @@ Blockly.JavaScript['sound_recognition'] = function (block) {
     consoleFinal1 = 'console.log("final");\n';
     consoleFinal2 = '';
   }
-  var code = 'function ' + speechRecognition + '(){\n' +
+  var code = 'async function ' + speechRecognition + '(){\n' +
     '  if (!("webkitSpeechRecognition" in window)) {\n' +
     '    alert("本瀏覽器不支援語音辨識，請更換瀏覽器！(Chrome 25 版以上才支援語音辨識)");\n' +
     '  } else{\n' +
@@ -1376,13 +1376,13 @@ Blockly.JavaScript['sound_recognition'] = function (block) {
     '    window._recognition.continuous = true;\n' +
     '    window._recognition.interimResults = true;\n' +
     '    window._recognition.lang = "' + dropdown_lang_ + '";\n\n' +
-    '    window._recognition.onstart = function() {\n' +
+    '    window._recognition.onstart = async function() {\n' +
     '      console.log("Start recognize...");\n' +
     '    };\n\n' +
-    '    window._recognition.onend = function() {\n' +
+    '    window._recognition.onend = async function() {\n' +
     '      console.log("Stop recognize");\n' +
     '    };\n\n' +
-    '    window._recognition.onresult = function(event,result) {\n' +
+    '    window._recognition.onresult = async function(event,result) {\n' +
     '      result = {};\n' +
     '      result.resultLength = event.results.length-1;\n' +
     '      result.resultTranscript = event.results[result.resultLength][0].transcript;\n' +
