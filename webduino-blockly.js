@@ -62,16 +62,29 @@
   }
 
   function getPin(board, pinNum) {
-    if (typeof board === 'string') {
-      boards.some(function (b) {
-        var match = b._options.device === board;
-        if (match) {
-          board = b;
-        }
-        return match;
-      });
+    if (board.transport) {
+      board = searchBoard(board);
     }
+
     return board ? board.getPin(pinNum) : undef;
+  }
+
+  function searchBoard(options) {
+    var keys = Object.keys(options),
+      candidate,
+      matched;
+
+    boards.some(function (b) {
+      matched = !keys.some(function (k) {
+        return options[k] !== b._options[k];
+      });
+      if (matched) {
+        candidate = b;
+      }
+      return matched;
+    });
+
+    return candidate;
   }
 
   function getLed(board, pin) {

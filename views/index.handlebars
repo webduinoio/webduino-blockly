@@ -467,20 +467,18 @@
     <block type="variables_set">
       <field name="VAR">pin</field>
       <value name="VALUE">
-        <block type="pin_get_num">
-          <value name="board_">
-            <block type="text"></block>
-          </value>
-          <value name="number_">
-            <block type="math_number">
-              <field name="NUM">10</field>
+        <block type="pin_get">
+          <value name="pin">
+            <block type="pin_board">
+              <value name="pin_">
+                <block type="pin_num">
+                  <field name="pin_">10</field>
+                </block>
+              </value>
             </block>
           </value>
         </block>
       </value>
-    </block>
-    <block type="pin_num">
-      <field name="pin_">10</field>
     </block>
     <block type="pin_set_mode"></block>
     <block type="pin_read"></block>

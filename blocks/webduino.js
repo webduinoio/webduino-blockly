@@ -785,20 +785,54 @@ Blockly.Blocks['pin_num'] = {
   }
 };
 
-Blockly.Blocks['pin_get_num'] = {
+Blockly.Blocks['pin_board'] = {
   init: function () {
-    this.appendValueInput("number_")
-      .setCheck("Number")
-      .appendField(Blockly.Msg.WEBDUINO_PIN, "Pin");
-    this.appendValueInput("board_")
-      .setCheck("String")
-      .appendField(Blockly.Msg.WEBDUINO_PIN_ON, "On")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD, "Board");
-    this.setInputsInline(true);
+    this.appendValueInput("pin_")
+      .setCheck(["Number", "pin_num"])
+      .appendField(Blockly.Msg.WEBDUINO_BOARD, "Board")
+      .appendField(new Blockly.FieldDropdown(this.getBoardsDropdown), "board_");
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
+  },
+  getBoardsDropdown: function () {
+    var nameMap = {
+        '1': Blockly.Msg.WEBDUINO_BOARD_WIFI,
+        '2': Blockly.Msg.WEBDUINO_BOARD_SERIAL,
+        '3': Blockly.Msg.WEBDUINO_BOARD_BLUETOOTH
+      },
+      xml = Blockly.Xml.workspaceToDom(Code.workspace),
+      boards = xml.querySelectorAll("block[type=board_ready]"),
+      menus = [];
+
+    if (boards.length < 1) {
+      return [
+        ['', '']
+      ];
+    }
+
+    for (var i = 0; i < boards.length; i++) {
+      var item = boards[i],
+        type = item.querySelector('field[name=type_]').textContent,
+        param = item.querySelector('value[name=device_]').textContent;
+
+      switch (type) {
+      case '1':
+        menus.push(['(' + nameMap['1'] + ') ' + param, "{ transport: 'mqtt', device: '" + param + "' }"]);
+        break;
+
+      case '2':
+        menus.push(['(' + nameMap['2'] + ') ' + param, "{ transport: 'serial', path: '" + param + "' }"]);
+        break;
+
+      case '3':
+        menus.push(['(' + nameMap['3'] + ') ' + param, "{ transport: 'bluetooth', address: '" + param + "' }"]);
+        break;
+      }
+    }
+
+    return menus;
   }
 };
 
