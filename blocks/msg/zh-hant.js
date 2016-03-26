@@ -331,7 +331,7 @@ Blockly.Msg.WEBDUINO_MATRIX = "LED 點矩陣 ( Max7219 ) ";
 Blockly.Msg.WEBDUINO_MATRIX_DIN = "din";
 Blockly.Msg.WEBDUINO_MATRIX_CS = "  cs";
 Blockly.Msg.WEBDUINO_MATRIX_CLK = "  clk";
-Blockly.Msg.WEBDUINO_MATRIX_CODE = "顯示圖形，圖形代碼 ( 十六進位，十六碼 )";
+Blockly.Msg.WEBDUINO_MATRIX_CODE = "顯示圖形，代碼";
 Blockly.Msg.WEBDUINO_MATRIX_TIMES = "顯示動畫，切換時間 (毫秒)";
 Blockly.Msg.WEBDUINO_MATRIX_DUR = "持續時間 (毫秒)";
 Blockly.Msg.WEBDUINO_MATRIX_LIST = "動畫代碼 (列表)";
@@ -342,7 +342,12 @@ Blockly.Msg.WEBDUINO_MATRIX_HORSE = "跑馬燈";
 Blockly.Msg.WEBDUINO_MATRIX_LEFT = "向左";
 Blockly.Msg.WEBDUINO_MATRIX_RIGHT = "向右";
 Blockly.Msg.WEBDUINO_MATRIX_SPEED = "，速度 (格/毫秒)";
-Blockly.Msg.WEBDUINO_MATRIX_HORSEODE = "代碼 (最少十六碼)";
+Blockly.Msg.WEBDUINO_MATRIX_HORSEODE = "代碼";
+Blockly.Msg.WEBDUINO_MATRIX_ALPHABET = "英文字母";
+Blockly.Msg.WEBDUINO_MATRIX_UPPERCASE = "大寫";
+Blockly.Msg.WEBDUINO_MATRIX_LOWERCASE = "小寫";
+Blockly.Msg.WEBDUINO_MATRIX_NUM = "數字";
+Blockly.Msg.WEBDUINO_MATRIX_IMG = "圖案";
 
 // Photocell
 

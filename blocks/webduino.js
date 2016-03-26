@@ -715,13 +715,13 @@ Blockly.Blocks['all_board_ready'] = {
 
 //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#oihtmu
 Blockly.Blocks['board_query_pin_state'] = {
-  init: function() {
+  init: function () {
     this.appendDummyInput()
-        .appendField(Blockly.Msg.WEBDUINO_QUERY_PIN, "偵測腳位");
+      .appendField(Blockly.Msg.WEBDUINO_QUERY_PIN, "偵測腳位");
     this.appendValueInput("pin")
-        .setCheck("Number");
+      .setCheck("Number");
     this.appendStatementInput("do_")
-        .appendField(Blockly.Msg.WEBDUINO_PIN_DO,"執行");
+      .appendField(Blockly.Msg.WEBDUINO_PIN_DO, "執行");
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -744,9 +744,9 @@ Blockly.Blocks['board_pin_state'] = {
 
 Blockly.Blocks['pin_get'] = {
   init: function () {
-     this.appendValueInput("pin")
-         .appendField(Blockly.Msg.WEBDUINO_PIN, "Pin")
-         .setCheck("Number");
+    this.appendValueInput("pin")
+      .appendField(Blockly.Msg.WEBDUINO_PIN, "Pin")
+      .setCheck("Number");
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
@@ -2059,21 +2059,21 @@ Blockly.Blocks['data_firebase_write'] = {
       .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATA, "寫入資料");
     this.setColour(160);
     this.appendValueInput('data_0')
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('資料 1 名稱:')
-    .appendField(new Blockly.FieldTextInput("..."), "name_0")
-    .appendField('值:');
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField('資料 1 名稱:')
+      .appendField(new Blockly.FieldTextInput("..."), "name_0")
+      .appendField('值:');
     this.appendValueInput('data_1')
-    .setAlign(Blockly.ALIGN_RIGHT)
-    .appendField('資料 2 名稱:')
-    .appendField(new Blockly.FieldTextInput("..."), "name_1")
-    .appendField('值:');
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField('資料 2 名稱:')
+      .appendField(new Blockly.FieldTextInput("..."), "name_1")
+      .appendField('值:');
     this.setTooltip('');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setMutator(new Blockly.Mutator(['data_firebase_write_item']));
     this.setHelpUrl('http://www.example.com/');
-    this.itemCount_ = 2;  
+    this.itemCount_ = 2;
   },
   mutationToDom: function (workspace) {
     var container = document.createElement('mutation');
@@ -2086,19 +2086,19 @@ Blockly.Blocks['data_firebase_write'] = {
     }
     this.itemCount_ = parseInt(container.getAttribute('items'), 10);
     for (var x = 0; x < this.itemCount_; x++) {
-      var input = this.appendValueInput('data_'+x)
-                      .setAlign(Blockly.ALIGN_RIGHT)
-                      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATACOLUMN+(x+1)+Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATANAME)
-                      .appendField(new Blockly.FieldTextInput("..."), "name_"+x)
-                      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATAVAL);
+      var input = this.appendValueInput('data_' + x)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATACOLUMN + (x + 1) + Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATANAME)
+        .appendField(new Blockly.FieldTextInput("..."), "name_" + x)
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATAVAL);
     }
   },
   decompose: function (workspace) {
-    var containerBlock = Blockly.Block.obtain(workspace,'data_firebase_write_container');
+    var containerBlock = Blockly.Block.obtain(workspace, 'data_firebase_write_container');
     containerBlock.initSvg();
     var connection = containerBlock.getInput('STACK').connection;
     for (var x = 0; x < this.itemCount_; x++) {
-      var optionBlock = Blockly.Block.obtain(workspace,'data_firebase_write_item');
+      var optionBlock = Blockly.Block.obtain(workspace, 'data_firebase_write_item');
       optionBlock.initSvg();
       connection.connect(optionBlock.previousConnection);
       connection = optionBlock.nextConnection;
@@ -2112,17 +2112,17 @@ Blockly.Blocks['data_firebase_write'] = {
     this.itemCount_ = 0;
     var optionBlock = containerBlock.getInputTargetBlock('STACK');
     while (optionBlock) {
-      var input = this.appendValueInput('data_'+this.itemCount_)
-                      .setAlign(Blockly.ALIGN_RIGHT)
-                      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATACOLUMN+(this.itemCount_+1)+Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATANAME)
-                      .appendField(new Blockly.FieldTextInput(optionBlock.nameData_ || "..."), "name_"+this.itemCount_)
-                      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATAVAL);
+      var input = this.appendValueInput('data_' + this.itemCount_)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATACOLUMN + (this.itemCount_ + 1) + Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATANAME)
+        .appendField(new Blockly.FieldTextInput(optionBlock.nameData_ || "..."), "name_" + this.itemCount_)
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATAVAL);
       if (optionBlock.dataData_) {
         input.connection.connect(optionBlock.dataData_);
       }
       this.itemCount_++;
       optionBlock = optionBlock.nextConnection &&
-          optionBlock.nextConnection.targetBlock();
+        optionBlock.nextConnection.targetBlock();
     }
   },
   saveConnections: function (containerBlock) {
@@ -2135,7 +2135,7 @@ Blockly.Blocks['data_firebase_write'] = {
       optionBlock.dataData_ = data && data.connection.targetConnection;
       x++;
       optionBlock = optionBlock.nextConnection &&
-          optionBlock.nextConnection.targetBlock();
+        optionBlock.nextConnection.targetBlock();
     }
   },
   newQuote_: Blockly.Blocks['text'].newQuote_
@@ -2939,12 +2939,124 @@ Blockly.Blocks['max7219_88'] = {
       .appendField(new Blockly.FieldCheckbox("FALSE"), "m64");
     this.setOutput(true);
     this.setTooltip('');
-    this.setColour(45);
+    this.setColour(35);
     this.setHelpUrl('http://www.example.com/');
   }
 };
 
 
+Blockly.Blocks['max7219_val_alphabet'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_MATRIX_ALPHABET, "英文字母")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_MATRIX_UPPERCASE, "upper"],
+        [Blockly.Msg.WEBDUINO_MATRIX_LOWERCASE, "lower"]
+      ]), "case_")
+      .appendField(new Blockly.FieldDropdown([
+        ["A", "0"],
+        ["B", "1"],
+        ["C", "2"],
+        ["D", "3"],
+        ["E", "4"],
+        ["F", "5"],
+        ["G", "6"],
+        ["H", "7"],
+        ["I", "8"],
+        ["J", "9"],
+        ["K", "10"],
+        ["L", "11"],
+        ["M", "12"],
+        ["N", "13"],
+        ["O", "14"],
+        ["P", "15"],
+        ["Q", "16"],
+        ["R", "17"],
+        ["S", "18"],
+        ["T", "19"],
+        ["U", "20"],
+        ["V", "21"],
+        ["W", "22"],
+        ["X", "23"],
+        ["Y", "24"],
+        ["Z", "25"]
+      ]), "alphabet_");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(35);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+
+Blockly.Blocks['max7219_val_num'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_MATRIX_NUM, "數字")
+      .appendField(new Blockly.FieldDropdown([
+        ["0", "0"],
+        ["1", "1"],
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"]
+      ]), "tens_")
+      .appendField(new Blockly.FieldDropdown([
+        ["0", "0"],
+        ["1", "1"],
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"]
+      ]), "ones_");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(35);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+
+Blockly.Blocks['max7219_val_img'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_MATRIX_IMG, "圖案")
+      .appendField(new Blockly.FieldDropdown([
+        ["↑", "080c0effff0e0c08"],
+        ["↓", "103070ffff707010"],
+        ["←", "183c7eff18181818"],
+        ["→", "18181818ff7e3c18"],
+        ["♥", "0c1e3e7c3e1e0c00"],
+        ["♡", "0c12224422120c00"],
+        ["○", "3c4281818181423c"],
+        ["￥", "00292a2cf82c2a29"],
+        ["Χ", "8142241818244281"],
+        ["□", "007e424242427e00"],
+        ["◇", "0814224122140800"],
+        ["♀", "004e51f1514e0000"],
+        ["♂", "70d888d87905030f"],
+        ["︱", "0000007f00000000"],
+        ["—", "0808080808080800"],
+        ["╱", "4020100804020100"],
+        ["＼", "0102040810204000"],
+        ["米", "925438fe38549200"],
+        ["正", "82f282fe92929200"],
+        ["囧", "ff89f79191f789ff"]
+      ]), "img_");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(35);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
 
 Blockly.Blocks['photocell_new'] = {
   init: function () {

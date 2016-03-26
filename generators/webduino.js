@@ -217,13 +217,13 @@ Blockly.JavaScript['demo_youtube'] = function (block) {
     '    events: {\n' +
     '      "onReady": onPlayerReady,\n' +
     '    },\n' +
-    '    playerReady: false\n'+
+    '    playerReady: false\n' +
     '  });\n' +
     '  function onPlayerReady(event) {\n' +
     '    event.target.playVideo();\n' +
     '    ' + value_name_ + '.playerReady=true;\n' +
-    '  }\n'+
-    '}\n\n'+
+    '  }\n' +
+    '}\n\n' +
     'onYouTubeIframeAPIReady();\n\n';
   return code;
 };
@@ -238,7 +238,7 @@ Blockly.JavaScript['demo_youtube_volume'] = function (block) {
     '  if(' + varA + '>=100){\n' +
     '    ' + varA + '=100;\n' +
     '  }\n' +
-    '  if('+variable_name_+'.playerReady){\n' +
+    '  if(' + variable_name_ + '.playerReady){\n' +
     '    ' + variable_name_ + '.setVolume(' + varA + ');\n' +
     '  }\n';
   return code;
@@ -248,7 +248,7 @@ Blockly.JavaScript['demo_youtube_volume'] = function (block) {
 Blockly.JavaScript['demo_youtube_speed'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var dropdown_speed_ = block.getFieldValue('speed_');
-  var code = '  if('+variable_name_+'.playerReady){\n' +
+  var code = '  if(' + variable_name_ + '.playerReady){\n' +
     '    ' + variable_name_ + '.setPlaybackRate(' + dropdown_speed_ + ');\n' +
     '  }\n';
   return code;
@@ -260,15 +260,15 @@ Blockly.JavaScript['demo_youtube_control'] = function (block) {
   var dropdown_status_ = block.getFieldValue('status_');
   var code;
   if (dropdown_status_ == '1') {
-    code = '  if('+variable_name_+'.playerReady){\n' +
+    code = '  if(' + variable_name_ + '.playerReady){\n' +
       '    ' + variable_name_ + '.playVideo();\n' +
       '  }\n';
   } else if (dropdown_status_ == '2') {
-    code = '  if('+variable_name_+'.playerReady){\n' +
+    code = '  if(' + variable_name_ + '.playerReady){\n' +
       '    ' + variable_name_ + '.pauseVideo();\n' +
       '  }\n';
   } else if (dropdown_status_ == '0') {
-    code = '  if('+variable_name_+'.playerReady){\n' +
+    code = '  if(' + variable_name_ + '.playerReady){\n' +
       '    ' + variable_name_ + '.seekTo(0);\n' +
       '    ' + variable_name_ + '.stopVideo();\n' +
       '  }\n';
@@ -467,31 +467,31 @@ Blockly.JavaScript['console'] = function (block) {
 Blockly.JavaScript['getdate'] = function (block) {
   var dropdown_date_ = block.getFieldValue('date_');
   var functionName = Blockly.JavaScript.provideFunction_(
-      'get_date',
-      [ 'function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(t) {',
-      _getdate.toString().replace('function _getdate(){\n','')]);
-  var code = functionName + '("'+ dropdown_date_ +'")';
+    'get_date', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(t) {',
+      _getdate.toString().replace('function _getdate(){\n', '')
+    ]);
+  var code = functionName + '("' + dropdown_date_ + '")';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
-function _getdate(){
+function _getdate() {
   var varDay = new Date(),
-      varYear = varDay.getFullYear(),
-      varMonth = varDay.getMonth() + 1,
-      varDate = varDay.getDate();
+    varYear = varDay.getFullYear(),
+    varMonth = varDay.getMonth() + 1,
+    varDate = varDay.getDate();
   var varNow;
-  if(t=="ymd"){
-    varNow =  varYear + "/" + varMonth + "/" + varDate;
-  }else if(t=="mdy"){
-    varNow =  varMonth + "/" + varDate + "/" + varYear;
-  }else if(t=="dmy"){
-    varNow =  varDate + "/" + varMonth + "/" + varYear;
-  }else if(t=="y"){
-    varNow =  varYear;
-  }else if(t=="m"){
-    varNow =  varMonth;
-  }else if(t=="d"){
-    varNow =  varDate;
+  if (t == "ymd") {
+    varNow = varYear + "/" + varMonth + "/" + varDate;
+  } else if (t == "mdy") {
+    varNow = varMonth + "/" + varDate + "/" + varYear;
+  } else if (t == "dmy") {
+    varNow = varDate + "/" + varMonth + "/" + varYear;
+  } else if (t == "y") {
+    varNow = varYear;
+  } else if (t == "m") {
+    varNow = varMonth;
+  } else if (t == "d") {
+    varNow = varDate;
   }
   return varNow;
 }
@@ -501,26 +501,26 @@ function _getdate(){
 Blockly.JavaScript['gettime'] = function (block) {
   var dropdown_time_ = block.getFieldValue('time_');
   var functionName = Blockly.JavaScript.provideFunction_(
-      'get_time',
-      [ 'function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(t) {',
-      _gettime.toString().replace('function _gettime(){\n','')]);
-  var code = functionName + '("'+ dropdown_time_ +'")';
+    'get_time', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(t) {',
+      _gettime.toString().replace('function _gettime(){\n', '')
+    ]);
+  var code = functionName + '("' + dropdown_time_ + '")';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
-function _gettime(){
+function _gettime() {
   var varTime = new Date(),
-      varHours = varTime.getHours(),
-      varMinutes = varTime.getMinutes(),
-      varSeconds = varTime.getSeconds();
+    varHours = varTime.getHours(),
+    varMinutes = varTime.getMinutes(),
+    varSeconds = varTime.getSeconds();
   var varNow;
-  if(t=="hms"){
+  if (t == "hms") {
     varNow = varHours + ":" + varMinutes + ":" + varSeconds;
-  }else if(t=="h"){
+  } else if (t == "h") {
     varNow = varHours;
-  }else if(t=="m"){
+  } else if (t == "m") {
     varNow = varMinutes;
-  }else if(t=="s"){
+  } else if (t == "s") {
     varNow = varSeconds;
   }
   return varNow;
@@ -956,33 +956,33 @@ Blockly.JavaScript['buzzer_music'] = function (block) {
   var value_music_name_ = Blockly.JavaScript.valueToCode(block, 'music_name_', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_music_ = Blockly.JavaScript.statementToCode(block, 'music_');
   var functionName = Blockly.JavaScript.provideFunction_(
-      'buzzer_music',
-      [ 'function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(m) {',
-      _buzzer_music.toString().replace('function _buzzer_music(m){\n','')]);
-  var code = value_music_name_ + ' = ' +functionName + '(['+ statements_music_ +']);\n';
+    'buzzer_music', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(m) {',
+      _buzzer_music.toString().replace('function _buzzer_music(m){\n', '')
+    ]);
+  var code = value_music_name_ + ' = ' + functionName + '([' + statements_music_ + ']);\n';
   return code;
 };
 
-function _buzzer_music(m){
+function _buzzer_music(m) {
   var musicNotes = {};
   musicNotes.notes = [];
   musicNotes.tempos = [];
-  if(m.length>1){
-    for(var i=0; i<m.length; i++){
-      if(Array.isArray(m[i].notes)){
+  if (m.length > 1) {
+    for (var i = 0; i < m.length; i++) {
+      if (Array.isArray(m[i].notes)) {
         var cn = musicNotes.notes.concat(m[i].notes);
         musicNotes.notes = cn;
-      }else{
+      } else {
         musicNotes.notes.push(m[i].notes);
       }
-      if(Array.isArray(m[i].tempos)){
+      if (Array.isArray(m[i].tempos)) {
         var ct = musicNotes.tempos.concat(m[i].tempos);
         musicNotes.tempos = ct;
-      }else{
+      } else {
         musicNotes.tempos.push(m[i].tempos);
       }
     }
-  }else{
+  } else {
     musicNotes.notes = [m[0].notes];
     musicNotes.tempos = [m[0].tempos];
   }
@@ -995,25 +995,25 @@ Blockly.JavaScript['buzzer_music_array'] = function (block) {
   var value_notes_ = Blockly.JavaScript.valueToCode(block, 'notes_', Blockly.JavaScript.ORDER_ATOMIC);
   var value_tempos_ = Blockly.JavaScript.valueToCode(block, 'tempos_', Blockly.JavaScript.ORDER_ATOMIC);
   var next = block.getNextBlock();
-  var notes = value_notes_.replace(/\'/g,'');
-  var tempos = value_tempos_.replace(/\'/g,'');
+  var notes = value_notes_.replace(/\'/g, '');
+  var tempos = value_tempos_.replace(/\'/g, '');
   var notesGen = notes.split(',');
   var temposGen = tempos.split(',');
-  if(notesGen.length>temposGen.length){
+  if (notesGen.length > temposGen.length) {
     var nt = notesGen.length - temposGen.length;
     var tl = temposGen.length - 1;
-    for(var i=0; i<nt; i++){
+    for (var i = 0; i < nt; i++) {
       temposGen.push(temposGen[tl])
     }
-  }else if(notesGen.length<temposGen.length){
+  } else if (notesGen.length < temposGen.length) {
     var nb = temposGen.length - notesGen.length;
-    temposGen.splice(notesGen.length,nb);
+    temposGen.splice(notesGen.length, nb);
   }
-  for(var i=0; i<notesGen.length; i++){
-    notesGen[i] = '"'+notesGen[i]+'"';
+  for (var i = 0; i < notesGen.length; i++) {
+    notesGen[i] = '"' + notesGen[i] + '"';
   }
-  for(var i=0; i<temposGen.length; i++){
-    temposGen[i] = '"'+temposGen[i]+'"';
+  for (var i = 0; i < temposGen.length; i++) {
+    temposGen[i] = '"' + temposGen[i] + '"';
   }
   var code;
   if (next === null) {
@@ -1035,9 +1035,9 @@ Blockly.JavaScript['buzzer_notes_tempos'] = function (block) {
     dropdown_pitch_ = '';
   }
   if (next === null) {
-    code = '{notes:"'+dropdown_tone_+dropdown_pitch_+'",tempos:"'+dropdown_tempos_+'"}';
+    code = '{notes:"' + dropdown_tone_ + dropdown_pitch_ + '",tempos:"' + dropdown_tempos_ + '"}';
   } else {
-    code = '{notes:"'+dropdown_tone_+dropdown_pitch_+'",tempos:"'+dropdown_tempos_+'"},';
+    code = '{notes:"' + dropdown_tone_ + dropdown_pitch_ + '",tempos:"' + dropdown_tempos_ + '"},';
   }
   return code;
 };
@@ -1090,21 +1090,21 @@ Blockly.JavaScript['buzzer_load_music'] = function (block) {
   if (dropdown_music_ == 'm1') {
     notes = '["E7","E7","0","E7","0","C7","E7","0","G7","0","0","0","G6","0","0","0","C7","0","0","G6","0","0","E6","0","0","A6","0","B6","0","AS6","A6","0","G6","E7","0","G7","A7","0","F7","G7","0","E7","0","C7","D7","B6","0","0","C7","0","0","G6","0","0","E6","0","0","A6","0","B6","0","AS6","A6","0","G6","E7","0","G7","A7","0","F7","G7","0","E7","0","C7","D7","B6","0","0"]';
     tempos = '["8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8"]';
-  }else if (dropdown_music_ == 'm2') {
+  } else if (dropdown_music_ == 'm2') {
     notes = '["c4","e4","e4","0","e4","g4","g4","0","d4","f4","f4","0","a4","b4","b4","0","c4","d4","e4","c4","e4","c4","e4","0","d4","e4","f4","f4","e4","d4","f4","0","e4","f4","g4","e4","g4","e4","g4","0","f4","g4","a4","a4","g4","f4","a4","0","g4","c4","d4","e4","f4","g4","a4","0","a4","d4","e4","f4","g4","a4","b4","0","b4","e4","f4","g4","a4","b4","c5","0","c5","b4","a4","f4","b4","g4","c5"]';
     tempos = '["6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6"]';
-  }else if (dropdown_music_ == 'm3') {
+  } else if (dropdown_music_ == 'm3') {
     notes = '["C5","C5","G4","G4","A4","A4","G4","0","E4","G4","C5","A4","G4","0","0","A4","0","G4","0","E4","A4","G4","0","E4","0","G4","0","E4","D4","C4","0","E4","E4","G4","G4","A4","A4","G4","G4","0","D5","0","C5","A4","G4","A4","C5","G4","0","A4","A4","G4","A4","C5","G4","0","A4","A4","G4","A4","D5","C5"]';
     tempos = '["6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6", "6"]';
-  }else if (dropdown_music_ == 'm4') {
+  } else if (dropdown_music_ == 'm4') {
     notes = '["FS6","FS6","0","FS6","0","D6","FS6","0","B6","0","0","0","G6","0","0","0","G6","0","0","E6","0","0","C6","0","0","F6","0","G6","0","FS6","F6","0","E6","C7","0","E7","F7","0","D7","E7","0","C7","0","A6","B6","G6","0","0","G6","0","0","E6","0","0","C6","0","0","F6","0","G6","0","FS6","F6","0","E6","G6","0","E7","F7","0","D7","E7","0","C7","0","A6","B6","G6","0","0"]';
     tempos = '["8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8", "8"]';
   }
   var code;
   if (next === null) {
-    code = '{notes:'+ notes + ' , tempos:' + tempos + '}';
+    code = '{notes:' + notes + ' , tempos:' + tempos + '}';
   } else {
-    code = '{notes:'+ notes + ' , tempos:' + tempos + '},';
+    code = '{notes:' + notes + ' , tempos:' + tempos + '},';
   }
   return code;
 };
@@ -1182,14 +1182,14 @@ Blockly.JavaScript['data_firebase_write'] = function (block) {
   for (var n = 0; n < block.itemCount_; n++) {
     var name = block.getFieldValue('name_' + n) || 'unknow';
     var val = Blockly.JavaScript.valueToCode(block, 'data_' + n) || '""';
-    if(n<(block.itemCount_-1)){
-      c = c + '  ' + name +':'+val +',\n';
-    }else{
-      c = c + '  ' + name +':'+val +'\n';
+    if (n < (block.itemCount_ - 1)) {
+      c = c + '  ' + name + ':' + val + ',\n';
+    } else {
+      c = c + '  ' + name + ':' + val + '\n';
     }
   }
-  var code = variable_var_ + '.push({\n'+c+
-  '});\n';
+  var code = variable_var_ + '.push({\n' + c +
+    '});\n';
   return code;
 };
 
@@ -1273,7 +1273,7 @@ Blockly.JavaScript['car_test_new'] = function (block) {
   var dropdown_rb_ = block.getFieldValue('rb_');
   var dropdown_lf_ = block.getFieldValue('lf_');
   var dropdown_lb_ = block.getFieldValue('lb_');
-  var code = value_var_+' = getToyCar(board,'+dropdown_rf_+','+dropdown_rb_+','+dropdown_lf_+','+dropdown_lb_+');\n';
+  var code = value_var_ + ' = getToyCar(board,' + dropdown_rf_ + ',' + dropdown_rb_ + ',' + dropdown_lf_ + ',' + dropdown_lb_ + ');\n';
   return code;
 };
 
@@ -1728,7 +1728,7 @@ Blockly.JavaScript['max7219_off'] = function (block) {
 Blockly.JavaScript['max7219_88'] = function (block) {
   var a = [];
   for (var i = 1; i < 65; i++) {
-    var j = 'm'+i;
+    var j = 'm' + i;
     a[i - 1] = block.getFieldValue(j) == 'TRUE'
   }
   var array = [
@@ -1756,18 +1756,201 @@ Blockly.JavaScript['max7219_88'] = function (block) {
     var b2 = parseInt(b, 2);
     var b10 = b2.toString(10);
     var b16 = b2.toString(16);
-    if(b10*1<16){
-      b16 = '0'+b16;
+    if (b10 * 1 < 16) {
+      b16 = '0' + b16;
     }
-    c = c+b16;
+    c = c + b16;
     console.log(c);
     b = '';
   }
   var code;
-  code = '"'+c+'"';
+  code = '"' + c + '"';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.JavaScript['max7219_val_alphabet'] = function (block) {
+  var dropdown_case_ = block.getFieldValue('case_');
+  var dropdown_alphabet_ = block.getFieldValue('alphabet_') * 1;
+  var upper = [
+    ["A", "00fc262226fc0000"],
+    ["B", "00fe929292fc0000"],
+    ["C", "007cc68282820000"],
+    ["D", "00fe8282c67c0000"],
+    ["E", "00fe929292920000"],
+    ["F", "00fe121212020000"],
+    ["G", "00fe829292f20000"],
+    ["H", "00fe101010fe0000"],
+    ["I", "008282fe82820000"],
+    ["J", "00828282fe020000"],
+    ["K", "00fe102844820000"],
+    ["L", "00fe808080800000"],
+    ["M", "00fe02fc02fe0000"],
+    ["N", "00fe0c30c0fe0000"],
+    ["O", "007cc682c67c0000"],
+    ["P", "00fe2222223e0000"],
+    ["Q", "007cc6a246bc0000"],
+    ["R", "00fe2262e2be0000"],
+    ["S", "009e929292f20000"],
+    ["T", "000202fe02020000"],
+    ["U", "00fe808080fe0000"],
+    ["V", "003e60c0603e0000"],
+    ["W", "00fe80fe80fe0000"],
+    ["X", "00c66c106cc60000"],
+    ["Y", "000e18f0180e0000"],
+    ["Z", "00c2a2928a860000"]
+  ];
+  var lower = [
+    ["a", "00f08888f8800000"],
+    ["b", "00fe9090f0000000"],
+    ["c", "00f0909090000000"],
+    ["d", "0000f09090fe0000"],
+    ["e", "00f8a8a8a8b80000"],
+    ["f", "000008fe0a000000"],
+    ["g", "0000bca4a4fc0000"],
+    ["h", "00fe1010f0000000"],
+    ["i", "000000f400000000"],
+    ["j", "000080f400000000"],
+    ["k", "00fe205088000000"],
+    ["l", "000000fe00000000"],
+    ["m", "00f010f010f00000"],
+    ["n", "00f01010f0000000"],
+    ["o", "00f09090f0000000"],
+    ["p", "00fc24243c000000"],
+    ["q", "003c2424fc800000"],
+    ["r", "00f0201000000000"],
+    ["s", "00b8a8a8e8000000"],
+    ["t", "0004fe8400000000"],
+    ["u", "00f08080f0000000"],
+    ["v", "0070807000000000"],
+    ["w", "00f080f080f00000"],
+    ["x", "0088502050880000"],
+    ["y", "0000b8a0a0f80000"],
+    ["z", "00c8a8a898000000"]
+  ];
+  var code;
+  if (dropdown_case_ == 'upper') {
+    code = '"' + upper[dropdown_alphabet_][1] + '"';
+  } else {
+    code = '"' + lower[dropdown_alphabet_][1] + '"';
+  }
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+
+Blockly.JavaScript['max7219_val_num'] = function (block) {
+  var dropdown_tens_ = block.getFieldValue('tens_') * 10;
+  var dropdown_ones_ = block.getFieldValue('ones_') * 1;
+  var num = [
+    ["0", "0000fe8282fe0000"],
+    ["1", "00000082fe800000"],
+    ["2", "0000f292929e0000"],
+    ["3", "0000929292fe0000"],
+    ["4", "00001e1010fe0000"],
+    ["5", "00009e9292f20000"],
+    ["6", "0000fe9292f20000"],
+    ["7", "0000020202fe0000"],
+    ["8", "0000fe9292fe0000"],
+    ["9", "00009e9292fe0000"],
+    ["10", "82fe8000fe82fe00"],
+    ["11", "82fe800082fe8000"],
+    ["12", "82fe8000f2929e00"],
+    ["13", "82fe80009292fe00"],
+    ["14", "82fe80001e10fe00"],
+    ["15", "82fe80009e92f200"],
+    ["16", "82fe8000fe92f200"],
+    ["17", "82fe80000202fe00"],
+    ["18", "82fe8000fe92fe00"],
+    ["19", "82fe80009e92fe00"],
+    ["20", "f2929e00fe82fe00"],
+    ["21", "f2929e0082fe8000"],
+    ["22", "f2929e00f2929e00"],
+    ["23", "f2929e009292fe00"],
+    ["24", "f2929e001e10fe00"],
+    ["25", "f2929e009e92f200"],
+    ["26", "f2929e00fe92f200"],
+    ["27", "f2929e000202fe00"],
+    ["28", "f2929e00fe92fe00"],
+    ["29", "f2929e009e92fe00"],
+    ["30", "9292fe00fe82fe00"],
+    ["31", "9292fe0082fe8000"],
+    ["32", "9292fe00f2929e00"],
+    ["33", "9292fe009292fe00"],
+    ["34", "9292fe001e10fe00"],
+    ["35", "9292fe009e92f200"],
+    ["36", "9292fe00fe92f200"],
+    ["37", "9292fe000202fe00"],
+    ["38", "9292fe00fe92fe00"],
+    ["39", "9292fe009e92fe00"],
+    ["40", "1e10fe00fe82fe00"],
+    ["41", "1e10fe0082fe8000"],
+    ["42", "1e10fe00f2929e00"],
+    ["43", "1e10fe009292fe00"],
+    ["44", "1e10fe001e10fe00"],
+    ["45", "1e10fe009e92f200"],
+    ["46", "1e10fe00fe92f200"],
+    ["47", "1e10fe000202fe00"],
+    ["48", "1e10fe00fe92fe00"],
+    ["49", "1e10fe009e92fe00"],
+    ["50", "9e92f200fe82fe00"],
+    ["51", "9e92f20082fe8000"],
+    ["52", "9e92f200f2929e00"],
+    ["53", "9e92f2009292fe00"],
+    ["54", "9e92f2001e10fe00"],
+    ["55", "9e92f2009e92f200"],
+    ["56", "9e92f200fe92f200"],
+    ["57", "9e92f2000202fe00"],
+    ["58", "9e92f200fe92fe00"],
+    ["59", "9e92f2009e92fe00"],
+    ["60", "fe92f200fe82fe00"],
+    ["61", "fe92f20082fe8000"],
+    ["62", "fe92f200f2929e00"],
+    ["63", "fe92f2009292fe00"],
+    ["64", "fe92f2001e10fe00"],
+    ["65", "fe92f2009e92f200"],
+    ["66", "fe92f200fe92f200"],
+    ["67", "fe92f2000202fe00"],
+    ["68", "fe92f200fe92fe00"],
+    ["69", "fe92f2009e92fe00"],
+    ["70", "0202fe00fe82fe00"],
+    ["71", "0202fe0082fe8000"],
+    ["72", "0202fe00f2929e00"],
+    ["73", "0202fe009292fe00"],
+    ["74", "0202fe001e10fe00"],
+    ["75", "0202fe009e92f200"],
+    ["76", "0202fe00fe92f200"],
+    ["77", "0202fe000202fe00"],
+    ["78", "0202fe00fe92fe00"],
+    ["79", "0202fe009e92fe00"],
+    ["80", "fe92fe00fe82fe00"],
+    ["81", "fe92fe0082fe8000"],
+    ["82", "fe92fe00f2929e00"],
+    ["83", "fe92fe009292fe00"],
+    ["84", "fe92fe001e10fe00"],
+    ["85", "fe92fe009e92f200"],
+    ["86", "fe92fe00fe92f200"],
+    ["87", "fe92fe000202fe00"],
+    ["88", "fe92fe00fe92fe00"],
+    ["89", "fe92fe009e92fe00"],
+    ["90", "9e92fe00fe82fe00"],
+    ["91", "9e92fe0082fe8000"],
+    ["92", "9e92fe00f2929e00"],
+    ["93", "9e92fe009292fe00"],
+    ["94", "9e92fe001e10fe00"],
+    ["95", "9e92fe009e92f200"],
+    ["96", "9e92fe00fe92f200"],
+    ["97", "9e92fe000202fe00"],
+    ["98", "9e92fe00fe92fe00"],
+    ["99", "9e92fe009e92fe00"]
+  ];
+  var code = '"' + num[dropdown_tens_+dropdown_ones_][1] + '"';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['max7219_val_img'] = function (block) {
+  var dropdown_img_ = block.getFieldValue('img_');
+  var code = '"' + dropdown_img_ +'"';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
 
 Blockly.JavaScript['photocell_new'] = function (block) {
   var dropdown_pin_ = block.getFieldValue('pin_');
