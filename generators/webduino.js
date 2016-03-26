@@ -53,7 +53,7 @@ Blockly.JavaScript['demo_image_url'] = function (block) {
 
 Blockly.JavaScript['demo_light_click'] = function (block) {
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'document.getElementById("demo-area-02-light").addEventListener("click",function(){\n' +
+  var code = 'document.getElementById("demo-area-02-light").addEventListener("click", async function(){\n' +
     statements_do_ +
     '});\n';
   return code;
@@ -132,7 +132,7 @@ Blockly.JavaScript['demo_image_position'] = function (block) {
 Blockly.JavaScript['demo_button_click'] = function (block) {
   var dropdown_name_ = block.getFieldValue('name_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'document.getElementById("demo-area-05-btn' + dropdown_name_ + '").addEventListener("click",function(){\n' +
+  var code = 'document.getElementById("demo-area-05-btn' + dropdown_name_ + '").addEventListener("click",async function(){\n' +
     statements_do_ +
     '});\n';
   return code;
@@ -141,7 +141,7 @@ Blockly.JavaScript['demo_button_click'] = function (block) {
 
 Blockly.JavaScript['demo_area_input'] = function (block) {
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'document.getElementById("demo-area-04-color").oninput = function(_color){\n' +
+  var code = 'document.getElementById("demo-area-04-color").oninput =async function(_color){\n' +
     '_color = this.value;\n' +
     statements_do_ +
     '};\n';
@@ -172,7 +172,7 @@ Blockly.JavaScript['demo_range_set'] = function (block) {
     'document.getElementById("demo-area-06-input").setAttribute("max",' + value_max_ + ');\n' +
     'document.getElementById("demo-area-06-input").setAttribute("step",' + value_step_ + ');\n' +
     'document.getElementById("demo-area-06-input").setAttribute("value",' + value_value_ + ');\n' +
-    'document.getElementById("demo-area-06-input").oninput = function(_value){\n' +
+    'document.getElementById("demo-area-06-input").oninput = async function(_value){\n' +
     '  _value = this.value;\n' +
     statements_do_ +
     '};\n';
@@ -189,7 +189,7 @@ Blockly.JavaScript['demo_range_show'] = function (block) {
 
 Blockly.JavaScript['demo_range_input'] = function (block) {
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'document.getElementById("demo-area-06-input").oninput = function(_value){\n' +
+  var code = 'document.getElementById("demo-area-06-input").oninput = async function(_value){\n' +
     '_value = this.value;\n' +
     statements_do_ +
     '};\n';
