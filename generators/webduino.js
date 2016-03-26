@@ -1665,50 +1665,40 @@ Blockly.JavaScript['max7219_animate_horse'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var value_times_ = Blockly.JavaScript.valueToCode(block, 'times_', Blockly.JavaScript.ORDER_ATOMIC);
   var value_code_ = Blockly.JavaScript.valueToCode(block, 'code_', Blockly.JavaScript.ORDER_ATOMIC);
-  var dropdown_state_ = block.getFieldValue('state_');
-  var a = Blockly.JavaScript.variableDB_.getDistinctName(
-    'a', Blockly.Variables.NAME_TYPE);
-  var b = Blockly.JavaScript.variableDB_.getDistinctName(
-    'b', Blockly.Variables.NAME_TYPE);
-  var c = Blockly.JavaScript.variableDB_.getDistinctName(
-    'c', Blockly.Variables.NAME_TYPE);
-  var aa = Blockly.JavaScript.variableDB_.getDistinctName(
-    'aa', Blockly.Variables.NAME_TYPE);
-  var d = Blockly.JavaScript.variableDB_.getDistinctName(
-    'd', Blockly.Variables.NAME_TYPE);
-  var i = Blockly.JavaScript.variableDB_.getDistinctName(
-    'i', Blockly.Variables.NAME_TYPE);
-  var code;
-  if (dropdown_state_ == 'left') {
-    code = 'var ' + a + ' = ' + value_code_ + ';\n' +
-      'var ' + b + ' = ' + a + '.split("");\n' +
-      'var ' + d + ' = [];\n' +
-      'for(var ' + i + '=0; ' + i + '<' + a + '.length/2; ' + i + '++){\n' +
-      '  ' + aa + '(' + i + ');\n' +
-      '}\n' +
-      'function ' + aa + '(j){\n' +
-      '  var ' + c + '=' + b + '.splice(0,2);\n' +
-      '  ' + b + '.push(' + c + '[0],' + c + '[1]);\n' +
-      '  ' + d + '[j] = ' + b + '.join("");\n' +
-      '}\n' +
-      'console.log(' + d + ');\n' +
-      variable_name_ + '.animate(' + d + ',' + value_times_ + ');\n';
-  } else {
-    code = 'var ' + a + ' = ' + value_code_ + ';\n' +
-      'var ' + b + ' = ' + a + '.split("");\n' +
-      'var ' + d + ' = [];\n' +
-      'for(var ' + i + '=0; ' + i + '<' + a + '.length/2; ' + i + '++){\n' +
-      '  ' + aa + '(' + i + ');\n' +
-      '}\n' +
-      'function ' + aa + '(j){\n' +
-      '  var ' + c + '=' + b + '.splice((' + a + '.length-2),' + a + '.length);\n' +
-      '  ' + b + '.unshift(' + c + '[0],' + c + '[1]);\n' +
-      '  ' + d + '[j] = ' + b + '.join("");\n' +
-      '}\n' +
-      'console.log(' + d + ');\n' +
-      variable_name_ + '.animate(' + d + ',' + value_times_ + ');\n';
-  }
+  var dropdown_state_ = '"'+block.getFieldValue('state_')+'"';
+  var functionName = Blockly.JavaScript.provideFunction_(
+      'max7219_horse',
+      [ 'function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ +
+          '(state,code) {',
+        '  var b = code.split("");',
+        '  var d = [];',
+        '  if(state=="left"){',
+        '    for(var i=0; i<code.length/2; i++){',
+        '      a(i);',
+        '    }',
+        '    function a(j){',
+        '      var c=b.splice(0,2);',
+        '      b.push(c[0],c[1]);',
+        '      d[j] = b.join("");',
+        '      d[j] = d[j].split("").splice(0,16).join("");',
+        '    }',
+        '  }else{',
+        '    for(var i=0; i<code.length/2; i++){',
+        '      a(i);',
+        '    }',
+        '    function a(j){',
+        '      var c=b.splice((code.length-2),code.length);',
+        '      b.unshift(c[0],c[1]);',
+        '      d[j] = b.join("");',
+        '      d[j] = d[j].split("").splice(0,16).join("");',
+        '    }',
+        '  }',
+        '  return d;',
+        '}']);
+  //var code = 'console.log('+functionName+'('+dropdown_state_+','+value_code_ +'));\n';
+  var code = variable_name_+'.animate('+functionName + '('+ dropdown_state_ +','+ value_code_ +'),'+ value_times_ +');\n';
   return code;
+
 };
 
 
