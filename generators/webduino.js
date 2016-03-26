@@ -468,7 +468,7 @@ Blockly.JavaScript['getdate'] = function (block) {
   var dropdown_date_ = block.getFieldValue('date_');
   var functionName = Blockly.JavaScript.provideFunction_(
     'get_date', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(t) {',
-      _getdate.toString().replace('function _getdate(){\n', '')
+      _getdate.toString().replace('function _getdate() {\n', '')
     ]);
   var code = functionName + '("' + dropdown_date_ + '")';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
@@ -502,7 +502,7 @@ Blockly.JavaScript['gettime'] = function (block) {
   var dropdown_time_ = block.getFieldValue('time_');
   var functionName = Blockly.JavaScript.provideFunction_(
     'get_time', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(t) {',
-      _gettime.toString().replace('function _gettime(){\n', '')
+      _gettime.toString().replace('function _gettime() {\n', '')
     ]);
   var code = functionName + '("' + dropdown_time_ + '")';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
@@ -957,7 +957,7 @@ Blockly.JavaScript['buzzer_music'] = function (block) {
   var statements_music_ = Blockly.JavaScript.statementToCode(block, 'music_');
   var functionName = Blockly.JavaScript.provideFunction_(
     'buzzer_music', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(m) {',
-      _buzzer_music.toString().replace('function _buzzer_music(m){\n', '')
+      _buzzer_music.toString().replace('function _buzzer_music(m) {\n', '')
     ]);
   var code = value_music_name_ + ' = ' + functionName + '([' + statements_music_ + ']);\n';
   return code;
@@ -1665,38 +1665,38 @@ Blockly.JavaScript['max7219_animate_horse'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var value_times_ = Blockly.JavaScript.valueToCode(block, 'times_', Blockly.JavaScript.ORDER_ATOMIC);
   var value_code_ = Blockly.JavaScript.valueToCode(block, 'code_', Blockly.JavaScript.ORDER_ATOMIC);
-  var dropdown_state_ = '"'+block.getFieldValue('state_')+'"';
+  var dropdown_state_ = '"' + block.getFieldValue('state_') + '"';
   var functionName = Blockly.JavaScript.provideFunction_(
-      'max7219_horse',
-      [ 'function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ +
-          '(state,code) {',
-        '  var b = code.split("");',
-        '  var d = [];',
-        '  if(state=="left"){',
-        '    for(var i=0; i<code.length/2; i++){',
-        '      a(i);',
-        '    }',
-        '    function a(j){',
-        '      var c=b.splice(0,2);',
-        '      b.push(c[0],c[1]);',
-        '      d[j] = b.join("");',
-        '      d[j] = d[j].split("").splice(0,16).join("");',
-        '    }',
-        '  }else{',
-        '    for(var i=0; i<code.length/2; i++){',
-        '      a(i);',
-        '    }',
-        '    function a(j){',
-        '      var c=b.splice((code.length-2),code.length);',
-        '      b.unshift(c[0],c[1]);',
-        '      d[j] = b.join("");',
-        '      d[j] = d[j].split("").splice(0,16).join("");',
-        '    }',
-        '  }',
-        '  return d;',
-        '}']);
+    'max7219_horse', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ +
+      '(state,code) {',
+      '  var b = code.split("");',
+      '  var d = [];',
+      '  if(state=="left"){',
+      '    for(var i=0; i<code.length/2; i++){',
+      '      a(i);',
+      '    }',
+      '    function a(j){',
+      '      var c=b.splice(0,2);',
+      '      b.push(c[0],c[1]);',
+      '      d[j] = b.join("");',
+      '      d[j] = d[j].split("").splice(0,16).join("");',
+      '    }',
+      '  }else{',
+      '    for(var i=0; i<code.length/2; i++){',
+      '      a(i);',
+      '    }',
+      '    function a(j){',
+      '      var c=b.splice((code.length-2),code.length);',
+      '      b.unshift(c[0],c[1]);',
+      '      d[j] = b.join("");',
+      '      d[j] = d[j].split("").splice(0,16).join("");',
+      '    }',
+      '  }',
+      '  return d;',
+      '}'
+    ]);
   //var code = 'console.log('+functionName+'('+dropdown_state_+','+value_code_ +'));\n';
-  var code = variable_name_+'.animate('+functionName + '('+ dropdown_state_ +','+ value_code_ +'),'+ value_times_ +');\n';
+  var code = variable_name_ + '.animate(' + functionName + '(' + dropdown_state_ + ',' + value_code_ + '),' + value_times_ + ');\n';
   return code;
 
 };
@@ -1932,13 +1932,13 @@ Blockly.JavaScript['max7219_val_num'] = function (block) {
     ["98", "9e92fe00fe92fe00"],
     ["99", "9e92fe009e92fe00"]
   ];
-  var code = '"' + num[dropdown_tens_+dropdown_ones_][1] + '"';
+  var code = '"' + num[dropdown_tens_ + dropdown_ones_][1] + '"';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 Blockly.JavaScript['max7219_val_img'] = function (block) {
   var dropdown_img_ = block.getFieldValue('img_');
-  var code = '"' + dropdown_img_ +'"';
+  var code = '"' + dropdown_img_ + '"';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 

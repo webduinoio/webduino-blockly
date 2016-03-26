@@ -351,23 +351,6 @@
       <block type="timer"></block>
       <block type="delay"></block>
     </category>
-    <category id="catRepeat">
-      <block type="status_repeat">
-        <value name="times_">
-          <block type="math_number">
-            <field name="NUM">10</field>
-          </block>
-        </value>
-      </block>
-      <block type="status_repeat_forever">
-        <value name="name_">
-          <block type="variables_get">
-            <field name="VAR">timer</field>
-          </block>
-        </value>
-      </block>
-      <block type="status_repeat_stop"></block>
-    </category>
     <category id="catTextLogic">
       <block type="text_indexof">
         <value name="indexof_">
@@ -408,6 +391,23 @@
           </block>
         </value>
       </block>
+    </category>
+    <category id="catRepeat">
+      <block type="status_repeat">
+        <value name="times_">
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="status_repeat_forever">
+        <value name="name_">
+          <block type="variables_get">
+            <field name="VAR">timer</field>
+          </block>
+        </value>
+      </block>
+      <block type="status_repeat_stop"></block>
     </category>
     <category id="catKeyCode">
         <block type="document_keyboard"></block>

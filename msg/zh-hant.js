@@ -28,7 +28,7 @@ var MSG = {
   catVariables: "變量",
   catFunctions: "流程",
   catExec: "等待",
-  catRepeat: "重複",
+  catRepeat: "狀態切換",
   catBoard: "開發板",
   catPin: "I/O 腳位",
   catLed: "LED 燈",
