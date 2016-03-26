@@ -348,8 +348,20 @@
       </block>
     </category>
     <category id="catExec">
-      <block type="timer"></block>
-      <block type="delay"></block>
+      <block type="timer">
+        <value name="secs_">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <block type="delay">
+        <value name="secs_">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
     </category>
     <category id="catTextLogic">
       <block type="text_indexof">
