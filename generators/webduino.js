@@ -967,7 +967,7 @@ function _buzzer_music(m) {
   var musicNotes = {};
   musicNotes.notes = [];
   musicNotes.tempos = [];
-  if (m.length > 1) {
+  if (m[0].notes.length > 1) {
     for (var i = 0; i < m.length; i++) {
       if (Array.isArray(m[i].notes)) {
         var cn = musicNotes.notes.concat(m[i].notes);
