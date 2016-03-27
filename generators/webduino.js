@@ -1844,6 +1844,8 @@ function max7219_alphabet_object() {
     "]": "00427e",
     "*": "004830fc3048",
     "=": "00282828",
+    "#": "00287c287c28",
+    "@": "003844baaaba6458",
     " ": "00"
   };
 }
@@ -1853,21 +1855,15 @@ Blockly.JavaScript['max7219_val_alphabet'] = function (block) {
   var value_value_ = Blockly.JavaScript.valueToCode(block, 'value_', Blockly.JavaScript.ORDER_ATOMIC);
   var functionName = Blockly.JavaScript.provideFunction_(
     'max7219_alphabet_', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ +
-      '(c,a) {',
+      '(a) {',
       max7219_alphabet_object.toString().replace('function max7219_alphabet_object() {\n', '').replace('};\n', '') + ';',
       '  var text="";',
-      '  if(c == "upper"){',
-      '    text = max7219_alphabet_object[a.toUpperCase()];',
-      '  }else if(c == "lower"){',
-      '    text = max7219_alphabet_object[a.toLowerCase()];',
-      '  }else{',
-      '    if(a.length>1){',
-      '      for(var i=0; i<a.length; i++){',
-      '        text = text + max7219_alphabet_object[a[i]];',
-      '      }',
-      '    }else{',
-      '      text = max7219_alphabet_object[a]',
+      '  if(a.length>1){',
+      '    for(var i=0; i<a.length; i++){',
+      '      text = text + max7219_alphabet_object[a[i]];',
       '    }',
+      '  }else{',
+      '    text = max7219_alphabet_object[a];',
       '  }',
       '  var t = text.length;',
       '  if(t<16){',
@@ -1878,7 +1874,7 @@ Blockly.JavaScript['max7219_val_alphabet'] = function (block) {
       '  return text;',
       '}'
     ]);
-  var code = functionName + '("none" , ' + value_value_ + ')';
+  var code = functionName + '(' + value_value_ + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
