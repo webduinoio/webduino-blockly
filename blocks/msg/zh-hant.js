@@ -344,9 +344,12 @@ Blockly.Msg.WEBDUINO_MATRIX_RIGHT = "向右";
 Blockly.Msg.WEBDUINO_MATRIX_SPEED = "，速度 (格/毫秒)";
 Blockly.Msg.WEBDUINO_MATRIX_HORSEODE = "代碼";
 Blockly.Msg.WEBDUINO_MATRIX_ALPHABET = "英文字母";
+Blockly.Msg.WEBDUINO_MATRIX_ALPHABET2 = "英文 ( A~Z , a~z )";
 Blockly.Msg.WEBDUINO_MATRIX_UPPERCASE = "大寫";
 Blockly.Msg.WEBDUINO_MATRIX_LOWERCASE = "小寫";
 Blockly.Msg.WEBDUINO_MATRIX_NUM = "數字";
+Blockly.Msg.WEBDUINO_MATRIX_NUM2 = "數字 (0~99)";
+
 Blockly.Msg.WEBDUINO_MATRIX_IMG = "圖案";
 
 // Photocell

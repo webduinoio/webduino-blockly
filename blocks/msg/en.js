@@ -511,9 +511,11 @@ Blockly.Msg.WEBDUINO_MATRIX_RIGHT = "Right";
 Blockly.Msg.WEBDUINO_MATRIX_SPEED = ", speed (frame/ms):";
 Blockly.Msg.WEBDUINO_MATRIX_HORSEODE = "code:";
 Blockly.Msg.WEBDUINO_MATRIX_ALPHABET = "Alphabet";
+Blockly.Msg.WEBDUINO_MATRIX_ALPHABET2 = "Alphabet (A~Z,a~z)";
 Blockly.Msg.WEBDUINO_MATRIX_UPPERCASE = "uppercase";
 Blockly.Msg.WEBDUINO_MATRIX_LOWERCASE = "lowercase";
 Blockly.Msg.WEBDUINO_MATRIX_NUM = "Number";
+Blockly.Msg.WEBDUINO_MATRIX_NUM2 = "Number (0~99)";
 Blockly.Msg.WEBDUINO_MATRIX_IMG = "Image";
 
 Blockly.Msg.WEBDUINO_PHOTOCELL = "Photocell, analog pin:";

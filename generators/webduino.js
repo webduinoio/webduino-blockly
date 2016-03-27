@@ -1644,7 +1644,9 @@ Blockly.JavaScript['max7219_new'] = function (block) {
 Blockly.JavaScript['max7219_draw'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var value_code_ = Blockly.JavaScript.valueToCode(block, 'code_', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = variable_name_ + '.on(' + value_code_ + ');\n';
+  var code = variable_name_ + '.animateStop();\n' +
+  variable_name_ + '.on("0000000000000000");\n'+
+  variable_name_ + '.on(' + value_code_ + ');\n';
   return code;
 };
 
@@ -1656,7 +1658,8 @@ Blockly.JavaScript['max7219_animate'] = function (block) {
   var varData = Blockly.JavaScript.variableDB_.getDistinctName(
     'varData', Blockly.Variables.NAME_TYPE);
   var code = 'var ' + varData + ' = ' + value_list_ + ';\n' +
-    variable_name_ + '.animateStop();\n'+
+    variable_name_ + '.animateStop();\n' +
+    variable_name_ + '.on("0000000000000000");\n'+
     variable_name_ + '.animate(' + varData + ',' + value_times_ + ');\n';
   return code;
 };
@@ -1671,34 +1674,33 @@ Blockly.JavaScript['max7219_animate_horse'] = function (block) {
     'max7219_horse', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ +
       '(state,code) {',
       '  var b = code.split("");',
+      '  var c;',
       '  var d = [];',
+      '  if(code.length<16){',
+      '    for(var i=0; i<(16-code.length); i++){',
+      '      code = code + "0"',
+      '    }',
+      '  }',
       '  if(state=="left"){',
       '    for(var i=0; i<code.length/2; i++){',
-      '      a(i);',
-      '    }',
-      '    function a(j){',
-      '      var c=b.splice(0,2);',
+      '      c = b.splice(0,2);',
       '      b.push(c[0],c[1]);',
-      '      d[j] = b.join("");',
-      '      d[j] = d[j].split("").splice(0,16).join("");',
+      '      d[i] = b.join("");',
+      '      d[i] = d[i].split("").splice(0,16).join("");',
       '    }',
       '  }else{',
       '    for(var i=0; i<code.length/2; i++){',
-      '      a(i);',
-      '    }',
-      '    function a(j){',
-      '      var c=b.splice((code.length-2),code.length);',
+      '      c = b.splice((code.length-2),code.length);',
       '      b.unshift(c[0],c[1]);',
-      '      d[j] = b.join("");',
-      '      d[j] = d[j].split("").splice(0,16).join("");',
+      '      d[i] = b.join("");',
+      '      d[i] = d[i].split("").splice(0,16).join("");',
       '    }',
       '  }',
       '  return d;',
       '}'
     ]);
-  //var code = 'console.log('+functionName+'('+dropdown_state_+','+value_code_ +'));\n';
-  var code = variable_name_ + '.animateStop();\n'+
-             variable_name_ + '.animate(' + functionName + '(' + dropdown_state_ + ',' + value_code_ + '),' + value_times_ + ');\n';
+  var code = variable_name_ + '.animateStop();\n' +
+    variable_name_ + '.animate(' + functionName + '(' + dropdown_state_ + ',' + value_code_ + '),' + value_times_ + ');\n';
   return code;
 
 };
@@ -1713,8 +1715,8 @@ Blockly.JavaScript['max7219_stop'] = function (block) {
 
 Blockly.JavaScript['max7219_off'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
-  var code = variable_name_ + '.animateStop();\n'+
-             variable_name_ + '.off();\n';
+  var code = variable_name_ + '.animateStop();\n' +
+    variable_name_ + '.off();\n';
   return code;
 };
 
@@ -1761,182 +1763,247 @@ Blockly.JavaScript['max7219_88'] = function (block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+function max7219_alphabet_object() {
+  var max7219_alphabet_object = {
+    "A": "00fc262226fc",
+    "a": "00f08888f880",
+    "B": "00fe929292fc",
+    "b": "00fe9090f0",
+    "C": "007cc6828282",
+    "c": "00f0909090",
+    "D": "00fe8282c67c",
+    "d": "00f09090fe",
+    "E": "00fe92929292",
+    "e": "00f8a8a8a8b8",
+    "F": "00fe12121202",
+    "f": "000008fe0a",
+    "G": "00fe829292f2",
+    "g": "0000bca4a4fc",
+    "H": "00fe101010fe",
+    "h": "00fe1010f0",
+    "I": "008282fe8282",
+    "i": "00f4",
+    "J": "00828282fe02",
+    "j": "000080f4",
+    "K": "00fe10284482",
+    "k": "00fe205088",
+    "L": "00fe80808080",
+    "l": "000000fe",
+    "M": "00fe02fc02fe",
+    "m": "00f010f010f0",
+    "N": "00fe0c30c0fe",
+    "n": "00f01010f0",
+    "O": "007cc682c67c",
+    "o": "00f09090f0",
+    "P": "00fe2222223e",
+    "p": "00fc24243c",
+    "Q": "007cc6a246bc",
+    "q": "003c2424fc80",
+    "R": "00fe2262e2be",
+    "r": "00f02010",
+    "S": "009e929292f2",
+    "s": "00b8a8a8e8",
+    "T": "000202fe0202",
+    "t": "0004fe84",
+    "U": "00fe808080fe",
+    "u": "00f08080f0",
+    "V": "003e60c0603e",
+    "v": "00708070",
+    "W": "00fe80fe80fe",
+    "w": "00f080f080f0",
+    "X": "00c66c106cc6",
+    "x": "008850205088",
+    "Y": "000e18f0180e",
+    "y": "00b8a0a0f8",
+    "Z": "00c2a2928a86",
+    "z": "00c8a8a898",
+    "0": "00fe8282fe",
+    "1": "0082fe80",
+    "2": "00f292929e",
+    "3": "00929292fe",
+    "4": "001e1010fe",
+    "5": "009e9292f2",
+    "6": "00fe9292f2",
+    "7": "00020202fe",
+    "8": "00fe9292fe",
+    "9": "009e9292fe",
+    ":": "0028",
+    ".": "0080",
+    "-": "00101010",
+    "_": "00808080",
+    "+": "0010107c1010",
+    "/": "0040300c02",
+    "?": "000601b10906",
+    "$": "005c54fe5474",
+    "!": "00be",
+    "<": "00102844",
+    ">": "00442810",
+    "(": "003c42",
+    ")": "00423c",
+    "[": "007e42",
+    "]": "00427e",
+    "*": "004830fc3048",
+    "=": "00282828",
+    " ": "00"
+  };
+}
+
+
 Blockly.JavaScript['max7219_val_alphabet'] = function (block) {
-  var dropdown_case_ = block.getFieldValue('case_');
-  var dropdown_alphabet_ = block.getFieldValue('alphabet_') * 1;
-  var upper = [
-    ["A", "00fc262226fc0000"],
-    ["B", "00fe929292fc0000"],
-    ["C", "007cc68282820000"],
-    ["D", "00fe8282c67c0000"],
-    ["E", "00fe929292920000"],
-    ["F", "00fe121212020000"],
-    ["G", "00fe829292f20000"],
-    ["H", "00fe101010fe0000"],
-    ["I", "008282fe82820000"],
-    ["J", "00828282fe020000"],
-    ["K", "00fe102844820000"],
-    ["L", "00fe808080800000"],
-    ["M", "00fe02fc02fe0000"],
-    ["N", "00fe0c30c0fe0000"],
-    ["O", "007cc682c67c0000"],
-    ["P", "00fe2222223e0000"],
-    ["Q", "007cc6a246bc0000"],
-    ["R", "00fe2262e2be0000"],
-    ["S", "009e929292f20000"],
-    ["T", "000202fe02020000"],
-    ["U", "00fe808080fe0000"],
-    ["V", "003e60c0603e0000"],
-    ["W", "00fe80fe80fe0000"],
-    ["X", "00c66c106cc60000"],
-    ["Y", "000e18f0180e0000"],
-    ["Z", "00c2a2928a860000"]
-  ];
-  var lower = [
-    ["a", "00f08888f8800000"],
-    ["b", "00fe9090f0000000"],
-    ["c", "00f0909090000000"],
-    ["d", "0000f09090fe0000"],
-    ["e", "00f8a8a8a8b80000"],
-    ["f", "000008fe0a000000"],
-    ["g", "0000bca4a4fc0000"],
-    ["h", "00fe1010f0000000"],
-    ["i", "000000f400000000"],
-    ["j", "000080f400000000"],
-    ["k", "00fe205088000000"],
-    ["l", "000000fe00000000"],
-    ["m", "00f010f010f00000"],
-    ["n", "00f01010f0000000"],
-    ["o", "00f09090f0000000"],
-    ["p", "00fc24243c000000"],
-    ["q", "003c2424fc800000"],
-    ["r", "00f0201000000000"],
-    ["s", "00b8a8a8e8000000"],
-    ["t", "0004fe8400000000"],
-    ["u", "00f08080f0000000"],
-    ["v", "0070807000000000"],
-    ["w", "00f080f080f00000"],
-    ["x", "0088502050880000"],
-    ["y", "0000b8a0a0f80000"],
-    ["z", "00c8a8a898000000"]
-  ];
-  var code;
-  if (dropdown_case_ == 'upper') {
-    code = '"' + upper[dropdown_alphabet_][1] + '"';
-  } else {
-    code = '"' + lower[dropdown_alphabet_][1] + '"';
-  }
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+  var value_value_ = Blockly.JavaScript.valueToCode(block, 'value_', Blockly.JavaScript.ORDER_ATOMIC);
+  var functionName = Blockly.JavaScript.provideFunction_(
+    'max7219_alphabet_', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ +
+      '(c,a) {',
+      max7219_alphabet_object.toString().replace('function max7219_alphabet_object() {\n', '').replace('};\n', '') + ';',
+      '  var text="";',
+      '  if(c == "upper"){',
+      '    text = max7219_alphabet_object[a.toUpperCase()];',
+      '  }else if(c == "lower"){',
+      '    text = max7219_alphabet_object[a.toLowerCase()];',
+      '  }else{',
+      '    if(a.length>1){',
+      '      for(var i=0; i<a.length; i++){',
+      '        text = text + max7219_alphabet_object[a[i]];',
+      '      }',
+      '    }else{',
+      '      text = max7219_alphabet_object[a]',
+      '    }',
+      '  }',
+      '  var t = text.length;',
+      '  if(t<16){',
+      '    for(var i=0; i<(16-t); i++){',
+      '      text = text + "0";',
+      '    }',
+      '  }',
+      '  return text;',
+      '}'
+    ]);
+  var code = functionName + '("none" , ' + value_value_ + ')';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
+function max7219_number_object() {
+  var max7219_number_object = {
+    "0": "0000fe8282fe0000",
+    "1": "00000082fe800000",
+    "2": "0000f292929e0000",
+    "3": "0000929292fe0000",
+    "4": "00001e1010fe0000",
+    "5": "00009e9292f20000",
+    "6": "0000fe9292f20000",
+    "7": "0000020202fe0000",
+    "8": "0000fe9292fe0000",
+    "9": "00009e9292fe0000",
+    "10": "82fe8000fe82fe00",
+    "11": "82fe800082fe8000",
+    "12": "82fe8000f2929e00",
+    "13": "82fe80009292fe00",
+    "14": "82fe80001e10fe00",
+    "15": "82fe80009e92f200",
+    "16": "82fe8000fe92f200",
+    "17": "82fe80000202fe00",
+    "18": "82fe8000fe92fe00",
+    "19": "82fe80009e92fe00",
+    "20": "f2929e00fe82fe00",
+    "21": "f2929e0082fe8000",
+    "22": "f2929e00f2929e00",
+    "23": "f2929e009292fe00",
+    "24": "f2929e001e10fe00",
+    "25": "f2929e009e92f200",
+    "26": "f2929e00fe92f200",
+    "27": "f2929e000202fe00",
+    "28": "f2929e00fe92fe00",
+    "29": "f2929e009e92fe00",
+    "30": "9292fe00fe82fe00",
+    "31": "9292fe0082fe8000",
+    "32": "9292fe00f2929e00",
+    "33": "9292fe009292fe00",
+    "34": "9292fe001e10fe00",
+    "35": "9292fe009e92f200",
+    "36": "9292fe00fe92f200",
+    "37": "9292fe000202fe00",
+    "38": "9292fe00fe92fe00",
+    "39": "9292fe009e92fe00",
+    "40": "1e10fe00fe82fe00",
+    "41": "1e10fe0082fe8000",
+    "42": "1e10fe00f2929e00",
+    "43": "1e10fe009292fe00",
+    "44": "1e10fe001e10fe00",
+    "45": "1e10fe009e92f200",
+    "46": "1e10fe00fe92f200",
+    "47": "1e10fe000202fe00",
+    "48": "1e10fe00fe92fe00",
+    "49": "1e10fe009e92fe00",
+    "50": "9e92f200fe82fe00",
+    "51": "9e92f20082fe8000",
+    "52": "9e92f200f2929e00",
+    "53": "9e92f2009292fe00",
+    "54": "9e92f2001e10fe00",
+    "55": "9e92f2009e92f200",
+    "56": "9e92f200fe92f200",
+    "57": "9e92f2000202fe00",
+    "58": "9e92f200fe92fe00",
+    "59": "9e92f2009e92fe00",
+    "60": "fe92f200fe82fe00",
+    "61": "fe92f20082fe8000",
+    "62": "fe92f200f2929e00",
+    "63": "fe92f2009292fe00",
+    "64": "fe92f2001e10fe00",
+    "65": "fe92f2009e92f200",
+    "66": "fe92f200fe92f200",
+    "67": "fe92f2000202fe00",
+    "68": "fe92f200fe92fe00",
+    "69": "fe92f2009e92fe00",
+    "70": "0202fe00fe82fe00",
+    "71": "0202fe0082fe8000",
+    "72": "0202fe00f2929e00",
+    "73": "0202fe009292fe00",
+    "74": "0202fe001e10fe00",
+    "75": "0202fe009e92f200",
+    "76": "0202fe00fe92f200",
+    "77": "0202fe000202fe00",
+    "78": "0202fe00fe92fe00",
+    "79": "0202fe009e92fe00",
+    "80": "fe92fe00fe82fe00",
+    "81": "fe92fe0082fe8000",
+    "82": "fe92fe00f2929e00",
+    "83": "fe92fe009292fe00",
+    "84": "fe92fe001e10fe00",
+    "85": "fe92fe009e92f200",
+    "86": "fe92fe00fe92f200",
+    "87": "fe92fe000202fe00",
+    "88": "fe92fe00fe92fe00",
+    "89": "fe92fe009e92fe00",
+    "90": "9e92fe00fe82fe00",
+    "91": "9e92fe0082fe8000",
+    "92": "9e92fe00f2929e00",
+    "93": "9e92fe009292fe00",
+    "94": "9e92fe001e10fe00",
+    "95": "9e92fe009e92f200",
+    "96": "9e92fe00fe92f200",
+    "97": "9e92fe000202fe00",
+    "98": "9e92fe00fe92fe00",
+    "99": "9e92fe009e92fe00"
+  };
+}
 
 Blockly.JavaScript['max7219_val_num'] = function (block) {
-  var dropdown_tens_ = block.getFieldValue('tens_') * 10;
-  var dropdown_ones_ = block.getFieldValue('ones_') * 1;
-  var num = [
-    ["0", "0000fe8282fe0000"],
-    ["1", "00000082fe800000"],
-    ["2", "0000f292929e0000"],
-    ["3", "0000929292fe0000"],
-    ["4", "00001e1010fe0000"],
-    ["5", "00009e9292f20000"],
-    ["6", "0000fe9292f20000"],
-    ["7", "0000020202fe0000"],
-    ["8", "0000fe9292fe0000"],
-    ["9", "00009e9292fe0000"],
-    ["10", "82fe8000fe82fe00"],
-    ["11", "82fe800082fe8000"],
-    ["12", "82fe8000f2929e00"],
-    ["13", "82fe80009292fe00"],
-    ["14", "82fe80001e10fe00"],
-    ["15", "82fe80009e92f200"],
-    ["16", "82fe8000fe92f200"],
-    ["17", "82fe80000202fe00"],
-    ["18", "82fe8000fe92fe00"],
-    ["19", "82fe80009e92fe00"],
-    ["20", "f2929e00fe82fe00"],
-    ["21", "f2929e0082fe8000"],
-    ["22", "f2929e00f2929e00"],
-    ["23", "f2929e009292fe00"],
-    ["24", "f2929e001e10fe00"],
-    ["25", "f2929e009e92f200"],
-    ["26", "f2929e00fe92f200"],
-    ["27", "f2929e000202fe00"],
-    ["28", "f2929e00fe92fe00"],
-    ["29", "f2929e009e92fe00"],
-    ["30", "9292fe00fe82fe00"],
-    ["31", "9292fe0082fe8000"],
-    ["32", "9292fe00f2929e00"],
-    ["33", "9292fe009292fe00"],
-    ["34", "9292fe001e10fe00"],
-    ["35", "9292fe009e92f200"],
-    ["36", "9292fe00fe92f200"],
-    ["37", "9292fe000202fe00"],
-    ["38", "9292fe00fe92fe00"],
-    ["39", "9292fe009e92fe00"],
-    ["40", "1e10fe00fe82fe00"],
-    ["41", "1e10fe0082fe8000"],
-    ["42", "1e10fe00f2929e00"],
-    ["43", "1e10fe009292fe00"],
-    ["44", "1e10fe001e10fe00"],
-    ["45", "1e10fe009e92f200"],
-    ["46", "1e10fe00fe92f200"],
-    ["47", "1e10fe000202fe00"],
-    ["48", "1e10fe00fe92fe00"],
-    ["49", "1e10fe009e92fe00"],
-    ["50", "9e92f200fe82fe00"],
-    ["51", "9e92f20082fe8000"],
-    ["52", "9e92f200f2929e00"],
-    ["53", "9e92f2009292fe00"],
-    ["54", "9e92f2001e10fe00"],
-    ["55", "9e92f2009e92f200"],
-    ["56", "9e92f200fe92f200"],
-    ["57", "9e92f2000202fe00"],
-    ["58", "9e92f200fe92fe00"],
-    ["59", "9e92f2009e92fe00"],
-    ["60", "fe92f200fe82fe00"],
-    ["61", "fe92f20082fe8000"],
-    ["62", "fe92f200f2929e00"],
-    ["63", "fe92f2009292fe00"],
-    ["64", "fe92f2001e10fe00"],
-    ["65", "fe92f2009e92f200"],
-    ["66", "fe92f200fe92f200"],
-    ["67", "fe92f2000202fe00"],
-    ["68", "fe92f200fe92fe00"],
-    ["69", "fe92f2009e92fe00"],
-    ["70", "0202fe00fe82fe00"],
-    ["71", "0202fe0082fe8000"],
-    ["72", "0202fe00f2929e00"],
-    ["73", "0202fe009292fe00"],
-    ["74", "0202fe001e10fe00"],
-    ["75", "0202fe009e92f200"],
-    ["76", "0202fe00fe92f200"],
-    ["77", "0202fe000202fe00"],
-    ["78", "0202fe00fe92fe00"],
-    ["79", "0202fe009e92fe00"],
-    ["80", "fe92fe00fe82fe00"],
-    ["81", "fe92fe0082fe8000"],
-    ["82", "fe92fe00f2929e00"],
-    ["83", "fe92fe009292fe00"],
-    ["84", "fe92fe001e10fe00"],
-    ["85", "fe92fe009e92f200"],
-    ["86", "fe92fe00fe92f200"],
-    ["87", "fe92fe000202fe00"],
-    ["88", "fe92fe00fe92fe00"],
-    ["89", "fe92fe009e92fe00"],
-    ["90", "9e92fe00fe82fe00"],
-    ["91", "9e92fe0082fe8000"],
-    ["92", "9e92fe00f2929e00"],
-    ["93", "9e92fe009292fe00"],
-    ["94", "9e92fe001e10fe00"],
-    ["95", "9e92fe009e92f200"],
-    ["96", "9e92fe00fe92f200"],
-    ["97", "9e92fe000202fe00"],
-    ["98", "9e92fe00fe92fe00"],
-    ["99", "9e92fe009e92fe00"]
-  ];
-  var code = '"' + num[dropdown_tens_ + dropdown_ones_][1] + '"';
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+  var value_value_ = Blockly.JavaScript.valueToCode(block, 'value_', Blockly.JavaScript.ORDER_ATOMIC);
+  var functionName = Blockly.JavaScript.provideFunction_(
+    'max7219_number', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ +
+      '(num) {',
+      max7219_number_object.toString().replace('function max7219_number_object() {\n', '').replace('};\n', '') + ';',
+      '  return max7219_number_object[num];',
+      '}'
+    ]);
+  var code;
+  if(value_value_*1<0 || value_value_*1>99){
+    code = '"00000601b1110e00"';
+    return [code, Blockly.JavaScript.ORDER_ATOMIC];
+  }else{
+    code = functionName + '(' + value_value_ + ')';
+    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+  }
 };
 
 Blockly.JavaScript['max7219_val_img'] = function (block) {
