@@ -587,7 +587,7 @@ Blockly.JavaScript['board_error'] = function (block) {
 
 Blockly.JavaScript['all_board_ready'] = function (block) {
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'function allBoardReady(boardReadyNumber){\n' +
+  var code = 'async function allBoardReady(boardReadyNumber){\n' +
     '  if(window.boardReadyNumber==window.readyBoardLength){\n' +
     '  ' + statements_do_ +
     '  }\n' +
