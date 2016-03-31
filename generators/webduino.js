@@ -552,6 +552,7 @@ Blockly.JavaScript['board_ready'] = function (block) {
   var code;
   if (checkbox_check_ == 'FALSE') {
     code = type +
+      '  board.systemReset();\n' +
       '  board.samplingInterval = ' + dropdown_rate_ + ';\n' +
       statements_callbacks_ +
       '});\n';
@@ -562,6 +563,7 @@ Blockly.JavaScript['board_ready'] = function (block) {
       '  window.readyBoardLength = 1;\n' +
       '}\n\n' +
       type +
+      '  board.systemReset();\n' +
       '  board.samplingInterval = ' + dropdown_rate_ + ';\n' +
       statements_callbacks_ +
       '  if(window.boardReadyNumber){\n' +
@@ -1645,8 +1647,8 @@ Blockly.JavaScript['max7219_draw'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var value_code_ = Blockly.JavaScript.valueToCode(block, 'code_', Blockly.JavaScript.ORDER_ATOMIC);
   var code = variable_name_ + '.animateStop();\n' +
-  variable_name_ + '.on("0000000000000000");\n'+
-  variable_name_ + '.on(' + value_code_ + ');\n';
+    variable_name_ + '.on("0000000000000000");\n' +
+    variable_name_ + '.on(' + value_code_ + ');\n';
   return code;
 };
 
@@ -1659,7 +1661,7 @@ Blockly.JavaScript['max7219_animate'] = function (block) {
     'varData', Blockly.Variables.NAME_TYPE);
   var code = 'var ' + varData + ' = ' + value_list_ + ';\n' +
     variable_name_ + '.animateStop();\n' +
-    variable_name_ + '.on("0000000000000000");\n'+
+    variable_name_ + '.on("0000000000000000");\n' +
     variable_name_ + '.animate(' + varData + ',' + value_times_ + ');\n';
   return code;
 };
@@ -1998,10 +2000,10 @@ Blockly.JavaScript['max7219_val_num'] = function (block) {
       '}'
     ]);
   var code;
-  if(value_value_*1<0 || value_value_*1>99){
+  if (value_value_ * 1 < 0 || value_value_ * 1 > 99) {
     code = '"00000601b1110e00"';
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
-  }else{
+  } else {
     code = functionName + '(' + value_value_ + ')';
     return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
   }
