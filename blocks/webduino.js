@@ -748,7 +748,7 @@ Blockly.Blocks['pin_get'] = {
       .appendField(Blockly.Msg.WEBDUINO_PIN, "Pin")
       .setCheck("Number");
     this.setOutput(true);
-    this.setColour(230);
+    this.setColour(270);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -792,7 +792,7 @@ Blockly.Blocks['pin_board'] = {
       .appendField(Blockly.Msg.WEBDUINO_BOARD, "Board")
       .appendField(new Blockly.FieldDropdown(this.getBoardsDropdown), "board_");
     this.setOutput(true);
-    this.setColour(230);
+    this.setColour(270);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   },
