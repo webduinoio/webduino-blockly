@@ -78,6 +78,22 @@ Blockly.Msg.DEMO_TRACKING_FACESETTING = "人臉 追蹤設定 ( 非必要 )";
 Blockly.Msg.DEMO_TRACKING_VAL = "追蹤數值";
 Blockly.Msg.DEMO_TRACKING_VALTOTAL = "total ( 臉 )";
 Blockly.Msg.DEMO_TRACKING_VALCOLOR = "color ( 顏色 )";
+Blockly.Msg.DEMO_CONTROLLER_BTN = "遙控器按鍵";
+Blockly.Msg.DEMO_CONTROLLER_BTNCLICK = "點擊";
+Blockly.Msg.DEMO_CONTROLLER_BTNDOWN = "按下";
+Blockly.Msg.DEMO_CONTROLLER_BTNUP = "放開";
+Blockly.Msg.DEMO_CONTROLLER_BTNRED = "紅色";
+Blockly.Msg.DEMO_CONTROLLER_BTNGREEN = "綠色";
+Blockly.Msg.DEMO_CONTROLLER_BTNBLUE = "藍色";
+Blockly.Msg.DEMO_CONTROLLER_BTNYELLOW = "黃色";
+Blockly.Msg.DEMO_CONTROLLER_BTNDO = "執行";
+Blockly.Msg.DEMO_CONTROLLER_SCREEN = "遙控器螢幕，顯示";
+Blockly.Msg.DEMO_CONTROLLER_RANGEMIN = "遙控器拉霸，最小值";
+Blockly.Msg.DEMO_CONTROLLER_RANGEMAX = "最大值";
+Blockly.Msg.DEMO_CONTROLLER_RANGESTEP = "間距";
+Blockly.Msg.DEMO_CONTROLLER_RANGEDEFAULT = "預設值";
+Blockly.Msg.DEMO_CONTROLLER_RANGEDO = "調整拉霸時，執行";
+Blockly.Msg.DEMO_CONTROLLER_RANGE_VALUE = "遙控器拉霸的數值";
 
 
 // Console

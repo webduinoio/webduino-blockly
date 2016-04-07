@@ -1,0 +1,259 @@
+<template id="head">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Webduino Blockly Demo 09</title>
+  <!-- webduino -->
+  <script src="https://webduino.io/components/webduino-js/dist/webduino-all.min.js"></script>
+  <script src="https://blockly.webduino.io/webduino-blockly.js"></script>
+  <script src="https://blockly.webduino.io/lib/runtime.min.js"></script>
+</template>
+<template id="css">
+html,body{
+  font-family:'Verdana';
+  background:#333;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#demo-area-09-controller{
+  position:relative;
+  box-sizing:border-box;
+  width:100%;
+  max-width:550px;
+  padding:20px 10px;
+  margin:0 auto;
+  overflow: hidden;
+}
+.demo-area-09-btn{
+  position:relative;
+  display:inline-block;
+  width:calc(33% - 8px);
+  height:60px;
+  background:#555;
+  margin:3px 1px;
+  text-align:center;
+  line-height:60px;
+  border-radius:5px;
+  color:#fff;
+  font-size:22px;
+  vertical-align: middle;
+  cursor:pointer;
+}
+.demo-area-09-btn:active{
+  background:#777;
+}
+@media (max-width:480px){
+  .demo-area-09-btn{
+    height:50px;
+    line-height:50px;
+    font-size:20px;
+  }
+}
+@media (max-width:400px){
+  .demo-area-09-btn{
+    height:45px;
+    line-height:45px;
+    font-size:18px;
+  }
+}
+.demo-area-09-btn.btn-power{
+  background:#d00;
+  height:60px;
+  width:60px;
+  border-radius:50%;
+  margin-bottom:10px;
+}
+.demo-area-09-btn.btn-power:active{
+  background:#f22;
+}
+.demo-area-09-btn.btn-show{
+  background:#357;
+  width:calc(100% - 80px);
+  margin-left:5px;
+  color:#acf;
+  margin-bottom:10px;
+  cursor:default;
+}
+@media (max-width:480px){
+  .demo-area-09-btn.btn-power{
+    height:50px;
+    width:50px;
+  }
+  .demo-area-09-btn.btn-show{
+    width:calc(100% - 70px);
+    margin-left:5px;
+    overflow:hidden;
+  }
+}
+@media (max-width:400px){
+  .demo-area-09-btn.btn-power{
+    height:45px;
+    width:45px;
+  }
+  .demo-area-09-btn.btn-show{
+    width:calc(100% - 60px);
+    margin-left:3px;
+  }
+}
+.demo-area-09-btn-group{
+  width:100%;
+  text-align:center;
+}
+.demo-area-09-btn.btn-range{
+  position:relative;
+  width:calc(100% - 20px);
+  height:20px;
+  display:block;
+  margin:25px auto;
+  background:#222;
+  cursor:default;
+}
+.demo-area-09-btn.btn-range-bar{
+  position:absolute;
+  width:32px;
+  height:50px;
+  top:-20px;
+  left:0;
+  background:#555;
+  line-height:50px;
+}
+.demo-area-09-btn.btn-range-bar:active{
+  background:#777;
+}
+.demo-area-09-btn-group.btn-direction-group{
+  margin-bottom:10px;
+}
+.demo-area-09-btn-group.btn-direction-group .demo-area-09-btn{
+  height:80px;
+  line-height:80px;
+}
+.demo-area-09-btn-group.btn-player-group{
+  margin-bottom:5px;
+}
+
+@media (max-width:480px){
+  .demo-area-09-btn-group.btn-direction-group .demo-area-09-btn{
+    height:70px;
+    line-height:70px;
+  }
+}
+@media (max-width:400px){
+  .demo-area-09-btn-group.btn-direction-group .demo-area-09-btn{
+    height:60px;
+    line-height:60px;
+  }
+}
+.demo-area-09-btn-group.btn-player-group .demo-area-09-btn{
+  width:calc(20% - 10px);
+  margin:5px 2px;
+}
+.demo-area-09-btn-group.btn-player-group .btn-pre{
+  font-size:14px;
+}
+.demo-area-09-btn-group.btn-player-group .btn-next{
+  font-size:14px;
+}
+
+.demo-area-09-btn-group.btn-menu-group .demo-area-09-btn{
+  width:calc(25% - 10px);
+  margin:5px 2px;
+}
+.demo-area-09-btn-group.btn-menu-group .btn-color1{
+  background:#d00;
+}
+.demo-area-09-btn-group.btn-menu-group .btn-color1:active{
+  background:#f22;
+}
+.demo-area-09-btn-group.btn-menu-group .btn-color2{
+  background:#0a0;
+}
+.demo-area-09-btn-group.btn-menu-group .btn-color2:active{
+  background:#2d2;
+}
+.demo-area-09-btn-group.btn-menu-group .btn-color3{
+  background:#09c;
+}
+.demo-area-09-btn-group.btn-menu-group .btn-color3:active{
+  background:#3bf;
+}
+.demo-area-09-btn-group.btn-menu-group .btn-color4{
+  background:#fb0;
+}
+.demo-area-09-btn-group.btn-menu-group .btn-color4:active{
+  background:#ff8;
+}
+
+.demo-area-09-input{
+  margin:25px auto;
+  -webkit-appearance: none;
+  border-radius:2px;
+  width:calc(100% - 8px);
+  height:20px;
+  background-image:-webkit-linear-gradient(left ,#246 0%,#246 50%,#222 50%, #222 100%);
+  outline : none;
+  transition:.1s;
+  cursor:pointer;
+}
+.demo-area-09-input::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  width:32px;
+  height:50px;
+  background:#555;
+  border-radius:5px;
+  transition:.1s;
+}
+
+.demo-area-09-input::-webkit-slider-thumb:hover,
+.demo-area-09-input::-webkit-slider-thumb:active{
+  background:#777;
+}
+</template>
+<template id="body">
+    <div id="demo-area-09" class="da">
+      <div id="demo-area-09-content">
+        <div id="demo-area-09-controller">
+          <div class="demo-area-09-btn btn-power">○</div>
+          <div class="demo-area-09-btn btn-show">顯示</div>
+          <div class="demo-area-09-btn-group btn-number-group">
+            <div class="demo-area-09-btn btn-num1">1</div>
+            <div class="demo-area-09-btn btn-num2">2</div>
+            <div class="demo-area-09-btn btn-num3">3</div>
+            <div class="demo-area-09-btn btn-num4">4</div>
+            <div class="demo-area-09-btn btn-num5">5</div>
+            <div class="demo-area-09-btn btn-num6">6</div>
+            <div class="demo-area-09-btn btn-num7">7</div>
+            <div class="demo-area-09-btn btn-num8">8</div>
+            <div class="demo-area-09-btn btn-num9">9</div>
+            <div class="demo-area-09-btn btn-num11">#</div>
+            <div class="demo-area-09-btn btn-num0">0</div>
+            <div class="demo-area-09-btn btn-num12">*</div>
+          </div>
+          <input type="range" min="0" max="180" step="5" value="90" class="demo-area-09-input">
+          <div class="demo-area-09-btn-group btn-direction-group">
+            <div class="demo-area-09-btn btn-up">▲</div>
+            <br/>
+            <div class="demo-area-09-btn btn-left">◀</div>
+            <div class="demo-area-09-btn btn-center">●</div>
+            <div class="demo-area-09-btn btn-right">▶</div>
+            <br/>
+            <div class="demo-area-09-btn btn-down">▼</div>
+          </div>
+          <div class="demo-area-09-btn-group btn-player-group">
+            <div class="demo-area-09-btn btn-pre">◀◀</div>
+            <div class="demo-area-09-btn btn-stop">■</div>
+            <div class="demo-area-09-btn btn-play">▶</div>
+            <div class="demo-area-09-btn btn-pause">❙ ❙</div>
+            <div class="demo-area-09-btn btn-next">▶▶</div>
+          </div>
+          <div class="demo-area-09-btn-group btn-menu-group">
+            <div class="demo-area-09-btn btn-color1"></div>
+            <div class="demo-area-09-btn btn-color2"></div>
+            <div class="demo-area-09-btn btn-color3"></div>
+            <div class="demo-area-09-btn btn-color4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

@@ -337,7 +337,7 @@ Code.loadDemoArea = function () {
       area.className = area.className + "show";
     }
 
-    content(localStorage.demoAreaSelect);
+    content(localStorage.demoAreaSelect || 1);
 
     function content(p) {
       var i;
