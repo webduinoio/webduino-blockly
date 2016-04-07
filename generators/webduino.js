@@ -299,30 +299,36 @@ Blockly.JavaScript['demo_controller'] = function (block) {
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
   var mouseEvent, touchEvent, code;
   if (dropdown_event_ == '1') {
-    mouseEvent = '.addEventListener("click"';
+    mouseEvent = '"click"';
   } else if (dropdown_event_ == '2') {
-    mouseEvent = '.addEventListener("mousedown"';
-    touchEvent = '.addEventListener("touchstart"';
+    mouseEvent = '["mousedown","touchstart"]';
   } else if (dropdown_event_ == '3') {
-    mouseEvent = '.addEventListener("mouseup"';
-    touchEvent = '.addEventListener("touchend"';
+    mouseEvent = '["mouseup","touchend"]';
   }
-  if (touchEvent) {
-    code = 'var _u = navigator.userAgent;\n'+
-      'if(_u.indexOf("Android") > -1 || _u.indexOf("iPhone") > -1 || _u.indexOf("iPad") > -1){\n'+
-      '  document.querySelector("#demo-area-09 ' + dropdown_btn_ + '")' + touchEvent + ', async function(){\n' +
-      '  '+statements_do_ +
-      '  });\n'+
-      '}else{\n'+
-      '  document.querySelector("#demo-area-09 ' + dropdown_btn_ + '")' + mouseEvent + ', async function(){\n' +
-      '  '+statements_do_ +
-      '  });\n' +
-      '}\n';
-  } else {
-    code = 'document.querySelector("#demo-area-09 ' + dropdown_btn_ + '")' + mouseEvent + ', async function(){\n' +
-      statements_do_ +
-      '});\n';
-  }
+  var functionName = Blockly.JavaScript.provideFunction_(
+  'controllerBtnEvent', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ +
+    '(c,e,callback) {',
+    '  if(e!="click"){',
+    '    var _u = navigator.userAgent;',
+    '    if(_u.indexOf("Android") > -1 || _u.indexOf("iPhone") > -1 || _u.indexOf("iPad") > -1){',
+    '      document.querySelector("#demo-area-09 "+c).addEventListener(e[1], async function(){',
+    '        callback();',
+    '      });',
+    '    }else{',
+    '      document.querySelector("#demo-area-09 "+c).addEventListener(e[0], async function(){',
+    '        callback();',
+    '      });',
+    '    }',
+    '  }else{',
+    '      document.querySelector("#demo-area-09 "+c).addEventListener("click", async function(){',
+    '        callback();',
+    '      });',
+    '  }',
+    '}'
+  ]);
+  code = functionName + '("'+dropdown_btn_+'",'+mouseEvent+',function(){\n'+
+    statements_do_ +
+    '});\n';
   return code;
 };
 
