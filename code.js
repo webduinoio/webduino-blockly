@@ -316,6 +316,15 @@ Code.copyCode = function (copy) {
 Code.loadDemoArea = function () {
   var btn, area, select, close, da, option, contentHeight, resizeBar, array=[];
   area = document.getElementById('demo-area');
+  function content(p) {
+    var i;
+    array.forEach(function(e,i){
+      da[i].className = da[i].className.replace("show", "");
+    });
+    option[p - 1].selected = true;
+    document.getElementById('demo-area-0' + p).className = document.getElementById('demo-area-0' + p).className + " show";
+    localStorage.demoAreaSelect = p;
+  }
   if (area) {
     btn = document.getElementById('demoButton');
     select = document.getElementById('demo-select');
@@ -338,16 +347,6 @@ Code.loadDemoArea = function () {
     }
 
     content(localStorage.demoAreaSelect || 1);
-
-    function content(p) {
-      var i;
-      array.forEach(function(e,i){
-        da[i].className = da[i].className.replace("show", "");
-      });
-      option[p - 1].selected = true;
-      document.getElementById('demo-area-0' + p).className = document.getElementById('demo-area-0' + p).className + " show";
-      localStorage.demoAreaSelect = p;
-    }
 
     window.addEventListener('resize', function () {
       contentHeight = document.getElementById('content_blocks').offsetHeight;
