@@ -130,7 +130,7 @@
             <div class="demo-area-09-btn btn-num0">0</div>
             <div class="demo-area-09-btn btn-num12">*</div>
           </div>
-          <input type="range" min="0" max="180" step="5" value="90" class="demo-area-09-input">
+          <input type="range" min="0" max="180" step="5" value="0" class="demo-area-09-input">
           <div class="demo-area-09-btn-group btn-direction-group">
             <div class="demo-area-09-btn btn-up">▲</div>
             <br/>
@@ -1184,6 +1184,13 @@
     <category id="catDemoController">
       <block type="demo_controller"></block>
       <block type="demo_controller_show"></block>
+      <block type="demo_controller_showcolor">
+          <value name="color_">
+            <block type="colour_picker">
+              <field name="COLOUR">#ff0000</field>
+            </block>
+          </value>
+      </block>
       <block type="demo_controller_range">
         <value name="min_">
           <block type="math_number">

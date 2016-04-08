@@ -506,7 +506,7 @@ Blockly.Blocks['demo_controller'] = {
   init: function () {
     this.appendStatementInput("do_")
       .setCheck(null)
-      .appendField(Blockly.Msg.DEMO_CONTROLLER_BTN,"遙控器按鍵")
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_BTN, "遙控器按鍵")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.DEMO_CONTROLLER_BTNCLICK, "1"],
         [Blockly.Msg.DEMO_CONTROLLER_BTNDOWN, "2"],
@@ -541,7 +541,7 @@ Blockly.Blocks['demo_controller'] = {
         [Blockly.Msg.DEMO_CONTROLLER_BTNBLUE, ".btn-color3"],
         [Blockly.Msg.DEMO_CONTROLLER_BTNYELLOW, ".btn-color4"]
       ]), "btn_")
-      .appendField(Blockly.Msg.DEMO_CONTROLLER_BTNDO,"執行");
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_BTNDO, "執行");
     this.setColour(Blockly.Blocks.colour.HUE);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -554,7 +554,7 @@ Blockly.Blocks['demo_controller_show'] = {
   init: function () {
     this.appendValueInput("show_")
       .setCheck(null)
-      .appendField(Blockly.Msg.DEMO_CONTROLLER_SCREEN,"遙控器螢幕，顯示");
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_SCREEN, "遙控器螢幕，顯示");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('');
@@ -567,18 +567,18 @@ Blockly.Blocks['demo_controller_range'] = {
   init: function () {
     this.appendValueInput("min_")
       .setCheck("Number")
-      .appendField(Blockly.Msg.DEMO_CONTROLLER_RANGEMIN,"遙控器拉霸，最小值");
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_RANGEMIN, "遙控器拉霸，最小值");
     this.appendValueInput("max_")
       .setCheck("Number")
-      .appendField(Blockly.Msg.DEMO_CONTROLLER_RANGEMAX,"最大值");
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_RANGEMAX, "最大值");
     this.appendValueInput("step_")
       .setCheck("Number")
-      .appendField(Blockly.Msg.DEMO_CONTROLLER_RANGESTEP,"間距");
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_RANGESTEP, "間距");
     this.appendValueInput("default_")
       .setCheck("Number")
-      .appendField(Blockly.Msg.DEMO_CONTROLLER_RANGEDEFAULT,"預設值");
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_RANGEDEFAULT, "預設值");
     this.appendStatementInput("range_")
-      .appendField(Blockly.Msg.DEMO_CONTROLLER_RANGEDO,"調整拉霸時，執行");
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_RANGEDO, "調整拉霸時，執行");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -591,10 +591,28 @@ Blockly.Blocks['demo_controller_range'] = {
 Blockly.Blocks['demo_controller_range_value'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.DEMO_CONTROLLER_RANGE_VALUE,"遙控器拉霸的數值");
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_RANGE_VALUE, "遙控器拉霸的數值");
     this.setOutput(true, "Number");
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUESON);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_controller_showcolor'] = {
+  init: function () {
+    this.appendValueInput("color_")
+      .setCheck(null)
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_SCREENSHOW, "遙控器 螢幕")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.DEMO_CONTROLLER_SCREENBG, "background"],
+        [Blockly.Msg.DEMO_CONTROLLER_SCREENTEXT, "color"]
+      ]), "type_")
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_SCREENCOLOR, "顏色");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
     this.setHelpUrl('http://www.example.com/');
   }
 };

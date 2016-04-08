@@ -88,6 +88,10 @@ Blockly.Msg.DEMO_CONTROLLER_RANGESTEP = "step";
 Blockly.Msg.DEMO_CONTROLLER_RANGEDEFAULT = "default";
 Blockly.Msg.DEMO_CONTROLLER_RANGEDO = "do";
 Blockly.Msg.DEMO_CONTROLLER_RANGE_VALUE = "Controller range's value";
+Blockly.Msg.DEMO_CONTROLLER_SCREENSHOW = "Controller screen";
+Blockly.Msg.DEMO_CONTROLLER_SCREENBG = "background";
+Blockly.Msg.DEMO_CONTROLLER_SCREENTEXT = "text";
+Blockly.Msg.DEMO_CONTROLLER_SCREENCOLOR = "'s color'";
 
 Blockly.Msg.CUSTOM_JS_CONSOLE = "Console:";
 Blockly.Msg.CUSTOM_JS_Date = "Date:";

@@ -94,6 +94,10 @@ Blockly.Msg.DEMO_CONTROLLER_RANGESTEP = "間距";
 Blockly.Msg.DEMO_CONTROLLER_RANGEDEFAULT = "預設值";
 Blockly.Msg.DEMO_CONTROLLER_RANGEDO = "調整拉霸時，執行";
 Blockly.Msg.DEMO_CONTROLLER_RANGE_VALUE = "遙控器拉霸的數值";
+Blockly.Msg.DEMO_CONTROLLER_SCREENSHOW = "遙控器螢幕";
+Blockly.Msg.DEMO_CONTROLLER_SCREENBG = "背景";
+Blockly.Msg.DEMO_CONTROLLER_SCREENTEXT = "文字";
+Blockly.Msg.DEMO_CONTROLLER_SCREENCOLOR = "顏色";
 
 
 // Console
