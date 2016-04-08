@@ -909,6 +909,7 @@ td#copyCode div {
   border-radius:2px;
   width:calc(100% - 8px);
   height:20px;
+  background:none;
   background-image:-webkit-linear-gradient(left ,#246 0%,#246 0%,#222 0%, #222 100%);
   outline : none;
   transition:.1s;
