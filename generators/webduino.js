@@ -675,7 +675,7 @@ Blockly.JavaScript['board_ready'] = function (block) {
 
 Blockly.JavaScript['board_error'] = function (block) {
   var statements_callbacks_ = Blockly.JavaScript.statementToCode(block, 'callbacks_');
-  var code = "board.on('error', function (err) {\n  board.error = err;\n" +
+  var code = "board.on('error',async function (err) {\n  board.error = err;\n" +
     statements_callbacks_ +
     "});\n";
   return code;
@@ -883,7 +883,7 @@ Blockly.JavaScript['fish_move'] = function (block) {
 Blockly.JavaScript['timer'] = function (block) {
   var value_secs_ = Blockly.JavaScript.valueToCode(block, 'secs_', Blockly.JavaScript.ORDER_NONE);
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'setTimeout(function () {\n' + statements_do_ + '}, ' + 1000 * value_secs_ + ');\n';
+  var code = 'setTimeout(async function () {\n' + statements_do_ + '}, ' + 1000 * value_secs_ + ');\n';
   return code;
 };
 
@@ -907,7 +907,7 @@ Blockly.JavaScript['ultrasonic_get'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
   var value_time = Blockly.JavaScript.valueToCode(block, 'time', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_do = Blockly.JavaScript.statementToCode(block, 'do');
-  var code = variable_var_ + '.ping(function(cm){\n' +
+  var code = variable_var_ + '.ping(async function(cm){\n' +
     '  console.log(' + variable_var_ + '.distance);\n' +
     statements_do +
     '}, ' + value_time + ');\n';
@@ -945,7 +945,7 @@ Blockly.JavaScript['button_event'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
   var dropdown_event_ = block.getFieldValue('event_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = variable_var_ + '.on("' + dropdown_event_ + '",function(){\n' +
+  var code = variable_var_ + '.on("' + dropdown_event_ + '",async function(){\n' +
     '  console.log("' + dropdown_event_ + '");\n' +
     '  ' + statements_do_ + '\n' +
     '});\n';
@@ -964,7 +964,7 @@ Blockly.JavaScript['pir_status'] = function (block) {
   var variable_item_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('item_'), Blockly.Variables.NAME_TYPE);
   var dropdown_status_ = block.getFieldValue('status_');
   var statements_var_ = Blockly.JavaScript.statementToCode(block, 'var_');
-  var code = variable_item_ + '.on("' + dropdown_status_ + '",function(){\n' +
+  var code = variable_item_ + '.on("' + dropdown_status_ + '",async function(){\n' +
     statements_var_ + '\n' +
     '});\n';
   return code;
@@ -984,11 +984,11 @@ Blockly.JavaScript['sound_status'] = function (block) {
   var statements_var_ = Blockly.JavaScript.statementToCode(block, 'var_');
   var code;
   if (dropdown_status_ == 'detected') {
-    code = variable_item_ + '.on("' + dropdown_status_ + '",function(){\n' +
+    code = variable_item_ + '.on("' + dropdown_status_ + '",async function(){\n' +
       '  ' + statements_var_ + '\n' +
       '});\n';
   } else {
-    code = variable_item_ + '.on("' + dropdown_status_ + '",function(){\n' +
+    code = variable_item_ + '.on("' + dropdown_status_ + '",async function(){\n' +
       '  setTimeout(function(){\n' +
       '  ' + statements_var_ + '\n' +
       '  },300);\n' +
@@ -1008,7 +1008,7 @@ Blockly.JavaScript['shock_event'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
   var dropdown_event_ = block.getFieldValue('event_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = variable_var_ + '.on("' + dropdown_event_ + '",function(){\n' +
+  var code = variable_var_ + '.on("' + dropdown_event_ + '",async function(){\n' +
     '  console.log("' + dropdown_event_ + '");\n' +
     '  ' + statements_do_ + '\n' +
     '});\n';
@@ -1027,7 +1027,7 @@ Blockly.JavaScript['dht_get'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
   var value_time = Blockly.JavaScript.valueToCode(block, 'time', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_do = Blockly.JavaScript.statementToCode(block, 'do');
-  var code = variable_var_ + '.read(function(evt){\n' +
+  var code = variable_var_ + '.read(async function(evt){\n' +
     statements_do +
     '}, ' + value_time + ');\n';
   return code;
@@ -1600,7 +1600,7 @@ Blockly.JavaScript['status_repeat'] = function (block) {
       code = 'alert("時間格式錯誤！請填入數字！Time format error! Please enter number!");';
     } else {
       code = 'var ' + timer + ', ' + repeatNum + '=0;\n' +
-        'var ' + repeat + ' = function(){\n' +
+        'var ' + repeat + ' = async function(){\n' +
         '  if(' + repeatNum + '<' + value_times_ + '){\n' +
         '  ' + argument0 +
         '    ' + repeatNum + ' = ' + repeatNum + ' + 1;\n' +
@@ -1618,7 +1618,7 @@ Blockly.JavaScript['status_repeat'] = function (block) {
       codeArray.argument[n] = Blockly.JavaScript.statementToCode(block, 'ADD' + n);
       codeArray.delayTime[n] = block.getFieldValue('time' + n);
       if (isNaN(codeArray.delayTime[n] * 1)) {
-        codeArray.code[n] = '.then(function(){\n' +
+        codeArray.code[n] = '.then(async function(){\n' +
           '      alert("時間格式錯誤！請填入數字！Time format error! Please enter number!");\n' +
           '    })';
       } else {
@@ -1630,15 +1630,15 @@ Blockly.JavaScript['status_repeat'] = function (block) {
     }
     var codeContent = codeArray.code.join('');
     code = 'var ' + timer + ', ' + repeatNum + '=0;\n' +
-      'var ' + repeat + ' = function(){\n' +
+      'var ' + repeat + ' = async function(){\n' +
       '  var ' + time + ';\n' +
-      '  var ' + repeatDelay + ' = function(' + time + '){\n' +
+      '  var ' + repeatDelay + ' = async function(' + time + '){\n' +
       '    return new Promise(function(resolve){\n' +
       '      ' + timer + ' = setTimeout(resolve,' + time + ');\n' +
       '    });\n' +
       '  };\n' +
-      '  var ' + repeatPromise + ' = function(){\n' +
-      '    ' + repeatDelay + '(1)' + codeContent + '.then(function(){\n' +
+      '  var ' + repeatPromise + ' = async function(){\n' +
+      '    ' + repeatDelay + '(1)' + codeContent + '.then(async function(){\n' +
       '      if(' + repeatNum + '<' + (value_times_ - 1) + '){\n' +
       '        ' + repeatNum + ' = ' + repeatNum + ' + 1;\n' +
       '        ' + repeatPromise + '();\n' +
@@ -1679,7 +1679,7 @@ Blockly.JavaScript['status_repeat_forever'] = function (block) {
     if (isNaN(time0 * 1)) {
       code = 'alert("時間格式錯誤！請填入數字！Time format error! Please enter number!");';
     } else {
-      code = 'var ' + repeat + ' = function(){\n' +
+      code = 'var ' + repeat + ' = async function(){\n' +
         '  ' + argument0 +
         '    ' + value_name_ + ' = setTimeout(' + repeat + ',' + (time0 * 1000) + ');\n' +
         '};\n' +
@@ -1691,26 +1691,26 @@ Blockly.JavaScript['status_repeat_forever'] = function (block) {
       codeArray.argument[n] = Blockly.JavaScript.statementToCode(block, 'ADD' + n);
       codeArray.delayTime[n] = block.getFieldValue('time' + n);
       if (isNaN(codeArray.delayTime[n] * 1)) {
-        codeArray.code[n] = '.then(function(){\n' +
+        codeArray.code[n] = '.then(async function(){\n' +
           '      alert("時間格式錯誤！請填入數字！Time format error! Please enter number!");\n' +
           '    })';
       } else {
-        codeArray.code[n] = '.then(function(){\n' +
+        codeArray.code[n] = '.then(async function(){\n' +
           '      ' + codeArray.argument[n] +
           '      return ' + repeatDelay + '(' + (1000 * codeArray.delayTime[n]) + ');\n' +
           '    })';
       }
     }
     var codeContent = codeArray.code.join('');
-    code = 'var ' + repeat + ' = function(){\n' +
+    code = 'var ' + repeat + ' = async function(){\n' +
       '  var ' + time + ';\n' +
-      '  var ' + repeatDelay + ' = function(' + time + '){\n' +
-      '    return new Promise(function(resolve){\n' +
+      '  var ' + repeatDelay + ' = async function(' + time + '){\n' +
+      '    return new Promise(async function(resolve){\n' +
       '      ' + value_name_ + ' = setTimeout(resolve,' + time + ');\n' +
       '    });\n' +
       '  };\n' +
-      '  var ' + repeatPromise + ' = function(){\n' +
-      '    ' + repeatDelay + '(1)' + codeContent + '.then(function(){\n' +
+      '  var ' + repeatPromise + ' = async function(){\n' +
+      '    ' + repeatDelay + '(1)' + codeContent + '.then(async function(){\n' +
       '        ' + repeatPromise + '();\n' +
       '    });\n' +
       '  };\n' +
@@ -2120,7 +2120,7 @@ Blockly.JavaScript['photocell_new'] = function (block) {
 Blockly.JavaScript['photocell_detected'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var statements_detected_ = Blockly.JavaScript.statementToCode(block, 'detected_');
-  var code = variable_name_ + '.on(function(val){\n' +
+  var code = variable_name_ + '.on(async function(val){\n' +
     '  ' + variable_name_ + '.detectedVal = val;\n' +
     statements_detected_ +
     '});\n';
@@ -2152,10 +2152,10 @@ Blockly.JavaScript['irrecv_new'] = function (block) {
 Blockly.JavaScript['irrecv_on'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var statements_on_ = Blockly.JavaScript.statementToCode(block, 'on_');
-  var code = variable_name_ + '.on(function(val){\n' +
+  var code = variable_name_ + '.on(async function(val){\n' +
     '  ' + variable_name_ + '.onVal = val;\n' +
     statements_on_ +
-    '},function(){});\n';
+    '},async function(){});\n';
   return code;
 };
 
@@ -2207,7 +2207,7 @@ Blockly.JavaScript['adxl345_on'] = function (block) {
   var statements_on_ = Blockly.JavaScript.statementToCode(block, 'on_');
   var code = variable_name_ + '.setSensitivity = 0;\n' +
     variable_name_ + '.setBaseAxis = "x";\n' +
-    variable_name_ + '.on(function(_x,_y,_z,_r,_p){\n' +
+    variable_name_ + '.on(async function(_x,_y,_z,_r,_p){\n' +
     '  ' + variable_name_ + '._x = _x;\n' +
     '  ' + variable_name_ + '._y = _y;\n' +
     '  ' + variable_name_ + '._z = _z;\n' +
@@ -2277,7 +2277,7 @@ Blockly.JavaScript['document_keyboard'] = function (block) {
   var dropdown_event_ = block.getFieldValue('event_');
   var e = Blockly.JavaScript.variableDB_.getDistinctName(
     'e', Blockly.Variables.NAME_TYPE);
-  var code = 'document.' + dropdown_event_ + ' = function(' + e + '){\n' +
+  var code = 'document.' + dropdown_event_ + ' = async function(' + e + '){\n' +
     '  console.log(' + e + '.keyCode);\n' +
     '  switch(' + e + '.keyCode){\n' +
     statements_do_ +
@@ -2327,7 +2327,7 @@ Blockly.JavaScript['rfid_enter'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var statements_on_ = Blockly.JavaScript.statementToCode(block, 'on_');
   var code = variable_name_ + '.read();\n' +
-    variable_name_ + '.on("enter",function(_uid){\n' +
+    variable_name_ + '.on("enter",async function(_uid){\n' +
     '  ' + variable_name_ + '._uid = _uid;\n' +
     statements_on_ +
     '});\n';
@@ -2356,7 +2356,7 @@ Blockly.JavaScript['rfid_if'] = function (block) {
 Blockly.JavaScript['rfid_leave'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = variable_name_ + '.on("leave",function(_uid){\n' +
+  var code = variable_name_ + '.on("leave",async function(_uid){\n' +
     statements_do_ +
     '});\n';
   return code;
