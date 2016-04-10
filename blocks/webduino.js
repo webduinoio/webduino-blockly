@@ -795,7 +795,9 @@ Blockly.Blocks['board_ready'] = {
         ["1 sec", "1000"]
       ]), "rate_")
       .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, "串聯")
-      .appendField(new Blockly.FieldCheckbox("FALSE"), "check_");
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "check_")
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_MULTI, "協同控制")
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "multi_");
     this.appendStatementInput("callbacks_");
     this.setTooltip('');
     this.setColour(290);

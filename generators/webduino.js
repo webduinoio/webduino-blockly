@@ -632,16 +632,20 @@ Blockly.JavaScript['board_ready'] = function (block) {
   var value_device_ = Blockly.JavaScript.valueToCode(block, 'device_', Blockly.JavaScript.ORDER_ATOMIC);
   var checkbox_type_ = block.getFieldValue('type_');
   var checkbox_check_ = block.getFieldValue('check_');
+  var checkbox_multi_ = block.getFieldValue('multi_');
   var dropdown_rate_ = block.getFieldValue('rate_');
   var statements_callbacks_ = Blockly.JavaScript.statementToCode(block, 'callbacks_');
-
   var type;
   if (checkbox_type_ == '1') {
-    type = 'boardReady(' + value_device_ + ', async function (board) {\n';
+    if(checkbox_multi_=='TRUE'){
+      type = 'boardReady({device:' + value_device_ + ' , multi:true}, async function (board) {\n';
+    }else{
+      type = 'boardReady(' + value_device_ + ', async function (board) {\n';
+    }
   } else if (checkbox_type_ == '2') {
-    type = 'boardReady({ transport: \'serial\', path:' + value_device_ + ' }, async function (board) {\n';
+    type = 'boardReady({ transport: \'serial\', path:' + value_device_ + '}, async function (board) {\n';
   } else if (checkbox_type_ == '3') {
-    type = 'boardReady({ transport: \'bluetooth\', address:' + value_device_ + ' }, async function (board) {\n';
+    type = 'boardReady({ transport: \'bluetooth\', address:' + value_device_ + '}, async function (board) {\n';
   }
 
   var code;
