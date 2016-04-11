@@ -2351,12 +2351,12 @@ Blockly.Blocks['data_firebase_read'] = {
       .appendField(Blockly.Msg.WEBDUINO_FIREBASE_READ, "取出")
       .appendField(new Blockly.FieldVariable("myFirebase"), "name_")
       .appendField(Blockly.Msg.WEBDUINO_FIREBASE_ATTR, "的屬性")
-      .appendField(new Blockly.FieldTextInput("..."), "attr_")
-      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_S, "的")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.WEBDUINO_FIREBASE_DATAALL, '1'],
         [Blockly.Msg.WEBDUINO_FIREBASE_DATALAST, '2']
       ]), "type_")
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_S, "的")
+      .appendField(new Blockly.FieldTextInput("..."), "attr_")
       .appendField(Blockly.Msg.WEBDUINO_FIREBASE_TO, "到");
     this.appendStatementInput("do_")
       .appendField(Blockly.Msg.WEBDUINO_FIREBASE_DO, "執行");

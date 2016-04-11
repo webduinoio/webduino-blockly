@@ -457,14 +457,14 @@ Blockly.Msg.WEBDUINO_FIREBASE_DO = "執行";
 Blockly.Msg.WEBDUINO_FIREBASE_WRITE = "寫入";
 Blockly.Msg.WEBDUINO_FIREBASE_IS = "為";
 Blockly.Msg.WEBDUINO_FIREBASE_READ = "資料庫";
-Blockly.Msg.WEBDUINO_FIREBASE_ATTR = "有變動時，就取出名稱";
-Blockly.Msg.WEBDUINO_FIREBASE_S = "的";
-Blockly.Msg.WEBDUINO_FIREBASE_TO = "到";
+Blockly.Msg.WEBDUINO_FIREBASE_ATTR = "有變動或第一次載入，取出";
+Blockly.Msg.WEBDUINO_FIREBASE_S = "名稱";
+Blockly.Msg.WEBDUINO_FIREBASE_TO = "的內容到";
 Blockly.Msg.WEBDUINO_FIREBASE_CLEAR = "清空資料庫";
 Blockly.Msg.WEBDUINO_FIREBASE_READONCE = "載入資料庫";
 Blockly.Msg.WEBDUINO_FIREBASE_ATTRONCE = "名稱";
 Blockly.Msg.WEBDUINO_FIREBASE_DATAALL = "完整內容";
-Blockly.Msg.WEBDUINO_FIREBASE_DATALAST = "最後一筆更新";
+Blockly.Msg.WEBDUINO_FIREBASE_DATALAST = "最新一筆";
 
 // RFID
 

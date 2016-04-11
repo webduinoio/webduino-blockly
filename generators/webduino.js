@@ -1318,44 +1318,22 @@ Blockly.JavaScript['data_firebase_read'] = function (block) {
   var code;
   if (dropdown_type_ == 1) {
     code = variable_name_ + '.on("value", function(snapshot) {\n' +
-      '   ' + value_read_ + '=[];\n' +
-      '     snapshot.forEach(function(data) {\n' +
-      '     ' + value_read_ + '.push(data.val().' + text_attr_ + ');\n' +
-      '   });\n' +
-      '   ' + statements_do_ + '\n' +
+      '  ' + value_read_ + '=[];\n' +
+      '  snapshot.forEach(function(data) {\n' +
+      '    if(data.val().'+text_attr_+'){\n'+
+      '      ' + value_read_ + '.push(data.val().' + text_attr_ + ');\n' +
+      '    }\n'+
+      '  });\n' +
+      statements_do_ +
       ' }, function (errorObject) {\n' +
       '   console.log("The read failed: " + errorObject.code);\n' +
       '});\n';
   } else {
-    code = variable_name_ + '.on("value", function(snapshot) {\n' +
-      '   ' + value_read_ + '=[];\n' +
-      '     snapshot.forEach(function(data) {\n' +
-      '     ' + value_read_ + '.push(data.val().' + text_attr_ + ');\n' +
-      '   });\n' +
-      '   ' + value_read_ + '=' + value_read_ + '[' + value_read_ + '.length-1];\n' +
-      '   ' + statements_do_ + '\n' +
-      ' }, function (errorObject) {\n' +
-      '   console.log("The read failed: " + errorObject.code);\n' +
+    code = variable_name_ + '.limitToLast(1).on("child_added",function(snapshot){\n' +
+      '  ' + value_read_ + ' = snapshot.val().'+text_attr_+';\n' +
+      statements_do_ + 
       '});\n';
   }
-  return code;
-};
-
-
-Blockly.JavaScript['data_firebase_readonce'] = function (block) {
-  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
-  var text_attr_ = block.getFieldValue('attr_');
-  var value_read_ = Blockly.JavaScript.valueToCode(block, 'read_', Blockly.JavaScript.ORDER_ATOMIC);
-  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = variable_name_ + '.once("value", function(snapshot) {\n' +
-    '   ' + value_read_ + '=[];\n' +
-    '     snapshot.forEach(function(data) {\n' +
-    '     ' + value_read_ + '.push(data.val().' + text_attr_ + ');\n' +
-    '   });\n' +
-    '   ' + statements_do_ + '\n' +
-    ' }, function (errorObject) {\n' +
-    '   console.log("The read failed: " + errorObject.code);\n' +
-    '});\n';
   return code;
 };
 
