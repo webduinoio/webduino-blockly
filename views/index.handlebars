@@ -409,15 +409,6 @@
         </value>
       </block>
     </category>
-    <category id="catTextLogic">
-      <block type="text_indexof">
-        <value name="indexof_">
-          <block type="text">
-            <field name="TEXT"></field>
-          </block>
-        </value>
-      </block>
-    </category>
     <category id="catMathOther">
       <block type="math_round_digit"></block>
       <block type="math_value_conversion">
@@ -446,6 +437,13 @@
         <value name="number_">
           <block type="math_number">
             <field name="NUM">100</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_indexof">
+        <value name="indexof_">
+          <block type="text">
+            <field name="TEXT"></field>
           </block>
         </value>
       </block>
@@ -483,13 +481,11 @@
       </block>
       <block type="sound_recognition_text"></block>
       <block type="sound_recognition_stop"></block>
-      <block type="translate_speech">
-        <value name="speech_">
-          <block type="text">
-            <field name="TEXT"></field>
-          </block>
-        </value>
-      </block>
+    </category>
+    <category id="catMobile">
+        <block type="mobile_deviceorientation_event"></block>
+        <block type="mobile_deviceorientation_event_val"></block>
+        <block type="mobile_deviceorientation_event_remove"></block>
     </category>
   <sep></sep>  
   </category>

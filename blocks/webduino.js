@@ -618,6 +618,68 @@ Blockly.Blocks['demo_controller_showcolor'] = {
 };
 
 /*
+.88b  d88.  .d88b.  d8888b. d888888b db      d88888b 
+88'YbdP`88 .8P  Y8. 88  `8D   `88'   88      88'     
+88  88  88 88    88 88oooY'    88    88      88ooooo 
+88  88  88 88    88 88~~~b.    88    88      88~~~~~ 
+88  88  88 `8b  d8' 88   8D   .88.   88booo. 88.     
+YP  YP  YP  `Y88P'  Y8888P' Y888888P Y88888P Y88888P 
+*/
+
+
+Blockly.Blocks['mobile_deviceorientation_event'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION, "行動裝置，偵測旋轉與翻轉");
+    this.appendStatementInput("do_")
+      .setCheck(null)
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_DO, "執行");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('');
+    this.setColour(190);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['mobile_deviceorientation_event_val'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE, "行動裝置")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_ALPHA, "水平旋轉", "alpha"],
+        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_BETA, "前後翻轉", "beta"],
+        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_GAMMA, "左右翻轉", "gamma"]
+      ]), "val_")
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_VAL1, "的數值 ( 小數點")
+      .appendField(new Blockly.FieldDropdown([
+        ["0", '1'],
+        ["1", '10'],
+        ["2", '100']
+      ]), "round_")
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_VAL2, "位 )");
+    this.setOutput(true, null);
+    this.setTooltip('');
+    this.setColour(210);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+
+Blockly.Blocks['mobile_deviceorientation_event_remove'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_REMOVE, "停止偵測旋轉與翻轉");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('');
+    this.setColour(190);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+
+/*
                                 .   oooo        
                               .o8   `888        
 ooo. .oo.  .oo.    .oooo.   .o888oo  888 .oo.   

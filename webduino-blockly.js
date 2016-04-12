@@ -11,6 +11,8 @@
   var boards = [],
     undef = void 0;
 
+  var orientationEventListener = function () {};
+
   function boardReady(options, callback) {
     var board;
 
@@ -85,6 +87,48 @@
     });
 
     return candidate;
+  }
+
+  function deviceOrientation(event) {
+    var alpha, beta, gamma;
+    if(event.webkitCompassHeading){
+      alpha = event.webkitCompassHeading;
+    }else{
+      alpha = event.alpha;
+      if(!window.chrome){
+         alpha = alpha - 270;
+      }
+    }
+    beta = event.beta;
+    gamma = event.gamma;
+    return [alpha,beta,gamma];
+  }
+
+  function setDeviceOrientationListener(listener) {
+    removeDeviceOrientationListener();
+
+    if (typeof listener === 'function') {
+      orientationEventListener = function (event) {
+        var alpha, beta, gamma;
+        if (event.webkitCompassHeading) {
+          alpha = event.webkitCompassHeading;
+        } else {
+          alpha = event.alpha;
+          if (!window.chrome) {
+            alpha = alpha - 270;
+          }
+        }
+        beta = event.beta;
+        gamma = event.gamma;
+        listener.apply(undef, [alpha, beta, gamma]);
+      };
+
+      window.addEventListener('deviceorientation', orientationEventListener);
+    }
+  }
+
+  function removeDeviceOrientationListener() {
+    window.removeEventListener('deviceorientation', orientationEventListener);
   }
 
   function getLed(board, pin) {
@@ -382,5 +426,8 @@
   scope.getJoystick = getJoystick;
   scope.getRFID = getRFID;
   scope.getToyCar = getToyCar;
+  scope.deviceOrientation = deviceOrientation;
+  scope.setDeviceOrientationListener = setDeviceOrientationListener;
+  scope.removeDeviceOrientationListener = removeDeviceOrientationListener;
 
 }));

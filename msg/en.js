@@ -67,6 +67,7 @@ var MSG = {
   catMenu2: "Sensors",
   catMenu3: "Toies",
   catSpeech: "Speech",
+  catMobile: "Mobild",
   catTracking: "Tracking",
   catKeyCode: "Keyboard",
   catPlus: "Advanced",

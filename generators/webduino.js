@@ -388,6 +388,46 @@ Blockly.JavaScript['demo_controller_showcolor'] = function (block) {
 };
 
 /*
+.88b  d88.  .d88b.  d8888b. d888888b db      d88888b 
+88'YbdP`88 .8P  Y8. 88  `8D   `88'   88      88'     
+88  88  88 88    88 88oooY'    88    88      88ooooo 
+88  88  88 88    88 88~~~b.    88    88      88~~~~~ 
+88  88  88 `8b  d8' 88   8D   .88.   88booo. 88.     
+YP  YP  YP  `Y88P'  Y8888P' Y888888P Y88888P Y88888P 
+*/
+
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#yztfg4
+Blockly.JavaScript['mobile_deviceorientation_event'] = function (block) {
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var code = 'setDeviceOrientationListener(function(alpha, beta, gamma){\n'+
+  statements_do_ + 
+  '});\n';
+  return code;
+};
+
+
+Blockly.JavaScript['mobile_deviceorientation_event_val'] = function (block) {
+  var dropdown_val_ = block.getFieldValue('val_');
+  var dropdown_round_ = block.getFieldValue('round_');
+  var code;
+  if(dropdown_round_==1){
+    code = 'Math.round(' + dropdown_val_ + ')';
+  }else{
+    code = 'Math.round(' + dropdown_val_ + '*' + dropdown_round_ + ')/' + dropdown_round_;
+  }
+  
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['mobile_deviceorientation_event_remove'] = function(block) {
+  var code = 'removeDeviceOrientationListener();\n';
+  return code;
+};
+
+
+
+/*
                                 .   oooo        
                               .o8   `888        
 ooo. .oo.  .oo.    .oooo.   .o888oo  888 .oo.   
@@ -637,9 +677,9 @@ Blockly.JavaScript['board_ready'] = function (block) {
   var statements_callbacks_ = Blockly.JavaScript.statementToCode(block, 'callbacks_');
   var type;
   if (checkbox_type_ == '1') {
-    if(checkbox_multi_=='TRUE'){
+    if (checkbox_multi_ == 'TRUE') {
       type = 'boardReady({device:' + value_device_ + ' , multi:true}, async function (board) {\n';
-    }else{
+    } else {
       type = 'boardReady(' + value_device_ + ', async function (board) {\n';
     }
   } else if (checkbox_type_ == '2') {
@@ -1320,9 +1360,9 @@ Blockly.JavaScript['data_firebase_read'] = function (block) {
     code = variable_name_ + '.on("value", function(snapshot) {\n' +
       '  ' + value_read_ + '=[];\n' +
       '  snapshot.forEach(function(data) {\n' +
-      '    if(data.val().'+text_attr_+'){\n'+
+      '    if(data.val().' + text_attr_ + '){\n' +
       '      ' + value_read_ + '.push(data.val().' + text_attr_ + ');\n' +
-      '    }\n'+
+      '    }\n' +
       '  });\n' +
       statements_do_ +
       ' }, function (errorObject) {\n' +
@@ -1330,8 +1370,8 @@ Blockly.JavaScript['data_firebase_read'] = function (block) {
       '});\n';
   } else {
     code = variable_name_ + '.limitToLast(1).on("child_added",function(snapshot){\n' +
-      '  ' + value_read_ + ' = snapshot.val().'+text_attr_+';\n' +
-      statements_do_ + 
+      '  ' + value_read_ + ' = snapshot.val().' + text_attr_ + ';\n' +
+      statements_do_ +
       '});\n';
   }
   return code;
