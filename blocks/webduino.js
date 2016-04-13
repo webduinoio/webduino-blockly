@@ -1626,8 +1626,7 @@ Blockly.Blocks['ultrasonic_get_promise'] = {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("ultrasonic"), "var_")
       .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_GET);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+    this.setOutput(true);
     this.setColour(65);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
