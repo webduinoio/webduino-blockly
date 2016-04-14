@@ -647,9 +647,9 @@ Blockly.Blocks['mobile_deviceorientation_event_val'] = {
     this.appendDummyInput()
       .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE, "行動裝置")
       .appendField(new Blockly.FieldDropdown([
-        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_ALPHA, "水平旋轉", "alpha"],
-        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_BETA, "前後翻轉", "beta"],
-        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_GAMMA, "左右翻轉", "gamma"]
+        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_ALPHA, "alpha"],
+        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_BETA, "beta"],
+        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_GAMMA, "gamma"]
       ]), "val_")
       .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_VAL1, "的數值 ( 小數點")
       .appendField(new Blockly.FieldDropdown([
@@ -1626,7 +1626,8 @@ Blockly.Blocks['ultrasonic_get_promise'] = {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("ultrasonic"), "var_")
       .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_GET);
-    this.setOutput(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
