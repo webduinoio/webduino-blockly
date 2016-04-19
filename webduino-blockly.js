@@ -89,21 +89,6 @@
     return candidate;
   }
 
-  function deviceOrientation(event) {
-    var alpha, beta, gamma;
-    if(event.webkitCompassHeading){
-      alpha = event.webkitCompassHeading;
-    }else{
-      alpha = event.alpha;
-      if(!window.chrome){
-         alpha = alpha - 270;
-      }
-    }
-    beta = event.beta;
-    gamma = event.gamma;
-    return [alpha,beta,gamma];
-  }
-
   function setDeviceOrientationListener(listener) {
     removeDeviceOrientationListener();
 
@@ -120,7 +105,7 @@
         }
         beta = event.beta;
         gamma = event.gamma;
-        listener.apply(undef, [alpha, beta, gamma]);
+        listener.apply(this, [alpha, beta, gamma]);
       };
 
       window.addEventListener('deviceorientation', orientationEventListener);
@@ -426,7 +411,6 @@
   scope.getJoystick = getJoystick;
   scope.getRFID = getRFID;
   scope.getToyCar = getToyCar;
-  scope.deviceOrientation = deviceOrientation;
   scope.setDeviceOrientationListener = setDeviceOrientationListener;
   scope.removeDeviceOrientationListener = removeDeviceOrientationListener;
 

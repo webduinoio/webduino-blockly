@@ -1497,10 +1497,14 @@ Blockly.JavaScript['sound_recognition'] = function (block) {
     '    window._recognition.interimResults = true;\n' +
     '    window._recognition.lang = "' + dropdown_lang_ + '";\n\n' +
     '    window._recognition.onstart = async function() {\n' +
+    '      window._recognition.status = true;\n' +
     '      console.log("Start recognize...");\n' +
     '    };\n\n' +
     '    window._recognition.onend = async function() {\n' +
     '      console.log("Stop recognize");\n' +
+    '      if(window._recognition.status){\n'+
+    '         window._recognition.start();\n'+
+    '      }\n'+
     '    };\n\n' +
     '    window._recognition.onresult = async function(event,result) {\n' +
     '      result = {};\n' +
@@ -1546,11 +1550,20 @@ Blockly.JavaScript['sound_recognition_check'] = function (block) {
   return code;
 };
 
-
-Blockly.JavaScript['sound_recognition_stop'] = function (block) {
-  var code = 'window._recognition.stop();\n';
+Blockly.JavaScript['sound_recognition_stop'] = function(block) {
+  var dropdown_status_ = block.getFieldValue('status_');
+  var code;
+  if(dropdown_status_=='stop'){
+    code = 'window._recognition.status = false;\n'+
+    'window._recognition.'+dropdown_status_+'();\n';
+  }else{
+    code = 'if(!window._recognition.status){\n'+
+    '  window._recognition.'+dropdown_status_+'();\n'+
+    '}\n';
+  }
   return code;
 };
+
 
 
 Blockly.JavaScript['sound_recognition_text'] = function (block) {

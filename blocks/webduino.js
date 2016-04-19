@@ -2673,9 +2673,13 @@ Blockly.Blocks['sound_recognition_check'] = {
 Blockly.Blocks['sound_recognition_stop'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_RECONGNITION_STOP, "停止語音辨識");
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_RECONGNITION_STOP, "stop"],
+        [Blockly.Msg.WEBDUINO_RECONGNITION_START, "start"]
+      ]), "status_")
+      .appendField(Blockly.Msg.WEBDUINO_RECONGNITION_TEXT,"語音辨識");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(100);
     this.setHelpUrl('http://www.example.com/');
