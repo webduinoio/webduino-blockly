@@ -259,7 +259,7 @@ Blockly.Msg.MATH_TRIG_TOOLTIP_ATAN = "يرجع قوس الظل للرقم.";
 Blockly.Msg.MATH_TRIG_TOOLTIP_COS = "يرجع جيب التمام لدرجة (لا زواية نصف قطرية).";
 Blockly.Msg.MATH_TRIG_TOOLTIP_SIN = "يرجع جيب التمام لدرجة (لا زواية نصف قطرية).";
 Blockly.Msg.MATH_TRIG_TOOLTIP_TAN = "يرجع الظل لدرجة (لا دائرة نصف قطرية).";
-Blockly.Msg.ME = "Me";  // untranslated
+Blockly.Msg.ME = "أنا";
 Blockly.Msg.NEW_VARIABLE = "متغير جديد...";
 Blockly.Msg.NEW_VARIABLE_TITLE = "اسم المتغير الجديد:";
 Blockly.Msg.ORDINAL_NUMBER_SUFFIX = "";  // untranslated
@@ -289,6 +289,7 @@ Blockly.Msg.PROCEDURES_MUTATORARG_TITLE = "اسم الإدخال:";
 Blockly.Msg.PROCEDURES_MUTATORARG_TOOLTIP = "Add an input to the function.";  // untranslated
 Blockly.Msg.PROCEDURES_MUTATORCONTAINER_TITLE = "المدخلات";
 Blockly.Msg.PROCEDURES_MUTATORCONTAINER_TOOLTIP = "Add, remove, or reorder inputs to this function.";  // untranslated
+Blockly.Msg.REDO = "Redo";  // untranslated
 Blockly.Msg.REMOVE_COMMENT = "ازل التعليق";
 Blockly.Msg.RENAME_VARIABLE = "إعادة تسمية المتغير...";
 Blockly.Msg.RENAME_VARIABLE_TITLE = "إعادة تسمية كافة المتغيرات '%1' إلى:";
@@ -353,7 +354,8 @@ Blockly.Msg.TEXT_TRIM_OPERATOR_BOTH = "إزالة الفراغات من كلا �
 Blockly.Msg.TEXT_TRIM_OPERATOR_LEFT = "إزالة الفراغات من الجانب الأيسر من";
 Blockly.Msg.TEXT_TRIM_OPERATOR_RIGHT = "إزالة الفراغات من الجانب الأيمن من";
 Blockly.Msg.TEXT_TRIM_TOOLTIP = "يرجع نسخة من النص مع حذف من أحد أو كلا الفراغات من أطرافه.";
-Blockly.Msg.TODAY = "Today";  // untranslated
+Blockly.Msg.TODAY = "اليوم";
+Blockly.Msg.UNDO = "Undo";  // untranslated
 Blockly.Msg.VARIABLES_DEFAULT_NAME = "البند";
 Blockly.Msg.VARIABLES_GET_CREATE_SET = "انشئ 'التعيين %1'";
 Blockly.Msg.VARIABLES_GET_HELPURL = "https://github.com/google/blockly/wiki/Variables#get";  // untranslated

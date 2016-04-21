@@ -119,11 +119,11 @@ Code.loadBlocks = function(defaultXml) {
     // Language switching stores the blocks during the reload.
     delete window.sessionStorage.loadOnceBlocks;
     var xml = Blockly.Xml.textToDom(loadOnce);
-    Blockly.Xml.domToWorkspace(Code.workspace, xml);
+    Blockly.Xml.domToWorkspace(xml, Code.workspace);
   } else if (defaultXml) {
     // Load the editor with default starting blocks.
     var xml = Blockly.Xml.textToDom(defaultXml);
-    Blockly.Xml.domToWorkspace(Code.workspace, xml);
+    Blockly.Xml.domToWorkspace(xml, Code.workspace);
   } else if ('BlocklyStorage' in window) {
     // Restore saved blocks in a separate thread so that subsequent
     // initialization is not affected from a failed load.
@@ -438,7 +438,7 @@ Code.tabClick = function(clickedName) {
     }
     if (xmlDom) {
       Code.workspace.clear();
-      Blockly.Xml.domToWorkspace(Code.workspace, xmlDom);
+      Blockly.Xml.domToWorkspace(xmlDom, Code.workspace);
     }
   }
 
@@ -941,13 +941,30 @@ Blockly.WorkspaceSvg.prototype.showContextMenu_ = function(e) {
   }
   var menuOptions = [];
   var topBlocks = this.getTopBlocks(true);
-  // Option to clean up blocks.
-  var cleanOption = {};
-  cleanOption.text = MSG.cleanUpBlocks;
-  cleanOption.enabled = topBlocks.length > 1;
-  cleanOption.callback = this.cleanUp_.bind(this);
-  menuOptions.push(cleanOption);
+  var eventGroup = Blockly.genUid();
 
+  // Options to undo/redo previous action.
+  var undoOption = {};
+  undoOption.text = Blockly.Msg.UNDO;
+  undoOption.enabled = this.undoStack_.length > 0;
+  undoOption.callback = this.undo.bind(this, false);
+  menuOptions.push(undoOption);
+  var redoOption = {};
+  redoOption.text = Blockly.Msg.REDO;
+  redoOption.enabled = this.redoStack_.length > 0;
+  redoOption.callback = this.undo.bind(this, true);
+  menuOptions.push(redoOption);
+
+  // Option to clean up blocks.
+  if (this.scrollbar) {
+    var cleanOption = {};
+    cleanOption.text = Blockly.Msg.CLEAN_UP;
+    cleanOption.enabled = topBlocks.length > 1;
+    cleanOption.callback = this.cleanUp_.bind(this);
+    menuOptions.push(cleanOption);
+  }
+
+  // Add download img option
   var imgOption = {};
   imgOption.text = MSG.exportImage;
   imgOption.enabled = topBlocks.length > 0;
@@ -1022,7 +1039,7 @@ Blockly.WorkspaceSvg.prototype.showContextMenu_ = function(e) {
     addDeletableBlocks(topBlocks[i]);
   }
   var deleteOption = {
-    text: deleteList.length <= 1 ? Blockly.Msg.DELETE_BLOCK :
+    text: deleteList.length == 1 ? Blockly.Msg.DELETE_BLOCK :
         Blockly.Msg.DELETE_X_BLOCKS.replace('%1', String(deleteList.length)),
     enabled: deleteList.length > 0,
     callback: function() {
@@ -1034,6 +1051,7 @@ Blockly.WorkspaceSvg.prototype.showContextMenu_ = function(e) {
     }
   };
   function deleteNext() {
+    Blockly.Events.setGroup(eventGroup);
     var block = deleteList.shift();
     if (block) {
       if (block.workspace) {
@@ -1043,6 +1061,7 @@ Blockly.WorkspaceSvg.prototype.showContextMenu_ = function(e) {
         deleteNext();
       }
     }
+    Blockly.Events.setGroup(false);
   }
   menuOptions.push(deleteOption);
 

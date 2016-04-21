@@ -1,7 +1,7 @@
 {
   "name": "webduino-blockly",
   "dependencies": {
-    "blockly-src": "google/blockly#217c7d7c8a37b2897409198cd05f99da85951d4b",
+    "blockly-src": "google/blockly#ec4ab879168829fa20bea0b9e440350d20df47f4",
     "webcomponentsjs": "0.x"
   }
 }

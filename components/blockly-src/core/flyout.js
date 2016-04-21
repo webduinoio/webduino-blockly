@@ -393,8 +393,7 @@ Blockly.Flyout.prototype.show = function(xmlList) {
   this.permanentlyDisabled_.length = 0;
   for (var i = 0, xml; xml = xmlList[i]; i++) {
     if (xml.tagName && xml.tagName.toUpperCase() == 'BLOCK') {
-      var block = Blockly.Xml.domToBlock(
-          /** @type {!Blockly.Workspace} */ (this.workspace_), xml);
+      var block = Blockly.Xml.domToBlock(xml, this.workspace_);
       if (block.disabled) {
         // Record blocks that were initially disabled.
         // Do not enable these blocks as a result of capacity filtering.
@@ -537,7 +536,6 @@ Blockly.Flyout.prototype.blockMouseDown_ = function(block) {
       block.showContextMenu_(e);
     } else {
       // Left-click (or middle click)
-      Blockly.removeAllRanges();
       Blockly.Css.setCursor(Blockly.Css.Cursor.CLOSED);
       // Record the current mouse position.
       Blockly.Flyout.startDownEvent_ = e;
@@ -607,7 +605,6 @@ Blockly.Flyout.prototype.onMouseMoveBlock_ = function(e) {
     e.stopPropagation();
     return;
   }
-  Blockly.removeAllRanges();
   var dx = e.clientX - Blockly.Flyout.startDownEvent_.clientX;
   var dy = e.clientY - Blockly.Flyout.startDownEvent_.clientY;
   // Still dragging within the sticky DRAG_RADIUS.
@@ -639,7 +636,7 @@ Blockly.Flyout.prototype.createBlockFunc_ = function(originBlock) {
     Blockly.Events.disable();
     // Create the new block by cloning the block in the flyout (via XML).
     var xml = Blockly.Xml.blockToDom(originBlock);
-    var block = Blockly.Xml.domToBlock(workspace, xml);
+    var block = Blockly.Xml.domToBlock(xml, workspace);
     // Place it in the same spot as the flyout copy.
     var svgRootOld = originBlock.getSvgRoot();
     if (!svgRootOld) {
@@ -669,7 +666,8 @@ Blockly.Flyout.prototype.createBlockFunc_ = function(originBlock) {
     }
     block.moveBy(xyOld.x - xyNew.x, xyOld.y - xyNew.y);
     Blockly.Events.enable();
-    if (Blockly.Events.isEnabled() && !block.isShadow()) {
+    if (Blockly.Events.isEnabled()) {
+      Blockly.Events.setGroup(true);
       Blockly.Events.fire(new Blockly.Events.Create(block));
     }
     if (flyout.autoClose) {
@@ -679,6 +677,8 @@ Blockly.Flyout.prototype.createBlockFunc_ = function(originBlock) {
     }
     // Start a dragging operation on the new block.
     block.onMouseDown_(e);
+    Blockly.dragMode_ = Blockly.DRAG_FREE;
+    block.setDragging_(true);
   };
 };
 
