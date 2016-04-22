@@ -815,6 +815,34 @@ Blockly.JavaScript['procedures_callnoreturn'] = function (block) {
   return code;
 };
 
+Blockly.JavaScript.scrub_ = function(block, code) {
+  var commentCode = '';
+  // Only collect comments for blocks that aren't inline.
+  if (!block.outputConnection || !block.outputConnection.targetConnection) {
+    // Collect comment for this block.
+    // var comment = block.getCommentText();
+    // if (comment) {
+    //   commentCode += Blockly.JavaScript.prefixLines(comment, '// ') + '\n';
+    // }
+    // Collect comments for all value arguments.
+    // Don't collect comments for nested statements.
+    for (var x = 0; x < block.inputList.length; x++) {
+      if (block.inputList[x].type == Blockly.INPUT_VALUE) {
+        var childBlock = block.inputList[x].connection.targetBlock();
+        if (childBlock) {
+          // var comment = Blockly.JavaScript.allNestedComments(childBlock);
+          // if (comment) {
+          //   commentCode += Blockly.JavaScript.prefixLines(comment, '// ');
+          // }
+        }
+      }
+    }
+  }
+  var nextBlock = block.nextConnection && block.nextConnection.targetBlock();
+  var nextCode = Blockly.JavaScript.blockToCode(nextBlock);
+  return commentCode + code + nextCode;
+};
+
 // ZoomControl icons position
 Blockly.ZoomControls.prototype.createDom = function () {
   var workspace = this.workspace_;
