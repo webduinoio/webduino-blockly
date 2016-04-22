@@ -1547,6 +1547,23 @@ Blockly.Blocks['timer'] = {
   }
 };
 
+Blockly.Blocks['interval'] = {
+  init: function () {
+    this.appendValueInput("secs_")
+      .appendField(Blockly.Msg.WEBDUINO_INTERVAL_EVERY);
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_INTERVAL_SECOND);
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_INTERVAL_DO);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setColour(180);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 Blockly.Blocks['delay'] = {
   init: function () {
     this.appendValueInput("secs_")

@@ -139,11 +139,13 @@ Blockly.Msg.WEBDUINO_SPEECH_SET = "Language:";
 Blockly.Msg.WEBDUINO_SPEECH_SEX = "   sex:";
 
 Blockly.Msg.WEBDUINO_TIMER_AFTER = "After";
-Blockly.Msg.WEBDUINO_TIMER_SECOND = "seconds";
+Blockly.Msg.WEBDUINO_TIMER_SECOND = "second(s)";
 Blockly.Msg.WEBDUINO_TIMER_DO = "do";
-
+Blockly.Msg.WEBDUINO_INTERVAL_EVERY = "Every";
+Blockly.Msg.WEBDUINO_INTERVAL_SECOND = "second(s)";
+Blockly.Msg.WEBDUINO_INTERVAL_DO = "do";
 Blockly.Msg.WEBDUINO_DELAY = "delay";
-Blockly.Msg.WEBDUINO_DELAY_SECONDS = "seconds";
+Blockly.Msg.WEBDUINO_DELAY_SECONDS = "second(s)";
 
 // Keyboard
 
