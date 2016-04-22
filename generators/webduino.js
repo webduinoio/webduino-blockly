@@ -400,9 +400,9 @@ YP  YP  YP  `Y88P'  Y8888P' Y888888P Y88888P Y88888P
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#yztfg4
 Blockly.JavaScript['mobile_deviceorientation_event'] = function (block) {
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'setDeviceOrientationListener(function(alpha, beta, gamma){\n'+
-  statements_do_ + 
-  '});\n';
+  var code = 'setDeviceOrientationListener(function(alpha, beta, gamma){\n' +
+    statements_do_ +
+    '});\n';
   return code;
 };
 
@@ -411,16 +411,16 @@ Blockly.JavaScript['mobile_deviceorientation_event_val'] = function (block) {
   var dropdown_val_ = block.getFieldValue('val_');
   var dropdown_round_ = block.getFieldValue('round_');
   var code;
-  if(dropdown_round_==1){
+  if (dropdown_round_ == 1) {
     code = 'Math.round(' + dropdown_val_ + ')';
-  }else{
+  } else {
     code = 'Math.round(' + dropdown_val_ + '*' + dropdown_round_ + ')/' + dropdown_round_;
   }
-  
+
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
-Blockly.JavaScript['mobile_deviceorientation_event_remove'] = function(block) {
+Blockly.JavaScript['mobile_deviceorientation_event_remove'] = function (block) {
   var code = 'removeDeviceOrientationListener();\n';
   return code;
 };
@@ -1130,6 +1130,17 @@ function _buzzer_music(m) {
   return musicNotes;
 }
 
+Blockly.JavaScript['buzzer_music_play'] = function (block) {
+  var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
+  var statements_music_ = Blockly.JavaScript.statementToCode(block, 'music_');
+  var functionName = Blockly.JavaScript.provideFunction_(
+    'buzzer_music', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(m) {',
+      _buzzer_music.toString().replace('function _buzzer_music(m) {\n', '')
+    ]);
+  var code = variable_var_ + '.play(' + functionName + '([' + statements_music_ + ']).notes ,' + functionName + '([' + statements_music_ + ']).tempos );\n';
+  return code;
+};
+
 
 Blockly.JavaScript['buzzer_music_array'] = function (block) {
   var value_music_name_ = Blockly.JavaScript.valueToCode(block, 'music_name_', Blockly.JavaScript.ORDER_ATOMIC);
@@ -1502,9 +1513,9 @@ Blockly.JavaScript['sound_recognition'] = function (block) {
     '    };\n\n' +
     '    window._recognition.onend = async function() {\n' +
     '      console.log("Stop recognize");\n' +
-    '      if(window._recognition.status){\n'+
-    '         window._recognition.start();\n'+
-    '      }\n'+
+    '      if(window._recognition.status){\n' +
+    '         window._recognition.start();\n' +
+    '      }\n' +
     '    };\n\n' +
     '    window._recognition.onresult = async function(event,result) {\n' +
     '      result = {};\n' +
@@ -1550,16 +1561,16 @@ Blockly.JavaScript['sound_recognition_check'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['sound_recognition_stop'] = function(block) {
+Blockly.JavaScript['sound_recognition_stop'] = function (block) {
   var dropdown_status_ = block.getFieldValue('status_');
   var code;
-  if(dropdown_status_=='stop'){
-    code = 'window._recognition.status = false;\n'+
-    'window._recognition.'+dropdown_status_+'();\n';
-  }else{
-    code = 'if(!window._recognition.status){\n'+
-    '  window._recognition.'+dropdown_status_+'();\n'+
-    '}\n';
+  if (dropdown_status_ == 'stop') {
+    code = 'window._recognition.status = false;\n' +
+      'window._recognition.' + dropdown_status_ + '();\n';
+  } else {
+    code = 'if(!window._recognition.status){\n' +
+      '  window._recognition.' + dropdown_status_ + '();\n' +
+      '}\n';
   }
   return code;
 };

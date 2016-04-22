@@ -2015,6 +2015,23 @@ Blockly.Blocks['buzzer_notes_tempos'] = {
   }
 };
 
+
+Blockly.Blocks['buzzer_music_play'] = {
+  init: function () {
+    this.appendStatementInput("music_")
+      .setCheck(null)
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_USE, "使用")
+      .appendField(new Blockly.FieldVariable("buzzer"), "var_")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_PLAY, "播放：");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('');
+    this.setColour(65);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+
 Blockly.Blocks['buzzer_single'] = {
   init: function () {
     this.appendDummyInput()
@@ -2677,7 +2694,7 @@ Blockly.Blocks['sound_recognition_stop'] = {
         [Blockly.Msg.WEBDUINO_RECONGNITION_STOP, "stop"],
         [Blockly.Msg.WEBDUINO_RECONGNITION_START, "start"]
       ]), "status_")
-      .appendField(Blockly.Msg.WEBDUINO_RECONGNITION_TEXT,"語音辨識");
+      .appendField(Blockly.Msg.WEBDUINO_RECONGNITION_TEXT, "語音辨識");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('');

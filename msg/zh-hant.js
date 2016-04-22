@@ -24,7 +24,7 @@ var MSG = {
   catText: "文字",
   catLists: "列表",
   catColour: "顏色",
-  catVariables: "變量",
+  catVariables: "變數",
   catFunctions: "流程",
   catExec: "等待",
   catRepeat: "狀態切換",
