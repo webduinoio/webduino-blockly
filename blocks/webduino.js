@@ -1954,6 +1954,7 @@ Blockly.Blocks['buzzer_new'] = {
 Blockly.Blocks['buzzer_music'] = {
   init: function () {
     this.appendValueInput("music_name_")
+      .appendField(new Blockly.FieldImage("media/notes.png", 12, 14, "即將停用"))
       .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC1, "建立音樂，音樂名稱：");
     this.appendStatementInput("music_")
       .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_EDIT, "音符與節奏：");
@@ -1971,7 +1972,6 @@ Blockly.Blocks['buzzer_notes_tempos'] = {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_TONE, "音符：")
       .appendField(new Blockly.FieldDropdown([
-        [Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_NO, "0"],
         ["C", "C"],
         ["CS", "CS"],
         ["D", "D"],
@@ -1983,7 +1983,8 @@ Blockly.Blocks['buzzer_notes_tempos'] = {
         ["GS", "GS"],
         ["A", "A"],
         ["AS", "AS"],
-        ["B", "B"]
+        ["B", "B"],
+        [Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_NO, "0"]
       ]), "tone_")
       .appendField(new Blockly.FieldDropdown([
         ["1", "1"],
@@ -2035,6 +2036,7 @@ Blockly.Blocks['buzzer_music_play'] = {
 Blockly.Blocks['buzzer_single'] = {
   init: function () {
     this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("media/notes.png", 12, 14, "即將停用"))
       .appendField(Blockly.Msg.WEBDUINO_BUZZER_SINGLE, "使用")
       .appendField(new Blockly.FieldVariable("buzzer"), "var_")
       .appendField(Blockly.Msg.WEBDUINO_BUZZER_SINGLE_TONE, "播放單音，音符")
@@ -2087,6 +2089,7 @@ Blockly.Blocks['buzzer_single'] = {
 Blockly.Blocks['buzzer_play'] = {
   init: function () {
     this.appendValueInput("play_music_")
+      .appendField(new Blockly.FieldImage("media/notes.png", 12, 14, "即將停用"))
       .appendField(Blockly.Msg.WEBDUINO_BUZZER_USE, "使用")
       .appendField(new Blockly.FieldVariable("buzzer"), "var_")
       .appendField(Blockly.Msg.WEBDUINO_BUZZER_PLAY, "播放：");
@@ -2718,6 +2721,7 @@ Blockly.Blocks['sound_recognition_text'] = {
 Blockly.Blocks['translate_speech'] = {
   init: function () {
     this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("media/news.png", 12, 12, "*"))
       .appendField(Blockly.Msg.WEBDUINO_SPEECH_APPID, "語音 appID:")
       .appendField(new Blockly.FieldTextInput(""), "id_");
     this.appendValueInput("speech_")
@@ -2747,6 +2751,7 @@ Blockly.Blocks['translate_speech'] = {
 Blockly.Blocks['status_repeat'] = {
   init: function () {
     this.appendValueInput("times_")
+      .appendField(new Blockly.FieldImage("media/notes.png", 12, 14, "即將停用"))
       .setCheck("Number")
       .appendField(Blockly.Msg.WEBDUINO_STATUS_REPEAT, "狀態切換，重複");
     this.appendDummyInput()
@@ -2868,6 +2873,7 @@ Blockly.Blocks['status_repeat_join_item'] = {
 Blockly.Blocks['status_repeat_forever'] = {
   init: function () {
     this.appendValueInput("name_")
+      .appendField(new Blockly.FieldImage("media/notes.png", 12, 14, "即將停用"))
       .appendField(Blockly.Msg.WEBDUINO_STATUS_FOREVER, "狀態重複切換")
       .appendField(Blockly.Msg.WEBDUINO_STATUS_FOREVER_NAME, "名稱：");
     this.appendDummyInput();
