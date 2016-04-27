@@ -557,6 +557,12 @@ Blockly.Msg.WEBDUINO_PHOTOCELL_DO = "do:";
 Blockly.Msg.WEBDUINO_PHOTOCELL_VAL = "'s value";
 Blockly.Msg.WEBDUINO_PHOTOCELL_STOP = "stop detected";
 
+Blockly.Msg.WEBDUINO_SOIL = "Soil, analog pin:";
+Blockly.Msg.WEBDUINO_SOIL_DETECTED = Blockly.Msg.WEBDUINO_PHOTOCELL_DETECTED;
+Blockly.Msg.WEBDUINO_SOIL_DO = Blockly.Msg.WEBDUINO_PHOTOCELL_DO;
+Blockly.Msg.WEBDUINO_SOIL_VAL = Blockly.Msg.WEBDUINO_PHOTOCELL_VAL;
+Blockly.Msg.WEBDUINO_SOIL_STOP = Blockly.Msg.WEBDUINO_PHOTOCELL_STOP;
+
 Blockly.Msg.WEBDUINO_IRRECV = "IR receiver, pin:";
 Blockly.Msg.WEBDUINO_IRRECV_ON = "start receiving";
 Blockly.Msg.WEBDUINO_IRRECV_CODE = "receive code";

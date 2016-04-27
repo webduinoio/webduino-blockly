@@ -394,6 +394,14 @@ Blockly.Msg.WEBDUINO_PHOTOCELL_DO = "執行";
 Blockly.Msg.WEBDUINO_PHOTOCELL_VAL = "偵測的數值";
 Blockly.Msg.WEBDUINO_PHOTOCELL_STOP = "停止偵測";
 
+// Soil
+
+Blockly.Msg.WEBDUINO_SOIL = "土壤濕度偵測，類比腳位：";
+Blockly.Msg.WEBDUINO_SOIL_DETECTED = Blockly.Msg.WEBDUINO_PHOTOCELL_DETECTED;
+Blockly.Msg.WEBDUINO_SOIL_DO = Blockly.Msg.WEBDUINO_PHOTOCELL_DO;
+Blockly.Msg.WEBDUINO_SOIL_VAL = Blockly.Msg.WEBDUINO_PHOTOCELL_VAL;
+Blockly.Msg.WEBDUINO_SOIL_STOP = Blockly.Msg.WEBDUINO_PHOTOCELL_STOP;
+
 // Irrecv
 
 Blockly.Msg.WEBDUINO_IRRECV = "紅外線接收，腳位";

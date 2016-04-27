@@ -192,6 +192,10 @@
     return new webduino.module.RFID(board);
   }
 
+  function getSoil(board, analogpin) {
+    return new webduino.module.Soil(board, analogpin);
+  }
+
   function toyCar(board,RF,RB,LF,LB){
     this._rf = getPin(board, RF);
     this._rb = getPin(board, RB);
@@ -405,6 +409,7 @@
   scope.delay = delay;
   scope.getMax7219 = getMax7219;
   scope.getPhotocell = getPhotocell;
+  scope.getSoil = getSoil;
   scope.getIRRecv = getIRRecv;
   scope.getIRLed = getIRLed;
   scope.getADXL345 = getADXL345;
