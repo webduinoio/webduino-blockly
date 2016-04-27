@@ -400,12 +400,19 @@ YP  YP  YP  `Y88P'  Y8888P' Y888888P Y88888P Y88888P
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#yztfg4
 Blockly.JavaScript['mobile_deviceorientation_event'] = function (block) {
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'setDeviceOrientationListener(function(alpha, beta, gamma){\n' +
-    statements_do_ +
-    '});\n';
+  var dropdown_type_ = block.getFieldValue('type_');
+  var code;
+  if(dropdown_type_==1){
+    code = 'setDeviceOrientationListener(async function(alpha, beta, gamma){\n' +
+      statements_do_ +
+      '});\n';
+  }else{
+    code = 'setDeviceMotionListener(async function(x, y, z){\n' +
+      statements_do_ +
+      '});\n';
+  }
   return code;
 };
-
 
 Blockly.JavaScript['mobile_deviceorientation_event_val'] = function (block) {
   var dropdown_val_ = block.getFieldValue('val_');
@@ -420,8 +427,27 @@ Blockly.JavaScript['mobile_deviceorientation_event_val'] = function (block) {
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
+Blockly.JavaScript['mobile_devicemotion_event_val'] = function (block) {
+  var dropdown_val_ = block.getFieldValue('val_');
+  var dropdown_round_ = block.getFieldValue('round_');
+  var code;
+  if (dropdown_round_ == 1) {
+    code = 'Math.round(' + dropdown_val_ + ')';
+  } else {
+    code = 'Math.round(' + dropdown_val_ + '*' + dropdown_round_ + ')/' + dropdown_round_;
+  }
+
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
 Blockly.JavaScript['mobile_deviceorientation_event_remove'] = function (block) {
-  var code = 'removeDeviceOrientationListener();\n';
+  var dropdown_type_ = block.getFieldValue('type_');
+  var code;
+  if(dropdown_type_==1){
+    code = 'removeDeviceOrientationListener();\n';
+  }else{
+    code = 'removeDeviceMotionListener();\n';
+  }
   return code;
 };
 

@@ -630,7 +630,11 @@ YP  YP  YP  `Y88P'  Y8888P' Y888888P Y88888P Y88888P
 Blockly.Blocks['mobile_deviceorientation_event'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION, "行動裝置，偵測旋轉與翻轉");
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION, "行動裝置，偵測")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_TYPE1, "1"],
+        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_TYPE2,"2"]
+      ]), "type_");
     this.appendStatementInput("do_")
       .setCheck(null)
       .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_DO, "執行");
@@ -645,7 +649,6 @@ Blockly.Blocks['mobile_deviceorientation_event'] = {
 Blockly.Blocks['mobile_deviceorientation_event_val'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE, "行動裝置")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_ALPHA, "alpha"],
         [Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_BETA, "beta"],
@@ -665,11 +668,37 @@ Blockly.Blocks['mobile_deviceorientation_event_val'] = {
   }
 };
 
+Blockly.Blocks['mobile_devicemotion_event_val'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_ACCELERATION_X, "x"],
+        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_ACCELERATION_Y, "y"],
+        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_ACCELERATION_Z, "z"]
+      ]), "val_")
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE_ACCELERATION, "軸加速度的數值 ( 小數點")
+      .appendField(new Blockly.FieldDropdown([
+        ["0", '1'],
+        ["1", '10'],
+        ["2", '100']
+      ]), "round_")
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE_ACCELERATION_VAL2, "位 )");
+    this.setOutput(true, null);
+    this.setTooltip('');
+    this.setColour(210);
+    this.setHelpUrl('https://webduino.io');
+  }
+};
+
 
 Blockly.Blocks['mobile_deviceorientation_event_remove'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_REMOVE, "停止偵測旋轉與翻轉");
+      .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_REMOVE, "停止偵測")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_TYPE1, "1"],
+        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_TYPE2,"2"]
+      ]), "type_");;
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('');

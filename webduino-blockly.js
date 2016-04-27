@@ -12,6 +12,7 @@
     undef = void 0;
 
   var orientationEventListener = function () {};
+  var motionEventListener = function () {};
 
   function boardReady(options, callback) {
     var board;
@@ -114,6 +115,26 @@
 
   function removeDeviceOrientationListener() {
     window.removeEventListener('deviceorientation', orientationEventListener);
+  }
+
+  function setDeviceMotionListener(listener) {
+    removeDeviceMotionListener();
+
+    if (typeof listener === 'function') {
+      motionEventListener = function (event) {
+        var x, y, z;
+        x = event.acceleration.x;
+        y = event.acceleration.y;
+        z = event.acceleration.z;
+        listener.apply(this, [x, y, z]);
+      };
+
+      window.addEventListener('devicemotion', motionEventListener);
+    }
+  }
+
+  function removeDeviceMotionListener() {
+    window.removeEventListener('devicemotion', motionEventListener);
   }
 
   function getLed(board, pin) {
@@ -418,5 +439,7 @@
   scope.getToyCar = getToyCar;
   scope.setDeviceOrientationListener = setDeviceOrientationListener;
   scope.removeDeviceOrientationListener = removeDeviceOrientationListener;
+  scope.setDeviceMotionListener = setDeviceMotionListener;
+  scope.removeDeviceMotionListener = removeDeviceMotionListener;
 
 }));
