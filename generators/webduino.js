@@ -402,11 +402,11 @@ Blockly.JavaScript['mobile_deviceorientation_event'] = function (block) {
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
   var dropdown_type_ = block.getFieldValue('type_');
   var code;
-  if(dropdown_type_==1){
+  if (dropdown_type_ == 1) {
     code = 'setDeviceOrientationListener(async function(alpha, beta, gamma){\n' +
       statements_do_ +
       '});\n';
-  }else{
+  } else {
     code = 'setDeviceMotionListener(async function(x, y, z){\n' +
       statements_do_ +
       '});\n';
@@ -443,9 +443,9 @@ Blockly.JavaScript['mobile_devicemotion_event_val'] = function (block) {
 Blockly.JavaScript['mobile_deviceorientation_event_remove'] = function (block) {
   var dropdown_type_ = block.getFieldValue('type_');
   var code;
-  if(dropdown_type_==1){
+  if (dropdown_type_ == 1) {
     code = 'removeDeviceOrientationListener();\n';
-  }else{
+  } else {
     code = 'removeDeviceMotionListener();\n';
   }
   return code;
@@ -2384,13 +2384,9 @@ Blockly.JavaScript['joystick_off'] = function (block) {
 Blockly.JavaScript['document_keyboard'] = function (block) {
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
   var dropdown_event_ = block.getFieldValue('event_');
-  var e = Blockly.JavaScript.variableDB_.getDistinctName(
-    'e', Blockly.Variables.NAME_TYPE);
-  var code = 'document.' + dropdown_event_ + ' = async function(' + e + '){\n' +
-    '  console.log(' + e + '.keyCode);\n' +
-    '  switch(' + e + '.keyCode){\n' +
+  var code = 'document.' + dropdown_event_ + ' = async function(e){\n' +
+    '  console.log(e.keyCode);\n' +
     statements_do_ +
-    '  }\n' +
     '};\n';
   return code;
 };
@@ -2406,12 +2402,19 @@ Blockly.JavaScript['document_keyboard_stop'] = function (block) {
 Blockly.JavaScript['document_keycode'] = function (block) {
   var dropdown_keycode_ = block.getFieldValue('keycode_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = '  case ' + dropdown_keycode_ + ':\n' +
+  var code = 'if(e.keyCode == ' + dropdown_keycode_ + '){\n' +
     '  ' + statements_do_ +
-    '  break;\n';
+    '}\n';
   return code;
 };
 
+Blockly.JavaScript['document_keyboard_konami'] = function (block) {
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var code = 'konami(e.keyCode,async function(){\n' +
+    statements_do_ +
+    '});\n';
+  return code;
+};
 
 Blockly.JavaScript['text_indexof'] = function (block) {
   var value_input_ = Blockly.JavaScript.valueToCode(block, 'input_', Blockly.JavaScript.ORDER_ATOMIC);

@@ -168,6 +168,7 @@ Blockly.Msg.WEBDUINO_KEYBOARD_UP = "up";
 Blockly.Msg.WEBDUINO_KEYBOARD_DOWN = "down";
 Blockly.Msg.WEBDUINO_KEYBOARD_LEFT = "left";
 Blockly.Msg.WEBDUINO_KEYBOARD_RIGHT = "right";
+Blockly.Msg.WEBDUINO_KEYBOARD_KONAMI = "When input Konami Code, do:";
 
 // Text logic
 

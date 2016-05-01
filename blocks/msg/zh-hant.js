@@ -192,6 +192,7 @@ Blockly.Msg.WEBDUINO_KEYBOARD_UP = "上";
 Blockly.Msg.WEBDUINO_KEYBOARD_DOWN = "下";
 Blockly.Msg.WEBDUINO_KEYBOARD_LEFT = "左";
 Blockly.Msg.WEBDUINO_KEYBOARD_RIGHT = "右";
+Blockly.Msg.WEBDUINO_KEYBOARD_KONAMI = "當輸入 Konami Code，執行";
 
 // Delay
 

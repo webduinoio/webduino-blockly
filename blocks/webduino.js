@@ -3754,6 +3754,19 @@ Blockly.Blocks['document_keyboard'] = {
   }
 };
 
+Blockly.Blocks['document_keyboard_konami'] = {
+  init: function () {
+    this.appendStatementInput("do_")
+      .appendField(Blockly.Msg.WEBDUINO_KEYBOARD_KONAMI, "當輸入 Konami Code，執行");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(35);
+    this.setHelpUrl('https://webduino.io');
+  }
+};
+
 Blockly.Blocks['document_keyboard_stop'] = {
   init: function () {
     this.appendDummyInput()
@@ -3800,10 +3813,10 @@ Blockly.Blocks['document_keycode'] = {
         ["Z", "90"],
         [Blockly.Msg.WEBDUINO_KEYBOARD_SPACE, "32"],
         ["enter", "13"],
-        [Blockly.Msg.WEBDUINO_KEYBOARD_UP, , "38"],
-        [Blockly.Msg.WEBDUINO_KEYBOARD_DOWN, , "40"],
-        [Blockly.Msg.WEBDUINO_KEYBOARD_LEFT, , "37"],
-        [Blockly.Msg.WEBDUINO_KEYBOARD_RIGHT, , "39"],
+        [Blockly.Msg.WEBDUINO_KEYBOARD_UP, "38"],
+        [Blockly.Msg.WEBDUINO_KEYBOARD_DOWN, "40"],
+        [Blockly.Msg.WEBDUINO_KEYBOARD_LEFT, "37"],
+        [Blockly.Msg.WEBDUINO_KEYBOARD_RIGHT, "39"],
         ["0", "48"],
         ["1", "49"],
         ["2", "50"],

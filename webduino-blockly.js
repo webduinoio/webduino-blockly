@@ -14,6 +14,8 @@
   var orientationEventListener = function () {};
   var motionEventListener = function () {};
 
+  var konamiCode = "";
+
   function boardReady(options, callback) {
     var board;
 
@@ -89,6 +91,19 @@
 
     return candidate;
   }
+
+  function konami(c, callback) {
+    var k = "38384040373937396665";
+    konamiCode = konamiCode + c;
+    if (konamiCode.length > k.length) {
+      konamiCode = konamiCode.replace(konamiCode.slice(0, 2), "")
+    }
+    console.log(konamiCode);
+    if (typeof callback === "function" && konamiCode == k) {
+      callback();
+    }
+  }
+
 
   function setDeviceOrientationListener(listener) {
     removeDeviceOrientationListener();
@@ -217,79 +232,79 @@
     return new webduino.module.Soil(board, analogpin);
   }
 
-  function toyCar(board,RF,RB,LF,LB){
+  function toyCar(board, RF, RB, LF, LB) {
     this._rf = getPin(board, RF);
     this._rb = getPin(board, RB);
     this._lf = getPin(board, LF);
     this._lb = getPin(board, LB);
   }
 
-  toyCar.prototype.goFront = function(){
-      var self = this;
-      self._rf.write(1);
-      self._rb.write(0);
-      self._lf.write(1);
-      self._lb.write(0);
+  toyCar.prototype.goFront = function () {
+    var self = this;
+    self._rf.write(1);
+    self._rb.write(0);
+    self._lf.write(1);
+    self._lb.write(0);
   };
-  toyCar.prototype.goBack = function(){
-      var self = this;
-      self._rf.write(0);
-      self._rb.write(1);
-      self._lf.write(0);
-      self._lb.write(1);
+  toyCar.prototype.goBack = function () {
+    var self = this;
+    self._rf.write(0);
+    self._rb.write(1);
+    self._lf.write(0);
+    self._lb.write(1);
   };
-  toyCar.prototype.goRight = function(){
-      var self = this;
-      self._rf.write(1);
-      self._rb.write(0);
-      self._lf.write(0);
-      self._lb.write(0);
+  toyCar.prototype.goRight = function () {
+    var self = this;
+    self._rf.write(1);
+    self._rb.write(0);
+    self._lf.write(0);
+    self._lb.write(0);
   };
-  toyCar.prototype.goLeft = function(){
-      var self = this;
-      self._rf.write(0);
-      self._rb.write(0);
-      self._lf.write(1);
-      self._lb.write(0);
+  toyCar.prototype.goLeft = function () {
+    var self = this;
+    self._rf.write(0);
+    self._rb.write(0);
+    self._lf.write(1);
+    self._lb.write(0);
   };
-  toyCar.prototype.turnRight = function(){
-      var self = this;
-      self._rf.write(0);
-      self._rb.write(1);
-      self._lf.write(1);
-      self._lb.write(0);
+  toyCar.prototype.turnRight = function () {
+    var self = this;
+    self._rf.write(0);
+    self._rb.write(1);
+    self._lf.write(1);
+    self._lb.write(0);
   };
-  toyCar.prototype.turnLeft = function(){
-      var self = this;
-      self._rf.write(1);
-      self._rb.write(0);
-      self._lf.write(0);
-      self._lb.write(1);
+  toyCar.prototype.turnLeft = function () {
+    var self = this;
+    self._rf.write(1);
+    self._rb.write(0);
+    self._lf.write(0);
+    self._lb.write(1);
   };
-  toyCar.prototype.backLeft = function(){
-      var self = this;
-      self._rf.write(0);
-      self._rb.write(0);
-      self._lf.write(0);
-      self._lb.write(1);
+  toyCar.prototype.backLeft = function () {
+    var self = this;
+    self._rf.write(0);
+    self._rb.write(0);
+    self._lf.write(0);
+    self._lb.write(1);
   };
-  toyCar.prototype.backRight = function(){
-      var self = this;
-      self._rf.write(0);
-      self._rb.write(1);
-      self._lf.write(0);
-      self._lb.write(0);
+  toyCar.prototype.backRight = function () {
+    var self = this;
+    self._rf.write(0);
+    self._rb.write(1);
+    self._lf.write(0);
+    self._lb.write(0);
   };
-  toyCar.prototype.stop = function(){
-      var self = this;
-      self._rf.write(0);
-      self._rb.write(0);
-      self._lf.write(0);
-      self._lb.write(0);
+  toyCar.prototype.stop = function () {
+    var self = this;
+    self._rf.write(0);
+    self._rb.write(0);
+    self._lf.write(0);
+    self._lb.write(0);
   };
 
-  function getToyCar(board,RF,RB,LF,LB) {
-    return new toyCar(board,RF,RB,LF,LB);
+  function getToyCar(board, RF, RB, LF, LB) {
+    return new toyCar(board, RF, RB, LF, LB);
   }
 
   function getCar(board, F, B, L, R) {
@@ -441,5 +456,6 @@
   scope.removeDeviceOrientationListener = removeDeviceOrientationListener;
   scope.setDeviceMotionListener = setDeviceMotionListener;
   scope.removeDeviceMotionListener = removeDeviceMotionListener;
+  scope.konami = konami;
 
 }));
