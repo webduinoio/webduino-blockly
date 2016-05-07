@@ -2527,6 +2527,119 @@ Blockly.Blocks['data_firebase_clear'] = {
   }
 };
 
+//object
+Blockly.Blocks['add_object'] = {
+  init: function () {
+    this.setColour(100);
+    this.appendDummyInput()
+      .appendField('增加物件');
+    this.appendStatementInput('STACK');
+    this.setTooltip('');
+    this.contextMenu = false;
+  }
+};
+
+Blockly.Blocks['add_object_item'] = {
+  init: function () {
+    this.setColour(100);
+    this.appendDummyInput()
+      .appendField('物件');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.contextMenu = false;
+  }
+};
+
+Blockly.Blocks['new_object'] = {
+  init: function () {
+    this.setColour(130);
+    this.appendDummyInput()
+      .appendField('建立物件')
+    this.appendValueInput('data_0')
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField('名稱')
+      .appendField(new Blockly.FieldTextInput("..."), "name_0")
+      .appendField(' , 值');
+    this.appendValueInput('data_1')
+      .setAlign(Blockly.ALIGN_RIGHT)
+      .appendField('名稱')
+      .appendField(new Blockly.FieldTextInput("..."), "name_1")
+      .appendField(' , 值');
+    this.setTooltip('');
+    this.setOutput(true, null);
+    this.setMutator(new Blockly.Mutator(['add_object_item']));
+    this.setHelpUrl('https://webduino.io');
+    this.itemCount_ = 2;
+  },
+  mutationToDom: function (workspace) {
+    var container = document.createElement('mutation');
+    container.setAttribute('items', this.itemCount_);
+    return container;
+  },
+  domToMutation: function (container) {
+    for (var x = 0; x < this.itemCount_; x++) {
+      this.removeInput('data_' + x);
+    }
+    this.itemCount_ = parseInt(container.getAttribute('items'), 10);
+    for (var x = 0; x < this.itemCount_; x++) {
+      var input = this.appendValueInput('data_' + x)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField('名稱')
+        .appendField(new Blockly.FieldTextInput("..."), "name_" + x)
+        .appendField(' , 值');
+    }
+  },
+  decompose: function (workspace) {
+    var containerBlock = Blockly.Block.obtain(workspace, 'add_object');
+    containerBlock.initSvg();
+    var connection = containerBlock.getInput('STACK').connection;
+    for (var x = 0; x < this.itemCount_; x++) {
+      var optionBlock = Blockly.Block.obtain(workspace, 'add_object_item');
+      optionBlock.initSvg();
+      connection.connect(optionBlock.previousConnection);
+      connection = optionBlock.nextConnection;
+    }
+    return containerBlock;
+  },
+  compose: function (containerBlock) {
+    for (var x = this.itemCount_ - 1; x >= 0; x--) {
+      this.removeInput('data_' + x);
+    }
+    this.itemCount_ = 0;
+    var optionBlock = containerBlock.getInputTargetBlock('STACK');
+    while (optionBlock) {
+      var input = this.appendValueInput('data_' + this.itemCount_)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField('名稱')
+        .appendField(new Blockly.FieldTextInput(optionBlock.nameData_ || "..."), "name_" + this.itemCount_)
+        .appendField(' , 值');
+      if (optionBlock.dataData_) {
+        input.connection.connect(optionBlock.dataData_);
+      }
+      this.itemCount_++;
+      optionBlock = optionBlock.nextConnection &&
+        optionBlock.nextConnection.targetBlock();
+    }
+  },
+  saveConnections: function (containerBlock) {
+    var optionBlock = containerBlock.getInputTargetBlock('STACK');
+    var x = 0;
+    while (optionBlock) {
+      var name = this.getFieldValue('name_' + x);
+      var data = this.getInput('data_' + x);
+      optionBlock.nameData_ = name;
+      optionBlock.dataData_ = data && data.connection.targetConnection;
+      x++;
+      optionBlock = optionBlock.nextConnection &&
+        optionBlock.nextConnection.targetBlock();
+    }
+  },
+  newQuote_: Blockly.Blocks['text'].newQuote_
+};
+
+
+
 //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#85nm6w
 Blockly.Blocks[Blockly.Msg.WEBDUINO_TESTCAR_NEW, 'car_test_new'] = {
   init: function () {

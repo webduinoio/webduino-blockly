@@ -1428,6 +1428,23 @@ Blockly.JavaScript['data_firebase_clear'] = function (block) {
   return code;
 };
 
+//object
+Blockly.JavaScript['new_object'] = function (block) {
+  var c = '';
+  for (var n = 0; n < block.itemCount_; n++) {
+    var name = block.getFieldValue('name_' + n) || 'unknow';
+    var val = Blockly.JavaScript.valueToCode(block, 'data_' + n) || '""';
+    if (n < (block.itemCount_ - 1)) {
+      c = c + '  ' + name + ':' + val + ',\n';
+    } else {
+      c = c + '  ' + name + ':' + val + '\n';
+    }
+  }
+  var code = '{' + c +
+    '}';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 
 Blockly.JavaScript['car_test_new'] = function (block) {
   var value_var_ = Blockly.JavaScript.valueToCode(block, 'var_', Blockly.JavaScript.ORDER_ATOMIC);
