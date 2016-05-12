@@ -158,7 +158,7 @@
         callback = setting;
         setting = ['zh-TW', 1, 1, 1];
       }
-      if (!setting){
+      if (!setting) {
         setting = ['zh-TW', 1, 1, 1];
       }
       utterThis.lang = setting[0] || 'zh-TW';

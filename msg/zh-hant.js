@@ -66,6 +66,7 @@ var MSG = {
   catMenu2: "傳感器",
   catMenu3: "玩具應用",
   catSpeech: "語音聲控",
+  catSpeak: "語音朗讀",
   catMobile: "行動裝置",
   catTracking: "影像辨識",
   catKeyCode: "鍵盤行為",

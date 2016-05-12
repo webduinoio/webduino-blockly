@@ -1663,33 +1663,33 @@ Blockly.JavaScript['translate_speech'] = function (block) {
 
 Blockly.JavaScript['speak'] = function (block) {
   var value_text_ = Blockly.JavaScript.valueToCode(block, 'text_', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_setting = Blockly.JavaScript.valueToCode(block, 'setting', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_setting_ = Blockly.JavaScript.valueToCode(block, 'setting_', Blockly.JavaScript.ORDER_ATOMIC);
   var code;
-  if (!value_setting) {
+  if (!value_setting_) {
     code = 'speak(' + value_text_ + ');\n';
-  }else{
-    code = 'speak(' + value_text_ + ',[' + value_setting + ']);\n';
+  } else {
+    code = 'speak(' + value_text_ + ',[' + value_setting_ + ']);\n';
   }
   return code;
 };
 
 Blockly.JavaScript['speak_callback'] = function (block) {
   var value_text_ = Blockly.JavaScript.valueToCode(block, 'text_', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_setting = Blockly.JavaScript.valueToCode(block, 'setting', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_setting_ = Blockly.JavaScript.valueToCode(block, 'setting_', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_type_ = block.getFieldValue('type_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  if (!value_setting) {
-    value_setting = '"zh-TW",1,1,1';
+  if (!value_setting_) {
+    value_setting_ = '"zh-TW",1,1,1';
   }
-  var code = 'speak(' + value_text_ + ',[' + value_setting + '],async function(){\n'+
-  statements_do_+'\n'+
-  '},'+dropdown_type_+');\n';
+  var code = 'speak(' + value_text_ + ',[' + value_setting_ + '],async function(){\n' +
+    statements_do_ + '\n' +
+    '},' + dropdown_type_ + ');\n';
   return code;
 };
 
-Blockly.JavaScript['speak_event'] = function(block) {
+Blockly.JavaScript['speak_event'] = function (block) {
   var dropdown_event_ = block.getFieldValue('event_');
-  var code = 'speakSynth.'+dropdown_event_+'();\n';
+  var code = 'speakSynth.' + dropdown_event_ + '();\n';
   return code;
 };
 

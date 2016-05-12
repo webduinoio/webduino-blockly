@@ -2912,10 +2912,10 @@ Blockly.Blocks['speak'] = {
   init: function () {
     this.appendValueInput("text_")
       .setCheck(null)
-      .appendField("朗讀文字");
-    this.appendValueInput("setting")
+      .appendField(Blockly.Msg.WEBDUINO_SPEAK_TEXT, "朗讀文字");
+    this.appendValueInput("setting_")
       .setCheck(null)
-      .appendField("參數設定");
+      .appendField(Blockly.Msg.WEBDUINO_SPEAK_SETTING, "參數設定");
     this.setInputsInline(false);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -2930,17 +2930,18 @@ Blockly.Blocks['speak_callback'] = {
   init: function () {
     this.appendValueInput("text_")
       .setCheck(null)
-      .appendField("朗讀文字");
-    this.appendValueInput("setting")
+      .appendField(Blockly.Msg.WEBDUINO_SPEAK_TEXT, "朗讀文字");
+    this.appendValueInput("setting_")
       .setCheck(null)
-      .appendField("參數設定");
+      .appendField(Blockly.Msg.WEBDUINO_SPEAK_SETTING, "參數設定");
     this.appendStatementInput("do_")
       .setCheck(null)
+      .appendField(Blockly.Msg.WEBDUINO_SPEAK_WHEN, "當朗讀")
       .appendField(new Blockly.FieldDropdown([
-        ["結束", "0"],
-        ["開始", "1"]
+        [Blockly.Msg.WEBDUINO_SPEAK_END, "0"],
+        [Blockly.Msg.WEBDUINO_SPEAK_START, "1"]
       ]), "type_")
-      .appendField("執行");
+      .appendField(Blockly.Msg.WEBDUINO_SPEAK_DO, "執行");
     this.setInputsInline(false);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -2955,11 +2956,11 @@ Blockly.Blocks['speak_event'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldDropdown([
-        ["繼續", "resume"],
-        ["暫停", "pause"],
-        ["停止", "cancel"]
+        [Blockly.Msg.WEBDUINO_SPEAK_RESUME, "resume"],
+        [Blockly.Msg.WEBDUINO_SPEAK_PAUSE, "pause"],
+        [Blockly.Msg.WEBDUINO_SPEAK_CANCEL, "cancel"]
       ]), "event_")
-      .appendField("朗讀");
+      .appendField(Blockly.Msg.WEBDUINO_SPEAK_READ, "朗讀");
     this.setInputsInline(false);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -2973,13 +2974,13 @@ Blockly.Blocks['speak_event'] = {
 Blockly.Blocks['speak_setting_sample'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField("朗讀語言")
+      .appendField(Blockly.Msg.WEBDUINO_SPEAK_LANG, "朗讀語言")
       .appendField(new Blockly.FieldDropdown([
-        ["中文", "zh-TW"],
-        ["英文", "en-US"],
-        ["日文", "ja-JP"]
+        [Blockly.Msg.WEBDUINO_SPEAK_TW, "zh-TW"],
+        [Blockly.Msg.WEBDUINO_SPEAK_US, "en-US"],
+        [Blockly.Msg.WEBDUINO_SPEAK_JP, "ja-JP"]
       ]), "lang_")
-      .appendField(" 音量")
+      .appendField(Blockly.Msg.WEBDUINO_SPEAK_VOLUME, " 音量")
       .appendField(new Blockly.FieldDropdown([
         ["1", "1"],
         ["0.9", "0.9"],
@@ -2993,21 +2994,21 @@ Blockly.Blocks['speak_setting_sample'] = {
         ["0.1", "0.1"],
         ["0", "0"]
       ]), "volume_")
-      .appendField(" 音調")
+      .appendField(Blockly.Msg.WEBDUINO_SPEAK_PITCH, " 音調")
       .appendField(new Blockly.FieldDropdown([
-        ["尖銳", "2"],
-        ["高昂", "1.5"],
-        ["正常", "1"],
-        ["低沈", "0.5"],
-        ["沙啞", "0.1"]
+        [Blockly.Msg.WEBDUINO_SPEAK_P20, "2"],
+        [Blockly.Msg.WEBDUINO_SPEAK_P15, "1.5"],
+        [Blockly.Msg.WEBDUINO_SPEAK_P10, "1"],
+        [Blockly.Msg.WEBDUINO_SPEAK_P05, "0.5"],
+        [Blockly.Msg.WEBDUINO_SPEAK_P01, "0.1"]
       ]), "pitch_")
-      .appendField(" 速度")
+      .appendField(Blockly.Msg.WEBDUINO_SPEAK_RATE, " 速度")
       .appendField(new Blockly.FieldDropdown([
-        ["很快", "2"],
-        ["快", "1.5"],
-        ["正常", "1"],
-        ["慢", "0.7"],
-        ["很慢", "0.5"]
+        [Blockly.Msg.WEBDUINO_SPEAK_R20, "2"],
+        [Blockly.Msg.WEBDUINO_SPEAK_R15, "1.5"],
+        [Blockly.Msg.WEBDUINO_SPEAK_R10, "1"],
+        [Blockly.Msg.WEBDUINO_SPEAK_R07, "0.7"],
+        [Blockly.Msg.WEBDUINO_SPEAK_R05, "0.5"]
       ]), "rate_");
     this.setInputsInline(true);
     this.setOutput(true, null);
