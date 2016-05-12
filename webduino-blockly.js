@@ -16,6 +16,8 @@
 
   var konamiCode = "";
 
+  var speakSynth = window.speechSynthesis;
+
   function boardReady(options, callback) {
     var board;
 
@@ -147,6 +149,37 @@
       window.addEventListener('devicemotion', motionEventListener);
     }
   }
+
+  function speak(text, setting, callback, type) {
+    speakSynth.cancel();
+    if (!speakSynth.speaking) {
+      var utterThis = new SpeechSynthesisUtterance(text);
+      if (typeof setting === 'function') {
+        callback = setting;
+        setting = ['zh-TW', 1, 1, 1];
+      }
+      if (!setting){
+        setting = ['zh-TW', 1, 1, 1];
+      }
+      utterThis.lang = setting[0] || 'zh-TW';
+      utterThis.volume = setting[1] || 1;
+      utterThis.pitch = setting[2] || 1;
+      utterThis.rate = setting[3] || 1;
+      speakSynth.speak(utterThis);
+      if (typeof callback === 'function') {
+        if (type == 0) {
+          utterThis.onend = function () {
+            callback();
+          };
+        } else {
+          utterThis.onstart = function () {
+            callback();
+          };
+        }
+      }
+    }
+  }
+
 
   function removeDeviceMotionListener() {
     window.removeEventListener('devicemotion', motionEventListener);
@@ -457,5 +490,7 @@
   scope.setDeviceMotionListener = setDeviceMotionListener;
   scope.removeDeviceMotionListener = removeDeviceMotionListener;
   scope.konami = konami;
+  scope.speak = speak;
+  scope.speakSynth = speakSynth;
 
 }));

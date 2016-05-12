@@ -1661,6 +1661,47 @@ Blockly.JavaScript['translate_speech'] = function (block) {
   return code;
 };
 
+Blockly.JavaScript['speak'] = function (block) {
+  var value_text_ = Blockly.JavaScript.valueToCode(block, 'text_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_setting = Blockly.JavaScript.valueToCode(block, 'setting', Blockly.JavaScript.ORDER_ATOMIC);
+  var code;
+  if (!value_setting) {
+    code = 'speak(' + value_text_ + ');\n';
+  }else{
+    code = 'speak(' + value_text_ + ',[' + value_setting + ']);\n';
+  }
+  return code;
+};
+
+Blockly.JavaScript['speak_callback'] = function (block) {
+  var value_text_ = Blockly.JavaScript.valueToCode(block, 'text_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_setting = Blockly.JavaScript.valueToCode(block, 'setting', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_type_ = block.getFieldValue('type_');
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  if (!value_setting) {
+    value_setting = '"zh-TW",1,1,1';
+  }
+  var code = 'speak(' + value_text_ + ',[' + value_setting + '],async function(){\n'+
+  statements_do_+'\n'+
+  '},'+dropdown_type_+');\n';
+  return code;
+};
+
+Blockly.JavaScript['speak_event'] = function(block) {
+  var dropdown_event_ = block.getFieldValue('event_');
+  var code = 'speakSynth.'+dropdown_event_+'();\n';
+  return code;
+};
+
+Blockly.JavaScript['speak_setting_sample'] = function (block) {
+  var dropdown_lang_ = block.getFieldValue('lang_');
+  var dropdown_volume_ = block.getFieldValue('volume_');
+  var dropdown_pitch_ = block.getFieldValue('pitch_');
+  var dropdown_rate_ = block.getFieldValue('rate_');
+  var code = '"' + dropdown_lang_ + '",' + dropdown_volume_ + ',' + dropdown_pitch_ + ',' + dropdown_rate_;
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 
 Blockly.JavaScript['status_repeat'] = function (block) {
   var value_times_ = Blockly.JavaScript.valueToCode(block, 'times_', Blockly.JavaScript.ORDER_ATOMIC);

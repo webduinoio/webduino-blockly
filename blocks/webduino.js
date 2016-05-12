@@ -633,7 +633,7 @@ Blockly.Blocks['mobile_deviceorientation_event'] = {
       .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION, "行動裝置，偵測")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.DEMO_CONTROLLER_MOBILE_TYPE1, "1"],
-        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_TYPE2,"2"]
+        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_TYPE2, "2"]
       ]), "type_");
     this.appendStatementInput("do_")
       .setCheck(null)
@@ -697,7 +697,7 @@ Blockly.Blocks['mobile_deviceorientation_event_remove'] = {
       .appendField(Blockly.Msg.DEMO_CONTROLLER_MOBILE_DEVICEORIENTATION_REMOVE, "停止偵測")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.DEMO_CONTROLLER_MOBILE_TYPE1, "1"],
-        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_TYPE2,"2"]
+        [Blockly.Msg.DEMO_CONTROLLER_MOBILE_TYPE2, "2"]
       ]), "type_");;
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -2904,6 +2904,116 @@ Blockly.Blocks['translate_speech'] = {
     this.setTooltip('');
     this.setColour(230);
     this.setHelpUrl('https://webduino.io');
+  }
+};
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#saanvb
+Blockly.Blocks['speak'] = {
+  init: function () {
+    this.appendValueInput("text_")
+      .setCheck(null)
+      .appendField("朗讀文字");
+    this.appendValueInput("setting")
+      .setCheck(null)
+      .appendField("參數設定");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('');
+    this.setColour(230);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#9786of
+Blockly.Blocks['speak_callback'] = {
+  init: function () {
+    this.appendValueInput("text_")
+      .setCheck(null)
+      .appendField("朗讀文字");
+    this.appendValueInput("setting")
+      .setCheck(null)
+      .appendField("參數設定");
+    this.appendStatementInput("do_")
+      .setCheck(null)
+      .appendField(new Blockly.FieldDropdown([
+        ["結束", "0"],
+        ["開始", "1"]
+      ]), "type_")
+      .appendField("執行");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('');
+    this.setColour(230);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#ecanpb
+Blockly.Blocks['speak_event'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldDropdown([
+        ["繼續", "resume"],
+        ["暫停", "pause"],
+        ["停止", "cancel"]
+      ]), "event_")
+      .appendField("朗讀");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('');
+    this.setColour(230);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#pr6kpx
+Blockly.Blocks['speak_setting_sample'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField("朗讀語言")
+      .appendField(new Blockly.FieldDropdown([
+        ["中文", "zh-TW"],
+        ["英文", "en-US"],
+        ["日文", "ja-JP"]
+      ]), "lang_")
+      .appendField(" 音量")
+      .appendField(new Blockly.FieldDropdown([
+        ["1", "1"],
+        ["0.9", "0.9"],
+        ["0.8", "0.8"],
+        ["0.7", "0.7"],
+        ["0.6", "0.6"],
+        ["0.5", "0.5"],
+        ["0.4", "0.4"],
+        ["0.3", "0.3"],
+        ["0.2", "0.3"],
+        ["0.1", "0.1"],
+        ["0", "0"]
+      ]), "volume_")
+      .appendField(" 音調")
+      .appendField(new Blockly.FieldDropdown([
+        ["尖銳", "2"],
+        ["高昂", "1.5"],
+        ["正常", "1"],
+        ["低沈", "0.5"],
+        ["沙啞", "0.1"]
+      ]), "pitch_")
+      .appendField(" 速度")
+      .appendField(new Blockly.FieldDropdown([
+        ["很快", "2"],
+        ["快", "1.5"],
+        ["正常", "1"],
+        ["慢", "0.7"],
+        ["很慢", "0.5"]
+      ]), "rate_");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setTooltip('');
+    this.setColour(270);
+    this.setHelpUrl('http://www.example.com/');
   }
 };
 
