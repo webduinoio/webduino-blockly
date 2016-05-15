@@ -603,7 +603,12 @@ Blockly.JavaScript['demo_tracking_action'] = function (block) {
 
 Blockly.JavaScript['demo_tracking_val'] = function (block) {
   var dropdown_val_ = block.getFieldValue('val_');
-  var code = 'data.' + dropdown_val_;
+  var code = '';
+  if(dropdown_val_==='total'){
+    code = 'event.data.length';
+  }else{
+    code = 'data.' + dropdown_val_;
+  }
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
