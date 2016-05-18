@@ -335,6 +335,36 @@
     self._lf.write(0);
     self._lb.write(0);
   };
+  toyCar.prototype.onlyLeftFront = function () {
+    var self = this;
+    self._rf.write(1);
+    self._rb.write(0);
+  };
+  toyCar.prototype.onlyRightFront = function () {
+    var self = this;
+    self._lf.write(1);
+    self._lb.write(0);
+  };
+  toyCar.prototype.onlyLeftBack = function () {
+    var self = this;
+    self._rf.write(1);
+    self._rb.write(0);
+  };
+  toyCar.prototype.onlyRightBack = function () {
+    var self = this;
+    self._lf.write(1);
+    self._lb.write(0);
+  };
+  toyCar.prototype.onlyLeftStop = function () {
+    var self = this;
+    self._rf.write(0);
+    self._rb.write(0);
+  };
+  toyCar.prototype.onlyRightStop = function () {
+    var self = this;
+    self._lf.write(0);
+    self._lb.write(0);
+  };
 
   function getToyCar(board, RF, RB, LF, LB) {
     return new toyCar(board, RF, RB, LF, LB);
