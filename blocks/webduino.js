@@ -2008,7 +2008,7 @@ Blockly.Blocks['buzzer_music'] = {
     this.setNextStatement(true);
     this.setTooltip('即將停用，請改用 "用 buzzer 播放..."');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
   }
 };
 
@@ -2058,7 +2058,7 @@ Blockly.Blocks['buzzer_notes_tempos'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
   }
 };
 
@@ -2074,7 +2074,7 @@ Blockly.Blocks['buzzer_music_play'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
   }
 };
 
@@ -2127,7 +2127,7 @@ Blockly.Blocks['buzzer_single'] = {
     this.setNextStatement(true);
     this.setTooltip('即將停用，請改用 "用 buzzer 播放..."');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
   }
 };
 
@@ -2143,7 +2143,7 @@ Blockly.Blocks['buzzer_play'] = {
     this.setNextStatement(true);
     this.setTooltip('即將停用，請改用 "用 buzzer 播放..."');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
   }
 };
 
@@ -2163,7 +2163,7 @@ Blockly.Blocks['buzzer_event'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
   }
 };
 
@@ -2182,7 +2182,7 @@ Blockly.Blocks['buzzer_state'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
   }
 };
 
@@ -2201,7 +2201,7 @@ Blockly.Blocks['buzzer_music_array'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
   }
 };
 
@@ -2214,13 +2214,14 @@ Blockly.Blocks['buzzer_load_music'] = {
         [Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC1, "m1"],
         [Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC4, "m4"],
         [Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC2, "m2"],
-        [Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC3, "m3"]
+        [Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC3, "m3"],
+        [Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC5, "m5"]
       ]), "music_");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
   }
 };
 

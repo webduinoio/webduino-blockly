@@ -386,6 +386,7 @@ Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC1 = "Super Mario";
 Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC2 = "DoReMi";
 Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC3 = "Big brother and father";
 Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC4 = "Super Mario Chord";
+Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC5 = "Merry Christmas";
 Blockly.Msg.WEBDUINO_BUZZER_SINGLE = "Use";
 Blockly.Msg.WEBDUINO_BUZZER_SINGLE_TONE = "play single sound, tone";
 Blockly.Msg.WEBDUINO_BUZZER_SINGLE_PITCH = "pitch";
