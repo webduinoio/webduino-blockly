@@ -571,14 +571,17 @@ Code.init = function() {
 
   Code.bindClick('linkToBin', function () {
     var urls = (location.protocol + '//' + location.host + location.pathname).split('/'),
+      code = Blockly.JavaScript.workspaceToCode(Code.workspace),
+      babelize = code.indexOf('async function') !== -1,
       page = Code.getPage(),
       config = {
         tpl: page === 'index' ? Code.getDemoPage() : page,
         modes: 'html,css,js,output',
         data: {
-          js: '(async function () {\n\n' + Blockly.JavaScript.workspaceToCode(Code.workspace) + '\n}());'
+          js: babelize ?
+            '(async function () {\n\n' + code + '\n}());' : code
         },
-        jsPreprocessor: 'babel'
+        jsPreprocessor: babelize ? 'babel' : ''
       };
 
     urls.pop();
@@ -704,8 +707,12 @@ Code.runJS = function() {
       throw MSG['timeout'];
     }
   };
-  var code = 'disconnectBoards(async function () {' + Blockly.JavaScript.workspaceToCode(Code.workspace) + '})';
-  code = Code.transform(code);
+  var code = Blockly.JavaScript.workspaceToCode(Code.workspace);
+  if (code.indexOf('async function') === -1) {
+    code = 'disconnectBoards(function () {' + code + '})'; 
+  } else {
+    code = Code.transform('disconnectBoards(async function () {' + code + '})');
+  }
 
   Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
   try {
@@ -811,6 +818,16 @@ Blockly.JavaScript['procedures_callnoreturn'] = function (block) {
   var defs = Blockly.JavaScript.definitions_;
   if (defs[funcName] && defs[funcName].indexOf('async ') === 0) {
     return 'await ' + code;
+  }
+  return code;
+};
+
+Blockly.JavaScript['_workspaceToCode'] = Blockly.JavaScript['workspaceToCode'];
+
+Blockly.JavaScript['workspaceToCode'] = function (workspace) {
+  var code = Blockly.JavaScript['_workspaceToCode'].call(Blockly.JavaScript, workspace);
+  if (code.indexOf('await ') === -1) {
+    code = code.replace(new RegExp('async function', 'g'), 'function');
   }
   return code;
 };
