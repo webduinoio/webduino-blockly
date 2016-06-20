@@ -940,9 +940,9 @@ td#copyCode div {
   position:absolute;
   z-index:999;
   top:115px;
-  right:100px;
+  right:80px;
   box-shadow:0 6px 20px rgba(0,0,0,0.4), 0 1px 3px rgba(0,0,0,0.5);
-  width:220px;
+  width:240px;
   height:calc(100% - 160px);
   overflow: hidden;
   border-radius: 6px;
@@ -967,6 +967,16 @@ td#copyCode div {
   box-sizing: border-box;
   padding:4px 15px 4px 30px;
   color:#333;
+  width:100%;
+  position:relative;
+}
+#smaple-menu-content div i{
+  position:absolute;
+  top:5px;
+  right:15px;
+  font-size:12px;
+  opacity:0;
+  transition:.3s;
 }
 
 #smaple-menu-content div:last-child{
@@ -977,4 +987,12 @@ td#copyCode div {
   background:#eee;
   cursor:pointer;
   color:#000;
+}
+
+#smaple-menu-content div:hover i{
+  opacity:1;
+}
+
+#smaple-menu-content div:hover i:hover{
+  color:#f80;
 }

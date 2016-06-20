@@ -448,15 +448,25 @@ Code.getSample = function () {
 
   sampleMenu.onclick = function (e) {
     var ele = e.target,
-      chap = ele.getAttribute('data-value');
+      chap = ele.getAttribute('data-value'),
+      className = ele.className;
 
-    if (chap && window.confirm('確定載入範例程式？')) {
+    if (chap && window.confirm(Blockly.Msg.SAMPLE_COMFIRM_MSG)) {
       Code.workspace.clear();
       var xmlText = smaples(chap);
       var xmlDom = Blockly.Xml.textToDom(xmlText);
       Blockly.Xml.domToWorkspace(xmlDom, Code.workspace);
       sampleBtn.click();
     }
+
+    if(className == 'icon-plus'){
+      var parentValue = ele.parentElement.getAttribute('data-value');
+      var xmlText = smaples(parentValue);
+      var xmlDom = Blockly.Xml.textToDom(xmlText);
+      Blockly.Xml.domToWorkspace(xmlDom, Code.workspace);
+      sampleBtn.click();
+    }
+
   };
 }
 

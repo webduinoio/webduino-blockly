@@ -4,6 +4,12 @@ goog.provide('Blockly.Msg.Webduino.en');
 
 goog.require('Blockly.Msg.Webduino');
 
+// Sample
+
+Blockly.Msg.SAMPLE_COMFIRM_MSG = "\"Load Sample\" will load sample code to replace your workspace, or you can click \"+\" to add sample code into your workspace.";
+
+// Main
+
 Blockly.Msg.WEBDUINO_MATH_ROUND = "round";
 Blockly.Msg.WEBDUINO_MATH_ROUND_UP = "round up";
 Blockly.Msg.WEBDUINO_MATH_ROUND_DOWN = "round down";

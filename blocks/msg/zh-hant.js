@@ -4,6 +4,12 @@ goog.provide('Blockly.Msg.Webduino.zh.hant');
 
 goog.require('Blockly.Msg.Webduino');
 
+// Sample
+
+Blockly.Msg.SAMPLE_COMFIRM_MSG = "載入範例積木將會覆寫工作區內容，確定載入？\n( 單純想加入範例積木，可點選後方「+」號 )";
+
+// Main
+
 Blockly.Msg.VARIABLES_SET = "設定 %1 為 %2";
 Blockly.Msg.LISTS_CREATE_WITH_INPUT_WITH = "建立列表";
 Blockly.Msg.TEXT_JOIN_TITLE_CREATEWITH = "建立字串";
@@ -114,7 +120,6 @@ Blockly.Msg.DEMO_CONTROLLER_MOBILE_ACCELERATION_VAL2 = Blockly.Msg.DEMO_CONTROLL
 Blockly.Msg.DEMO_CONTROLLER_MOBILE_ACCELERATION = "加速度的數值 ( 小數點";
 Blockly.Msg.DEMO_CONTROLLER_MOBILE_TYPE1 = "旋轉與翻轉";
 Blockly.Msg.DEMO_CONTROLLER_MOBILE_TYPE2 = "加速度";
-
 
 // Console
 
