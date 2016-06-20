@@ -376,6 +376,7 @@ Blockly.Blocks['demo_youtube_status'] = {
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSPLAY, "1"],
         [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSPAUSE, "2"],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSCUE, "5"],
         [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSSTOP, "0"],
         [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSSTART, "-1"]
       ]), "status_");

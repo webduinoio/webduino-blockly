@@ -27,7 +27,7 @@ button {
   border-radius: 4px;
   border: 1px solid #ddd;
   font-size: large;
-  background-color: #eee;
+  background-color: #fff;
   color: #000;
 }
 
@@ -94,7 +94,7 @@ td.taboff {
 }
 
 td.taboff:hover {
-  background-color: #eee;
+  background-color: #fff;
 }
 
 td.tabmin {
@@ -163,8 +163,8 @@ pre.content {
 
 #check-device-online {
   display: inline-block;
-  background: #eee;
-  opacity: .9;
+  background: #fff;
+  opacity: .8;
   box-sizing: border-box;
   padding: 0 0 0 5px;
   margin: -7px 0 4px;
@@ -215,6 +215,10 @@ pre.content {
 button {
   padding: 1px 5px;
   margin: 1px 5px;
+}
+
+button:hover{
+  opacity:1!important;
 }
 
 
@@ -436,7 +440,7 @@ table.nav td.tabmax button {
   outline: none;
   cursor: pointer;
   transition: .2s;
-  opacity: .9;
+  opacity: .8;
   vertical-align: bottom;
 }
 
@@ -569,7 +573,8 @@ td#copyCode div {
   display: inline-block;
   font-size: 16px;
   color: #000;
-  background: #ddd;
+  background: #fff;
+  opacity:.8;
   transition: .3s;
   border-radius: 5px;
   margin: -7px 0 4px;
@@ -590,7 +595,7 @@ td#copyCode div {
 }
 
 #linkToBin:hover {
-  background: #fff;
+  opacity:1;
 }
 
 #linkToBin:active {
@@ -604,8 +609,8 @@ td#copyCode div {
   display: none;
   z-index: 99;
   position: absolute;
-  right: 40px;
-  top: 135px;
+  right: 30px;
+  top: 125px;
   width: 400px;
   min-width: 225px;
   max-width: 70%;
@@ -697,7 +702,7 @@ td#copyCode div {
 }
 
 #demo-area .demo-area-content .demo-pre {
-  background: #eee;
+  background: #fff;
   padding: 15px;
   overflow: auto;
   word-wrap: break-word;
@@ -929,3 +934,47 @@ td#copyCode div {
   background:#777;
 }
 
+
+#smaple-menu{
+  display:none;
+  position:absolute;
+  z-index:999;
+  top:115px;
+  right:100px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.4), 0 1px 3px rgba(0,0,0,0.5);
+  width:220px;
+  height:calc(100% - 160px);
+  overflow: hidden;
+  border-radius: 6px;
+  font-size:15px;
+  opacity:0.95;
+  outline:none;
+}
+#smaple-menu-content{
+  width:100%;
+  height:100%;
+  background:#fff;
+  overflow: auto;
+}
+
+#smaple-menu-content h3{
+  font-size:15px;
+  margin:15px 15px 10px;
+}
+
+#smaple-menu-content div{
+  transition:.3s;
+  box-sizing: border-box;
+  padding:4px 15px 4px 30px;
+  color:#333;
+}
+
+#smaple-menu-content div:last-child{
+  margin-bottom:10px;
+}
+
+#smaple-menu-content div:hover{
+  background:#eee;
+  cursor:pointer;
+  color:#000;
+}

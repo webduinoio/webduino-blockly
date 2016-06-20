@@ -1988,7 +1988,6 @@ Blockly.JavaScript['max7219_88'] = function (block) {
     for (var q = 7; q > -1; q--) {
       b = b + array[q][p];
     }
-    console.log(b);
     var b2 = parseInt(b, 2);
     var b10 = b2.toString(10);
     var b16 = b2.toString(16);
@@ -1996,7 +1995,6 @@ Blockly.JavaScript['max7219_88'] = function (block) {
       b16 = '0' + b16;
     }
     c = c + b16;
-    console.log(c);
     b = '';
   }
   var code;

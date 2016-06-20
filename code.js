@@ -344,6 +344,8 @@ Code.loadDemoArea = function () {
 
     if (localStorage.demoArea == 'open') {
       area.className = area.className + "show";
+        //btn.style.color = '#f80';
+        btn.style.opacity = 1;
     }
 
     content(localStorage.demoAreaSelect || 1);
@@ -375,14 +377,20 @@ Code.loadDemoArea = function () {
       area.className = area.className.replace("show", "");
       if (localStorage.demoArea == 'open') {
         localStorage.demoArea = 'close';
+        btn.style.color = '#000';
+        btn.style.opacity = 0.8;
       } else {
         area.className = area.className + "show";
         localStorage.demoArea = 'open';
+        //btn.style.color = '#f80';
+        btn.style.opacity = 1;
       }
     };
     close.onclick = function () {
       area.className = area.className.replace("show", "");
       localStorage.demoArea = 'close';
+      btn.style.color = '#000';
+      btn.style.opacity = 0.8;
     };
 
     select.addEventListener('change', function () {
@@ -397,6 +405,60 @@ Code.loadDemoArea = function () {
       document.getElementById(selectId).className = document.getElementById(selectId).className + " show"
     });
 
+  }
+}
+
+Code.getSample = function () {
+  var sampleBtn = document.getElementById('sampleButton');
+  var sampleMenu = document.getElementById('smaple-menu');
+  var sampleMenuOpen = false;
+  var sampleBtnOver = false;
+  var sampleMenuBtn = document.querySelectorAll('#smaple-menu-content div');
+  var xmlText;
+  var xmlDom;
+
+  sampleBtn.onmouseover = function(){
+    sampleBtnOver = true;
+  };
+
+  sampleBtn.onmouseleave = function(){
+    sampleBtnOver = false;
+  };
+
+  sampleBtn.onclick = function(){
+    if(!sampleMenuOpen){
+      sampleMenuOpen = true;
+      sampleMenu.style.display = 'block';
+      //sampleBtn.style.color = '#f80';
+      sampleBtn.style.opacity = 1;
+      sampleMenu.focus();
+    }else{
+      sampleMenuOpen = false;
+      sampleMenu.style.display = 'none';
+      sampleBtn.style.color = '#000';
+      sampleBtn.style.opacity = 0.8;
+    }
+  };
+
+  sampleMenu.onblur = function(){
+    if(!sampleBtnOver){
+      sampleMenuOpen = false;
+      sampleMenu.style.display = 'none';
+      sampleBtn.style.color = '#000';
+      sampleBtn.style.opacity = 0.8;
+    }
+  }
+
+  for(var i=0; i<sampleMenuBtn.length; i++){
+    sampleMenuBtn[i].onclick = function () {
+      var v = this.getAttribute('data-value');
+      if (window.confirm('確定載入範例程式？')) {
+        Code.workspace.clear();
+        xmlText = smaples(v);
+        xmlDom = Blockly.Xml.textToDom(xmlText);
+        Blockly.Xml.domToWorkspace(xmlDom,Code.workspace);
+      }
+    };
   }
 }
 
@@ -614,6 +676,7 @@ Code.init = function() {
   // Lazy-load the syntax-highlighting.
   window.setTimeout(Code.importPrettify, 1);
   window.setTimeout(Code.loadDemoArea, 1);
+  window.setTimeout(Code.getSample, 1);
   window.setTimeout(Code.checkDeviceOnline, 1);
   window.setTimeout(Code.copyCode, 1);
   window.setTimeout(Code.ga, 1);
