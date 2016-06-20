@@ -413,9 +413,6 @@ Code.getSample = function () {
   var sampleMenu = document.getElementById('smaple-menu');
   var sampleMenuOpen = false;
   var sampleBtnOver = false;
-  var sampleMenuBtn = document.querySelectorAll('#smaple-menu-content div');
-  var xmlText;
-  var xmlDom;
 
   sampleBtn.onmouseover = function(){
     sampleBtnOver = true;
@@ -447,19 +444,20 @@ Code.getSample = function () {
       sampleBtn.style.color = '#000';
       sampleBtn.style.opacity = 0.8;
     }
-  }
+  };
 
-  for(var i=0; i<sampleMenuBtn.length; i++){
-    sampleMenuBtn[i].onclick = function () {
-      var v = this.getAttribute('data-value');
-      if (window.confirm('確定載入範例程式？')) {
-        Code.workspace.clear();
-        xmlText = smaples(v);
-        xmlDom = Blockly.Xml.textToDom(xmlText);
-        Blockly.Xml.domToWorkspace(xmlDom,Code.workspace);
-      }
-    };
-  }
+  sampleMenu.onclick = function (e) {
+    var ele = e.target,
+      chap = ele.getAttribute('data-value');
+
+    if (chap && window.confirm('確定載入範例程式？')) {
+      Code.workspace.clear();
+      var xmlText = smaples(chap);
+      var xmlDom = Blockly.Xml.textToDom(xmlText);
+      Blockly.Xml.domToWorkspace(xmlDom, Code.workspace);
+      sampleBtn.click();
+    }
+  };
 }
 
 /**
