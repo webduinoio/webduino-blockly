@@ -404,15 +404,17 @@ Code.loadDemoArea = function () {
       });
       document.getElementById(selectId).className = document.getElementById(selectId).className + " show"
     });
-
   }
 }
 
-Code.getSample = function () {
-  var sampleBtn = document.getElementById('sampleButton');
-  var sampleMenu = document.getElementById('smaple-menu');
-  var sampleMenuOpen = false;
-  var sampleBtnOver = false;
+Code.loadSample = function () {
+  var sampleBtn = document.getElementById('sampleButton'),
+      sampleMenu = document.getElementById('smaple-menu'),
+      sampleMenuOpen = false,
+      sampleBtnOver = false,
+      sampleTitle = '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="board_ready"',
+      sample_x = 10,
+      sample_y = 10;
 
   sampleBtn.onmouseover = function(){
     sampleBtnOver = true;
@@ -426,7 +428,6 @@ Code.getSample = function () {
     if(!sampleMenuOpen){
       sampleMenuOpen = true;
       sampleMenu.style.display = 'block';
-      //sampleBtn.style.color = '#f80';
       sampleBtn.style.opacity = 1;
       sampleMenu.focus();
     }else{
@@ -447,24 +448,32 @@ Code.getSample = function () {
   };
 
   sampleMenu.onclick = function (e) {
-    var ele = e.target,
-      chap = ele.getAttribute('data-value'),
-      className = ele.className;
 
-    if (chap && window.confirm(Blockly.Msg.SAMPLE_COMFIRM_MSG)) {
+    var ele = e.target,
+        chap = ele.getAttribute('data-value'),
+        className = ele.className;
+
+    var st = function(x,y){
+      return sampleTitle + ' x="' + sample_x + '" y="' + sample_y + '" ';
+    }
+
+    if(chap && window.confirm(Blockly.Msg.SAMPLE_COMFIRM_MSG)) {
       Code.workspace.clear();
-      var xmlText = smaples(chap);
-      var xmlDom = Blockly.Xml.textToDom(xmlText);
+      sample_x = 10;
+      sample_y = 10;
+      var xmlText = st(sample_x,sample_y) + smaples(chap),
+          xmlDom = Blockly.Xml.textToDom(xmlText);
       Blockly.Xml.domToWorkspace(xmlDom, Code.workspace);
       sampleBtn.click();
     }
 
     if(className == 'icon-plus'){
-      var parentValue = ele.parentElement.getAttribute('data-value');
-      var xmlText = smaples(parentValue);
-      var xmlDom = Blockly.Xml.textToDom(xmlText);
+      sample_x = sample_x + 30;
+      sample_y = sample_y + 30;
+      var parentValue = ele.parentElement.getAttribute('data-value'),
+          xmlText = st(sample_x,sample_y) + smaples(parentValue),
+          xmlDom = Blockly.Xml.textToDom(xmlText);
       Blockly.Xml.domToWorkspace(xmlDom, Code.workspace);
-      sampleBtn.click();
     }
 
   };
@@ -684,7 +693,7 @@ Code.init = function() {
   // Lazy-load the syntax-highlighting.
   window.setTimeout(Code.importPrettify, 1);
   window.setTimeout(Code.loadDemoArea, 1);
-  window.setTimeout(Code.getSample, 1);
+  window.setTimeout(Code.loadSample, 1);
   window.setTimeout(Code.checkDeviceOnline, 1);
   window.setTimeout(Code.copyCode, 1);
   window.setTimeout(Code.ga, 1);
