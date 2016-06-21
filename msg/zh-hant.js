@@ -141,6 +141,7 @@ var MSG = {
   samples5_7:"資料庫記錄溫濕度",
   samples5_8:"RFID 簡易門禁系統",
   samples5_9:"LED 點矩陣顯示濕度",
+  samples5_10:"鬧鐘 ( 蜂鳴器 + 點矩陣 )",
   samples6:"開發板連動",
   samples6_1:"土壤濕度 + LED",
   samples6_2:"超音波 + LED 點矩陣"

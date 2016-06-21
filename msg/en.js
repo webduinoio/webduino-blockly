@@ -141,6 +141,7 @@ var MSG = {
   samples5_7:"DHT + Firbase",
   samples5_8:"RFID + Firbase",
   samples5_9:"DHT + LED Matrix",
+  samples5_10:"Clock",
   samples6:"Many Boards",
   samples6_1:"Soil + LED",
   samples6_2:"Ultra Sonic + Matrix"
