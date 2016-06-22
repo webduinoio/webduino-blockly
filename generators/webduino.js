@@ -1597,23 +1597,18 @@ Blockly.JavaScript['sound_recognition'] = function (block) {
 Blockly.JavaScript['sound_recognition_check'] = function (block) {
   var value_text_ = Blockly.JavaScript.valueToCode(block, 'text_', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var a = value_text_.split("'");
-  value_text_ = a.splice(1, (a.length - 2)).join('');
-  var b = value_text_.split(', ');
   var code;
-  if (b.length == 1) {
-    code = 'if(result.resultTranscript.indexOf("' + b[0] + '")!==-1){\n' +
+  var a = value_text_.split('');
+  if(a[0]=='\''){
+    var b = value_text_.replace(/'/g,'');
+    code = 'if(result.resultTranscript.indexOf("' + b + '")!== -1){\n' +
+      '        ' + statements_do_ +
+      '        console.log(event.results[result.resultLength]);\n'+
+      '      }\n';
+  }else{
+    code = 'if(result.resultTranscript.indexOf(' + value_text_ + ')!==-1){\n' +
       '        ' + statements_do_ +
       '      }\n';
-  } else {
-    code = 'if(result.resultTranscript.indexOf("' + b[0] + '")!==-1){\n' +
-      '        ' + statements_do_ +
-      '      }\n';
-    for (var i = 1; i < b.length; i++) {
-      code += 'if(result.resultTranscript.indexOf("' + b[i] + '")!==-1){\n' +
-        '        ' + statements_do_ +
-        '      }\n';
-    }
   }
   return code;
 };
