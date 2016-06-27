@@ -44,7 +44,7 @@ Blockly.JavaScript['demo_text_color'] = function (block) {
 Blockly.JavaScript['demo_image_url'] = function (block) {
   var value_url_ = Blockly.JavaScript.valueToCode(block, 'url_', Blockly.JavaScript.ORDER_ATOMIC);
   if (value_url_ == '\'\'' || !value_url_) {
-    value_url_ = '"http://blockly.webduino.io/media/off.png"';
+    value_url_ = '"//blockly.webduino.io/media/off.jpg"';
   }
   var code = 'document.getElementById("demo-area-03-image").setAttribute("src",' + value_url_ + ');\n';
   return code;
