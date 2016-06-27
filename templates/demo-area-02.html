@@ -2,28 +2,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Webduino Blockly Demo 02</title>
-  <!-- webduino -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="https://webduino.io/components/webduino-js/dist/webduino-all.min.js"></script>
   <script src="https://blockly.webduino.io/webduino-blockly.js"></script>
+  <script src="https://blockly.webduino.io/lib/firebase.js"></script>
   <script src="https://blockly.webduino.io/lib/runtime.min.js"></script>
 </template>
 <template id="css">
 #demo-area-02-light img {
   height: 200px;
   display: none;
+  pointer-events: auto!important;
 }
 
 #demo-area-02-light.on #demo-area-02-on {
   display: inline-block;
+  pointer-events: auto!important;
 }
 
 #demo-area-02-light.off #demo-area-02-off {
   display: inline-block;
+  pointer-events: auto!important;
 }
 </template>
 <template id="body">
   <div id="demo-area-02-light" class="off">
-    <img src="http://blockly.webduino.io/media/off.png" id="demo-area-02-off">
-    <img src="http://blockly.webduino.io/media/on.png" id="demo-area-02-on">
+    <img src="//blockly.webduino.io/media/off.jpg" id="demo-area-02-off">
+    <img src="//blockly.webduino.io/media/on.jpg" id="demo-area-02-on">
   </div>
 </template>

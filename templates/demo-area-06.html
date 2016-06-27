@@ -2,10 +2,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Webduino Blockly Demo 06</title>
-  <!-- webduino -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="https://webduino.io/components/webduino-js/dist/webduino-all.min.js"></script>
   <script src="https://blockly.webduino.io/webduino-blockly.js"></script>
+  <script src="https://blockly.webduino.io/lib/firebase.js"></script>
   <script src="https://blockly.webduino.io/lib/runtime.min.js"></script>
+</template>
+<template id="css">
+#demo-area-06-input {
+  pointer-events: auto!important;
+}
 </template>
 <template id="body">
   數值：<span id="demo-area-06-input-value">90</span><br>
