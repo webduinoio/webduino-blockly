@@ -7,12 +7,12 @@
   <title>Webduino Blockly 線上編輯工具</title>
   <meta name="viewport" content="width=720, initial-scale=1" />
   <meta itemprop="name" content="Webduino Blockly 線上編輯工具">
-  <meta itemprop="image" content="hhttp://blockly.webduino.io/media/snapshot.jpg">
+  <meta itemprop="image" content="//blockly.webduino.io/media/snapshot.jpg">
   <meta itemprop="description" content="Webduino Blockly 線上編輯工具，提供簡單便利的編輯模式，同時具備了完整豐富的線上影音教學，在程式積木拖拉之餘，還可以產生標準的 Javascript 進行後續的應用開發，大幅降低學習門檻，輕鬆玩轉 Arduino 以及相關物聯網的應用。">
 
   <meta property="og:title" content="Webduino Blockly 線上編輯工具" >
-  <meta property="og:url" content="http://blockly.webduino.io/index.html">
-  <meta property="og:image" content="http://blockly.webduino.io/media/snapshot.jpg">
+  <meta property="og:url" content="//blockly.webduino.io/index.html">
+  <meta property="og:image" content="//blockly.webduino.io/media/snapshot.jpg">
   <meta property="og:description" content="Webduino Blockly 線上編輯工具，提供簡單便利的編輯模式，同時具備了完整豐富的線上影音教學，在程式積木拖拉之餘，還可以產生標準的 Javascript 進行後續的應用開發，大幅降低學習門檻，輕鬆玩轉 Arduino 以及相關物聯網的應用。" >
 
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -24,7 +24,6 @@
   <script src="components/blockly-src/blocks_compressed.js"></script>
   <script src="components/blockly-src/javascript_compressed.js"></script>
   <script src="lib/handlebars-3.0.3.min.js"></script>
-  <script src="https://webduino.io/components/webduino-js/dist/webduino-all.min.js"></script>
   <script src="code.js"></script>
   <script src="webduino-blockly.js"></script>
   <script src="webduino-samples.js"></script>
@@ -40,10 +39,13 @@
   <script src="lib/tracking-min.js"></script>
   <script src="lib/face-min.js"></script>
   <script src="lib/saveSvgAsPng.js"></script>
+  <script src="lib/webduino-all-0.3.8.min.js"></script>
 </head>
 
 <body>
 <script>
+  var ga = function(){};
+
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

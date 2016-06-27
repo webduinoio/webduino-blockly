@@ -47,7 +47,7 @@
         data.panel_js = jsPreprocessorMap[config.jsPreprocessor];
       }
 
-      post('http://jsfiddle.net/api/post/library/pure/', data);
+      post('//jsfiddle.net/api/post/library/pure/', data);
     },
 
     codepen: function (config) {
@@ -60,7 +60,7 @@
         data.js_pre_processor = jsPreprocessorMap[config.jsPreprocessor];
       }
 
-      post('http://codepen.io/pen/define/', {
+      post('//codepen.io/pen/define/', {
         data: data
       });
     },
@@ -75,7 +75,7 @@
 
       config.modes = config.modes || 'html,css,js,output';
 
-      post('https://bin.webduino.io?' + config.modes, data);
+      post('//bin.webduino.io?' + config.modes, data);
     }
   };
 
