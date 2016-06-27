@@ -10,9 +10,45 @@
 }
 */
 
-+(function (global) {
++(function (window, document) {
 
   'use strict';
+
+  function loadTemplate(url, callback) {
+    var link = document.createElement('link');
+
+    link.rel = 'import';
+    link.href = url;
+    link.onload = function () {
+      var imp = link.import,
+        head = imp.querySelector('#head'),
+        body = imp.querySelector('#body'),
+        css = imp.querySelector('#css');
+
+      callback({
+        head: head ? head.innerHTML.trim() : '',
+        body: body ? body.innerHTML.trim() : '',
+        css: css ? css.innerHTML.trim() : ''
+      });
+    };
+
+    document.head.appendChild(link);
+  }
+
+  function assembleHtml(head, body, css, js) {
+    var html = '<!doctype html>\n<html>\n\n';
+
+    html += ('<head>' +
+      (head ? '\n  ' + head + '\n' : '') +
+      (css ? '\n  <style>' + css + '</style>\n' : '') +
+      '</head>\n\n');
+    html += ('<body>' +
+      (body ? '\n  ' + body + '\n' : '') +
+      (js ? '\n  <script>' + js + '</script>\n' : '') +
+      '</body>\n\n');
+
+    return html;
+  }
 
   function post(url, data) {
     var form = document.createElement("form");
@@ -46,6 +82,7 @@
       if (config.jsPreprocessor) {
         data.panel_js = jsPreprocessorMap[config.jsPreprocessor];
       }
+      data.html = assembleHtml(data.head, data.body);
 
       post('//jsfiddle.net/api/post/library/pure/', data);
     },
@@ -59,6 +96,7 @@
       if (config.jsPreprocessor) {
         data.js_pre_processor = jsPreprocessorMap[config.jsPreprocessor];
       }
+      data.html = assembleHtml(data.head, data.body);
 
       post('//codepen.io/pen/define/', {
         data: data
@@ -72,13 +110,18 @@
         data[config.jsPreprocessor] = data.js;
         delete data.js;
       }
-
+      data.html = assembleHtml(data.head, data.body);
       config.modes = config.modes || 'html,css,js,output';
 
       post('//bin.webduino.io?' + config.modes, data);
     }
   };
 
-  global.launchers = launchers;
+  window.launcher = {
+    loadTemplate: loadTemplate,
+    jsfiddle: launchers.jsfiddle,
+    codepen: launchers.codepen,
+    jsbin: launchers.jsbin
+  };
 
-}(window));
+}(window, window.document));

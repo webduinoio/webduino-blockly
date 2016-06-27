@@ -6,42 +6,30 @@
   <script src="components/webcomponentsjs/webcomponents-lite.min.js"></script>
   <script src="lib/jquery-2.2.1.min.js"></script>
   <script src="launcher.js"></script>
-</head>
-
-<body>
   <script>
-  var url = window.location.href.split('#')[0],
-    config = JSON.parse(localStorage.getItem(url) || '{"data":{}}'),
-    tpl = getParam('tpl', (config.tpl || 'default'));
-
-  loadTemplate(tpl, function(data) {
-    $.extend(config.data, data);
-    launchers['jsbin'](config);
-  });
-
-  function getParam(name, defaultValue) {
+  function getUrlParam(name, defaultValue) {
     var val = location.search.match(new RegExp('[?&]' + name + '=([^&]+)'));
     return val ? decodeURIComponent(val[1].replace(/\+/g, '%20')) : defaultValue;
   }
 
-  function loadTemplate(id, callback) {
-    var link = document.createElement('link');
-    link.rel = 'import';
-    link.href = 'templates/' + id + '.html';
-    link.onload = function() {
-      var imp = link.import,
-        head = imp.querySelector('#head'),
-        body = imp.querySelector('#body'),
-        css = imp.querySelector('#css');
+  window.addEventListener('load', function() {
+    var url = window.location.href.split('#')[0],
+      dataStr = localStorage.getItem(url);
 
-      callback({
-        html: '<!doctype html>\n<html>\n\n<head>' + (head ? head.innerHTML : '') + '</head>\n\n<body>' + (body ? body.innerHTML : '') + '</body>\n\n</html>',
-        css: css ? css.innerHTML.trim() : ''
+    if (dataStr) {
+      var config = JSON.parse(dataStr),
+        tpl = getUrlParam('tpl', (config.tpl || 'default'));
+
+      launcher.loadTemplate('./templates/' + tpl + '.html', function(data) {
+        $.extend(config.data, data);
+        launcher.jsbin(config);
       });
-    };
-    document.head.appendChild(link);
-  }
+    }
+  });
   </script>
+</head>
+
+<body>
 </body>
 
 </html>
