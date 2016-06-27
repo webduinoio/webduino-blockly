@@ -114,6 +114,18 @@
       config.modes = config.modes || 'html,css,js,output';
 
       post('//bin.webduino.io?' + config.modes, data);
+    },
+
+    sandbox: function (frame, data) {
+      var code = assembleHtml(data.head, data.body, data.css, data.js);
+
+      frame.addEventListener('load', function () {
+        frame.style.display = 'block';
+      }, false);
+      frame.style.display = 'none';
+      frame.contentWindow.document.open();
+      frame.contentWindow.document.write(code);
+      frame.contentWindow.document.close();
     }
   };
 
@@ -121,7 +133,8 @@
     loadTemplate: loadTemplate,
     jsfiddle: launchers.jsfiddle,
     codepen: launchers.codepen,
-    jsbin: launchers.jsbin
+    jsbin: launchers.jsbin,
+    sandbox: launchers.sandbox
   };
 
 }(window, window.document));

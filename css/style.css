@@ -1000,3 +1000,10 @@ td#copyCode div {
 #smaple-menu-content div:hover i:hover{
   color:#f80;
 }
+
+#demo-frame {
+  width: 100%;
+  height: calc(100% - 120px);
+  border: none;
+  z-index: 2;
+}

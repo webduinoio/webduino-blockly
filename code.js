@@ -84,12 +84,16 @@ Code.getPage = function () {
 Code.getDemoPage = function () {
   var area = document.querySelector('#demo-area.show');
   if (area) {
-    var demo = area.querySelector('.da.show');
-    if (demo) {
-      return demo.id;
+    var select = document.querySelector('#demo-select');
+    var link;
+    if ((select.value) * 1 < 10) {
+      link = '0' + select.value;
+    } else {
+      link = select.value;
     }
+    return 'demo-area-' + link;
   }
-  return '';
+  return 'default';
 };
 
 /**
@@ -314,98 +318,81 @@ Code.copyCode = function (copy) {
 }
 
 Code.loadDemoArea = function () {
-  var btn, area, select, close, da, option, contentHeight, resizeBar, array=[];
-  area = document.getElementById('demo-area');
-  function content(p) {
-    var i;
-    array.forEach(function(e,i){
-      da[i].className = da[i].className.replace("show", "");
-    });
-    option[p - 1].selected = true;
-    document.getElementById('demo-area-0' + p).className = document.getElementById('demo-area-0' + p).className + " show";
-    localStorage.demoAreaSelect = p;
+  var area = document.getElementById('demo-area');
+  var btn = document.getElementById('demoButton');
+  var select = document.getElementById('demo-select');
+  var close = document.querySelector('.close-btn');
+  var contentHeight = document.getElementById('content_blocks').offsetHeight;
+  var resizeBar = document.getElementById('demo-resize-bar');
+
+  area.style.height = (contentHeight - 130) + 'px';
+  area.className = area.className.replace("show", "");
+
+  if (localStorage.demoAreaWidth) {
+    area.style.width = localStorage.demoAreaWidth;
   }
-  if (area) {
-    btn = document.getElementById('demoButton');
-    select = document.getElementById('demo-select');
-    close = document.querySelector('.close-btn');
-    da = document.querySelectorAll('.da');
-    option = document.querySelectorAll('#demo-select option');
+
+  if (localStorage.demoArea == 'open') {
+    area.className = area.className + "show";
+  }
+
+  if (!localStorage.demoAreaSelect) {
+    localStorage.demoAreaSelect = 1;
+  }
+
+  select.value = localStorage.demoAreaSelect;
+  Code.reloadSandbox();
+
+  window.addEventListener('resize', function () {
     contentHeight = document.getElementById('content_blocks').offsetHeight;
-    resizeBar = document.getElementById('demo-resize-bar');
-
-    array= Array.from(da);
     area.style.height = (contentHeight - 130) + 'px';
-    area.className = area.className.replace("show", "");
+  });
 
-    if (localStorage.demoAreaWidth) {
-      area.style.width = localStorage.demoAreaWidth;
-    }
+  resizeBar.onmousedown = function (e) {
+    area.style.opacity = '0.4';
+    var frame = document.getElementById('demo-frame');
+    frame.style.pointerEvents = 'none';
+    var ox = e.pageX;
+    var dw = area.offsetWidth;
+    area.className += " resize";
 
-    if (localStorage.demoArea == 'open') {
-      area.className = area.className + "show";
-        //btn.style.color = '#f80';
-        btn.style.opacity = 1;
-    }
-
-    content(localStorage.demoAreaSelect || 1);
-
-    window.addEventListener('resize', function () {
-      contentHeight = document.getElementById('content_blocks').offsetHeight;
-      area.style.height = (contentHeight - 130) + 'px';
-    });
-
-    resizeBar.onmousedown = function (e) {
-      area.style.opacity = '0.4';
-      var ox = e.pageX;
-      var dw = area.offsetWidth;
-      area.className = area.className + " resize";
-      document.onmousemove = function (event) {
-        var rx = event.pageX;
-        area.style.width = dw - rx + ox - 20 + 'px';
-        localStorage.demoAreaWidth = area.style.width;
-      }
-    }
-
-    document.onmouseup = function () {
-      area.style.opacity = '1';
-      area.className = area.className.replace(" resize", "");
-      document.onmousemove = null;
-    }
-
-    btn.onclick = function () {
-      area.className = area.className.replace("show", "");
-      if (localStorage.demoArea == 'open') {
-        localStorage.demoArea = 'close';
-        btn.style.color = '#000';
-        btn.style.opacity = 0.8;
-      } else {
-        area.className = area.className + "show";
-        localStorage.demoArea = 'open';
-        //btn.style.color = '#f80';
-        btn.style.opacity = 1;
-      }
+    document.onmousemove = function (event) {
+      var rx = event.pageX;
+      area.style.width = dw - rx + ox - 20 + 'px';
+      localStorage.demoAreaWidth = area.style.width;
     };
-    close.onclick = function () {
+  };
+
+  document.onmouseup = function () {
+    area.style.opacity = '1';
+    var frame = document.getElementById('demo-frame');
+    frame.style.pointerEvents = 'auto';
+    area.className = area.className.replace("resize", "");
+    document.onmousemove = null;
+  };
+
+  btn.onclick = function () {
+    if (localStorage.demoArea == 'open') {
       area.className = area.className.replace("show", "");
       localStorage.demoArea = 'close';
-      btn.style.color = '#000';
-      btn.style.opacity = 0.8;
-    };
+    } else {
+      area.className += " show";
+      localStorage.demoArea = 'open';
+    }
+    Code.reloadSandbox();
+  };
 
-    select.addEventListener('change', function () {
-      var i;
-      var selectValue = this.value;
-      var selectId = 'demo-area-0' + selectValue;
-      ga('send', 'event', 'Webduino-blockly', 'demo select', selectValue);
-      localStorage.demoAreaSelect = selectValue;
-      array.forEach(function(e,i){
-        da[i].className = da[i].className.replace("show", "");
-      });
-      document.getElementById(selectId).className = document.getElementById(selectId).className + " show"
-    });
-  }
-}
+  close.onclick = function () {
+    area.className = area.className.replace("show", "");
+    localStorage.demoArea = 'close';
+  };
+
+  select.onchange = function () {
+    ga('send', 'event', 'Webduino-blockly', 'demo select', this.value);
+    localStorage.demoAreaSelect = this.value;
+    Code.reloadSandbox();
+  };
+};
 
 Code.loadSample = function () {
   var sampleBtn = document.getElementById('sampleButton'),
@@ -486,6 +473,10 @@ Code.loadSample = function () {
 Code.LANG = Code.getLang();
 
 Code.PAGE = Code.getPage();
+
+Code.running = false;
+
+Code.lastRun = 0;
 
 /**
  * List of tab names.
@@ -649,22 +640,10 @@ Code.init = function() {
   Code.tabClick(Code.selected);
 
   Code.bindClick('linkToBin', function () {
-    var urls = (location.protocol + '//' + location.host + location.pathname).split('/'),
-      code = Blockly.JavaScript.workspaceToCode(Code.workspace),
-      babelize = code.indexOf('async function') !== -1,
-      page = Code.getPage(),
-      config = {
-        tpl: page === 'index' ? Code.getDemoPage() : page,
-        modes: 'html,css,js,output',
-        data: {
-          js: babelize ?
-            '(async function () {\n\n' + code + '\n}());' : code
-        },
-        jsPreprocessor: babelize ? 'babel' : ''
-      };
-
+    var urls = (location.protocol + '//' + location.host + location.pathname).split('/');
+    var ctx = Code.getContext();
     urls.pop();
-    localStorage.setItem(urls.join('/') + '/launcher.html', JSON.stringify(config));
+    localStorage.setItem(urls.join('/') + '/launcher.html', JSON.stringify(ctx));
   });
 
   Code.bindClick('trashButton',
@@ -698,6 +677,20 @@ Code.init = function() {
   window.setTimeout(Code.copyCode, 1);
   window.setTimeout(Code.ga, 1);
 
+  var eventDelegater = function (e) {
+    var frame = document.getElementById('demo-frame'),
+      doc = frame.contentWindow.document;
+
+    if (Code.running) {
+      var event = doc.createEvent('Event');
+      event.initEvent(e.type, true, true);
+      event.key = e.key;
+      event.keyCode = e.keyCode;
+      doc.body.dispatchEvent(event);
+    }
+  };
+  window.addEventListener('keydown', eventDelegater);
+  window.addEventListener('keyup', eventDelegater);
 };
 
 Code.renderPage = function (callback) {
@@ -779,27 +772,90 @@ Code.initLanguage = function() {
  * Execute the user's code.
  * Just a quick and dirty eval.  Catch infinite loops.
  */
-Code.runJS = function() {
-  Blockly.JavaScript.INFINITE_LOOP_TRAP = '  checkTimeout();\n';
-  var timeouts = 0;
-  var checkTimeout = function() {
-    if (timeouts++ > 1000000) {
-      throw MSG['timeout'];
-    }
-  };
-  var code = Blockly.JavaScript.workspaceToCode(Code.workspace);
-  if (code.indexOf('async function') === -1) {
-    code = 'disconnectBoards(function () {' + code + '})'; 
+Code.runJS = function () {
+  var now = Date.now();
+
+  if (now - Code.lastRun < 500) {
+    return;
+  }
+  Code.lastRun = now;
+
+  Code.toggleRunning();
+  Code.reloadSandbox();
+};
+
+Code.toggleRunning = function () {
+  var runBtn = document.getElementById('runButton');
+  var select = document.getElementById('demo-select');
+  var demoBtn = document.getElementById('demoButton');
+  var demoStopBtn = document.querySelector('.close-btn');
+
+  if (!Code.running) {
+    runBtn.style.backgroundColor = "#0a5";
+    runBtn.style.borderColor = "#0a5";
+    document.querySelector('#runButton i').setAttribute('class', 'icon-stop2');
+    document.querySelector('#runButton div').innerHTML = "停止執行";
+    select.disabled = true;
+    demoBtn.disabled = true;
+    demoBtn.style.opacity = 0.5;
+    demoStopBtn.style.pointerEvents = 'none';
+    demoStopBtn.style.opacity = 0.2;
   } else {
-    code = Code.transform('disconnectBoards(async function () {' + code + '})');
+    runBtn.style.backgroundColor = "#dd4b39";
+    runBtn.style.borderColor = "#dd4b39";
+    document.querySelector('#runButton i').setAttribute('class', 'icon-play3');
+    document.querySelector('#runButton div').innerHTML = "執行程式";
+    select.disabled = false;
+    demoBtn.disabled = false;
+    demoBtn.style.opacity = 0.9;
+    demoStopBtn.style.pointerEvents = 'auto';
+    demoStopBtn.style.opacity = 0.5;
   }
 
-  Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-  try {
-    eval(code);
-  } catch (e) {
-    alert(MSG['badCode'].replace('%1', e));
-  }
+  Code.running = !Code.running;
+};
+
+Code.reloadSandbox = function () {
+  var container = document.querySelector('.demo-area-content');
+  var ctx = Code.getContext();
+
+  launcher.loadTemplate('./templates/' + ctx.tpl + '.html', function (data) {
+    if (Code.running) {
+      if (ctx.jsPreprocessor === 'babel') {
+        data.js = Code.transform(ctx.data.js);
+      } else {
+        data.js = ctx.data.js;
+      }
+    }
+
+    var frame = container.querySelector('#demo-frame');
+    if (frame) {
+      container.removeChild(frame);
+      frame = null;
+    }
+
+    frame = document.createElement('iframe');
+    frame.id = 'demo-frame';
+    frame.style.display = 'block';
+    container.appendChild(frame);
+
+    launcher.sandbox(frame, data);
+  });
+};
+
+Code.getContext = function () {
+  var code = Blockly.JavaScript.workspaceToCode(Code.workspace),
+    babelize = code.indexOf('async function') !== -1,
+    page = Code.getPage();
+
+  return {
+    tpl: page === 'index' ? Code.getDemoPage() : page,
+    modes: 'html,css,js,output',
+    data: {
+      js: code
+    },
+    jsPreprocessor: babelize ? 'babel' : ''
+  };
 };
 
 Code.transform = function (code) {
@@ -811,7 +867,7 @@ Code.transform = function (code) {
   } catch (e) {
     alert(e);
   }
-}
+};
 
 /**
  * Discard all blocks from the workspace.
@@ -908,6 +964,8 @@ Blockly.JavaScript['workspaceToCode'] = function (workspace) {
   var code = Blockly.JavaScript['_workspaceToCode'].call(Blockly.JavaScript, workspace);
   if (code.indexOf('await ') === -1) {
     code = code.replace(new RegExp('async function', 'g'), 'function');
+  } else {
+    code = '(async function () {\n\n' + code + '\n}());';
   }
   return code;
 };
