@@ -1193,6 +1193,8 @@ Blockly.WorkspaceSvg.prototype.showContextMenu_ = function(e) {
   Blockly.ContextMenu.show(e, menuOptions, this.RTL);
 };
 
+Blockly.WorkspaceSvg.prototype.preloadAudio_ = function () {};
+
 Blockly.JavaScript.depth = 0;
 
 // Load the Code demo's language strings.
