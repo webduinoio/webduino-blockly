@@ -121,6 +121,9 @@
 
       frame.addEventListener('load', function () {
         frame.style.display = 'block';
+        setTimeout(function () {
+          window.scrollTo(0, 0);
+        }, 1);
       }, false);
       frame.style.display = 'none';
       frame.contentWindow.document.open();

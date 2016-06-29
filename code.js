@@ -677,20 +677,30 @@ Code.init = function() {
   window.setTimeout(Code.copyCode, 1);
   window.setTimeout(Code.ga, 1);
 
-  var eventDelegater = function (e) {
-    var frame = document.getElementById('demo-frame'),
-      doc = frame.contentWindow.document;
-
+  var keyboardDelegator = function (e) {
     if (Code.running) {
-      var event = doc.createEvent('Event');
+      var frame = document.getElementById('demo-frame'),
+        doc = frame.contentWindow.document,
+        event = doc.createEvent('Event');
+
       event.initEvent(e.type, true, true);
       event.key = e.key;
       event.keyCode = e.keyCode;
       doc.body.dispatchEvent(event);
     }
   };
-  window.addEventListener('keydown', eventDelegater);
-  window.addEventListener('keyup', eventDelegater);
+  window.addEventListener('keydown', keyboardDelegator, false);
+  window.addEventListener('keyup', keyboardDelegator, false);
+
+  var messageDelegator = function (e) {
+    var frame = document.getElementById('demo-frame'),
+      msg = e.data;
+
+    if (msg.jsonrpc && msg.result) {
+      frame.contentWindow.postMessage(msg, window.location.origin);
+    }
+  };
+  window.addEventListener('message', messageDelegator, false);
 };
 
 Code.renderPage = function (callback) {
@@ -830,16 +840,38 @@ Code.reloadSandbox = function () {
 
     var frame = container.querySelector('#demo-frame');
     if (frame) {
-      container.removeChild(frame);
-      frame = null;
+      frame.contentWindow.addEventListener('unload', function () {
+        createIframe();
+      }, false);
+
+      var event = frame.contentWindow.document.createEvent('UIEvent');
+      event.initUIEvent('beforeunload', true, true);
+      frame.contentWindow.dispatchEvent(event);
+
+      setTimeout(function () {
+        container.removeChild(frame);
+        frame = null;
+      }, 50);
+    } else {
+      createIframe();
     }
 
-    frame = document.createElement('iframe');
-    frame.id = 'demo-frame';
-    frame.style.display = 'block';
-    container.appendChild(frame);
+    function createIframe() {
+      frame = document.createElement('iframe');
+      frame.id = 'demo-frame';
+      frame.style.display = 'block';
+      container.appendChild(frame);
 
-    launcher.sandbox(frame, data);
+      launcher.sandbox(frame, data);
+
+      frame.contentWindow.addEventListener('message', function (e) {
+        var msg = e.data;
+
+        if (msg.jsonrpc && msg.method) {
+          window.postMessage(msg, window.location.origin);
+        }
+      }, false);
+    }
   });
 };
 
@@ -1271,4 +1303,4 @@ window.addEventListener('load', function () {
   Code.renderPage(function () {
     Code.init();
   });
-});
+}, false);
