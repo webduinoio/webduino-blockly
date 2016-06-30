@@ -714,14 +714,16 @@ Blockly.JavaScript['board_ready'] = function (block) {
   var type;
   if (checkbox_type_ == '1') {
     if (checkbox_multi_ == 'TRUE') {
-      type = 'boardReady({device:' + value_device_ + ' , multi:true}, async function (board) {\n';
+      type = 'boardReady({device:' + value_device_ + ', multi: true}, async function (board) {\n';
     } else {
       type = 'boardReady(' + value_device_ + ', async function (board) {\n';
     }
   } else if (checkbox_type_ == '2') {
-    type = 'boardReady({ transport: \'serial\', path:' + value_device_ + '}, async function (board) {\n';
+    type = 'boardReady({transport: \'serial\', path: ' + value_device_ + '}, async function (board) {\n';
   } else if (checkbox_type_ == '3') {
-    type = 'boardReady({ transport: \'bluetooth\', address:' + value_device_ + '}, async function (board) {\n';
+    type = 'boardReady({transport: \'bluetooth\', address: ' + value_device_ + '}, async function (board) {\n';
+  } else if (checkbox_type_ == '4') {
+    type = 'boardReady({transport: \'websocket\', url: ' + value_device_ + '}, async function (board) {\n';
   }
 
   var code;

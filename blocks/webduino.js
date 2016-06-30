@@ -872,7 +872,8 @@ Blockly.Blocks['board_ready'] = {
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.WEBDUINO_BOARD_WIFI, "1"],
         [Blockly.Msg.WEBDUINO_BOARD_SERIAL, "2"],
-        [Blockly.Msg.WEBDUINO_BOARD_BLUETOOTH, "3"]
+        [Blockly.Msg.WEBDUINO_BOARD_BLUETOOTH, "3"],
+        [Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET, "4"]
       ]), "type_")
       .appendField(":");
     this.appendDummyInput()
@@ -1011,7 +1012,8 @@ Blockly.Blocks['pin_board'] = {
     var nameMap = {
         '1': Blockly.Msg.WEBDUINO_BOARD_WIFI,
         '2': Blockly.Msg.WEBDUINO_BOARD_SERIAL,
-        '3': Blockly.Msg.WEBDUINO_BOARD_BLUETOOTH
+        '3': Blockly.Msg.WEBDUINO_BOARD_BLUETOOTH,
+        '4': Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET
       },
       xml = Blockly.Xml.workspaceToDom(Code.workspace),
       boards = xml.querySelectorAll("block[type=board_ready]"),
@@ -1030,15 +1032,19 @@ Blockly.Blocks['pin_board'] = {
 
       switch (type) {
       case '1':
-        menus.push(['(' + nameMap['1'] + ') ' + param, "{ transport: 'mqtt', device: '" + param + "' }"]);
+        menus.push(['(' + nameMap['1'] + ') ' + param, "{transport: 'mqtt', device: '" + param + "'}"]);
         break;
 
       case '2':
-        menus.push(['(' + nameMap['2'] + ') ' + param, "{ transport: 'serial', path: '" + param + "' }"]);
+        menus.push(['(' + nameMap['2'] + ') ' + param, "{transport: 'serial', path: '" + param + "'}"]);
         break;
 
       case '3':
-        menus.push(['(' + nameMap['3'] + ') ' + param, "{ transport: 'bluetooth', address: '" + param + "' }"]);
+        menus.push(['(' + nameMap['3'] + ') ' + param, "{transport: 'bluetooth', address: '" + param + "'}"]);
+        break;
+
+      case '4':
+        menus.push(['(' + nameMap['4'] + ') ' + param, "{transport: 'websocket', url: '" + param + "'}"]);
         break;
       }
     }

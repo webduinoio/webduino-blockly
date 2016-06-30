@@ -26,7 +26,7 @@
         device: options
       };
     }
-    if (options.device) {
+    if (options.device || options.url) {
       board = new webduino.WebArduino(options);
     } else {
       board = new webduino.Arduino(options);

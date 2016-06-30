@@ -227,6 +227,7 @@ Blockly.Msg.WEBDUINO_BOARD_SERVER = "Private Server";
 Blockly.Msg.WEBDUINO_BOARD_WIFI = "Wi-Fi";
 Blockly.Msg.WEBDUINO_BOARD_SERIAL = "Serial Port";
 Blockly.Msg.WEBDUINO_BOARD_BLUETOOTH = "Bluetooth";
+Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET = "WebSocket";
 Blockly.Msg.WEBDUINO_BOARD_MULTI = "  multi";
 Blockly.Msg.WEBDUINO_BOARD_CHAIN = "chain";
 Blockly.Msg.WEBDUINO_BOARD_CHAIN_OK = "When all boards chain ready";
