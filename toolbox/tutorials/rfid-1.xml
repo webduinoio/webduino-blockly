@@ -1,0 +1,44 @@
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <sep></sep>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+    <category id="catRFID">
+      <block type="variables_set">
+        <field name="VAR">rfid</field>
+        <value name="VALUE">
+          <block type="rfid_new">
+            <field name="sda_">10</field>
+            <field name="sck_">13</field>
+            <field name="mosi_">11</field>
+            <field name="miso_">12</field>
+          </block>
+        </value>
+      </block>
+      <block type="rfid_enter"></block>
+      <block type="rfid_uid"></block>
+      <block type="rfid_if">
+        <value name="uid_">
+            <block type="text">
+              <field name="TEXT">...</field>
+            </block>
+        </value>
+      </block>
+      <block type="rfid_leave"></block>
+    </category>
+  <category id="catTutorials">
+    <block type="tutorial_rfid_code"></block>
+  </category>
+  <sep></sep>
+</xml>

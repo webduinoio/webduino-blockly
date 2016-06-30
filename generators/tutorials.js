@@ -278,35 +278,30 @@ oooooo   oooo                           .                .o8
 Blockly.JavaScript['tutorial_youtube'] = function (block) {
   var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
   var text_id_ = block.getFieldValue('id_');
-  var code = 'var checkYoutubeLoad=0;\n' +
-    'onYouTubeIframeAPIReady();\n' +
-    'function onYouTubeIframeAPIReady() {\n' +
-    '  ' + value_name_ + ' = new YT.Player("player", {\n' +
-    '    height: "240",\n' +
-    '    width: "100%",\n' +
-    '    videoId: "' + text_id_ + '",\n' +
-    '    playerVars: {\n' +
-    '      "autoplay": 1,\n' +
-    '      "controls": 1},\n' +
-    '    events: {\n' +
-    '      "onReady": onPlayerReady,\n' +
-    '      "onStateChange": onPlayerStateChange\n' +
-    '    }\n' +
-    '  });\n' +
-    '}\n' +
-    'function onPlayerReady(event) {\n' +
-    '  event.target.playVideo();\n' +
-    '  checkYoutubeLoad=1;\n' +
-    '}\n' +
-    'var done = false;\n' +
-    'function onPlayerStateChange(event) {\n' +
-    '  if (event.data == YT.PlayerState.PLAYING && !done) {\n' +
-    '    done = true;\n' +
+  var code = 
+    '(function () {\n' +
+    '  var tag = document.createElement("script");\n' +
+    '  tag.src = "https://www.youtube.com/iframe_api";\n' +
+    '  var scptTag = document.getElementsByTagName("script")[0];\n' +
+    '  scptTag.parentNode.insertBefore(tag, scptTag);\n' +
+    '  window.onYouTubeIframeAPIReady = playVideo;\n\n' +
+    '  function playVideo() {\n' +
+    '    ' + value_name_ + ' = new YT.Player("player", {\n' +
+    '      height: "240",\n' +
+    '      width: "96%",\n' +
+    '      videoId: "' + text_id_ + '",\n' +
+    '      playerVars: {\n' +
+    '        autoplay: 1,\n' +
+    '        controls: 1\n' +
+    '      },\n' +
+    '      events: {\n' +
+    '        onReady: function (evt) {\n' +
+    '          ' + value_name_ + '.playerReady = true;\n' +
+    '        }\n' +
+    '      }\n' +
+    '    });\n' +
     '  }\n' +
-    '}\n' +
-    'function stopVideo() {\n' +
-    '  ' + value_name_ + '.stopVideo();\n' +
-    '}\n';
+    '}());\n\n';
   return code;
 };
 
@@ -316,12 +311,12 @@ Blockly.JavaScript['tutorial_youtube_volume'] = function (block) {
   var varA = Blockly.JavaScript.variableDB_.getDistinctName(
     'varA', Blockly.Variables.NAME_TYPE);
   var code = 'var ' + varA + ' = ' + value_volume_ + ';\n' +
-    '  if(' + varA + '>=100){\n' +
-    '    ' + varA + '=100;\n' +
-    '  }\n' +
-    '  if(checkYoutubeLoad==1){\n' +
-    '    ' + variable_name_ + '.setVolume(' + varA + ');\n' +
-    '  }\n';
+    'if (' + varA + ' >= 100) {\n' +
+    '  ' + varA + ' = 100;\n' +
+    '}\n' +
+    'if (' + variable_name_ + '.playerReady) {\n' +
+    '  ' + variable_name_ + '.setVolume(' + varA + ');\n' +
+    '}\n';
   return code;
 };
 
@@ -329,9 +324,9 @@ Blockly.JavaScript['tutorial_youtube_volume'] = function (block) {
 Blockly.JavaScript['tutorial_youtube_speed'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var dropdown_speed_ = block.getFieldValue('speed_');
-  var code = '  if(checkYoutubeLoad==1){\n' +
-    '    ' + variable_name_ + '.setPlaybackRate(' + dropdown_speed_ + ');\n' +
-    '  }\n';
+  var code = 'if (' + variable_name_ + '.playerReady) {\n' +
+    '  ' + variable_name_ + '.setPlaybackRate(' + dropdown_speed_ + ');\n' +
+    '}\n';
   return code;
 };
 
@@ -339,19 +334,19 @@ Blockly.JavaScript['tutorial_youtube_control'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var dropdown_status_ = block.getFieldValue('status_');
   var code;
-  if(dropdown_status_=='1'){
-    code = '  if(checkYoutubeLoad==1){\n' +
-      '    ' + variable_name_ + '.playVideo();\n' +
-      '  }\n';
-  }else if(dropdown_status_=='2'){
-    code = '  if(checkYoutubeLoad==1){\n' +
-      '    ' + variable_name_ + '.pauseVideo();\n' +
-      '  }\n';
-  }else if(dropdown_status_=='0'){
-    code = '  if(checkYoutubeLoad==1){\n' +
-      '    ' + variable_name_ + '.stopVideo();\n' +
-      '    ' + variable_name_ + '.seekTo(0);\n' +
-      '  }\n';
+  if (dropdown_status_ == '1') {
+    code = 'if (' + variable_name_ + '.playerReady) {\n' +
+      '  ' + variable_name_ + '.playVideo();\n' +
+      '}\n';
+  } else if (dropdown_status_ == '2') {
+    code = 'if (' + variable_name_ + '.playerReady) {\n' +
+      '  ' + variable_name_ + '.pauseVideo();\n' +
+      '}\n';
+  } else if (dropdown_status_ == '0') {
+    code = 'if (' + variable_name_ + '.playerReady) {\n' +
+      '  ' + variable_name_ + '.seekTo(0);\n' +
+      '  ' + variable_name_ + '.stopVideo();\n' +
+      '}\n';
   }
   return code;
 };

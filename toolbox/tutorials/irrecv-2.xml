@@ -1,0 +1,45 @@
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+    <category id="catLogic">
+      <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+    </category>
+    <category id="catText">
+      <block type="text"></block>
+    </category>
+    <category id="catColour">
+      <block type="colour_picker"></block>
+    </category>
+  <sep></sep>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+    <category id="catIRRecv">
+      <block type="variables_set">
+        <field name="VAR">irrecv</field>
+        <value name="VALUE">
+          <block type="irrecv_new">
+            <field name="pin_">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="irrecv_on"></block>
+      <block type="irrecv_val"></block>
+      <block type="irrecv_off"></block>
+    </category>
+  <category id="catTutorials">
+    <block type="tutorial_irrecv_code"></block>
+    <block type="tutorial_irrecv_color"></block>
+  </category>
+  <sep></sep>
+</xml>

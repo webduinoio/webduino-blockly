@@ -1,0 +1,39 @@
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <sep></sep>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category id="catDht">
+    <block type="variables_set">
+      <field name="VAR">dht</field>
+      <value name="VALUE">
+        <block type="dht_new">
+          <field name="pin_">11</field>
+        </block>
+      </value>
+    </block>
+    <block type="dht_get">
+      <value name="time">
+        <block type="math_number">
+          <field name="NUM">1000</field>
+        </block>
+      </value>
+    </block>
+    <block type="dht_get_number"></block>
+  </category>
+  <category id="catTutorials">
+    <block type="tutorial_dht_show"></block>
+  </category>
+  <sep></sep>
+</xml>

@@ -1,0 +1,66 @@
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <sep></sep>
+  <category id="catLogic">
+    <block type="controls_if"></block>
+    <block type="logic_compare"></block>
+    <block type="logic_operation"></block>
+  </category>
+  <category id="catColour">
+    <block type="colour_picker"></block>
+  </category>
+  <category id="catMath">
+    <block type="math_number"></block>
+  </category>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category id="catRGBLed">
+    <block type="variables_set">
+      <field name="VAR">rgbled</field>
+      <value name="VALUE">
+        <block type="rgbled_new">
+          <field name="red_">6</field>
+          <field name="green_">9</field>
+          <field name="blue_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="rgbled_setcolor">
+      <field name="rgbled_">rgbled</field>
+    </block>
+  </category>
+  <category id="catUltraSonic">
+    <block type="variables_set">
+      <field name="VAR">ultrasonic</field>
+      <value name="VALUE">
+        <block type="ultrasonic_new">
+          <field name="trig_">11</field>
+          <field name="echo_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_get">
+      <value name="time">
+        <block type="math_number">
+          <field name="NUM">500</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_distance"></block>
+  </category>
+  <category id="catTutorials">
+    <block type="rgb_led_area_color"></block>
+  </category>
+  <sep></sep>
+</xml>

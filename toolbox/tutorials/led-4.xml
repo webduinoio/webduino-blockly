@@ -1,0 +1,61 @@
+<xml id="toolbox" style="display: none">
+<category id="catVariables" custom="VARIABLE"></category>
+<sep></sep>
+<category id="catLogic">
+  <block type="controls_if"></block>
+</category>
+<category id="catMath">
+  <block type="math_number"></block>
+</category>
+<sep></sep>
+<category id="catBoard">
+  <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+  <block type="board_ready">
+    <value name="device_">
+      <block type="text"></block>
+    </value>
+  </block>
+</category>
+<category id="catLed">
+  <block type="variables_set">
+    <field name="VAR">led</field>
+    <value name="VALUE">
+      <block type="led_new">
+        <field name="pin_">10</field>
+      </block>
+    </value>
+  </block>
+  <block type="led_state">
+    <field name="led_">led</field>
+  </block>
+</category>
+<category id="catTutorials">
+  <block type="light"></block>
+  <block type="light_click"></block>
+  <block type="light_check"></block>
+  <block type="two_led_start_blinking">
+    <value name="timer">
+      <block type="variables_get">
+        <field name="VAR" class="timerVar">{{timerVariable}}</field>
+      </block>
+    </value>
+    <value name="time">
+      <block type="math_number">
+        <field name="NUM">500</field>
+      </block>
+    </value>
+  </block>
+  <block type="stop_clock">
+    <value name="timer">
+      <block type="variables_get">
+        <field name="VAR" class="timerVar">{{timerVariable}}</field>
+      </block>
+    </value>
+  </block>
+</category>
+<sep></sep>
+</xml>

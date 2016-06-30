@@ -325,7 +325,7 @@ Code.loadDemoArea = function () {
   var contentHeight = document.getElementById('content_blocks').offsetHeight;
   var resizeBar = document.getElementById('demo-resize-bar');
 
-  area.style.height = (contentHeight - 130) + 'px';
+  area.style.height = (contentHeight - 110) + 'px';
   area.className = area.className.replace("show", "");
 
   if (localStorage.demoAreaWidth) {
@@ -345,7 +345,7 @@ Code.loadDemoArea = function () {
 
   window.addEventListener('resize', function () {
     contentHeight = document.getElementById('content_blocks').offsetHeight;
-    area.style.height = (contentHeight - 130) + 'px';
+    area.style.height = (contentHeight - 110) + 'px';
   });
 
   resizeBar.onmousedown = function (e) {
@@ -572,10 +572,37 @@ Code.renderContent = function() {
   }
 };
 
+Code.getToolBox = function (callback) {
+  var toolboxContent = new XMLHttpRequest();
+  var toolboxXML, toolbox;
+
+  toolboxContent.overrideMimeType('text/xml');
+  toolboxContent.open('GET', 'toolbox/' + Code.PAGE + '.xml', true);
+
+  toolboxContent.onreadystatechange = function () {
+    if (toolboxContent.readyState !== 4) return;
+    toolboxXML = toolboxContent.responseXML;
+    var categories =
+      slice.call(toolboxXML.querySelectorAll('category')).map(function (e) {
+        return e.id;
+      });
+    for (var i = 0, cat; cat = categories[i]; i++) {
+      toolboxXML.getElementById(cat).setAttribute('name', MSG[cat]);
+    }
+    toolbox = new XMLSerializer().serializeToString(toolboxXML);
+
+    if (typeof callback === 'function') {
+      callback(toolbox);
+    }
+  };
+
+  toolboxContent.send();
+};
+
 /**
  * Initialize Blockly.  Called on page load.
  */
-Code.init = function() {
+Code.init = function(toolbox) {
   Code.initLanguage();
 
   var rtl = Code.isRtl();
@@ -611,7 +638,6 @@ Code.init = function() {
   };
   window.addEventListener('resize', onresize, false);
 
-  var toolbox = document.getElementById('toolbox');
   Code.workspace = Blockly.inject('content_blocks',
       {grid:
           {spacing: 25,
@@ -704,7 +730,8 @@ Code.init = function() {
 };
 
 Code.renderPage = function (callback) {
-  var req = new XMLHttpRequest(),
+  var tpl = Code.PAGE.split('/')[0],
+    req = new XMLHttpRequest(),
     head = document.head,
     body = document.body;
 
@@ -725,10 +752,12 @@ Code.renderPage = function (callback) {
       }
     });
 
-    callback();
+    if (typeof callback === 'function') {
+      callback();
+    }
   });
 
-  req.open("get", baseUrl + '/views/' + Code.PAGE + '.handlebars', true);
+  req.open("get", baseUrl + '/views/' + tpl + '.handlebars', true);
   req.send();
 };
 
@@ -769,13 +798,6 @@ Code.initLanguage = function() {
 
   // Inject language strings.
   document.title += ' ' + MSG['title'];
-  var toolbox = document.getElementById('toolbox');
-  var categories = slice.call(toolbox.querySelectorAll('category')).map(function (e) {
-    return e.id
-  });
-  for (var i = 0, cat; cat = categories[i]; i++) {
-    document.getElementById(cat).setAttribute('name', MSG[cat]);
-  }
 };
 
 /**
@@ -878,7 +900,7 @@ Code.reloadSandbox = function () {
 Code.getContext = function () {
   var code = Blockly.JavaScript.workspaceToCode(Code.workspace),
     babelize = code.indexOf('async function') !== -1,
-    page = Code.getPage();
+    page = Code.PAGE;
 
   return {
     tpl: page === 'index' ? Code.getDemoPage() : page,
@@ -1301,6 +1323,8 @@ if (Code.PAGE !== 'index') {
 
 window.addEventListener('load', function () {
   Code.renderPage(function () {
-    Code.init();
+    Code.getToolBox(function (toolbox) {
+      Code.init(toolbox);
+    });
   });
 }, false);

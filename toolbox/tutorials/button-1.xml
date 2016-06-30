@@ -1,0 +1,35 @@
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <sep></sep>
+  <sep></sep>
+  <category id="catText">
+    <block type="text"></block>
+  </category>
+  <category id="catBoard">
+    <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category id="catButton">
+    <block type="variables_set">
+      <field name="VAR">button</field>
+      <value name="VALUE">
+        <block type="button_new">
+          <field name="pin_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="button_event"></block>
+  </category>
+  <category id="catTutorials">
+    <block type="show_text"></block>
+  </category>
+  <sep></sep>
+</xml>

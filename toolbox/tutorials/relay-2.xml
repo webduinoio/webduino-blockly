@@ -1,0 +1,39 @@
+<xml id="toolbox" style="display: none">
+<category id="catVariables" custom="VARIABLE"></category>
+<sep></sep>
+<category id="catLogic">
+  <block type="controls_if"></block>
+</category>
+<sep></sep>
+<category id="catBoard">
+  <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+  <block type="board_ready">
+    <value name="device_">
+      <block type="text"></block>
+    </value>
+  </block>
+</category>
+<category id="catRelay">
+  <block type="variables_set">
+    <field name="VAR">relay</field>
+    <value name="VALUE">
+      <block type="relay_new">
+        <field name="pin_">10</field>
+      </block>
+    </value>
+  </block>
+  <block type="relay_state">
+    <field name="relay_">relay</field>
+  </block>
+</category>
+<category id="catTutorials">
+  <block type="light"></block>
+  <block type="light_click"></block>
+  <block type="light_check"></block>
+</category>
+<sep></sep>
+</xml>

@@ -1,0 +1,57 @@
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <sep></sep>
+  <category id="catLogic">
+    <block type="controls_if"></block>
+    <block type="logic_compare"></block>
+    <block type="logic_operation"></block>
+  </category>
+  <category id="catMath">
+    <block type="math_number"></block>
+  </category>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <sep></sep>
+  <category id="catUltraSonic">
+    <block type="variables_set">
+      <field name="VAR">ultrasonic</field>
+      <value name="VALUE">
+        <block type="ultrasonic_new">
+          <field name="trig_">11</field>
+          <field name="echo_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_get">
+      <value name="time">
+        <block type="math_number">
+          <field name="NUM">500</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_distance"></block>
+  </category>
+  <category id="catTutorials">
+    <block type="tutorial_youtube">
+      <value name="name_">
+        <block type="variables_get">
+          <field name="VAR">youtube</field>
+        </block>
+      </value>
+    </block>
+    <block type="tutorial_youtube_volume"></block>
+    <block type="tutorial_youtube_speed"></block>
+  </category>
+  <sep></sep>
+</xml>

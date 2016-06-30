@@ -1,0 +1,44 @@
+<xml id="toolbox" style="display: none">
+<category id="catVariables" custom="VARIABLE"></category>
+<sep></sep>
+<category id="catBoard">
+  <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+  <block type="board_ready">
+    <value name="device_">
+      <block type="text"></block>
+    </value>
+  </block>
+</category>
+<category id="catLed">
+  <block type="variables_set">
+    <field name="VAR">led</field>
+    <value name="VALUE">
+      <block type="led_new">
+        <field name="pin_">10</field>
+      </block>
+    </value>
+  </block>
+  <block type="led_state">
+    <field name="led_">led</field>
+  </block>
+</category>
+<category id="catPir">
+  <block type="variables_set">
+    <field name="VAR">pir</field>
+    <value name="VALUE">
+      <block type="pir_new">
+        <field name="pin_">10</field>
+      </block>
+    </value>
+  </block>
+  <block type="pir_status"></block>
+</category>
+<category id="catTutorials">
+  <block type="light"></block>
+</category>
+<sep></sep>
+</xml>

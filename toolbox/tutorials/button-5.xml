@@ -1,0 +1,51 @@
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <sep></sep>
+  <sep></sep>
+  <category id="catText">
+    <block type="text"></block>
+  </category>
+  <category id="catLogic">
+    <block type="controls_if"></block>
+  </category>
+  <sep></sep>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category id="catButton">
+    <block type="variables_set">
+      <field name="VAR">button</field>
+      <value name="VALUE">
+        <block type="button_new">
+          <field name="pin_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="button_event"></block>
+  </category>
+  <sep></sep>
+  <sep></sep>
+  <category id="catTutorials">
+    <block type="show_text"></block>
+    <block type="tutorial_youtube">
+      <value name="name_">
+        <block type="variables_get">
+          <field name="VAR">youtube</field>
+        </block>
+      </value>
+    </block>
+    <block type="tutorial_youtube_control"></block>
+    <block type="tutorial_youtube_status"></block>
+  </category>
+  <sep></sep>
+</xml>

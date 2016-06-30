@@ -1,0 +1,34 @@
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <sep></sep>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+    <category id="catPhotocell">
+      <block type="variables_set">
+        <field name="VAR">photocell</field>
+        <value name="VALUE">
+          <block type="photocell_new">
+            <field name="pin_">5</field>
+          </block>
+        </value>
+      </block>
+      <block type="photocell_detected"></block>
+      <block type="photocell_val"></block>
+      <block type="photocell_stop"></block>
+    </category>
+  <category id="catTutorials">
+    <block type="photocell_show_number"></block>
+  </category>
+  <sep></sep>
+</xml>

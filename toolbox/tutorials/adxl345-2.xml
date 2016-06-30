@@ -1,0 +1,36 @@
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <sep></sep>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+    <category id="catADXL345">
+      <block type="variables_set">
+        <field name="VAR">adxl</field>
+        <value name="VALUE">
+          <block type="adxl345_new">
+            <field name="sda_">4</field>
+            <field name="scl_">5</field>
+          </block>
+        </value>
+      </block>
+      <block type="adxl345_on"></block>
+      <block type="adxl345_val"></block>
+      <block type="adxl345_off"></block>
+    </category>
+  <category id="catTutorials">
+    <block type="tutorial_adxl345_show"></block>
+    <block type="adxl345_image_angle"></block>
+  </category>
+  <sep></sep>
+</xml>

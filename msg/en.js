@@ -1,5 +1,6 @@
 var MSG = {
-  update: "update 2015.11.04",
+  catLoadingBlocks: "Loading...",
+  update: "update 2016.06.29",
   title: "Webduino Blockly Editor",
   gotoTutorials: "Tutorials",
   gotoWebSite: "Official site",

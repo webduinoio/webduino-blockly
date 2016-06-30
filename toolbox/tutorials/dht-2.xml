@@ -1,0 +1,67 @@
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <category id="catColour">
+    <block type="colour_picker"></block>
+  </category>
+  <sep></sep>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category id="catDht">
+    <block type="variables_set">
+      <field name="VAR">dht</field>
+      <value name="VALUE">
+        <block type="dht_new">
+          <field name="pin_">11</field>
+        </block>
+      </value>
+    </block>
+    <block type="dht_get">
+      <value name="time">
+        <block type="math_number">
+          <field name="NUM">1000</field>
+        </block>
+      </value>
+    </block>
+    <block type="dht_get_number"></block>
+  </category>
+  <category id="catTutorials">
+    <block type="tutorial_dht_show"></block>
+    <block type="tutorial_dht_gauge">
+      <value name="name_">
+        <block type="variables_get">
+          <field name="VAR">gauge</field>
+        </block>
+      </value>
+    </block>
+    <block type="tutorial_dht_areachart">
+      <value name="name_">
+        <block type="variables_get">
+          <field name="VAR">areachart</field>
+        </block>
+      </value>
+      <value name="color_t_">
+        <block type="colour_picker">
+          <field name="COLOUR">#ff0000</field>
+        </block>
+      </value>
+      <value name="color_h_">
+        <block type="colour_picker">
+          <field name="COLOUR">#0000ff</field>
+        </block>
+      </value>
+    </block>
+    <block type="tutorial_dht_draw"></block>
+  </category>
+  <sep></sep>
+</xml>

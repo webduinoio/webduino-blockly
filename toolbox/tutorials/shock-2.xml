@@ -1,0 +1,46 @@
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <sep></sep>
+  <sep></sep>
+  <category id="catMath">
+    <block type="math_number">
+    </block>
+  </category>
+  <category id="catBoard">
+    <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category id="catShock">
+    <block type="variables_set">
+      <field name="VAR">shock</field>
+      <value name="VALUE">
+        <block type="shock_new">
+          <field name="pin_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="shock_event"></block>
+  </category>
+  <category id="catTutorials">
+    <block type="ultrasonic_change_image_url">
+      <value name="url">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="button_change_image_position">
+      <value name="image_pos_">
+        <block type="math_number"></block>
+      </value>
+    </block>
+    <block type="button_reset_image_position"></block>
+  </category>
+  <sep></sep>
+</xml>

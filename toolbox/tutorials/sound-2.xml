@@ -1,0 +1,48 @@
+<xml id="toolbox" style="display: none">
+<category id="catVariables" custom="VARIABLE"></category>
+<category id="catMath">
+  <block type="math_number"></block>
+</category>
+<sep></sep>
+<category id="catBoard">
+  <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+  <block type="board_ready">
+    <value name="device_">
+      <block type="text"></block>
+    </value>
+  </block>
+</category>
+<category id="catLed">
+  <block type="variables_set">
+    <field name="VAR">led</field>
+    <value name="VALUE">
+      <block type="led_new">
+        <field name="pin_">10</field>
+      </block>
+    </value>
+  </block>
+  <block type="led_state">
+    <field name="led_">led</field>
+  </block>
+</category>
+<category id="catSound">
+  <block type="variables_set">
+    <field name="VAR">sound</field>
+    <value name="VALUE">
+      <block type="sound_new">
+        <field name="pin_">10</field>
+      </block>
+    </value>
+  </block>
+  <block type="sound_status"></block>
+</category>
+<category id="catTutorials">
+  <block type="light"></block>
+    <block type="timer"></block>
+</category>
+<sep></sep>
+</xml>
