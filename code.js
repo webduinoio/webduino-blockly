@@ -866,8 +866,7 @@ Code.reloadSandbox = function () {
         createIframe();
       }, false);
 
-      var event = frame.contentWindow.document.createEvent('UIEvent');
-      event.initUIEvent('beforeunload', true, true);
+      var event = new UIEvent('beforeunload');
       frame.contentWindow.dispatchEvent(event);
 
       setTimeout(function () {
