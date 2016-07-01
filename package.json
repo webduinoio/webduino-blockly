@@ -11,11 +11,12 @@
     "blockly"
   ],
   "scripts": {
-    "start": "node node_modules/node-static/bin/cli.js -a 0.0.0.0"
+    "start": "node webserver.js"
   },
   "license": "MIT",
   "dependencies": {
-    "node-static": "^0.7.7",
+    "compression": "^1.6.2",
+    "express": "^4.14.0",
     "webduino-js": "0.x"
   }
 }
