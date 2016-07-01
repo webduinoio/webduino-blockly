@@ -338,7 +338,7 @@ Blockly.JavaScript['demo_controller'] = function (block) {
       '  }',
       '}'
     ]);
-  code = functionName + '(' + functionGetElement + '("#demo-area-09 ' + dropdown_btn_ + '"),' + mouseEvent + ',function(){\n' +
+  code = functionName + '(' + functionGetElement + '("#demo-area-09 ' + dropdown_btn_ + '"),' + mouseEvent + ', async function(){\n' +
     statements_do_ +
     '});\n';
   return code;
@@ -516,12 +516,12 @@ Blockly.JavaScript['demo_tracking'] = function (block) {
   var value_var_ = Blockly.JavaScript.valueToCode(block, 'var_', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_type_ = block.getFieldValue('type_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var share = value_var_ + '.myTracker.on("track", function(event) {\n' +
+  var share = value_var_ + '.myTracker.on("track", async function(event) {\n' +
     '  if (event.data.length === 0) {\n' +
     '    ' + value_var_ + '.context.clearRect(0, 0, ' + value_var_ + '.canvas.width, ' + value_var_ + '.canvas.height);\n' +
     '  } else {\n' +
     '    ' + value_var_ + '.context.clearRect(0, 0, ' + value_var_ + '.canvas.width, ' + value_var_ + '.canvas.height);\n' +
-    '    event.data.forEach(function(data) {\n' +
+    '    event.data.forEach(async function(data) {\n' +
     '    ' + statements_do_ +
     '      if(data.color){\n' +
     '        ' + value_var_ + '.context.strokeStyle = ' + value_var_ + '.storkColor[data.color];\n' +
@@ -778,7 +778,7 @@ Blockly.JavaScript['all_board_ready'] = function (block) {
 Blockly.JavaScript['board_query_pin_state'] = function (block) {
   var value_pin = Blockly.JavaScript.valueToCode(block, 'pin', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'board.queryPinState(' + value_pin + ',function(){\n' +
+  var code = 'board.queryPinState(' + value_pin + ', async function(){\n' +
     '  var _localPinVar_ = board.getDigitalPin(' + value_pin + ');\n' +
     statements_do_ + '\n' +
     '});\n';
@@ -871,7 +871,7 @@ Blockly.JavaScript['led_callback'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var dropdown_state_ = block.getFieldValue('state_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = variable_name_ + '.' + dropdown_state_ + '(function(){\n  ' + statements_do_ + '\n});\n';
+  var code = variable_name_ + '.' + dropdown_state_ + '(async function(){\n  ' + statements_do_ + '\n});\n';
   return code;
 };
 
@@ -913,7 +913,7 @@ Blockly.JavaScript['rgbled_setcolor_callback'] = function (block) {
   var variable_rgbled_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('rgbled_'), Blockly.Variables.NAME_TYPE);
   var value_color_ = Blockly.JavaScript.valueToCode(block, 'color_', Blockly.JavaScript.ORDER_NONE);
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = variable_rgbled_ + '.setColor(' + value_color_ + ' , function(){\n  ' + statements_do_ + '\n});\n';
+  var code = variable_rgbled_ + '.setColor(' + value_color_ + ' , async function(){\n  ' + statements_do_ + '\n});\n';
   return code;
 };
 
@@ -1033,7 +1033,7 @@ Blockly.JavaScript['button_event'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
   var dropdown_event_ = block.getFieldValue('event_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = variable_var_ + '.on("' + dropdown_event_ + '",async function(){\n' +
+  var code = variable_var_ + '.on("' + dropdown_event_ + '", async function(){\n' +
     '  console.log("' + dropdown_event_ + '");\n' +
     '  ' + statements_do_ + '\n' +
     '});\n';
@@ -1052,7 +1052,7 @@ Blockly.JavaScript['pir_status'] = function (block) {
   var variable_item_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('item_'), Blockly.Variables.NAME_TYPE);
   var dropdown_status_ = block.getFieldValue('status_');
   var statements_var_ = Blockly.JavaScript.statementToCode(block, 'var_');
-  var code = variable_item_ + '.on("' + dropdown_status_ + '",async function(){\n' +
+  var code = variable_item_ + '.on("' + dropdown_status_ + '", async function(){\n' +
     statements_var_ + '\n' +
     '});\n';
   return code;
@@ -1072,12 +1072,12 @@ Blockly.JavaScript['sound_status'] = function (block) {
   var statements_var_ = Blockly.JavaScript.statementToCode(block, 'var_');
   var code;
   if (dropdown_status_ == 'detected') {
-    code = variable_item_ + '.on("' + dropdown_status_ + '",async function(){\n' +
+    code = variable_item_ + '.on("' + dropdown_status_ + '", async function(){\n' +
       '  ' + statements_var_ + '\n' +
       '});\n';
   } else {
-    code = variable_item_ + '.on("' + dropdown_status_ + '",async function(){\n' +
-      '  setTimeout(function(){\n' +
+    code = variable_item_ + '.on("' + dropdown_status_ + '", async function(){\n' +
+      '  setTimeout(async function(){\n' +
       '  ' + statements_var_ + '\n' +
       '  },300);\n' +
       '});\n';
@@ -1096,7 +1096,7 @@ Blockly.JavaScript['shock_event'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
   var dropdown_event_ = block.getFieldValue('event_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = variable_var_ + '.on("' + dropdown_event_ + '",async function(){\n' +
+  var code = variable_var_ + '.on("' + dropdown_event_ + '", async function(){\n' +
     '  console.log("' + dropdown_event_ + '");\n' +
     '  ' + statements_do_ + '\n' +
     '});\n';
@@ -1415,9 +1415,9 @@ Blockly.JavaScript['data_firebase_read'] = function (block) {
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
   var code;
   if (dropdown_type_ == 1) {
-    code = variable_name_ + '.on("value", function(snapshot) {\n' +
+    code = variable_name_ + '.on("value", async function(snapshot) {\n' +
       '  ' + value_read_ + '=[];\n' +
-      '  snapshot.forEach(function(data) {\n' +
+      '  snapshot.forEach(async function(data) {\n' +
       '    if(data.val().' + text_attr_ + '){\n' +
       '      ' + value_read_ + '.push(data.val().' + text_attr_ + ');\n' +
       '    }\n' +
@@ -1427,7 +1427,7 @@ Blockly.JavaScript['data_firebase_read'] = function (block) {
       '   console.log("The read failed: " + errorObject.code);\n' +
       '});\n';
   } else {
-    code = variable_name_ + '.limitToLast(1).on("child_added",function(snapshot){\n' +
+    code = variable_name_ + '.limitToLast(1).on("child_added", async function(snapshot){\n' +
       '  ' + value_read_ + ' = snapshot.val().' + text_attr_ + ';\n' +
       statements_do_ +
       '});\n';
@@ -1764,7 +1764,7 @@ Blockly.JavaScript['status_repeat'] = function (block) {
       codeArray.argument[n] = Blockly.JavaScript.statementToCode(block, 'ADD' + n);
       codeArray.delayTime[n] = block.getFieldValue('time' + n);
       if (isNaN(codeArray.delayTime[n] * 1)) {
-        codeArray.code[n] = '.then(async function(){\n' +
+        codeArray.code[n] = '.then(function(){\n' +
           '      alert("時間格式錯誤！請填入數字！Time format error! Please enter number!");\n' +
           '    })';
       } else {
@@ -2075,7 +2075,7 @@ Blockly.JavaScript['irrecv_on'] = function (block) {
   var code = variable_name_ + '.on(async function(val){\n' +
     '  ' + variable_name_ + '.onVal = val;\n' +
     statements_on_ +
-    '},async function(){});\n';
+    '},function(){});\n';
   return code;
 };
 
@@ -2167,7 +2167,7 @@ Blockly.JavaScript['joystick_on'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var statements_on_ = Blockly.JavaScript.statementToCode(block, 'on_');
   var code = variable_name_ + '.on("message",_read_);\n' +
-    'function _read_(_x, _y, _z){\n' +
+    'async function _read_(_x, _y, _z){\n' +
     '  ' + variable_name_ + '._x = _x;\n' +
     '  ' + variable_name_ + '._y = _y;\n' +
     '  ' + variable_name_ + '._z = _z;\n' +
