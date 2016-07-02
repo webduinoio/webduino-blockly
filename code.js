@@ -96,6 +96,27 @@ Code.getDemoPage = function () {
   return 'default';
 };
 
+Code.loadDoc = function (href, callback) {
+  var link = document.createElement('link'),
+    tag = document.getElementsByTagName('script')[0];
+  link.rel = 'import';
+  link.href = href;
+  if (typeof callback === 'function') {
+    link.onload = function (e) {
+      callback(e.target.import);
+    };
+  }
+  tag.parentNode.insertBefore(link, tag);
+};
+
+Code.loadJs = function (src) {
+  var js = document.createElement('script'),
+    tag = document.getElementsByTagName('script')[0];
+  js.async = 1;
+  js.src = src;
+  tag.parentNode.insertBefore(js, tag);
+};
+
 /**
  * Is the current language (Code.LANG) an RTL language?
  * @return {boolean} True if RTL, false if LTR.
@@ -572,31 +593,14 @@ Code.renderContent = function() {
   }
 };
 
-Code.getToolBox = function (callback) {
-  var toolboxContent = new XMLHttpRequest();
-  var toolboxXML, toolbox;
-
-  toolboxContent.overrideMimeType('text/xml');
-  toolboxContent.open('GET', 'toolbox/' + Code.PAGE + '.xml', true);
-
-  toolboxContent.onreadystatechange = function () {
-    if (toolboxContent.readyState !== 4) return;
-    toolboxXML = toolboxContent.responseXML;
-    var categories =
-      slice.call(toolboxXML.querySelectorAll('category')).map(function (e) {
-        return e.id;
-      });
-    for (var i = 0, cat; cat = categories[i]; i++) {
-      toolboxXML.getElementById(cat).setAttribute('name', MSG[cat]);
-    }
-    toolbox = new XMLSerializer().serializeToString(toolboxXML);
-
-    if (typeof callback === 'function') {
-      callback(toolbox);
-    }
-  };
-
-  toolboxContent.send();
+Code.getToolBox = function (toolboxXML) {
+  var categories = slice.call(toolboxXML.querySelectorAll('category')).map(function (e) {
+      return e.id;
+    });
+  for (var i = 0, cat; cat = categories[i]; i++) {
+    toolboxXML.querySelector('#' + cat).setAttribute('name', MSG[cat]);
+  }
+  return new XMLSerializer().serializeToString(toolboxXML);
 };
 
 /**
@@ -729,36 +733,24 @@ Code.init = function(toolbox) {
   window.addEventListener('message', messageDelegator, false);
 };
 
-Code.renderPage = function (callback) {
-  var tpl = Code.PAGE.split('/')[0],
-    req = new XMLHttpRequest(),
-    head = document.head,
-    body = document.body;
+Code.renderPage = function (templateStr) {
+  var head = document.head,
+    body = document.body,
+    template = Handlebars.compile(templateStr);
 
-  req.addEventListener('load', function () {
-    var template = Handlebars.compile(this.responseText);
-    body.innerHTML = template(MSG);
-
-    slice.call(body.querySelectorAll('script')).forEach(function (sc) {
-      var script = document.createElement('script');
-      if (sc.getAttribute('src')) {
-        script.setAttribute('src', sc.getAttribute('src'));
-        head.appendChild(script);
-        body.removeChild(sc);
-      } else if (sc.text) {
-        script.text = sc.text;
-        head.appendChild(script);
-        body.removeChild(sc);
-      }
-    });
-
-    if (typeof callback === 'function') {
-      callback();
+  body.innerHTML = template(MSG);
+  slice.call(body.querySelectorAll('script')).forEach(function (sc) {
+    var script = document.createElement('script');
+    if (sc.getAttribute('src')) {
+      script.setAttribute('src', sc.getAttribute('src'));
+      head.appendChild(script);
+      body.removeChild(sc);
+    } else if (sc.text) {
+      script.text = sc.text;
+      head.appendChild(script);
+      body.removeChild(sc);
     }
   });
-
-  req.open("get", baseUrl + '/views/' + tpl + '.handlebars', true);
-  req.send();
 };
 
 /**
@@ -807,10 +799,14 @@ Code.initLanguage = function() {
 Code.runJS = function () {
   var now = Date.now();
 
-  if (now - Code.lastRun < 500) {
-    return;
+  if (navigator.userAgent.match(/iPhone/i) ||
+    navigator.userAgent.match(/iPad/i) ||
+    navigator.userAgent.match(/iPod/i)) {
+    if (now - Code.lastRun < 1000) {
+      return;
+    }
+    Code.lastRun = now;
   }
-  Code.lastRun = now;
 
   Code.toggleRunning();
   Code.reloadSandbox();
@@ -882,6 +878,7 @@ Code.reloadSandbox = function () {
       frame.id = 'demo-frame';
       frame.style.display = 'block';
       container.appendChild(frame);
+      Code.tabClick('blocks');
 
       launcher.sandbox(frame, data);
 
@@ -1320,10 +1317,31 @@ if (Code.PAGE !== 'index') {
   document.write('<script src="' + baseUrl + '/generators/' + Code.PAGE.split('/')[0] + '.js"></script>\n');
 }
 
-window.addEventListener('load', function () {
-  Code.renderPage(function () {
-    Code.getToolBox(function (toolbox) {
-      Code.init(toolbox);
+Promise.all([
+  new Promise(function (resolve) {
+    Code.loadDoc(baseUrl + '/views/' + Code.PAGE.split('/')[0] + '.handlebars', function (doc) {
+      resolve(doc.body.innerHTML);
     });
+  }),
+  new Promise(function (resolve) {
+    Code.loadDoc(baseUrl + '/toolbox/' + Code.PAGE + '.xml', function (doc) {
+      resolve(doc.body.firstChild);
+    });
+  }),
+  new Promise(function (resolve) {
+    window.addEventListener('load', function () {
+      resolve();
+    }, false);
+  })
+]).then(function (values) {
+  Code.renderPage(values[0]);
+  Code.init(Code.getToolBox(values[1]));
+  [
+    '/lib/babel.min.js',
+    '/lib/saveSvgAsPng.js',
+    '/lib/webduino-all-0.4.0.min.js',
+    '/webduino-samples.js',
+  ].forEach(function (url) {
+    Code.loadJs(baseUrl + url);
   });
-}, false);
+});

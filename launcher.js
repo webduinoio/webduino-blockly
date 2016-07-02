@@ -15,7 +15,8 @@
   'use strict';
 
   function loadTemplate(url, callback) {
-    var link = document.createElement('link');
+    var link = document.createElement('link'),
+      tag = document.getElementsByTagName('script')[0];
 
     link.rel = 'import';
     link.href = url;
@@ -32,7 +33,7 @@
       });
     };
 
-    document.head.appendChild(link);
+    tag.parentNode.insertBefore(link, tag);
   }
 
   function assembleHtml(head, body, css, js) {
@@ -121,9 +122,6 @@
 
       frame.addEventListener('load', function () {
         frame.style.display = 'block';
-        setTimeout(function () {
-          window.scrollTo(0, 0);
-        }, 1);
       }, false);
       frame.style.display = 'none';
       frame.contentWindow.document.open();

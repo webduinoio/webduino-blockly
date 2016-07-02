@@ -180,7 +180,8 @@ BlocklyStorage.monitorChanges_ = function (workspace) {
     var xmlDom = Blockly.Xml.workspaceToDom(workspace);
     var xmlText = Blockly.Xml.domToText(xmlDom);
     if (startXmlText != xmlText) {
-      window.location.hash = '';
+      history.pushState('', document.title,
+        window.location.pathname + window.location.search);
       workspace.removeChangeListener(bindData);
     }
   }
