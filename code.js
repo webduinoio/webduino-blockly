@@ -102,18 +102,23 @@ Code.loadDoc = function (href, callback) {
   link.rel = 'import';
   link.href = href;
   if (typeof callback === 'function') {
-    link.onload = function (e) {
-      callback(e.target.import);
+    link.onload = function () {
+      callback(link.import);
     };
   }
   tag.parentNode.insertBefore(link, tag);
 };
 
-Code.loadJs = function (src) {
+Code.loadJs = function (src, callback) {
   var js = document.createElement('script'),
     tag = document.getElementsByTagName('script')[0];
   js.async = 1;
   js.src = src;
+  if (typeof callback === 'function') {
+    js.onload = function () {
+      callback(js);
+    };
+  }
   tag.parentNode.insertBefore(js, tag);
 };
 
@@ -213,9 +218,7 @@ Code.importPrettify = function() {
     Blockly.fireUiEvent(window, 'resize');
   };
   document.head.appendChild(link);
-  var script = document.createElement('script');
-  script.setAttribute('src', baseUrl + '/prettify.js');
-  document.head.appendChild(script);
+  Code.loadJs(baseUrl + '/prettify.js');
 };
 
 /**
@@ -560,6 +563,18 @@ Code.tabClick = function(clickedName) {
   Blockly.fireUiEvent(window, 'resize');
 };
 
+Code.loadGa = function () {
+  var ga = function () {
+    (window.ga.q = window.ga.q || []).push(arguments);
+  };
+  ga.l = Date.now();
+  window.GoogleAnalyticsObject = 'ga';
+  window.ga = ga;
+  ga('create', 'UA-62202920-2', 'auto');
+  ga('send', 'pageview');
+  Code.loadJs('https://www.google-analytics.com/analytics.js');
+};
+
 Code.ga = function (blockArea, toolManu, i) {
   blockArea = document.querySelector('.blocklySvg');
   toolManu = document.querySelectorAll('.toolMenu');
@@ -703,13 +718,6 @@ Code.init = function(toolbox) {
   }
 
   onresize();
-  // Lazy-load the syntax-highlighting.
-  window.setTimeout(Code.importPrettify, 1);
-  window.setTimeout(Code.loadDemoArea, 1);
-  window.setTimeout(Code.loadSample, 1);
-  window.setTimeout(Code.checkDeviceOnline, 1);
-  window.setTimeout(Code.copyCode, 1);
-  window.setTimeout(Code.ga, 1);
 
   var keyboardDelegator = function (e) {
     if (Code.running) {
@@ -1346,12 +1354,19 @@ Promise.all([
 ]).then(function (values) {
   Code.renderPage(values[0]);
   Code.init(Code.getToolBox(values[1]));
-  [
-    '/lib/babel.min.js',
-    '/lib/saveSvgAsPng.js',
-    '/lib/webduino-all-0.4.0.min.js',
-    '/webduino-samples.js',
-  ].forEach(function (url) {
-    Code.loadJs(baseUrl + url);
+  Code.loadDemoArea();
+  Code.loadGa();
+  Code.ga();
+  Code.importPrettify();
+  Code.loadJs(baseUrl + '/lib/webduino-all-0.4.0.min.js', function () {
+    Code.checkDeviceOnline();
   });
+  Code.loadJs(baseUrl + '/webduino-samples.js', function () {
+    Code.loadSample();
+  });
+  Code.loadJs(baseUrl + '/lib/clipboard.js', function () {
+    Code.copyCode();
+  });
+  Code.loadJs(baseUrl + '/lib/babel.min.js');
+  Code.loadJs(baseUrl + '/lib/saveSvgAsPng.js');
 });
