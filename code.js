@@ -355,6 +355,7 @@ Code.loadDemoArea = function () {
 
   if (localStorage.demoArea == 'open') {
     area.className = area.className + "show";
+    btn.style.opacity = 1;
   }
 
   if (!localStorage.demoAreaSelect) {
@@ -396,9 +397,11 @@ Code.loadDemoArea = function () {
     if (localStorage.demoArea == 'open') {
       area.className = area.className.replace("show", "");
       localStorage.demoArea = 'close';
+      btn.style.opacity = 0.8;
     } else {
       area.className += " show";
       localStorage.demoArea = 'open';
+      btn.style.opacity = 1;
     }
     Code.reloadSandbox();
   };
@@ -406,6 +409,7 @@ Code.loadDemoArea = function () {
   close.onclick = function () {
     area.className = area.className.replace("show", "");
     localStorage.demoArea = 'close';
+    btn.style.opacity = 0.8;
   };
 
   select.onchange = function () {
@@ -826,6 +830,7 @@ Code.toggleRunning = function () {
     select.disabled = true;
     demoBtn.disabled = true;
     demoBtn.style.opacity = 0.5;
+    demoBtn.style.pointerEvents = 'none';
     demoStopBtn.style.pointerEvents = 'none';
     demoStopBtn.style.opacity = 0.2;
   } else {
@@ -835,7 +840,12 @@ Code.toggleRunning = function () {
     document.querySelector('#runButton div').innerHTML = "執行程式";
     select.disabled = false;
     demoBtn.disabled = false;
-    demoBtn.style.opacity = 0.9;
+    if (localStorage.demoArea == 'open') {
+      demoBtn.style.opacity = 1;
+    }else{
+      demoBtn.style.opacity = 0.8;
+    }
+    demoBtn.style.pointerEvents = 'auto';
     demoStopBtn.style.pointerEvents = 'auto';
     demoStopBtn.style.opacity = 0.5;
   }
