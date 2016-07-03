@@ -316,7 +316,7 @@ Code.checkDeviceOnline = function (device) {
     device.inputArea.className = device.inputArea.className + "open";
   }
 
-}
+};
 
 Code.copyCode = function (copy) {
   copy = {};
@@ -339,7 +339,7 @@ Code.copyCode = function (copy) {
   document.getElementById('tab_blocks').addEventListener('click', function () {
     copy.copyBtn.style.display = 'none';
   });
-}
+};
 
 Code.loadDemoArea = function () {
   var area = document.getElementById('demo-area');
@@ -492,7 +492,7 @@ Code.loadSample = function () {
     }
 
   };
-}
+};
 
 /**
  * User's language (e.g. "en").
@@ -503,6 +503,8 @@ Code.LANG = Code.getLang();
 Code.PAGE = Code.getPage();
 
 Code.running = false;
+
+Code.sandboxLoaded = true;
 
 Code.lastRun = 0;
 
@@ -587,7 +589,7 @@ Code.ga = function (blockArea, toolManu, i) {
       ga('send', 'event', 'Webduino-blockly', 'menu click', thisID);
     });
   }
-}
+};
 
 /**
  * Populate the currently selected pane with content generated from the blocks.
@@ -718,31 +720,6 @@ Code.init = function(toolbox) {
   }
 
   onresize();
-
-  var keyboardDelegator = function (e) {
-    if (Code.running) {
-      var frame = document.getElementById('demo-frame'),
-        doc = frame.contentWindow.document,
-        event = doc.createEvent('Event');
-
-      event.initEvent(e.type, true, true);
-      event.key = e.key;
-      event.keyCode = e.keyCode;
-      doc.body.dispatchEvent(event);
-    }
-  };
-  window.addEventListener('keydown', keyboardDelegator, false);
-  window.addEventListener('keyup', keyboardDelegator, false);
-
-  var messageDelegator = function (e) {
-    var frame = document.getElementById('demo-frame'),
-      msg = e.data;
-
-    if (msg.jsonrpc && msg.result) {
-      frame.contentWindow.postMessage(msg, window.location.origin);
-    }
-  };
-  window.addEventListener('message', messageDelegator, false);
 };
 
 Code.renderPage = function (templateStr) {
@@ -811,6 +788,10 @@ Code.initLanguage = function() {
 Code.runJS = function () {
   var now = Date.now();
 
+  if (!Code.sandboxLoaded) {
+    return;
+  }
+
   if (navigator.userAgent.match(/iPhone/i) ||
     navigator.userAgent.match(/iPad/i) ||
     navigator.userAgent.match(/iPod/i)) {
@@ -864,6 +845,7 @@ Code.toggleRunning = function () {
 Code.reloadSandbox = function () {
   var container = document.querySelector('.demo-area-content');
   var ctx = Code.getContext();
+  Code.sandboxLoaded = false;
 
   launcher.loadTemplate('./templates/' + ctx.tpl + '.html', function (data) {
     if (Code.running) {
@@ -884,6 +866,7 @@ Code.reloadSandbox = function () {
       frame.contentWindow.dispatchEvent(event);
 
       setTimeout(function () {
+        Code.unhookEvents(window, frame);
         container.removeChild(frame);
         frame = null;
       }, 50);
@@ -897,18 +880,65 @@ Code.reloadSandbox = function () {
       frame.style.display = 'block';
       container.appendChild(frame);
       Code.tabClick('blocks');
-
+      frame.addEventListener('load', function () {
+        Code.sandboxLoaded = true;
+      });
       launcher.sandbox(frame, data);
 
-      frame.contentWindow.addEventListener('message', function (e) {
-        var msg = e.data;
-
-        if (msg.jsonrpc && msg.method) {
-          window.postMessage(msg, window.location.origin);
-        }
-      }, false);
+      if (Code.running) {
+        Code.hookEvents(window, frame);
+      }
     }
   });
+};
+
+Code.hookEvents = function (window, frame) {
+  window.keyDispatcher = function (e) {
+    var doc = frame.contentWindow.document,
+      event = doc.createEvent('Event');
+
+    event.initEvent(e.type, true, true);
+    event.key = e.key;
+    event.keyCode = e.keyCode;
+    doc.body && doc.body.dispatchEvent(event);
+  };
+
+  window.msgDispatcher = function (e) {
+    var msg = e.data;
+
+    if (msg.jsonrpc && msg.result) {
+      frame.contentWindow.postMessage(msg, window.location.origin);
+    }
+  };
+
+  frame.msgDispatcher = function (e) {
+    var msg = e.data;
+
+    if (msg.jsonrpc && msg.method) {
+      window.postMessage(msg, window.location.origin);
+    }
+  };
+
+  window.addEventListener('keydown', window.keyDispatcher, false);
+  window.addEventListener('keyup', window.keyDispatcher, false);
+  window.addEventListener('message', window.msgDispatcher, false);
+  frame.contentWindow.addEventListener('message', frame.msgDispatcher, false);
+};
+
+Code.unhookEvents = function (window, frame) {
+  if (frame.msgDispatcher) {
+    frame.contentWindow.removeEventListener('message', frame.msgDispatcher, false);
+    delete frame.msgDispatcher;
+  }
+  if (window.msgDispatcher) {
+    window.removeEventListener('message', window.msgDispatcher, false);
+    delete window.msgDispatcher;
+  }
+  if (window.keyDispatcher) {
+    window.removeEventListener('keyup', window.keyDispatcher, false);
+    window.removeEventListener('keydown', window.keyDispatcher, false);
+    delete window.keyDispatcher;
+  }
 };
 
 Code.getContext = function () {
@@ -1010,7 +1040,7 @@ Blockly.JavaScript['procedures_callreturn'] = function (block) {
     return ['await ' + codes[0], codes[1]];
   }
   return codes;
-}
+};
 
 Blockly.JavaScript['_procedures_callnoreturn'] = Blockly.JavaScript['procedures_callnoreturn'];
 
