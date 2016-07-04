@@ -341,6 +341,28 @@ Code.copyCode = function (copy) {
   });
 };
 
+Code.bindHotkey = function (document) {
+  Blockly.bindEvent_(document, 'keydown', null, function (e) {
+    switch (Code.getHotKey(e)) {
+    case Code.HOTKEY.EXEC:
+      Code.runJS();
+      break;
+
+    default:
+      break;
+    }
+  });
+};
+
+Code.getHotKey = function (e) {
+  // Ctrl/Cmd + E
+  if ((e.ctrlKey || e.metaKey) && e.keyCode === 69) {
+    return Code.HOTKEY.EXEC;
+  }
+
+  return Code.HOTKEY.UNKNOWN;
+};
+
 Code.loadDemoArea = function () {
   var area = document.getElementById('demo-area');
   var btn = document.getElementById('demoButton');
@@ -507,6 +529,11 @@ Code.running = false;
 Code.sandboxLoaded = true;
 
 Code.lastRun = 0;
+
+Code.HOTKEY = {
+  EXEC: 0,
+  UNKNOWN: -1
+};
 
 /**
  * List of tab names.
@@ -884,6 +911,7 @@ Code.reloadSandbox = function () {
         Code.sandboxLoaded = true;
       });
       launcher.sandbox(frame, data);
+      Code.bindHotkey(frame.contentWindow.document);
 
       if (Code.running) {
         Code.hookEvents(window, frame);
@@ -894,6 +922,10 @@ Code.reloadSandbox = function () {
 
 Code.hookEvents = function (window, frame) {
   window.keyDispatcher = function (e) {
+    if (Code.getHotKey(e) === Code.HOTKEY.EXEC) {
+      return;
+    }
+
     var doc = frame.contentWindow.document,
       event = doc.createEvent('Event');
 
@@ -1388,6 +1420,7 @@ Promise.all([
   Code.loadGa();
   Code.ga();
   Code.importPrettify();
+  Code.bindHotkey(window.document);
   Code.loadJs(baseUrl + '/lib/webduino-all-0.4.0.min.js', function () {
     Code.checkDeviceOnline();
   });
