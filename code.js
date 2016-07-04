@@ -1421,7 +1421,7 @@ Promise.all([
   Code.ga();
   Code.importPrettify();
   Code.bindHotkey(window.document);
-  Code.loadJs(baseUrl + '/lib/webduino-all-0.4.0.min.js', function () {
+  Code.loadJs(baseUrl + '/lib/webduino-base.min.js', function () {
     Code.checkDeviceOnline();
   });
   Code.loadJs(baseUrl + '/webduino-samples.js', function () {
