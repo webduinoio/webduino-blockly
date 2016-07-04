@@ -279,13 +279,12 @@ Blockly.JavaScript['tutorial_youtube'] = function (block) {
   var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
   var text_id_ = block.getFieldValue('id_');
   var code = 
-    '(function () {\n' +
+    'await new Promise(function (resolve) {\n' +
     '  var tag = document.createElement("script");\n' +
     '  tag.src = "https://www.youtube.com/iframe_api";\n' +
     '  var scptTag = document.getElementsByTagName("script")[0];\n' +
     '  scptTag.parentNode.insertBefore(tag, scptTag);\n' +
-    '  window.onYouTubeIframeAPIReady = playVideo;\n\n' +
-    '  function playVideo() {\n' +
+    '  window.onYouTubeIframeAPIReady = function () {\n' +
     '    ' + value_name_ + ' = new YT.Player("player", {\n' +
     '      height: "240",\n' +
     '      width: "96%",\n' +
@@ -296,12 +295,12 @@ Blockly.JavaScript['tutorial_youtube'] = function (block) {
     '      },\n' +
     '      events: {\n' +
     '        onReady: function (evt) {\n' +
-    '          ' + value_name_ + '.playerReady = true;\n' +
+    '          resolve();\n' +
     '        }\n' +
     '      }\n' +
     '    });\n' +
-    '  }\n' +
-    '}());\n\n';
+    '  };\n' +
+    '});\n';
   return code;
 };
 
@@ -314,9 +313,7 @@ Blockly.JavaScript['tutorial_youtube_volume'] = function (block) {
     'if (' + varA + ' >= 100) {\n' +
     '  ' + varA + ' = 100;\n' +
     '}\n' +
-    'if (' + variable_name_ + '.playerReady) {\n' +
-    '  ' + variable_name_ + '.setVolume(' + varA + ');\n' +
-    '}\n';
+    variable_name_ + '.setVolume(' + varA + ');\n';
   return code;
 };
 
@@ -324,9 +321,7 @@ Blockly.JavaScript['tutorial_youtube_volume'] = function (block) {
 Blockly.JavaScript['tutorial_youtube_speed'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var dropdown_speed_ = block.getFieldValue('speed_');
-  var code = 'if (' + variable_name_ + '.playerReady) {\n' +
-    '  ' + variable_name_ + '.setPlaybackRate(' + dropdown_speed_ + ');\n' +
-    '}\n';
+  var code = variable_name_ + '.setPlaybackRate(' + dropdown_speed_ + ');\n';
   return code;
 };
 
@@ -335,18 +330,11 @@ Blockly.JavaScript['tutorial_youtube_control'] = function (block) {
   var dropdown_status_ = block.getFieldValue('status_');
   var code;
   if (dropdown_status_ == '1') {
-    code = 'if (' + variable_name_ + '.playerReady) {\n' +
-      '  ' + variable_name_ + '.playVideo();\n' +
-      '}\n';
+    code = variable_name_ + '.playVideo();\n';
   } else if (dropdown_status_ == '2') {
-    code = 'if (' + variable_name_ + '.playerReady) {\n' +
-      '  ' + variable_name_ + '.pauseVideo();\n' +
-      '}\n';
+    code = variable_name_ + '.pauseVideo();\n';
   } else if (dropdown_status_ == '0') {
-    code = 'if (' + variable_name_ + '.playerReady) {\n' +
-      '  ' + variable_name_ + '.seekTo(0);\n' +
-      '  ' + variable_name_ + '.stopVideo();\n' +
-      '}\n';
+    code = variable_name_ + '.seekTo(0);\n' + variable_name_ + '.stopVideo();\n';
   }
   return code;
 };
