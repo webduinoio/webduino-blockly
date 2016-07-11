@@ -105,8 +105,12 @@ Code.loadDoc = function (href, callback) {
     link.onload = function () {
       callback(link.import);
     };
+    tag.parentNode.insertBefore(link, tag);
+  } else {
+    return new Promise(function (resolve) {
+      Code.loadDoc(href, resolve);
+    });
   }
-  tag.parentNode.insertBefore(link, tag);
 };
 
 Code.loadJs = function (src, callback) {
@@ -118,8 +122,12 @@ Code.loadJs = function (src, callback) {
     js.onload = function () {
       callback(js);
     };
+    tag.parentNode.insertBefore(js, tag);
+  } else {
+    return new Promise(function (resolve) {
+      Code.loadJs(src, resolve);
+    });
   }
-  tag.parentNode.insertBefore(js, tag);
 };
 
 /**
@@ -1398,24 +1406,16 @@ if (Code.PAGE !== 'index') {
 }
 
 Promise.all([
-  new Promise(function (resolve) {
-    Code.loadDoc(baseUrl + '/views/' + Code.PAGE.split('/')[0] + '.handlebars', function (doc) {
-      resolve(doc.body.innerHTML);
-    });
-  }),
-  new Promise(function (resolve) {
-    Code.loadDoc(baseUrl + '/toolbox/' + Code.PAGE + '.xml', function (doc) {
-      resolve(doc.body.firstChild);
-    });
-  }),
+  Code.loadDoc(baseUrl + '/views/' + Code.PAGE.split('/')[0] + '.handlebars'),
+  Code.loadDoc(baseUrl + '/toolbox/' + Code.PAGE + '.xml'),
   new Promise(function (resolve) {
     window.addEventListener('load', function () {
       resolve();
     }, false);
   })
 ]).then(function (values) {
-  Code.renderPage(values[0]);
-  Code.init(Code.getToolBox(values[1]));
+  Code.renderPage(values[0].body.innerHTML);
+  Code.init(Code.getToolBox(values[1].body.firstChild));
   Code.loadDemoArea();
   Code.loadGa();
   Code.ga();
