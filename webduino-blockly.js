@@ -19,21 +19,36 @@
   var speakSynth = window.speechSynthesis;
 
   function boardReady(options, callback) {
-    var board;
-
     if (typeof options === 'string') {
       options = {
         device: options
       };
     }
-    if (options.device || options.url) {
-      board = new webduino.WebArduino(options);
-    } else {
-      board = new webduino.Arduino(options);
-    }
-    board.on(webduino.BoardEvent.READY, callback.bind(undef));
 
-    boards.push(board);
+    boards.push(createBoard(options, boards.length));
+
+    function createBoard(opts, index) {
+      var board;
+
+      if (opts.device || opts.url) {
+        board = new webduino.WebArduino(opts);
+      } else {
+        board = new webduino.Arduino(opts);
+      }
+
+      board.once(webduino.BoardEvent.READY, callback);
+      board.once(webduino.BoardEvent.DISCONNECT, function () {
+        board = null;
+        delete boards[index];
+        boards.splice(index, 1);
+
+        setTimeout(function () {
+          boards.push(createBoard(opts, boards.length));
+        }, 5000);
+      });
+
+      return board;
+    }
   }
 
   function disconnectBoards(callback) {
@@ -765,5 +780,6 @@
   scope.max7219_horse = max7219_horse;
   scope.max7219_alphabet = max7219_alphabet;
   scope.max7219_number = max7219_number;
+  scope.boards = boards;
 
 }));

@@ -274,37 +274,22 @@ Code.checkDeviceOnline = function (device) {
   };
 
   device.check = function (v) {
-    device.boardEvent = webduino.BoardEvent,
-      device.board = new webduino.WebArduino({
-        device: v,
-        multi: true
-      });
-    device.icon.setAttribute('class', 'check board-error icon-power');
-
-    device.board.on(device.boardEvent.READY, function () {
-      console.log(v + ' : ok');
+    boardReady({
+      device: v,
+      multi: true
+    }, function (board) {
       device.icon.setAttribute('class', 'check board-online icon-power');
-      device.board._analogPinMapping.forEach( function (pinNum) {
-        device.board.disableAnalogPin(device.board.getPin(pinNum).analogNumber);
+      board.once(webduino.BoardEvent.DISCONNECT, function (e) {
+        device.icon.setAttribute('class', 'check board-error icon-power');
       });
     });
-
-    device.board.on(device.boardEvent.ERROR, function () {
-      device.icon.setAttribute('class', 'check board-error icon-power');
-    });
-  }
+    device.icon.setAttribute('class', 'check board-error icon-power');
+  };
 
   device.inputArea.oninput = function () {
     localStorage.boardState = this.value;
     if (this.value.length > 3) {
-      if  (device.board) {
-        device.board.on('disconnect', function () {
-          device.check(localStorage.boardState.toString());
-        });
-        device.board.disconnect();
-      } else {
-        device.check(localStorage.boardState.toString());
-      }
+      device.check(this.value);
     } else {
       device.icon.setAttribute('class', 'check icon-power');
     }
@@ -1421,7 +1406,10 @@ Promise.all([
   Code.ga();
   Code.importPrettify();
   Code.bindHotkey(window.document);
-  Code.loadJs(baseUrl + '/lib/webduino-base.min.js', function () {
+  Promise.all([
+    Code.loadJs(baseUrl + '/lib/webduino-base.min.js'),
+    Code.loadJs(baseUrl + '/webduino-blockly.js')
+  ]).then(function () {
     Code.checkDeviceOnline();
   });
   Code.loadJs(baseUrl + '/webduino-samples.js', function () {
