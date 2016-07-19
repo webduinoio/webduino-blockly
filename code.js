@@ -277,7 +277,7 @@ Code.checkDeviceOnline = function (device) {
     boardReady({
       device: v,
       multi: true
-    }, function (board) {
+    }, true, function (board) {
       device.icon.setAttribute('class', 'check board-online icon-power');
       board.once(webduino.BoardEvent.DISCONNECT, function (e) {
         device.icon.setAttribute('class', 'check board-error icon-power');

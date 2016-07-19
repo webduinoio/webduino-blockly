@@ -18,15 +18,7 @@
 
   var speakSynth = window.speechSynthesis;
 
-  function boardReady(options, callback) {
-    if (typeof options === 'string') {
-      options = {
-        device: options
-      };
-    }
-
-    boards.push(createBoard(options, boards.length));
-
+  function boardReady(options, autoReconnect, callback) {
     function createBoard(opts, index) {
       var board;
 
@@ -36,19 +28,30 @@
         board = new webduino.Arduino(opts);
       }
 
-      board.once(webduino.BoardEvent.READY, callback);
+      board.once(webduino.BoardEvent.READY, (typeof autoReconnect === 'function' ?
+        autoReconnect : callback));
       board.once(webduino.BoardEvent.DISCONNECT, function () {
         board = null;
         delete boards[index];
         boards.splice(index, 1);
 
-        setTimeout(function () {
-          boards.push(createBoard(opts, boards.length));
-        }, 5000);
+        if (autoReconnect === true) {
+          setTimeout(function () {
+            boards.push(createBoard(opts, boards.length));
+          }, 5000);
+        }
       });
 
       return board;
     }
+
+    if (typeof options === 'string') {
+      options = {
+        device: options
+      };
+    }
+
+    boards.push(createBoard(options, boards.length));
   }
 
   function disconnectBoards(callback) {
