@@ -19,71 +19,47 @@
   var speakSynth = window.speechSynthesis;
 
   function boardReady(options, autoReconnect, callback) {
-    function createBoard(opts, index) {
-      var board;
-
-      if (opts.device || opts.url) {
-        board = new webduino.WebArduino(opts);
-      } else {
-        board = new webduino.Arduino(opts);
-      }
-
-      board.once(webduino.BoardEvent.READY, (typeof autoReconnect === 'function' ?
-        autoReconnect : callback));
-      board.once(webduino.BoardEvent.DISCONNECT, function () {
+    var callback = (typeof autoReconnect === 'function' ? autoReconnect : callback),
+      index = boards.length,
+      board = createBoard(options),
+      terminate = function () {
         board = null;
         delete boards[index];
         boards.splice(index, 1);
 
         if (autoReconnect === true) {
           setTimeout(function () {
-            boards.push(createBoard(opts, boards.length));
+            boardReady(options, autoReconnect, callback);
           }, 5000);
         }
-      });
+      };
 
-      return board;
-    }
+    board.once(webduino.BoardEvent.ERROR, function (err) {
+      if (board.isConnected) {
+        board.once(webduino.BoardEvent.DISCONNECT, terminate);
+        board.disconnect();
+      } else {
+        terminate();
+      }
+    });
 
-    if (typeof options === 'string') {
-      options = {
-        device: options
+    board.once(webduino.BoardEvent.READY, callback);
+
+    boards.push(board);
+  }
+
+  function createBoard(opts) {
+    if (typeof opts === 'string') {
+      opts = {
+        device: opts
       };
     }
 
-    boards.push(createBoard(options, boards.length));
-  }
-
-  function disconnectBoards(callback) {
-    var promises = boards.map(whenClosed);
-    Promise.all(promises).then(function (results) {
-      boards = [];
-      callback(results);
-    }).catch(function (reason) {
-      boards = [];
-      callback(reason);
-    });
-  }
-
-  function whenClosed(board) {
-    return new Promise(function (resolve, reject) {
-      try {
-        if (board._transport.isOpen) {
-          board.on(webduino.BoardEvent.DISCONNECT, function () {
-            resolve(true);
-          });
-          board.disconnect();
-        } else {
-          resolve(true);
-        }
-      } catch (e) {
-        reject(e);
-      }
-    });
-  }
-
-  function getBoards() {
-    return boards;
+    if (opts.device || opts.url) {
+      return new webduino.WebArduino(opts);
+    } else {
+      return new webduino.Arduino(opts);
+    }
   }
 
   function getPin(board, pinNum) {
@@ -745,8 +721,6 @@
   }
 
   scope.boardReady = boardReady;
-  scope.disconnectBoards = disconnectBoards;
-  scope.getBoards = getBoards;
   scope.getPin = getPin;
   scope.getLed = getLed;
   scope.getRelay = getRelay;
