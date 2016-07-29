@@ -349,14 +349,6 @@ Blockly.Msg.WEBDUINO_SERVO = "Servo , pin:";
 Blockly.Msg.WEBDUINO_SERVO_TEXT = "Servo:";
 Blockly.Msg.WEBDUINO_SERVO_ANGLE = "  angle ( 0-180 ) :";
 
-Blockly.Msg.WEBDUINO_CAR = "Car";
-Blockly.Msg.WEBDUINO_CAR_F = "Forward";
-Blockly.Msg.WEBDUINO_CAR_B = "Backward";
-Blockly.Msg.WEBDUINO_CAR_L = "Left";
-Blockly.Msg.WEBDUINO_CAR_R = "Right";
-Blockly.Msg.WEBDUINO_CAR_MOVE_FOR = "for";
-Blockly.Msg.WEBDUINO_CAR_MOVE_SEC = "secs";
-
 Blockly.Msg.WEBDUINO_FISH = "Fish";
 Blockly.Msg.WEBDUINO_FISH_MOVE_FOR = "for";
 Blockly.Msg.WEBDUINO_FISH_MOVE_SEC = "secs";

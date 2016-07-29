@@ -468,17 +468,7 @@ Blockly.Msg.WEBDUINO_ADXL345_S = "的";
 Blockly.Msg.WEBDUINO_ADXL345_VAL = "數值";
 Blockly.Msg.WEBDUINO_ADXL345_OFF = "停止偵測";
 
-// Car 1
-
-Blockly.Msg.WEBDUINO_CAR = "遙控車";
-Blockly.Msg.WEBDUINO_CAR_F = "前進";
-Blockly.Msg.WEBDUINO_CAR_B = "後退";
-Blockly.Msg.WEBDUINO_CAR_L = "左轉";
-Blockly.Msg.WEBDUINO_CAR_R = "右轉";
-Blockly.Msg.WEBDUINO_CAR_MOVE_FOR = "持續";
-Blockly.Msg.WEBDUINO_CAR_MOVE_SEC = "秒";
-
-// Car 2
+// Car
 
 Blockly.Msg.WEBDUINO_TESTCAR = "自走車";
 Blockly.Msg.WEBDUINO_TESTCAR_PINRF = "腳位設定右前";

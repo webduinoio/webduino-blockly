@@ -906,25 +906,6 @@ Blockly.JavaScript['rgbled_setcolor_callback'] = function (block) {
 };
 
 
-Blockly.JavaScript['car_new'] = function (block) {
-  var dropdown_f_ = block.getFieldValue('f_');
-  var dropdown_b_ = block.getFieldValue('b_');
-  var dropdown_l_ = block.getFieldValue('l_');
-  var dropdown_r_ = block.getFieldValue('r_');
-  var code = 'getCar(board, ' + dropdown_f_ + ', ' + dropdown_b_ + ', ' + dropdown_l_ + ', ' + dropdown_r_ + ')';
-  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
-};
-
-
-Blockly.JavaScript['car_move'] = function (block) {
-  var variable_car_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('car_'), Blockly.Variables.NAME_TYPE);
-  var dropdown_move_ = block.getFieldValue('move_');
-  var value_secs_ = Blockly.JavaScript.valueToCode(block, 'secs_', Blockly.JavaScript.ORDER_NONE);
-  var code = 'await ' + variable_car_ + '.' + dropdown_move_ + '(' + value_secs_ + ');\n';
-  return code;
-};
-
-
 Blockly.JavaScript['fish_new'] = function (block) {
   var code = 'getFish(board)';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];

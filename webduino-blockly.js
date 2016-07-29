@@ -259,169 +259,108 @@
     return new webduino.module.Soil(board, analogpin);
   }
 
-  function toyCar(board, RF, RB, LF, LB) {
+  function getToyCar(board, RF, RB, LF, LB) {
+    return new ToyCar(board, RF, RB, LF, LB);
+  }
+
+  function ToyCar(board, RF, RB, LF, LB) {
     this._rf = getPin(board, RF);
     this._rb = getPin(board, RB);
     this._lf = getPin(board, LF);
     this._lb = getPin(board, LB);
   }
 
-  toyCar.prototype.goFront = function () {
-    var self = this;
-    self._rf.write(1);
-    self._rb.write(0);
-    self._lf.write(1);
-    self._lb.write(0);
-  };
-  toyCar.prototype.goBack = function () {
-    var self = this;
-    self._rf.write(0);
-    self._rb.write(1);
-    self._lf.write(0);
-    self._lb.write(1);
-  };
-  toyCar.prototype.goRight = function () {
-    var self = this;
-    self._rf.write(1);
-    self._rb.write(0);
-    self._lf.write(0);
-    self._lb.write(0);
-  };
-  toyCar.prototype.goLeft = function () {
-    var self = this;
-    self._rf.write(0);
-    self._rb.write(0);
-    self._lf.write(1);
-    self._lb.write(0);
-  };
-  toyCar.prototype.turnRight = function () {
-    var self = this;
-    self._rf.write(0);
-    self._rb.write(1);
-    self._lf.write(1);
-    self._lb.write(0);
-  };
-  toyCar.prototype.turnLeft = function () {
-    var self = this;
-    self._rf.write(1);
-    self._rb.write(0);
-    self._lf.write(0);
-    self._lb.write(1);
-  };
-  toyCar.prototype.backLeft = function () {
-    var self = this;
-    self._rf.write(0);
-    self._rb.write(0);
-    self._lf.write(0);
-    self._lb.write(1);
-  };
-  toyCar.prototype.backRight = function () {
-    var self = this;
-    self._rf.write(0);
-    self._rb.write(1);
-    self._lf.write(0);
-    self._lb.write(0);
-  };
-  toyCar.prototype.stop = function () {
-    var self = this;
-    self._rf.write(0);
-    self._rb.write(0);
-    self._lf.write(0);
-    self._lb.write(0);
-  };
-  toyCar.prototype.onlyLeftFront = function () {
-    var self = this;
-    self._rf.write(1);
-    self._rb.write(0);
-  };
-  toyCar.prototype.onlyRightFront = function () {
-    var self = this;
-    self._lf.write(1);
-    self._lb.write(0);
-  };
-  toyCar.prototype.onlyLeftBack = function () {
-    var self = this;
-    self._rf.write(1);
-    self._rb.write(0);
-  };
-  toyCar.prototype.onlyRightBack = function () {
-    var self = this;
-    self._lf.write(1);
-    self._lb.write(0);
-  };
-  toyCar.prototype.onlyLeftStop = function () {
-    var self = this;
-    self._rf.write(0);
-    self._rb.write(0);
-  };
-  toyCar.prototype.onlyRightStop = function () {
-    var self = this;
-    self._lf.write(0);
-    self._lb.write(0);
+  ToyCar.prototype.goFront = function () {
+    this._rf.write(1);
+    this._rb.write(0);
+    this._lf.write(1);
+    this._lb.write(0);
   };
 
-  function getToyCar(board, RF, RB, LF, LB) {
-    return new toyCar(board, RF, RB, LF, LB);
-  }
-
-  function getCar(board, F, B, L, R) {
-    return new Car(board, F, B, L, R);
-  }
-
-  function Car(board, F, B, L, R) {
-    this._board = board;
-  }
-
-  Car.prototype.forward = function (secs) {
-    var self = this;
-    return new Promise(function (resolve, reject) {
-      self._board.send([0x90, 0x00, 0x01, 0x91, 0x01, 0x00]);
-      setTimeout(function () {
-        self._board.send([0x90, 0x00, 0x00, 0x91, 0x00, 0x00]);
-        resolve();
-      }, secs * 1000);
-    });
+  ToyCar.prototype.goBack = function () {
+    this._rf.write(0);
+    this._rb.write(1);
+    this._lf.write(0);
+    this._lb.write(1);
   };
 
-  Car.prototype.backward = function (secs) {
-    var self = this;
-    return new Promise(function (resolve, reject) {
-      self._board.send([0x90, 0x40, 0x00, 0x91, 0x02, 0x00]);
-      setTimeout(function () {
-        self._board.send([0x90, 0x00, 0x00, 0x91, 0x00, 0x00]);
-        resolve();
-      }, secs * 1000);
-    });
+  ToyCar.prototype.goRight = function () {
+    this._rf.write(1);
+    this._rb.write(0);
+    this._lf.write(0);
+    this._lb.write(0);
   };
 
-  Car.prototype.left = function (secs) {
-    var self = this;
-    return new Promise(function (resolve, reject) {
-      self._board.send([0x90, 0x40, 0x00, 0x91, 0x01, 0x00]);
-      setTimeout(function () {
-        self._board.send([0x90, 0x00, 0x00, 0x91, 0x00, 0x00]);
-        resolve();
-      }, secs * 1000);
-    });
+  ToyCar.prototype.goLeft = function () {
+    this._rf.write(0);
+    this._rb.write(0);
+    this._lf.write(1);
+    this._lb.write(0);
   };
 
-  Car.prototype.right = function (secs) {
-    var self = this;
-    return new Promise(function (resolve, reject) {
-      self._board.send([0x90, 0x00, 0x01, 0x91, 0x02, 0x00]);
-      setTimeout(function () {
-        self._board.send([0x90, 0x00, 0x00, 0x91, 0x00, 0x00]);
-        resolve();
-      }, secs * 1000);
-    });
+  ToyCar.prototype.turnRight = function () {
+    this._rf.write(0);
+    this._rb.write(1);
+    this._lf.write(1);
+    this._lb.write(0);
   };
 
-  Car.prototype.stop = function (secs) {
-    return new Promise(function (resolve, reject) {
-      setTimeout(function () {
-        resolve();
-      }, secs * 1000);
-    });
+  ToyCar.prototype.turnLeft = function () {
+    this._rf.write(1);
+    this._rb.write(0);
+    this._lf.write(0);
+    this._lb.write(1);
+  };
+
+  ToyCar.prototype.backLeft = function () {
+    this._rf.write(0);
+    this._rb.write(0);
+    this._lf.write(0);
+    this._lb.write(1);
+  };
+
+  ToyCar.prototype.backRight = function () {
+    this._rf.write(0);
+    this._rb.write(1);
+    this._lf.write(0);
+    this._lb.write(0);
+  };
+
+  ToyCar.prototype.stop = function () {
+    this._rf.write(0);
+    this._rb.write(0);
+    this._lf.write(0);
+    this._lb.write(0);
+  };
+
+  ToyCar.prototype.onlyLeftFront = function () {
+    this._rf.write(1);
+    this._rb.write(0);
+  };
+
+  ToyCar.prototype.onlyRightFront = function () {
+    this._lf.write(1);
+    this._lb.write(0);
+  };
+
+  ToyCar.prototype.onlyLeftBack = function () {
+    this._rf.write(1);
+    this._rb.write(0);
+  };
+
+  ToyCar.prototype.onlyRightBack = function () {
+    this._lf.write(1);
+    this._lb.write(0);
+  };
+
+  ToyCar.prototype.onlyLeftStop = function () {
+    this._rf.write(0);
+    this._rb.write(0);
+  };
+
+  ToyCar.prototype.onlyRightStop = function () {
+    this._lf.write(0);
+    this._lb.write(0);
   };
 
   //DHT Area Chart
@@ -734,8 +673,6 @@
   scope.getDht = getDht;
   scope.getBuzzer = getBuzzer;
   scope.getServo = getServo;
-  scope.getCar = getCar;
-  scope.Car = Car;
   scope.dhtAreaChart = dhtAreaChart;
   scope.delay = delay;
   scope.getMax7219 = getMax7219;
