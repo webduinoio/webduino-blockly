@@ -594,6 +594,16 @@ Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY_STOP = "停止";
 Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_ADD = "放入音樂";
 
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE = "載入 Youtube 模組";
+Blockly.Msg.DEMO_YOUTUBE_DEFAULT = "預載";
+Blockly.Msg.DEMO_YOUTUBE_DEFAULT_1 = "影片";
+Blockly.Msg.DEMO_YOUTUBE_DEFAULT_2 = "影片清單";
+Blockly.Msg.DEMO_YOUTUBE_DEFAULT_ID = "的 id 為";
+Blockly.Msg.DEMO_YOUTUBE_PLAY = "播放";
+Blockly.Msg.DEMO_YOUTUBE_LIST = "影片清單的";
+Blockly.Msg.DEMO_YOUTUBE_LIST_PRE = "上一段";
+Blockly.Msg.DEMO_YOUTUBE_LIST_NEXT = "下一段";
+Blockly.Msg.DEMO_YOUTUBE_LIST_LISTNUM = "影片清單的第";
+Blockly.Msg.DEMO_YOUTUBE_LIST_NUM = "段";
 Blockly.Msg.DEMO_YOUTUBE_VIDEO_ID = " 預設的影片 id："; 
 Blockly.Msg.DEMO_YOUTUBE_CHANGEID_ID = "影片，要更換的影片 id：";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET = "設定";

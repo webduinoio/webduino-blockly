@@ -286,6 +286,16 @@ Blockly.Msg.WEBDUINO_ULTRASONIC_DISTANCE = "'s distance ( cm )";
 Blockly.Msg.WEBDUINO_ULTRASONIC_STOP = "stop get distance";
 
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE = "Set Youtube：";
+Blockly.Msg.DEMO_YOUTUBE_DEFAULT = "default";
+Blockly.Msg.DEMO_YOUTUBE_DEFAULT_1 = "video";
+Blockly.Msg.DEMO_YOUTUBE_DEFAULT_2 = "video list";
+Blockly.Msg.DEMO_YOUTUBE_DEFAULT_ID = "'s id is";
+Blockly.Msg.DEMO_YOUTUBE_PLAY = "Play";
+Blockly.Msg.DEMO_YOUTUBE_LIST = "video list";
+Blockly.Msg.DEMO_YOUTUBE_LIST_PRE = "previous video";
+Blockly.Msg.DEMO_YOUTUBE_LIST_NEXT = "next video";
+Blockly.Msg.DEMO_YOUTUBE_LIST_LISTNUM = "video list's";
+Blockly.Msg.DEMO_YOUTUBE_LIST_NUM = "video";
 Blockly.Msg.DEMO_YOUTUBE_VIDEO_ID = " default video id：";
 Blockly.Msg.DEMO_YOUTUBE_CHANGEID_ID = "change id：";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET = "Set";

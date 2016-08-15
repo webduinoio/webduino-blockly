@@ -205,7 +205,21 @@ Blockly.JavaScript['demo_range_input_value'] = function (block) {
 
 Blockly.JavaScript['demo_youtube'] = function (block) {
   var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_type_ = block.getFieldValue('type_');
   var text_id_ = block.getFieldValue('id_');
+  var codeAdd;
+  if(dropdown_type_==1){
+    codeAdd = '          ' + value_name_ + '.loadVideoById({\n'+
+    '            videoId:"' + text_id_ + '"\n'+
+    '          });\n'
+  }else{
+    codeAdd = '          ' + value_name_ + '.loadPlaylist({\n'+
+    '            list:"' + text_id_ + '",\n'+
+    '            listType:"playlist",\n'+
+    '            index:0\n'+
+    '          });\n'+
+    '          ' + value_name_ + '.setLoop(true);\n'
+  }
   var code = 
     'await new Promise(function (resolve) {\n' +
     '  var tag = document.createElement("script");\n' +
@@ -216,13 +230,13 @@ Blockly.JavaScript['demo_youtube'] = function (block) {
     '    ' + value_name_ + ' = new YT.Player("player", {\n' +
     '      height: "240",\n' +
     '      width: "96%",\n' +
-    '      videoId: "' + text_id_ + '",\n' +
+    //'      videoId: "' + text_id_ + '",\n' +
     '      playerVars: {\n' +
     '        autoplay: 1,\n' +
     '        controls: 1\n' +
     '      },\n' +
     '      events: {\n' +
-    '        onReady: function (evt) {\n' +
+    '        onReady: function (evt) {\n' + codeAdd +
     '          resolve();\n' +
     '        }\n' +
     '      }\n' +
@@ -282,6 +296,22 @@ Blockly.JavaScript['demo_youtube_id'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var value_id_ = Blockly.JavaScript.valueToCode(block, 'id_', Blockly.JavaScript.ORDER_ATOMIC);
   var code = variable_name_ + '.loadVideoById(' + value_id_ + ');\n';
+  return code;
+};
+
+
+Blockly.JavaScript['demo_youtube_listcontrol'] = function(block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_preornext_ = block.getFieldValue('preOrNext_');
+  var code = variable_name_ + dropdown_preornext_+';\n';
+  return code;
+};
+
+
+Blockly.JavaScript['demo_youtube_listnum'] = function(block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var value_num_ = Blockly.JavaScript.valueToCode(block, 'num_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = variable_name_+  '.playVideoAt(' + (value_num_*1 - 1) + ');\n';
   return code;
 };
 

@@ -1022,6 +1022,15 @@
         </value>
       </block>
       <block type="demo_youtube_speed"></block>
+      <block type="demo_youtube_listcontrol"></block>
+      <block type="demo_youtube_listnum">
+        <value name="num_">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+
+      </block>
     </category>
     <category id="catDemoTracking">
       <block type="demo_tracking">

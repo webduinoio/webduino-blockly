@@ -294,14 +294,16 @@ Blockly.Blocks['demo_range_input_value'] = {
   }
 };
 
-// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#wbe3vd
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#tm39n9
 Blockly.Blocks['demo_youtube'] = {
   init: function () {
     this.appendValueInput("name_")
-      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE, "設定 Youtube：");
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE);
     this.appendDummyInput()
-      .appendField(Blockly.Msg.DEMO_YOUTUBE_VIDEO_ID, "   預設影片 id：")
-      .appendField(new Blockly.FieldTextInput("..."), "id_");
+        .appendField(Blockly.Msg.DEMO_YOUTUBE_DEFAULT)
+        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.DEMO_YOUTUBE_DEFAULT_1, "1"], [Blockly.Msg.DEMO_YOUTUBE_DEFAULT_2, "2"]]), "type_")
+        .appendField(Blockly.Msg.DEMO_YOUTUBE_DEFAULT_ID)
+        .appendField(new Blockly.FieldTextInput("..."), "id_");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -314,9 +316,9 @@ Blockly.Blocks['demo_youtube'] = {
 Blockly.Blocks['demo_youtube_volume'] = {
   init: function () {
     this.appendValueInput("volume_")
-      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET, "設定")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET)
       .appendField(new Blockly.FieldVariable("youtube"), "name_")
-      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_VOLUME, "音量：");
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_VOLUME);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -329,9 +331,9 @@ Blockly.Blocks['demo_youtube_volume'] = {
 Blockly.Blocks['demo_youtube_speed'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET, "設定")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET)
       .appendField(new Blockly.FieldVariable("youtube"), "name_")
-      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SPEED, " 的播放速度：")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SPEED)
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SLOW, "0.5"],
         [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_NORMAL, "1"],
@@ -351,9 +353,9 @@ Blockly.Blocks['demo_youtube_speed'] = {
 Blockly.Blocks['demo_youtube_control'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET, "設定")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET)
       .appendField(new Blockly.FieldVariable("youtube"), "name_")
-      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUS, " 的狀態為：")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUS)
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SETPLAY, "1"],
         [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SETPAUSE, "2"],
@@ -372,7 +374,7 @@ Blockly.Blocks['demo_youtube_status'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("youtube"), "name_")
-      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUS, " 的狀態為：")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUS)
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSPLAY, "1"],
         [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSPAUSE, "2"],
@@ -391,9 +393,9 @@ Blockly.Blocks['demo_youtube_status'] = {
 Blockly.Blocks['demo_youtube_id'] = {
   init: function () {
     this.appendValueInput("id_")
-      .appendField(Blockly.Msg.DEMO_YOUTUBE_CHANGEID, "更換")
+      .appendField(Blockly.Msg.DEMO_YOUTUBE_CHANGEID)
       .appendField(new Blockly.FieldVariable("youtube"), "name_")
-      .appendField(Blockly.Msg.DEMO_YOUTUBE_CHANGEID_ID, "影片，要更換的影片 id：");
+      .appendField(Blockly.Msg.DEMO_YOUTUBE_CHANGEID_ID);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -401,6 +403,41 @@ Blockly.Blocks['demo_youtube_id'] = {
     this.setHelpUrl('https://webduino.io');
   }
 };
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#vcm5tv
+Blockly.Blocks['demo_youtube_listcontrol'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.DEMO_YOUTUBE_PLAY)
+      .appendField(new Blockly.FieldVariable("youtube"), "name_")
+      .appendField(Blockly.Msg.DEMO_YOUTUBE_LIST)
+      .appendField(new Blockly.FieldDropdown([[Blockly.Msg.DEMO_YOUTUBE_LIST_PRE, ".previousVideo()"], [Blockly.Msg.DEMO_YOUTUBE_LIST_NEXT, ".nextVideo()"]]), "preOrNext_");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('https://webduino.io');
+  }
+};
+
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#wnw8t9
+Blockly.Blocks['demo_youtube_listnum'] = {
+  init: function() {
+    this.appendValueInput("num_")
+        .setCheck("Number")
+        .appendField(Blockly.Msg.DEMO_YOUTUBE_PLAY)
+        .appendField(new Blockly.FieldVariable("youtube"), "name_")
+        .appendField(Blockly.Msg.DEMO_YOUTUBE_LIST_LISTNUM);
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.DEMO_YOUTUBE_LIST_NUM);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 
 //https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#85c65d
 Blockly.Blocks['demo_tracking'] = {
