@@ -1013,7 +1013,6 @@
         </value>
       </block>
       <block type="demo_youtube_control"></block>
-      <block type="demo_youtube_status"></block>
       <block type="demo_youtube_volume">
         <value name="volume_">
           <block type="math_number">
@@ -1029,8 +1028,16 @@
             <field name="NUM">1</field>
           </block>
         </value>
-
       </block>
+      <block type="demo_youtube_seekto">
+        <value name="sec_">
+          <block type="math_number">
+            <field name="NUM">30</field>
+          </block>
+        </value>
+      </block>
+      <block type="demo_youtube_status"></block>
+      <block type="demo_youtube_currenttime"></block>
     </category>
     <category id="catDemoTracking">
       <block type="demo_tracking">

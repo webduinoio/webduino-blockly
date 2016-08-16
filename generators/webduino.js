@@ -315,6 +315,20 @@ Blockly.JavaScript['demo_youtube_listnum'] = function(block) {
   return code;
 };
 
+
+Blockly.JavaScript['demo_youtube_currenttime'] = function(block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var code = 'Math.round(' + variable_name_ + '.getCurrentTime()*10)/10';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['demo_youtube_seekto'] = function(block) {
+  var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
+  var value_sec_ = Blockly.JavaScript.valueToCode(block, 'sec_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = variable_name_ + '.seekTo(' + value_sec_ + ');\n';
+  return code;
+};
+
 //controller
 Blockly.JavaScript['demo_controller'] = function (block) {
   var dropdown_event_ = block.getFieldValue('event_');
