@@ -208,19 +208,20 @@ Blockly.JavaScript['demo_youtube'] = function (block) {
   var dropdown_type_ = block.getFieldValue('type_');
   var text_id_ = block.getFieldValue('id_');
   var codeAdd;
-  if(dropdown_type_==1){
-    codeAdd = '          ' + value_name_ + '.loadVideoById({\n'+
-    '            videoId:"' + text_id_ + '"\n'+
-    '          });\n'
-  }else{
-    codeAdd = '          ' + value_name_ + '.loadPlaylist({\n'+
-    '            list:"' + text_id_ + '",\n'+
-    '            listType:"playlist",\n'+
-    '            index:0\n'+
-    '          });\n'+
-    '          ' + value_name_ + '.setLoop(true);\n'
+  if (dropdown_type_ == 1) {
+    codeAdd = '          ' + value_name_ + '.loadVideoById({\n' +
+      '            videoId:"' + text_id_ + '"\n' +
+      '          });\n'
+  } else {
+    codeAdd = '          ' + value_name_ + '.loadPlaylist({\n' +
+      '            list:"' + text_id_ + '",\n' +
+      '            listType:"playlist",\n' +
+      '            index:0\n' +
+      '          });\n' +
+      '          ' + value_name_ + '.setLoop(true);\n'
   }
-  var code = 
+  var code =
+    'var ' + value_name_ + 'Play, ' + value_name_ + 'Stop, ' + value_name_ + 'Pause;\n' +
     'await new Promise(function (resolve) {\n' +
     '  var tag = document.createElement("script");\n' +
     '  tag.src = "https://www.youtube.com/iframe_api";\n' +
@@ -238,11 +239,21 @@ Blockly.JavaScript['demo_youtube'] = function (block) {
     '      events: {\n' +
     '        onReady: function (evt) {\n' + codeAdd +
     '          resolve();\n' +
-    '        }\n' +
+    '        },\n' +
+    '        onStateChange: onPlayerStateChange\n' +
     '      }\n' +
     '    });\n' +
     '  };\n' +
-    '});\n';
+    '});\n' +
+    'function onPlayerStateChange(event) {\n' +
+    '  if(event.data == ' + value_name_ + 'Stop) {\n' +
+    '    ' + value_name_ + 'StopCallback();\n' +
+    '  }else if(event.data == ' + value_name_ + 'Play){\n' +
+    '    ' + value_name_ + 'PlayCallback();\n' +
+    '  }else if(event.data == ' + value_name_ + 'Pause){\n' +
+    '    ' + value_name_ + 'PauseCallback();\n' +
+    '  }\n' +
+    '};\n';
   return code;
 };
 
@@ -300,32 +311,56 @@ Blockly.JavaScript['demo_youtube_id'] = function (block) {
 };
 
 
-Blockly.JavaScript['demo_youtube_listcontrol'] = function(block) {
+Blockly.JavaScript['demo_youtube_listcontrol'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var dropdown_preornext_ = block.getFieldValue('preOrNext_');
-  var code = variable_name_ + dropdown_preornext_+';\n';
+  var code = variable_name_ + dropdown_preornext_ + ';\n';
   return code;
 };
 
 
-Blockly.JavaScript['demo_youtube_listnum'] = function(block) {
+Blockly.JavaScript['demo_youtube_listnum'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var value_num_ = Blockly.JavaScript.valueToCode(block, 'num_', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = variable_name_+  '.playVideoAt(' + (value_num_*1 - 1) + ');\n';
+  var code = variable_name_ + '.playVideoAt(' + (value_num_ * 1 - 1) + ');\n';
   return code;
 };
 
 
-Blockly.JavaScript['demo_youtube_currenttime'] = function(block) {
+Blockly.JavaScript['demo_youtube_currenttime'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var code = 'Math.round(' + variable_name_ + '.getCurrentTime()*10)/10';
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
-Blockly.JavaScript['demo_youtube_seekto'] = function(block) {
+Blockly.JavaScript['demo_youtube_seekto'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var value_sec_ = Blockly.JavaScript.valueToCode(block, 'sec_', Blockly.JavaScript.ORDER_ATOMIC);
   var code = variable_name_ + '.seekTo(' + value_sec_ + ');\n';
+  return code;
+};
+
+Blockly.JavaScript['demo_youtube_callback'] = function (block) {
+  var variable_val_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('val_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_event_ = block.getFieldValue('event_');
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var code;
+  if (dropdown_event_ == 0) {
+    code = variable_val_ + 'Stop = 0;\n' +
+      'function ' + variable_val_ + 'StopCallback(){\n' +
+      statements_do_ + '\n' +
+      '}\n';
+  } else if (dropdown_event_ == 1) {
+    code = variable_val_ + 'Play = 1;\n' +
+      'function ' + variable_val_ + 'PlayCallback(){\n' +
+      statements_do_ + '\n' +
+      '}\n';
+  } else if (dropdown_event_ == 2) {
+    code = variable_val_ + 'Pause = 2;\n' +
+      'function ' + variable_val_ + 'PauseCallback(){\n' +
+      statements_do_ + '\n' +
+      '}\n';
+  }
   return code;
 };
 
@@ -641,9 +676,9 @@ Blockly.JavaScript['demo_tracking_action'] = function (block) {
 Blockly.JavaScript['demo_tracking_val'] = function (block) {
   var dropdown_val_ = block.getFieldValue('val_');
   var code = '';
-  if(dropdown_val_==='total'){
+  if (dropdown_val_ === 'total') {
     code = 'event.data.length';
-  }else{
+  } else {
     code = 'data.' + dropdown_val_;
   }
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
@@ -1619,13 +1654,13 @@ Blockly.JavaScript['sound_recognition_check'] = function (block) {
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
   var code;
   var a = value_text_.split('');
-  if(a[0]=='\''){
-    var b = value_text_.replace(/'/g,'');
+  if (a[0] == '\'') {
+    var b = value_text_.replace(/'/g, '');
     code = 'if(result.resultTranscript.indexOf("' + b + '")!== -1){\n' +
       '        ' + statements_do_ +
-      '        console.log(event.results[result.resultLength]);\n'+
+      '        console.log(event.results[result.resultLength]);\n' +
       '      }\n';
-  }else{
+  } else {
     code = 'if(result.resultTranscript.indexOf(' + value_text_ + ')!==-1){\n' +
       '        ' + statements_do_ +
       '      }\n';

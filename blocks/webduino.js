@@ -387,7 +387,7 @@ Blockly.Blocks['demo_youtube_status'] = {
       ]), "status_");
     this.setOutput(true);
     this.setTooltip('');
-    this.setColour(80);
+    this.setColour(70);
     this.setHelpUrl('https://webduino.io');
   }
 };
@@ -421,7 +421,7 @@ Blockly.Blocks['demo_youtube_listcontrol'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setColour(180);
     this.setHelpUrl('https://webduino.io');
   }
 };
@@ -439,7 +439,7 @@ Blockly.Blocks['demo_youtube_listnum'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('');
-    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setColour(180);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -448,11 +448,11 @@ Blockly.Blocks['demo_youtube_listnum'] = {
 Blockly.Blocks['demo_youtube_currenttime'] = {
   init: function () {
     this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("youtube"), "name_")
+      .appendField(new Blockly.FieldVariable("youtube"), "name_")
       .appendField(Blockly.Msg.DEMO_YOUTUBE_CURRENTTIME);
     this.setOutput(true, null);
     this.setTooltip('');
-    this.setColour(80);
+    this.setColour(70);
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -463,10 +463,33 @@ Blockly.Blocks['demo_youtube_seekto'] = {
     this.appendValueInput("sec_")
       .setCheck("Number")
       .appendField(Blockly.Msg.DEMO_YOUTUBE_SET)
-        .appendField(new Blockly.FieldVariable("youtube"), "name_")
+      .appendField(new Blockly.FieldVariable("youtube"), "name_")
       .appendField(Blockly.Msg.DEMO_YOUTUBE_SEEKTO);
     this.appendDummyInput()
       .appendField(Blockly.Msg.DEMO_YOUTUBE_SEC);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['demo_youtube_callback'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET)
+      .appendField(new Blockly.FieldVariable("youtube"), "val_")
+      .appendField(Blockly.Msg.DEMO_YOUTUBE_DEFAULT_1)
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SETSTOP, 0],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SETPAUSE, 2],
+        [Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SETPLAY, 1]
+      ]), "event_")
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SETPLAY);
+    this.appendStatementInput("do_")
+      .setCheck(null)
+      .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_DO);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('');

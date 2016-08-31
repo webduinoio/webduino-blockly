@@ -302,6 +302,7 @@ Blockly.Msg.DEMO_YOUTUBE_CURRENTTIME = "current time (sec)";
 Blockly.Msg.DEMO_YOUTUBE_SET = "Set";
 Blockly.Msg.DEMO_YOUTUBE_SEEKTO = "seek to";
 Blockly.Msg.DEMO_YOUTUBE_SEC = "sec";
+Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_DO = "do";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET = "Set";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_VOLUME = "Volume:";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SPEED = "Speed:";
