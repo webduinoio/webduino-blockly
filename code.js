@@ -82,6 +82,15 @@ Code.getPage = function () {
   return page;
 };
 
+Code.getTags = function () {
+  var tags = Code.getStringParamFromUrl('tags', '').trim();
+  if (!tags.length) {
+    tags = '*';
+  }
+  tags = tags.split(/\s*,\s*/);
+  return tags;
+};
+
 Code.getDemoPage = function () {
   var area = document.querySelector('#demo-area.show');
   if (area) {
@@ -631,6 +640,44 @@ Code.renderContent = function() {
       code = content.innerHTML;
       code = prettyPrintOne(code, 'js');
       content.innerHTML = code;
+    }
+  }
+};
+
+Code.filterXML = function (toolboxXML, property, values) {
+  var categories = slice.call(toolboxXML.querySelectorAll('category'));
+  categories.forEach(function (cate) {
+    if (cate.getAttribute(property) !== null) {
+      filterTag(cate);
+    }
+  });
+
+  var blocks = slice.call(toolboxXML.querySelectorAll('block'));
+  blocks.forEach(function (block) {
+    if (block.getAttribute(property) !== null) {
+      filterTag(block);
+    }
+  });
+
+  function filterTag(node) {
+    var vals = node.getAttribute(property).trim().split(/\s*,\s*/);
+    vals = vals.filter(function (tag) {
+      return values.indexOf('*') !== -1 || values.indexOf(tag) !== -1;
+    });
+    if (!vals.length) {
+      Code.pruneNode(node);
+    }
+  }
+
+  return toolboxXML;
+};
+
+Code.pruneNode = function (node) {
+  if (node && node.parentElement) {
+    var parent = node.parentElement;
+    parent.removeChild(node);
+    if (!parent.children.length) {
+      Code.pruneNode(parent);
     }
   }
 };
@@ -1401,7 +1448,7 @@ Promise.all([
   })
 ]).then(function (values) {
   Code.renderPage(values[0].body.innerHTML);
-  Code.init(Code.getToolBox(values[1].body.firstChild));
+  Code.init(Code.getToolBox(Code.filterXML(values[1].body.firstChild, 'tags', Code.getTags())));
   Code.loadDemoArea();
   Code.loadGa();
   Code.ga();
