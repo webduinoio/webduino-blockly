@@ -37,7 +37,8 @@ var Code = {};
  */
 Code.LANGUAGE_NAME = {
   'en': 'English',
-  'zh-hant': '正體中文'
+  'zh-hant': '正體中文',
+  'zh-hans': '简体中文'
 };
 
 /**
