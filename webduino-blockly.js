@@ -265,9 +265,13 @@
 
   function ToyCar(board, RF, RB, LF, LB) {
     this._rf = getPin(board, RF);
+    this._rf.setMode(1);
     this._rb = getPin(board, RB);
+    this._rb.setMode(1);
     this._lf = getPin(board, LF);
+    this._lf.setMode(1);
     this._lb = getPin(board, LB);
+    this._lb.setMode(1);
   }
 
   ToyCar.prototype.goFront = function () {
