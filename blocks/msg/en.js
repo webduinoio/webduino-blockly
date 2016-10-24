@@ -239,6 +239,7 @@ Blockly.Msg.WEBDUINO_PIN_STATE = "Pin state";
 Blockly.Msg.WEBDUINO_BOARD_IF_ERROR = "When board goes offline";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "do:";
 Blockly.Msg.WEBDUINO_BOARD_SAMPLING = "  Sampling";
+Blockly.Msg.WEBDUINO_SMART = "Smart";
 
 Blockly.Msg.WEBDUINO_PIN = "Pin";
 Blockly.Msg.WEBDUINO_PIN_ON = "On";
@@ -331,6 +332,7 @@ Blockly.Msg.WEBDUINO_DHT_GET_T = "temperature (C)";
 Blockly.Msg.WEBDUINO_DHT_GET_H = "humidity (%)";
 
 Blockly.Msg.WEBDUINO_BUTTON_NEW = "Button switch, pin:";
+Blockly.Msg.WEBDUINO_BUTTON_PULLUP_NEW = "Pull-up Button switch, pin:";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_WHEN = "When";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_WAS = "is";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_TO = "";

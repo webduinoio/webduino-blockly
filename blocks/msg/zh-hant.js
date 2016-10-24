@@ -257,6 +257,7 @@ Blockly.Msg.WEBDUINO_PIN_STATE = "腳位狀態";
 Blockly.Msg.WEBDUINO_BOARD_IF_ERROR = "如果斷線";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "執行";
 Blockly.Msg.WEBDUINO_BOARD_SAMPLING = "  類比取樣";
+Blockly.Msg.WEBDUINO_SMART = "Smart";
 
 // I/O Pins
 
@@ -360,6 +361,7 @@ Blockly.Msg.WEBDUINO_DHT_GET_H = "濕度 (%)";
 // Button
 
 Blockly.Msg.WEBDUINO_BUTTON_NEW = "按鈕開關，腳位";
+Blockly.Msg.WEBDUINO_BUTTON_PULLUP_NEW = "上拉按鈕開關，腳位";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_WHEN = "當";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_WAS = "進行";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_TO = "時";

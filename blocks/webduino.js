@@ -995,6 +995,37 @@ Blockly.Blocks['board_ready'] = {
   }
 };
 
+Blockly.Blocks['smart_ready'] = {
+  init: function () {
+    this.appendValueInput("device_")
+      .setCheck("String")
+      .appendField(Blockly.Msg.WEBDUINO_SMART)
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET, "4"]
+      ]), "type_")
+      .appendField(":");
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_SAMPLING)
+      .appendField(new Blockly.FieldDropdown([
+        ["20 ms", "20"],
+        ["50 ms", "50"],
+        ["75 ms", "75"],
+        ["100 ms", "100"],
+        ["250 ms", "250"],
+        ["500 ms", "500"],
+        ["1 sec", "1000"]
+      ]), "rate_")
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN)
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "check_")
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_MULTI)
+      .appendField(new Blockly.FieldCheckbox("FALSE"), "multi_");
+    this.appendStatementInput("callbacks_");
+    this.setTooltip('');
+    this.setColour(290);
+    this.setHelpUrl('https://webduino.io');
+  }
+};
+
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#tzhs2o
 Blockly.Blocks['board_error'] = {
   init: function () {
@@ -1066,26 +1097,7 @@ Blockly.Blocks['pin_get'] = {
 Blockly.Blocks['pin_num'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3~", "3"],
-        ["4", "4"],
-        ["5~", "5"],
-        ["6~", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9~", "9"],
-        ["10~", "10"],
-        ["11~", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "pin_");
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "pin_");
     this.setOutput(true);
     this.setColour(230);
     this.setOutput(true, "Number");
@@ -1203,26 +1215,7 @@ Blockly.Blocks['led_new'] = {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_LED, "Led")
       .appendField(Blockly.Msg.WEBDUINO_LED_PIN, "pin")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3~", "3"],
-        ["4", "4"],
-        ["5~", "5"],
-        ["6~", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9~", "9"],
-        ["10~", "10"],
-        ["11~", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "pin_");
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "pin_");
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
@@ -1336,68 +1329,11 @@ Blockly.Blocks['rgbled_new'] = {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_RGBLED, "RGBLed")
       .appendField(Blockly.Msg.WEBDUINO_RGBLED_RED, "red")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3~", "3"],
-        ["4", "4"],
-        ["5~", "5"],
-        ["6~", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9~", "9"],
-        ["10~", "10"],
-        ["11~", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "red_")
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "red_")
       .appendField(Blockly.Msg.WEBDUINO_RGBLED_GREEN, "green")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3~", "3"],
-        ["4", "4"],
-        ["5~", "5"],
-        ["6~", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9~", "9"],
-        ["10~", "10"],
-        ["11~", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "green_")
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "green_")
       .appendField(Blockly.Msg.WEBDUINO_RGBLED_BLUE, "blue")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3~", "3"],
-        ["4", "4"],
-        ["5~", "5"],
-        ["6~", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9~", "9"],
-        ["10~", "10"],
-        ["11~", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "blue_");
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "blue_");
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
@@ -1410,68 +1346,11 @@ Blockly.Blocks['rgbled_new_cathode'] = {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_RGBLED_CATHODE, "RGBLed")
       .appendField(Blockly.Msg.WEBDUINO_RGBLED_RED, "red")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3~", "3"],
-        ["4", "4"],
-        ["5~", "5"],
-        ["6~", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9~", "9"],
-        ["10~", "10"],
-        ["11~", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "red_")
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "red_")
       .appendField(Blockly.Msg.WEBDUINO_RGBLED_GREEN, "green")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3~", "3"],
-        ["4", "4"],
-        ["5~", "5"],
-        ["6~", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9~", "9"],
-        ["10~", "10"],
-        ["11~", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "green_")
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "green_")
       .appendField(Blockly.Msg.WEBDUINO_RGBLED_BLUE, "blue")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3~", "3"],
-        ["4", "4"],
-        ["5~", "5"],
-        ["6~", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9~", "9"],
-        ["10~", "10"],
-        ["11~", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "blue_");
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "blue_");
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
@@ -1621,35 +1500,9 @@ Blockly.Blocks['ultrasonic_new'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_TRIG, "UltraSonic,  Trig:")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"]
-      ]), "trig_")
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "trig_")
       .appendField(Blockly.Msg.WEBDUINO_ULTRASONIC_NEW_ECHO, "  Echo:")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"]
-      ]), "echo_");
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "echo_");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
@@ -1721,26 +1574,19 @@ Blockly.Blocks['button_new'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_BUTTON_NEW, "Button ,  pin:")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "pin_");
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "pin_");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(230);
+    this.setHelpUrl('https://webduino.io');
+  }
+};
+
+Blockly.Blocks['button_pullup_new'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BUTTON_PULLUP_NEW)
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "pin_");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
@@ -1776,20 +1622,7 @@ Blockly.Blocks['pir_new'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_PIR, "PIR ,  pin:")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"]
-      ]), "pin_");
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "pin_");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
@@ -1822,20 +1655,7 @@ Blockly.Blocks['sound_new'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_SOUND, "Sound ,  pin:")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"]
-      ]), "pin_");
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "pin_");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
@@ -1867,26 +1687,7 @@ Blockly.Blocks['shock_new'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_SHOCK_NEW, "Shock ,  pin:")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "pin_");
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "pin_");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
@@ -1919,20 +1720,7 @@ Blockly.Blocks['dht_new'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_DHT_NEW, "DHT ,  pin:")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"]
-      ]), "pin_");
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "pin_");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
@@ -1979,26 +1767,7 @@ Blockly.Blocks['buzzer_new'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_BUZZER, "Buzzer ,  pin:")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "pin_");
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "pin_");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
@@ -2239,26 +2008,7 @@ Blockly.Blocks['relay_new'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_RELAY, "Relay ,  pin:")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "pin_");
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "pin_");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
@@ -2287,26 +2037,7 @@ Blockly.Blocks['servo_new'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_SERVO, "Servo ,  pin:")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "pin_");
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "pin_");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
@@ -2658,89 +2389,13 @@ Blockly.Blocks[Blockly.Msg.WEBDUINO_TESTCAR_NEW, 'car_test_new'] = {
       .appendField(Blockly.Msg.WEBDUINO_TESTCAR, "自走車");
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINRF, "腳位設定：右前")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "rf_")
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "rf_")
       .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINRB, "右後")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "rb_")
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "rb_")
       .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINLF, "左前")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "lf_")
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "lf_")
       .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PINLB, "左後")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "lb_");
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "lb_");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -3269,68 +2924,11 @@ Blockly.Blocks['max7219_new'] = {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_MATRIX, "Max7219")
       .appendField(Blockly.Msg.WEBDUINO_MATRIX_DIN, "din")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "din_")
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "din_")
       .appendField(Blockly.Msg.WEBDUINO_MATRIX_CS, "cs")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "cs_")
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "cs_")
       .appendField(Blockly.Msg.WEBDUINO_MATRIX_CLK, "clk")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "clk_");
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "clk_");
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
@@ -3586,18 +3184,43 @@ Blockly.Blocks['photocell_new'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_PHOTOCELL, "光敏電阻，類比腳位：")
-      .appendField(new Blockly.FieldDropdown([
-        ["A0", "0"],
-        ["A1", "1"],
-        ["A2", "2"],
-        ["A3", "3"],
-        ["A4", "4"],
-        ["A5", "5"]
-      ]), "pin_");
+      .appendField(new Blockly.FieldDropdown(this.getPinDropdown), "pin_");
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
     this.setHelpUrl('https://webduino.io');
+  },
+  getPinDropdown: function () {
+    var tags = Code.getTags(),
+      mappings = [
+        [
+          ["A0", "0"],
+          ["A1", "1"],
+          ["A2", "2"],
+          ["A3", "3"],
+          ["A4", "4"],
+          ["A5", "5"]
+        ],
+        [
+          ["AD", "0"]
+        ],
+        [
+          ["A0", "0"],
+          ["A1", "1"],
+          ["A2", "2"],
+          ["A3", "3"],
+          ["A4", "4"],
+          ["A5", "5"]
+        ]
+      ];
+
+    if (tags.length === 1 && tags[0] !== '*') {
+      if (tags[0] === 'smart') {
+        return mappings[1];
+      }
+      return mappings[0];
+    }
+    return mappings[2];
   }
 };
 
@@ -3648,18 +3271,43 @@ Blockly.Blocks['soil_new'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_SOIL, "土壤濕度偵測，類比腳位：")
-      .appendField(new Blockly.FieldDropdown([
-        ["A0", "0"],
-        ["A1", "1"],
-        ["A2", "2"],
-        ["A3", "3"],
-        ["A4", "4"],
-        ["A5", "5"]
-      ]), "pin_");
+      .appendField(new Blockly.FieldDropdown(this.getPinDropdown), "pin_");
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
     this.setHelpUrl('https://webduino.io');
+  },
+  getPinDropdown: function () {
+    var tags = Code.getTags(),
+      mappings = [
+        [
+          ["A0", "0"],
+          ["A1", "1"],
+          ["A2", "2"],
+          ["A3", "3"],
+          ["A4", "4"],
+          ["A5", "5"]
+        ],
+        [
+          ["AD", "0"]
+        ],
+        [
+          ["A0", "0"],
+          ["A1", "1"],
+          ["A2", "2"],
+          ["A3", "3"],
+          ["A4", "4"],
+          ["A5", "5"]
+        ]
+      ];
+
+    if (tags.length === 1 && tags[0] !== '*') {
+      if (tags[0] === 'smart') {
+        return mappings[1];
+      }
+      return mappings[0];
+    }
+    return mappings[2];
   }
 };
 
@@ -3711,26 +3359,7 @@ Blockly.Blocks['irrecv_new'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_IRRECV, "紅外線接收，腳位：")
-      .appendField(new Blockly.FieldDropdown([
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"],
-        ["11", "11"],
-        ["12", "12"],
-        ["13", "13"],
-        ["14 ( A0 )", "14"],
-        ["15 ( A1 )", "15"],
-        ["16 ( A2 )", "16"],
-        ["17 ( A3 )", "17"],
-        ["18 ( A4 )", "18"],
-        ["19 ( A5 )", "19"]
-      ]), "pin_");
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "pin_");
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');

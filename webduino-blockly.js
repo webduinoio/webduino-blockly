@@ -55,10 +55,14 @@
       };
     }
 
-    if (opts.device || opts.url) {
-      return new webduino.WebArduino(opts);
+    if (opts.board) {
+      return new webduino.board[opts.board](opts);
     } else {
-      return new webduino.Arduino(opts);
+      if (opts.device || opts.url) {
+        return new webduino.WebArduino(opts);
+      } else {
+        return new webduino.Arduino(opts);
+      }
     }
   }
 
@@ -201,6 +205,10 @@
 
   function getButton(board, pin) {
     return new webduino.module.Button(board, board.getDigitalPin(pin));
+  }
+
+  function getPullupButton(board, pin) {
+    return new webduino.module.Button(board, board.getDigitalPin(pin), webduino.module.Button.PULL_UP);
   }
 
   function getPir(board, pin) {
@@ -671,6 +679,7 @@
   scope.getRGBLedCathode = getRGBLedCathode;
   scope.getUltrasonic = getUltrasonic;
   scope.getButton = getButton;
+  scope.getPullupButton = getPullupButton;
   scope.getPir = getPir;
   scope.getSound = getSound;
   scope.getShock = getShock;

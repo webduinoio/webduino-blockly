@@ -293,23 +293,6 @@
         </value>
       </block>
     </category>
-    <category id="catRepeat">
-      <block type="status_repeat">
-        <value name="times_">
-          <block type="math_number">
-            <field name="NUM">10</field>
-          </block>
-        </value>
-      </block>
-      <block type="status_repeat_forever">
-        <value name="name_">
-          <block type="variables_get">
-            <field name="VAR">timer</field>
-          </block>
-        </value>
-      </block>
-      <block type="status_repeat_stop"></block>
-    </category>
     <category id="catKeyCode">
         <block type="document_keyboard"></block>
         <block type="document_keycode"></block>
@@ -356,16 +339,22 @@
   </category>
   <sep></sep>
   <category id="catBoard">
-    <block type="board_server">
+    <block type="board_server" tags="fly,mark1">
       <value name="server_">
         <block type="text"></block>
       </value>
     </block>
-    <block type="board_ready">
+    <block type="board_ready" tags="fly,mark1">
       <value name="device_">
         <block type="text"></block>
       </value>
       <field name="rate_">250</field>
+    </block>
+    <block type="smart_ready" tags="smart">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+      <field name="rate_">50</field>
     </block>
     <block type="all_board_ready"></block>
     <block type="board_error"></block>
@@ -414,9 +403,7 @@
       <block type="variables_set">
         <field name="VAR">led</field>
         <value name="VALUE">
-          <block type="led_new">
-            <field name="pin_">10</field>
-          </block>
+          <block type="led_new"></block>
         </value>
       </block>
       <block type="led_state">
@@ -450,7 +437,7 @@
       </block>
     </category>
     <category id="catRGBLed">
-      <block type="variables_set">
+      <block type="variables_set" tags="fly,mark1">
         <field name="VAR">rgbled</field>
         <value name="VALUE">
           <block type="rgbled_new">
@@ -460,13 +447,13 @@
           </block>
         </value>
       </block>
-      <block type="variables_set">
+      <block type="variables_set" tags="smart">
         <field name="VAR">rgbled</field>
         <value name="VALUE">
           <block type="rgbled_new_cathode">
-            <field name="red_">6</field>
-            <field name="green_">9</field>
-            <field name="blue_">10</field>
+            <field name="red_">15</field>
+            <field name="green_">12</field>
+            <field name="blue_">13</field>
           </block>
         </value>
       </block>
@@ -513,23 +500,8 @@
       <block type="buzzer_load_music"></block>
       <block type="buzzer_event"></block>
       <block type="buzzer_state"></block>
-      <block type="buzzer_music">
-        <value name="music_name_">
-          <block type="variables_get">
-            <field name="VAR">music</field>
-          </block>
-        </value>
-      </block>
-      <block type="buzzer_play">
-        <value name="play_music_">
-          <block type="variables_get">
-            <field name="VAR">music</field>
-          </block>
-        </value>
-      </block>
-      <block type="buzzer_single"></block>
     </category>
-    <category id="catRelay">
+    <category id="catRelay" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">relay</field>
         <value name="VALUE">
@@ -542,7 +514,7 @@
         <field name="relay_">relay</field>
       </block>
     </category>
-    <category id="catServo">
+    <category id="catServo" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">servo</field>
         <value name="VALUE">
@@ -560,7 +532,7 @@
         </value>
       </block>
     </category>
-    <category id="catMax7219">
+    <category id="catMax7219" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">matrix</field>
         <value name="VALUE">
@@ -619,7 +591,7 @@
       <block type="max7219_val_img"></block>
       <block type="max7219_88"></block>
     </category>
-    <category id="catIRLed">
+    <category id="catIRLed" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">irled</field>
         <value name="VALUE">
@@ -636,7 +608,7 @@
         </value>
       </block>
     </category>
-    <category id="catIRRecv">
+    <category id="catIRRecv" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">irrecv</field>
         <value name="VALUE">
@@ -650,7 +622,7 @@
       <block type="irrecv_off"></block>
     </category>
     <category id="catButton">
-      <block type="variables_set">
+      <block type="variables_set" tags="fly,mark1">
         <field name="VAR">button</field>
         <value name="VALUE">
           <block type="button_new">
@@ -658,9 +630,17 @@
           </block>
         </value>
       </block>
+      <block type="variables_set" tags="smart">
+        <field name="VAR">button</field>
+        <value name="VALUE">
+          <block type="button_pullup_new">
+            <field name="pin_">4</field>
+          </block>
+        </value>
+      </block>
       <block type="button_event"></block>
     </category>
-    <category id="catShock">
+    <category id="catShock" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">shock</field>
         <value name="VALUE">
@@ -671,7 +651,7 @@
       </block>
       <block type="shock_event"></block>
     </category>
-    <category id="catJoystick">
+    <category id="catJoystick" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">joystick</field>
         <value name="VALUE">
@@ -690,7 +670,7 @@
   <sep></sep>
   </category>
   <category id="catMenu2">
-    <category id="catUltraSonic">
+    <category id="catUltraSonic" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">ultrasonic</field>
         <value name="VALUE">
@@ -729,7 +709,7 @@
       </block>
       <block type="dht_get_number"></block>
     </category>
-    <category id="catPir">
+    <category id="catPir" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">pir</field>
         <value name="VALUE">
@@ -740,7 +720,7 @@
       </block>
       <block type="pir_status"></block>
     </category>
-    <category id="catSound">
+    <category id="catSound" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">sound</field>
         <value name="VALUE">
@@ -777,7 +757,7 @@
       <block type="soil_val"></block>
       <block type="soil_stop"></block>
     </category>
-    <category id="catADXL345">
+    <category id="catADXL345" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">adxl</field>
         <value name="VALUE">
@@ -791,7 +771,7 @@
       <block type="adxl345_val"></block>
       <block type="adxl345_off"></block>
     </category>
-    <category id="catRFID">
+    <category id="catRFID" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">rfid</field>
         <value name="VALUE">
@@ -832,7 +812,7 @@
       </block>
       <block type="car_test_move"></block>
     </category>
-    <category id="catFish">
+    <category id="catFish" tags="esp">
       <block type="variables_set">
         <field name="VAR">fish</field>
         <value name="VALUE">
