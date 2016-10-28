@@ -27,6 +27,8 @@ var slice = Array.prototype.slice;
 
 var baseUrl = baseUrl || '.';
 
+var storage = new JSONStorage('https://glowing-fire-4998.firebaseio.com/hyproto');
+
 /**
  * Create a namespace for the application.
  */
@@ -229,7 +231,7 @@ Code.loadBlocks = function(defaultXml) {
     // Restarting Firefox fixes this, so it looks like a bug.
     var loadOnce = null;
   }
-  if ('BlocklyStorage' in window && window.location.hash.length > 1) {
+  if ('BlocklyStorage' in window && BlocklyStorage.isLinkUrl()) {
     // An href with #key trigers an AJAX call to retrieve saved blocks.
     BlocklyStorage.retrieveXml(window.location.hash.substring(1));
   } else if (loadOnce) {
@@ -761,6 +763,10 @@ Code.getToolBox = function (toolboxXML) {
   return new XMLSerializer().serializeToString(toolboxXML);
 };
 
+Code.getUrlParts = function () {
+  return (location.protocol + '//' + location.host + location.pathname).split('/');
+};
+
 /**
  * Initialize Blockly.  Called on page load.
  */
@@ -827,10 +833,34 @@ Code.init = function(toolbox) {
 
   Code.tabClick(Code.selected);
 
+  Code.bindClick('qrButton', function () {
+    var img = document.querySelector('#qrImg'),
+      ctx = Code.getContext();
+
+    launcher.loadTemplate('./templates/' + ctx.tpl + '.html', function (data) {
+      if (ctx.jsPreprocessor === 'babel') {
+        data.js = Code.transform(ctx.data.js);
+      } else {
+        data.js = ctx.data.js;
+      }
+
+      launcher.liveview(storage, data, function (url) {
+        url = window.encodeURIComponent(url);
+        if (img === null) {
+          img = document.createElement('img');
+          img.id = 'qrImg';
+          img.src = 'http://chart.apis.google.com/chart?cht=qr&chl=' + url + '&chs=300x300';
+          document.querySelector('#openModal').children[0].appendChild(img);
+        } else {
+          img.src = 'http://chart.apis.google.com/chart?cht=qr&chl=' + url + '&chs=300x300';
+        }
+      });
+    });
+  });
+
   Code.bindClick('linkToBin', function () {
-    var urls = (location.protocol + '//' + location.host + location.pathname).split('/');
-    var ctx = Code.getContext();
-    urls.pop();
+    var ctx = Code.getContext(),
+      urls = Code.getUrlParts().pop();
     localStorage.setItem(urls.join('/') + '/launcher.html', JSON.stringify(ctx));
   });
 

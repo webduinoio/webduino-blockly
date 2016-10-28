@@ -569,7 +569,7 @@ td#copyCode div {
   border-radius: 5px;
 }
 
-#linkToBin {
+.linkButton {
   display: inline-block;
   font-size: 16px;
   color: #000;
@@ -583,22 +583,22 @@ td#copyCode div {
   vertical-align: bottom;
 }
 
-#linkToBin img {
+.linkButton img {
   height: 17px;
   margin-bottom: -2px;
   margin-right: 3px;
 }
 
-#linkToBin:link {
+.linkButton:link {
   color: #000;
   text-decoration: none;
 }
 
-#linkToBin:hover {
+.linkButton:hover {
   opacity:1;
 }
 
-#linkToBin:active {
+.linkButton:active {
   opacity: .8;
 }
 

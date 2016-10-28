@@ -12,6 +12,7 @@ var MSG = {
   userMenuLogout: "Logout",
   blocks: "Blocks",
   linkTooltip: "Save and Link to Blocks",
+  qrcodeTooltip: "Generate preview QR code",
   runTooltip: "Run Blocks in the Workspace",
   badCode: "Program error:\n%1",
   timeout: "Maximum execution iterations exceeded.",

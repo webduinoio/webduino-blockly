@@ -12,6 +12,7 @@ var MSG = {
   userMenuLogout: "登出",
   blocks: "积木",
   linkTooltip: "储存并产生连结",
+  qrcodeTooltip: "产生即时预览 QR code",
   runTooltip: "执行组合",
   badCode: "程式错误：\n%1",
   timeout: "超过最大执行数",

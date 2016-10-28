@@ -9,6 +9,11 @@
 
   </div>
 </header>
+<div id="openModal" class="modalDialog">
+  <div>
+    <a href="#close" title="Close" class="close">X</a>
+  </div>
+</div>
 <table width="100%" height="100%" class="nav">
   <tr>
     <td colspan=2>
@@ -20,7 +25,8 @@
           <td id="copyCode" style="display:none;" data-clipboard-target="#content_javascript" data-tooltip="Copy to clipboard" class="toolMenu"><i class="icon-copy"></i></td>
           <td class="tabmin">&nbsp;</td>
           <td class="tabmax">
-            <a href="launcher.html" target="_blank" id="linkToBin" class="toolMenu"><i class="icon-embed2"></i> <div>{{openJsbin}}</div></a>
+            <a href="#openModal" id="qrButton" class="linkButton toolMenu"><i class="icon-qrcode"></i> <div>{{qrcodeTooltip}}</div></a>
+            <a href="launcher.html" target="_blank" id="linkToBin" class="linkButton toolMenu"><i class="icon-embed2"></i> <div>{{openJsbin}}</div></a>
             <div id="check-device-online" class="toolMenu">
               <input id="input-device" class="">
               <span id="check-btn" class="check-btn">

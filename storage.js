@@ -29,6 +29,11 @@ var BlocklyStorage = {};
 
 BlocklyStorage.STORAGE_URL = 'https://glowing-fire-4998.firebaseio.com';
 
+BlocklyStorage.isLinkUrl = function () {
+  var op = ['openModal', 'close'];
+  return window.location.hash.length > 1 && op.indexOf(window.location.hash.substring(1)) === -1;
+};
+
 /**
  * Backup code blocks to localStorage.
  * @param {!Blockly.WorkspaceSvg} workspace Workspace.
@@ -51,7 +56,7 @@ BlocklyStorage.backupOnUnload = function (opt_workspace) {
   var workspace = opt_workspace || Blockly.getMainWorkspace();
   window.addEventListener('unload',
     function () {
-      if (!window.location.hash) {
+      if (!BlocklyStorage.isLinkUrl()) {
         BlocklyStorage.backupBlocks_(workspace);
       }
     }, false);

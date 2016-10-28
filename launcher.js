@@ -10,7 +10,7 @@
 }
 */
 
-+(function (window, document) {
++(function (window, document, location) {
 
   'use strict';
 
@@ -127,6 +127,18 @@
       frame.contentWindow.document.open();
       frame.contentWindow.document.write(code);
       frame.contentWindow.document.close();
+    },
+
+    liveview: function (storage, data, callback) {
+      var code = assembleHtml(data.head, data.body, data.css, data.js),
+        parts = (location.protocol + '//' + location.host + location.pathname).split('/');
+
+      parts.pop();
+      storage.link(code, function (err, url) {
+        if (!err && url && typeof callback === 'function') {
+          callback(parts.join('/') + '/live-preview.html' + '#' + url.split('#')[1]);
+        }
+      });
     }
   };
 
@@ -135,7 +147,8 @@
     jsfiddle: launchers.jsfiddle,
     codepen: launchers.codepen,
     jsbin: launchers.jsbin,
-    sandbox: launchers.sandbox
+    sandbox: launchers.sandbox,
+    liveview: launchers.liveview
   };
 
-}(window, window.document));
+}(window, window.document, window.location));
