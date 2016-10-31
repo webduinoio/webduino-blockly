@@ -860,7 +860,8 @@ Code.init = function(toolbox) {
 
   Code.bindClick('linkToBin', function () {
     var ctx = Code.getContext(),
-      urls = Code.getUrlParts().pop();
+      urls = Code.getUrlParts();
+    urls.pop();
     localStorage.setItem(urls.join('/') + '/launcher.html', JSON.stringify(ctx));
   });
 
