@@ -454,7 +454,7 @@ Code.loadDemoArea = function () {
 
   if (localStorage.demoArea == 'open') {
     area.className = area.className + "show";
-    btn.style.opacity = 1;
+      btn.className = "notext toolMenu opened";
   }
 
   if (!localStorage.demoAreaSelect) {
@@ -496,11 +496,11 @@ Code.loadDemoArea = function () {
     if (localStorage.demoArea == 'open') {
       area.className = area.className.replace("show", "");
       localStorage.demoArea = 'close';
-      btn.style.opacity = 0.8;
+      btn.className = "notext toolMenu";
     } else {
       area.className += " show";
       localStorage.demoArea = 'open';
-      btn.style.opacity = 1;
+      btn.className = "notext toolMenu opened";
     }
     Code.reloadSandbox();
   };
@@ -508,7 +508,7 @@ Code.loadDemoArea = function () {
   close.onclick = function () {
     area.className = area.className.replace("show", "");
     localStorage.demoArea = 'close';
-    btn.style.opacity = 0.8;
+    btn.className = "notext toolMenu";
   };
 
   select.onchange = function () {
@@ -539,13 +539,13 @@ Code.loadSample = function () {
     if(!sampleMenuOpen){
       sampleMenuOpen = true;
       sampleMenu.style.display = 'block';
-      sampleBtn.style.opacity = 1;
+      sampleBtn.className = "notext toolMenu opened";
       sampleMenu.focus();
     }else{
       sampleMenuOpen = false;
       sampleMenu.style.display = 'none';
       sampleBtn.style.color = '#000';
-      sampleBtn.style.opacity = 0.8;
+      sampleBtn.className = "notext toolMenu";
     }
   };
 
@@ -554,7 +554,7 @@ Code.loadSample = function () {
       sampleMenuOpen = false;
       sampleMenu.style.display = 'none';
       sampleBtn.style.color = '#000';
-      sampleBtn.style.opacity = 0.8;
+      sampleBtn.className = "notext toolMenu";
     }
   };
 
@@ -986,7 +986,7 @@ Code.toggleRunning = function () {
     document.querySelector('#runButton div').innerHTML = "停止執行";
     select.disabled = true;
     demoBtn.disabled = true;
-    demoBtn.style.opacity = 0.5;
+    demoBtn.className = "notext toolMenu running";
     demoBtn.style.pointerEvents = 'none';
     demoStopBtn.style.pointerEvents = 'none';
     demoStopBtn.style.opacity = 0.2;
@@ -998,9 +998,9 @@ Code.toggleRunning = function () {
     select.disabled = false;
     demoBtn.disabled = false;
     if (localStorage.demoArea == 'open') {
-      demoBtn.style.opacity = 1;
+      demoBtn.className = "notext toolMenu opened";
     }else{
-      demoBtn.style.opacity = 0.8;
+      demoBtn.className = "notext toolMenu";
     }
     demoBtn.style.pointerEvents = 'auto';
     demoStopBtn.style.pointerEvents = 'auto';
