@@ -290,8 +290,10 @@ Code.bindClick = function(el, func) {
   if (typeof el == 'string') {
     el = document.getElementById(el);
   }
-  el.addEventListener('click', func, true);
-  el.addEventListener('touchend', func, true);
+  if (el) {
+    el.addEventListener('click', func, true);
+    el.addEventListener('touchend', func, true);
+  }
 };
 
 /**
