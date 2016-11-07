@@ -8,7 +8,7 @@ var MSG = {
   exportImage: "下载图片",
   userMenuDashboard: "专案管理",
   userMenuTutorials: "教学",
-  userMenuWebSite: "资讯",
+  userMenuWebSite: "官方网站",
   userMenuLogout: "登出",
   blocks: "积木",
   linkTooltip: "储存并产生连结",
