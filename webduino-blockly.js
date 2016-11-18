@@ -16,7 +16,7 @@
 
   var konamiCode = "";
 
-  var speakSynth = window.speechSynthesis;
+  var speakSynth = scope.speechSynthesis;
 
   function boardReady(options, autoReconnect, callback) {
     var callback = (typeof autoReconnect === 'function' ? autoReconnect : callback),
@@ -115,7 +115,7 @@
           alpha = event.webkitCompassHeading;
         } else {
           alpha = event.alpha;
-          if (!window.chrome) {
+          if (!scope.chrome) {
             alpha = alpha - 270;
           }
         }
@@ -124,12 +124,12 @@
         listener.apply(this, [alpha, beta, gamma]);
       };
 
-      window.addEventListener('deviceorientation', orientationEventListener);
+      scope.addEventListener('deviceorientation', orientationEventListener);
     }
   }
 
   function removeDeviceOrientationListener() {
-    window.removeEventListener('deviceorientation', orientationEventListener);
+    scope.removeEventListener('deviceorientation', orientationEventListener);
   }
 
   function setDeviceMotionListener(listener) {
@@ -144,7 +144,7 @@
         listener.apply(this, [x, y, z]);
       };
 
-      window.addEventListener('devicemotion', motionEventListener);
+      scope.addEventListener('devicemotion', motionEventListener);
     }
   }
 
@@ -180,7 +180,7 @@
 
 
   function removeDeviceMotionListener() {
-    window.removeEventListener('devicemotion', motionEventListener);
+    scope.removeEventListener('devicemotion', motionEventListener);
   }
 
   function getLed(board, pin) {

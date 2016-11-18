@@ -1001,7 +1001,8 @@ Blockly.Blocks['smart_ready'] = {
       .setCheck("String")
       .appendField(Blockly.Msg.WEBDUINO_SMART)
       .appendField(new Blockly.FieldDropdown([
-        [Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET, "4"]
+        [Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET, "4"],
+        [Blockly.Msg.WEBDUINO_BOARD_WIFI, "1"]
       ]), "type_")
       .appendField(":");
     this.appendDummyInput()

@@ -371,7 +371,7 @@ Code.checkDeviceOnline = function (device) {
 
   device.inputArea.oninput = function () {
     localStorage.boardState = this.value;
-    if (this.value.length > 3) {
+    if (this.value.length > 3 && this.value.length <= 8 && this.value.indexOf('.') === -1) {
       device.check(this.value);
     } else {
       device.icon.setAttribute('class', 'check icon-power');
