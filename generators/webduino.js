@@ -208,13 +208,43 @@ Blockly.JavaScript['demo_youtube'] = function (block) {
   var dropdown_type_ = block.getFieldValue('type_');
   var text_id_ = block.getFieldValue('id_');
   var codeAdd;
+  function getVideoId(u){
+    var v, vid;
+    if(u.indexOf('?v=')!=-1){
+      v = u.split('?v=');
+      if(v[1].indexOf('&')!=-1){
+        vid = v[1].split('&')[0];
+      }else{
+        vid = v[1];
+      }
+      return vid;
+    }else{
+      return u;
+    }
+  }
+
+  function getListId(u){
+    var l, lid;
+    if(u.indexOf('list=')!=-1){
+      l = u.split('list=');
+      if(l[1].indexOf('&')!=-1){
+        lid = l[1].split('&')[0];
+      }else{
+        lid = l[1];
+      }
+      return lid;
+    }else{
+      return u;
+    }
+  }
+
   if (dropdown_type_ == 1) {
     codeAdd = '          ' + value_name_ + '.loadVideoById({\n' +
-      '            videoId:"' + text_id_ + '"\n' +
+      '            videoId:"' + getVideoId(text_id_) + '"\n' +
       '          });\n'
   } else {
     codeAdd = '          ' + value_name_ + '.loadPlaylist({\n' +
-      '            list:"' + text_id_ + '",\n' +
+      '            list:"' + getListId(text_id_) + '",\n' +
       '            listType:"playlist",\n' +
       '            index:0\n' +
       '          });\n' +
@@ -306,7 +336,21 @@ Blockly.JavaScript['demo_youtube_status'] = function (block) {
 Blockly.JavaScript['demo_youtube_id'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var value_id_ = Blockly.JavaScript.valueToCode(block, 'id_', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = variable_name_ + '.loadVideoById(' + value_id_ + ');\n';
+  function getVideoId(u){
+    var v, vid;
+    if(u.indexOf('?v=')!=-1){
+      v = u.split('?v=');
+      if(v[1].indexOf('&')!=-1){
+        vid = v[1].split('&')[0];
+      }else{
+        vid = v[1];
+      }
+      return vid.replace(/'/g,"");
+    }else{
+      return u.replace(/'/g,"");
+    }
+  }
+  var code = variable_name_ + '.loadVideoById("' + getVideoId(value_id_) + '");\n';
   return code;
 };
 
