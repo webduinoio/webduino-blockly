@@ -875,16 +875,16 @@ Blockly.JavaScript['smart_ready'] = function (block) {
   var type;
   if (checkbox_type_ == '1') {
     if (checkbox_multi_ == 'TRUE') {
-      type = "boardReady({board: 'Smart', device:" + value_device_ + ", multi: true}, async function (board) {\n";
+      type = "boardReady({board: 'Smart', transport: 'mqtt', device:" + value_device_ + ", multi: true}, async function (board) {\n";
     } else {
-      type = "boardReady({board: 'Smart', device:" + value_device_ + ", multi: false}, async function (board) {\n";
+      type = "boardReady({board: 'Smart', transport: 'mqtt', device:" + value_device_ + ", multi: false}, async function (board) {\n";
     }
   } else if (checkbox_type_ == '2') {
     type = "boardReady({board: 'Smart', transport: 'serial', path: " + value_device_ + "}, async function (board) {\n";
   } else if (checkbox_type_ == '3') {
     type = "boardReady({board: 'Smart', transport: 'bluetooth', address: " + value_device_ + "}, async function (board) {\n";
   } else if (checkbox_type_ == '4') {
-    type = "boardReady({board: 'Smart', transport: 'websocket', url: " + value_device_ + "}, async function (board) {\n";
+    type = "boardReady({board: 'Smart', url: " + value_device_ + "}, async function (board) {\n";
   }
 
   var code;
