@@ -606,7 +606,7 @@ Blockly.Msg.WEBDUINO_MATRIX_NUM = "Number";
 Blockly.Msg.WEBDUINO_MATRIX_NUM2 = "Number (0~99)";
 Blockly.Msg.WEBDUINO_MATRIX_IMG = "Image";
 
-Blockly.Msg.WEBDUINO_PHOTOCELL = "Photocell, analog pin:";
+Blockly.Msg.WEBDUINO_PHOTOCELL = "Photocell/Potentiometer, analog pin:";
 Blockly.Msg.WEBDUINO_PHOTOCELL_DETECTED = "detects";
 Blockly.Msg.WEBDUINO_PHOTOCELL_DO = "do:";
 Blockly.Msg.WEBDUINO_PHOTOCELL_VAL = "'s value";

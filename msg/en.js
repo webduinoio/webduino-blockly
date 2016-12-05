@@ -75,7 +75,7 @@ var MSG = {
   catPlus: "Advanced",
   catStandard: "Standard",
   catMax7219: "LED Matrix",
-  catPhotocell: "Photocell",
+  catPhotocell: "Photocell/Potentiometer",
   catSoil: "Soil Moisture",
   catIRRecv: "IR Recv",
   catIRLed: "IR Send",
