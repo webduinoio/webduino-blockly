@@ -1017,7 +1017,13 @@ Blockly.Blocks['board'] = {
   onchange: function(ev) {
     switch(ev.name) {
       case 'board_':
-        Blockly.Blocks['board']['board_type'] = ev.newValue;
+      var newValue = ev.newValue;
+        Blockly.Blocks['board']['board_type'] = newValue;
+        if (newValue == '1') {
+          this.getField('rate_').setValue('250');
+        } else if (newValue == '2') {
+          this.getField('rate_').setValue('50');
+        }
         this.getField('type_').setValue('1')
         break;
     }
