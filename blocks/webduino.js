@@ -960,6 +960,70 @@ Blockly.Blocks['board_server'] = {
   }
 };
 
+Blockly.Blocks['board'] = {
+  board_type: '1',
+  init: function() {
+
+    function dropdown_options() {
+      var board_type = Blockly.Blocks['board']['board_type'];
+      var options_full = [
+        [Blockly.Msg.WEBDUINO_BOARD_WIFI, "1"],
+        [Blockly.Msg.WEBDUINO_BOARD_SERIAL, "2"],
+        [Blockly.Msg.WEBDUINO_BOARD_BLUETOOTH, "3"],
+        [Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET, "4"]
+      ];
+      var options_smart = [
+        [Blockly.Msg.WEBDUINO_BOARD_WIFI, "1"],
+        [Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET, "2"]
+      ];
+
+
+      if (board_type == '1') {
+        return options_full;
+      } else {
+        return options_smart;
+      }
+    }
+
+    this.appendValueInput("device_")
+        .setCheck("String")
+        .appendField(Blockly.Msg.WEBDUINO_BOARD, "開發板")
+        .appendField(new Blockly.FieldDropdown([
+          ["馬克1號 或 Fly", "1"],
+          ["Smart", "2"]
+        ]), "board_")
+        .appendField("透過")
+        .appendField(new Blockly.FieldDropdown(dropdown_options), "type_")
+        .appendField("連線至");
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.WEBDUINO_BOARD_SAMPLING, "  類比取樣")
+        .appendField(new Blockly.FieldDropdown([
+          ["20 ms", "20"],
+          ["50 ms", "50"],
+          ["75 ms", "75"],
+          ["100 ms", "100"],
+          ["250 ms", "250"],
+          ["500 ms", "500"],
+          ["1 sec", "1000"]
+        ]), "rate_")
+        .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, "串聯")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "check_")
+        .appendField(Blockly.Msg.WEBDUINO_BOARD_MULTI, "協同控制")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "multi_");
+    this.appendStatementInput("callbacks_");
+    this.setTooltip('');
+    this.setColour(290);
+    this.setHelpUrl('https://webduino.io');
+  },
+  onchange: function(ev) {
+    switch(ev.name) {
+      case 'board_':
+        Blockly.Blocks['board']['board_type'] = ev.newValue;
+        break;
+    }
+  }
+};
+
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#bq2fue
 Blockly.Blocks['board_ready'] = {
   init: function () {

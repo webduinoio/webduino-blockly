@@ -344,6 +344,12 @@
         <block type="text"></block>
       </value>
     </block>
+    <block type="board" tags="fly,mark1,smart">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+      <field name="rate_">250</field>
+    </block>
     <block type="board_ready" tags="fly,mark1">
       <value name="device_">
         <block type="text"></block>
