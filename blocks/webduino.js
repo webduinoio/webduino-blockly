@@ -1019,7 +1019,6 @@ Blockly.Blocks['board'] = {
       case 'board_':
         Blockly.Blocks['board']['board_type'] = ev.newValue;
         this.getField('type_').setValue('1')
-        console.log(this.getField('type_').getValue());
         break;
     }
   }
