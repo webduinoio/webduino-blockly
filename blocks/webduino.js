@@ -963,7 +963,6 @@ Blockly.Blocks['board_server'] = {
 Blockly.Blocks['board'] = {
   board_type: '1',
   init: function() {
-
     function dropdown_options() {
       var board_type = Blockly.Blocks['board']['board_type'];
       var options_full = [
@@ -974,7 +973,7 @@ Blockly.Blocks['board'] = {
       ];
       var options_smart = [
         [Blockly.Msg.WEBDUINO_BOARD_WIFI, "1"],
-        [Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET, "2"]
+        [Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET, "4"]
       ];
 
 
@@ -1019,6 +1018,8 @@ Blockly.Blocks['board'] = {
     switch(ev.name) {
       case 'board_':
         Blockly.Blocks['board']['board_type'] = ev.newValue;
+        this.getField('type_').setValue('1')
+        console.log(this.getField('type_').getValue());
         break;
     }
   }
