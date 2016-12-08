@@ -350,18 +350,6 @@
       </value>
       <field name="rate_">250</field>
     </block>
-    <block type="board_ready" tags="fly,mark1">
-      <value name="device_">
-        <block type="text"></block>
-      </value>
-      <field name="rate_">250</field>
-    </block>
-    <block type="smart_ready" tags="smart">
-      <value name="device_">
-        <block type="text"></block>
-      </value>
-      <field name="rate_">50</field>
-    </block>
     <block type="all_board_ready"></block>
     <block type="board_error"></block>
   </category>
