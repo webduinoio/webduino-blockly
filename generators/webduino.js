@@ -846,7 +846,7 @@ Blockly.JavaScript['board'] = function (block) {
   } else if (dropdown_type_ == '3') {
     type = 'boardReady({' + board + 'transport: \'bluetooth\', address: ' + value_device_ + '}, async function (board) {\n';
   } else if (dropdown_type_ == '4') {
-    type = 'boardReady({' + board + ', url: ' + value_device_ + ws +'}, async function (board) {\n';
+    type = 'boardReady({' + board + 'url: ' + value_device_ + ws +'}, async function (board) {\n';
   }
 
   var code;
