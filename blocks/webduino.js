@@ -2280,7 +2280,7 @@ Blockly.Blocks['add_object'] = {
   init: function () {
     this.setColour(100);
     this.appendDummyInput()
-      .appendField('增加物件');
+      .appendField(Blockly.Msg.WEBDUINO_ADD_OBJECT, '增加物件');
     this.appendStatementInput('STACK');
     this.setTooltip('');
     this.contextMenu = false;
@@ -2291,7 +2291,7 @@ Blockly.Blocks['add_object_item'] = {
   init: function () {
     this.setColour(100);
     this.appendDummyInput()
-      .appendField('物件');
+      .appendField(Blockly.Msg.WEBDUINO_OBJECT, '物件');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -2303,16 +2303,16 @@ Blockly.Blocks['new_object'] = {
   init: function () {
     this.setColour(130);
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_CREATE_OBJECT, '建立物件')
+      .appendField(Blockly.Msg.WEBDUINO_CREATE_OBJECT, '建立物件')
     this.appendValueInput('data_0')
       .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME, '名稱')
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME_TEXT, '名稱')
       .appendField(new Blockly.FieldTextInput("..."), "name_0")
       .appendField(' ')
       .appendField(Blockly.Msg.WEBDUINO_FIREBASE_VALUE, '數值');
     this.appendValueInput('data_1')
       .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME, '名稱')
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME_TEXT, '名稱')
       .appendField(new Blockly.FieldTextInput("..."), "name_1")
       .appendField(' ')
       .appendField(Blockly.Msg.WEBDUINO_FIREBASE_VALUE, '數值');
@@ -2335,9 +2335,9 @@ Blockly.Blocks['new_object'] = {
     for (var x = 0; x < this.itemCount_; x++) {
       var input = this.appendValueInput('data_' + x)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField('名稱')
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME_TEXT, '名稱')
         .appendField(new Blockly.FieldTextInput("..."), "name_" + x)
-        .appendField(' , 值');
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_VALUE, ' 數值');
     }
   },
   decompose: function (workspace) {
@@ -2361,9 +2361,9 @@ Blockly.Blocks['new_object'] = {
     while (optionBlock) {
       var input = this.appendValueInput('data_' + this.itemCount_)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField('名稱')
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME_TEXT, '名稱')
         .appendField(new Blockly.FieldTextInput(optionBlock.nameData_ || "..."), "name_" + this.itemCount_)
-        .appendField(' , 值');
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_VALUE, ' 數值');
       if (optionBlock.dataData_) {
         input.connection.connect(optionBlock.dataData_);
       }
