@@ -567,13 +567,10 @@ Blockly.Msg.WEBDUINO_FIREBASE_DATALAST = "最新一笔";
 Blockly.Msg.WEBDUINO_FIREBASE_NAME_OF_DATA_1 = "资料 1 名称：";
 Blockly.Msg.WEBDUINO_FIREBASE_NAME_OF_DATA_2 = "资料 2 名称：";
 Blockly.Msg.WEBDUINO_FIREBASE_VALUE = "数值";
-Blockly.Msg.WEBDUINO_FIREBASE_NAME = "名称";
-
-// Object
-
-Blockly.Msg.WEBDUINO_OBJECT = "物件";
-Blockly.Msg.WEBDUINO_CREATE_OBJECT = "建立物件";
-Blockly.Msg.WEBDUINO_ADD_OBJECT = "增加物件";
+Blockly.Msg.WEBDUINO_FIREBASE_NAME_TEXT = "名称";
+Blockly.Msg.WEBDUINO_FIREBASE_OBJECT = "物件";
+Blockly.Msg.WEBDUINO_FIREBASE_ADD_OBJECT = "增加物件";
+Blockly.Msg.WEBDUINO_FIREBASE_CREATE_OBJECT = "建立物件";
 
 // RFID
 
