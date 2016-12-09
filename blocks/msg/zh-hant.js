@@ -383,6 +383,11 @@ Blockly.Msg.WEBDUINO_SHOCK_EVENT_DO = "執行";
 Blockly.Msg.WEBDUINO_SHOCK_EVENT_HIGH = "通電";
 Blockly.Msg.WEBDUINO_SHOCK_EVENT_LOW = "斷電";
 
+// Joystick
+Blockly.Msg.WEBDUINO_JOYSTICK = '搖桿';
+Blockly.Msg.WEBDUINO_JOYSTICK_VALUE = '數值：';
+Blockly.Msg.WEBDUINO_JOYSTICK_DO = '執行：';
+
 // PIR
 
 Blockly.Msg.WEBDUINO_PIR = "人體紅外線偵測傳感器，腳位";
@@ -467,11 +472,11 @@ Blockly.Msg.WEBDUINO_IRLED_LAUNCHCODE = "發射代碼 ( 十六進位 )";
 
 Blockly.Msg.WEBDUINO_ADXL345 = "三軸加速度計，SDA";
 Blockly.Msg.WEBDUINO_ADXL345_SCL = "  SCL";
-Blockly.Msg.WEBDUINO_ADXL345_ON = "開始偵測";
 Blockly.Msg.WEBDUINO_ADXL345_DO = "執行";
 Blockly.Msg.WEBDUINO_ADXL345_S = "的";
 Blockly.Msg.WEBDUINO_ADXL345_VAL = "數值";
-Blockly.Msg.WEBDUINO_ADXL345_OFF = "停止偵測";
+Blockly.Msg.WEBDUINO_START_DETECTING = "開始偵測";
+Blockly.Msg.WEBDUINO_STOP_DETECTING = "停止偵測";
 
 // Car
 

@@ -3463,7 +3463,7 @@ Blockly.Blocks['adxl345_on'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("adxl"), "name_")
-      .appendField(Blockly.Msg.WEBDUINO_ADXL345_ON, "開始偵測");
+      .appendField(Blockly.Msg.WEBDUINO_START_DETECTING, "開始偵測");
     this.appendStatementInput("on_")
       .appendField(Blockly.Msg.WEBDUINO_ADXL345_DO, "執行：");
     this.setPreviousStatement(true);
@@ -3498,7 +3498,7 @@ Blockly.Blocks['adxl345_off'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("adxl"), "name_")
-      .appendField(Blockly.Msg.WEBDUINO_ADXL345_OFF, "停止偵測");
+      .appendField(Blockly.Msg.WEBDUINO_STOP_DETECTING, "停止偵測");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(65);
@@ -3511,7 +3511,7 @@ Blockly.Blocks['adxl345_off'] = {
 Blockly.Blocks['joystick_new'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField("搖桿，X")
+      .appendField(Blockly.Msg.WEBDUINO_JOYSTICK + " X", "搖桿 X")
       .appendField(new Blockly.FieldDropdown([
         ["A0", "0"],
         ["A1", "1"],
@@ -3561,9 +3561,9 @@ Blockly.Blocks['joystick_on'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("joystick"), "name_")
-      .appendField("開始偵測");
+      .appendField(Blockly.Msg.WEBDUINO_START_DETECTING, "開始偵測");
     this.appendStatementInput("on_")
-      .appendField("執行：");
+      .appendField(Blockly.Msg.WEBDUINO_JOYSTICK_DO, "執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(65);
@@ -3576,13 +3576,12 @@ Blockly.Blocks['joystick_val'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("joystick"), "name_")
-      .appendField("的")
+      .appendField(Blockly.Msg.WEBDUINO_JOYSTICK_VALUE, "數值：")
       .appendField(new Blockly.FieldDropdown([
         ["X", "_x"],
         ["Y", "_y"],
         ["SW", "_z"]
       ]), "val_")
-      .appendField("數值");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(35);
@@ -3594,7 +3593,7 @@ Blockly.Blocks['joystick_off'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("joystick"), "name_")
-      .appendField("停止偵測");
+      .appendField(Blockly.Msg.WEBDUINO_STOP_DETECTING, "停止偵測");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(65);

@@ -389,6 +389,11 @@ Blockly.Msg.WEBDUINO_SHOCK_EVENT_DO = "执行";
 Blockly.Msg.WEBDUINO_SHOCK_EVENT_HIGH = "通电";
 Blockly.Msg.WEBDUINO_SHOCK_EVENT_LOW = "断电";
 
+// Joystick
+Blockly.Msg.WEBDUINO_JOYSTICK = '摇杆';
+Blockly.Msg.WEBDUINO_JOYSTICK_VALUE = '数值：';
+Blockly.Msg.WEBDUINO_JOYSTICK_DO = '执行：';
+
 // PIR
 
 Blockly.Msg.WEBDUINO_PIR = "人体红外线侦测传感器，脚位";
@@ -473,11 +478,11 @@ Blockly.Msg.WEBDUINO_IRLED_LAUNCHCODE = "发射代码 ( 十六进位 )";
 
 Blockly.Msg.WEBDUINO_ADXL345 = "三轴加速度计，SDA";
 Blockly.Msg.WEBDUINO_ADXL345_SCL = "  SCL";
-Blockly.Msg.WEBDUINO_ADXL345_ON = "开始侦测";
 Blockly.Msg.WEBDUINO_ADXL345_DO = "执行";
 Blockly.Msg.WEBDUINO_ADXL345_S = "的";
 Blockly.Msg.WEBDUINO_ADXL345_VAL = "数值";
-Blockly.Msg.WEBDUINO_ADXL345_OFF = "停止侦测";
+Blockly.Msg.WEBDUINO_START_DETECTING = "开始侦测";
+Blockly.Msg.WEBDUINO_STOP_DETECTING = "停止侦测";
 
 // HX711
 

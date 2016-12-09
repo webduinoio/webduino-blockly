@@ -352,6 +352,11 @@ Blockly.Msg.WEBDUINO_SHOCK_EVENT_DO = "do:";
 Blockly.Msg.WEBDUINO_SHOCK_EVENT_HIGH = "high";
 Blockly.Msg.WEBDUINO_SHOCK_EVENT_LOW = "low";
 
+Blockly.Msg.WEBDUINO_JOYSTICK = 'Joystick';
+Blockly.Msg.WEBDUINO_JOYSTICK_VALUE = 'value:';
+Blockly.Msg.WEBDUINO_JOYSTICK_DO = 'do:';
+
+
 Blockly.Msg.WEBDUINO_PIR = "PIR motion sensor, pin:";
 Blockly.Msg.WEBDUINO_PIR_WHEN = "When";
 Blockly.Msg.WEBDUINO_PIR_STATUS_DETECTED = "detect";
@@ -632,11 +637,11 @@ Blockly.Msg.WEBDUINO_IRLED_LAUNCHCODE = "Launch codes (m-16):";
 
 Blockly.Msg.WEBDUINO_ADXL345 = "ADXL345, SDA";
 Blockly.Msg.WEBDUINO_ADXL345_SCL = "  SCL";
-Blockly.Msg.WEBDUINO_ADXL345_ON = "start detecting";
 Blockly.Msg.WEBDUINO_ADXL345_DO = "do:";
 Blockly.Msg.WEBDUINO_ADXL345_S = "'s";
 Blockly.Msg.WEBDUINO_ADXL345_VAL = "value";
-Blockly.Msg.WEBDUINO_ADXL345_OFF = "stop detecting";
+Blockly.Msg.WEBDUINO_START_DETECTING = "start detecting";
+Blockly.Msg.WEBDUINO_STOP_DETECTING = "stop detecting";
 
 // Tutorials - Photcell
 
