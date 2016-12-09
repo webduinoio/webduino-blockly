@@ -14,6 +14,7 @@ var MSG = {
   linkTooltip: "Save and Link to Blocks",
   qrcodeTooltip: "Generate preview QR code",
   runTooltip: "Run Blocks in the Workspace",
+  stopRunTooltip: "Stop running",
   badCode: "Program error:\n%1",
   timeout: "Maximum execution iterations exceeded.",
   trashTooltip: "Discard All Blocks",

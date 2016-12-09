@@ -985,7 +985,7 @@ Code.toggleRunning = function () {
     runBtn.style.backgroundColor = "#0a5";
     runBtn.style.borderColor = "#0a5";
     document.querySelector('#runButton i').setAttribute('class', 'icon-stop2');
-    document.querySelector('#runButton div').innerHTML = "停止執行";
+    document.querySelector('#runButton div').innerHTML = MSG['stopRunTooltip'];
     select.disabled = true;
     demoBtn.disabled = true;
     demoBtn.className = "notext toolMenu running";
@@ -996,7 +996,7 @@ Code.toggleRunning = function () {
     runBtn.style.backgroundColor = "#dd4b39";
     runBtn.style.borderColor = "#dd4b39";
     document.querySelector('#runButton i').setAttribute('class', 'icon-play3');
-    document.querySelector('#runButton div').innerHTML = "執行程式";
+    document.querySelector('#runButton div').innerHTML = MSG['runTooltip'];
     select.disabled = false;
     demoBtn.disabled = false;
     if (localStorage.demoArea == 'open') {
