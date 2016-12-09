@@ -893,7 +893,7 @@
       <block type="demo_image_url">
         <value name="url_">
           <block type="text">
-            <field name="TEXT">圖片網址</field>
+            <field name="TEXT">URL</field>
           </block>
         </value>
       </block>
