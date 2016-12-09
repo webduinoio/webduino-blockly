@@ -796,7 +796,7 @@ Blockly.Blocks['mobile_deviceorientation_event_remove'] = {
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.DEMO_CONTROLLER_MOBILE_TYPE1, "1"],
         [Blockly.Msg.DEMO_CONTROLLER_MOBILE_TYPE2, "2"]
-      ]), "type_");;
+      ]), "type_");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('');
@@ -988,12 +988,12 @@ Blockly.Blocks['board'] = {
         .setCheck("String")
         .appendField(Blockly.Msg.WEBDUINO_BOARD, "開發板")
         .appendField(new Blockly.FieldDropdown([
-          ["馬克1號 或 Fly", "1"],
-          ["Smart", "2"]
+          [Blockly.Msg.WEBDUINO_MARK_OR_FLY, "1"],
+          [Blockly.Msg.WEBDUINO_SMART, "2"]
         ]), "board_")
-        .appendField("透過")
+        .appendField(Blockly.Msg.WEBDUINO_USE, "透過")
         .appendField(new Blockly.FieldDropdown(dropdown_options), "type_")
-        .appendField("連線至");
+        .appendField(Blockly.Msg.WEBDUINO_CONNECT_TO, "連線至");
     this.appendDummyInput()
         .appendField(Blockly.Msg.WEBDUINO_BOARD_SAMPLING, "  類比取樣")
         .appendField(new Blockly.FieldDropdown([

@@ -240,6 +240,9 @@ Blockly.Msg.WEBDUINO_BOARD_IF_ERROR = "When board goes offline";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "do:";
 Blockly.Msg.WEBDUINO_BOARD_SAMPLING = "  Sampling";
 Blockly.Msg.WEBDUINO_SMART = "Smart";
+Blockly.Msg.WEBDUINO_USE = "Use";
+Blockly.Msg.WEBDUINO_CONNECT_TO = "Connect to";
+Blockly.Msg.WEBDUINO_MARK_OR_FLY = "MARK 1 or Fly";
 
 Blockly.Msg.WEBDUINO_PIN = "Pin";
 Blockly.Msg.WEBDUINO_PIN_ON = "On";

@@ -258,6 +258,9 @@ Blockly.Msg.WEBDUINO_BOARD_IF_ERROR = "如果斷線";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "執行";
 Blockly.Msg.WEBDUINO_BOARD_SAMPLING = "  類比取樣";
 Blockly.Msg.WEBDUINO_SMART = "Smart";
+Blockly.Msg.WEBDUINO_USE = "使用";
+Blockly.Msg.WEBDUINO_CONNECT_TO = "連線至";
+Blockly.Msg.WEBDUINO_MARK_OR_FLY = "馬克1號 或 Fly";
 
 // I/O Pins
 

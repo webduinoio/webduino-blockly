@@ -257,6 +257,9 @@ Blockly.Msg.WEBDUINO_PIN_STATE = "脚位状态";
 Blockly.Msg.WEBDUINO_BOARD_IF_ERROR = "如果断线";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "执行";
 Blockly.Msg.WEBDUINO_BOARD_SAMPLING = "  类比取样";
+Blockly.Msg.WEBDUINO_USE = "使用";
+Blockly.Msg.WEBDUINO_CONNECT_TO = "连线至";
+Blockly.Msg.WEBDUINO_MARK_OR_FLY = "马克1号 或 Fly";
 
 // I/O Pins
 
