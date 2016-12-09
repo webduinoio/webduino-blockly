@@ -437,6 +437,11 @@ Blockly.Msg.WEBDUINO_FIREBASE_READONCE = "Read";
 Blockly.Msg.WEBDUINO_FIREBASE_ATTRONCE = "'s property";
 Blockly.Msg.WEBDUINO_FIREBASE_DATAALL = "All";
 Blockly.Msg.WEBDUINO_FIREBASE_DATALAST = "Last one";
+Blockly.Msg.WEBDUINO_FIREBASE_NAME_OF_DATA_1 = "Name of data 1";
+Blockly.Msg.WEBDUINO_FIREBASE_NAME_OF_DATA_2 = "Name of data 2";
+Blockly.Msg.WEBDUINO_FIREBASE_VALUE = "Value";
+Blockly.Msg.WEBDUINO_FIREBASE_NAME = "Name";
+Blockly.Msg.WEBDUINO_FIREBASE_CREATE_OBJECT = "Create Object";
 
 // LED
 
