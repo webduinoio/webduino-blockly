@@ -344,17 +344,11 @@
         <block type="text"></block>
       </value>
     </block>
-    <block type="board_ready" tags="fly,mark1">
+    <block type="board" tags="fly,mark1,smart">
       <value name="device_">
         <block type="text"></block>
       </value>
       <field name="rate_">250</field>
-    </block>
-    <block type="smart_ready" tags="smart">
-      <value name="device_">
-        <block type="text"></block>
-      </value>
-      <field name="rate_">50</field>
     </block>
     <block type="all_board_ready"></block>
     <block type="board_error"></block>
@@ -899,7 +893,7 @@
       <block type="demo_image_url">
         <value name="url_">
           <block type="text">
-            <field name="TEXT">圖片網址</field>
+            <field name="TEXT">URL</field>
           </block>
         </value>
       </block>

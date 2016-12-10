@@ -240,6 +240,9 @@ Blockly.Msg.WEBDUINO_BOARD_IF_ERROR = "When board goes offline";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "do:";
 Blockly.Msg.WEBDUINO_BOARD_SAMPLING = "  Sampling";
 Blockly.Msg.WEBDUINO_SMART = "Smart";
+Blockly.Msg.WEBDUINO_USE = "Use";
+Blockly.Msg.WEBDUINO_CONNECT_TO = "Connect to";
+Blockly.Msg.WEBDUINO_MARK_OR_FLY = "MARK 1 or Fly";
 
 Blockly.Msg.WEBDUINO_PIN = "Pin";
 Blockly.Msg.WEBDUINO_PIN_ON = "On";
@@ -349,6 +352,11 @@ Blockly.Msg.WEBDUINO_SHOCK_EVENT_DO = "do:";
 Blockly.Msg.WEBDUINO_SHOCK_EVENT_HIGH = "high";
 Blockly.Msg.WEBDUINO_SHOCK_EVENT_LOW = "low";
 
+Blockly.Msg.WEBDUINO_JOYSTICK = 'Joystick';
+Blockly.Msg.WEBDUINO_JOYSTICK_VALUE = 'value:';
+Blockly.Msg.WEBDUINO_JOYSTICK_DO = 'do:';
+
+
 Blockly.Msg.WEBDUINO_PIR = "PIR motion sensor, pin:";
 Blockly.Msg.WEBDUINO_PIR_WHEN = "When";
 Blockly.Msg.WEBDUINO_PIR_STATUS_DETECTED = "detect";
@@ -429,6 +437,16 @@ Blockly.Msg.WEBDUINO_FIREBASE_READONCE = "Read";
 Blockly.Msg.WEBDUINO_FIREBASE_ATTRONCE = "'s property";
 Blockly.Msg.WEBDUINO_FIREBASE_DATAALL = "All";
 Blockly.Msg.WEBDUINO_FIREBASE_DATALAST = "Last one";
+Blockly.Msg.WEBDUINO_FIREBASE_NAME_OF_DATA_1 = "Name of data 1";
+Blockly.Msg.WEBDUINO_FIREBASE_NAME_OF_DATA_2 = "Name of data 2";
+Blockly.Msg.WEBDUINO_FIREBASE_VALUE = "Value";
+Blockly.Msg.WEBDUINO_FIREBASE_NAME_TEXT = "Name";
+
+// Object
+
+Blockly.Msg.WEBDUINO_OBJECT = "Object";
+Blockly.Msg.WEBDUINO_CREATE_OBJECT = "Create Object";
+Blockly.Msg.WEBDUINO_ADD_OBJECT = "Add Object";
 
 // LED
 
@@ -629,11 +647,11 @@ Blockly.Msg.WEBDUINO_IRLED_LAUNCHCODE = "Launch codes (m-16):";
 
 Blockly.Msg.WEBDUINO_ADXL345 = "ADXL345, SDA";
 Blockly.Msg.WEBDUINO_ADXL345_SCL = "  SCL";
-Blockly.Msg.WEBDUINO_ADXL345_ON = "start detecting";
 Blockly.Msg.WEBDUINO_ADXL345_DO = "do:";
 Blockly.Msg.WEBDUINO_ADXL345_S = "'s";
 Blockly.Msg.WEBDUINO_ADXL345_VAL = "value";
-Blockly.Msg.WEBDUINO_ADXL345_OFF = "stop detecting";
+Blockly.Msg.WEBDUINO_START_DETECTING = "start detecting";
+Blockly.Msg.WEBDUINO_STOP_DETECTING = "stop detecting";
 
 // Tutorials - Photcell
 

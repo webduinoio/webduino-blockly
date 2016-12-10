@@ -796,7 +796,7 @@ Blockly.Blocks['mobile_deviceorientation_event_remove'] = {
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.DEMO_CONTROLLER_MOBILE_TYPE1, "1"],
         [Blockly.Msg.DEMO_CONTROLLER_MOBILE_TYPE2, "2"]
-      ]), "type_");;
+      ]), "type_");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setTooltip('');
@@ -960,70 +960,73 @@ Blockly.Blocks['board_server'] = {
   }
 };
 
-// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#bq2fue
-Blockly.Blocks['board_ready'] = {
-  init: function () {
-    this.appendValueInput("device_")
-      .setCheck("String")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD, "開發板")
-      .appendField(new Blockly.FieldDropdown([
+Blockly.Blocks['board'] = {
+  board_type: '1',
+  init: function() {
+    function dropdown_options() {
+      var board_type = Blockly.Blocks['board']['board_type'];
+      var options_full = [
         [Blockly.Msg.WEBDUINO_BOARD_WIFI, "1"],
         [Blockly.Msg.WEBDUINO_BOARD_SERIAL, "2"],
         [Blockly.Msg.WEBDUINO_BOARD_BLUETOOTH, "3"],
         [Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET, "4"]
-      ]), "type_")
-      .appendField(":");
-    this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_SAMPLING, "  類比取樣")
-      .appendField(new Blockly.FieldDropdown([
-        ["20 ms", "20"],
-        ["50 ms", "50"],
-        ["75 ms", "75"],
-        ["100 ms", "100"],
-        ["250 ms", "250"],
-        ["500 ms", "500"],
-        ["1 sec", "1000"]
-      ]), "rate_")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, "串聯")
-      .appendField(new Blockly.FieldCheckbox("FALSE"), "check_")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_MULTI, "協同控制")
-      .appendField(new Blockly.FieldCheckbox("FALSE"), "multi_");
-    this.appendStatementInput("callbacks_");
-    this.setTooltip('');
-    this.setColour(290);
-    this.setHelpUrl('https://webduino.io');
-  }
-};
+      ];
+      var options_smart = [
+        [Blockly.Msg.WEBDUINO_BOARD_WIFI, "1"],
+        [Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET, "4"]
+      ];
 
-Blockly.Blocks['smart_ready'] = {
-  init: function () {
+
+      if (board_type == '1') {
+        return options_full;
+      } else {
+        return options_smart;
+      }
+    }
+
     this.appendValueInput("device_")
-      .setCheck("String")
-      .appendField(Blockly.Msg.WEBDUINO_SMART)
-      .appendField(new Blockly.FieldDropdown([
-        [Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET, "4"],
-        [Blockly.Msg.WEBDUINO_BOARD_WIFI, "1"]
-      ]), "type_")
-      .appendField(":");
+        .setCheck("String")
+        .appendField(Blockly.Msg.WEBDUINO_BOARD, "開發板")
+        .appendField(new Blockly.FieldDropdown([
+          [Blockly.Msg.WEBDUINO_MARK_OR_FLY, "1"],
+          [Blockly.Msg.WEBDUINO_SMART, "2"]
+        ]), "board_")
+        .appendField(Blockly.Msg.WEBDUINO_USE, "透過")
+        .appendField(new Blockly.FieldDropdown(dropdown_options), "type_")
+        .appendField(Blockly.Msg.WEBDUINO_CONNECT_TO, "連線至");
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_SAMPLING)
-      .appendField(new Blockly.FieldDropdown([
-        ["20 ms", "20"],
-        ["50 ms", "50"],
-        ["75 ms", "75"],
-        ["100 ms", "100"],
-        ["250 ms", "250"],
-        ["500 ms", "500"],
-        ["1 sec", "1000"]
-      ]), "rate_")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN)
-      .appendField(new Blockly.FieldCheckbox("FALSE"), "check_")
-      .appendField(Blockly.Msg.WEBDUINO_BOARD_MULTI)
-      .appendField(new Blockly.FieldCheckbox("FALSE"), "multi_");
+        .appendField(Blockly.Msg.WEBDUINO_BOARD_SAMPLING, "  類比取樣")
+        .appendField(new Blockly.FieldDropdown([
+          ["20 ms", "20"],
+          ["50 ms", "50"],
+          ["75 ms", "75"],
+          ["100 ms", "100"],
+          ["250 ms", "250"],
+          ["500 ms", "500"],
+          ["1 sec", "1000"]
+        ]), "rate_")
+        .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, "串聯")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "check_")
+        .appendField(Blockly.Msg.WEBDUINO_BOARD_MULTI, "協同控制")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "multi_");
     this.appendStatementInput("callbacks_");
     this.setTooltip('');
     this.setColour(290);
     this.setHelpUrl('https://webduino.io');
+  },
+  onchange: function(ev) {
+    switch(ev.name) {
+      case 'board_':
+      var newValue = ev.newValue;
+        Blockly.Blocks['board']['board_type'] = newValue;
+        if (newValue == '1') {
+          this.getField('rate_').setValue('250');
+        } else if (newValue == '2') {
+          this.getField('rate_').setValue('50');
+        }
+        this.getField('type_').setValue('1')
+        break;
+    }
   }
 };
 
@@ -2122,14 +2125,16 @@ Blockly.Blocks['data_firebase_write'] = {
     this.setColour(160);
     this.appendValueInput('data_0')
       .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField('資料 1 名稱:')
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME_OF_DATA_1, '資料 1 名稱:')
       .appendField(new Blockly.FieldTextInput("..."), "name_0")
-      .appendField('值:');
+      .appendField(' ')
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_VALUE, '數值');
     this.appendValueInput('data_1')
       .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField('資料 2 名稱:')
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME_OF_DATA_2, '資料 2 名稱:')
       .appendField(new Blockly.FieldTextInput("..."), "name_1")
-      .appendField('值:');
+      .appendField(' ')
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_VALUE, '數值');
     this.setTooltip('');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -2275,7 +2280,7 @@ Blockly.Blocks['add_object'] = {
   init: function () {
     this.setColour(100);
     this.appendDummyInput()
-      .appendField('增加物件');
+      .appendField(Blockly.Msg.WEBDUINO_ADD_OBJECT, '增加物件');
     this.appendStatementInput('STACK');
     this.setTooltip('');
     this.contextMenu = false;
@@ -2286,7 +2291,7 @@ Blockly.Blocks['add_object_item'] = {
   init: function () {
     this.setColour(100);
     this.appendDummyInput()
-      .appendField('物件');
+      .appendField(Blockly.Msg.WEBDUINO_OBJECT, '物件');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -2298,17 +2303,19 @@ Blockly.Blocks['new_object'] = {
   init: function () {
     this.setColour(130);
     this.appendDummyInput()
-      .appendField('建立物件')
+      .appendField(Blockly.Msg.WEBDUINO_CREATE_OBJECT, '建立物件')
     this.appendValueInput('data_0')
       .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField('名稱')
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME_TEXT, '名稱')
       .appendField(new Blockly.FieldTextInput("..."), "name_0")
-      .appendField(' , 值');
+      .appendField(' ')
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_VALUE, '數值');
     this.appendValueInput('data_1')
       .setAlign(Blockly.ALIGN_RIGHT)
-      .appendField('名稱')
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME_TEXT, '名稱')
       .appendField(new Blockly.FieldTextInput("..."), "name_1")
-      .appendField(' , 值');
+      .appendField(' ')
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_VALUE, '數值');
     this.setTooltip('');
     this.setOutput(true, null);
     this.setMutator(new Blockly.Mutator(['add_object_item']));
@@ -2328,9 +2335,9 @@ Blockly.Blocks['new_object'] = {
     for (var x = 0; x < this.itemCount_; x++) {
       var input = this.appendValueInput('data_' + x)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField('名稱')
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME_TEXT, '名稱')
         .appendField(new Blockly.FieldTextInput("..."), "name_" + x)
-        .appendField(' , 值');
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_VALUE, ' 數值');
     }
   },
   decompose: function (workspace) {
@@ -2354,9 +2361,9 @@ Blockly.Blocks['new_object'] = {
     while (optionBlock) {
       var input = this.appendValueInput('data_' + this.itemCount_)
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField('名稱')
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME_TEXT, '名稱')
         .appendField(new Blockly.FieldTextInput(optionBlock.nameData_ || "..."), "name_" + this.itemCount_)
-        .appendField(' , 值');
+        .appendField(Blockly.Msg.WEBDUINO_FIREBASE_VALUE, ' 數值');
       if (optionBlock.dataData_) {
         input.connection.connect(optionBlock.dataData_);
       }
@@ -3460,7 +3467,7 @@ Blockly.Blocks['adxl345_on'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("adxl"), "name_")
-      .appendField(Blockly.Msg.WEBDUINO_ADXL345_ON, "開始偵測");
+      .appendField(Blockly.Msg.WEBDUINO_START_DETECTING, "開始偵測");
     this.appendStatementInput("on_")
       .appendField(Blockly.Msg.WEBDUINO_ADXL345_DO, "執行：");
     this.setPreviousStatement(true);
@@ -3495,7 +3502,7 @@ Blockly.Blocks['adxl345_off'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("adxl"), "name_")
-      .appendField(Blockly.Msg.WEBDUINO_ADXL345_OFF, "停止偵測");
+      .appendField(Blockly.Msg.WEBDUINO_STOP_DETECTING, "停止偵測");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(65);
@@ -3508,7 +3515,7 @@ Blockly.Blocks['adxl345_off'] = {
 Blockly.Blocks['joystick_new'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField("搖桿，X")
+      .appendField(Blockly.Msg.WEBDUINO_JOYSTICK + " X", "搖桿 X")
       .appendField(new Blockly.FieldDropdown([
         ["A0", "0"],
         ["A1", "1"],
@@ -3558,9 +3565,9 @@ Blockly.Blocks['joystick_on'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("joystick"), "name_")
-      .appendField("開始偵測");
+      .appendField(Blockly.Msg.WEBDUINO_START_DETECTING, "開始偵測");
     this.appendStatementInput("on_")
-      .appendField("執行：");
+      .appendField(Blockly.Msg.WEBDUINO_JOYSTICK_DO, "執行：");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(65);
@@ -3573,13 +3580,12 @@ Blockly.Blocks['joystick_val'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("joystick"), "name_")
-      .appendField("的")
+      .appendField(Blockly.Msg.WEBDUINO_JOYSTICK_VALUE, "數值：")
       .appendField(new Blockly.FieldDropdown([
         ["X", "_x"],
         ["Y", "_y"],
         ["SW", "_z"]
       ]), "val_")
-      .appendField("數值");
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(35);
@@ -3591,7 +3597,7 @@ Blockly.Blocks['joystick_off'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(new Blockly.FieldVariable("joystick"), "name_")
-      .appendField("停止偵測");
+      .appendField(Blockly.Msg.WEBDUINO_STOP_DETECTING, "停止偵測");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(65);
