@@ -1531,7 +1531,7 @@ Blockly.WorkspaceSvg.prototype.showContextMenu_ = function(e) {
   }
   menuOptions.push(deleteOption);
 
-Blockly.ContextMenu.show(e, menuOptions, this.RTL);
+  Blockly.ContextMenu.show(e, menuOptions, this.RTL);
 };
 
 Blockly.WorkspaceSvg.prototype.preloadAudio_ = function () {};
@@ -1558,26 +1558,26 @@ Promise.all([
       resolve();
     }, false);
   })
-  ]).then(function (values) {
-    Code.renderPage(values[0].body.innerHTML);
-    Code.init(Code.getToolBox(Code.filterXML(values[1].body.firstChild, 'tags', Code.getTags())));
-    Code.loadDemoArea();
-    Code.loadGa();
-    Code.ga();
-    Code.importPrettify();
-    Code.bindHotkey(window.document);
-    Promise.all([
-      Code.loadJs(baseUrl + '/lib/webduino-base.min.js'),
-      Code.loadJs(baseUrl + '/webduino-blockly.js')
-      ]).then(function () {
-        Code.checkDeviceOnline();
-      });
-      Code.loadJs(baseUrl + '/webduino-samples.js', function () {
-        Code.loadSample();
-      });
-      Code.loadJs(baseUrl + '/lib/clipboard.js', function () {
-        Code.copyCode();
-      });
-      Code.loadJs(baseUrl + '/lib/babel.min.js');
-      Code.loadJs(baseUrl + '/lib/saveSvgAsPng.js');
-    });
+]).then(function (values) {
+  Code.renderPage(values[0].body.innerHTML);
+  Code.init(Code.getToolBox(Code.filterXML(values[1].body.firstChild, 'tags', Code.getTags())));
+  Code.loadDemoArea();
+  Code.loadGa();
+  Code.ga();
+  Code.importPrettify();
+  Code.bindHotkey(window.document);
+  Promise.all([
+    Code.loadJs(baseUrl + '/lib/webduino-base.min.js'),
+    Code.loadJs(baseUrl + '/webduino-blockly.js')
+  ]).then(function () {
+    Code.checkDeviceOnline();
+  });
+  Code.loadJs(baseUrl + '/webduino-samples.js', function () {
+    Code.loadSample();
+  });
+  Code.loadJs(baseUrl + '/lib/clipboard.js', function () {
+    Code.copyCode();
+  });
+  Code.loadJs(baseUrl + '/lib/babel.min.js');
+  Code.loadJs(baseUrl + '/lib/saveSvgAsPng.js');
+});
