@@ -961,7 +961,7 @@ Blockly.Blocks['board_server'] = {
 };
 
 Blockly.Blocks['board'] = {
-  board_type: '1',
+  board_type: Blockly.Msg.WEBDUINO_MARK_OR_FLY,
   init: function() {
     function dropdown_options() {
       var board_type = Blockly.Blocks['board']['board_type'];
@@ -977,7 +977,7 @@ Blockly.Blocks['board'] = {
       ];
 
 
-      if (board_type == '1') {
+      if (board_type === Blockly.Msg.WEBDUINO_MARK_OR_FLY) {
         return options_full;
       } else {
         return options_smart;
@@ -1018,10 +1018,11 @@ Blockly.Blocks['board'] = {
     switch(ev.name) {
       case 'board_':
       var newValue = ev.newValue;
-        Blockly.Blocks['board']['board_type'] = newValue;
         if (newValue == '1') {
+          Blockly.Blocks['board']['board_type'] = Blockly.Msg.WEBDUINO_MARK_OR_FLY;
           this.getField('rate_').setValue('250');
-        } else if (newValue == '2') {
+        } else if (newValue === '2') {
+          Blockly.Blocks['board']['board_type'] = Blockly.Msg.WEBDUINO_SMART;
           this.getField('rate_').setValue('50');
         }
         this.getField('type_').setValue('1')
