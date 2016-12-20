@@ -966,14 +966,14 @@ Blockly.Blocks['board'] = {
     function dropdown_options() {
       var board_type = Blockly.Blocks['board']['board_type'];
       var options_full = [
-        [Blockly.Msg.WEBDUINO_BOARD_WIFI, "1"],
-        [Blockly.Msg.WEBDUINO_BOARD_SERIAL, "2"],
-        [Blockly.Msg.WEBDUINO_BOARD_BLUETOOTH, "3"],
-        [Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET, "4"]
+        [Blockly.Msg.WEBDUINO_BOARD_WIFI, '1'],
+        [Blockly.Msg.WEBDUINO_BOARD_SERIAL, '2'],
+        [Blockly.Msg.WEBDUINO_BOARD_BLUETOOTH, '3'],
+        [Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET, '4']
       ];
       var options_smart = [
-        [Blockly.Msg.WEBDUINO_BOARD_WIFI, "1"],
-        [Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET, "4"]
+        [Blockly.Msg.WEBDUINO_BOARD_WIFI, '1'],
+        [Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET, '4']
       ];
 
 
@@ -984,32 +984,32 @@ Blockly.Blocks['board'] = {
       }
     }
 
-    this.appendValueInput("device_")
-        .setCheck("String")
-        .appendField(Blockly.Msg.WEBDUINO_BOARD, "開發板")
+    this.appendValueInput('device_')
+        .setCheck('String')
+        .appendField(Blockly.Msg.WEBDUINO_BOARD, '開發板')
         .appendField(new Blockly.FieldDropdown([
-          [Blockly.Msg.WEBDUINO_MARK_OR_FLY, "1"],
-          [Blockly.Msg.WEBDUINO_SMART, "2"]
-        ]), "board_")
-        .appendField(Blockly.Msg.WEBDUINO_USE, "透過")
-        .appendField(new Blockly.FieldDropdown(dropdown_options), "type_")
-        .appendField(Blockly.Msg.WEBDUINO_CONNECT_TO, "連線至");
+          [Blockly.Msg.WEBDUINO_MARK_OR_FLY, '1'],
+          [Blockly.Msg.WEBDUINO_SMART, '2']
+        ]), 'board_')
+        .appendField(Blockly.Msg.WEBDUINO_USE, '透過')
+        .appendField(new Blockly.FieldDropdown(dropdown_options), 'type_')
+        .appendField(Blockly.Msg.WEBDUINO_CONNECT_TO, '連線至');
     this.appendDummyInput()
-        .appendField(Blockly.Msg.WEBDUINO_BOARD_SAMPLING, "  類比取樣")
+        .appendField(Blockly.Msg.WEBDUINO_BOARD_SAMPLING, '  類比取樣')
         .appendField(new Blockly.FieldDropdown([
-          ["20 ms", "20"],
-          ["50 ms", "50"],
-          ["75 ms", "75"],
-          ["100 ms", "100"],
-          ["250 ms", "250"],
-          ["500 ms", "500"],
-          ["1 sec", "1000"]
-        ]), "rate_")
-        .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, "串聯")
-        .appendField(new Blockly.FieldCheckbox("FALSE"), "check_")
-        .appendField(Blockly.Msg.WEBDUINO_BOARD_MULTI, "協同控制")
-        .appendField(new Blockly.FieldCheckbox("FALSE"), "multi_");
-    this.appendStatementInput("callbacks_");
+          ['20 ms', '20'],
+          ['50 ms', '50'],
+          ['75 ms', '75'],
+          ['100 ms', '100'],
+          ['250 ms', '250'],
+          ['500 ms', '500'],
+          ['1 sec', '1000']
+        ]), 'rate_')
+        .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, '串聯')
+        .appendField(new Blockly.FieldCheckbox('FALSE'), 'check_')
+        .appendField(Blockly.Msg.WEBDUINO_BOARD_MULTI, '協同控制')
+        .appendField(new Blockly.FieldCheckbox('FALSE'), 'multi_');
+    this.appendStatementInput('callbacks_');
     this.setTooltip('');
     this.setColour(290);
     this.setHelpUrl('https://webduino.io');

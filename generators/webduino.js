@@ -825,38 +825,44 @@ Blockly.JavaScript['board'] = function (block) {
   var statements_callbacks_ = Blockly.JavaScript.statementToCode(block, 'callbacks_');
   var type, board, transport, ws;
 
-  if (dropdown_board_ == '2') {
+  if (dropdown_board_ === '2') {
+    // Smart
     board = 'board: \'Smart\', ';
     transport = ', transport: \'mqtt\'';
     ws = '';
   } else {
+    // Mark 1 or Fly
     board = '';
     transport = '';
     ws = ', transport: \'websocket\''
   }
 
-  if (dropdown_type_ == '1') {
-    if (checkbox_multi_ == 'TRUE') {
+  if (dropdown_type_ === '1') {
+    // Wi-Fi
+    if (checkbox_multi_ === 'TRUE') {
       type = 'boardReady({' + board + 'device: ' + value_device_ + transport + ', multi: true}, async function (board) {\n';
     } else {
       type = 'boardReady({' + board + 'device: ' + value_device_ + transport + '}, async function (board) {\n';
     }
-  } else if (dropdown_type_ == '2') {
+  } else if (dropdown_type_ === '2') {
+    // Serial
     type = 'boardReady({' + board + 'transport: \'serial\', path: ' + value_device_ + '}, async function (board) {\n';
-  } else if (dropdown_type_ == '3') {
+  } else if (dropdown_type_ === '3') {
+    // Bluetooth
     type = 'boardReady({' + board + 'transport: \'bluetooth\', address: ' + value_device_ + '}, async function (board) {\n';
-  } else if (dropdown_type_ == '4') {
+  } else if (dropdown_type_ === '4') {
+    // WebSocket
     type = 'boardReady({' + board + 'url: ' + value_device_ + ws +'}, async function (board) {\n';
   }
 
   var code;
-  if (checkbox_check_ == 'FALSE') {
+  if (checkbox_check_ === 'FALSE') {
     code = type +
       '  board.systemReset();\n' +
       '  board.samplingInterval = ' + dropdown_rate_ + ';\n' +
       statements_callbacks_ +
       '});\n';
-  } else if (checkbox_check_ == 'TRUE') {
+  } else if (checkbox_check_ === 'TRUE') {
     code = 'if(window.readyBoardLength){\n' +
       '  window.readyBoardLength = window.readyBoardLength + 1;\n' +
       '}else{\n' +
