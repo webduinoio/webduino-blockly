@@ -1,3 +1,3 @@
-MSG.title = "Webduino Blockly Chapter 14-1 : Tri-axis accelerometer";
-MSG.subTitle = "Chapter 14-1 : Tri-axis accelerometer";
-MSG.demoDescription = "Tri-axis accelerometer, returned rotation value.";
+MSG.title = "Webduino Blockly Chapter 14-1 : 3-axis accelerometer";
+MSG.subTitle = "Chapter 14-1 : 3-axis accelerometer";
+MSG.demoDescription = "Control the tri-axis accelerometer, and return the rotation value.";

@@ -1,3 +1,3 @@
-MSG.title = "Webduino Blockly Chapter 4-5 : Click button to control youtube";
-MSG.subTitle = "Chapter 4-5 : Click button to control youtube";
-MSG.demoDescription = "Click button to control youtube play, stop and pause.";
+MSG.title = "Webduino Blockly Chapter 4-5 : Playing Youtube Videos with a Button Switch";
+MSG.subTitle = "Chapter 4-5 : Playing Youtube Videos with a Button Switch";
+MSG.demoDescription = "Press the button to play, stop, and pause Youtube videos.";

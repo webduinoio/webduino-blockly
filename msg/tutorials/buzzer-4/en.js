@@ -1,3 +1,3 @@
-MSG.title = "Webduino Blockly Chapter 9-4 : Buzzer ( play, stop, pause )";
-MSG.subTitle = "Chapter 9-4 : Buzzer ( play, stop, pause )";
-MSG.demoDescription = "Click on a button, let the buzzer has play, pause and stop the three functions and status is displayed at the bottom";
+MSG.title = "Webduino Blockly Chapter 9-4 : Playing Music with a Button & a Buzzer";
+MSG.subTitle = "Chapter 9-4 : Playing Music with a Button & a Buzzer";
+MSG.demoDescription = "Use the button switch for controlling the buzzer to play music. Status is shown as below.";

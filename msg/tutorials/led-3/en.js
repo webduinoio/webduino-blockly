@@ -1,3 +1,3 @@
-MSG.title = "Webduino Blockly Chapter 1-3 : Control 2 LED";
-MSG.subTitle = "Chapter 1-3 : Control 2 LED";
-MSG.demoDescription = "Click on the two light bulbs, control of two LED on or off";
+MSG.title = "Webduino Blockly Chapter 1-3 : Turning on/off 2 LEDs";
+MSG.subTitle = "Chapter 1-3 : Turning on/off 2 LEDs";
+MSG.demoDescription = "Turn on/off 2 LEDs separately by clicking on the corresponding images.";

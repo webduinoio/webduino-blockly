@@ -1,3 +1,3 @@
-MSG.title = "Webduino Blockly Chapter 6-1 : Sound detect and light LED";
-MSG.subTitle = "Chapter 6-1 : Sound detect and light LED";
-MSG.demoDescription = "If it detects sound, let the bulb and LED light";
+MSG.title = "Webduino Blockly Chapter 6-1 : Lighting up an LED using Sound Detection";
+MSG.subTitle = "Chapter 6-1 : Lighting up an LED using Sound Detection";
+MSG.demoDescription = "Light up the bulb below and the LED once the sound is detected.";

@@ -1,3 +1,3 @@
-MSG.title = "Webduino Blockly Chapter 14-4 : Three-axis and Matrix";
-MSG.subTitle = "Chapter 14-4 : Three-axis and Matrix";
-MSG.demoDescription = "Tri-axis accelerometer, returned rotation value, change the dot matrix graphic.";
+MSG.title = "Webduino Blockly Chapter 14-4 : Changing Icons with a 3-axis accelerometer";
+MSG.subTitle = "Chapter 14-4 : Changing Icons with a 3-axis accelerometer";
+MSG.demoDescription = "Use the returned value of the 3-axis accelerometer to change icons on LED matrix.";

@@ -1,3 +1,3 @@
-MSG.title = "Webduino Blockly Chapter 16-3 : RFID and Youtube";
-MSG.subTitle = "Chapter 16-3 : RFID and Youtube";
-MSG.demoDescription = "Using RFID to control Youtube.";
+MSG.title = "Webduino Blockly Chapter 16-3 : Switching Youtube Videos with RFID Keys";
+MSG.subTitle = "Chapter 16-3 : Switching Youtube Videos with RFID Keys";
+MSG.demoDescription = "Use RFID keys to switch Youtube videos.";

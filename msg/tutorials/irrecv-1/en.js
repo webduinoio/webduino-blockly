@@ -1,3 +1,3 @@
-MSG.title = "Webduino Blockly Chapter 15-1 : Receive infrared signals";
-MSG.subTitle = "Chapter 15-1 : Receive infrared signals";
-MSG.demoDescription = "Receive infra-red signals, the code displayed below.";
+MSG.title = "Webduino Blockly Chapter 15-1 : Receiving Infrared Signals";
+MSG.subTitle = "Chapter 15-1 : Receiving Infrared Signals";
+MSG.demoDescription = "Receive infra-red signals, and then the code is shown below.";
