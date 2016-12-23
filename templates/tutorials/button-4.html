@@ -8,37 +8,48 @@
   <script src="https://blockly.webduino.io/lib/runtime.min.js"></script>
 </template>
 <template id="body">
-  <br/>
-  先到 <span id="goal"></span> 的贏
-  <br/><br/>
-  電腦：<span id="npcshow">0</span>
-  <br/>
-  玩家：<span id="usershow">0</span> 
-  <br/>
-  <br/>
-  <div id="npc"><img id="npcimg" src="http://webduinoio.github.io/webduino-blockly/media/tutorials/run-cat.gif"></div>
-  <div id="user"><img id="userimg" src="http://webduinoio.github.io/webduino-blockly/media/tutorials/run-lion.gif"></div>  
-  <button id="start" class="go">比賽開始</button> 
+  <br>
+  <span data-translation="beTheFirstToReach">先到</span>
+  <span id="goal" data-translation="goal">goal</span>
+  <span data-translation="toWinTheGame">的贏</span>
+  <br><br>
+  <span data-translation="NPC">電腦：</span><span id="npcshow">0</span>
+  <br>
+  <span data-translation="player">玩家：</span><span id="usershow">0</span> 
+  <br>
+  <br>
+  <div id="npc">
+    <img id="npcimg" src="http://webduinoio.github.io/webduino-blockly/media/tutorials/run-cat.gif">
+  </div>
+  <div id="user">
+    <img id="userimg" src="http://webduinoio.github.io/webduino-blockly/media/tutorials/run-lion.gif">
+  </div>  
+  <button id="start" class="go" data-translation="gameStart">比賽開始</button> 
 </template>
 <template id="css">
-#start{
-  font-size:30px;
-  display:block;
-  padding:10px;
-  margin:10px auto;
+#start {
+  font-size: 30px;
+  display: block;
+  padding: 10px;
+  margin: 10px auto;
 }
-#start.go{
-  display:none;
+
+#start.go {
+  display: none;
 }
-#npc, #user{
-  transition:.3s;
+
+#npc, #user {
+  transition: .3s;
 }
-#npc img{
-  width:100px;
-  transform:scaleX(-1);
+
+#npc img {
+  width: 100px;
+  transform: scaleX(-1);
 }
-#user img{
-  width:100px;
-  transform:scaleX(-1);
+
+#user img {
+  width: 100px;
+  transform: scaleX(-1);
 }
+
 </template>
