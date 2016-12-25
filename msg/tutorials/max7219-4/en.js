@@ -6,3 +6,4 @@ MSG.btn2 = "Button 2";
 MSG.btn3 = "Button 3";
 MSG.btnStop = "Stop";
 MSG.btnOff = "Turn off";
+MSG.generatorTitle = "Webduino LED Matrix Code Generator"
