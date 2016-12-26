@@ -1,6 +1,6 @@
-MSG.title = "Webduino Blockly Chapter 8-1 : Servo motor";
-MMSG.subTitle = "Chapter 8-1 : Servo motor";
-MSG.demoDescription = "Click on the button to make servo motor to the corresponding angle";
+MSG.title = "Webduino Blockly Chapter 8-1 : Controlling a Servomotor";
+MMSG.subTitle = "Chapter 8-1 : Controlling a Servomotor";
+MSG.demoDescription = "Click on the button below to make the servomotor move at the corresponding angle.";
 MSG.btnLeft90 = "Left 90 deg";
 MSG.btnLeft60 = "Left 60 deg";
 MSG.btnLeft30 = "Left 30 deg";

@@ -1708,7 +1708,7 @@ Blockly.Blocks['shock_event'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_SHOCK_EVENT_WHEN, "當")
-      .appendField(new Blockly.FieldVariable("shock"), "var_")
+      .appendField(new Blockly.FieldVariable("shake"), "var_")
       .appendField(Blockly.Msg.WEBDUINO_SHOCK_EVENT_WAS, "狀態為")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.WEBDUINO_SHOCK_EVENT_HIGH, "high"],
@@ -2285,7 +2285,7 @@ Blockly.Blocks['add_object'] = {
   init: function () {
     this.setColour(100);
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_ADD_OBJECT, '增加物件');
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_ADD_OBJECT, '增加物件');
     this.appendStatementInput('STACK');
     this.setTooltip('');
     this.contextMenu = false;
@@ -2296,7 +2296,7 @@ Blockly.Blocks['add_object_item'] = {
   init: function () {
     this.setColour(100);
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_OBJECT, '物件');
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_OBJECT, '物件');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
@@ -2308,7 +2308,7 @@ Blockly.Blocks['new_object'] = {
   init: function () {
     this.setColour(130);
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_CREATE_OBJECT, '建立物件')
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_CREATE_OBJECT, '建立物件')
     this.appendValueInput('data_0')
       .setAlign(Blockly.ALIGN_RIGHT)
       .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME_TEXT, '名稱')

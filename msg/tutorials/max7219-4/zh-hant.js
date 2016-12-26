@@ -6,3 +6,4 @@ MSG.btn2 = "按鈕 2";
 MSG.btn3 = "按鈕 3";
 MSG.btnStop = "停止動畫";
 MSG.btnOff = "關閉";
+MSG.generatorTitle = "Webduino LED 點矩陣代碼產生器"

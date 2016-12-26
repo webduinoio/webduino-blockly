@@ -20,7 +20,7 @@
   </category>
   <category id="catShock">
     <block type="variables_set">
-      <field name="VAR">shock</field>
+      <field name="VAR">shake</field>
       <value name="VALUE">
         <block type="shock_new">
           <field name="pin_">10</field>

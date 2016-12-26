@@ -1,6 +1,6 @@
 MSG.title = "Webduino Blockly Chapter 4-4 : Click button to play game";
 MSG.subTitle = "Chapter 4-4 : Click button to play game";
-MSG.demoDescription = "Run with NPC";
+MSG.demoDescription = "Run with NPC by pressing the button.";
 MSG.gameStart = "START";
 MSG.beTheFirstToReach = "Be the first to reach";
 MSG.goal = "goal";

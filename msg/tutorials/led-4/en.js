@@ -1,4 +1,4 @@
-MSG.title = "Webduino Blockly Chapter 1-4 : Two blinking LED";
+MSG.title = "Webduino Blockly Chapter 1-4 : Blinking 2 LEDs";
 MSG.timerVariable = "timer";
-MSG.subTitle = "Chapter 1-4 : Two blinking LED";
-MSG.demoDescription = "Click on the light bulb, let the two LED start blinking and stops blinking";
+MSG.subTitle = "Chapter 1-4 : Blinking 2 LEDs";
+MSG.demoDescription = "Let the 2 LEDs blink by clicking on the image.";

@@ -1,5 +1,5 @@
-MSG.title = "Webduino Blockly Chapter 5-1: DHT";
-MSG.subTitle = "Chapter 5-1: DHT";
-MSG.demoDescription = "Use DHT sensor, return and displays the current temperature and humidity.";
+MSG.title = "Webduino Blockly Chapter 5-1: DHT Sensor";
+MSG.subTitle = "Chapter 5-1: DHT Sensor";
+MSG.demoDescription = "Use the DHT sensor to read and display the current value, temperature and humidity.";
 MSG.temperature = "temperature: ";
 MSG.humidity = "humidity: ";

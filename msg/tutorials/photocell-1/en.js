@@ -1,3 +1,3 @@
-MSG.title = "Webduino Blockly Chapter 12-1 : Photocell";
-MSG.subTitle = "Chapter 12-1 : Photocell";
-MSG.demoDescription = "Use photoresistors, return values.";
+MSG.title = "Webduino Blockly Chapter 12-1 : Photocell/Potentiometer";
+MSG.subTitle = "Chapter 12-1 : Photocell/Potentiometer";
+MSG.demoDescription = "Use the photocell/potentiometer to measure the value.";

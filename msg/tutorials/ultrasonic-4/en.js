@@ -1,3 +1,3 @@
-MSG.title = "Webduino Blockly Chapter 3-4 : Ultrasonic and RGB LED";
-MSG.subTitle = "Chapter 3-4 : Ultrasonic and RGB LED";
-MSG.demoDescription = "Using Ultrasonic sensors, control RGB LED";
+MSG.title = "Webduino Blockly Chapter 3-4 : Changing color of RGB LED with an Ultrasonic";
+MSG.subTitle = "Chapter 3-4 : Changing color of RGB LED with an Ultrasonic";
+MSG.demoDescription = "Change the color of the RBG LED by the value that measured.";
