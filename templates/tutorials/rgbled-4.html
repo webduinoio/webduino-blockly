@@ -1,31 +1,34 @@
 <template id="head">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Webduino Blockly - 轉吧七彩霓虹燈</title>
+  <title data-translation="title">Webduino Blockly - 轉吧七彩霓虹燈</title>
   <!-- webduino -->
-  <script src="https://webduino.io/components/webduino-js/dist/webduino-all.min.js"></script>
+  <script src="https: //webduino.io/components/webduino-js/dist/webduino-all.min.js"></script>
   <script src="https://blockly.webduino.io/webduino-blockly.js"></script>
   <script src="https://blockly.webduino.io/lib/runtime.min.js"></script>
 </template>
 <template id="body">
   <div id="light" class="off">
-    <img src='http://i.imgur.com/T5H4MHE.png'>
-    <img src='http://i.imgur.com/8qFj2Ou.png'>
+    <img src="http://i.imgur.com/T5H4MHE.png">
+    <img src="http://i.imgur.com/8qFj2Ou.png">
   </div>
 </template>
 <template id="css">
-#light{
-  width:70%;
-  margin:0 5px;
+#light {
+  width: 70%;
+  margin: 0 5px;
 }
-#light img{
-  width:100%;
-  display:none;
+
+#light img {
+  width: 100%;
+  display: none;
 }
-#light.off img:first-child{
-  display:inline-block;
+
+#light.off img:first-child {
+  display: inline-block;
 }
-#light.on img:last-child{
-  display:inline-block;
+
+#light.on img:last-child {
+  display: inline-block;
 }
 </template>
