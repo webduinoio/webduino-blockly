@@ -1,25 +1,35 @@
 <template id="head">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Webduino Blockly - 伺服馬達</title>
+  <title data-translation="title">Webduino Blockly - 伺服馬達</title>
   <!-- webduino -->
   <script src="https://webduino.io/components/webduino-js/dist/webduino-all.min.js"></script>
   <script src="https://blockly.webduino.io/webduino-blockly.js"></script>
   <script src="https://blockly.webduino.io/lib/runtime.min.js"></script>
 </template>
 <template id="body">
-  <button id="btnLeft90">左轉 90 度</button>
-  <button id="btnLeft60">左轉 60 度</button>
-  <button id="btnLeft30">左轉 30 度</button><br/>
-  <button id="btnCenter">保持在中間</button><br/>
-  <button id="btnRight30">右轉 30 度</button>
-  <button id="btnRight60">右轉 60 度</button>
-  <button id="btnRight90">右轉 90 度</button>
+  <div class="centerBox">
+    <button id="btnLeft90" data-translation="btnLeft90">左轉 90 度</button>
+    <button id="btnLeft60" data-translation="btnLeft60">左轉 60 度</button>
+    <button id="btnLeft30" data-translation="btnLeft30">左轉 30 度</button><br>
+  </div>
+  <div class="centerBox">
+    <button id="btnCenter" data-translation="btnCenter">保持在中間</button><br>
+  </div>
+  <div class="centerBox">
+    <button id="btnRight30" data-translation="btnRight30">右轉 30 度</button>
+    <button id="btnRight60" data-translation="btnRight60">右轉 60 度</button>
+    <button id="btnRight90" data-translation="btnRight90">右轉 90 度</button>
+  </div>
 </template>
 <template id="css">
-button{
-  font-size:16px;
-  margin:5px;
-  padding:10px;
+.centerBox {
+  text-align: center;
+}
+
+button {
+  font-size: 16px;
+  margin: 5px;
+  padding: 10px;
 }
 </template>
