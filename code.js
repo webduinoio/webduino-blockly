@@ -866,6 +866,7 @@ Code.init = function (toolbox) {
     var ctx = Code.getContext(),
       urls = Code.getUrlParts();
     urls.pop();
+    ctx.lang = Code.LANG;
     localStorage.setItem(urls.join('/') + '/launcher.html', JSON.stringify(ctx));
   });
 
@@ -1030,13 +1031,13 @@ Code.reloadSandbox = function () {
 
   launcher.loadTemplate('./templates/' + ctx.tpl + '.html', function (data) {
 
-    var $body = $('<div />', {
+    var $body = $('<div/>', {
       html: data.body
     });
     // find if element has translation
     $body.find('[data-translation]').each(function () {
-      // replace content with translated string inside /msg
-      $(this).html(window.MSG[$(this).data('translation')]);
+      // Translate string with locale file in /msg
+      $(this).html(window.MSG[$(this).data('translation')]).removeAttr('data-translation');
     });
     // covert element to string
     data.body = $body.clone().wrap('<div/>').parent().html();
