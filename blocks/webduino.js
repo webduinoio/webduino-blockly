@@ -1708,7 +1708,7 @@ Blockly.Blocks['shock_event'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_SHOCK_EVENT_WHEN, "當")
-      .appendField(new Blockly.FieldVariable("shock"), "var_")
+      .appendField(new Blockly.FieldVariable("shake"), "var_")
       .appendField(Blockly.Msg.WEBDUINO_SHOCK_EVENT_WAS, "狀態為")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.WEBDUINO_SHOCK_EVENT_HIGH, "high"],
