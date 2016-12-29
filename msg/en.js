@@ -1,4 +1,5 @@
 var MSG = {
+  lang: "en",
   catLoadingBlocks: "Loading...",
   update: "update 2016.06.29",
   title: "Webduino Blockly Editor",

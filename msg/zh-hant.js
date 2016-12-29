@@ -1,4 +1,5 @@
 var MSG = {
+  lang: "zh-hant",
   catLoadingBlocks: "載入積木",
   update: "update 2016.06.29",
   title: "Webduino Blockly 編輯器",

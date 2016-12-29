@@ -904,6 +904,16 @@ Code.init = function (toolbox) {
   onresize();
 };
 
+Code.initHandlebars = function () {
+  Handlebars.registerHelper('if_eq', function (a, b, opts) {
+    if (a == b) {
+      return opts.fn(this);
+    } else {
+      return opts.inverse(this);
+    }
+  });
+};
+
 Code.renderPage = function (templateStr) {
   var head = document.head,
     body = document.body,
@@ -1578,6 +1588,7 @@ Promise.all([
     }, false);
   })
 ]).then(function (values) {
+  Code.initHandlebars();
   Code.renderPage(values[0].body.innerHTML);
   Code.init(Code.getToolBox(Code.filterXML(values[1].body.firstChild, 'tags', Code.getTags())));
   Code.loadDemoArea();

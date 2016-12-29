@@ -3,7 +3,7 @@
   <h1>{{title}}</h1>
   <div id="userMenu">
 
-      <a href="index-tutorials.html" target="_blank" id="blockly-to-website"><i class="icon-book"></i> <b>{{userMenuTutorials}}</b></a>
+      <a href="index-tutorials{{#if_eq lang 'en'}}-en{{/if_eq}}.html" target="_blank" id="blockly-to-website"><i class="icon-book"></i> <b>{{userMenuTutorials}}</b></a>
       <a href="https://webduino.io" target="_blank" id="blockly-to-tutorials"><i class="icon-info"></i> <b>{{userMenuWebSite}}</b></a>
       <span><i class="icon-earth"></i> <select id="languageMenu"></select></span>
 
