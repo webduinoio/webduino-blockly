@@ -594,59 +594,94 @@ Code.loadSample = function () {
 
 Code.loadSimulator = function () {
   var area = document.getElementById('simulator-area');
+  var frame = document.getElementById('simulator-frame');
   var btn = document.getElementById('simulatorButton');
-  var close = document.querySelector('#simulator-area .close-btn');
+  var closeBtn = document.querySelector('#simulator-area .close-btn');
   var resizeBar = document.getElementById('simulator-resize-bar');
   var updateHeight = function () {
     var contentHeight = document.getElementById('content_blocks').offsetHeight;
     area.style.height = (contentHeight - 110) + 'px';
   };
-
-  if (!area.dataset.init) {
-    area.dataset.init = true;
-    updateHeight();
-    window.addEventListener('resize', updateHeight);
-
-    if (localStorage.simulatorAreaWidth) {
-      area.style.width = localStorage.simulatorAreaWidth;
+  var frameReady = function () {
+    if (storage.config) {
+      frame.contentWindow.blockly.config(storage.config);
     }
-    
-    Code.bindClick(close, function () {
-      area.classList.remove('show');
-      btn.classList.remove('opened');
-    });
 
-    resizeBar.addEventListener('mousedown', function (e) {
-      var frame = document.getElementById('simulator-frame');
-      var ox = e.pageX;
-      var dw = area.offsetWidth;
+    if (storage.opened) {
+      area.classList.add('show');
+      btn.classList.add('opened');
+    }
+  };
+  var storage = {};
 
-      area.style.opacity = '0.4';
-      frame.style.pointerEvents = 'none';
-      area.classList.add('resize');
-
-      var move = function (evt) {
-        var rx = evt.pageX;
-        area.style.width = dw - rx + ox - 20 + 'px';
-        localStorage.simulatorAreaWidth = area.style.width;
-      }; 
-
-      var up = function () {
-        area.style.opacity = '1';
-        frame.style.pointerEvents = 'auto';
-        area.classList.remove('resize');
-        document.removeEventListener('mousemove', move);
-        document.removeEventListener('mouseup', up);
-      };
-
-      document.addEventListener('mousemove', move);
-      document.addEventListener('mouseup', up);
-    });
-
+  if (localStorage.simulator) {
+    try {
+      storage = JSON.parse(localStorage.simulator);
+    } catch (e) {
+      storage = {};
+    }
   }
 
-  area.classList.toggle('show');
-  btn.classList.toggle('opened');
+  if (storage.width) {
+    area.style.width = storage.width;
+  }
+
+  if (frame.contentWindow.blockly) {
+    frameReady();
+  } else {
+    frame.contentWindow.addEventListener('load', frameReady);
+  }
+
+  updateHeight();
+
+  window.addEventListener('resize', updateHeight);
+
+  window.addEventListener('unload', function () {
+    storage.config = frame.contentWindow.blockly.config();
+    storage.opened = area.classList.contains('show');
+    storage.width = area.style.width;
+    localStorage.simulator = JSON.stringify(storage);
+  });
+  
+  Code.bindClick('runButton', function () {
+    frame.contentWindow.blockly.toggleRunning();
+  });
+
+  Code.bindClick(closeBtn, function () {
+    area.classList.remove('show');
+    btn.classList.remove('opened');
+  });
+
+  resizeBar.addEventListener('mousedown', function (e) {
+    var cover = document.createElement('div');
+    var ox = e.pageX;
+    var dw = area.offsetWidth;
+
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.classList.add('resize');
+
+    cover.classList.add('simulator-cover');
+    document.body.appendChild(cover);
+
+    var move = function (evt) {
+      var rx = evt.pageX;
+      area.style.width = dw - rx + ox - 20 + 'px';
+    }; 
+
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.remove();
+    };
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+  });
+
 };
 
 /**
@@ -950,7 +985,14 @@ Code.init = function (toolbox) {
     linkButton.className = 'disabled';
   }
 
-  Code.bindClick('simulatorButton', Code.loadSimulator);
+  Code.loadSimulator();
+
+  Code.bindClick('simulatorButton', function () {
+    var area = document.getElementById('simulator-area');
+    var btn = document.getElementById('simulatorButton');
+    area.classList.toggle('show');
+    btn.classList.toggle('opened');
+  });
 
   for (var i = 0; i < Code.TABS_.length; i++) {
     var name = Code.TABS_[i];
