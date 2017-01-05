@@ -592,6 +592,63 @@ Code.loadSample = function () {
   };
 };
 
+Code.loadSimulator = function () {
+  var area = document.getElementById('simulator-area');
+  var btn = document.getElementById('simulatorButton');
+  var close = document.querySelector('#simulator-area .close-btn');
+  var resizeBar = document.getElementById('simulator-resize-bar');
+  var updateHeight = function () {
+    var contentHeight = document.getElementById('content_blocks').offsetHeight;
+    area.style.height = (contentHeight - 110) + 'px';
+  };
+
+  if (!area.dataset.init) {
+    area.dataset.init = true;
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+
+    if (localStorage.simulatorAreaWidth) {
+      area.style.width = localStorage.simulatorAreaWidth;
+    }
+    
+    Code.bindClick(close, function () {
+      area.classList.remove('show');
+      btn.classList.remove('opened');
+    });
+
+    resizeBar.addEventListener('mousedown', function (e) {
+      var frame = document.getElementById('simulator-frame');
+      var ox = e.pageX;
+      var dw = area.offsetWidth;
+
+      area.style.opacity = '0.4';
+      frame.style.pointerEvents = 'none';
+      area.classList.add('resize');
+
+      var move = function (evt) {
+        var rx = evt.pageX;
+        area.style.width = dw - rx + ox - 20 + 'px';
+        localStorage.simulatorAreaWidth = area.style.width;
+      }; 
+
+      var up = function () {
+        area.style.opacity = '1';
+        frame.style.pointerEvents = 'auto';
+        area.classList.remove('resize');
+        document.removeEventListener('mousemove', move);
+        document.removeEventListener('mouseup', up);
+      };
+
+      document.addEventListener('mousemove', move);
+      document.addEventListener('mouseup', up);
+    });
+
+  }
+
+  area.classList.toggle('show');
+  btn.classList.toggle('opened');
+};
+
 /**
  * User's language (e.g. "en").
  * @type {string}
@@ -875,7 +932,9 @@ Code.init = function (toolbox) {
       Code.discard();
       Code.renderContent();
     });
+
   Code.bindClick('runButton', Code.runJS);
+
   // Disable the link button if page isn't backed by App Engine storage.
   var linkButton = document.getElementById('linkButton');
   if ('BlocklyStorage' in window) {
@@ -890,6 +949,8 @@ Code.init = function (toolbox) {
   } else if (linkButton) {
     linkButton.className = 'disabled';
   }
+
+  Code.bindClick('simulatorButton', Code.loadSimulator);
 
   for (var i = 0; i < Code.TABS_.length; i++) {
     var name = Code.TABS_[i];

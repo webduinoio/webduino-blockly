@@ -20,6 +20,7 @@ var MSG = {
   timeout: "Maximum execution iterations exceeded.",
   trashTooltip: "Discard All Blocks",
   sampleTooltip: "Load Sample Blocks",
+  simulatorTooltip: "Simulator Area",
   demoTooltip: "Web Demo Area",
   openJsbin: "Open Code Editor",
   checkDeviceOnline: "Check Device Status",

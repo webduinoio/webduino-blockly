@@ -39,6 +39,9 @@
             <button id="demoButton" class="notext toolMenu">
               <i class="icon-lab"></i> <div>{{demoTooltip}}</div>
             </button>
+            <button id="simulatorButton" class="notext toolMenu">
+              <i class="icon-library"></i>  <div>{{simulatorTooltip}}</div>
+            </button>
             <button id="trashButton" class="notext toolMenu">
               <i class="icon-bin"></i>  <div>{{trashTooltip}}</div>
             </button>
@@ -118,6 +121,13 @@
       <option value="8">{{demoAreaSelect8}}</option>
       <option value="9">{{demoAreaSelect9}}</option>
     </select>
+  </div>
+</div>
+<div id="simulator-area">
+  <div id="simulator-resize-bar"></div>
+  <div class="simulator-area-content">
+    <div class="close-btn"></div>
+    <iframe id="simulator-frame" src="components/simulator/index.html"></iframe>
   </div>
 </div>
 <textarea id="content_xml" class="content" wrap="off"></textarea>
