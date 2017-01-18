@@ -297,16 +297,16 @@
   };
 
   ToyCar.prototype.goRight = function () {
-    this._rf.write(1);
+    this._rf.write(0);
     this._rb.write(0);
-    this._lf.write(0);
+    this._lf.write(1);
     this._lb.write(0);
   };
 
   ToyCar.prototype.goLeft = function () {
-    this._rf.write(0);
+    this._rf.write(1);
     this._rb.write(0);
-    this._lf.write(1);
+    this._lf.write(0);
     this._lb.write(0);
   };
 
