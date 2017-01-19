@@ -6,7 +6,7 @@
     "type": "commit",
     "commit": "ec4ab879168829fa20bea0b9e440350d20df47f4"
   },
-  "_source": "git://github.com/google/blockly.git",
+  "_source": "https://github.com/google/blockly.git",
   "_target": "ec4ab879168829fa20bea0b9e440350d20df47f4",
   "_originalSource": "google/blockly"
 }

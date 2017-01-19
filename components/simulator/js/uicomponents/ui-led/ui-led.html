@@ -1,0 +1,44 @@
+<template id="led">
+  <style>
+  .led {
+    border-radius: 32px;
+    width: 32px;
+    height: 32px;
+    background-color: black;
+    margin: 25px 0px 0px 35px;
+    font-size: 10px;
+  }
+  </style>
+  <div class='led'>
+    <br>
+    <br>
+    <br>pin:<span id='signal'></span>
+  </div>
+</template>
+<script>
+var doc = (document._currentScript || document.currentScript).ownerDocument;
+var ledTemp = doc.querySelector('#led');
+
+customElements.define('ui-led', class extends HTMLElement {
+  constructor() {
+    super();
+    this.root = this.attachShadow({
+      mode: 'closed'
+    });
+    const temp = document.importNode(ledTemp.content, true);
+    this.root.appendChild(temp);
+  }
+
+  pin(signal) {
+    var ele = this.root.querySelector("#signal");
+    ele.innerHTML = signal;
+    this.signal = signal;
+  }
+
+  intensity(val) {
+    var color = "rgb(" + val * 255 + "," + 0 + "," + 0 + ")";
+    this.root.querySelector(".led").style.backgroundColor = color;
+  }
+
+});
+</script>

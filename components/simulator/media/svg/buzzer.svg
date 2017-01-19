@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" name="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="595.28px" height="841.89px" viewBox="0 0 595.28 841.89" enable-background="new 0 0 595.28 841.89" xml:space="preserve">
+<g name="buzzer">
+	<g name="selected" opacity="0">
+		<path name="selectPath" stroke="#33bbff" stroke-width="5" d="M124.723,62.361C124.723,27.92,96.803,0,62.361,0S0,27.92,0,62.361
+			c0,27.814,18.213,51.367,43.361,59.404v19.816c0,1.104,0.895,2,2,2c1.102,0,2-0.898,2-2v-18.688c4.806,1.188,9.827,1.828,15,1.828
+			s10.194-0.641,15-1.828v18.688c0,1.104,0.896,2,2,2s2-0.898,2-2v-19.816C106.51,113.728,124.723,90.175,124.723,62.361z"/>
+	</g>
+	<g name="body">
+		<g name="p">
+			<path fill="#9FA0A0" d="M45.361,143.582c-1.105,0-2-0.896-2-2v-39.82c0-1.104,0.895-2,2-2s2,0.896,2,2v39.82
+				C47.361,142.683,46.463,143.582,45.361,143.582z"/>
+			<path fill="#9FA0A0" d="M79.361,143.582c-1.104,0-2-0.896-2-2v-39.82c0-1.104,0.896-2,2-2c1.105,0,2,0.896,2,2v39.82
+				C81.361,142.683,80.465,143.582,79.361,143.582z"/>
+		</g>
+		<circle fill="#3E3A39" cx="62.361" cy="62.361" r="62.361"/>
+		<circle fill="#231815" cx="62.362" cy="62.36" r="51.028"/>
+		<circle fill="#727171" cx="62.361" cy="62.361" r="7.695"/>
+	</g>
+	<g name="select" opacity="0">
+		<path name="selectPath" fill="#FFFFFF" d="M124.723,62.361C124.723,27.92,96.803,0,62.361,0S0,27.92,0,62.361
+			c0,27.814,18.213,51.367,43.361,59.404v19.816c0,1.104,0.895,2,2,2c1.102,0,2-0.898,2-2v-18.688c4.806,1.188,9.827,1.828,15,1.828
+			s10.194-0.641,15-1.828v18.688c0,1.104,0.896,2,2,2s2-0.898,2-2v-19.816C106.51,113.728,124.723,90.175,124.723,62.361z"/>
+	</g>
+	<g name="pinGroup" opacity="0">
+		<rect name="pin2" x="41.172" y="135.582" fill="#E60012" width="8" height="8"/>
+		<rect name="pin1" x="75.552" y="135.582" fill="#E60012" width="8" height="8"/>
+	</g>
+</g>
+</svg>

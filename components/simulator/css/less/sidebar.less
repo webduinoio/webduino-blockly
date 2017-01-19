@@ -1,0 +1,44 @@
+@sidebar-width: 250px;
+@sidebar-background-color: rgb(58, 74, 88);
+
+#wrapper.dragging {
+  position: relative;
+  z-index: -1;
+}
+
+#wrapper.toggled #sidebar {
+  right: 0;
+}
+
+#sidebar {
+  .no-select();
+  z-index: 1000;
+  position: fixed;
+  top: @navbar-height;
+  right: -@sidebar-width;
+  width: @sidebar-width;
+  height: calc(e("100% - @{navbar-height}"));
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: @sidebar-background-color;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  .container-fluid {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    .kk-item {
+      cursor: pointer;
+      padding: 8px;
+      text-align: center;
+      img {
+        width: 100%;
+      }
+      .kk-item-text {
+        display: inline-block;
+        color: #fff;
+      }
+    }
+  }
+}

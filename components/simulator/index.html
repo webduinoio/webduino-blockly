@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="webduino.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet/less" type="text/css" href="css/less/index.less" />
+  <script src="components/less/dist/less.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand"><i class="glyphicon glyphicon-hand-up"></i> 模擬器</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <div class="navbar-right margin-fixed hidden">
+          <button type="button" class="btn btn-default navbar-btn" v-on:click="deleteSomething" :class="{ disabled: isPlaying }">
+            <i class="glyphicon glyphicon-trash"></i>
+          </button>
+          <button type="button" class="btn btn-default navbar-btn" v-on:click="zoomToFit" :class="{ disabled: isPlaying }">
+            <i class="glyphicon glyphicon-screenshot"></i>
+          </button>
+          <button type="button" class="btn btn-default navbar-btn" id="menu-toggle" v-on:click="menuToggle" :class="{ disabled: isPlaying }">元件</button>
+          <button type="button" class="btn btn-default navbar-btn" :class="{ play: isPlaying, stop: !isPlaying }" v-on:click="engineToggle">
+            <i class="glyphicon glyphicon-play" v-show="!isPlaying"></i>
+            <i class="glyphicon glyphicon-stop" v-show="isPlaying"></i>
+          </button>
+        </div>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </nav>
+
+  <div id="wrapper" v-bind:class="{ toggled: isComponentsVisible, dragging: dragging }">
+    <div id="sidebar">
+      <div class="container-fluid">
+        <div class="row components-container" v-html="components"></div>
+      </div>
+    </div>
+    <!--/#Sidebar -->
+  </div>
+
+  <div class="container-fluid">
+    <svg id="editArea">
+      <g class="zoom-container">
+        <g class="components-area"></g>
+        <g class="path-container"></g>
+        <g class="edit-content"></g>
+      </g>
+    </svg>
+    <!-- /svg -->
+  </div>
+  <!-- /.container -->
+  <div id="app"></div>
+
+  <!-- other -->
+  <script src="/components/vue/dist/vue.min.js"></script>
+  <script src="/components/d3/d3.min.js"></script>
+  <script src="/components/jquery/dist/jquery.min.js"></script>
+  <script src="/components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/components/Snap.svg/dist/snap.svg-min.js"></script>
+  <script src="/components/moment/min/moment.min.js"></script>
+  
+  <!-- Engine -->
+  <script src="js/engine/setImmediate.js"></script>
+  <script src="js/engine/paho.js"></script>
+  <script src="js/engine/webduino.js"></script>
+  <script src="js/engine/core/EventEmitter.js"></script>
+  <script src="js/engine/core/util.js"></script>
+  <script src="js/engine/util/promisify.js"></script>
+  <script src="js/engine/core/Transport.js"></script>
+  <script src="js/engine/core/Pin.js"></script>
+  <script src="js/engine/core/Module.js"></script>
+  <script src="js/engine/core/Board.js"></script>
+  <script src="js/engine/core/WebArduino.js"></script>
+  <script src="js/engine/core/Arduino.js"></script>
+  <script src="js/engine/components/Engine.js"></script>
+  <script src="js/engine/components/Led.js"></script>
+  <script src="js/engine/components/RGBLed.js"></script>
+  <script src="js/engine/components/Buzzer.js"></script>
+  <script src="js/engine/components/Servo.js"></script>
+  <script src="js/engine/components/Matrix.js"></script>
+  <script src="js/engine/components/UltraSonic.js"></script>
+  <script src="js/engine/transport/MqttTransport.js"></script>
+  <script src="js/engine/transport/WebSocketTransport.js"></script>
+
+  <!-- ui -->
+  <script src="js/roundedCorner.js"></script>
+  <script src="js/components/arduino-uno.js"></script>
+  <script src="js/components/led.js"></script>
+  <script src="js/components/servo.js"></script>
+  <script src="js/components/matrix.js"></script>
+  <script src="js/components/rgbled.js"></script>
+  <script src="js/components/button.js"></script>
+  <script src="js/components/buzzer.js"></script>
+  <script src="js/components/ultrasonic.js"></script>
+  <script src="js/components/hand.js"></script>
+  <script src="js/history.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/interact.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/zoom.js"></script>
+  <script src="js/drawPath.js"></script>
+  <script src="js/editPath.js"></script>
+  <script src="js/editPath2.js"></script>
+  <script src="js/dndComponent.js"></script>
+  <script src="js/focusPoint.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/blockly.js"></script>
+</body>
+
+</html>
