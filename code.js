@@ -603,8 +603,14 @@ Code.loadSimulator = function () {
     area.style.height = (contentHeight - 110) + 'px';
   };
   var frameReady = function () {
+    var api = frame.contentWindow.blockly;
+
+    // 語系
+    api.lang(Code.getLang());
+
+    // 之前存檔的回復
     if (storage.config) {
-      frame.contentWindow.blockly.config(storage.config);
+      api.config(storage.config);
     }
 
     if (storage.opened) {
