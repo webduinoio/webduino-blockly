@@ -597,21 +597,9 @@ Code.loadSimulator = function () {
   var frame = document.getElementById('simulator-frame');
   var btn = document.getElementById('simulatorButton');
   var closeBtn = document.querySelector('#simulator-area .close-btn');
+  var enlargeBtn = document.querySelector('#simulator-area .icon-enlarge');
+  var shrinkBtn = document.querySelector('#simulator-area .icon-shrink')
   var resizeBar = document.getElementById('simulator-resize-bar');
-  var updateHeight = function () {
-    var contentHeight = document.getElementById('content_blocks').offsetHeight;
-    area.style.height = (contentHeight - 110) + 'px';
-  };
-  var frameReady = function () {
-    if (storage.config) {
-      frame.contentWindow.blockly.config(storage.config);
-    }
-
-    if (storage.opened) {
-      area.classList.add('show');
-      btn.classList.add('opened');
-    }
-  };
   var storage = {};
 
   if (localStorage.simulator) {
@@ -622,24 +610,19 @@ Code.loadSimulator = function () {
     }
   }
 
-  if (storage.width) {
-    area.style.width = storage.width;
-  }
-
   if (frame.contentWindow.blockly) {
     frameReady();
   } else {
     frame.contentWindow.addEventListener('load', frameReady);
   }
 
-  updateHeight();
-
   window.addEventListener('resize', updateHeight);
 
   window.addEventListener('unload', function () {
     storage.config = frame.contentWindow.blockly.config();
     storage.opened = area.classList.contains('show');
-    storage.width = area.style.width;
+    storage.isFull = area.classList.contains('full');
+    storage.width = area.dataset.width;
     localStorage.simulator = JSON.stringify(storage);
   });
   
@@ -648,11 +631,30 @@ Code.loadSimulator = function () {
   });
 
   Code.bindClick(closeBtn, function () {
-    area.classList.remove('show');
+    area.classList.remove('show', 'full');
     btn.classList.remove('opened');
+    updateWidth();
+    updateHeight();
+  });
+
+  Code.bindClick(enlargeBtn, function () {
+    area.classList.add('full');
+    updateWidth();
+    updateHeight();
+  });
+
+  Code.bindClick(shrinkBtn, function () {
+    area.classList.remove('full');
+    updateWidth();
+    updateHeight();
   });
 
   resizeBar.addEventListener('mousedown', function (e) {
+    
+    if (area.classList.contains('full')) {
+      return;
+    }
+
     var cover = document.createElement('div');
     var ox = e.pageX;
     var dw = area.offsetWidth;
@@ -676,11 +678,60 @@ Code.loadSimulator = function () {
       cover.removeEventListener('mousemove', move);
       cover.removeEventListener('mouseup', up);
       cover.remove();
+      area.dataset.width = area.style.width;
     };
 
     cover.addEventListener('mousemove', move);
     cover.addEventListener('mouseup', up);
+
   });
+
+  function updateHeight() {
+    if (area.classList.contains('full')) {
+      area.style.height = '';
+      return;
+    }
+
+    var contentHeight = document.getElementById('content_blocks').offsetHeight;
+    area.style.height = (contentHeight - 110) + 'px';
+  }
+
+  function updateWidth() {
+    if (area.classList.contains('full')) {
+      area.style.width = '';
+      return;
+    }
+
+    area.style.width = area.dataset.width || '';
+  }
+
+  function frameReady() {
+    var api = frame.contentWindow.blockly;
+
+    // 寬度的儲存
+    storage.width && (area.dataset.width = storage.width);
+
+    // 語系
+    api.lang(Code.getLang());
+
+    // 之前存檔的回復
+    if (storage.config) {
+      api.config(storage.config);
+    }
+
+    if (storage.isFull) {
+      area.classList.add('full');
+    }
+
+    updateWidth();
+    updateHeight();
+
+    if (storage.opened) {
+      area.classList.add('show');
+      btn.classList.add('opened');
+    }
+
+  }
 
 };
 
