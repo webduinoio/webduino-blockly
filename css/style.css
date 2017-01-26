@@ -1029,10 +1029,19 @@ td#copyCode div {
   width: 400px;
   min-width: 225px;
   max-width: 70%;
-  background: rgba(255, 255, 255, .8);
+  background: rgba(255, 255, 255, 1);
   border-radius: 20px;
   border: 10px solid #ccc;
   transition: opacity .3s;
+}
+
+#simulator-area.full {
+  max-width: none;
+  width: auto;
+  top: 15px;
+  left: 15px;
+  bottom: 15px;
+  z-index: 999;
 }
 
 #simulator-area.show {
@@ -1058,7 +1067,7 @@ td#copyCode div {
 
 #simulator-area .simulator-area-content {
   position: relative;
-  overflow: auto;
+  overflow-y: hidden;
   width: 100%;
   height: 100%;
   padding: 15px;
@@ -1079,7 +1088,38 @@ td#copyCode div {
   cursor: pointer;
 }
 
-#simulator-area .simulator-area-content .close-btn:hover {
+#simulator-area .simulator-area-content .icon-shrink {
+  display: none;
+}
+
+#simulator-area.full .simulator-area-content .icon-shrink {
+  display: block;
+}
+
+#simulator-area .simulator-area-content .icon-enlarge {
+  display: block;
+}
+
+#simulator-area.full .simulator-area-content .icon-enlarge {
+  display: none;
+}
+
+#simulator-area .simulator-area-content .icon-enlarge,
+#simulator-area .simulator-area-content .icon-shrink {
+  position: absolute;
+  right: 27px;
+  top: 5px;
+  line-height: 22px;
+  width: 22px;
+  height: 22px;
+  opacity: 0.4;
+  transition: .3s;
+  cursor: pointer;
+}
+
+#simulator-area .simulator-area-content .close-btn:hover,
+#simulator-area .simulator-area-content .icon-enlarge:hover,
+#simulator-area .simulator-area-content .icon-shrink:hover {
   opacity: 1;
 }
 
