@@ -10,7 +10,8 @@
     global._components[obj.type] = obj;
   }
 })(this, function() {
-
+  "use strict";
+  
   var FILE_NAME = 'media/svg/led.svg';
   var proto;
 
@@ -21,9 +22,21 @@
 
   Led.type = 'Led';
 
-  Led.label = 'Led';
+  Led.labelKey = 'components.led.label';
 
   Led.icon = 'media/icon/preview-led.png';
+
+  Led.i18n = {
+    "en": {
+      "components.led.label": "LED"
+    },
+    "zh-tw": {
+      "components.led.label": "LED 燈"
+    },
+    "zh-cn": {
+      "components.led.label": "LED 灯"
+    }
+  };
 
   Led.prototype = proto = Object.create(Led.prototype, {
 

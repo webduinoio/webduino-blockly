@@ -7,7 +7,8 @@
     global.DndComponent = factory();
   }
 })(this, function() {
-
+  "use strict";
+  
   function DndComponent(config) {
     this._target = d3.select(config.target);
     this._dragContainer = d3.select(config.dragContainer);
@@ -59,9 +60,17 @@
     this._dragStartFn();
 
     // 移動元素到父元素裡的最上層
-    d3.select(this._dragTarget.parentNode).append(function () {
-      return d3.select(self._dragTarget).remove().node();
-    });
+    if (this._dragTarget.dataset.type === 'ArduinoUno') {
+      if (this._dragTarget.parentNode.children[0] !== this._dragTarget) {
+        d3.select(this._dragTarget.parentNode.children[0]).insert(function () {
+          return d3.select(self._dragTarget).remove().node();
+        });
+      }
+    } else {
+      d3.select(this._dragTarget.parentNode).append(function () {
+        return d3.select(self._dragTarget).remove().node();
+      });
+    }
   }
 
   function dragHandler() {

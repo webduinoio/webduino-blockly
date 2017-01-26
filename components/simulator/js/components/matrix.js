@@ -10,7 +10,8 @@
     global._components[obj.type] = obj;
   }
 })(this, function() {
-
+  "use strict";
+  
   var FILE_NAME = 'media/svg/matrix.svg';
   var proto;
 
@@ -21,9 +22,21 @@
 
   Matrix.type = 'Matrix';
 
-  Matrix.label = 'Matrix';
+  Matrix.labelKey = 'components.matrix.label';
 
   Matrix.icon = 'media/icon/preview-matrix.png';
+
+  Matrix.i18n = {
+    "en": {
+      "components.matrix.label": "LED Matrix"
+    },
+    "zh-tw": {
+      "components.matrix.label": "LED 點矩陣"
+    },
+    "zh-cn": {
+      "components.matrix.label": "LED 点矩阵"
+    }
+  };
 
   Matrix.prototype = proto = Object.create(Matrix.prototype, {
     

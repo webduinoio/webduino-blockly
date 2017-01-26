@@ -7,7 +7,8 @@
     global.FocusPoint = factory();
   }
 })(this, function() {
-
+  "use strict";
+  
   function FocusPoint(config) {
     this._container = d3.select(config.container);
     this._focus = this._container.append('g')

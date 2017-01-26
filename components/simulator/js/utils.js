@@ -7,7 +7,8 @@
     global.utils= factory();
   }
 })(this, function() {
-
+  "use strict";
+  
   var moment = window.moment;
 
   var lineFn = d3.line()
@@ -79,6 +80,27 @@
     return {
       x: svgElement.transform.baseVal[0].matrix.e,
       y: svgElement.transform.baseVal[0].matrix.f
+    };
+  }
+
+  /**
+   * 轉換座標，由 svg 座標系統到在指定容器元素座標系統
+   * @param  {SVGElement} container   - 指定元素
+   * @param  {object}     coord       - x, y
+   * @return {object} x, y
+   */
+  function coordinateTransform(container, coord) {
+    var viewportEl = container.nearestViewportElement;
+    var ctm = container.getCTM();
+    var point = viewportEl.createSVGPoint();
+    
+    point.x = coord.x;
+    point.y = coord.y;
+
+    var newCoord = point.matrixTransform(ctm.inverse());
+    return {
+      x: newCoord.x,
+      y: newCoord.y
     };
   }
 
@@ -372,6 +394,7 @@
     updatePath: updatePath,
     redrawPath: redrawPath,
     getConnectPoint: getConnectPoint,
-    dispatchEvent: dispatchEvent
+    dispatchEvent: dispatchEvent,
+    coordinateTransform: coordinateTransform
   };
 });

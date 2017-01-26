@@ -10,7 +10,8 @@
     global._components[obj.type] = obj;
   }
 })(this, function() {
-
+  "use strict";
+  
   var FILE_NAME = 'media/svg/ultrasonic.svg';
   var proto;
 
@@ -21,15 +22,12 @@
     this._trig = trig;
     this._echo = echo;
     this._target = null;
-    this._comp = null; // 自動建立的手的元件
-    this._isAutoAddTarget = !!isAutoAddTarget;
+    this._hand = null; // 自動建立的手的元件
+    this._handEl = null;
     this._DEFAULT_DISTANCE = 30;
 
     addEvent.apply(this);
-
-    if (this._isAutoAddTarget) {
-      addTarget.apply(this);
-    } 
+    addHand.apply(this);
   }
 
   function addEvent() {
@@ -46,19 +44,28 @@
 
   }
 
-  function addTarget() {
+  function addHand() {
     var hand = utils.createComponent('Hand');
     var coor = utils.getCenter(this._elem.node());
+    var d3HandBody = d3.select(hand).select('[name="body"]');
+    var zoomContainer = d3.select(utils.config.zoomContainer).node();
+    
+    coor = utils.coordinateTransform(zoomContainer, coor);
+    d3HandBody.attr('opacity', 0);
+    zoomContainer.appendChild(hand);
 
-    coor.x += 150;
+    var bbox = hand.getBBox();
+    coor.x -= (bbox.width / 2);
+    coor.y -= (bbox.height / 2);
     utils.translate(hand, coor.x, coor.y);
-    this._elem.node().parentNode.appendChild(hand);
-    this._comp = new _components.Hand(hand.id, utils.config.zoomContainer);
-    this.setTarget(hand);
+    d3HandBody.attr('opacity', 0.3);
+
+    this._hand = new _components.Hand(hand.id, utils.config.zoomContainer);
+    this._handEl = hand;
   }
 
   function getReturnInfo() {
-    var distance = calcDistance.apply(this) || this._DEFAULT_DISTANCE;
+    var distance = this._hand.getValue();
     var data = [this._trig, this._echo];
     var str = "" + distance;
     for (var i = 0; i < str.length; i++) {
@@ -67,38 +74,31 @@
     return data;
   }
 
-  function calcDistance() {
-    if (!this._target) {
-      return null;
-    }
-
-    var c1 = utils.getCenter(this._elem.node());
-    var c2 = utils.getCenter(this._target.node());
-    var dx_square = Math.pow(c1.x - c2.x, 2);
-    var dy_square = Math.pow(c1.y - c2.y, 2);
-
-    return Math.sqrt(dx_square + dy_square);
-  }
-
   UltraSonic.type = 'UltraSonic';
 
-  UltraSonic.label = 'UltraSonic';
+  UltraSonic.labelKey = 'components.ultraSonic.label';
 
   UltraSonic.icon = 'media/icon/preview-ultrasonic.png';
+
+  UltraSonic.i18n = {
+    "en": {
+      "components.ultraSonic.label": "Ultra Sonic"
+    },
+    "zh-tw": {
+      "components.ultraSonic.label": "超音波"
+    },
+    "zh-cn": {
+      "components.ultraSonic.label": "超音波"
+    }
+  };
 
   UltraSonic.prototype = proto = Object.create(UltraSonic.prototype, {
 
   });
 
-  proto.setTarget = function (target) {
-    this._target = d3.select(target);
-  };
-
   proto.destroy = function () {
-    if (this._isAutoAddTarget) {
-      this._comp.destroy();
-      this._target.remove();
-    }
+    this._hand.destroy();
+    d3.select(this._handEl).remove();
   };
 
   d3.xml(FILE_NAME).mimeType("image/svg+xml").get(function(error, xml) {

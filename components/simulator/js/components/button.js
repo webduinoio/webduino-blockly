@@ -10,7 +10,8 @@
     global._components[obj.type] = obj;
   }
 })(this, function() {
-
+  "use strict";
+  
   var FILE_NAME = 'media/svg/button.svg';
   var proto;
 
@@ -44,9 +45,21 @@
 
   Button.type = 'Btn';
 
-  Button.label = 'Button';
+  Button.labelKey = 'components.button.label';
 
   Button.icon = 'media/icon/preview-button.png';
+
+  Button.i18n = {
+    "en": {
+      "components.button.label": "Button"
+    },
+    "zh-tw": {
+      "components.button.label": "按鈕"
+    },
+    "zh-cn": {
+      "components.button.label": "按钮"
+    }
+  };
 
   Button.prototype = proto = Object.create(Button.prototype, {
 

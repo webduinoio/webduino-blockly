@@ -7,7 +7,8 @@
     global.EditPath = factory();
   }
 })(this, function() {
-
+  "use strict";
+  
   function EditPath(config) {
     this._editContent = d3.select(config.area);
     this._pathId = config.pathId;
@@ -30,10 +31,10 @@
     var pathDatas = utils.getPathsData();
     var pathData = pathDatas[this._pathId];
 
+    data.push(pathData[0][0]);
     pathData.forEach(function (val, idx) {
       data.push(val[1]);
     });
-    data.unshift(pathData[0][0]);
 
     this._addEditedCircles(data);
     this._editContent.classed('editing', true);
@@ -112,14 +113,12 @@
 
     function end(d, i) {
       var connectPoint = utils.getConnectPoint(event.target);
-      var point, aa, bb;
+      var point, aa, bb, cc;
       
       if (connectPoint) {
         // connectPoint 是不同座標系統的點，所以需要經過轉換。
-        if (_zoomInst) {
-          $.extend(connectPoint, _zoomInst.invert(connectPoint));
-        }
-        $.extend(d, connectPoint);
+        cc = utils.coordinateTransform(document.querySelector('.zoom-container'), connectPoint);
+        $.extend(d, connectPoint, cc);
       }
 
       // 檢查：頭、尾不可是同一點

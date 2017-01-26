@@ -7,7 +7,8 @@
     global.Zoom = factory();
   }
 })(this, function() {
-
+  "use strict";
+  
   function Zoom(selector, trasnformTarget) {
     
     trasnformTarget = trasnformTarget || selector;
@@ -19,7 +20,7 @@
       transformElem.attr("transform", d3.event.transform);
     };
     var zoom = d3.zoom()
-      .scaleExtent([0.1, 10])
+      .scaleExtent([0.3, 5])
       .filter(function () {
         return event.type === 'wheel' || !$(event.target).parents('.component').length;
       })

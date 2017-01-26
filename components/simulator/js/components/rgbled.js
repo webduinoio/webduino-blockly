@@ -10,7 +10,8 @@
     global._components[obj.type] = obj;
   }
 })(this, function() {
-
+  "use strict";
+  
   var FILE_NAME = 'media/svg/rgbled.svg';
   var proto;
 
@@ -27,9 +28,21 @@
 
   RGBLed.type = 'RGBLed';
 
-  RGBLed.label = 'RGBLed';
+  RGBLed.labelKey = 'components.rgbLed.label';
 
   RGBLed.icon = 'media/icon/preview-rgbled.png';
+
+  RGBLed.i18n = {
+    "en": {
+      "components.rgbLed.label": "RGB LED"
+    },
+    "zh-tw": {
+      "components.rgbLed.label": "三色 LED"
+    },
+    "zh-cn": {
+      "components.rgbLed.label": "三色 LED"
+    }
+  };
 
   RGBLed.parserPin = function(name) {
     var data = {

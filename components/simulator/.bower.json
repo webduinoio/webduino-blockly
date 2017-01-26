@@ -17,13 +17,18 @@
     "vue": "2.1.4",
     "less": "2.7.1",
     "Snap.svg": "snap.svg#^0.4.1",
-    "moment": "^2.17.1"
+    "moment": "^2.17.1",
+    "i18next": "^6.0.1",
+    "i18next-browser-languagedetector": "^1.0.1",
+    "i18next-xhr-backend": "^1.3.0",
+    "jquery-i18next": "^1.2.0",
+    "bootstrap-select": "^1.12.1"
   },
-  "_release": "ad91e65aaa",
+  "_release": "8bafcbac99",
   "_resolution": {
     "type": "branch",
     "branch": "blockly",
-    "commit": "ad91e65aaa7547a2a308a85cf3aa307fc560d134"
+    "commit": "8bafcbac9967dbeafbb374277d67babca6bb6d7f"
   },
   "_source": "https://git.kingkit.codes/webduino/simulator.git",
   "_target": "blockly",

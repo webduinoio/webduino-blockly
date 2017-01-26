@@ -7,7 +7,8 @@
     global.interact = factory();
   }
 })(this, function() {
-
+  "use strict";
+  
   var instance = [];
 
   function start() {
@@ -99,13 +100,13 @@
 
         if (compType === 'Btn') {
           comp = comp || new _components.Btn(compId, engine, setting.signal);
+          components[compId] = comp;
         }
 
         if (compType === 'UltraSonic') {
           comp = comp || new _components.UltraSonic(compId, engine, setting.trig, setting.echo, true);
+          components[compId] = comp;
         }
-
-        components[compId] = comp;
 
         if (list[i].type == 'Led') {
           console.log("list[i].name", list[i].name);
@@ -180,7 +181,7 @@
 
     $.each(sensors, function(id, info) {
       var boardId = checkWhichBoard(info);
-      boards[boardId].connector.push(info);
+      boardId && boards[boardId].connector.push(info);
     });
 
     return boards;

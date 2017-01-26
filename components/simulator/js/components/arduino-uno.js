@@ -10,6 +10,7 @@
     global._components[obj.type] = obj;
   }
 })(this, function() {
+  "use strict";
 
   var FILE_NAME = 'media/svg/Arduino-UNO.svg';
   var proto;
@@ -24,9 +25,21 @@
 
   ArduinoUno.type = 'ArduinoUno';
 
-  ArduinoUno.label = 'Arduino UNO';
+  ArduinoUno.labelKey = 'components.arduinoUno.label';
 
   ArduinoUno.icon = 'media/icon/preview-uno.png';
+
+  ArduinoUno.i18n = {
+    "en": {
+      "components.arduinoUno.label": "Arduino UNO"
+    },
+    "zh-tw": {
+      "components.arduinoUno.label": "Arduino UNO"
+    },
+    "zh-cn": {
+      "components.arduinoUno.label": "Arduino UNO"
+    }
+  };
 
   ArduinoUno.parserPin = function(name) {
     var data = {

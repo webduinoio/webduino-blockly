@@ -7,7 +7,8 @@
     global.HistoryManager = factory();
   }
 })(this, function () {
-
+  "use strict";
+  
   function HistoryManager() {
     this.stack = [];
     this.activeIndex = 0;

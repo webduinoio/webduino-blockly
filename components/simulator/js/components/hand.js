@@ -10,7 +10,8 @@
     global._components[obj.type] = obj;
   }
 })(this, function() {
-
+  "use strict";
+  
   var FILE_NAME = 'media/svg/hand.svg';
   var proto;
 
@@ -24,42 +25,84 @@
 
   function addEvent() {
     var self = this;
-    var container = this._container.length && this._container.node();
-    var d3Drag = d3.drag()
-      .container(function () {
-        return container ? container : this.parentNode;
-      })
-      .on('start', function () {
-        var parent = self._elem.node().parentNode;
-        d3.select(parent).append(function () {
-          return self._elem.remove().node();
-        });
-      })
-      .on('drag', function () {
-        var cur = utils.getTransformObj(this);
-        cur.x += d3.event.dx;
-        cur.y += d3.event.dy;
-        var translate = d3.zoomIdentity.translate(cur.x, cur.y);
-        self._elem.attr('transform', translate);
-      });
+    var bbox = self._elem.select('[name="group"]').node().getBBox();
+    var width = bbox.width;
+    var height = bbox.height;
+    var scale = d3.scaleLinear()
+      .domain([0, 200])
+      .range([1, 3]);
+    var zoom = d3.zoom()
+      .scaleExtent([1, 3])
+      .on('zoom', zoomed);
 
-    this._elem.call(d3Drag);
+    zoomInput();
+    self._elem.on('input', zoomInput);
+
+    function zoomed() {
+      self._elem.select('[name="group"]').attr("transform", d3.event.transform);
+    }
+
+    function zoomInput() {
+      var val = self._elem.select('[name="input"]').node().value;
+      self._elem.select('[name="value"]').html(val);
+      transition(val);
+    }
+
+    function transition(val) {
+      var k = scale(val);
+
+      // 指定 zoom 的中心點的坐標，也能指定其他的點，來當做中心位置
+      var center = [ width / 2, height / 2];
+
+      var tf = d3.zoomTransform(self._elem.node());
+      var tfn = transform(tf.x, tf.y, k);
+      var translate0 = tf.invert(center);
+      var l = tfn.apply(translate0);
+
+      // 使用變化後的 scale，拿相同的位置(中心點坐標)來計算位移量，對原先的 x, y 做出修正。
+      var dx = translate0[0] - l[0];
+      var dy = translate0[1] - l[1];
+
+      tfn = transform(tf.x + dx, tf.y + dy, k);
+      self._elem.call(zoom.transform, tfn);
+    }
+
+    function transform(x, y, k) {
+      return d3.zoomIdentity.translate(x, y).scale(k);
+    }
+
   }
 
   Hand.type = 'Hand';
 
-  Hand.label = 'Hand';
+  Hand.labelKey = 'components.hand.label';
 
   Hand.icon = 'media/icon/preview-hand.png';
 
   Hand.notInContainer = true;
 
+  Hand.i18n = {
+    "en": {
+      "components.hand.label": "Hand"
+    },
+    "zh-tw": {
+      "components.hand.label": "手"
+    },
+    "zh-cn": {
+      "components.hand.label": "手"
+    }
+  };
+
   Hand.prototype = proto = Object.create(Hand.prototype, {
 
   });
 
+  proto.getValue = function () {
+    return parseInt(this._elem.select('[name="input"]').node().value);
+  };
+
   proto.destroy = function () {
-    this._elem.on('.drag', null);
+
   };
 
   d3.xml(FILE_NAME).mimeType("image/svg+xml").get(function(error, xml) {

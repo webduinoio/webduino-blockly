@@ -10,7 +10,8 @@
     global._components[obj.type] = obj;
   }
 })(this, function() {
-
+  "use strict";
+  
   var FILE_NAME = 'media/svg/buzzer.svg';
   var proto;
 
@@ -21,9 +22,21 @@
 
   Buzzer.type = 'Buzzer';
 
-  Buzzer.label = 'Buzzer';
+  Buzzer.labelKey = 'components.buzzer.label';
 
   Buzzer.icon = 'media/icon/preview-buzzer.png';
+
+  Buzzer.i18n = {
+    "en": {
+      "components.buzzer.label": "Buzzer"
+    },
+    "zh-tw": {
+      "components.buzzer.label": "蜂鳴器"
+    },
+    "zh-cn": {
+      "components.buzzer.label": "蜂鸣器"
+    }
+  };
 
   /**
    * 在送給 engine 的資料格式，經過 parserPin 之後的介入點

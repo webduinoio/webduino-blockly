@@ -10,7 +10,8 @@
     global._components[obj.type] = obj;
   }
 })(this, function() {
-
+  "use strict";
+  
   var FILE_NAME = 'media/svg/servo.svg';
   var proto;
 
@@ -25,9 +26,21 @@
 
   Servo.type = 'Servo';
 
-  Servo.label = 'Servo';
+  Servo.labelKey = 'components.servo.label';
 
   Servo.icon = 'media/icon/preview-servo.png';
+
+  Servo.i18n = {
+    "en": {
+      "components.servo.label": "Servo Motor"
+    },
+    "zh-tw": {
+      "components.servo.label": "伺服馬達"
+    },
+    "zh-cn": {
+      "components.servo.label": "伺服马达"
+    }
+  };
 
   Servo.prototype = proto = Object.create(Servo.prototype, {
 

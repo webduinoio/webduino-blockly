@@ -7,7 +7,8 @@
     global.DrawPath = factory();
   }
 })(this, function() {
-
+  "use strict";
+  
   function DrawPath(config) {
     this._target = d3.select(config.target);
     this._dragContainer = d3.select(config.dragContainer);
@@ -118,9 +119,9 @@
    */
   function parsePoint(pointObj) {
     var point;
-    if (_zoomInst && pointObj) {
-      point = {x : pointObj.x, y: pointObj.y};
-      point = _zoomInst.invert(point);
+    if (pointObj) {
+      point = { x: pointObj.x, y: pointObj.y };
+      point = utils.coordinateTransform(d3.select('.zoom-container').node(), point);
       $.extend(pointObj, point);
     }
     return pointObj;

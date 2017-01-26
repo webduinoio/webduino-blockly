@@ -7,7 +7,8 @@
     global.EditPath2 = factory();
   }
 })(this, function() {
-
+  "use strict";
+  
   function EditPath2(config) {
     this._target = d3.select(config.target);
     this._dragContainer = d3.select(config.dragContainer);

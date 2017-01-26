@@ -1,4 +1,5 @@
 +(function() {
+  "use strict";
   
   var utils = window.utils;
   var Snap = window.Snap;
@@ -6,14 +7,14 @@
   /**
    * vue instance - navbar
    */
-  var navbar = new Vue({
+  var navbar = window.navbar = new Vue({
     el: '#navbar',
     data: {
       isComponentsVisible: false, // 顯示元件區
       isPlaying: false // engine 是否啟動中
     },
     mounted: function() {
-      this.$el.childNodes[0].classList.remove('hidden');
+      this.$el.querySelector('.navbar-right').classList.remove('hidden');
     },
     methods: {
       menuToggle: function() {
@@ -21,13 +22,26 @@
       },
       engineToggle: function() {
         this.isPlaying = !this.isPlaying;
-        this.isPlaying ? engineStart() : engineStop();
+        if (this.isPlaying) {
+          utils.dispatchEvent('navbar-engineStart');
+        } else {
+          utils.dispatchEvent('navbar-engineStop');
+        }
       },
       zoomToFit: function () {
-        _zoomInst.zoomToFit();
+        utils.dispatchEvent('navbar-zoomToFit');
       },
       deleteSomething: function () {
         utils.dispatchEvent('navbar-deleteSomething');
+      },
+      historyBack: function () {
+        utils.dispatchEvent('navbar-historyBack');
+      },
+      historyForward: function () {
+        utils.dispatchEvent('navbar-historyForward');
+      },
+      refresh: function () {
+        utils.dispatchEvent('navbar-refresh');
       }
     }
   });
@@ -69,7 +83,7 @@
         return;
       }
       var img = (obj.icon && '<img src="' + obj.icon + '" draggable="false">') || DEFAULT_IMG;
-      var text = '<span class="kk-item-text">' + ( obj.label || obj.type ) + '</span>';
+      var text = '<span class="kk-item-text" data-i18n="' + obj.labelKey + '"></span>';
       var $wrap = $wrapper.clone().append(img, text);
       $wrap.attr('data-type', obj.type);
       htmls.push($wrap.get(0).outerHTML);
@@ -139,22 +153,6 @@
 
     }
 
-  }
-
-  /**
-   * 啟動 engine
-   */
-  function engineStart() {
-    utils.dispatchEvent('navbar-engineStart');
-    interact.start();
-  }
-
-  /**
-   * 停止 engine
-   */
-  function engineStop() {
-    utils.dispatchEvent('navbar-engineStop');
-    interact.stop();
   }
   
 })();
