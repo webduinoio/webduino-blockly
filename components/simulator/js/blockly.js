@@ -15,20 +15,33 @@
   }
 
   function language(val) {
+    if (!app.isReady()) {
+      readyHandler(language, this, [val]);
+      return;
+    }
+
     var mapping = {
       'en': 'en',
       'zh-hant': 'zh-tw',
       'zh-hans': 'zh-cn'
     };
-    
-    setTimeout(function timer() {
-      if (app.language) {
-        app.language = mapping[val];
-      } else {
-        setTimeout(timer, 10);
-      }
-    }, 10);
-    
+
+    app.language = mapping[val];
+    $('#lang').selectpicker('val', mapping[val]);    
+  }
+
+  function readyHandler(func, thisArg, args) {
+    if (app.isReady()) {
+      func.apply(this, args);
+    } else {
+      setTimeout(function runner() {
+        if (app.isReady) {
+          func.apply(this, args);
+        } else {
+          setTimeout(runner, 10);
+        }
+      }, 10);
+    }
   }
 
   window.blockly = {

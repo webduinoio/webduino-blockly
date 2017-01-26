@@ -12,6 +12,8 @@
   var app = new Vue({
     el: '#app',
     data: {
+      ready: false,
+      i18nextReady: false,
       language: '', // 語系
       drawingPath: false, // 畫線狀態
       movingCircle: false, // 編輯時，移動圓點
@@ -20,9 +22,15 @@
       instance: [], // 保存使用的功能實例
       engineStarting: false // Engine 是否啟動中
     },
+    mounted: function () {
+      this.ready = true;
+    },
     methods: {
       save: function (inst) {
         this.instance.push(inst);
+      },
+      isReady: function () {
+        return this.ready && this.i18nextReady;
       }
     }
   });
@@ -207,6 +215,7 @@
         jqueryI18next.init(i18next, $);
         $('body').localize();
         app.language = i18next.language;
+        app.i18nextReady = true;
       });
   }
 
