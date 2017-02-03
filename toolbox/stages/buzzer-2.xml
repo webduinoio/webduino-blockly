@@ -1,0 +1,72 @@
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <sep></sep>
+  <sep></sep>
+  <category id="catText">
+    <block type="text"></block>
+  </category>
+  <category id="catBoard">
+    <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category id="catBuzzer">
+    <block type="variables_set">
+      <field name="VAR">buzzer</field>
+      <value name="VALUE">
+        <block type="buzzer_new">
+          <field name="pin_">11</field>
+        </block>
+      </value>
+    </block>
+      <block type="buzzer_music">
+        <value name="music_name_">
+          <block type="variables_get">
+            <field name="VAR">music</field>
+          </block>
+        </value>
+      </block>
+    <block type="buzzer_music_array">
+      <value name="music_name_">
+        <block type="variables_get">
+          <field name="VAR">music</field>
+        </block>
+      </value>
+      <value name="notes_">
+        <block type="text">
+          <field name="TEXT">C6,D6,E6,F6,G6,A6,B6</field>
+        </block>
+      </value>
+      <value name="tempos_">
+        <block type="text">
+          <field name="TEXT">8</field>
+        </block>
+      </value>
+    </block>
+    <block type="buzzer_load_music"></block>
+    <block type="buzzer_play">
+      <value name="play_music_">
+        <block type="variables_get">
+          <field name="VAR">music</field>
+        </block>
+      </value>
+    </block>
+  </category>
+  <category id="catTutorials">
+    <block type="tutorial_buzzer_1">
+      <value name="var_">
+        <block type="variables_get">
+          <field name="VAR">music</field>
+        </block>
+      </value>
+    </block>
+  </category>
+  <sep></sep>
+</xml>

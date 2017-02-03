@@ -1,0 +1,47 @@
+<template id="head">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title data-translation="title">Webduino Blockly - 三色 LED 燈切換顏色</title>
+  <!-- webduino -->
+  <script src="https://webduino.io/components/webduino-js/dist/webduino-all.min.js"></script>
+  <script src="https://blockly.webduino.io/webduino-blockly.js"></script>
+  <script src="https://blockly.webduino.io/lib/runtime.min.js"></script>
+</template>
+<template id="body">
+  <button id="redBtn" data-translation="red">RED</button>
+  <button id="greenBtn" data-translation="green">GREEN</button>
+  <button id="blueBtn" data-translation="blue">BLUE</button>
+  <button id="clearBtn" data-translation="clear">CLEAR</button>
+  <div id="show"></div>
+</template>
+<template id="css">
+button {
+  display: inline-block;
+  width: 80px;
+  height: 50px;
+  font-size: 16px;
+  line-height: 48px;
+  margin: 5px;
+  outline: none;
+}
+
+#redBtn {
+  color: #f00;
+}
+
+#greenBtn {
+  color: #0a0;
+}
+
+#blueBtn {
+  color: #00f;
+}
+
+#show {
+  width: 80%;
+  height: 150px;
+  border: 1px solid #000;
+  background: #ccc;
+  margin: 15px 5px;
+}
+</template>

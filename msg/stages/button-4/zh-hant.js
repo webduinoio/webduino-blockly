@@ -1,0 +1,9 @@
+MSG.title = "Webduino Blockly 課程 4-4：點擊按鈕開關玩賽跑小遊戲";
+MSG.subTitle = "課程 4-4：點擊按鈕開關玩賽跑小遊戲";
+MSG.demoDescription = "使用按鈕開關和電腦進行賽跑";
+MSG.gameStart = "開始賽跑";
+MSG.beTheFirstToReach = "先到";
+MSG.goal = "終點";
+MSG.toWinTheGame = "的人就贏";
+MSG.NPC = "電腦：";
+MSG.player = "玩家：";

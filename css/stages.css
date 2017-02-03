@@ -1,0 +1,234 @@
+table#tutorials-table.nav{
+  width:68%;
+  margin:0 auto 0 15px;
+}
+table.nav{
+  min-width:500px!important;
+}
+#demoArea{
+  position:absolute;
+  right:15px;
+  bottom:15px;
+  width:calc(32% - 40px);
+  height:calc(100% - 126px);
+  padding:20px 20px 0;
+  background:#fff;
+  box-sizing:border-box;
+  border-radius:0 0 20px 0;
+}
+#demoTitle{
+  position:absolute;
+  top:-33px;
+  left:0;
+  font-size:16px;
+  background:#fff;
+  padding:8px 20px;
+  border-bottom:1px solid #ddd;
+}
+#demoDescription{
+  line-height:22px;
+  margin:0 0 10px;
+}
+#title,#subTitle{
+  font-size:20px;
+}
+#linkToBin{
+  position:absolute;
+  top:-35px;
+  right:0px;
+  font-size:16px;
+  padding:6px 15px 8px;
+  color:#000;
+  background:#ddd;
+  transition:.3s;
+  border-radius:5px;
+}
+#linkToBin.demoLinktoBin{
+  top:-27px;
+}
+#linkToBin img{
+  height:18px;
+  margin-bottom:-4px;
+  margin-right:3px;
+}
+#linkToBin:link{
+  color:#000;
+  text-decoration: none;
+}
+#linkToBin:hover{
+  background:#fff;
+}
+#cuteman01{
+  display:block;
+  position:absolute;
+  bottom:-15px;
+  right:-5px;
+  width:160px;
+  height:103px;
+  z-index:999;
+}
+#cuteman01:before{
+  width:500px;
+  height:15px;
+  content:'';
+  position:absolute;
+  bottom:0;
+  right:0;
+  background:#333; 
+  z-index:1;
+  pointer-events: none;
+}
+#cuteman01:after{
+  content:'';
+  width:100%;
+  height:100%;
+  position:absolute;
+  background:url(../media/cuteman01.png);
+  background-size:cover;
+  cursor:pointer;  
+  z-index:2;
+}
+#sampleButton,#smaple-menu,#demo-resize-bar,#demo-select,#demoButton,.close-btn{
+  display:none;
+}
+#demo-area{
+  display:block!important;
+  position:relative;
+  top:0;
+  right:auto;
+  border:none;
+  border-radius:0;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  height:calc(100% - 34px)!important;
+}
+#demo-area .demo-area-content{
+  padding:0;
+}
+#demo-frame{
+  width:100%;
+  height:100%;
+}
+
+#simulator-area {
+  display: none;
+  z-index: 99;
+  position: absolute;
+  right: 32%;
+  top: 125px;
+  width: 400px;
+  min-width: 225px;
+  max-width: 70%;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20px;
+  border: 10px solid #ccc;
+  transition: opacity .3s;
+}
+
+#simulator-area.full {
+  max-width: none;
+  width: auto;
+  top: 15px;
+  left: 15px;
+  bottom: 15px;
+  right: 15px;
+  z-index: 999;
+}
+
+#simulator-area.show {
+  display: block;
+}
+
+#simulator-resize-bar {
+  height: calc(100% - 40px);
+  width: 10px;
+  background: #ccc;
+  position: absolute;
+  left: -10px;
+  top: 20px;
+  cursor: col-resize;
+}
+
+#simulator-area.resize {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#simulator-area .simulator-area-content {
+  position: relative;
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+#simulator-area .simulator-area-content .close-btn {
+  display: block;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  background-image: url(../media/icons.png);
+  background-position: -82px 0px;
+  opacity: 0.4;
+  transition: .3s;
+  cursor: pointer;
+}
+
+#simulator-area .simulator-area-content .icon-shrink {
+  display: none;
+}
+
+#simulator-area.full .simulator-area-content .icon-shrink {
+  display: block;
+}
+
+#simulator-area .simulator-area-content .icon-enlarge {
+  display: block;
+}
+
+#simulator-area.full .simulator-area-content .icon-enlarge {
+  display: none;
+}
+
+#simulator-area .simulator-area-content .icon-enlarge,
+#simulator-area .simulator-area-content .icon-shrink {
+  position: absolute;
+  right: 27px;
+  top: 5px;
+  line-height: 22px;
+  width: 22px;
+  height: 22px;
+  opacity: 0.4;
+  transition: .3s;
+  cursor: pointer;
+}
+
+#simulator-area .simulator-area-content .close-btn:hover,
+#simulator-area .simulator-area-content .icon-enlarge:hover,
+#simulator-area .simulator-area-content .icon-shrink:hover {
+  opacity: 1;
+}
+
+#simulator-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 2;
+}
+
+.simulator-cover {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  z-index: 9999;
+}

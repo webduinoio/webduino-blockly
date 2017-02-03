@@ -1,0 +1,40 @@
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <sep></sep>
+  <category id="catColour">
+    <block type="colour_picker"></block>
+  </category>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category id="catRGBLed">
+    <block type="variables_set">
+      <field name="VAR">rgbled</field>
+      <value name="VALUE">
+        <block type="rgbled_new">
+          <field name="red_">6</field>
+          <field name="green_">9</field>
+          <field name="blue_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="rgbled_setcolor">
+      <field name="rgbled_">rgbled</field>
+    </block>
+  </category>
+  <category id="catTutorials">
+    <block type="rgb_led_area_color"></block>
+    <block type="rgb_led_btn_click"></block>
+  </category>
+  <sep></sep>
+</xml>
