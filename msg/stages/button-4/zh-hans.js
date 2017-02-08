@@ -1,5 +1,5 @@
-MSG.title = "Webduino Blockly 课程 4-4：点击按钮开关玩赛跑小游戏";
-MSG.subTitle = "课程 4-4：点击按钮开关玩赛跑小游戏";
+MSG.title = "Webduino Blockly 关卡 5：点击按钮开关玩赛跑小游戏";
+MSG.subTitle = "关卡 5：点击按钮开关玩赛跑小游戏";
 MSG.demoDescription = "使用按钮开关和电脑进行赛跑";
 MSG.gameStart = "开始赛跑";
 MSG.beTheFirstToReach = "先到";
