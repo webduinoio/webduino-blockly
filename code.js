@@ -1036,6 +1036,14 @@ Code.init = function (toolbox) {
     linkButton.className = 'disabled';
   }
 
+  var helpButton = document.getElementById('helpButton');
+  if (helpButton) {
+    Code.bindClick(helpButton,
+      function () {
+        alert(MSG['stageHelp']);
+      });
+  }
+
   Code.loadSimulator();
 
   Code.bindClick('simulatorButton', function () {

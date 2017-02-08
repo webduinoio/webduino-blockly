@@ -7,3 +7,4 @@ MSG.goal = "终点";
 MSG.toWinTheGame = "的人就赢";
 MSG.NPC = "电脑：";
 MSG.player = "玩家：";
+MSG.stageHelp = "使用积木及模拟器，当点击模拟器中的按钮时，能控制测试区中的角色移动";

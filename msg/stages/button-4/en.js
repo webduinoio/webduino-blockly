@@ -7,3 +7,4 @@ MSG.goal = "goal";
 MSG.toWinTheGame = "to win the game";
 MSG.NPC = "NPC: ";
 MSG.player = "Player: ";
+MSG.stageHelp = "Run with NPC by pressing the button.";

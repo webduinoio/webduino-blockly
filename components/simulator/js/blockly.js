@@ -7,6 +7,11 @@
   }
 
   function config(obj) {
+    if (!app.isReady()) {
+      readyHandler(config, this, [obj]);
+      return;
+    }
+    
     if (obj) {
       utils.importLayout(obj);
     } else {
