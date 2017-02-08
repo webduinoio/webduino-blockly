@@ -1,0 +1,132 @@
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <category id="catFunctions" custom="PROCEDURE"></category>
+  <category id="catStandard">
+    <category id="catLogic">
+      <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+    </category>
+    <category id="catLoops">
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="controls_whileUntil"></block>
+    </category>
+    <category id="catMath">
+      <block type="math_number"></block>
+    </category>
+    <sep></sep>
+  </category>
+  <category id="catPlus">
+    <category id="catExec">
+      <block type="timer">
+        <value name="secs_">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <block type="interval">
+        <value name="secs_">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+      <block type="delay">
+        <value name="secs_">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+    </category>
+  </category>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category id="catUltraSonic">
+    <block type="variables_set">
+      <field name="VAR">ultrasonic</field>
+      <value name="VALUE">
+        <block type="ultrasonic_new">
+          <field name="trig_">11</field>
+          <field name="echo_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_get">
+      <value name="time">
+        <block type="math_number">
+          <field name="NUM">500</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_distance"></block>
+  </category>
+  <category id="catBuzzer">
+    <block type="variables_set">
+      <field name="VAR">buzzer</field>
+      <value name="VALUE">
+        <block type="buzzer_new">
+          <field name="pin_">11</field>
+        </block>
+      </value>
+    </block>
+    <block type="buzzer_music_play"></block>
+    <block type="buzzer_notes_tempos"></block>
+    <block type="buzzer_music_array">
+      <value name="notes_">
+        <block type="text">
+          <field name="TEXT">C6,D6,E6,F6,G6,A6,B6</field>
+        </block>
+      </value>
+      <value name="tempos_">
+        <block type="text">
+          <field name="TEXT">8</field>
+        </block>
+      </value>
+    </block>
+    <block type="buzzer_load_music"></block>
+    <block type="buzzer_event"></block>
+    <block type="buzzer_state"></block>
+  </category>
+<!--   <category id="catBuzzer">
+    <block type="variables_set">
+      <field name="VAR">buzzer</field>
+      <value name="VALUE">
+        <block type="buzzer_new">
+          <field name="pin_">11</field>
+        </block>
+      </value>
+    </block>
+    <block type="buzzer_music">
+      <value name="music_name_">
+        <block type="variables_get">
+          <field name="VAR">music</field>
+        </block>
+      </value>
+    </block>
+    <block type="buzzer_notes_tempos"></block>
+    <block type="buzzer_play">
+      <value name="play_music_">
+        <block type="variables_get">
+          <field name="VAR">music</field>
+        </block>
+      </value>
+    </block>
+  </category> -->
+  <category id="catTutorials">
+    <block type="ultrasonic_set_number"></block>
+  </category>
+</xml>

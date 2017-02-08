@@ -1,0 +1,137 @@
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <category id="catStandard">
+    <category id="catLogic">
+      <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+    </category>
+    <category id="catLoops">
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="controls_whileUntil"></block>
+    </category>
+    <category id="catMath">
+      <block type="math_number"></block>
+    </category>
+    <category id="catColour">
+      <block type="colour_picker"></block>
+    </category>
+  </category>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text"></block>
+      </value>
+    </block>
+  </category>
+  <category id="catRGBLed">
+    <block type="variables_set">
+      <field name="VAR">rgbled</field>
+      <value name="VALUE">
+        <block type="rgbled_new">
+          <field name="red_">6</field>
+          <field name="green_">9</field>
+          <field name="blue_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="rgbled_setcolor">
+      <field name="rgbled_">rgbled</field>
+    </block>
+  </category>
+  <category id="catBuzzer">
+    <block type="variables_set">
+      <field name="VAR">buzzer</field>
+      <value name="VALUE">
+        <block type="buzzer_new">
+          <field name="pin_">11</field>
+        </block>
+      </value>
+    </block>
+    <block type="buzzer_music_play"></block>
+    <block type="buzzer_notes_tempos"></block>
+    <block type="buzzer_music_array">
+      <value name="notes_">
+        <block type="text">
+          <field name="TEXT">C6,D6,E6,F6,G6,A6,B6</field>
+        </block>
+      </value>
+      <value name="tempos_">
+        <block type="text">
+          <field name="TEXT">8</field>
+        </block>
+      </value>
+    </block>
+    <block type="buzzer_load_music"></block>
+    <block type="buzzer_event"></block>
+    <block type="buzzer_state"></block>
+  </category>
+  <category id="catServo">
+    <block type="variables_set">
+      <field name="VAR">servo</field>
+      <value name="VALUE">
+        <block type="servo_new">
+          <field name="pin_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="servo_angle"></block>
+    <block type="servo_angle_set">
+      <value name="angle_">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+    </block>
+  </category>
+  <category id="catUltraSonic">
+    <block type="variables_set">
+      <field name="VAR">ultrasonic</field>
+      <value name="VALUE">
+        <block type="ultrasonic_new">
+          <field name="trig_">11</field>
+          <field name="echo_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_get">
+      <value name="time">
+        <block type="math_number">
+          <field name="NUM">500</field>
+        </block>
+      </value>
+    </block>
+    <block type="ultrasonic_distance"></block>
+  </category>
+  <category id="catTutorials">
+    <block type="ultrasonic_set_number"></block>
+    <block type="rgb_led_start_dancing">
+      <value name="timer">
+        <block type="variables_get">
+          <field name="VAR" class="timerVar"></field>
+        </block>
+      </value>
+      <value name="time">
+        <block type="math_number">
+          <field name="NUM">500</field>
+        </block>
+      </value>
+    </block>
+    <block type="stop_clock">
+      <value name="timer">
+        <block type="variables_get">
+          <field name="VAR" class="timerVar"></field>
+        </block>
+      </value>
+    </block>
+    <block type="rgb_led_dancing_status"></block>
+  </category>
+  <sep></sep>
+</xml>
