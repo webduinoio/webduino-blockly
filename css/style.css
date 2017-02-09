@@ -1139,3 +1139,13 @@ td#copyCode div {
   opacity: 0;
   z-index: 9999;
 }
+
+/* 過濾暫時不必出現的 */
+
+#sampleButton {
+  display: none;
+}
+
+#demo-select > option[value="8"] {
+  display: none;
+}

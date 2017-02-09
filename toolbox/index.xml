@@ -212,7 +212,7 @@
   <sep></sep>  
   </category>
   <category id="catPlus">
-    <category id="catConsole">
+    <!-- <category id="catConsole">
       <block type="console"></block>
       <block type="getdate"></block>
       <block type="gettime"></block>
@@ -230,7 +230,7 @@
           </block>
         </value>
       </block>
-    </category>
+    </category> -->
     <category id="catExec">
       <block type="timer">
         <value name="secs_">
@@ -299,7 +299,7 @@
         <block type="document_keyboard_konami"></block>
         <block type="document_keyboard_stop"></block>
     </category>
-    <category id="catSpeech">
+    <!-- <category id="catSpeech">
       <block type="sound_recognition"></block>
       <block type="sound_recognition_check">
         <value name="text_">
@@ -334,16 +334,16 @@
         <block type="mobile_deviceorientation_event_val"></block>
         <block type="mobile_devicemotion_event_val"></block>
         <block type="mobile_deviceorientation_event_remove"></block>
-    </category>
+    </category> -->
   <sep></sep>  
   </category>
   <sep></sep>
   <category id="catBoard">
-    <block type="board_server" tags="fly,mark1">
+<!--     <block type="board_server" tags="fly,mark1">
       <value name="server_">
         <block type="text"></block>
       </value>
-    </block>
+    </block> -->
     <block type="board" tags="fly,mark1,smart">
       <value name="device_">
         <block type="text"></block>
@@ -353,7 +353,7 @@
     <block type="all_board_ready"></block>
     <block type="board_error"></block>
   </category>
-  <category id="catPin">
+<!--   <category id="catPin">
     <block type="variables_set">
       <field name="VAR">pin</field>
       <value name="VALUE">
@@ -391,7 +391,7 @@
         </block>
       </value>
     </block>
-  </category>
+  </category> -->
   <category id="catMenu1">
     <category id="catLed">
       <block type="variables_set">
@@ -495,7 +495,7 @@
       <block type="buzzer_event"></block>
       <block type="buzzer_state"></block>
     </category>
-    <category id="catRelay" tags="fly,mark1">
+    <!-- <category id="catRelay" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">relay</field>
         <value name="VALUE">
@@ -507,7 +507,7 @@
       <block type="relay_state">
         <field name="relay_">relay</field>
       </block>
-    </category>
+    </category> -->
     <category id="catServo" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">servo</field>
@@ -585,7 +585,7 @@
       <block type="max7219_val_img"></block>
       <block type="max7219_88"></block>
     </category>
-    <category id="catIRLed" tags="fly,mark1">
+    <!-- <category id="catIRLed" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">irled</field>
         <value name="VALUE">
@@ -614,7 +614,7 @@
       <block type="irrecv_on"></block>
       <block type="irrecv_val"></block>
       <block type="irrecv_off"></block>
-    </category>
+    </category> -->
     <category id="catButton">
       <block type="variables_set" tags="fly,mark1">
         <field name="VAR">button</field>
@@ -624,17 +624,17 @@
           </block>
         </value>
       </block>
-      <block type="variables_set" tags="smart">
+<!--       <block type="variables_set" tags="smart">
         <field name="VAR">button</field>
         <value name="VALUE">
           <block type="button_pullup_new">
             <field name="pin_">4</field>
           </block>
         </value>
-      </block>
+      </block> -->
       <block type="button_event"></block>
     </category>
-    <category id="catShock" tags="fly,mark1">
+<!--     <category id="catShock" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">shake</field>
         <value name="VALUE">
@@ -659,7 +659,7 @@
       <block type="joystick_on"></block>
       <block type="joystick_val"></block>
       <block type="joystick_off"></block>
-    </category>
+    </category> -->
 
   <sep></sep>
   </category>
@@ -685,7 +685,7 @@
       <block type="ultrasonic_stop"></block>
       <block type="ultrasonic_distance"></block>
     </category>
-    <category id="catDht">
+    <!-- <category id="catDht">
       <block type="variables_set">
         <field name="VAR">dht</field>
         <value name="VALUE">
@@ -788,10 +788,10 @@
       </block>
       <block type="rfid_leave"></block>
       <block type="rfid_stopread"></block>
-    </category>
+    </category> -->
   <sep></sep>
   </category>
-  <category id="catMenu3">
+<!--   <category id="catMenu3">
     <category id="catCarTest">
       <block type="car_test_new">
         <value name="var_">
@@ -834,8 +834,8 @@
       </block>
     </category>
   <sep></sep>
-  </category>
-  <category id="catDatabase">
+  </category> -->
+<!--   <category id="catDatabase">
     <category id="catFirebase">
       <block type="data_firebase">
         <value name="name_">
@@ -856,7 +856,7 @@
       <block type="data_firebase_clear"></block>
     </category>
     <sep></sep>
-  </category>
+  </category> -->
   <sep></sep>
   <category id="catDemo">
     <category id="catDemoText">
@@ -1014,7 +1014,7 @@
         </value>
       </block>
     </category>
-    <category id="catDemoTracking">
+<!--     <category id="catDemoTracking">
       <block type="demo_tracking">
         <value name="var_">
           <block type="variables_get">
@@ -1025,7 +1025,7 @@
       <block type="demo_tracking_action"></block>
       <block type="demo_tracking_val"></block>
       <block type="demo_tracking_face"></block>
-    </category>
+    </category> -->
     <category id="catDemoController">
       <block type="demo_controller"></block>
       <block type="demo_controller_show"></block>
