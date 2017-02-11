@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="webduino.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="/components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- build:css -->
   <link rel="stylesheet" type="text/css" href="/components/bootstrap-select/dist/css/bootstrap-select.min.css">
   <link rel="stylesheet/less" type="text/css" href="css/less/index.less" />
   <script src="components/less/dist/less.min.js"></script>
+  <!-- endbuild -->
 </head>
 
 <body>
@@ -79,6 +81,9 @@
   </div>
   <!-- /.container -->
   <div id="app"></div>
+
+  <!-- build:js -->
+  
   <!-- other -->
   <script src="/components/vue/dist/vue.min.js"></script>
   <script src="/components/d3/d3.min.js"></script>
@@ -91,7 +96,7 @@
   <script src="/components/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.min.js"></script>
   <script src="/components/i18next-xhr-backend/i18nextXHRBackend.min.js"></script>
   <script src="/components/jquery-i18next/jquery-i18next.min.js"></script>
-
+  
   <!-- Engine -->
   <script src="js/engine/setImmediate.js"></script>
   <script src="js/engine/paho.js"></script>
@@ -114,6 +119,7 @@
   <script src="js/engine/components/UltraSonic.js"></script>
   <script src="js/engine/transport/MqttTransport.js"></script>
   <script src="js/engine/transport/WebSocketTransport.js"></script>
+
   <!-- ui -->
   <script src="js/roundedCorner.js"></script>
   <script src="js/components/arduino-uno.js"></script>
@@ -137,6 +143,7 @@
   <script src="js/focusPoint.js"></script>
   <script src="js/index.js"></script>
   <script src="js/blockly.js"></script>
+  <!-- endbuild -->
 </body>
 
 </html>

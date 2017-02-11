@@ -1,0 +1,11 @@
+{
+  "language": {
+    "en": "English",
+    "zh-tw": "繁體中文",
+    "zh-cn": "简体中文"
+  },
+  "navbar": {
+    "brand": " 模拟器",
+    "components": "元件"
+  }
+}

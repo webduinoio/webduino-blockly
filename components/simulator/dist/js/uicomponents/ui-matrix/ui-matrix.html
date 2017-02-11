@@ -1,0 +1,179 @@
+<template id="matrix">
+  <style>
+  .matrix {
+    margin: 20px 20px 0 20px;
+    width: 120px;
+    height: 100px;
+  }
+  
+  .box {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-image: url("data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABGAAD/4QMtaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjMtYzAxMSA2Ni4xNDU2NjEsIDIwMTIvMDIvMDYtMTQ6NTY6MjcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODk4QTM0N0Q5QUYxMTFFNTk0MzNDNjQyRjdBQkRCQUQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODk4QTM0N0U5QUYxMTFFNTk0MzNDNjQyRjdBQkRCQUQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4OThBMzQ3QjlBRjExMUU1OTQzM0M2NDJGN0FCREJBRCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4OThBMzQ3QzlBRjExMUU1OTQzM0M2NDJGN0FCREJBRCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pv/uAA5BZG9iZQBkwAAAAAH/2wCEAAQDAwMDAwQDAwQGBAMEBgcF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");
+    background-position: 0 0;
+    background-size: auto 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .a {
+    text-align: center;
+    height: auto;
+    float: left;
+    background-image: none;
+  }
+  
+  .b {
+    width: 100%;
+    display: block;
+  }
+  
+  .b.light {
+    background-position: -12px 0;
+  }
+  </style>
+  <div>
+    <div class="matrix">
+      <div class="a box">
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+      </div>
+      <div class="a box">
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+      </div>
+      <div class="a box">
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+      </div>
+      <div class="a box">
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+      </div>
+      <div class="a box">
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+      </div>
+      <div class="a box">
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+      </div>
+      <div class="a box">
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+      </div>
+      <div class="a box">
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+        <div class="b box"></div>
+      </div>
+    </div>
+    din:<span id='din'></span>,cs:<span id='cs'></span>,clk:<span id='clk'></span>
+</template>
+<script>
+var doc = (document._currentScript || document.currentScript).ownerDocument;
+var template = doc.querySelector('#matrix');
+
+customElements.define('ui-matrix', class extends HTMLElement {
+  constructor() {
+    super();
+
+    const root = this.attachShadow({
+      mode: 'closed'
+    });
+    const temp = document.importNode(template.content, true);
+    root.appendChild(temp);
+    this.root = root;
+    this.print('1026464040462610');
+  }
+
+  pin(din, cs, clk) {
+    this.din = din;
+    this.cs = cs;
+    this.clk = clk;
+    this.root.querySelector("#din").innerHTML = din;
+    this.root.querySelector("#cs").innerHTML = cs;
+    this.root.querySelector("#clk").innerHTML = clk;
+  }
+
+  print(v) {
+    var v16 = [];
+    var v2 = [];
+    var vimg = [];
+    var va = v.split('');
+    for (var n = 0; n < 8; n++) {
+      v16[n] = va[n * 2] + va[n * 2 + 1];
+    }
+    for (var m = 0; m < 8; m++) {
+      var qq = parseInt(v16[m], 16);
+      v2[m] = qq.toString(2);
+      if (v2[m].length < 8) {
+        var ml = 8 - v2[m].length;
+        for (var o = 0; o < ml; o++) {
+          v2[m] = '0' + v2[m];
+        }
+      }
+    }
+    for (var n = 0; n < 8; n++) {
+      vimg[n] = v2[n].split('');
+      for (var m = 0; m < 8; m++) {
+        if (vimg[n][m] == 1) {
+          $(this.root).find('.a').eq(n).find('.b').eq(7 - m).addClass('light');
+        } else {
+          if ($(this.root).find('.a').eq(n).find('.b').eq(7 - m).hasClass('light')) {
+            $(this.root).find('.a').eq(n).find('.b').eq(7 - m).removeClass('light');
+          }
+        }
+      }
+    }
+  }
+});
+</script>

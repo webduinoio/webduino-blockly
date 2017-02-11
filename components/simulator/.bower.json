@@ -24,11 +24,11 @@
     "jquery-i18next": "^1.2.0",
     "bootstrap-select": "^1.12.1"
   },
-  "_release": "5e778cf616",
+  "_release": "bf3a5f46e3",
   "_resolution": {
     "type": "branch",
     "branch": "blockly",
-    "commit": "5e778cf61627bd9086538b03c1ca060bad8395c9"
+    "commit": "bf3a5f46e3380d630e78e37a2507d474a6a1ed28"
   },
   "_source": "https://git.kingkit.codes/webduino/simulator.git",
   "_target": "blockly",

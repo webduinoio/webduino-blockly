@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/4.0.0/i18next.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-i18next/1.1.0/jquery-i18next.min.js" ></script>
+  </head>
+
+  <body>
+
+    <ul class="nav">
+      <li><a href="#" data-i18n="nav.home"></a></li>
+      <li><a href="#" data-i18n="nav.page1"></a></li>
+      <li><a href="#" data-i18n="nav.page2"></a></li>
+    </ul>
+
+    <div class="content">
+      <input data-i18n="[placeholder]input.placeholder" />
+    </div>
+
+    <script>
+      // use plugins and options as needed, for options, detail see
+      // http://i18next.com/docs/
+      i18next.init({
+        lng: 'en', // evtl. use language-detector https://github.com/i18next/i18next-browser-languageDetector
+        resources: { // evtl. load via xhr https://github.com/i18next/i18next-xhr-backend
+          en: {
+            translation: {
+              input: {
+                placeholder: "a placeholder"
+              },
+              nav: {
+                home: 'Home',
+                page1: 'Page One',
+                page2: 'Page Two'
+              }
+            }
+          }
+        }
+      }, function(err, t) {
+        // for options see
+        // https://github.com/i18next/jquery-i18next#initialize-the-plugin
+        jqueryI18next.init(i18next, $);
+
+        // start localizing, details:
+        // https://github.com/i18next/jquery-i18next#usage-of-selector-function
+        $('.nav').localize();
+        $('.content').localize();
+      });
+    </script>
+
+  </body>
+
+</html>
