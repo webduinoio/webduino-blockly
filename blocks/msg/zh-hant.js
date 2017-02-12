@@ -246,6 +246,7 @@ Blockly.Msg.WEBDUINO_BOARD_WIFI = "Wi-Fi";
 Blockly.Msg.WEBDUINO_BOARD_SERIAL = "序列埠";
 Blockly.Msg.WEBDUINO_BOARD_BLUETOOTH = "藍芽";
 Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET = "WebSocket";
+Blockly.Msg.WEBDUINO_BOARD_SIMULATOR = "模擬器";
 Blockly.Msg.WEBDUINO_BOARD_MULTI = "  協同控制";
 Blockly.Msg.WEBDUINO_BOARD_CHAIN = "  串聯";
 Blockly.Msg.WEBDUINO_BOARD_CHAIN_OK = "當開發板串連完成";

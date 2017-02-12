@@ -853,6 +853,13 @@ Blockly.JavaScript['board'] = function (block) {
   } else if (dropdown_type_ === '4') {
     // WebSocket
     type = 'boardReady({' + board + 'url: ' + value_device_ + ws +'}, async function (board) {\n';
+  } else if (dropdown_type_ === '5') {
+    // Simulator
+    if (checkbox_multi_ === 'TRUE') {
+      type = 'boardReady({' + board + 'device: ' + value_device_ + transport + ', multi: true}, async function (board) {\n';
+    } else {
+      type = 'boardReady({' + board + 'device: ' + value_device_ + transport + '}, async function (board) {\n';
+    }
   }
 
   var code;

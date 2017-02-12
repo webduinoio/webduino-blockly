@@ -969,7 +969,8 @@ Blockly.Blocks['board'] = {
         [Blockly.Msg.WEBDUINO_BOARD_WIFI, '1'],
         [Blockly.Msg.WEBDUINO_BOARD_SERIAL, '2'],
         [Blockly.Msg.WEBDUINO_BOARD_BLUETOOTH, '3'],
-        [Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET, '4']
+        [Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET, '4'],
+        [Blockly.Msg.WEBDUINO_BOARD_SIMULATOR, '5']
       ];
       var options_smart = [
         [Blockly.Msg.WEBDUINO_BOARD_WIFI, '1'],
