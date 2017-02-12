@@ -392,7 +392,7 @@
       </value>
     </block>
   </category> -->
-  <category id="catMenu1">
+  <!-- <category id="catMenu1"> -->
     <category id="catLed">
       <block type="variables_set">
         <field name="VAR">led</field>
@@ -661,9 +661,9 @@
       <block type="joystick_off"></block>
     </category> -->
 
-  <sep></sep>
-  </category>
-  <category id="catMenu2">
+  <!-- <sep></sep>
+  </category> -->
+  <!-- <category id="catMenu2"> -->
     <category id="catUltraSonic" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">ultrasonic</field>
@@ -790,7 +790,7 @@
       <block type="rfid_stopread"></block>
     </category> -->
   <sep></sep>
-  </category>
+  <!-- </category> -->
 <!--   <category id="catMenu3">
     <category id="catCarTest">
       <block type="car_test_new">
