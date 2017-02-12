@@ -60,6 +60,7 @@ var MSG = {
   catMathOther: "Math Conversion",
   catTextLogic: "Text Logic",
   backIndex: "Webduino Blockly Tutorials",
+  backStagesIndex: "Webduino Blockly Stages",
   demoTitle: "Blockly Demo Area",
   catTutorials: "Blockly",
   linkToBin: "Let's Coding",

@@ -61,6 +61,7 @@ var MSG = {
   catMathOther: "数值转换",
   catTextLogic: "文字逻辑",
   backIndex: "返回 Webduino 积木教学",
+  backStagesIndex: "返回 Webduino 积木关卡",
   demoTitle: "Blockly 范例测试区",
   catTutorials: "教学积木",
   linkToBin: "程式编辑",

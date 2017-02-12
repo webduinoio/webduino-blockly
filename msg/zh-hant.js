@@ -60,6 +60,7 @@ var MSG = {
   catMathOther: "數值轉換",
   catTextLogic: "文字邏輯",
   backIndex: "返回 Webduino 積木教學",
+  backStagesIndex: "返回 Webduino 積木關卡",
   demoTitle: "Blockly 範例測試區",
   catTutorials: "教學積木",
   linkToBin: "程式編輯",
