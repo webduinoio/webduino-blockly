@@ -9,6 +9,7 @@ var MSG = {
   exportImage: "下载图片",
   userMenuDashboard: "专案管理",
   userMenuTutorials: "教学",
+  userMenuStages: "关卡",
   userMenuWebSite: "资讯",
   userMenuLogout: "登出",
   blocks: "积木",

@@ -9,6 +9,7 @@ var MSG = {
   exportImage: "Download Image",
   userMenuDashboard: "Dashboard",
   userMenuTutorials: "Tutorials",
+  userMenuStages: "Stages",
   userMenuWebSite: "Support",
   userMenuLogout: "Logout",
   blocks: "Blocks",

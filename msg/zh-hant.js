@@ -9,6 +9,7 @@ var MSG = {
   exportImage: "下載圖片",
   userMenuDashboard: "專案管理",
   userMenuTutorials: "教學",
+  userMenuStages: "關卡",
   userMenuWebSite: "資訊",
   userMenuLogout: "登出",
   blocks: "積木",
