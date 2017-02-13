@@ -6,6 +6,13 @@
   },
   "navbar": {
     "brand": " 模擬器",
-    "components": "元件"
+    "components": "元件",
+    "preStep": "回到上一步",
+    "nextStep": "回到下一步",
+    "remove": "刪除選擇的元件",
+    "removeAll": "刪除所有元件",
+    "zoomToFit": "回到預設(縮放)",
+    "start": "啟動",
+    "stop": "停止"
   }
 }

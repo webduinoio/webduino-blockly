@@ -6,6 +6,13 @@
   },
   "navbar": {
     "brand": " Simulator",
-    "components": "Components"
+    "components": "Components",
+    "preStep": "Undo",
+    "nextStep": "Redo",
+    "remove": "Delete the selection",
+    "removeAll": "Delete all",
+    "zoomToFit": "Zoom To Fit",
+    "start": "Start",
+    "stop": "Stop"
   }
 }

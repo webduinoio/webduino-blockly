@@ -214,6 +214,15 @@
         addComponents();
         jqueryI18next.init(i18next, $);
         $('body').localize();
+
+        // bootstrap tooltip
+        $('[data-toggle="tooltip"]').tooltip({
+          trigger: 'hover',
+          title: function () {
+            return this.getAttribute('data-myTitle');
+          }
+        });
+
         app.language = i18next.language;
         app.i18nextReady = true;
       });
