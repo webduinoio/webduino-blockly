@@ -627,6 +627,15 @@ Code.loadSimulator = function () {
   });
   
   Code.bindClick('runButton', function () {
+    var xml = Blockly.Xml.workspaceToDom(Code.workspace);
+    var deviceIds = [];
+    var nodes = xml.querySelectorAll('[name="device_"] [name="TEXT"]');
+
+    nodes.forEach(function (node) {
+      deviceIds.push(node.textContent);
+    });
+
+    frame.contentWindow.blockly.setDeviceId(deviceIds);
     frame.contentWindow.blockly.toggleRunning();
   });
 

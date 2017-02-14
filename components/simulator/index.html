@@ -80,6 +80,31 @@
     <!-- /svg -->
   </div>
   <!-- /.container -->
+
+  <div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-sm" v-on:keydown.stop v-on:keyup.stop v-on:keydown.enter.prevent>
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only" data-i18n="propertyModal.close"></span></button>
+          <h4 class="modal-title" data-i18n="propertyModal.title"></h4>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <label for="property-deviceId" class="control-label" data-i18n="propertyModal.deviceId"></label>
+              <input type="text" class="form-control" id="property-deviceId" v-model="deviceId" v-on:keydown.enter="save" autofocus>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" data-i18n="propertyModal.close"></button>
+          <button type="button" class="btn btn-primary" v-on:click="save" data-i18n="propertyModal.save">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <!-- vue -->
   <div id="app"></div>
 
   <!-- build:js -->

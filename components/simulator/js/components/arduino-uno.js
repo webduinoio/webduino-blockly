@@ -41,6 +41,23 @@
     }
   };
 
+  ArduinoUno.updateProperty = function (compId, properties) {
+    var d3Comp = d3.select('#' + compId);
+    var d3Container = d3Comp.select('[name="property"]');
+
+    Object.keys(properties).forEach(function (name, idx, ary) {
+      d3Container.select('[name="' + name + '"]').text(properties[name]);
+    });
+
+  };
+
+  ArduinoUno.getProperty = function (compId, propertyName) {
+    var d3Comp = d3.select('#' + compId);
+    var d3Container = d3Comp.select('[name="property"]');
+
+    return d3Container.select('[name="' + propertyName + '"]').text();
+  };
+
   ArduinoUno.parserPin = function(name) {
     var data = {
       "unoPin-d-unknow1" : "unknow1",

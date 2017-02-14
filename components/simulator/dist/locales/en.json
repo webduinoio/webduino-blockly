@@ -14,5 +14,11 @@
     "zoomToFit": "Zoom To Fit",
     "start": "Start",
     "stop": "Stop"
+  },
+  "propertyModal": {
+    "title": "Setting",
+    "deviceId": "Device Id",
+    "save": "Save changes",
+    "close": "Close"
   }
 }

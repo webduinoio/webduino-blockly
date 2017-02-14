@@ -96,8 +96,36 @@
     }
   });
 
+
   window.app = app;
 
+  var myModal = new Vue({
+    el: '#myModal',
+    data: {
+      componentId: '',
+      deviceId: ''
+    },
+    methods: {
+      save: function () {
+        // 先固定處理 uno 元件，之後，待屬性面版後再重新調整
+        var ArduinoUno = window._components['ArduinoUno'];
+        ArduinoUno.updateProperty(this.componentId, {
+          deviceId: this.deviceId
+        });
+        this.hide();
+      },
+      show: function () {
+        $('#myModal').modal('show');
+      },
+      hide: function () {
+        $('#myModal').modal('hide');
+      },
+      injectData: function (data) {
+        this.deviceId = data.deviceId;
+        this.componentId = data.componentId;
+      }
+    }
+  });
 
   // 點的聚焦顯示
   var fp = new FocusPoint({
@@ -232,6 +260,25 @@
     var $body = $('body');
     var $lang = $('#lang');
     var d3Body = d3.select('body');
+
+    // 待有屬性面板時，刪除
+    $body.on('click', 'svg [data-type="ArduinoUno"]', function (evt) {
+
+      if (evt.target.nodeName.toLowerCase() !== 'text') {
+        return;
+      }
+
+      var componentId = this.getAttribute('id');
+      var type = this.dataset.type;
+      var val = evt.target.textContent;
+      
+      myModal.injectData({
+        componentId: componentId,
+        deviceId: val
+      });
+      myModal.show();
+
+    });
 
     // 依滑鼠的目標，高亮點的顯示
     $body.on('mouseover', function (evt) {

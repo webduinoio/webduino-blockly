@@ -14,5 +14,11 @@
     "zoomToFit": "回到预设(缩放)",
     "start": "启动",
     "stop": "停止"
+  },
+  "propertyModal": {
+    "title": "设定",
+    "deviceId": "装置 ID",
+    "save": "储存",
+    "close": "关闭"
   }
 }

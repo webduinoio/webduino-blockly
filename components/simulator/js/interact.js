@@ -143,11 +143,13 @@
     var boards = {};
     var sensors = {};
     var links = [];
+    var ArduinoUno = window._components.ArduinoUno;
 
     // 找出所有的 board
     $('svg').find('.components-area [data-type="ArduinoUno"]').each(function(idx, elem) {
       boards[elem.id] = {
         id: elem.id,
+        deviceId: ArduinoUno.getProperty(elem.id, 'deviceId'),
         type: elem.dataset.type,
         connector: []
       };
@@ -261,7 +263,7 @@
 
       // board 資訊
       var ss = {
-        id: "05O0",
+        id: board.deviceId,
         name: id, // DOM element id
         type: "WebArduino",
         connector: []
