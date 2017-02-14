@@ -750,7 +750,7 @@ Blockly.JavaScript['getdate'] = function (block) {
   var dropdown_date_ = block.getFieldValue('date_');
   var functionName = Blockly.JavaScript.provideFunction_(
     'get_date', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(t) {',
-      _getdate.toString().replace('function _getdate() {\n', '')
+      _getdate.toString().replace(/function _getdate\(\) {\r?\n/, '')
     ]);
   var code = functionName + '("' + dropdown_date_ + '")';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
@@ -784,7 +784,7 @@ Blockly.JavaScript['gettime'] = function (block) {
   var dropdown_time_ = block.getFieldValue('time_');
   var functionName = Blockly.JavaScript.provideFunction_(
     'get_time', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(t) {',
-      _gettime.toString().replace('function _gettime() {\n', '')
+      _gettime.toString().replace(/function _gettime\(\) {\r?\n/, '')
     ]);
   var code = functionName + '("' + dropdown_time_ + '")';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
@@ -1262,7 +1262,7 @@ Blockly.JavaScript['buzzer_music'] = function (block) {
   var statements_music_ = Blockly.JavaScript.statementToCode(block, 'music_');
   var functionName = Blockly.JavaScript.provideFunction_(
     'buzzer_music', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(m) {',
-      _buzzer_music.toString().replace('function _buzzer_music(m) {\n', '')
+      _buzzer_music.toString().replace(/function _buzzer_music\(m\) {\r?\n/, '')
     ]);
   var code = value_music_name_ + ' = ' + functionName + '([' + statements_music_ + ']);\n';
   return code;
@@ -1299,7 +1299,7 @@ Blockly.JavaScript['buzzer_music_play'] = function (block) {
   var statements_music_ = Blockly.JavaScript.statementToCode(block, 'music_');
   var functionName = Blockly.JavaScript.provideFunction_(
     'buzzer_music', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(m) {',
-      _buzzer_music.toString().replace('function _buzzer_music(m) {\n', '')
+      _buzzer_music.toString().replace(/function _buzzer_music\(m\) {\r?\n/, '')
     ]);
   var code = variable_var_ + '.play(' + functionName + '([' + statements_music_ + ']).notes ,' + functionName + '([' + statements_music_ + ']).tempos );\n';
   return code;
