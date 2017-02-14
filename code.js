@@ -62,8 +62,8 @@ Code.workspace = null;
  * @return {string} The parameter value or the default value if not found.
  */
 Code.getStringParamFromUrl = function (name, defaultValue) {
-  var val = location.search.match(new RegExp('[?&]' + name + '=([^&]+)'));
-  return val ? decodeURIComponent(val[1].replace(/\+/g, '%20')) : defaultValue;
+  Code.queryString = Code.queryString || new QueryString();
+  return Code.queryString.get(name) || defaultValue;
 };
 
 /**
@@ -267,17 +267,7 @@ Code.changeLanguage = function () {
   var languageMenu = document.getElementById('languageMenu');
   var newLang = encodeURIComponent(
     languageMenu.options[languageMenu.selectedIndex].value);
-  var search = window.location.search;
-  if (search.length <= 1) {
-    search = '?lang=' + newLang;
-  } else if (search.match(/[?&]lang=[^&]*/)) {
-    search = search.replace(/([?&]lang=)[^&]*/, '$1' + newLang);
-  } else {
-    search = search.replace(/\?/, '?lang=' + newLang + '&');
-  }
-
-  window.location = window.location.protocol + '//' +
-    window.location.host + window.location.pathname + search;
+  Code.queryString.set('lang', newLang, true);
 };
 
 /**

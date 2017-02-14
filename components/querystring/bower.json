@@ -1,0 +1,21 @@
+{
+  "name": "querystring",
+  "homepage": "https://github.com/mingzeke/querystring",
+  "authors": [
+    "Ke",
+    "Mingze <mingze.ke@gmail.com>"
+  ],
+  "description": "Query string manipulation",
+  "main": "querystring.js",
+  "keywords": [
+    "querystring"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
