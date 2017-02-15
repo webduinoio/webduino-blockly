@@ -891,6 +891,26 @@ Code.init = function (toolbox) {
       }(name));
   }
 
+  var filterBtn = document.querySelectorAll('.filterBtn');
+  if(Code.getTags()[0]=='smart'){
+    filterBtn[0].className = 'filterBtn';
+    filterBtn[1].className = 'filterBtn selected';
+  }
+  filterBtn.forEach(function(item,index){
+    filterBtn[index].onclick = function(){
+      filterBtn.forEach(function(m,n){
+        filterBtn[n].className = 'filterBtn';
+      });
+      filterBtn[index].className = 'filterBtn selected';
+      var tagName = this.getAttribute('tag');
+      if(tagName){
+        window.history.pushState('tag', 'title', '/?tags=' + tagName);
+      }else{
+        window.history.pushState('tag', 'title', '/');
+      }
+    };
+  });
+
   onresize();
 };
 
