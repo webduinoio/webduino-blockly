@@ -601,6 +601,8 @@ Code.HOTKEY = {
   UNKNOWN: -1
 };
 
+Code.rawToolbox = null;
+
 /**
  * List of tab names.
  * @private
@@ -707,15 +709,17 @@ Code.renderContent = function () {
   }
 };
 
-Code.filterXML = function (toolboxXML, property, values) {
-  var categories = slice.call(toolboxXML.querySelectorAll('category'));
+Code.filterXML = function (toolbox, property, values) {
+  toolbox = document.importNode(toolbox, true);
+
+  var categories = slice.call(toolbox.querySelectorAll('category'));
   categories.forEach(function (cate) {
     if (cate.getAttribute(property) !== null) {
       filterTag(cate);
     }
   });
 
-  var blocks = slice.call(toolboxXML.querySelectorAll('block'));
+  var blocks = slice.call(toolbox.querySelectorAll('block'));
   blocks.forEach(function (block) {
     if (block.getAttribute(property) !== null) {
       filterTag(block);
@@ -732,7 +736,7 @@ Code.filterXML = function (toolboxXML, property, values) {
     }
   }
 
-  return toolboxXML;
+  return toolbox;
 };
 
 Code.pruneNode = function (node) {
@@ -745,14 +749,15 @@ Code.pruneNode = function (node) {
   }
 };
 
-Code.getToolBox = function (toolboxXML) {
-  var categories = slice.call(toolboxXML.querySelectorAll('category')).map(function (e) {
-    return e.id;
-  });
+Code.getToolBox = function () {
+  var toolbox = Code.filterXML(Code.rawToolbox, 'tags', Code.getTags()),
+    categories = slice.call(toolbox.querySelectorAll('category')).map(function (e) {
+      return e.id;
+    });
   for (var i = 0, cat; cat = categories[i]; i++) {
-    toolboxXML.querySelector('#' + cat).setAttribute('name', MSG[cat]);
+    toolbox.querySelector('#' + cat).setAttribute('name', MSG[cat]);
   }
-  return new XMLSerializer().serializeToString(toolboxXML);
+  return toolbox;
 };
 
 Code.getUrlParts = function () {
@@ -904,10 +909,14 @@ Code.init = function (toolbox) {
       filterBtn[index].className = 'filterBtn selected';
       var tagName = this.getAttribute('tag');
       if(tagName){
-        window.history.pushState('tag', 'title', '/?tags=' + tagName);
+        Code.queryString.set('tags', tagName);
       }else{
-        window.history.pushState('tag', 'title', '/');
+        Code.queryString.unset('tags');
       }
+      Code.workspace.updateToolbox(Code.getToolBox());
+      setTimeout(function () {
+        Blockly.fireUiEvent(window, 'resize');
+      }, 50);
     };
   });
 
@@ -1600,7 +1609,8 @@ Promise.all([
 ]).then(function (values) {
   Code.initHandlebars();
   Code.renderPage(values[0].body.innerHTML);
-  Code.init(Code.getToolBox(Code.filterXML(values[1].body.firstChild, 'tags', Code.getTags())));
+  Code.rawToolbox = values[1].body.firstChild;
+  Code.init(Code.getToolBox());
   Code.loadDemoArea();
   Code.loadGa();
   Code.ga();
