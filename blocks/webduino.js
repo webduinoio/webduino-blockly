@@ -1134,7 +1134,7 @@ Blockly.Blocks['pin_board'] = {
         '4': Blockly.Msg.WEBDUINO_BOARD_WEBSOCKET
       },
       xml = Blockly.Xml.workspaceToDom(Code.workspace),
-      boards = xml.querySelectorAll("block[type=board_ready]"),
+      boards = xml.querySelectorAll("block[type=board_ready], block[type=smart_ready], block[type=board]"),
       menus = [];
 
     if (boards.length < 1) {
