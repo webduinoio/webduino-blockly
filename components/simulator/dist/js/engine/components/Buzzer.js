@@ -4,16 +4,17 @@
   var uiCallback;
 
   function Buzzer(board, name, signal, gnd) {
-    window.b = board;
-    this._name = name;
-    this._gnd = gnd;
     this._board = board;
+    this._name = name;
     this._signal = signal;
+    this._gnd = gnd;
     this._buf = [];
-    this.playing = false;
-    this.ctx = new AudioContext();
+    this._ctx = new AudioContext();
+    this._playing = false;
+
     var self = this;
-    board.on(webduino.BoardEvent.SYSEX_MESSAGE, function (sysex) {
+
+    this._board.on(webduino.BoardEvent.SYSEX_MESSAGE, function (sysex) {
       var data = sysex.message;
       var pin = data[2];
       if (data[0] != 4 || data[1] != 7 || pin != self._signal) {
@@ -23,28 +24,10 @@
       var time = parseInt(data[5]) * 100;
       self._buf.push([freq, time]);
       self.play();
-      //action(self, data.pin);
     });
+    this._board.on(webduino.BoardEvent.BEFOREDISCONNECT, this.destroy.bind(this));
+    this._board.on(webduino.BoardEvent.ERROR, this.destroy.bind(this));
   }
-
-  function action(buzzer, pin) {
-    if (pin._number != buzzer._signal) {
-      return;
-    }
-    var jsonData = {
-      action: {
-        id: buzzer._board._options.device,
-        type: buzzer._board.constructor.name,
-        connector: [{
-          name: buzzer._name,
-          type: "Buzzer",
-          intensity: pin._value
-        }]
-      }
-    };
-    uiCallback(jsonData);
-  }
-
 
   Buzzer.prototype = Object.create(Buzzer.prototype, {
     constructor: { value: Buzzer }
@@ -55,29 +38,33 @@
   }
 
   Buzzer.prototype.play = function () {
-    this.osc = this.ctx.createOscillator();
+    this.osc = this._ctx.createOscillator();
     this.osc.type = "triangle";
     this.osc.start(0);
 
-    if (this.playing) {
+    if (this._playing) {
       return;
     }
-    this.playing = true;
+    this._playing = true;
     var data = this._buf.shift();
     var hz = data[0];
     var durtime = data[1];
     console.log("hz:", hz, ",time:", durtime);
     this.osc.frequency.value = hz;
-    this.osc.connect(this.ctx.destination);
+    this.osc.connect(this._ctx.destination);
     var self = this;
     setTimeout(function () {
       self.osc.disconnect();
-      self.playing = false;
+      self._playing = false;
       if (self._buf.length > 0) {
         self.play();
       }
     }, durtime);
   }
+
+  Buzzer.prototype.destroy = function () {
+    this._ctx.close();
+  };
 
   scope.Buzzer = Buzzer;
 })(Engine);

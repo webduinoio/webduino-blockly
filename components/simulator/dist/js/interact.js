@@ -24,6 +24,8 @@
     console.log('stop');
     try {
       $.each(instance, function(idx, info) {
+
+        // 清除元件 instance
         $.each(info.components, function (idx, comp) {
           comp.destroy && (comp.destroy());
         });
@@ -44,6 +46,7 @@
 
     components[uiSetting.name] = uiBoard;
 
+    // engine 收到訊息後，會執行該方法
     engine.action(function (actionJSON) {
       
       console.log("engine callback:", actionJSON);
@@ -106,20 +109,6 @@
         if (compType === 'UltraSonic') {
           comp = comp || new _components.UltraSonic(compId, engine, setting.trig, setting.echo, true);
           components[compId] = comp;
-        }
-
-        if (list[i].type == 'Led') {
-          console.log("list[i].name", list[i].name);
-        } else if (list[i].type == 'Btn') {
-          console.log("Btn list[i].name", list[i].name, list[i]);
-        } else if (list[i].type == 'RGBLed') {
-          console.log("list[i].name", list[i].name);
-        } else if (list[i].type == 'Servo') {
-          console.log("list[i].name", list[i].name);
-        } else if (list[i].type == 'Matrix') {
-          console.log("list[i].name", list[i].name);
-        } else if (list[i].type == 'UltraSonic') {
-          console.log("list[i].name", list[i].name);
         }
 
       }

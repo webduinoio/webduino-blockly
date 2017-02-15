@@ -86,12 +86,12 @@
       "unoPin-p-gnd1" : "gnd",
       "unoPin-p-gnd2" : "gnd",
       "unoPin-p-vin" : "vin",
-      "unoPin-a-0" : "a0",
-      "unoPin-a-1" : "a1",
-      "unoPin-a-2" : "a2",
-      "unoPin-a-3" : "a3",
-      "unoPin-a-4" : "a4",
-      "unoPin-a-5" : "a5"
+      "unoPin-a-0" : "14",
+      "unoPin-a-1" : "15",
+      "unoPin-a-2" : "16",
+      "unoPin-a-3" : "17",
+      "unoPin-a-4" : "18",
+      "unoPin-a-5" : "19"
     };
     return data[name] || name;
   };
