@@ -94,18 +94,11 @@ Code.getTags = function () {
 };
 
 Code.getDemoPage = function () {
-  var area = document.querySelector('#demo-area.show');
-  if (area) {
-    var select = document.querySelector('#demo-select');
-    var link;
-    if ((select.value) * 1 < 10) {
-      link = '0' + select.value;
-    } else {
-      link = select.value;
-    }
-    return 'demo-area-' + link;
+  var area = Code.getStringParamFromUrl('demo', '').trim();
+  if (!area.length) {
+    area = 'default';
   }
-  return 'default';
+  return area;
 };
 
 Code.getPinDropdown = function () {
@@ -436,6 +429,7 @@ Code.loadDemoArea = function () {
   var close = document.querySelector('.close-btn');
   var contentHeight = document.getElementById('content_blocks').offsetHeight;
   var resizeBar = document.getElementById('demo-resize-bar');
+  var demoPage = Code.getDemoPage();
 
   area.style.height = (contentHeight - 110) + 'px';
   area.className = area.className.replace("show", "");
@@ -444,16 +438,13 @@ Code.loadDemoArea = function () {
     area.style.width = localStorage.demoAreaWidth;
   }
 
-  if (localStorage.demoArea == 'open') {
+  if (demoPage !== 'default') {
     area.className = area.className + "show";
     btn.className = "notext toolMenu opened";
+    Code.queryString.set('demo', demoPage);
   }
 
-  if (!localStorage.demoAreaSelect) {
-    localStorage.demoAreaSelect = 1;
-  }
-
-  select.value = localStorage.demoAreaSelect;
+  select.value = demoPage === 'default' ? 'demo-area-01' : demoPage;
   Code.reloadSandbox();
 
   window.addEventListener('resize', function () {
@@ -485,27 +476,35 @@ Code.loadDemoArea = function () {
   };
 
   btn.onclick = function () {
-    if (localStorage.demoArea == 'open') {
+    var demoPage = Code.getDemoPage();
+    if (demoPage !== 'default') {
       area.className = area.className.replace("show", "");
-      localStorage.demoArea = 'close';
       btn.className = "notext toolMenu";
+      localStorage.demoAreaSelect = demoPage;
+      Code.queryString.unset('demo');
     } else {
       area.className += " show";
-      localStorage.demoArea = 'open';
       btn.className = "notext toolMenu opened";
+      Code.queryString.set('demo', localStorage.demoAreaSelect || 'demo-area-01');
+      select.value = localStorage.demoAreaSelect || 'demo-area-01';
+      delete localStorage.demoAreaSelect;
     }
+    Code.workspace.updateToolbox(Code.getToolBox());
     Code.reloadSandbox();
   };
 
   close.onclick = function () {
     area.className = area.className.replace("show", "");
-    localStorage.demoArea = 'close';
     btn.className = "notext toolMenu";
+    localStorage.demoAreaSelect = Code.getDemoPage();
+    Code.queryString.unset('demo');
+    Code.workspace.updateToolbox(Code.getToolBox());
   };
 
   select.onchange = function () {
     ga('send', 'event', 'Webduino-blockly', 'demo select', this.value);
-    localStorage.demoAreaSelect = this.value;
+    Code.queryString.set('demo', this.value);
+    Code.workspace.updateToolbox(Code.getToolBox());
     Code.reloadSandbox();
   };
 };
@@ -750,7 +749,9 @@ Code.pruneNode = function (node) {
 };
 
 Code.getToolBox = function () {
-  var toolbox = Code.filterXML(Code.rawToolbox, 'tags', Code.getTags()),
+  var toolbox = Code.filterXML(
+      Code.filterXML(Code.rawToolbox, 'tags', Code.getTags()),
+      'demo', [Code.getDemoPage()]),
     categories = slice.call(toolbox.querySelectorAll('category')).map(function (e) {
       return e.id;
     });

@@ -858,8 +858,7 @@
     <sep></sep>
   </category>
   <sep></sep>
-  <category id="catDemo">
-    <category id="catDemoText">
+    <category id="catDemoText" demo="demo-area-01">
       <block type="demo_show_text"></block>
       <block type="demo_text_size">
         <value name="size_">
@@ -883,13 +882,13 @@
           </value>
       </block>
     </category>
-    <category id="catDemoLight">
+    <category id="catDemoLight" demo="demo-area-02">
       <block type="demo_light_click"></block>
       <block type="demo_light_state"></block>
       <block type="demo_light_ifelse"></block>
       <block type="demo_light_toggle"></block>
     </category>
-    <category id="catDemoImage">
+    <category id="catDemoImage" demo="demo-area-03">
       <block type="demo_image_url">
         <value name="url_">
           <block type="text">
@@ -931,7 +930,7 @@
         </value>
       </block>
     </category>
-    <category id="catDemoArea">
+    <category id="catDemoArea" demo="demo-area-04">
       <block type="demo_area_input"></block>
       <block type="demo_area_input_color"></block>
       <block type="demo_area_color">
@@ -942,10 +941,10 @@
           </value>
       </block>
     </category>
-    <category id="catDemoButton">
+    <category id="catDemoButton" demo="demo-area-05">
       <block type="demo_button_click"></block>
     </category>
-    <category id="catDemoRange">
+    <category id="catDemoRange" demo="demo-area-06">
       <block type="demo_range_set">
         <value name="min_">
           <block type="math_number">
@@ -971,7 +970,7 @@
       <block type="demo_range_show"></block>
       <block type="demo_range_input_value"></block>
     </category>
-    <category id="catDemoYoutube">
+    <category id="catDemoYoutube" demo="demo-area-07">
       <block type="demo_youtube">
         <value name="name_">
           <block type="variables_get">
@@ -1014,7 +1013,7 @@
         </value>
       </block>
     </category>
-    <category id="catDemoTracking">
+    <category id="catDemoTracking" demo="demo-area-08">
       <block type="demo_tracking">
         <value name="var_">
           <block type="variables_get">
@@ -1026,7 +1025,7 @@
       <block type="demo_tracking_val"></block>
       <block type="demo_tracking_face"></block>
     </category>
-    <category id="catDemoController">
+    <category id="catDemoController" demo="demo-area-09">
       <block type="demo_controller"></block>
       <block type="demo_controller_show"></block>
       <block type="demo_controller_showcolor">
@@ -1060,5 +1059,4 @@
       </block>
       <block type="demo_controller_range_value"></block>
     </category>
-  </category>
 </xml>

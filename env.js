@@ -9,11 +9,6 @@
       location.protocol = 'http:';
       return;
     }
-
-    window.addEventListener('load', function () {
-      document.querySelector('#check-device-online').style.display = 'none';
-      document.querySelector('#blockly-to-website').style.display = 'none';
-    }, false);
   }
 
 }(window, document));
