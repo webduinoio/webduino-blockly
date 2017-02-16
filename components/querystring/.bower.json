@@ -18,11 +18,11 @@
     "test",
     "tests"
   ],
-  "_release": "69409b32ad",
+  "_release": "6ccdc474ab",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "69409b32ad9869c399ee14c1e342f64c18d981d1"
+    "commit": "6ccdc474ab60d1785510c64269f66a5981eb1f94"
   },
   "_source": "https://github.com/mingzeke/querystring.git",
   "_target": "*",

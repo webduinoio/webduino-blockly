@@ -260,7 +260,11 @@ Code.changeLanguage = function () {
   var languageMenu = document.getElementById('languageMenu');
   var newLang = encodeURIComponent(
     languageMenu.options[languageMenu.selectedIndex].value);
-  Code.queryString.set('lang', newLang, true);
+  if (newLang !== 'zh-hant') {
+    Code.queryString.set('lang', newLang, true);
+  } else {
+    Code.queryString.unset('lang', true);
+  }
 };
 
 /**

@@ -29,12 +29,13 @@
   }
 
   function makeChange(qs, reload) {
+    var qstr = '?' + qs.toString();
     if (reload) {
-      location.search = qs.toString();
+      location.search = qstr;
     } else {
       var state = history.state || {};
-      state.page = qs.toString();
-      history.pushState(state, null, qs.toString() + location.hash);
+      state.page = qstr;
+      history.pushState(state, null, qstr + location.hash);
     }
   }
 
@@ -93,7 +94,7 @@
   };
 
   QueryString.prototype.toString = function () {
-    return '?' + Object.keys(this.dict).map(function (key) {
+    return Object.keys(this.dict).map(function (key) {
       return key + '=' + this.dict[key];
     }.bind(this)).join('&');
   };
