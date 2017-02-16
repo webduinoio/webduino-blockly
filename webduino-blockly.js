@@ -178,6 +178,15 @@
     }
   }
 
+  function writeSheetData(d) {
+    $.get("https://script.google.com/macros/s/AKfycbyrYjDKcUswV_9VADdmHZ7WHnT5KmBp13k0-1NNCcDQ9w8H463m/exec", d);
+  }
+
+  function readSheetData(d, callback) {
+    $.get("https://script.google.com/macros/s/AKfycbxJjv240G64yTmUyIzkCKi9r7Jux2c1YvEsaDWS-eawMjQz-nQ/exec", d, function (data) {
+      callback(data);
+    });
+  }
 
   function removeDeviceMotionListener() {
     scope.removeEventListener('devicemotion', motionEventListener);
@@ -227,6 +236,10 @@
     return new webduino.module.Dht(board, board.getDigitalPin(pin));
   }
 
+  function getG3(board, rx, tx) {
+    return new webduino.module.G3(board, board.getDigitalPin(rx), board.getDigitalPin(tx));
+  }
+
   function getBuzzer(board, pin) {
     return new webduino.module.Buzzer(board, board.getDigitalPin(pin));
   }
@@ -253,6 +266,30 @@
 
   function getADXL345(board) {
     return new webduino.module.ADXL345(board);
+  }
+
+  function getSSD1306(board) {
+    return new webduino.module.SSD1306(board);
+  }
+
+  function getLCD1602(board) {
+    return new webduino.module.LCD1602(board);
+  }
+
+  function getDataTransfer(board) {
+    return new webduino.module.DataTransfer(board);
+  }
+
+  function getDFPlayer(board, rx, tx) {
+    return new webduino.module.DFPlayer(board, rx, tx);
+  }
+
+  function getHX711(board, sck, dt) {
+    return new webduino.module.HX711(board, sck, dt);
+  }
+
+  function getBarcode(board, rx, tx) {
+    return new webduino.module.Barcode(board, rx, tx);
   }
 
   function getJoystick(board, vrx, vry, sw) {
@@ -684,6 +721,7 @@
   scope.getSound = getSound;
   scope.getShock = getShock;
   scope.getDht = getDht;
+  scope.getG3 = getG3;
   scope.getBuzzer = getBuzzer;
   scope.getServo = getServo;
   scope.dhtAreaChart = dhtAreaChart;
@@ -694,6 +732,12 @@
   scope.getIRRecv = getIRRecv;
   scope.getIRLed = getIRLed;
   scope.getADXL345 = getADXL345;
+  scope.getHX711 = getHX711;
+  scope.getDataTransfer = getDataTransfer;
+  scope.getSSD1306 = getSSD1306;
+  scope.getLCD1602 = getLCD1602;
+  scope.getDFPlayer = getDFPlayer;
+  scope.getBarcode = getBarcode;
   scope.getJoystick = getJoystick;
   scope.getRFID = getRFID;
   scope.getToyCar = getToyCar;
@@ -707,6 +751,8 @@
   scope.max7219_horse = max7219_horse;
   scope.max7219_alphabet = max7219_alphabet;
   scope.max7219_number = max7219_number;
+  scope.writeSheetData = writeSheetData;
+  scope.readSheetData = readSheetData;
   scope.boards = boards;
 
 }));
