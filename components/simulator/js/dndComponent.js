@@ -33,13 +33,13 @@
         return container ? container.node() : this.parentNode;
       })
       .filter(function () {
-
+        
         // 待有屬性面板時，再考慮拿掉
-        if (event.target.nodeName.toLowerCase() === 'text') {
+        if (d3.event.target.nodeName.toLowerCase() === 'text') {
           return false;
         }
 
-        var target = event.target;
+        var target = d3.event.target;
         var $target = $(target);
         var bol = !($target.is('rect') && $target.parents('[name="pinGroup"]').length > 0) 
           && ($target.hasClass('component') || $target.parents('.component').length > 0);

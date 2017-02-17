@@ -22,13 +22,14 @@
     "i18next-browser-languagedetector": "^1.0.1",
     "i18next-xhr-backend": "^1.3.0",
     "jquery-i18next": "^1.2.0",
-    "bootstrap-select": "^1.12.1"
+    "bootstrap-select": "^1.12.1",
+    "defiant": "defiant-js#^1.4.0"
   },
-  "_release": "42f475e947",
+  "_release": "a2d802b33b",
   "_resolution": {
     "type": "branch",
     "branch": "blockly",
-    "commit": "42f475e94747e1efb5f2c72e0698a45bef703428"
+    "commit": "a2d802b33b2b5d7683958eb0dcfc924834e3eb27"
   },
   "_source": "https://git.kingkit.codes/webduino/simulator.git",
   "_target": "blockly",

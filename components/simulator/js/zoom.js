@@ -22,7 +22,7 @@
     var zoom = d3.zoom()
       .scaleExtent([0.3, 5])
       .filter(function () {
-        return event.type === 'wheel' || !$(event.target).parents('.component').length;
+        return d3.event.type === 'wheel' || !$(d3.event.target).parents('.component').length;
       })
       .on('zoom', zoomed);
 

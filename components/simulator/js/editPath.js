@@ -31,6 +31,7 @@
     var pathDatas = utils.getPathsData();
     var pathData = pathDatas[this._pathId];
 
+    // 取得園點的座標
     data.push(pathData[0][0]);
     pathData.forEach(function (val, idx) {
       data.push(val[1]);
@@ -59,6 +60,7 @@
       .attr('cy', function (d) {
         return d.y;
       })
+      .attr('r', 5)
       .call(this._d3Drag());
   }
 
@@ -112,7 +114,7 @@
     }
 
     function end(d, i) {
-      var connectPoint = utils.getConnectPoint(event.target);
+      var connectPoint = utils.getConnectPoint(d3.event.sourceEvent.target);
       var point, aa, bb, cc;
       
       if (connectPoint) {

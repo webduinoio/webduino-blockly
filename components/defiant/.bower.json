@@ -1,0 +1,36 @@
+{
+  "name": "defiant",
+  "version": "1.4.0",
+  "homepage": "https://github.com/hbi99/defiant.js",
+  "authors": [
+    "Hakan Bilgin <hbi99@hotmail.com>"
+  ],
+  "description": "Search JSON structures plus smart templating with XSLT and XPath.",
+  "main": "./dist/defiant.min.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "json",
+    "xpath",
+    "xslt",
+    "search"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "1.4.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.4.0",
+    "commit": "11bafcd871b56fb9d01d7957090a01d6b3b20d38"
+  },
+  "_source": "https://github.com/hbi99/defiant.js.git",
+  "_target": "^1.4.0",
+  "_originalSource": "defiant-js"
+}

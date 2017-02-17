@@ -126,6 +126,11 @@ table.nav{
   transition: opacity .3s;
 }
 
+#simulator-area.init {
+  opacity: 0;
+  display: block;
+}
+
 #simulator-area.full {
   max-width: none;
   width: auto;

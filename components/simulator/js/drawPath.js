@@ -41,7 +41,7 @@
         return container ? container.node() : this.parentNode;
       })
       .filter(function () {
-        var $elem = $(event.target);
+        var $elem = $(d3.event.target);
         var bol = $elem.is('rect') && $elem.parents('[name="pinGroup"]').length > 0;
         return bol;
       });
@@ -50,7 +50,7 @@
   }
 
   function startHandler() {
-    this._startPoint = parsePoint(utils.getConnectPoint(event.target));
+    this._startPoint = parsePoint(utils.getConnectPoint(d3.event.sourceEvent.target));
     this._line = [this._startPoint, this._startPoint];
     this._path.push(this._line);
     this._gNode = this._pathContainer.append('g').attr('id', utils.guid()).node();

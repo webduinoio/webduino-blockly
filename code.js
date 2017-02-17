@@ -740,6 +740,11 @@ Code.loadSimulator = function () {
       btn.classList.add('opened');
     }
 
+    // 處理 firefox iframe 中，vue 拋錯的問題
+    setTimeout(function () {
+      area.classList.remove('init');
+    }, 1000);
+
   }
 
 };

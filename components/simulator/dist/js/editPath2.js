@@ -33,7 +33,7 @@
         return container ? container.node() : this.parentNode;
       })
       .filter(function () {
-        return event.target.nodeName.toLowerCase() === 'path';;
+        return d3.event.target.nodeName.toLowerCase() === 'path';;
       });
 
     return inst;

@@ -211,16 +211,16 @@
     });
     app.save(inst);
   }
-  
+
   function i18n() {
 
     function addComponents() {
-      $.each(window._components, function(type, obj) {
+      $.each(window._components, function (type, obj) {
         if (obj.i18n) {
           $.each(obj.i18n, function (lang, langObj) {
             $.each(langObj, function (key, val) {
-              i18next.addResource(lang,'translation', key, val);
-            });            
+              i18next.addResource(lang, 'translation', key, val);
+            });
           });
         }
       });
@@ -271,7 +271,7 @@
       var componentId = this.getAttribute('id');
       var type = this.dataset.type;
       var val = evt.target.textContent;
-      
+
       myModal.injectData({
         componentId: componentId,
         deviceId: val
@@ -397,14 +397,30 @@
   }
 
   function deleteSomething() {
+    
     if (app.editPathId) {
       d3.select('#' + app.editPathId).remove();
       app.editPathId = '';
     }
 
-    if (app.selectId) {
-      d3.select('#' + app.selectId).remove();
+    var paths = utils.getPathsData();
+    var selectId = app.selectId;
+
+    if (selectId) {
+      
+      // 刪除元件
+      d3.select('#' + selectId).remove();
       app.selectId = '';
+
+      // 刪除連結元件的 path
+      Object.keys(paths).forEach(function (pathId) {
+        var path = paths[pathId];
+        var searchComp = JSON.search(path, '//component[id ="' + selectId + '"]');        
+        if (searchComp.length) {
+          d3.select('#' + pathId).remove();
+        }
+      });
+
     }
   }
 
