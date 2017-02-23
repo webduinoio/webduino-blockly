@@ -198,7 +198,7 @@ pre.content {
   display: inline-block;
   background: #ddd;
   box-sizing: border-box;
-  padding: 0 0 0 5px;
+  padding: 0 0 0 3px;
   margin: -7px 0 4px;
   border-radius: 5px;
   vertical-align: bottom;
@@ -218,7 +218,7 @@ pre.content {
   border-radius: 3px;
   background: #333;
   color: #fff;
-  margin: -10px -2px -5px -3px;
+  margin: -13px -4px -5px 0;
   vertical-align: middle;
   opacity: 0;
 }
@@ -230,7 +230,7 @@ pre.content {
 
 #check-btn{
   display:inline-block;
-  padding:7px 12px 5px 5px;
+  padding:6px 12px 5px 5px;
 }
 
 .check-btn {
@@ -358,7 +358,7 @@ header span a:hover {
 }
 
 a.toolMenu:hover div,div.toolMenu:hover div{
-  top:-18px;
+  top:-20px;
 }
 
 
@@ -628,7 +628,7 @@ td#copyCode div {
   border-radius: 5px;
   margin: -7px 0 4px;
   box-sizing: border-box;
-  padding: 6px 12px 5px;
+  padding: 4px 12px 5px;
   vertical-align: bottom;
 }
 
