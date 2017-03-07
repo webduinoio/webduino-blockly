@@ -510,7 +510,7 @@ Blockly.Msg.WEBDUINO_FISH_RIGHT = "(右轉)";
 
 // Firebase
 
-Blockly.Msg.WEBDUINO_FIREBASE_NAME = "載入 Firebase 資料庫";
+Blockly.Msg.WEBDUINO_FIREBASE_NAME = "載入 Firebase";
 Blockly.Msg.WEBDUINO_FIREBASE_ADDCOLUMN = '增加資料欄位';
 Blockly.Msg.WEBDUINO_FIREBASE_COLUMN = '欄位';
 Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATA = "寫入資料";

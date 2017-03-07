@@ -2099,6 +2099,21 @@ Blockly.Blocks['data_firebase'] = {
   }
 };
 
+Blockly.Blocks['data_firebase_url'] = {
+  init: function () {
+    this.appendValueInput("name_")
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_NAME, "使用 firebase 資料庫");
+    this.appendValueInput("url_")
+      .appendField(Blockly.Msg.WEBDUINO_FIREBASE_URL, "網址");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+    this.setTooltip('');
+    this.setColour(200);
+    this.setHelpUrl('https://webduino.io');
+  }
+};
+
 Blockly.Blocks['data_firebase_write_container'] = {
   init: function () {
     this.setColour(100);

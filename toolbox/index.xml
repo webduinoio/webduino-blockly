@@ -844,6 +844,18 @@
           </block>
         </value>
       </block>
+      <block type="data_firebase_url">
+        <value name="name_">
+          <block type="variables_get">
+            <field name="VAR">myFirebase</field>
+          </block>
+        </value>
+        <value name="url_">
+          <block type="text">
+            <field name="TEXT"></field>
+          </block>
+        </value>
+      </block>
       <block type="data_firebase_write"></block>
       <block type="data_firebase_read">
         <value name="read_">

@@ -545,7 +545,7 @@ Blockly.Msg.WEBDUINO_FISH_RIGHT = "(右转)";
 
 // Firebase
 
-Blockly.Msg.WEBDUINO_FIREBASE_NAME = "载入 Firebase 资料库";
+Blockly.Msg.WEBDUINO_FIREBASE_NAME = "载入 Firebase";
 Blockly.Msg.WEBDUINO_FIREBASE_ADDCOLUMN = '增加资料栏位';
 Blockly.Msg.WEBDUINO_FIREBASE_COLUMN = '栏位';
 Blockly.Msg.WEBDUINO_FIREBASE_WRITEDATA = "写入资料";

@@ -1494,6 +1494,15 @@ Blockly.JavaScript['data_firebase'] = function (block) {
 };
 
 
+Blockly.JavaScript['data_firebase_url'] = function (block) {
+  var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_url_ = Blockly.JavaScript.valueToCode(block, 'url_', Blockly.JavaScript.ORDER_ATOMIC);
+  var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var code = value_name_ + ' = new Firebase(' + value_url_ + ');\n' + statements_do_;
+  return code;
+};
+
+
 Blockly.JavaScript['data_firebase_write'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
   var statements_write_ = Blockly.JavaScript.statementToCode(block, 'write_');
