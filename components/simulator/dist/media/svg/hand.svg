@@ -72,7 +72,7 @@
 	<g name="slider">
 		<foreignObject x="10" y="250" width="140" height="50">
 	    <body xmlns="http://www.w3.org/1999/xhtml">
-				<input type="range" min="0" max="200" step="1" value="0" name="input"/>
+				<input type="range" min="1" max="200" step="1" value="1" name="input"/>
 				<p style="text-align: center;"><span name="value"></span> cm</p>
 	    </body>
 	  </foreignObject>
