@@ -93,6 +93,8 @@
 
     if (SimulatorConfigs[hash]) {
       localStorage.simulator = SimulatorConfigs[hash];
+    } else {
+      localStorage.simulator = '';
     }
   }
 
