@@ -1227,6 +1227,20 @@ Code.exportImage = function () {
   saveSvgAsPng(Code.workspace.getCanvas(), 'webduino-blocks.png');
 };
 
+Code.getBlockDemo = function (type) {
+  var toolbox = Code.rawToolbox;
+  var block = toolbox.querySelector('block[type=' + type + ']');
+  var attr;
+  if (block) {
+    while (block = block.parentNode) {
+      if (block.tagName === 'CATEGORY' && (attr = block.getAttribute('demo'))) {
+        return attr;
+      }
+    }
+  }
+  return null;
+};
+
 Blockly.JavaScript['procedures_defnoreturn'] = function (block) {
   // Define a procedure with a return value.
   var funcName = Blockly.JavaScript.variableDB_.getName(
@@ -1299,6 +1313,24 @@ Blockly.JavaScript['workspaceToCode'] = function (workspace) {
     code = '(async function () {\n\n' + code + '\n}());';
   }
   return code;
+};
+
+Blockly.Xml._domToWorkspace = Blockly.Xml.domToWorkspace;
+
+Blockly.Xml.domToWorkspace = function () {
+  Blockly.Xml._domToWorkspace.apply(this, arguments);
+  var xml = Blockly.Xml.workspaceToDom(Code.workspace);
+  var blocks = slice.call(xml.querySelectorAll('block'));
+  for (var i = 0; i < blocks.length; i++) {
+    var type = blocks[i].getAttribute('type');
+    var demo = Code.getBlockDemo(type);
+    if (demo) {
+      if (demo !== Code.queryString.get('demo')) {
+        Code.queryString.set('demo', demo, true);
+      }
+      return;
+    }
+  }
 };
 
 Blockly.JavaScript.scrub_ = function (block, code) {
