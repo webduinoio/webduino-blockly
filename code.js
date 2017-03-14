@@ -451,11 +451,6 @@ Code.loadDemoArea = function () {
   select.value = demoPage === 'default' ? 'demo-area-01' : demoPage;
   Code.reloadSandbox();
 
-  window.addEventListener('resize', function () {
-    contentHeight = document.getElementById('content_blocks').offsetHeight;
-    area.style.height = (contentHeight - 110) + 'px';
-  });
-
   resizeBar.onmousedown = function (e) {
     area.style.opacity = '0.4';
     var frame = document.getElementById('demo-frame');
@@ -805,6 +800,8 @@ Code.init = function (toolbox) {
     //      (Code.workspace.toolbox_.width - 38) + 'px';
     //      // Account for the 19 pixel margin and on each side.
     //}
+    var contentHeight = document.getElementById('content_blocks').offsetHeight;
+    document.getElementById('demo-area').style.height = (contentHeight - 110) + 'px';
   };
   window.addEventListener('resize', onresize, false);
 
@@ -1233,7 +1230,9 @@ Code.getBlockDemo = function (type) {
   var attr;
   if (block) {
     while (block = block.parentNode) {
-      if (block.tagName === 'CATEGORY' && (attr = block.getAttribute('demo'))) {
+      if (block.nodeType === 1 &&
+        block.tagName.toLowerCase() === 'category' &&
+        (attr = block.getAttribute('demo'))) {
         return attr;
       }
     }
@@ -1326,7 +1325,9 @@ Blockly.Xml.domToWorkspace = function () {
     var demo = Code.getBlockDemo(type);
     if (demo) {
       if (demo !== Code.queryString.get('demo')) {
-        Code.queryString.set('demo', demo, true);
+        Code.queryString.set('demo', demo);
+        Code.loadDemoArea();
+        Code.workspace.updateToolbox(Code.getToolBox());
       }
       return;
     }
