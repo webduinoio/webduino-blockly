@@ -478,6 +478,7 @@
         </value>
       </block>
       <block type="buzzer_music_play"></block>
+      <block type="buzzer_var_notes_var_tempos"></block>
       <block type="buzzer_notes_tempos"></block>
       <block type="buzzer_music_array">
         <value name="notes_">

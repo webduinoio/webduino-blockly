@@ -1800,6 +1800,21 @@ Blockly.Blocks['buzzer_music'] = {
   }
 };
 
+Blockly.Blocks['buzzer_var_notes_var_tempos'] = {
+  init: function() {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_TONE, "音符：")
+        .appendField(new Blockly.FieldVariable("notes"), "notes")
+      .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_TEMPOS, "   節奏 ( 幾分之1秒 )：")
+        .appendField(new Blockly.FieldVariable("tempo"), "tempo");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(35);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
 // https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#5k77h6
 Blockly.Blocks['buzzer_notes_tempos'] = {
   init: function () {

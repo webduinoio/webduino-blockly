@@ -208,32 +208,33 @@ Blockly.JavaScript['demo_youtube'] = function (block) {
   var dropdown_type_ = block.getFieldValue('type_');
   var text_id_ = block.getFieldValue('id_');
   var codeAdd;
-  function getVideoId(u){
+
+  function getVideoId(u) {
     var v, vid;
-    if(u.indexOf('?v=')!=-1){
+    if (u.indexOf('?v=') != -1) {
       v = u.split('?v=');
-      if(v[1].indexOf('&')!=-1){
+      if (v[1].indexOf('&') != -1) {
         vid = v[1].split('&')[0];
-      }else{
+      } else {
         vid = v[1];
       }
       return vid;
-    }else{
+    } else {
       return u;
     }
   }
 
-  function getListId(u){
+  function getListId(u) {
     var l, lid;
-    if(u.indexOf('list=')!=-1){
+    if (u.indexOf('list=') != -1) {
       l = u.split('list=');
-      if(l[1].indexOf('&')!=-1){
+      if (l[1].indexOf('&') != -1) {
         lid = l[1].split('&')[0];
-      }else{
+      } else {
         lid = l[1];
       }
       return lid;
-    }else{
+    } else {
       return u;
     }
   }
@@ -336,18 +337,19 @@ Blockly.JavaScript['demo_youtube_status'] = function (block) {
 Blockly.JavaScript['demo_youtube_id'] = function (block) {
   var variable_name_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('name_'), Blockly.Variables.NAME_TYPE);
   var value_id_ = Blockly.JavaScript.valueToCode(block, 'id_', Blockly.JavaScript.ORDER_ATOMIC);
-  function getVideoId(u){
+
+  function getVideoId(u) {
     var v, vid;
-    if(u.indexOf('?v=')!=-1){
+    if (u.indexOf('?v=') != -1) {
       v = u.split('?v=');
-      if(v[1].indexOf('&')!=-1){
+      if (v[1].indexOf('&') != -1) {
         vid = v[1].split('&')[0];
-      }else{
+      } else {
         vid = v[1];
       }
-      return vid.replace(/'/g,"");
-    }else{
-      return u.replace(/'/g,"");
+      return vid.replace(/'/g, "");
+    } else {
+      return u.replace(/'/g, "");
     }
   }
   var code = variable_name_ + '.loadVideoById("' + getVideoId(value_id_) + '");\n';
@@ -852,7 +854,7 @@ Blockly.JavaScript['board'] = function (block) {
     type = 'boardReady({' + board + 'transport: \'bluetooth\', address: ' + value_device_ + '}, async function (board) {\n';
   } else if (dropdown_type_ === '4') {
     // WebSocket
-    type = 'boardReady({' + board + 'url: ' + value_device_ + ws +'}, async function (board) {\n';
+    type = 'boardReady({' + board + 'url: ' + value_device_ + ws + '}, async function (board) {\n';
   }
 
   var code;
@@ -1294,14 +1296,24 @@ function _buzzer_music(m) {
   return musicNotes;
 }
 
+
 Blockly.JavaScript['buzzer_music_play'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
   var statements_music_ = Blockly.JavaScript.statementToCode(block, 'music_');
-  var functionName = Blockly.JavaScript.provideFunction_(
-    'buzzer_music', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(m) {',
-      _buzzer_music.toString().replace(/function _buzzer_music\(m\) {\r?\n/, '')
-    ]);
-  var code = variable_var_ + '.play(' + functionName + '([' + statements_music_ + ']).notes ,' + functionName + '([' + statements_music_ + ']).tempos );\n';
+  var code = '';
+  if (statements_music_.indexOf('"') > 0) {
+    var functionName = Blockly.JavaScript.provideFunction_(
+      'buzzer_music', ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + '(m) {',
+        _buzzer_music.toString().replace(/function _buzzer_music\(m\) {\r?\n/, '')
+      ]);
+    code = variable_var_ + '.play(' + functionName + '([' + statements_music_ + ']).notes ,' + functionName + '([' + statements_music_ + ']).tempos );\n';
+  } else {
+    var _vars = statements_music_.trim();
+    _vars = _vars.substring(0,_vars.length-1).split(',');
+    var notes = _vars[0].split(':')[1];
+    var tempos = _vars[1].split(':')[1];
+    code = variable_var_ + '.play(' + notes +','+ tempos+');\n';
+  }
   return code;
 };
 
@@ -1336,6 +1348,18 @@ Blockly.JavaScript['buzzer_music_array'] = function (block) {
     code = '{notes : [' + notesGen + '] , tempos : [' + temposGen + '] }';
   } else {
     code = '{notes : [' + notesGen + '] , tempos : [' + temposGen + '] },';
+  }
+  return code;
+};
+
+
+Blockly.JavaScript['buzzer_var_notes_var_tempos'] = function (block) {
+  var variable_notes = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('notes'), Blockly.Variables.NAME_TYPE);
+  var variable_tempo = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('tempo'), Blockly.Variables.NAME_TYPE);
+  var next = block.getNextBlock();
+  var code = '{notes: ' + variable_notes + ',tempos:' + variable_tempo + '}';
+  if (next != null) {
+    code += ',';
   }
   return code;
 };
