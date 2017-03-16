@@ -268,6 +268,7 @@ Code.changeLanguage = function () {
   var newLang = encodeURIComponent(
     languageMenu.options[languageMenu.selectedIndex].value);
   var search = window.location.search;
+  var hash = window.location.hash;
   if (search.length <= 1) {
     search = '?lang=' + newLang;
   } else if (search.match(/[?&]lang=[^&]*/)) {
@@ -277,7 +278,7 @@ Code.changeLanguage = function () {
   }
 
   window.location = window.location.protocol + '//' +
-    window.location.host + window.location.pathname + search;
+  window.location.host + window.location.pathname + search + hash;
 };
 
 /**
