@@ -24,25 +24,11 @@
 
         // Load translation
         window.MSG = {};
-        $('head').append('<script src="msg/' + tpl + '/' + config.lang + '.js' + '"><\/script>');
-
-        // Translate string in head
-        var $head = $('<div/>', {
-          html: data.head
-        });
-        $head.find('[data-translation]').each(function () {
-          $(this).html(window.MSG[$(this).data('translation')]).removeAttr('data-translation');
-        });
-        data.head = $head.clone().wrap('<div/>').html();
-
-        // Translate string in body
-        var $body = $('<div/>', {
-          html: data.body
-        });
-        $body.find('[data-translation]').each(function () {
-          $(this).html(window.MSG[$(this).data('translation')]).removeAttr('data-translation');
-        });
-        data.body = $body.clone().wrap('<div/>').html();
+        $('head').append('<script src="msg/' + config.lang + '.js' + '"><\/script>');
+        if (config.page !== 'index') {
+          $('head').append('<script src="msg/' + config.page + '/' + config.lang + '.js' + '"><\/script>');
+        }
+        data.body = launcher.translate(data.body, window.MSG);
 
         $.extend(config.data, data);
         launcher.jsbin(config);

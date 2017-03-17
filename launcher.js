@@ -72,6 +72,18 @@
     form.submit();
   }
 
+  function translate(html, msg) {
+    var $wrap = $('<div/>', {
+      html: html
+    });
+
+    $wrap.find('[data-translation]').each(function () {
+      $(this).html(msg[$(this).data('translation')]).removeAttr('data-translation');
+    });
+
+    return $wrap.wrap('<div/>').parent().html();
+  }
+
   var launchers = {
     jsfiddle: function (config) {
       var data = config.data;
@@ -144,6 +156,7 @@
 
   window.launcher = {
     loadTemplate: loadTemplate,
+    translate: translate,
     jsfiddle: launchers.jsfiddle,
     codepen: launchers.codepen,
     jsbin: launchers.jsbin,

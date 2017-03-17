@@ -839,6 +839,8 @@ Code.init = function (toolbox) {
       ctx = Code.getContext();
 
     launcher.loadTemplate('./templates/' + ctx.tpl + '.html', function (data) {
+      data.body = launcher.translate(data.body, MSG);
+
       if (ctx.jsPreprocessor === 'babel') {
         data.js = Code.transform(ctx.data.js);
       } else {
@@ -863,7 +865,6 @@ Code.init = function (toolbox) {
     var ctx = Code.getContext(),
       urls = Code.getUrlParts();
     urls.pop();
-    ctx.lang = Code.LANG;
     localStorage.setItem(urls.join('/') + '/launcher.html', JSON.stringify(ctx));
   });
 
@@ -1061,17 +1062,7 @@ Code.reloadSandbox = function () {
   Code.sandboxLoaded = false;
 
   launcher.loadTemplate('./templates/' + ctx.tpl + '.html', function (data) {
-
-    var $body = $('<div/>', {
-      html: data.body
-    });
-    // find if element has translation
-    $body.find('[data-translation]').each(function () {
-      // Translate string with locale file in /msg
-      $(this).html(window.MSG[$(this).data('translation')]).removeAttr('data-translation');
-    });
-    // covert element to string
-    data.body = $body.clone().wrap('<div/>').parent().html();
+    data.body = launcher.translate(data.body, MSG);
 
     if (Code.running) {
       if (ctx.jsPreprocessor === 'babel') {
@@ -1174,10 +1165,13 @@ Code.unhookEvents = function (window, frame) {
 Code.getContext = function () {
   var code = Blockly.JavaScript.workspaceToCode(Code.workspace),
     babelize = code.indexOf('async function') !== -1,
-    page = Code.PAGE;
+    page = Code.PAGE,
+    lang = Code.LANG;
 
   return {
+    page: page,
     tpl: page === 'index' ? Code.getDemoPage() : page,
+    lang: lang,
     modes: 'html,css,js,output',
     data: {
       js: code
@@ -1238,6 +1232,13 @@ Code.getBlockDemo = function (type) {
     }
   }
   return null;
+};
+
+Code.getBlockTypes = function () {
+  var xml = Blockly.Xml.workspaceToDom(Code.workspace);
+  return slice.call(xml.querySelectorAll('block')).map(function (block) {
+    return block.getAttribute('type');
+  });
 };
 
 Blockly.JavaScript['procedures_defnoreturn'] = function (block) {
@@ -1318,11 +1319,9 @@ Blockly.Xml._domToWorkspace = Blockly.Xml.domToWorkspace;
 
 Blockly.Xml.domToWorkspace = function () {
   Blockly.Xml._domToWorkspace.apply(this, arguments);
-  var xml = Blockly.Xml.workspaceToDom(Code.workspace);
-  var blocks = slice.call(xml.querySelectorAll('block'));
-  for (var i = 0; i < blocks.length; i++) {
-    var type = blocks[i].getAttribute('type');
-    var demo = Code.getBlockDemo(type);
+  var types = Code.getBlockTypes();
+  for (var i = 0; i < types.length; i++) {
+    var demo = Code.getBlockDemo(types[i]);
     if (demo) {
       if (demo !== Code.queryString.get('demo')) {
         Code.queryString.set('demo', demo);
