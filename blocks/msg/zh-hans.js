@@ -16,9 +16,9 @@ Blockly.Msg.TEXT_JOIN_TITLE_CREATEWITH = "建立字串";
 
 // Math
 
-Blockly.Msg.WEBDUINO_MATH_ROUND = "四捨五入";
+Blockly.Msg.WEBDUINO_MATH_ROUND = "四舍五入";
 Blockly.Msg.WEBDUINO_MATH_ROUND_UP = "无条件进位";
-Blockly.Msg.WEBDUINO_MATH_ROUND_DOWN = "无条件捨去";
+Blockly.Msg.WEBDUINO_MATH_ROUND_DOWN = "无条件舍去";
 Blockly.Msg.WEBDUINO_MATH_ROUND_TO = "到小数点";
 Blockly.Msg.WEBDUINO_MATH_ROUND_NUM = "位";
 Blockly.Msg.WEBDUINO_MATH_SCALE = "尺度转换，数值来源";
@@ -71,7 +71,7 @@ Blockly.Msg.DEMO_RANGE_INPUT = "调整拉霸，执行";
 Blockly.Msg.DEMO_RANGE_SHOW = "数值显示";
 Blockly.Msg.DEMO_RANGE_VALUE = "拉霸的数值";
 Blockly.Msg.DEMO_YOUTUBE_CHANGEID = "更换";
-Blockly.Msg.DEMO_YOUTUBE_CHANGEID_ID = "影片，要更换的影片：";
+Blockly.Msg.DEMO_YOUTUBE_CHANGEID_ID = "影片，要更换的：";
 Blockly.Msg.DEMO_TRACKING_SET = "设定影像追踪";
 Blockly.Msg.DEMO_TRACKING = "追踪";
 Blockly.Msg.DEMO_TRACKING_FACE = "人脸";
@@ -192,21 +192,21 @@ Blockly.Msg.WEBDUINO_SPEAK_R05 = "很慢";
 
 // Repeat
 
-Blockly.Msg.WEBDUINO_STATUS_REPEAT = "状态切换，重複";
+Blockly.Msg.WEBDUINO_STATUS_REPEAT = "状态切换，重复";
 Blockly.Msg.WEBDUINO_STATUS_NUM = "次";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_STATUSNUM = "状态 ";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_DELAY = " 持续";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_SECS = "秒";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_ADD = "加入状态";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_STATUS = "状态";
-Blockly.Msg.WEBDUINO_STATUS_FOREVER = "状态不停重複";
+Blockly.Msg.WEBDUINO_STATUS_FOREVER = "状态不停重复";
 Blockly.Msg.WEBDUINO_STATUS_FOREVER_NAME = "名称";
 Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOP = "停止";
-Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOPCONTENT = "的不停重複";
+Blockly.Msg.WEBDUINO_STATUS_REPEAT_STOPCONTENT = "的不停重复";
 
 // Text logic
 
-Blockly.Msg.TEXTLOGIC_INSIDE = "裡面";
+Blockly.Msg.TEXTLOGIC_INSIDE = "里面";
 Blockly.Msg.TEXTLOGIC_HAS = "包含";
 Blockly.Msg.TEXTLOGIC_NO = "没有";
 Blockly.Msg.TEXTLOGIC_TEXT = "文字";
@@ -258,6 +258,7 @@ Blockly.Msg.WEBDUINO_PIN_STATE = "脚位状态";
 Blockly.Msg.WEBDUINO_BOARD_IF_ERROR = "如果断线";
 Blockly.Msg.WEBDUINO_BOARD_ERROR_DO = "执行";
 Blockly.Msg.WEBDUINO_BOARD_SAMPLING = "  类比取样";
+Blockly.Msg.WEBDUINO_SMART = "Smart";
 Blockly.Msg.WEBDUINO_USE = "使用";
 Blockly.Msg.WEBDUINO_CONNECT_TO = "连线至";
 Blockly.Msg.WEBDUINO_MARK_OR_FLY = "马克1号 或 Fly";
@@ -334,7 +335,7 @@ Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC1 = "超级玛莉";
 Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC2 = "真善美";
 Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC3 = "哥哥爸爸真伟大";
 Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC4 = "超级玛莉和弦";
-Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC5 = "叮叮噹";
+Blockly.Msg.WEBDUINO_BUZZER_CHOOSE_MUSIC5 = "叮叮当";
 Blockly.Msg.WEBDUINO_BUZZER_SINGLE = "使用";
 Blockly.Msg.WEBDUINO_BUZZER_SINGLE_TONE = "播放单音，音调";
 Blockly.Msg.WEBDUINO_BUZZER_SINGLE_PITCH = "音高";
@@ -351,14 +352,6 @@ Blockly.Msg.WEBDUINO_ULTRASONIC_GET_DO = "执行";
 Blockly.Msg.WEBDUINO_ULTRASONIC_DISTANCE = "所撷取的距离 ( 公分 )";
 Blockly.Msg.WEBDUINO_ULTRASONIC_STOP = "停止撷取距离";
 
-// Smart Servo
-
-Blockly.Msg.WEBDUINO_SMART_SERVO_NEW = "智慧伺服马达 , ID:";
-Blockly.Msg.WEBDUINO_SMART_SERVO_SET = "智慧伺服马达";
-Blockly.Msg.WEBDUINO_SMART_SERVO_SET_POS = " , 位置";
-Blockly.Msg.WEBDUINO_SMART_SERVO_SET_TIME = " , 时间(10ms)";
-Blockly.Msg.WEBDUINO_SMART_SERVO_SET_SPEED = " , 速度";
-
 // DHT
 
 Blockly.Msg.WEBDUINO_DHT_NEW = "温湿度传感器，脚位";
@@ -372,6 +365,7 @@ Blockly.Msg.WEBDUINO_DHT_GET_H = "湿度 (%)";
 // Button
 
 Blockly.Msg.WEBDUINO_BUTTON_NEW = "按钮开关，脚位";
+Blockly.Msg.WEBDUINO_BUTTON_PULLUP_NEW = "上拉按钮开关，脚位";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_WHEN = "当";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_WAS = "进行";
 Blockly.Msg.WEBDUINO_BUTTON_EVENT_TO = "时";
@@ -485,35 +479,7 @@ Blockly.Msg.WEBDUINO_ADXL345_VAL = "数值";
 Blockly.Msg.WEBDUINO_START_DETECTING = "开始侦测";
 Blockly.Msg.WEBDUINO_STOP_DETECTING = "停止侦测";
 
-// HX711
-
-Blockly.Msg.WEBDUINO_HX711 = "电子秤，SCK";
-Blockly.Msg.WEBDUINO_HX711_DT = "  DT";
-Blockly.Msg.WEBDUINO_HX711_ON = "开始侦测";
-Blockly.Msg.WEBDUINO_HX711_DO = "执行";
-Blockly.Msg.WEBDUINO_HX711_VAL = "数值";
-Blockly.Msg.WEBDUINO_HX711_OFF = "停止侦测";
-
-// Barcode
-
-Blockly.Msg.WEBDUINO_BARCODE = "条码机，Rx";
-Blockly.Msg.WEBDUINO_BARCODE_TX = "  Tx";
-Blockly.Msg.WEBDUINO_BARCODE_ON = "开始侦测";
-Blockly.Msg.WEBDUINO_BARCODE_DO = "执行";
-Blockly.Msg.WEBDUINO_BARCODE_VAL = "条码";
-Blockly.Msg.WEBDUINO_BARCODE_OFF = "停止侦测";
-
-// Car 1
-
-Blockly.Msg.WEBDUINO_CAR = "遥控车";
-Blockly.Msg.WEBDUINO_CAR_F = "前进";
-Blockly.Msg.WEBDUINO_CAR_B = "后退";
-Blockly.Msg.WEBDUINO_CAR_L = "左转";
-Blockly.Msg.WEBDUINO_CAR_R = "右转";
-Blockly.Msg.WEBDUINO_CAR_MOVE_FOR = "持续";
-Blockly.Msg.WEBDUINO_CAR_MOVE_SEC = "秒";
-
-// Car 2
+// Car
 
 Blockly.Msg.WEBDUINO_TESTCAR = "自走车";
 Blockly.Msg.WEBDUINO_TESTCAR_PINRF = "脚位设定右前";
@@ -645,18 +611,33 @@ Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY_PAUSE = "暂停";
 Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_PLAY_STOP = "停止";
 Blockly.Msg.WEBDUINO_ULTRASONIC_MUSIC_ADD = "放入音乐";
 
-Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE = "载入 Youtube 模组";
-Blockly.Msg.DEMO_YOUTUBE_VIDEO_ID = " 预设的影片："; 
+Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE = "载入 YouTube 模组";
+Blockly.Msg.DEMO_YOUTUBE_DEFAULT = "预载";
+Blockly.Msg.DEMO_YOUTUBE_DEFAULT_1 = "影片";
+Blockly.Msg.DEMO_YOUTUBE_DEFAULT_2 = "影片清单";
+Blockly.Msg.DEMO_YOUTUBE_DEFAULT_ID = "为：";
+Blockly.Msg.DEMO_YOUTUBE_PLAY = "播放";
+Blockly.Msg.DEMO_YOUTUBE_LIST = "清单的";
+Blockly.Msg.DEMO_YOUTUBE_LIST_PRE = "上一段";
+Blockly.Msg.DEMO_YOUTUBE_LIST_NEXT = "下一段";
+Blockly.Msg.DEMO_YOUTUBE_LIST_LISTNUM = "清单的第";
+Blockly.Msg.DEMO_YOUTUBE_LIST_NUM = "段";
+Blockly.Msg.DEMO_YOUTUBE_VIDEO_ID = " 预设的影片：";
 Blockly.Msg.DEMO_YOUTUBE_CHANGEID_ID = "影片，要更换的影片：";
+Blockly.Msg.DEMO_YOUTUBE_CURRENTTIME = "影片当前播放时间 ( 秒 )";
+Blockly.Msg.DEMO_YOUTUBE_SET = "设定";
+Blockly.Msg.DEMO_YOUTUBE_SEEKTO = "影片前往第";
+Blockly.Msg.DEMO_YOUTUBE_SEC = "秒";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SET = "设定";
-Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_VOLUME = "音量";
-Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SPEED = " 的播放速度";
+Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_VOLUME = "影片音量：";
+Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SPEED = "影片播放速度";
+Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_VERYSLOW = "超级慢";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SLOW = "慢";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_NORMAL = "正常";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_FAST = "快";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_VERYFAST = "很快";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SUPERFAST = "超级快";
-Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUS = " 的状态为";
+Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUS = "影片的状态为";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SETPLAY = "播放";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SETPAUSE = "暂停";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_SETSTOP = "停止";
@@ -665,6 +646,7 @@ Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSPAUSE = "暂停";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSCUE = "停止";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSSTOP = "播放完毕";
 Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_STATUSSTART = "尚未开始";
+Blockly.Msg.WEBDUINO_ULTRASONIC_YOUTUBE_DO = "执行";
 
 // Tutorials - Button
 
@@ -719,7 +701,7 @@ Blockly.Msg.WEBDUINO_DHT_ADD_TCOLOR = "温度颜色";
 Blockly.Msg.WEBDUINO_DHT_ADD_HCOLOR = "湿度颜色";
 Blockly.Msg.WEBDUINO_DHT_ADD_GUAGE = "加入「指针」模组";
 Blockly.Msg.WEBDUINO_DHT_USE = "使用";
-Blockly.Msg.WEBDUINO_DHT_DRAW = "开始绘製";
+Blockly.Msg.WEBDUINO_DHT_DRAW = "开始绘制";
 Blockly.Msg.WEBDUINO_DHT_DRAW_T = "温度";
 Blockly.Msg.WEBDUINO_DHT_DRAW_H = "湿度";
 
