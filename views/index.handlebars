@@ -2,7 +2,7 @@
   <a href="https://webduino.io" target="_blank"><img class="logo" src="media/logo.png" id="logo"></a>
   <h1>{{title}}</h1>
   <div id="userMenu">
-      <a href="index-stages{{#if_eq lang 'en'}}-en{{/if_eq}}.html" target="_blank" id="blockly-to-website"><i class="icon-book"></i> <b>{{userMenuStages}}</b></a>
+      <a href="index-stages{{#if_eq lang 'en'}}-en{{else if_eq lang 'zh-hans'}}-zh-hans{{/if_eq}}.html" target="_blank" id="blockly-to-website"><i class="icon-book"></i> <b>{{userMenuStages}}</b></a>
       <a href="https://webduino.io" target="_blank" id="blockly-to-tutorials"><i class="icon-info"></i> <b>{{userMenuWebSite}}</b></a>
       <span><i class="icon-earth"></i> <select id="languageMenu"></select></span>
 
