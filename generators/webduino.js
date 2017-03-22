@@ -1632,6 +1632,14 @@ Blockly.JavaScript['car_test_move'] = function (block) {
   return code;
 };
 
+Blockly.JavaScript['car_speed'] = function(block) {
+  var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
+  var dropdown_speed_ = Blockly.JavaScript.valueToCode(block, 'speed_', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_tire_ = block.getFieldValue('tire_');
+  var code = variable_var_ + '.' + dropdown_tire_ + '(' + dropdown_speed_ + ');\n';
+  return code;
+}
+
 
 Blockly.JavaScript['temp_data_set'] = function (block) {
   var dropdown_type_ = block.getFieldValue('type_');

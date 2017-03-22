@@ -530,6 +530,10 @@ Blockly.Msg.WEBDUINO_TESTCAR_BACKRIGHT = "右后";
 Blockly.Msg.WEBDUINO_TESTCAR_TURNRIGHT = "原地右转";
 Blockly.Msg.WEBDUINO_TESTCAR_TURNLEFT = "原地左转";
 Blockly.Msg.WEBDUINO_TESTCAR_STOP = "停止";
+Blockly.Msg.WEBDUINO_TESTCAR_SPEED = "速度";
+Blockly.Msg.WEBDUINO_TESTCAR_RIGHT = "右轮";
+Blockly.Msg.WEBDUINO_TESTCAR_LEFT = "左轮";
+Blockly.Msg.WEBDUINO_TESTCAR_PERCENT = "%";
 
 // Fish
 

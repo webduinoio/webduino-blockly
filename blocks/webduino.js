@@ -962,7 +962,7 @@ Blockly.Blocks['board_server'] = {
 
 Blockly.Blocks['board'] = {
   board_type: Blockly.Msg.WEBDUINO_MARK_OR_FLY,
-  init: function() {
+  init: function () {
     function dropdown_options() {
       var board_type = Blockly.Blocks['board']['board_type'];
       var options_full = [
@@ -985,48 +985,48 @@ Blockly.Blocks['board'] = {
     }
 
     this.appendValueInput('device_')
-        .setCheck('String')
-        .appendField(Blockly.Msg.WEBDUINO_BOARD, '開發板')
-        .appendField(new Blockly.FieldDropdown([
-          [Blockly.Msg.WEBDUINO_MARK_OR_FLY, '1'],
-          [Blockly.Msg.WEBDUINO_SMART, '2']
-        ]), 'board_')
-        .appendField(Blockly.Msg.WEBDUINO_USE, '透過')
-        .appendField(new Blockly.FieldDropdown(dropdown_options), 'type_')
-        .appendField(Blockly.Msg.WEBDUINO_CONNECT_TO, '連線至');
+      .setCheck('String')
+      .appendField(Blockly.Msg.WEBDUINO_BOARD, '開發板')
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_MARK_OR_FLY, '1'],
+        [Blockly.Msg.WEBDUINO_SMART, '2']
+      ]), 'board_')
+      .appendField(Blockly.Msg.WEBDUINO_USE, '透過')
+      .appendField(new Blockly.FieldDropdown(dropdown_options), 'type_')
+      .appendField(Blockly.Msg.WEBDUINO_CONNECT_TO, '連線至');
     this.appendDummyInput()
-        .appendField(Blockly.Msg.WEBDUINO_BOARD_SAMPLING, '  類比取樣')
-        .appendField(new Blockly.FieldDropdown([
-          ['20 ms', '20'],
-          ['50 ms', '50'],
-          ['75 ms', '75'],
-          ['100 ms', '100'],
-          ['250 ms', '250'],
-          ['500 ms', '500'],
-          ['1 sec', '1000']
-        ]), 'rate_')
-        .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, '串聯')
-        .appendField(new Blockly.FieldCheckbox('FALSE'), 'check_')
-        .appendField(Blockly.Msg.WEBDUINO_BOARD_MULTI, '協同控制')
-        .appendField(new Blockly.FieldCheckbox('FALSE'), 'multi_');
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_SAMPLING, '  類比取樣')
+      .appendField(new Blockly.FieldDropdown([
+        ['20 ms', '20'],
+        ['50 ms', '50'],
+        ['75 ms', '75'],
+        ['100 ms', '100'],
+        ['250 ms', '250'],
+        ['500 ms', '500'],
+        ['1 sec', '1000']
+      ]), 'rate_')
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN, '串聯')
+      .appendField(new Blockly.FieldCheckbox('FALSE'), 'check_')
+      .appendField(Blockly.Msg.WEBDUINO_BOARD_MULTI, '協同控制')
+      .appendField(new Blockly.FieldCheckbox('FALSE'), 'multi_');
     this.appendStatementInput('callbacks_');
     this.setTooltip('');
     this.setColour(290);
     this.setHelpUrl('https://webduino.io');
   },
-  onchange: function(ev) {
-    switch(ev.name) {
-      case 'board_':
+  onchange: function (ev) {
+    switch (ev.name) {
+    case 'board_':
       var newValue = ev.newValue;
-        if (newValue == '1') {
-          Blockly.Blocks['board']['board_type'] = Blockly.Msg.WEBDUINO_MARK_OR_FLY;
-          this.getField('rate_').setValue('250');
-        } else if (newValue === '2') {
-          Blockly.Blocks['board']['board_type'] = Blockly.Msg.WEBDUINO_SMART;
-          this.getField('rate_').setValue('50');
-        }
-        this.getField('type_').setValue('1')
-        break;
+      if (newValue == '1') {
+        Blockly.Blocks['board']['board_type'] = Blockly.Msg.WEBDUINO_MARK_OR_FLY;
+        this.getField('rate_').setValue('250');
+      } else if (newValue === '2') {
+        Blockly.Blocks['board']['board_type'] = Blockly.Msg.WEBDUINO_SMART;
+        this.getField('rate_').setValue('50');
+      }
+      this.getField('type_').setValue('1')
+      break;
     }
   }
 };
@@ -2469,6 +2469,30 @@ Blockly.Blocks['car_test_move'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setHelpUrl('https://webduino.io');
+  }
+};
+
+Blockly.Blocks['car_speed'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR, "自走車")
+      .appendField(new Blockly.FieldVariable("car"), "var_")
+      .appendField(new Blockly.FieldDropdown([
+        [Blockly.Msg.WEBDUINO_TESTCAR_RIGHT, "setRightSpeed"],
+        [Blockly.Msg.WEBDUINO_TESTCAR_LEFT, "setLeftSpeed"]
+      ]), "tire_")
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_SPEED, " 速度");
+    this.appendValueInput("speed_")
+      .setCheck("Number");
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PERCENT,"%");
+    this.setColour(200);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setHelpUrl('https://webduino.io');
+
   }
 };
 

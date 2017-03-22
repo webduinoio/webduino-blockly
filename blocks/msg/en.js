@@ -596,6 +596,10 @@ Blockly.Msg.WEBDUINO_TESTCAR_BACKRIGHT = "back right";
 Blockly.Msg.WEBDUINO_TESTCAR_TURNRIGHT = "turn right";
 Blockly.Msg.WEBDUINO_TESTCAR_TURNLEFT = "turn left";
 Blockly.Msg.WEBDUINO_TESTCAR_STOP = "stop";
+Blockly.Msg.WEBDUINO_TESTCAR_SPEED = "speed";
+Blockly.Msg.WEBDUINO_TESTCAR_RIGHT = "right wheel";
+Blockly.Msg.WEBDUINO_TESTCAR_LEFT = "left wheel";
+Blockly.Msg.WEBDUINO_TESTCAR_PERCENT = "%";
 
 Blockly.Msg.WEBDUINO_MATRIX = "LED Matrix (Max7219) ";
 Blockly.Msg.WEBDUINO_MATRIX_DIN = "din:";

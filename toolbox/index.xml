@@ -209,7 +209,7 @@
         </value>
       </block>
     </category>
-  <sep></sep>  
+    <sep></sep>
   </category>
   <category id="catPlus">
     <category id="catConsole">
@@ -294,10 +294,10 @@
       </block>
     </category>
     <category id="catKeyCode">
-        <block type="document_keyboard"></block>
-        <block type="document_keycode"></block>
-        <block type="document_keyboard_konami"></block>
-        <block type="document_keyboard_stop"></block>
+      <block type="document_keyboard"></block>
+      <block type="document_keycode"></block>
+      <block type="document_keyboard_konami"></block>
+      <block type="document_keyboard_stop"></block>
     </category>
     <category id="catSpeech">
       <block type="sound_recognition"></block>
@@ -330,12 +330,12 @@
       <block type="speak_setting_sample"></block>
     </category>
     <category id="catMobile">
-        <block type="mobile_deviceorientation_event"></block>
-        <block type="mobile_deviceorientation_event_val"></block>
-        <block type="mobile_devicemotion_event_val"></block>
-        <block type="mobile_deviceorientation_event_remove"></block>
+      <block type="mobile_deviceorientation_event"></block>
+      <block type="mobile_deviceorientation_event_val"></block>
+      <block type="mobile_devicemotion_event_val"></block>
+      <block type="mobile_deviceorientation_event_remove"></block>
     </category>
-  <sep></sep>  
+    <sep></sep>
   </category>
   <sep></sep>
   <category id="catBoard">
@@ -661,8 +661,7 @@
       <block type="joystick_val"></block>
       <block type="joystick_off"></block>
     </category>
-
-  <sep></sep>
+    <sep></sep>
   </category>
   <category id="catMenu2">
     <category id="catUltraSonic" tags="fly,mark1">
@@ -782,15 +781,15 @@
       <block type="rfid_uid"></block>
       <block type="rfid_if">
         <value name="uid_">
-            <block type="text">
-              <field name="TEXT">...</field>
-            </block>
+          <block type="text">
+            <field name="TEXT">...</field>
+          </block>
         </value>
       </block>
       <block type="rfid_leave"></block>
       <block type="rfid_stopread"></block>
     </category>
-  <sep></sep>
+    <sep></sep>
   </category>
   <category id="catMenu3">
     <category id="catCarTest">
@@ -806,6 +805,13 @@
         <field name="lb_">9</field>
       </block>
       <block type="car_test_move"></block>
+      <block type="car_speed">
+        <value name="speed_">
+          <block type="math_number">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+      </block>
     </category>
     <category id="catFish" tags="esp">
       <block type="variables_set">
@@ -834,7 +840,7 @@
         <field name="speed_">2</field>
       </block>
     </category>
-  <sep></sep>
+    <sep></sep>
   </category>
   <category id="catDatabase">
     <category id="catFirebase">
@@ -888,11 +894,11 @@
         </value>
       </block>
       <block type="demo_text_color">
-          <value name="color_">
-            <block type="colour_picker">
-              <field name="COLOUR">#ff0000</field>
-            </block>
-          </value>
+        <value name="color_">
+          <block type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </block>
+        </value>
       </block>
     </category>
     <category id="catDemoLight" demo="demo-area-02">
@@ -947,11 +953,11 @@
       <block type="demo_area_input"></block>
       <block type="demo_area_input_color"></block>
       <block type="demo_area_color">
-          <value name="color_">
-            <block type="colour_picker">
-              <field name="COLOUR">#ff0000</field>
-            </block>
-          </value>
+        <value name="color_">
+          <block type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </block>
+        </value>
       </block>
     </category>
     <category id="catDemoButton" demo="demo-area-05">
@@ -993,9 +999,9 @@
       </block>
       <block type="demo_youtube_id">
         <value name="id_">
-            <block type="text">
-              <field name="TEXT">...</field>
-            </block>
+          <block type="text">
+            <field name="TEXT">...</field>
+          </block>
         </value>
       </block>
       <block type="demo_youtube_control"></block>
@@ -1042,11 +1048,11 @@
       <block type="demo_controller"></block>
       <block type="demo_controller_show"></block>
       <block type="demo_controller_showcolor">
-          <value name="color_">
-            <block type="colour_picker">
-              <field name="COLOUR">#ff0000</field>
-            </block>
-          </value>
+        <value name="color_">
+          <block type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </block>
+        </value>
       </block>
       <block type="demo_controller_range">
         <value name="min_">

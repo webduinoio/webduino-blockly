@@ -309,107 +309,102 @@
   }
 
   function ToyCar(board, RF, RB, LF, LB) {
-    this._rf = getPin(board, RF);
-    this._rf.setMode(1);
-    this._rb = getPin(board, RB);
-    this._rb.setMode(1);
-    this._lf = getPin(board, LF);
-    this._lf.setMode(1);
-    this._lb = getPin(board, LB);
-    this._lb.setMode(1);
+    this._rS = getPin(board, RF);
+    this._rS.setMode(3);
+    this._rD = getPin(board, RB);
+    this._rD.setMode(1);
+    this._lD = getPin(board, LF);
+    this._lD.setMode(1);
+    this._lS = getPin(board, LB);
+    this._lS.setMode(3);
+    this._speedL = 1;
+    this._speedR = 1;
+    this._dirL = 1;
+    this._dirR = 1;
   }
 
+  ToyCar.prototype.setRightSpeed = function (speed) {
+    this._speedR = speed / 100;
+  };
+
+  ToyCar.prototype.setLeftSpeed = function (speed) {
+    this._speedL = speed / 100;
+  };
+
+  ToyCar.prototype.motor = function (dirR, dirL, speedR, speedL) {
+    var sr = parseFloat((dirR == 1 ? speedR : 1 - speedR));
+    var sl = parseFloat((dirL == 0 ? speedL : 1 - speedL));
+
+    this._rS.write(sr);
+    this._rD.write(1 - dirR);
+    this._lD.write(dirL);
+    this._lS.write(sl);
+  };
+
   ToyCar.prototype.goFront = function () {
-    this._rf.write(1);
-    this._rb.write(0);
-    this._lf.write(1);
-    this._lb.write(0);
+    this.motor(1, 1, parseFloat(this._speedR), parseFloat(this._speedL));
   };
 
   ToyCar.prototype.goBack = function () {
-    this._rf.write(0);
-    this._rb.write(1);
-    this._lf.write(0);
-    this._lb.write(1);
+    this.motor(0, 0, parseFloat(this._speedR), parseFloat(this._speedL));
   };
 
   ToyCar.prototype.goRight = function () {
-    this._rf.write(0);
-    this._rb.write(0);
-    this._lf.write(1);
-    this._lb.write(0);
+    this.motor(1, 1, 0, parseFloat(this._speedL));
   };
 
   ToyCar.prototype.goLeft = function () {
-    this._rf.write(1);
-    this._rb.write(0);
-    this._lf.write(0);
-    this._lb.write(0);
+    this.motor(1, 1, parseFloat(this._speedR), 0);
   };
 
   ToyCar.prototype.turnRight = function () {
-    this._rf.write(0);
-    this._rb.write(1);
-    this._lf.write(1);
-    this._lb.write(0);
+    this.motor(0, 1, parseFloat(this._speedR), parseFloat(this._speedL));
   };
 
   ToyCar.prototype.turnLeft = function () {
-    this._rf.write(1);
-    this._rb.write(0);
-    this._lf.write(0);
-    this._lb.write(1);
+    this.motor(1, 0, parseFloat(this._speedR), parseFloat(this._speedL));
   };
 
   ToyCar.prototype.backLeft = function () {
-    this._rf.write(0);
-    this._rb.write(0);
-    this._lf.write(0);
-    this._lb.write(1);
+    this.motor(1, 0, 0, parseFloat(this._speedL));
   };
 
   ToyCar.prototype.backRight = function () {
-    this._rf.write(0);
-    this._rb.write(1);
-    this._lf.write(0);
-    this._lb.write(0);
+    this.motor(0, 1, parseFloat(this._speedR), 0);
   };
 
   ToyCar.prototype.stop = function () {
-    this._rf.write(0);
-    this._rb.write(0);
-    this._lf.write(0);
-    this._lb.write(0);
+    this.motor(1, 1, 0, 0);
   };
 
   ToyCar.prototype.onlyLeftFront = function () {
-    this._rf.write(1);
-    this._rb.write(0);
+    this._lS.write(1 - this._speedL);
+    this._lD.write(this._dirL);
   };
 
   ToyCar.prototype.onlyRightFront = function () {
-    this._lf.write(1);
-    this._lb.write(0);
+    this._rS.write(this._speedR);
+    this._rD.write(1 - this._dirR);
   };
 
   ToyCar.prototype.onlyLeftBack = function () {
-    this._rf.write(1);
-    this._rb.write(0);
+    this._lS.write(this._speedL);
+    this._lD.write(1 - this._dirL);
   };
 
   ToyCar.prototype.onlyRightBack = function () {
-    this._lf.write(1);
-    this._lb.write(0);
+    this._rS.write(1 - this._speedR);
+    this._rD.write(this._dirR);
   };
 
   ToyCar.prototype.onlyLeftStop = function () {
-    this._rf.write(0);
-    this._rb.write(0);
+    this._lS.write(0);
+    this._lD.write(0);
   };
 
   ToyCar.prototype.onlyRightStop = function () {
-    this._lf.write(0);
-    this._lb.write(0);
+    this._rS.write(0);
+    this._rD.write(0);
   };
 
   //DHT Area Chart
