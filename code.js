@@ -471,6 +471,11 @@ Code.loadDemoArea = function () {
   select.value = localStorage.demoAreaSelect;
   Code.reloadSandbox();
 
+  window.addEventListener('unload', function () {
+    localStorage.demoAreaWidth = area.style.width;
+    localStorage.demoAreaHeight = area.style.height;
+  });
+
   content.addEventListener('mousedown', function (e) {
     e.stopPropagation();
   });
@@ -528,7 +533,6 @@ Code.loadDemoArea = function () {
     var move = function (evt) { 
       var rx = evt.pageX;
       area.style.width = dw - rx + ox - 20 + 'px';
-      localStorage.demoAreaWidth = area.style.width;
     }; 
 
     var up = function () {
@@ -617,7 +621,6 @@ Code.loadDemoArea = function () {
     var move = function (evt) { 
       var ry = evt.pageY;
       area.style.height = dh + ry - oy - 20 + 'px';
-      localStorage.demoAreaHeight = area.style.height;
     }; 
 
     var up = function () {
@@ -820,8 +823,6 @@ Code.loadSimulator = function () {
   } else {
     frame.contentWindow.addEventListener('load', frameReady);
   }
-
-  window.addEventListener('resize', updateHeight);
 
   window.addEventListener('unload', function () {
     storage.config = frame.contentWindow.blockly.config();
