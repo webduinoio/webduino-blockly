@@ -442,17 +442,21 @@ Code.getHotKey = function (e) {
 
 Code.loadDemoArea = function () {
   var area = document.getElementById('demo-area');
+  var content = document.querySelector('.demo-area-content');
   var btn = document.getElementById('demoButton');
   var select = document.getElementById('demo-select');
   var close = document.querySelector('.close-btn');
   var contentHeight = document.getElementById('content_blocks').offsetHeight;
-  var resizeBar = document.getElementById('demo-resize-bar');
+  var resizeLeftBar = document.querySelector('#demo-area .resize-bar-left'); 
+  var resizeRightBar = document.querySelector('#demo-area .resize-bar-right'); 
+  var resizeBottomBar = document.querySelector('#demo-area .resize-bar-bottom');
+  var resizeTopBar = document.querySelector('#demo-area .resize-bar-top');
 
-  area.style.height = (contentHeight - 110) + 'px';
   area.className = area.className.replace("show", "");
 
-  if (localStorage.demoAreaWidth) {
+  if (localStorage.demoAreaWidth && localStorage.demoAreaWidth) {
     area.style.width = localStorage.demoAreaWidth;
+    area.style.height = localStorage.demoAreaHeight;
   }
 
   if (localStorage.demoArea == 'open') {
@@ -467,33 +471,229 @@ Code.loadDemoArea = function () {
   select.value = localStorage.demoAreaSelect;
   Code.reloadSandbox();
 
-  window.addEventListener('resize', function () {
-    contentHeight = document.getElementById('content_blocks').offsetHeight;
-    area.style.height = (contentHeight - 110) + 'px';
+  content.addEventListener('mousedown', function (e) {
+    e.stopPropagation();
   });
 
-  resizeBar.onmousedown = function (e) {
-    area.style.opacity = '0.4';
+  area.addEventListener('mousedown', function (e) {
+
+    var cover = document.createElement('div');
     var frame = document.getElementById('demo-frame');
+
+    var mouseX = e.pageX;
+    var mouseY = e.pageY;
+    var positionRight = document.body.offsetWidth - area.offsetLeft - area.offsetWidth;
+    var positionTop = area.offsetTop;
+
+    area.style.opacity = '0.4';
     frame.style.pointerEvents = 'none';
+
+    cover.classList.add('demo-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+      var mouseMoveX = evt.pageX;
+      var mouseMoveY = evt.pageY;
+      area.style.right = positionRight - (mouseMoveX - mouseX) + 'px';
+      area.style.top = positionTop + (mouseMoveY - mouseY) + 'px';
+    }; 
+
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.remove();
+    };
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+
+  });
+
+  resizeLeftBar.addEventListener('mousedown', function (e) {
+
+    var cover = document.createElement('div');
+    var frame = document.getElementById('demo-frame');
     var ox = e.pageX;
     var dw = area.offsetWidth;
+    
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
     area.className += " resize";
 
-    document.onmousemove = function (event) {
-      var rx = event.pageX;
+    cover.classList.add('demo-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+      var rx = evt.pageX;
       area.style.width = dw - rx + ox - 20 + 'px';
       localStorage.demoAreaWidth = area.style.width;
-    };
-  };
+    }; 
 
-  document.onmouseup = function () {
-    area.style.opacity = '1';
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.remove();
+      area.dataset.width = area.style.width;
+    };
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    e.stopPropagation();
+    
+  });
+
+  resizeRightBar.addEventListener('mousedown', function (e) {
+
+    var cover = document.createElement('div');
     var frame = document.getElementById('demo-frame');
-    frame.style.pointerEvents = 'auto';
-    area.className = area.className.replace("resize", "");
-    document.onmousemove = null;
-  };
+    
+    var frameWidth = area.offsetWidth;
+    var mouseX = e.pageX;
+    var positionRight = document.body.offsetWidth - area.offsetLeft - frameWidth;
+    
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.className += " resize";
+
+    cover.classList.add('demo-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+
+      var mouseMoveX = evt.pageX;
+      var dist = mouseMoveX - mouseX;
+      var width = frameWidth + dist - 20;
+
+      if (width < 225) {
+        return;
+      }
+
+      area.style.width = width + 'px';
+      area.style.right = positionRight - dist + 'px'; 
+      
+    }; 
+
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.removeEventListener('selectstart', disableSelect);
+      cover.remove();
+      area.dataset.width = area.style.width;
+    };
+
+    var disableSelect = function (evt) { 
+      evt.preventDefault();
+    };
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    cover.addEventListener('selectstart', disableSelect);
+    e.stopPropagation();
+    
+  });
+
+  resizeBottomBar.addEventListener('mousedown', function (e) {
+
+    var cover = document.createElement('div');
+    var frame = document.getElementById('demo-frame');
+    var oy = e.pageY;
+    var dh = area.offsetHeight;
+    
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.className += " resize";
+
+    cover.classList.add('demo-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+      var ry = evt.pageY;
+      area.style.height = dh + ry - oy - 20 + 'px';
+      localStorage.demoAreaHeight = area.style.height;
+    }; 
+
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.removeEventListener('selectstart', disableSelect);
+      cover.remove();
+      area.dataset.height = area.style.height;
+    };
+
+    var disableSelect = function (evt) { 
+      evt.preventDefault();
+    }; 
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    cover.addEventListener('selectstart', disableSelect);
+    e.stopPropagation();
+    
+  });
+
+  resizeTopBar.addEventListener('mousedown', function (e) {
+
+    var cover = document.createElement('div');
+    var frame = document.getElementById('demo-frame');
+    
+    var frameHeight = area.offsetHeight;
+    var mouseY = e.pageY;
+    var positionTop = area.offsetTop;
+    
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.className += " resize";
+
+    cover.classList.add('demo-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+
+      var mouseMoveY = evt.pageY;
+      var dist = mouseMoveY - mouseY;
+      var height = frameHeight - dist - 20;
+
+      if (height < 225 ) {
+        return;
+      }
+
+      area.style.height = height + 'px';
+      area.style.top = positionTop + dist + 'px';
+      
+    }; 
+
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.removeEventListener('selectstart', disableSelect);
+      cover.remove();
+      area.dataset.height = area.style.height;
+    };
+
+    var disableSelect = function (evt) { 
+      evt.preventDefault();
+    };
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    cover.addEventListener('selectstart', disableSelect);
+    e.stopPropagation();
+    
+  });
 
   btn.onclick = function () {
     if (localStorage.demoArea == 'open') {

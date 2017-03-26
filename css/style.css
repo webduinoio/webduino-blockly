@@ -617,31 +617,23 @@ td#copyCode div {
 
 #demo-area {
   display: none;
-  z-index: 99;
+  z-index: 999;
   position: absolute;
   right: 30px;
   top: 125px;
   width: 400px;
+  height: 400px;
   min-width: 225px;
-  max-width: 70%;
-  background: rgba(255, 255, 255, .8);
+  min-height: 225px;
+  background: rgba(255, 255, 255, 1);
   border-radius: 20px;
   border: 10px solid #ccc;
   transition: opacity .3s;
+  cursor: move;
 }
 
 #demo-area.show {
   display: block;
-}
-
-#demo-resize-bar {
-  height: calc(100% - 40px);
-  width: 10px;
-  background: #ccc;
-  position: absolute;
-  left: -10px;
-  top: 20px;
-  cursor: col-resize;
 }
 
 #demo-area.resize {
@@ -658,6 +650,7 @@ td#copyCode div {
   height: 100%;
   padding: 0 20px 20px;
   box-sizing: border-box;
+  cursor: default;
 }
 
 #demo-area .demo-area-content .close-btn {
@@ -1018,6 +1011,16 @@ td#copyCode div {
   z-index: 2;
 }
 
+.demo-cover {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  z-index: 9999;
+}
+
 /* simulation area */
 
 #simulator-area {
@@ -1029,10 +1032,12 @@ td#copyCode div {
   width: 400px;
   height: 400px;
   min-height: 225px;
+  min-width: 225px;
   background: rgba(255, 255, 255, 1);
   border-radius: 20px;
   border: 10px solid #ccc;
   transition: opacity .3s;
+  cursor: move;
 }
 
 #simulator-area.init {
@@ -1043,8 +1048,8 @@ td#copyCode div {
 #simulator-area.full {
   max-width: none;
   width: auto;
-  height: auto;
   max-height: none;
+  height: auto;
   top: 15px;
   left: 15px;
   bottom: 15px;
@@ -1061,6 +1066,7 @@ td#copyCode div {
   height: 10px;
   background-image: url(../media/resize-bar.png);
   background-repeat: no-repeat;
+  z-index: 99;
 }
 
 .resize-bar-left {
@@ -1109,6 +1115,7 @@ td#copyCode div {
   height: 100%;
   padding: 15px;
   box-sizing: border-box;
+  cursor: default;
 }
 
 #simulator-area .simulator-area-content .close-btn {
@@ -1117,7 +1124,6 @@ td#copyCode div {
   top: 5px;
   width: 22px;
   height: 22px;
-  background: #fff;
   background-image: url(../media/icons.png);
   background-position: -82px 0px;
   opacity: 0.4;
