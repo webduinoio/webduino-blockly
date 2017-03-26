@@ -595,13 +595,17 @@ Code.loadSample = function () {
 
 Code.loadSimulator = function () {
   var area = document.getElementById('simulator-area');
-  var frame = document.getElementById('simulator-frame');
-  var btn = document.getElementById('simulatorButton');
-  var closeBtn = document.querySelector('#simulator-area .close-btn');
-  var enlargeBtn = document.querySelector('#simulator-area .icon-enlarge');
-  var shrinkBtn = document.querySelector('#simulator-area .icon-shrink')
-  var resizeBar = document.getElementById('simulator-resize-bar');
-  var storage = {};
+  var content = document.querySelector('.simulator-area-content');
+  var frame = document.getElementById('simulator-frame'); 
+  var btn = document.getElementById('simulatorButton'); 
+  var closeBtn = document.querySelector('#simulator-area .close-btn'); 
+  var enlargeBtn = document.querySelector('#simulator-area .icon-enlarge'); 
+  var shrinkBtn = document.querySelector('#simulator-area .icon-shrink') 
+  var resizeLeftBar = document.querySelector('#simulator-area .resize-bar-left'); 
+  var resizeRightBar = document.querySelector('#simulator-area .resize-bar-right'); 
+  var resizeBottomBar = document.querySelector('#simulator-area .resize-bar-bottom');
+  var resizeTopBar = document.querySelector('#simulator-area .resize-bar-top');
+  var storage = {}; 
 
   if (localStorage.simulator) {
     try {
@@ -611,7 +615,7 @@ Code.loadSimulator = function () {
     }
   }
 
-  if (frame.contentWindow.blockly) {
+  if (frame.contentWindow.blockly) { 
     frameReady();
   } else {
     frame.contentWindow.addEventListener('load', frameReady);
@@ -624,6 +628,7 @@ Code.loadSimulator = function () {
     storage.opened = area.classList.contains('show');
     storage.isFull = area.classList.contains('full');
     storage.width = area.dataset.width;
+    storage.height = area.dataset.height;
     localStorage.simulator = JSON.stringify(storage);
   });
   
@@ -641,8 +646,8 @@ Code.loadSimulator = function () {
   });
 
   Code.bindClick(closeBtn, function () {
-    area.classList.remove('show', 'full');
-    btn.classList.remove('opened');
+    area.classList.remove('show', 'full'); 
+    btn.classList.remove('opened'); 
     updateWidth();
     updateHeight();
   });
@@ -659,9 +664,51 @@ Code.loadSimulator = function () {
     updateHeight();
   });
 
-  resizeBar.addEventListener('mousedown', function (e) {
+  content.addEventListener('mousedown', function (e) {
+    e.stopPropagation();
+  });
+
+  area.addEventListener('mousedown', function (e) {
+
+    if (area.classList.contains('full')) { 
+      return;
+    }
+
+    var cover = document.createElement('div');
+    var mouseX = e.pageX;
+    var mouseY = e.pageY;
+    var positionRight = document.body.offsetWidth - area.offsetLeft - area.offsetWidth;
+    var positionTop = area.offsetTop;
+
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+
+    cover.classList.add('simulator-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+      var mouseMoveX = evt.pageX;
+      var mouseMoveY = evt.pageY;
+      area.style.right = positionRight - (mouseMoveX - mouseX) + 'px';
+      area.style.top = positionTop + (mouseMoveY - mouseY) + 'px';
+    }; 
+
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.remove();
+    };
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+
+  });
+
+  resizeLeftBar.addEventListener('mousedown', function (e) {
     
-    if (area.classList.contains('full')) {
+    if (area.classList.contains('full')) { 
       return;
     }
 
@@ -673,10 +720,10 @@ Code.loadSimulator = function () {
     frame.style.pointerEvents = 'none';
     area.classList.add('resize');
 
-    cover.classList.add('simulator-cover');
+    cover.classList.add('simulator-cover'); 
     document.body.appendChild(cover);
 
-    var move = function (evt) {
+    var move = function (evt) { 
       var rx = evt.pageX;
       area.style.width = dw - rx + ox - 20 + 'px';
     }; 
@@ -693,22 +740,177 @@ Code.loadSimulator = function () {
 
     cover.addEventListener('mousemove', move);
     cover.addEventListener('mouseup', up);
+    e.stopPropagation();
+
+  });
+
+  resizeRightBar.addEventListener('mousedown', function (e) {
+
+    if (area.classList.contains('full')) { 
+      return;
+    }
+
+    var cover = document.createElement('div');
+
+    var frameWidth = area.offsetWidth;
+    var mouseX = e.pageX;
+    var positionRight = document.body.offsetWidth - area.offsetLeft - frameWidth;
+
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.classList.add('resize');
+
+    cover.classList.add('simulator-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+
+      var mouseMoveX = evt.pageX;
+      var dist = mouseMoveX - mouseX;
+      var width = frameWidth + dist - 20;
+
+      if (width < 225) {
+        return;
+      }
+
+      area.style.width = width + 'px';
+      area.style.right = positionRight - dist + 'px'; 
+    }; 
+
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.removeEventListener('selectstart', disableSelect);
+      cover.remove();
+      area.dataset.width = area.style.width;
+    };
+
+    var disableSelect = function (evt) { 
+      evt.preventDefault();
+    };
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    cover.addEventListener('selectstart', disableSelect);
+    e.stopPropagation();
+
+  });
+
+  resizeBottomBar.addEventListener('mousedown', function (e) {
+
+    if (area.classList.contains('full')) { 
+      return;
+    }
+
+    var cover = document.createElement('div');
+    var oy = e.pageY;
+    var dh = area.offsetHeight;
+
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.classList.add('resize');
+
+    cover.classList.add('simulator-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+      var ry = evt.pageY;
+      area.style.height = dh + ry - oy - 20 + 'px';
+    }; 
+
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.removeEventListener('selectstart', disableSelect);
+      cover.remove();
+      area.dataset.height = area.style.height;
+    };
+
+    var disableSelect = function (evt) { 
+      evt.preventDefault();
+    }; 
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    cover.addEventListener('selectstart', disableSelect);
+    e.stopPropagation();
+
+  });
+
+  resizeTopBar.addEventListener('mousedown', function (e) {
+    
+    if (area.classList.contains('full')) { 
+      return;
+    }
+
+    var cover = document.createElement('div');
+
+    var frameHeight = area.offsetHeight;
+    var mouseY = e.pageY;
+    var positionTop = area.offsetTop;
+
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.classList.add('resize');
+
+    cover.classList.add('simulator-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+      var mouseMoveY = evt.pageY;
+      var dist = mouseMoveY - mouseY;
+      var height = frameHeight - dist - 20;
+
+      if (height < 225 ) {
+        return;
+      }
+
+      area.style.height = height + 'px';
+      area.style.top = positionTop + dist + 'px';
+    }; 
+
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.removeEventListener('selectstart', disableSelect);
+      cover.remove();
+      area.dataset.height = area.style.height;
+    };
+
+    var disableSelect = function (evt) { 
+      evt.preventDefault();
+    }; 
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    cover.addEventListener('selectstart', disableSelect);
+    e.stopPropagation();
 
   });
 
   function updateHeight() {
     if (area.classList.contains('full')) {
       area.style.height = '';
+      area.style.top = '';
       return;
     }
 
-    var contentHeight = document.getElementById('content_blocks').offsetHeight;
-    area.style.height = (contentHeight - 110) + 'px';
+    area.style.height = area.dataset.height || '';
   }
 
   function updateWidth() {
     if (area.classList.contains('full')) {
       area.style.width = '';
+      area.style.right = '';
       return;
     }
 
@@ -720,6 +922,7 @@ Code.loadSimulator = function () {
 
     // 寬度的儲存
     storage.width && (area.dataset.width = storage.width);
+    storage.height && (area.dataset.height = storage.height);
 
     // 語系
     api.lang(Code.getLang());
