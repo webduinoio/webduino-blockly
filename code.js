@@ -516,7 +516,7 @@ Code.loadDemoArea = function () {
 
   });
 
-  resizeLeftBar.addEventListener('mousedown', function (e) {
+  resizeLeftBar && resizeLeftBar.addEventListener('mousedown', function (e) {
 
     var cover = document.createElement('div');
     var frame = document.getElementById('demo-frame');
@@ -551,7 +551,7 @@ Code.loadDemoArea = function () {
     
   });
 
-  resizeRightBar.addEventListener('mousedown', function (e) {
+  resizeRightBar && resizeRightBar.addEventListener('mousedown', function (e) {
 
     var cover = document.createElement('div');
     var frame = document.getElementById('demo-frame');
@@ -604,7 +604,7 @@ Code.loadDemoArea = function () {
     
   });
 
-  resizeBottomBar.addEventListener('mousedown', function (e) {
+  resizeBottomBar && resizeBottomBar.addEventListener('mousedown', function (e) {
 
     var cover = document.createElement('div');
     var frame = document.getElementById('demo-frame');
@@ -645,7 +645,7 @@ Code.loadDemoArea = function () {
     
   });
 
-  resizeTopBar.addEventListener('mousedown', function (e) {
+  resizeBottomBar && resizeTopBar.addEventListener('mousedown', function (e) {
 
     var cover = document.createElement('div');
     var frame = document.getElementById('demo-frame');
