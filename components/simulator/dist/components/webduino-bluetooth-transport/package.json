@@ -1,0 +1,24 @@
+{
+  "name": "webduino-bluetooth-transport",
+  "version": "0.0.4",
+  "description": "Bluetooth Transport Plugin for webduino-js",
+  "main": "src/NodeBluetoothTransport.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webduinoio/webduino-bluetooth-transport.git"
+  },
+  "keywords": [
+    "arduino",
+    "webduino",
+    "bluetooth"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webduinoio/webduino-bluetooth-transport/issues"
+  },
+  "homepage": "https://github.com/webduinoio/webduino-bluetooth-transport#readme",
+  "dependencies": {
+    "webduino-js": "0.x",
+    "bluetooth-serial-port": "1.x"
+  }
+}

@@ -1,0 +1,21 @@
+<html>
+
+<head>
+  <script src="../lib/chrome._api.js"></script>
+  <script src="../lib/chrome.serial.js"></script>
+  <script src="../bower_components/json-human/src/json.human.js"></script>
+  <script>
+  chrome.serial.getDevices(function(devs) {
+    document.body.appendChild(JsonHuman.format(devs));
+  });
+
+  chrome.serial.connect('/dev/cu.usbmodem1411', function(info) {
+    document.body.appendChild(JsonHuman.format(info));
+  });
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

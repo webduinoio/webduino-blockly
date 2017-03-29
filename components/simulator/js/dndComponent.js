@@ -19,6 +19,7 @@
     this._end = endHandler.bind(this);
     this._dragStartFn = config.dragStart || function () {};
     this._dragEndFn = config.dragEnd || function () {};
+    this._dragging = false;
 
     this._target.call(d3Drag(this));
   }
@@ -53,31 +54,28 @@
   function startHandler() {
     var target = d3.event.sourceEvent.target;
     var $target = $(target);
-    var self = this;
 
     this._dragTarget = $target.hasClass('component') ? target : $target.parents('.component').first().get(0);
     this._changedPathPoints = findPoints(this._dragTarget.id);
-    this._dragStartFn();
-
-    // 移動元素到父元素裡的最上層
-    if (this._dragTarget.dataset.type === 'ArduinoUno') {
-      if (this._dragTarget.parentNode.children[0] !== this._dragTarget) {
-        d3.select(this._dragTarget.parentNode.children[0]).insert(function () {
-          return d3.select(self._dragTarget).remove().node();
-        });
-      }
-    } else {
-      d3.select(this._dragTarget.parentNode).append(function () {
-        return d3.select(self._dragTarget).remove().node();
-      });
-    }
   }
 
   function dragHandler() {
+
+    if (!this._dragging) {
+      this._dragging = true;
+
+      this._dragStartFn();
+
+      // 移動元素到父元素裡的最上層
+      d3.select(this._dragTarget).raise();
+
+      // 拖拉效果
+      d3.select(this._dragTarget).classed('dragging', true);
+    }
+
     var cur = utils.getTransformObj(this._dragTarget);
     var dx = d3.event.dx;
     var dy = d3.event.dy;
-
     cur.x += dx;
     cur.y += dy;
 
@@ -106,8 +104,17 @@
   }
 
   function endHandler() {
-    utils.updateLocationData(this._dragTarget);
-    this._dragEndFn(this._dragTarget.id);
+
+    if (this._dragging) {
+      this._dragging = false;
+      
+      // 拖拉效果
+      d3.select(this._dragTarget).classed('dragging', false);
+
+      utils.updateLocationData(this._dragTarget);
+      this._dragEndFn(this._dragTarget.id);
+    }
+    
     this._dragTarget = null;
     this._changedPathPoints = null;
   }

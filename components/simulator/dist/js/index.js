@@ -14,12 +14,12 @@
     data: {
       ready: false,
       i18nextReady: false,
-      language: '', // 語系
-      drawingPath: false, // 畫線狀態
-      movingCircle: false, // 編輯時，移動圓點
-      editPathId: '', // 目前在編輯狀態的 path
-      selectId: '', // 目前 focus 的元件
-      instance: [], // 保存使用的功能實例
+      language: '',         // 語系
+      drawingPath: false,   // 畫線狀態
+      movingCircle: false,  // 編輯時，移動圓點
+      editPathId: '',       // 目前在編輯狀態的 path
+      selectId: '',         // 目前 focus 的元件
+      instance: [],         // 保存使用的功能實例
       engineStarting: false // Engine 是否啟動中
     },
     mounted: function () {
@@ -187,6 +187,7 @@
       },
       dragEnd: function (targetId) {
         app.selectId = targetId;
+        sortComponent(targetId);
         addHistory();
       }
     });
@@ -261,6 +262,7 @@
     var $lang = $('#lang');
     var d3Body = d3.select('body');
 
+    // device id 的輸入
     // 待有屬性面板時，刪除
     $body.on('click', 'svg [data-type="ArduinoUno"]', function (evt) {
 
@@ -278,6 +280,12 @@
       });
       myModal.show();
 
+    });
+
+    // 選取效果
+    $body.on('click', 'svg [data-type].component', function (evt) {
+      var target = evt.currentTarget;
+      app.selectId = target.id;
     });
 
     // 依滑鼠的目標，高亮點的顯示
@@ -322,6 +330,7 @@
     d3Body.on('navbar-dragEnd', function () {
       var detail = d3.event.detail;
       app.selectId = detail.targetId;
+      sortComponent(detail.targetId);
       addHistory();
     });
 
@@ -422,6 +431,31 @@
       });
 
     }
+  }
+
+  function sortComponent(id) {
+    var node = d3.select('#' + id).node();
+    var nodes;
+
+    // ArduinoUno，是在所有 ArduinoUno 的最上層
+    if (node.dataset.type !== 'ArduinoUno') {
+      return;
+    }
+
+    nodes = d3.selectAll(node.parentNode.childNodes)
+      .filter(function () {
+        return this !== node && this.dataset.type === 'ArduinoUno';
+      })
+      .nodes();
+
+    if (!nodes.length) {
+      d3.select(node).lower();
+    }
+
+    if (nodes.length && nodes.slice(-1)[0].nextSibling !== node) {
+      node.parentNode.insertBefore(node, nodes.slice(-1)[0].nextSibling);
+    }
+
   }
 
 })();

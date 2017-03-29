@@ -1,0 +1,21 @@
+{
+  "name": "webduino-bluetooth-transport",
+  "description": "Bluetooth Transport Plugin for webduino-js",
+  "license": "MIT",
+  "keywords": [
+    "arduino",
+    "webduino",
+    "bluetooth"
+  ],
+  "homepage": "https://github.com/webduinoio/webduino-bluetooth-transport#readme",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "chrome-api-proxy": "webduinoio/chrome-api-proxy#gh-pages"
+  }
+}

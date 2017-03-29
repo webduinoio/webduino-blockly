@@ -72,15 +72,15 @@
       value = self.value;
 
     switch (type) {
-      case Pin.DOUT:
-        board.sendDigitalData(pinNum, value);
-        break;
-      case Pin.AOUT:
-        board.sendAnalogData(pinNum, value);
-        break;
-      case Pin.SERVO:
-        board.sendServoData(pinNum, value);
-        break;
+    case Pin.DOUT:
+      board.sendDigitalData(pinNum, value);
+      break;
+    case Pin.AOUT:
+      board.sendAnalogData(pinNum, value);
+      break;
+    case Pin.SERVO:
+      board.sendServoData(pinNum, value);
+      break;
     }
   }
 
@@ -333,24 +333,24 @@
       self = this;
 
     switch (type) {
-      case Pin.DOUT:
-      case Pin.AOUT:
-      case Pin.SERVO:
-        return board.queryPinState(self._number).then(function (pin) {
-          return pin.state;
-        });
+    case Pin.DOUT:
+    case Pin.AOUT:
+    case Pin.SERVO:
+      return board.queryPinState(self._number).then(function (pin) {
+        return pin.state;
+      });
 
-      case Pin.AIN:
-        if (!self._analogReporting) {
-          board.enableAnalogPin(self._analogNumber);
-        }
+    case Pin.AIN:
+      if (!self._analogReporting) {
+        board.enableAnalogPin(self._analogNumber);
+      }
 
-      case Pin.DIN:
-        return new Promise(function (resolve) {
-          setImmediate(function () {
-            resolve(self.value);
-          });
+    case Pin.DIN:
+      return new Promise(function (resolve) {
+        setImmediate(function () {
+          resolve(self.value);
         });
+      });
     }
   };
 

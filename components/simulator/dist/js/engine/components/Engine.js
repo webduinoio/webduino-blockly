@@ -47,7 +47,10 @@
     var disconnectHandler = json.disconnect || function () {};
     createJSON = json.create;
     console.log("Engine start...");
-    board = new webduino[createJSON.type](createJSON.id);
+    board = new webduino[createJSON.type]({
+      device: createJSON.id,
+      multi: true
+    });
     board.begin();
     this.board = board;
     //

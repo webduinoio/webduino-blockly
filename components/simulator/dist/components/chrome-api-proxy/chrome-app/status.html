@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Status</title>
+  <script src="json-human/src/json.human.js"></script>
+  <script src="status.js"></script>
+  <link rel="stylesheet" href="json-human/css/json.human.css"></link>
+  <style>
+  html,
+  body {
+    overflow-y: auto;
+  }
+  
+  body {
+    -webkit-user-select: text
+  }
+  
+  .button {
+    font-size: 14px;
+  }
+  </style>
+</head>
+
+<body>
+  <h1>Serial Port <button class='button' id='refresh'>Refresh</button></h1>
+  <div id='status'></div>
+  <div>
+    <input id='disconnId' type='text' size='5' />
+    <button id='disconnect'>Disconnect</button>
+    <span id='disconnStatus'></span>
+  </div>
+  <h1>Bluetooth <button class='button' id='refresh-bt'>Refresh</button></h1>
+  <div id='status-bt'></div>
+  <div>
+    <input id='disconnId-bt' type='text' size='5' />
+    <button id='disconnect-bt'>Disconnect</button>
+    <span id='disconnStatus-bt'></span>
+  </div>
+</body>
+
+</html>

@@ -39,12 +39,15 @@
   }
 
   function init(self) {
-    self._client = new Paho.MQTT.Client(
-      self._options.server, self._options.device);
+    self._client = new Paho.MQTT.Client(self._options.server,
+      '_' + self._options.device + (self._options.multi ? '.' + util.randomId() : '')
+    );
     self._client.onMessageArrived = self._messageHandler;
     self._client.onConnectionLost = self._disconnHandler;
     self._client.onConnected = self._connHandler;
     self._client.connect({
+      userName: self._options.login || '',
+      password: self._options.password || '',
       timeout: MqttTransport.CONNECT_TIMEOUT,
       keepAliveInterval: MqttTransport.KEEPALIVE_INTERVAL,
       onSuccess: self._connHandler,

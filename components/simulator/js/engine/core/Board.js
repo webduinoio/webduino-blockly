@@ -230,9 +230,9 @@
         this._buf = [];
       }
       //Report Digital
-      else if ((cmd & 0xF0) == 0xD0 && len == 2) {
+      else if ((cmd & 0xF0) == 0xD0 && len === 2) {
         this._buf = [];
-      } else if (len == 3) {
+      } else if (len === 3) {
         this.processMultiByteCommand(this._buf);
         this._buf = [];
       }
@@ -260,47 +260,48 @@
     console.log("Command:", command);
 
     switch (command) {
-      case SET_PIN_MODE:
-        console.log("SET_PIN_MODE:", command, commandData);
-        var pinNum = commandData[1];
-        var pinMode = commandData[2];
-        var pin = this._ioPins[pinNum];
-        if (pin === undefined) {
-          return;
-        }
-        switch (pinMode) {
-          case Pin.DOUT:
-            pin.setMode(Pin.DOUT);
-            pin.value = 0;
-            this.emit(BoardEvent.DIGITAL_DATA, {
-              pin: pin
-            });
-            break;
-          case Pin.DIN:
-            pin.setMode(Pin.DIN);
-            pin.value = 0;
-            this.emit(BoardEvent.DIGITAL_DATA, {
-              pin: pin
-            });
-            break;
-        }
-        break;
-      case DIGITAL_MESSAGE:
-        console.log("DIGITAL_MESSAGE:", command);
-        this.processDigitalMessage(channel, commandData[1], commandData[2]);
-        break;
-      case REPORT_VERSION:
-        console.log("REPORT_VERSION:", command);
-        this._firmwareVersion = commandData[1] + commandData[2] / 10;
-        this.emit(BoardEvent.FIRMWARE_VERSION, {
-          version: this._firmwareVersion
+    case SET_PIN_MODE:
+      console.log("SET_PIN_MODE:", command, commandData);
+      var pinNum = commandData[1];
+      var pinMode = commandData[2];
+      var pin = this._ioPins[pinNum];
+      if (pin === undefined) {
+        return;
+      }
+      switch (pinMode) {
+      case Pin.DOUT:
+        pin.setMode(Pin.DOUT);
+        pin.value = 0;
+        this.emit(BoardEvent.DIGITAL_DATA, {
+          pin: pin
         });
         break;
-      case ANALOG_MESSAGE:
-        console.log("ANALOG_MESSAGE:", command);
-        this.processAnalogMessage(channel, commandData[1], commandData[2]);
+      case Pin.DIN:
+        pin.setMode(Pin.DIN);
+        pin.value = 0;
+        this.emit(BoardEvent.DIGITAL_DATA, {
+          pin: pin
+        });
         break;
+      }
+      break;
+    case DIGITAL_MESSAGE:
+      console.log("DIGITAL_MESSAGE:", command);
+      this.processDigitalMessage(channel, commandData[1], commandData[2]);
+      break;
+    case REPORT_VERSION:
+      console.log("REPORT_VERSION:", command);
+      this._firmwareVersion = commandData[1] + commandData[2] / 10;
+      this.emit(BoardEvent.FIRMWARE_VERSION, {
+        version: this._firmwareVersion
+      });
+      break;
+    case ANALOG_MESSAGE:
+      console.log("ANALOG_MESSAGE:", command);
+      this.processAnalogMessage(channel, commandData[1], commandData[2]);
+      break;
     }
+
   };
 
   proto.processDigitalMessage = function (port, bits0_6, bits7_13) {
@@ -309,6 +310,7 @@
       portVal = bits0_6 | (bits7_13 << 7),
       pinVal,
       pin = {};
+
     if (lastPin >= this._totalPins) {
       lastPin = this._totalPins;
     }
@@ -325,7 +327,6 @@
         pinVal = (portVal >> j) & 0x01;
         if (pinVal !== pin.value) {
           pin.value = pinVal;
-
           this.emit(BoardEvent.DIGITAL_DATA, {
             pin: pin
           });
@@ -354,27 +355,28 @@
 
     var command = sysexData[0];
     switch (command) {
-      case REPORT_FIRMWARE:
-        this.processQueryFirmwareResult(sysexData);
-        break;
-      case STRING_DATA:
-        this.processSysExString(sysexData);
-        break;
-      case CAPABILITY_RESPONSE:
-        this.processCapabilitiesResponse(sysexData);
-        break;
-      case PIN_STATE_RESPONSE:
-        this.processPinStateResponse(sysexData);
-        break;
-      case ANALOG_MAPPING_RESPONSE:
-        this.processAnalogMappingResponse(sysexData);
-        break;
-      default:
-        this.emit(BoardEvent.SYSEX_MESSAGE, {
-          message: sysexData
-        });
-        break;
+    case REPORT_FIRMWARE:
+      this.processQueryFirmwareResult(sysexData);
+      break;
+    case STRING_DATA:
+      this.processSysExString(sysexData);
+      break;
+    case CAPABILITY_RESPONSE:
+      this.processCapabilitiesResponse(sysexData);
+      break;
+    case PIN_STATE_RESPONSE:
+      this.processPinStateResponse(sysexData);
+      break;
+    case ANALOG_MAPPING_RESPONSE:
+      this.processAnalogMappingResponse(sysexData);
+      break;
+    default:
+      this.emit(BoardEvent.SYSEX_MESSAGE, {
+        message: sysexData
+      });
+      break;
     }
+
   };
 
   proto.processQueryFirmwareResult = function (msg) {

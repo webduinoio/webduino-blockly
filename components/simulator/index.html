@@ -124,18 +124,10 @@
   <script src="components/defiant/dist/defiant.min.js"></script>
   
   <!-- Engine -->
-  <script src="js/engine/setImmediate.js"></script>
-  <script src="js/engine/paho.js"></script>
-  <script src="js/engine/webduino.js"></script>
-  <script src="js/engine/core/EventEmitter.js"></script>
-  <script src="js/engine/core/util.js"></script>
-  <script src="js/engine/util/promisify.js"></script>
-  <script src="js/engine/core/Transport.js"></script>
-  <script src="js/engine/core/Pin.js"></script>
-  <script src="js/engine/core/Module.js"></script>
+  <script src="components/webduino-js/dist/webduino-base.js"></script>
   <script src="js/engine/core/Board.js"></script>
-  <script src="js/engine/core/WebArduino.js"></script>
-  <script src="js/engine/core/Arduino.js"></script>
+  <script src="js/engine/transport/MqttTransport.js"></script>
+  <script src="components/webduino-js/src/core/WebArduino.js"></script>  
   <script src="js/engine/components/Engine.js"></script>
   <script src="js/engine/components/Led.js"></script>
   <script src="js/engine/components/RGBLed.js"></script>
@@ -143,8 +135,6 @@
   <script src="js/engine/components/Servo.js"></script>
   <script src="js/engine/components/Matrix.js"></script>
   <script src="js/engine/components/UltraSonic.js"></script>
-  <script src="js/engine/transport/MqttTransport.js"></script>
-  <script src="js/engine/transport/WebSocketTransport.js"></script>
 
   <!-- ui -->
   <script src="js/roundedCorner.js"></script>
