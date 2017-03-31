@@ -481,6 +481,11 @@ Code.loadDemoArea = function () {
     localStorage.demoAreaHeight = area.style.height;
   });
 
+  $('#demo-area').contents().click(function() {
+    simulatorArea.style.zIndex = '';
+    area.style.zIndex = '9999';
+  });
+
   content.addEventListener('mousedown', function (e) {
     e.stopPropagation();
   });
@@ -1159,6 +1164,18 @@ Code.loadSimulator = function () {
     updateWidth();
     updateHeight();
   });
+
+  $('#simulator-area').contents().click(function() {
+    demoArea.style.zIndex = '';
+    area.style.zIndex = '9999';
+  });
+
+  $('#simulator-frame').load(function(){
+    $('#simulator-frame').contents().click(function() {
+      demoArea.style.zIndex = '';
+      area.style.zIndex = '9999';
+    });
+  }); 
 
   content.addEventListener('mousedown', function (e) {
     e.stopPropagation();
@@ -2224,11 +2241,20 @@ Code.reloadSandbox = function () {
         data.js = ctx.data.js;
       }
     }
-
+    
+    var area = document.getElementById('demo-area');
+    var simulatorArea = document.getElementById('simulator-area');
     var frame = container.querySelector('#demo-frame');
     if (frame) {
       frame.contentWindow.addEventListener('unload', function () {
         createIframe();
+
+        $('#demo-frame').load(function(){
+          $('#demo-frame').contents().click(function() {
+            simulatorArea.style.zIndex = '';
+            area.style.zIndex = '9999';
+          });
+        });
       }, false);
 
       var event = new UIEvent('beforeunload');
@@ -2241,6 +2267,13 @@ Code.reloadSandbox = function () {
       }, 50);
     } else {
       createIframe();
+
+      $('#demo-frame').load(function(){
+        $('#demo-frame').contents().click(function() {
+          simulatorArea.style.zIndex = '';
+          area.style.zIndex = '9999';
+        });
+      });
     }
 
     function createIframe() {
