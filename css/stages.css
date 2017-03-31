@@ -88,7 +88,7 @@ table.nav{
   cursor:pointer;  
   z-index:2;
 }
-#sampleButton,#smaple-menu,#demo-resize-bar,#demo-select,#demoButton,.close-btn{
+#sampleButton,#smaple-menu,#demo-select,#demoButton,.close-btn{
   display:none;
 }
 #demo-area{
@@ -111,19 +111,25 @@ table.nav{
   height:100%;
 }
 
+#demoArea .resize-bar-left,#demoArea .resize-bar-right,#demoArea .resize-bar-top,#demoArea .resize-bar-bottom,#demoArea .resize-bar-top-left,#demoArea .resize-bar-top-right,#demoArea .resize-bar-bottom-left,#demoArea .resize-bar-bottom-right {
+  display: none;
+}
+
 #simulator-area {
   display: none;
-  z-index: 99;
+  z-index: 999;
   position: absolute;
   right: 32%;
   top: 125px;
   width: 400px;
+  height: 400px;
+  min-height: 225px;
   min-width: 225px;
-  max-width: 70%;
   background: rgba(255, 255, 255, 1);
   border-radius: 20px;
   border: 10px solid #ccc;
   transition: opacity .3s;
+  cursor: move;
 }
 
 #simulator-area.init {
@@ -145,14 +151,73 @@ table.nav{
   display: block;
 }
 
-#simulator-resize-bar {
-  height: calc(100% - 40px);
-  width: 10px;
-  background: #ccc;
+.resize-area {
   position: absolute;
+  width: 10px;
+  height: 10px;
+  background-image: url(../media/resize-bar.png);
+  background-repeat: no-repeat;
+  z-index: 99;
+}
+
+.resize-bar-left {
+  top: 50%;
   left: -10px;
-  top: 20px;
-  cursor: col-resize;
+  margin-top: -5px;
+  cursor: ew-resize;
+  background-position: 4px -6px;
+}
+
+.resize-bar-right {
+  top: 50%;
+  right: -10px;
+  margin-top: -5px;
+  cursor: ew-resize;
+  background-position: 4px -6px;
+}
+
+.resize-bar-bottom {
+  bottom: -10px;
+  left: 50%;
+  margin-left: -5px;
+  cursor: ns-resize;
+  background-position: 1px 4px;
+}
+
+.resize-bar-top {
+  top: -10px;
+  left: 50%;
+  margin-left: -5px;
+  cursor: ns-resize;
+  background-position: 1px 4px;
+}
+
+.resize-bar-top-left {
+  top: -5px;
+  left: -4px;
+  cursor: nwse-resize;
+  background-position: 0px -30px;
+}
+
+.resize-bar-top-right {
+  top: -5px;
+  right: -8px;
+  cursor: nesw-resize;
+  background-position: 0px -18px;
+}
+
+.resize-bar-bottom-right {
+  bottom: -5px;
+  right: -8px;
+  cursor: nwse-resize;
+  background-position: 0px -30px;
+}
+
+.resize-bar-bottom-left {
+  bottom: -5px;
+  left: -4px;
+  cursor: nesw-resize;
+  background-position: 0px -18px;
 }
 
 #simulator-area.resize {

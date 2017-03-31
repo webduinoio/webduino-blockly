@@ -451,6 +451,10 @@ Code.loadDemoArea = function () {
   var resizeRightBar = document.querySelector('#demo-area .resize-bar-right'); 
   var resizeBottomBar = document.querySelector('#demo-area .resize-bar-bottom');
   var resizeTopBar = document.querySelector('#demo-area .resize-bar-top');
+  var resizeTopLeftBar = document.querySelector('#demo-area .resize-bar-top-left');
+  var resizeTopRightBar = document.querySelector('#demo-area .resize-bar-top-right');
+  var resizeBottomLeftBar = document.querySelector('#demo-area .resize-bar-bottom-left');
+  var resizeBottomRightBar = document.querySelector('#demo-area .resize-bar-bottom-right');
 
   area.className = area.className.replace("show", "");
 
@@ -476,6 +480,10 @@ Code.loadDemoArea = function () {
     localStorage.demoAreaHeight = area.style.height;
   });
 
+  $(area).contents().click(function() {
+    Code.setTopArea('demo');
+  });
+
   content.addEventListener('mousedown', function (e) {
     e.stopPropagation();
   });
@@ -492,6 +500,7 @@ Code.loadDemoArea = function () {
 
     area.style.opacity = '0.4';
     frame.style.pointerEvents = 'none';
+    Code.setTopArea('demo');
 
     cover.classList.add('demo-cover'); 
     document.body.appendChild(cover);
@@ -516,187 +525,478 @@ Code.loadDemoArea = function () {
 
   });
 
-  resizeLeftBar && resizeLeftBar.addEventListener('mousedown', function (e) {
+  if (resizeLeftBar) {
+    resizeLeftBar.addEventListener('mousedown', function (e) {
 
-    var cover = document.createElement('div');
-    var frame = document.getElementById('demo-frame');
-    var ox = e.pageX;
-    var dw = area.offsetWidth;
-    
-    area.style.opacity = '0.4';
-    frame.style.pointerEvents = 'none';
-    area.className += " resize";
+      var cover = document.createElement('div');
+      var frame = document.getElementById('demo-frame');
+      var ox = e.pageX;
+      var dw = area.offsetWidth;
 
-    cover.classList.add('demo-cover'); 
-    document.body.appendChild(cover);
+      area.style.opacity = '0.4';
+      frame.style.pointerEvents = 'none';
+      area.className += " resize";
+      Code.setTopArea('demo');
 
-    var move = function (evt) { 
-      var rx = evt.pageX;
-      area.style.width = dw - rx + ox - 20 + 'px';
-    }; 
+      cover.classList.add('demo-cover'); 
+      document.body.appendChild(cover);
 
-    var up = function () {
-      area.style.opacity = '1';
-      frame.style.pointerEvents = 'auto';
-      area.classList.remove('resize');
-      cover.removeEventListener('mousemove', move);
-      cover.removeEventListener('mouseup', up);
-      cover.remove();
-      area.dataset.width = area.style.width;
-    };
+      var move = function (evt) { 
+        var rx = evt.pageX;
+        area.style.width = dw - rx + ox - 20 + 'px';
+      }; 
 
-    cover.addEventListener('mousemove', move);
-    cover.addEventListener('mouseup', up);
-    e.stopPropagation();
-    
-  });
+      var up = function () {
+        area.style.opacity = '1';
+        frame.style.pointerEvents = 'auto';
+        area.classList.remove('resize');
+        cover.removeEventListener('mousemove', move);
+        cover.removeEventListener('mouseup', up);
+        cover.remove();
+        area.dataset.width = area.style.width;
+      };
 
-  resizeRightBar && resizeRightBar.addEventListener('mousedown', function (e) {
-
-    var cover = document.createElement('div');
-    var frame = document.getElementById('demo-frame');
-    
-    var frameWidth = area.offsetWidth;
-    var mouseX = e.pageX;
-    var positionRight = document.body.offsetWidth - area.offsetLeft - frameWidth;
-    
-    area.style.opacity = '0.4';
-    frame.style.pointerEvents = 'none';
-    area.className += " resize";
-
-    cover.classList.add('demo-cover'); 
-    document.body.appendChild(cover);
-
-    var move = function (evt) { 
-
-      var mouseMoveX = evt.pageX;
-      var dist = mouseMoveX - mouseX;
-      var width = frameWidth + dist - 20;
-
-      if (width < 225) {
-        return;
-      }
-
-      area.style.width = width + 'px';
-      area.style.right = positionRight - dist + 'px'; 
+      cover.addEventListener('mousemove', move);
+      cover.addEventListener('mouseup', up);
+      e.stopPropagation();
       
-    }; 
+    });
+  }
 
-    var up = function () {
-      area.style.opacity = '1';
-      frame.style.pointerEvents = 'auto';
-      area.classList.remove('resize');
-      cover.removeEventListener('mousemove', move);
-      cover.removeEventListener('mouseup', up);
-      cover.removeEventListener('selectstart', disableSelect);
-      cover.remove();
-      area.dataset.width = area.style.width;
-    };
+  if (resizeRightBar) {
+    resizeRightBar.addEventListener('mousedown', function (e) {
 
-    var disableSelect = function (evt) { 
-      evt.preventDefault();
-    };
-
-    cover.addEventListener('mousemove', move);
-    cover.addEventListener('mouseup', up);
-    cover.addEventListener('selectstart', disableSelect);
-    e.stopPropagation();
-    
-  });
-
-  resizeBottomBar && resizeBottomBar.addEventListener('mousedown', function (e) {
-
-    var cover = document.createElement('div');
-    var frame = document.getElementById('demo-frame');
-    var oy = e.pageY;
-    var dh = area.offsetHeight;
-    
-    area.style.opacity = '0.4';
-    frame.style.pointerEvents = 'none';
-    area.className += " resize";
-
-    cover.classList.add('demo-cover'); 
-    document.body.appendChild(cover);
-
-    var move = function (evt) { 
-      var ry = evt.pageY;
-      area.style.height = dh + ry - oy - 20 + 'px';
-    }; 
-
-    var up = function () {
-      area.style.opacity = '1';
-      frame.style.pointerEvents = 'auto';
-      area.classList.remove('resize');
-      cover.removeEventListener('mousemove', move);
-      cover.removeEventListener('mouseup', up);
-      cover.removeEventListener('selectstart', disableSelect);
-      cover.remove();
-      area.dataset.height = area.style.height;
-    };
-
-    var disableSelect = function (evt) { 
-      evt.preventDefault();
-    }; 
-
-    cover.addEventListener('mousemove', move);
-    cover.addEventListener('mouseup', up);
-    cover.addEventListener('selectstart', disableSelect);
-    e.stopPropagation();
-    
-  });
-
-  resizeBottomBar && resizeTopBar.addEventListener('mousedown', function (e) {
-
-    var cover = document.createElement('div');
-    var frame = document.getElementById('demo-frame');
-    
-    var frameHeight = area.offsetHeight;
-    var mouseY = e.pageY;
-    var positionTop = area.offsetTop;
-    
-    area.style.opacity = '0.4';
-    frame.style.pointerEvents = 'none';
-    area.className += " resize";
-
-    cover.classList.add('demo-cover'); 
-    document.body.appendChild(cover);
-
-    var move = function (evt) { 
-
-      var mouseMoveY = evt.pageY;
-      var dist = mouseMoveY - mouseY;
-      var height = frameHeight - dist - 20;
-
-      if (height < 225 ) {
-        return;
-      }
-
-      area.style.height = height + 'px';
-      area.style.top = positionTop + dist + 'px';
+      var cover = document.createElement('div');
+      var frame = document.getElementById('demo-frame');
       
-    }; 
+      var frameWidth = area.offsetWidth;
+      var mouseX = e.pageX;
+      var positionRight = document.body.offsetWidth - area.offsetLeft - frameWidth;
 
-    var up = function () {
-      area.style.opacity = '1';
-      frame.style.pointerEvents = 'auto';
-      area.classList.remove('resize');
-      cover.removeEventListener('mousemove', move);
-      cover.removeEventListener('mouseup', up);
-      cover.removeEventListener('selectstart', disableSelect);
-      cover.remove();
-      area.dataset.height = area.style.height;
-    };
+      area.style.opacity = '0.4';
+      frame.style.pointerEvents = 'none';
+      area.className += " resize";
+      Code.setTopArea('demo');
 
-    var disableSelect = function (evt) { 
-      evt.preventDefault();
-    };
+      cover.classList.add('demo-cover'); 
+      document.body.appendChild(cover);
 
-    cover.addEventListener('mousemove', move);
-    cover.addEventListener('mouseup', up);
-    cover.addEventListener('selectstart', disableSelect);
-    e.stopPropagation();
-    
-  });
+      var move = function (evt) { 
+
+        var mouseMoveX = evt.pageX;
+        var dist = mouseMoveX - mouseX;
+        var width = frameWidth + dist - 20;
+
+        if (width < 225) {
+          return;
+        }
+
+        area.style.width = width + 'px';
+        area.style.right = positionRight - dist + 'px'; 
+        
+      }; 
+
+      var up = function () {
+        area.style.opacity = '1';
+        frame.style.pointerEvents = 'auto';
+        area.classList.remove('resize');
+        cover.removeEventListener('mousemove', move);
+        cover.removeEventListener('mouseup', up);
+        cover.removeEventListener('selectstart', disableSelect);
+        cover.remove();
+        area.dataset.width = area.style.width;
+      };
+
+      var disableSelect = function (evt) { 
+        evt.preventDefault();
+      };
+
+      cover.addEventListener('mousemove', move);
+      cover.addEventListener('mouseup', up);
+      cover.addEventListener('selectstart', disableSelect);
+      e.stopPropagation();
+      
+    });
+  }
+
+  if (resizeBottomBar) {
+    resizeBottomBar.addEventListener('mousedown', function (e) {
+
+      var cover = document.createElement('div');
+      var frame = document.getElementById('demo-frame');
+      var oy = e.pageY;
+      var dh = area.offsetHeight;
+      
+      area.style.opacity = '0.4';
+      frame.style.pointerEvents = 'none';
+      area.className += " resize";
+      Code.setTopArea('demo');
+
+      cover.classList.add('demo-cover'); 
+      document.body.appendChild(cover);
+
+      var move = function (evt) { 
+        var ry = evt.pageY;
+        area.style.height = dh + ry - oy - 20 + 'px';
+      }; 
+
+      var up = function () {
+        area.style.opacity = '1';
+        frame.style.pointerEvents = 'auto';
+        area.classList.remove('resize');
+        cover.removeEventListener('mousemove', move);
+        cover.removeEventListener('mouseup', up);
+        cover.removeEventListener('selectstart', disableSelect);
+        cover.remove();
+        area.dataset.height = area.style.height;
+      };
+
+      var disableSelect = function (evt) { 
+        evt.preventDefault();
+      }; 
+
+      cover.addEventListener('mousemove', move);
+      cover.addEventListener('mouseup', up);
+      cover.addEventListener('selectstart', disableSelect);
+      e.stopPropagation();
+      
+    });
+  }
+
+  if (resizeTopBar) {
+    resizeTopBar.addEventListener('mousedown', function (e) {
+
+      var cover = document.createElement('div');
+      var frame = document.getElementById('demo-frame');
+      
+      var frameHeight = area.offsetHeight;
+      var mouseY = e.pageY;
+      var positionTop = area.offsetTop;
+      
+      area.style.opacity = '0.4';
+      frame.style.pointerEvents = 'none';
+      area.className += " resize";
+      Code.setTopArea('demo');
+
+      cover.classList.add('demo-cover'); 
+      document.body.appendChild(cover);
+
+      var move = function (evt) { 
+
+        var mouseMoveY = evt.pageY;
+        var dist = mouseMoveY - mouseY;
+        var height = frameHeight - dist - 20;
+
+        if (height < 225 ) {
+          return;
+        }
+
+        area.style.height = height + 'px';
+        area.style.top = positionTop + dist + 'px';
+        
+      }; 
+
+      var up = function () {
+        area.style.opacity = '1';
+        frame.style.pointerEvents = 'auto';
+        area.classList.remove('resize');
+        cover.removeEventListener('mousemove', move);
+        cover.removeEventListener('mouseup', up);
+        cover.removeEventListener('selectstart', disableSelect);
+        cover.remove();
+        area.dataset.height = area.style.height;
+      };
+
+      var disableSelect = function (evt) { 
+        evt.preventDefault();
+      };
+
+      cover.addEventListener('mousemove', move);
+      cover.addEventListener('mouseup', up);
+      cover.addEventListener('selectstart', disableSelect);
+      e.stopPropagation();
+      
+    });
+  }
+
+  if (resizeTopLeftBar) {
+    resizeTopLeftBar.addEventListener('mousedown', function (e) {
+
+      var cover = document.createElement('div');
+      var frame = document.getElementById('demo-frame');
+      
+      var frameHeight = area.offsetHeight;
+      var frameWidth = area.offsetWidth;
+      var mouseX = e.pageX;
+      var mouseY = e.pageY;
+      var positionTop = area.offsetTop;
+      
+      area.style.opacity = '0.4';
+      frame.style.pointerEvents = 'none';
+      area.className += " resize";
+      Code.setTopArea('demo');
+
+      cover.classList.add('demo-cover'); 
+      document.body.appendChild(cover);
+
+      var move = function (evt) { 
+
+        var mouseMoveX = evt.pageX;
+        var mouseMoveY = evt.pageY;
+        var distX = mouseMoveX - mouseX;
+        var distY = mouseMoveY - mouseY;
+        var height = frameHeight - distY - 20;
+        var width = frameWidth - distX - 20;
+
+        if (height < 225 && width >= 225) {
+          area.style.width = width + 'px';
+
+          return;
+        }
+
+        if (height < 225 && width < 225) {
+          return;
+        }
+
+        area.style.width = width + 'px';
+        area.style.height = height + 'px';
+        area.style.top = positionTop + distY + 'px';
+        
+      }; 
+
+      var up = function () {
+        area.style.opacity = '1';
+        frame.style.pointerEvents = 'auto';
+        area.classList.remove('resize');
+        cover.removeEventListener('mousemove', move);
+        cover.removeEventListener('mouseup', up);
+        cover.removeEventListener('selectstart', disableSelect);
+        cover.remove();
+        area.dataset.width = area.style.width;
+        area.dataset.height = area.style.height;
+      };
+
+      var disableSelect = function (evt) { 
+        evt.preventDefault();
+      };
+
+      cover.addEventListener('mousemove', move);
+      cover.addEventListener('mouseup', up);
+      cover.addEventListener('selectstart', disableSelect);
+      e.stopPropagation();
+      
+    });
+  }
+
+  if (resizeTopRightBar) {
+    resizeTopRightBar.addEventListener('mousedown', function (e) {
+
+      var cover = document.createElement('div');
+      var frame = document.getElementById('demo-frame');
+      
+      var frameHeight = area.offsetHeight;
+      var frameWidth = area.offsetWidth;
+      var mouseX = e.pageX;
+      var mouseY = e.pageY;
+      var positionTop = area.offsetTop;
+      var positionRight = document.body.offsetWidth - area.offsetLeft - frameWidth;
+      
+      area.style.opacity = '0.4';
+      frame.style.pointerEvents = 'none';
+      area.className += " resize";
+      Code.setTopArea('demo');
+
+      cover.classList.add('demo-cover'); 
+      document.body.appendChild(cover);
+
+      var move = function (evt) { 
+
+        var mouseMoveX = evt.pageX;
+        var mouseMoveY = evt.pageY;
+        var distX = mouseMoveX - mouseX;
+        var distY = mouseMoveY - mouseY;
+        var height = frameHeight - distY - 20;
+        var width = frameWidth + distX - 20;
+
+        if (width < 225 && height >= 225) {
+          area.style.height = height + 'px';
+          area.style.top = positionTop + distY + 'px';
+
+          return;
+        }
+
+        if (height < 225 && width >= 225) {
+          area.style.width = width + 'px';
+          area.style.right = positionRight - distX + 'px';
+
+          return;
+        }
+
+        if (height < 225 && width < 225) {
+          return;
+        }
+
+        area.style.width = width + 'px';
+        area.style.right = positionRight - distX + 'px';
+
+        area.style.height = height + 'px';
+        area.style.top = positionTop + distY + 'px';
+        
+      }; 
+
+      var up = function () {
+        area.style.opacity = '1';
+        frame.style.pointerEvents = 'auto';
+        area.classList.remove('resize');
+        cover.removeEventListener('mousemove', move);
+        cover.removeEventListener('mouseup', up);
+        cover.removeEventListener('selectstart', disableSelect);
+        cover.remove();
+        area.dataset.width = area.style.width;
+        area.dataset.height = area.style.height;
+      };
+
+      var disableSelect = function (evt) { 
+        evt.preventDefault();
+      };
+
+      cover.addEventListener('mousemove', move);
+      cover.addEventListener('mouseup', up);
+      cover.addEventListener('selectstart', disableSelect);
+      e.stopPropagation();
+      
+    });
+  }
+
+  if (resizeBottomLeftBar) {
+    resizeBottomLeftBar.addEventListener('mousedown', function (e) {
+
+      var cover = document.createElement('div');
+      var frame = document.getElementById('demo-frame');
+      
+      var frameHeight = area.offsetHeight;
+      var frameWidth = area.offsetWidth;
+      var mouseX = e.pageX;
+      var mouseY = e.pageY;
+      
+      area.style.opacity = '0.4';
+      frame.style.pointerEvents = 'none';
+      area.className += " resize";
+      Code.setTopArea('demo');
+
+      cover.classList.add('demo-cover'); 
+      document.body.appendChild(cover);
+
+      var move = function (evt) { 
+
+        var mouseMoveX = evt.pageX;
+        var mouseMoveY = evt.pageY;
+        var distX = mouseMoveX - mouseX;
+        var distY = mouseMoveY - mouseY;
+        var height = frameHeight + distY - 20;
+        var width = frameWidth - distX - 20;
+
+        if (height < 225 && width < 225) {
+          return;
+        }
+
+        area.style.width = width + 'px';
+        area.style.height = height + 'px';
+        
+      }; 
+
+      var up = function () {
+        area.style.opacity = '1';
+        frame.style.pointerEvents = 'auto';
+        area.classList.remove('resize');
+        cover.removeEventListener('mousemove', move);
+        cover.removeEventListener('mouseup', up);
+        cover.removeEventListener('selectstart', disableSelect);
+        cover.remove();
+        area.dataset.width = area.style.width;
+        area.dataset.height = area.style.height;
+      };
+
+      var disableSelect = function (evt) { 
+        evt.preventDefault();
+      };
+
+      cover.addEventListener('mousemove', move);
+      cover.addEventListener('mouseup', up);
+      cover.addEventListener('selectstart', disableSelect);
+      e.stopPropagation();
+      
+    });
+  }
+
+  if (resizeBottomLeftBar) {
+    resizeBottomRightBar.addEventListener('mousedown', function (e) {
+
+      var cover = document.createElement('div');
+      var frame = document.getElementById('demo-frame');
+      
+      var frameHeight = area.offsetHeight;
+      var frameWidth = area.offsetWidth;
+      var mouseX = e.pageX;
+      var mouseY = e.pageY;
+      var positionRight = document.body.offsetWidth - area.offsetLeft - frameWidth;
+      
+      area.style.opacity = '0.4';
+      frame.style.pointerEvents = 'none';
+      area.className += " resize";
+      Code.setTopArea('demo');
+
+      cover.classList.add('demo-cover'); 
+      document.body.appendChild(cover);
+
+      var move = function (evt) { 
+
+        var mouseMoveX = evt.pageX;
+        var mouseMoveY = evt.pageY;
+        var distX = mouseMoveX - mouseX;
+        var distY = mouseMoveY - mouseY;
+        var height = frameHeight + distY - 20;
+        var width = frameWidth + distX - 20;
+
+        if (width < 225 && height >= 225) {
+          area.style.height = height + 'px';
+
+          return;
+        }
+
+        if (height < 225 && width < 225) {
+          return;
+        }
+
+        area.style.width = width + 'px';
+        area.style.height = height + 'px';
+        area.style.right = positionRight - distX + 'px'; 
+        
+      }; 
+
+      var up = function () {
+        area.style.opacity = '1';
+        frame.style.pointerEvents = 'auto';
+        area.classList.remove('resize');
+        cover.removeEventListener('mousemove', move);
+        cover.removeEventListener('mouseup', up);
+        cover.removeEventListener('selectstart', disableSelect);
+        cover.remove();
+        area.dataset.width = area.style.width;
+        area.dataset.height = area.style.height;
+      };
+
+      var disableSelect = function (evt) { 
+        evt.preventDefault();
+      };
+
+      cover.addEventListener('mousemove', move);
+      cover.addEventListener('mouseup', up);
+      cover.addEventListener('selectstart', disableSelect);
+      e.stopPropagation();
+      
+    });
+  }
 
   btn.onclick = function () {
     if (localStorage.demoArea == 'open') {
@@ -707,6 +1007,7 @@ Code.loadDemoArea = function () {
       area.className += " show";
       localStorage.demoArea = 'open';
       btn.className = "notext toolMenu opened";
+      Code.setTopArea('demo');
     }
     Code.reloadSandbox();
   };
@@ -808,6 +1109,10 @@ Code.loadSimulator = function () {
   var resizeRightBar = document.querySelector('#simulator-area .resize-bar-right'); 
   var resizeBottomBar = document.querySelector('#simulator-area .resize-bar-bottom');
   var resizeTopBar = document.querySelector('#simulator-area .resize-bar-top');
+  var resizeTopLeftBar = document.querySelector('#simulator-area .resize-bar-top-left');
+  var resizeTopRightBar = document.querySelector('#simulator-area .resize-bar-top-right');
+  var resizeBottomLeftBar = document.querySelector('#simulator-area .resize-bar-bottom-left');
+  var resizeBottomRightBar = document.querySelector('#simulator-area .resize-bar-bottom-right');
   var storage = {}; 
 
   if (localStorage.simulator) {
@@ -865,6 +1170,16 @@ Code.loadSimulator = function () {
     updateHeight();
   });
 
+  $(area).contents().click(function() {
+    Code.setTopArea('simulator');
+  });
+
+  $(frame).load(function(){
+    $(frame).contents().click(function() {
+      Code.setTopArea('simulator');
+    });
+  }); 
+
   content.addEventListener('mousedown', function (e) {
     e.stopPropagation();
   });
@@ -883,6 +1198,7 @@ Code.loadSimulator = function () {
 
     area.style.opacity = '0.4';
     frame.style.pointerEvents = 'none';
+    Code.setTopArea('simulator');
 
     cover.classList.add('simulator-cover'); 
     document.body.appendChild(cover);
@@ -920,6 +1236,7 @@ Code.loadSimulator = function () {
     area.style.opacity = '0.4';
     frame.style.pointerEvents = 'none';
     area.classList.add('resize');
+    Code.setTopArea('simulator');
 
     cover.classList.add('simulator-cover'); 
     document.body.appendChild(cover);
@@ -960,6 +1277,7 @@ Code.loadSimulator = function () {
     area.style.opacity = '0.4';
     frame.style.pointerEvents = 'none';
     area.classList.add('resize');
+    Code.setTopArea('simulator');
 
     cover.classList.add('simulator-cover'); 
     document.body.appendChild(cover);
@@ -1013,6 +1331,7 @@ Code.loadSimulator = function () {
     area.style.opacity = '0.4';
     frame.style.pointerEvents = 'none';
     area.classList.add('resize');
+    Code.setTopArea('simulator');
 
     cover.classList.add('simulator-cover'); 
     document.body.appendChild(cover);
@@ -1059,6 +1378,7 @@ Code.loadSimulator = function () {
     area.style.opacity = '0.4';
     frame.style.pointerEvents = 'none';
     area.classList.add('resize');
+    Code.setTopArea('simulator');
 
     cover.classList.add('simulator-cover'); 
     document.body.appendChild(cover);
@@ -1084,6 +1404,281 @@ Code.loadSimulator = function () {
       cover.removeEventListener('mouseup', up);
       cover.removeEventListener('selectstart', disableSelect);
       cover.remove();
+      area.dataset.height = area.style.height;
+    };
+
+    var disableSelect = function (evt) { 
+      evt.preventDefault();
+    }; 
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    cover.addEventListener('selectstart', disableSelect);
+    e.stopPropagation();
+
+  });
+
+  resizeTopLeftBar.addEventListener('mousedown', function (e) {
+    
+    if (area.classList.contains('full')) { 
+      return;
+    }
+
+    var cover = document.createElement('div');
+
+    var frameHeight = area.offsetHeight;
+    var frameWidth = area.offsetWidth;
+    var mouseX = e.pageX;
+    var mouseY = e.pageY;
+    var positionTop = area.offsetTop;
+
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.classList.add('resize');
+    Code.setTopArea('simulator');
+
+    cover.classList.add('simulator-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+      var mouseMoveX = evt.pageX;
+      var mouseMoveY = evt.pageY;
+      var distX = mouseMoveX - mouseX;
+      var distY = mouseMoveY - mouseY;
+      var height = frameHeight - distY - 20;
+      var width = frameWidth - distX - 20;
+
+      if (height < 225 && width >= 225) {
+        area.style.width = width + 'px';
+
+        return;
+      }
+
+      if (height < 225 && width < 225) {
+        return;
+      }
+
+      area.style.width = width + 'px';
+      area.style.height = height + 'px';
+      area.style.top = positionTop + distY + 'px';
+    }; 
+
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.removeEventListener('selectstart', disableSelect);
+      cover.remove();
+      area.dataset.width = area.style.width;
+      area.dataset.height = area.style.height;
+    };
+
+    var disableSelect = function (evt) { 
+      evt.preventDefault();
+    }; 
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    cover.addEventListener('selectstart', disableSelect);
+    e.stopPropagation();
+
+  });
+
+  resizeTopRightBar.addEventListener('mousedown', function (e) {
+    
+    if (area.classList.contains('full')) { 
+      return;
+    }
+
+    var cover = document.createElement('div');
+
+    var frameHeight = area.offsetHeight;
+    var frameWidth = area.offsetWidth;
+    var mouseX = e.pageX;
+    var mouseY = e.pageY;
+    var positionTop = area.offsetTop;
+    var positionRight = document.body.offsetWidth - area.offsetLeft - frameWidth;
+
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.classList.add('resize');
+    Code.setTopArea('simulator');
+
+    cover.classList.add('simulator-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+      var mouseMoveX = evt.pageX;
+      var mouseMoveY = evt.pageY;
+      var distX = mouseMoveX - mouseX;
+      var distY = mouseMoveY - mouseY;
+      var height = frameHeight - distY - 20;
+      var width = frameWidth + distX - 20;
+
+      if (width < 225 && height >= 225) {
+        area.style.height = height + 'px';
+        area.style.top = positionTop + distY + 'px';
+
+        return;
+      }
+
+      if (height < 225 && width >= 225) {
+        area.style.width = width + 'px';
+        area.style.right = positionRight - distX + 'px';
+
+        return;
+      }
+
+      if (height < 225 && width < 225) {
+        return;
+      }
+
+      area.style.width = width + 'px';
+      area.style.right = positionRight - distX + 'px';
+
+      area.style.height = height + 'px';
+      area.style.top = positionTop + distY + 'px';
+    }; 
+
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.removeEventListener('selectstart', disableSelect);
+      cover.remove();
+      area.dataset.width = area.style.width;
+      area.dataset.height = area.style.height;
+    };
+
+    var disableSelect = function (evt) { 
+      evt.preventDefault();
+    }; 
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    cover.addEventListener('selectstart', disableSelect);
+    e.stopPropagation();
+
+  });
+
+  resizeBottomLeftBar.addEventListener('mousedown', function (e) {
+    
+    if (area.classList.contains('full')) { 
+      return;
+    }
+
+    var cover = document.createElement('div');
+
+    var frameHeight = area.offsetHeight;
+    var frameWidth = area.offsetWidth;
+    var mouseX = e.pageX;
+    var mouseY = e.pageY;
+
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.classList.add('resize');
+    Code.setTopArea('simulator');
+
+    cover.classList.add('simulator-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+      var mouseMoveX = evt.pageX;
+      var mouseMoveY = evt.pageY;
+      var distX = mouseMoveX - mouseX;
+      var distY = mouseMoveY - mouseY;
+      var height = frameHeight + distY - 20;
+      var width = frameWidth - distX - 20;
+
+      if (height < 225 && width < 225) {
+        return;
+      }
+
+      area.style.width = width + 'px';
+      area.style.height = height + 'px';
+    }; 
+
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.removeEventListener('selectstart', disableSelect);
+      cover.remove();
+      area.dataset.width = area.style.width;
+      area.dataset.height = area.style.height;
+    };
+
+    var disableSelect = function (evt) { 
+      evt.preventDefault();
+    }; 
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    cover.addEventListener('selectstart', disableSelect);
+    e.stopPropagation();
+
+  });
+
+  resizeBottomRightBar.addEventListener('mousedown', function (e) {
+    
+    if (area.classList.contains('full')) { 
+      return;
+    }
+
+    var cover = document.createElement('div');
+
+    var frameHeight = area.offsetHeight;
+    var frameWidth = area.offsetWidth;
+    var mouseX = e.pageX;
+    var mouseY = e.pageY;
+    var positionRight = document.body.offsetWidth - area.offsetLeft - frameWidth;
+
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.classList.add('resize');
+    Code.setTopArea('simulator');
+
+    cover.classList.add('simulator-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+      var mouseMoveX = evt.pageX;
+      var mouseMoveY = evt.pageY;
+      var distX = mouseMoveX - mouseX;
+      var distY = mouseMoveY - mouseY;
+      var height = frameHeight + distY - 20;
+      var width = frameWidth + distX - 20;
+
+      if (width < 225 && height >= 225) {
+        area.style.height = height + 'px';
+
+        return;
+      }
+
+      if (height < 225 && width < 225) {
+        return;
+      }
+
+      area.style.width = width + 'px';
+      area.style.height = height + 'px';
+      area.style.right = positionRight - distX + 'px'; 
+    }; 
+
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.removeEventListener('selectstart', disableSelect);
+      cover.remove();
+      area.dataset.width = area.style.width;
       area.dataset.height = area.style.height;
     };
 
@@ -1151,6 +1746,23 @@ Code.loadSimulator = function () {
     }, 1000);
 
   }
+
+};
+
+Code.setTopArea = function (areaType) {
+  var area = {
+    'demo': 'demo-area',
+    'simulator': 'simulator-area'
+  };
+
+  $.each(area, function (key, val) {
+    var $el = $('#' + val);
+    $el.removeClass("topArea");
+
+    if (areaType === key) {
+      $el.addClass("topArea");
+    }
+  });
 
 };
 
@@ -1470,6 +2082,7 @@ Code.init = function (toolbox) {
     var btn = document.getElementById('simulatorButton');
     area.classList.toggle('show');
     btn.classList.toggle('opened');
+    Code.setTopArea('simulator');
   });
 
   for (var i = 0; i < Code.TABS_.length; i++) {
@@ -1640,7 +2253,9 @@ Code.reloadSandbox = function () {
         data.js = ctx.data.js;
       }
     }
-
+    
+    var area = document.getElementById('demo-area');
+    var simulatorArea = document.getElementById('simulator-area');
     var frame = container.querySelector('#demo-frame');
     if (frame) {
       frame.contentWindow.addEventListener('unload', function () {
@@ -1667,6 +2282,9 @@ Code.reloadSandbox = function () {
       Code.tabClick('blocks');
       frame.addEventListener('load', function () {
         Code.sandboxLoaded = true;
+        $('#demo-frame').contents().click(function() {
+          Code.setTopArea('demo');
+        });
       });
       launcher.sandbox(frame, data);
       Code.bindHotkey(frame.contentWindow.document);
