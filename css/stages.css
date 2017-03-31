@@ -88,7 +88,7 @@ table.nav{
   cursor:pointer;  
   z-index:2;
 }
-#sampleButton,#smaple-menu,#demo-resize-bar,#demo-select,#demoButton,.close-btn{
+#sampleButton,#smaple-menu,#demo-select,#demoButton,.close-btn{
   display:none;
 }
 #demo-area{
@@ -109,6 +109,10 @@ table.nav{
 #demo-frame{
   width:100%;
   height:100%;
+}
+
+#demoArea .resize-bar-left,#demoArea .resize-bar-right,#demoArea .resize-bar-top,#demoArea .resize-bar-bottom,#demoArea .resize-bar-top-left,#demoArea .resize-bar-top-right,#demoArea .resize-bar-bottom-left,#demoArea .resize-bar-bottom-right {
+  display: none;
 }
 
 #simulator-area {
