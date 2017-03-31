@@ -1101,6 +1101,34 @@ td#copyCode div {
   background-position: 1px 4px;
 }
 
+.resize-bar-top-left {
+  top: -5px;
+  left: -4px;
+  cursor: nwse-resize;
+  background-position: 0px -30px;
+}
+
+.resize-bar-top-right {
+  top: -5px;
+  right: -8px;
+  cursor: nesw-resize;
+  background-position: 0px -18px;
+}
+
+.resize-bar-bottom-right {
+  bottom: -5px;
+  right: -8px;
+  cursor: nwse-resize;
+  background-position: 0px -30px;
+}
+
+.resize-bar-bottom-left {
+  bottom: -5px;
+  left: -4px;
+  cursor: nesw-resize;
+  background-position: 0px -18px;
+}
+
 #simulator-area.resize {
   -webkit-user-select: none;
   -moz-user-select: none;
