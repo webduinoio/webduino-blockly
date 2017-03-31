@@ -1053,6 +1053,7 @@ td#copyCode div {
   top: 15px;
   left: 15px;
   bottom: 15px;
+  right: 15px;
   z-index: 999;
 }
 
