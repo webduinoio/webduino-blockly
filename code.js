@@ -1007,6 +1007,7 @@ Code.loadDemoArea = function () {
       area.className += " show";
       localStorage.demoArea = 'open';
       btn.className = "notext toolMenu opened";
+      Code.setTopArea('demo');
     }
     Code.reloadSandbox();
   };
