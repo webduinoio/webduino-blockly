@@ -455,7 +455,6 @@ Code.loadDemoArea = function () {
   var resizeTopRightBar = document.querySelector('#demo-area .resize-bar-top-right');
   var resizeBottomLeftBar = document.querySelector('#demo-area .resize-bar-bottom-left');
   var resizeBottomRightBar = document.querySelector('#demo-area .resize-bar-bottom-right');
-  var simulatorArea = document.getElementById('simulator-area');
 
   area.className = area.className.replace("show", "");
 
@@ -481,9 +480,8 @@ Code.loadDemoArea = function () {
     localStorage.demoAreaHeight = area.style.height;
   });
 
-  $('#demo-area').contents().click(function() {
-    simulatorArea.style.zIndex = '';
-    area.style.zIndex = '9999';
+  $(area).contents().click(function() {
+    Code.setTopArea('demo');
   });
 
   content.addEventListener('mousedown', function (e) {
@@ -502,8 +500,7 @@ Code.loadDemoArea = function () {
 
     area.style.opacity = '0.4';
     frame.style.pointerEvents = 'none';
-    simulatorArea.style.zIndex = '';
-    area.style.zIndex = '9999';
+    Code.setTopArea('demo');
 
     cover.classList.add('demo-cover'); 
     document.body.appendChild(cover);
@@ -538,9 +535,8 @@ Code.loadDemoArea = function () {
 
       area.style.opacity = '0.4';
       frame.style.pointerEvents = 'none';
-      simulatorArea.style.zIndex = '';
-      area.style.zIndex = '9999';
       area.className += " resize";
+      Code.setTopArea('demo');
 
       cover.classList.add('demo-cover'); 
       document.body.appendChild(cover);
@@ -579,9 +575,8 @@ Code.loadDemoArea = function () {
 
       area.style.opacity = '0.4';
       frame.style.pointerEvents = 'none';
-      simulatorArea.style.zIndex = '';
-      area.style.zIndex = '9999';
       area.className += " resize";
+      Code.setTopArea('demo');
 
       cover.classList.add('demo-cover'); 
       document.body.appendChild(cover);
@@ -634,9 +629,8 @@ Code.loadDemoArea = function () {
       
       area.style.opacity = '0.4';
       frame.style.pointerEvents = 'none';
-      simulatorArea.style.zIndex = '';
-      area.style.zIndex = '9999';
       area.className += " resize";
+      Code.setTopArea('demo');
 
       cover.classList.add('demo-cover'); 
       document.body.appendChild(cover);
@@ -681,9 +675,8 @@ Code.loadDemoArea = function () {
       
       area.style.opacity = '0.4';
       frame.style.pointerEvents = 'none';
-      simulatorArea.style.zIndex = '';
-      area.style.zIndex = '9999';
       area.className += " resize";
+      Code.setTopArea('demo');
 
       cover.classList.add('demo-cover'); 
       document.body.appendChild(cover);
@@ -740,9 +733,8 @@ Code.loadDemoArea = function () {
       
       area.style.opacity = '0.4';
       frame.style.pointerEvents = 'none';
-      simulatorArea.style.zIndex = '';
-      area.style.zIndex = '9999';
       area.className += " resize";
+      Code.setTopArea('demo');
 
       cover.classList.add('demo-cover'); 
       document.body.appendChild(cover);
@@ -811,9 +803,8 @@ Code.loadDemoArea = function () {
       
       area.style.opacity = '0.4';
       frame.style.pointerEvents = 'none';
-      simulatorArea.style.zIndex = '';
-      area.style.zIndex = '9999';
       area.className += " resize";
+      Code.setTopArea('demo');
 
       cover.classList.add('demo-cover'); 
       document.body.appendChild(cover);
@@ -890,9 +881,8 @@ Code.loadDemoArea = function () {
       
       area.style.opacity = '0.4';
       frame.style.pointerEvents = 'none';
-      simulatorArea.style.zIndex = '';
-      area.style.zIndex = '9999';
       area.className += " resize";
+      Code.setTopArea('demo');
 
       cover.classList.add('demo-cover'); 
       document.body.appendChild(cover);
@@ -953,9 +943,8 @@ Code.loadDemoArea = function () {
       
       area.style.opacity = '0.4';
       frame.style.pointerEvents = 'none';
-      simulatorArea.style.zIndex = '';
-      area.style.zIndex = '9999';
       area.className += " resize";
+      Code.setTopArea('demo');
 
       cover.classList.add('demo-cover'); 
       document.body.appendChild(cover);
@@ -1123,7 +1112,6 @@ Code.loadSimulator = function () {
   var resizeTopRightBar = document.querySelector('#simulator-area .resize-bar-top-right');
   var resizeBottomLeftBar = document.querySelector('#simulator-area .resize-bar-bottom-left');
   var resizeBottomRightBar = document.querySelector('#simulator-area .resize-bar-bottom-right');
-  var demoArea = document.getElementById('demo-area');
   var storage = {}; 
 
   if (localStorage.simulator) {
@@ -1181,15 +1169,13 @@ Code.loadSimulator = function () {
     updateHeight();
   });
 
-  $('#simulator-area').contents().click(function() {
-    demoArea.style.zIndex = '';
-    area.style.zIndex = '9999';
+  $(area).contents().click(function() {
+    Code.setTopArea('simulator');
   });
 
-  $('#simulator-frame').load(function(){
-    $('#simulator-frame').contents().click(function() {
-      demoArea.style.zIndex = '';
-      area.style.zIndex = '9999';
+  $(frame).load(function(){
+    $(frame).contents().click(function() {
+      Code.setTopArea('simulator');
     });
   }); 
 
@@ -1211,8 +1197,7 @@ Code.loadSimulator = function () {
 
     area.style.opacity = '0.4';
     frame.style.pointerEvents = 'none';
-    demoArea.style.zIndex = '';
-    area.style.zIndex = '9999';
+    Code.setTopArea('simulator');
 
     cover.classList.add('simulator-cover'); 
     document.body.appendChild(cover);
@@ -1249,9 +1234,8 @@ Code.loadSimulator = function () {
 
     area.style.opacity = '0.4';
     frame.style.pointerEvents = 'none';
-    demoArea.style.zIndex = '';
-    area.style.zIndex = '9999';
     area.classList.add('resize');
+    Code.setTopArea('simulator');
 
     cover.classList.add('simulator-cover'); 
     document.body.appendChild(cover);
@@ -1291,9 +1275,8 @@ Code.loadSimulator = function () {
 
     area.style.opacity = '0.4';
     frame.style.pointerEvents = 'none';
-    demoArea.style.zIndex = '';
-    area.style.zIndex = '9999';
     area.classList.add('resize');
+    Code.setTopArea('simulator');
 
     cover.classList.add('simulator-cover'); 
     document.body.appendChild(cover);
@@ -1346,9 +1329,8 @@ Code.loadSimulator = function () {
 
     area.style.opacity = '0.4';
     frame.style.pointerEvents = 'none';
-    demoArea.style.zIndex = '';
-    area.style.zIndex = '9999';
     area.classList.add('resize');
+    Code.setTopArea('simulator');
 
     cover.classList.add('simulator-cover'); 
     document.body.appendChild(cover);
@@ -1394,9 +1376,8 @@ Code.loadSimulator = function () {
 
     area.style.opacity = '0.4';
     frame.style.pointerEvents = 'none';
-    demoArea.style.zIndex = '';
-    area.style.zIndex = '9999';
     area.classList.add('resize');
+    Code.setTopArea('simulator');
 
     cover.classList.add('simulator-cover'); 
     document.body.appendChild(cover);
@@ -1452,9 +1433,8 @@ Code.loadSimulator = function () {
 
     area.style.opacity = '0.4';
     frame.style.pointerEvents = 'none';
-    demoArea.style.zIndex = '';
-    area.style.zIndex = '9999';
     area.classList.add('resize');
+    Code.setTopArea('simulator');
 
     cover.classList.add('simulator-cover'); 
     document.body.appendChild(cover);
@@ -1522,9 +1502,8 @@ Code.loadSimulator = function () {
 
     area.style.opacity = '0.4';
     frame.style.pointerEvents = 'none';
-    demoArea.style.zIndex = '';
-    area.style.zIndex = '9999';
     area.classList.add('resize');
+    Code.setTopArea('simulator');
 
     cover.classList.add('simulator-cover'); 
     document.body.appendChild(cover);
@@ -1600,9 +1579,8 @@ Code.loadSimulator = function () {
 
     area.style.opacity = '0.4';
     frame.style.pointerEvents = 'none';
-    demoArea.style.zIndex = '';
-    area.style.zIndex = '9999';
     area.classList.add('resize');
+    Code.setTopArea('simulator');
 
     cover.classList.add('simulator-cover'); 
     document.body.appendChild(cover);
@@ -1662,9 +1640,8 @@ Code.loadSimulator = function () {
 
     area.style.opacity = '0.4';
     frame.style.pointerEvents = 'none';
-    demoArea.style.zIndex = '';
-    area.style.zIndex = '9999';
     area.classList.add('resize');
+    Code.setTopArea('simulator');
 
     cover.classList.add('simulator-cover'); 
     document.body.appendChild(cover);
@@ -1768,6 +1745,23 @@ Code.loadSimulator = function () {
     }, 1000);
 
   }
+
+};
+
+Code.setTopArea = function (areaType) {
+  var area = {
+    'demo': 'demo-area',
+    'simulator': 'simulator-area'
+  };
+
+  $.each(area, function (key, val) {
+    var $el = $('#' + val);
+    $el.removeClass("topArea");
+
+    if (areaType === key) {
+      $el.addClass("topArea");
+    }
+  });
 
 };
 
@@ -2087,6 +2081,7 @@ Code.init = function (toolbox) {
     var btn = document.getElementById('simulatorButton');
     area.classList.toggle('show');
     btn.classList.toggle('opened');
+    Code.setTopArea('simulator');
   });
 
   for (var i = 0; i < Code.TABS_.length; i++) {
@@ -2264,13 +2259,6 @@ Code.reloadSandbox = function () {
     if (frame) {
       frame.contentWindow.addEventListener('unload', function () {
         createIframe();
-
-        $('#demo-frame').load(function(){
-          $('#demo-frame').contents().click(function() {
-            simulatorArea.style.zIndex = '';
-            area.style.zIndex = '9999';
-          });
-        });
       }, false);
 
       var event = new UIEvent('beforeunload');
@@ -2283,13 +2271,6 @@ Code.reloadSandbox = function () {
       }, 50);
     } else {
       createIframe();
-
-      $('#demo-frame').load(function(){
-        $('#demo-frame').contents().click(function() {
-          simulatorArea.style.zIndex = '';
-          area.style.zIndex = '9999';
-        });
-      });
     }
 
     function createIframe() {
@@ -2300,6 +2281,9 @@ Code.reloadSandbox = function () {
       Code.tabClick('blocks');
       frame.addEventListener('load', function () {
         Code.sandboxLoaded = true;
+        $('#demo-frame').contents().click(function() {
+          Code.setTopArea('demo');
+        });
       });
       launcher.sandbox(frame, data);
       Code.bindHotkey(frame.contentWindow.document);

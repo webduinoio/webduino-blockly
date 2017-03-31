@@ -617,7 +617,7 @@ td#copyCode div {
 
 #demo-area {
   display: none;
-  z-index: 999;
+  z-index: 101;
   position: absolute;
   right: 30px;
   top: 125px;
@@ -630,6 +630,10 @@ td#copyCode div {
   border: 10px solid #ccc;
   transition: opacity .3s;
   cursor: move;
+}
+
+#demo-area.topArea {
+  z-index: 102;
 }
 
 #demo-area.show {
@@ -941,7 +945,7 @@ td#copyCode div {
 #smaple-menu{
   display:none;
   position:absolute;
-  z-index:999;
+  z-index: 101;
   top:115px;
   right:80px;
   box-shadow:0 6px 20px rgba(0,0,0,0.4), 0 1px 3px rgba(0,0,0,0.5);
@@ -1018,14 +1022,14 @@ td#copyCode div {
   left: 0;
   right: 0;
   opacity: 0;
-  z-index: 9999;
+  z-index: 200;
 }
 
 /* simulation area */
 
 #simulator-area {
   display: none;
-  z-index: 999;
+  z-index: 101;
   position: absolute;
   right: 30px;
   top: 125px;
@@ -1038,6 +1042,10 @@ td#copyCode div {
   border: 10px solid #ccc;
   transition: opacity .3s;
   cursor: move;
+}
+
+#simulation-area.topArea {
+  z-index: 102;
 }
 
 #simulator-area.init {
@@ -1054,7 +1062,7 @@ td#copyCode div {
   left: 15px;
   bottom: 15px;
   right: 15px;
-  z-index: 999;
+  z-index: 200;
 }
 
 #simulator-area.show {
@@ -1209,7 +1217,7 @@ td#copyCode div {
   left: 0;
   right: 0;
   opacity: 0;
-  z-index: 9999;
+  z-index: 200;
 }
 
 /* 過濾暫時不必出現的 */
