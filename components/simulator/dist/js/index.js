@@ -83,17 +83,14 @@
   });
 
   app.$watch('language', function (newVal, oldVal) {
-    var $lang = $('#lang');
 
-    if (oldVal.length > 0) {
-      i18next.changeLanguage(newVal, function (err, t) {
-        $('body').localize();
-      });
-    } else {
-      // 第一次更新值
-      $lang.selectpicker('refresh');
-      $lang.selectpicker('val', this.language);
+    if (!oldVal) {
+      return;
     }
+
+    i18next.changeLanguage(newVal, function (err, t) {
+      $('body').localize();
+    });
   });
 
 
@@ -240,7 +237,9 @@
         },
         debug: false
       }, function (err, t) {
+
         addComponents();
+
         jqueryI18next.init(i18next, $);
         $('body').localize();
 
@@ -252,15 +251,15 @@
           }
         });
 
+        document.body.classList.remove('initialize');
         app.language = i18next.language;
         app.i18nextReady = true;
+        utils.event.trigger('language-init', i18next.language);
       });
   }
 
   function sinkEvent() {
     var $body = $('body');
-    var $lang = $('#lang');
-    var d3Body = d3.select('body');
 
     // device id 的輸入
     // 待有屬性面板時，刪除
@@ -317,39 +316,38 @@
         }
       }
     });
-
-    $lang.on('changed.bs.select', function (evt) {
-      app.language = this.value;
+    
+    utils.event.on('language-changed', function (val) {
+      app.language = val;
     });
-
-    d3Body.on('navbar-dragStart', function () {
+    
+    utils.event.on('navbar-dragStart', function () {
       app.selectId = '';
       app.editPathId = '';
     });
 
-    d3Body.on('navbar-dragEnd', function () {
-      var detail = d3.event.detail;
-      app.selectId = detail.targetId;
-      sortComponent(detail.targetId);
+    utils.event.on('navbar-dragEnd', function (data) {
+      app.selectId = data.targetId;
+      sortComponent(data.targetId);
       addHistory();
     });
 
-    d3Body.on('navbar-deleteSomething', function () {
+    utils.event.on('navbar-deleteSomething', function () {
       deleteSomething();
       addHistory();
     });
 
-    d3Body.on('navbar-historyBack', function () {
+    utils.event.on('navbar-historyBack', function () {
       hm.back();
       utils.importLayout(hm.getActive());
     });
 
-    d3Body.on('navbar-historyForward', function () {
+    utils.event.on('navbar-historyForward', function () {
       hm.forward();
       utils.importLayout(hm.getActive());
     });
 
-    d3Body.on('navbar-engineStart', function () {
+    utils.event.on('navbar-engineStart', function () {
       app.instance.forEach(function (inst) {
         inst.destroy();
       });
@@ -358,31 +356,25 @@
       app.selectId = '';
       app.engineStarting = true;
       interact.start();
-
-      $lang.prop('disabled', true);
-      $lang.selectpicker('refresh');
     });
 
-    d3Body.on('navbar-engineStop', function () {
+    utils.event.on('navbar-engineStop', function () {
       drawPath();
       dndComponent();
       editPath2();
       app.engineStarting = false;
       interact.stop();
-
-      $lang.prop('disabled', false);
-      $lang.selectpicker('refresh');
     });
 
-    d3Body.on('navbar-refresh', function () {
+    utils.event.on('navbar-refresh', function () {
       var layout = utils.exportLayout();
       layout.data.components = [];
       layout.data.paths = [];
       utils.importLayout(layout);
       addHistory();
     });
-
-    d3Body.on('navbar-zoomToFit', function () {
+    
+    utils.event.on('navbar-zoomToFit', function () {
       zoomInst.zoomToFit();
     });
 

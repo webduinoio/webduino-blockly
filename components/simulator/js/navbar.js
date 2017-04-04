@@ -11,7 +11,7 @@
     el: '#navbar',
     data: {
       isComponentsVisible: false, // 顯示元件區
-      isPlaying: false // engine 是否啟動中
+      isPlaying: false            // engine 是否啟動中
     },
     mounted: function() {
       this.$el.querySelector('.navbar-right').classList.remove('hidden');
@@ -23,25 +23,25 @@
       engineToggle: function() {
         this.isPlaying = !this.isPlaying;
         if (this.isPlaying) {
-          utils.dispatchEvent('navbar-engineStart');
+          utils.event.trigger('navbar-engineStart');
         } else {
-          utils.dispatchEvent('navbar-engineStop');
+          utils.event.trigger('navbar-engineStop');
         }
       },
       zoomToFit: function () {
-        utils.dispatchEvent('navbar-zoomToFit');
+        utils.event.trigger('navbar-zoomToFit');
       },
       deleteSomething: function () {
-        utils.dispatchEvent('navbar-deleteSomething');
+        utils.event.trigger('navbar-deleteSomething');
       },
       historyBack: function () {
-        utils.dispatchEvent('navbar-historyBack');
+        utils.event.trigger('navbar-historyBack');
       },
       historyForward: function () {
-        utils.dispatchEvent('navbar-historyForward');
+        utils.event.trigger('navbar-historyForward');
       },
       refresh: function () {
-        utils.dispatchEvent('navbar-refresh');
+        utils.event.trigger('navbar-refresh');
       }
     }
   });
@@ -67,6 +67,32 @@
   });
   
   componentDragging();
+  sinkEvent();
+
+  function sinkEvent() {
+    var $lang = $('#lang');
+
+    $lang.on('changed.bs.select', function (evt) {
+      $lang.selectpicker('refresh');
+      $lang.selectpicker('val', this.value);
+      utils.event.trigger('language-changed', this.value);
+    });
+
+    utils.event.on('language-init', function (val) {
+      $lang.selectpicker('refresh');
+      $lang.selectpicker('val', val);
+    });
+
+    utils.event.on('navbar-engineStart', function () {
+      $lang.prop('disabled', true);
+      $lang.selectpicker('refresh');
+    });
+
+    utils.event.on('navbar-engineStop', function () {
+      $lang.prop('disabled', false);
+      $lang.selectpicker('refresh');
+    });
+  }
 
   /**
    * 取得添加元件的 html
@@ -133,7 +159,7 @@
 
         wrapper.setDragging(true);
         navbar.menuToggle();
-        utils.dispatchEvent('navbar-dragStart');
+        utils.event.trigger('navbar-dragStart');
       }
 
       function drag() {
@@ -148,7 +174,7 @@
         wrapper.setDragging(false);
         navbar.menuToggle();
         utils.updateLocationData(dragElement);
-        utils.dispatchEvent('navbar-dragEnd', { targetId: dragElement.id });
+        utils.event.trigger('navbar-dragEnd', { targetId: dragElement.id });
       }
 
     }

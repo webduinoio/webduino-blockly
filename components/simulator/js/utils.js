@@ -366,13 +366,30 @@
     return null;
   }
 
-  function dispatchEvent(type, data) {
-    var params = {
-      bubbles: true,
-      cancelable: true
-    };
-    data && (params.detail = data);
-    d3.select('body').dispatch(type, params);
+  function on(type, handler) {
+    $('body').on(type, function (event, data) {
+      handler(data);
+    });
+  }
+
+  function once(type, handler) {
+    $('body').once(type, function (event, data) {
+      handler(data);
+    });
+  }
+
+  function off(type) {
+    $('body').off(type);
+  }
+
+  function trigger(type, data) {
+    var sendData = [];
+
+    if (data) {
+      sendData.push(data);
+    }
+
+    $('body').trigger(type, sendData);
   }
 
   return {
@@ -394,7 +411,12 @@
     updatePath: updatePath,
     redrawPath: redrawPath,
     getConnectPoint: getConnectPoint,
-    dispatchEvent: dispatchEvent,
-    coordinateTransform: coordinateTransform
+    coordinateTransform: coordinateTransform,
+    event: {
+      on: on,
+      once: once,
+      off: off,
+      trigger: trigger
+    }
   };
 });
