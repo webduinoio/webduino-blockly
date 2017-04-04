@@ -455,6 +455,8 @@ Code.loadDemoArea = function () {
   var resizeTopRightBar = document.querySelector('#demo-area .resize-bar-top-right');
   var resizeBottomLeftBar = document.querySelector('#demo-area .resize-bar-bottom-left');
   var resizeBottomRightBar = document.querySelector('#demo-area .resize-bar-bottom-right');
+  var MIN_WIDTH = 225;
+  var MIN_HEIGHT = 225;
 
   area.className = area.className.replace("show", "");
 
@@ -525,478 +527,454 @@ Code.loadDemoArea = function () {
 
   });
 
-  if (resizeLeftBar) {
-    resizeLeftBar.addEventListener('mousedown', function (e) {
+  resizeLeftBar && resizeLeftBar.addEventListener('mousedown', function (e) {
+    var cover = document.createElement('div');
+    var frame = document.getElementById('demo-frame');
+    var ox = e.pageX;
+    var dw = area.offsetWidth;
 
-      var cover = document.createElement('div');
-      var frame = document.getElementById('demo-frame');
-      var ox = e.pageX;
-      var dw = area.offsetWidth;
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.className += " resize";
+    Code.setTopArea('demo');
 
-      area.style.opacity = '0.4';
-      frame.style.pointerEvents = 'none';
-      area.className += " resize";
-      Code.setTopArea('demo');
+    cover.classList.add('demo-cover'); 
+    document.body.appendChild(cover);
 
-      cover.classList.add('demo-cover'); 
-      document.body.appendChild(cover);
+    var move = function (evt) { 
+      var rx = evt.pageX;
+      var width = dw - rx + ox - 20;
 
-      var move = function (evt) { 
-        var rx = evt.pageX;
-        area.style.width = dw - rx + ox - 20 + 'px';
-      }; 
+      width =  width < MIN_WIDTH ? MIN_WIDTH : width;
+      area.style.width = width + 'px';
+    }; 
 
-      var up = function () {
-        area.style.opacity = '1';
-        frame.style.pointerEvents = 'auto';
-        area.classList.remove('resize');
-        cover.removeEventListener('mousemove', move);
-        cover.removeEventListener('mouseup', up);
-        cover.remove();
-        area.dataset.width = area.style.width;
-      };
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.remove();
+      area.dataset.width = area.style.width;
+    };
 
-      cover.addEventListener('mousemove', move);
-      cover.addEventListener('mouseup', up);
-      e.stopPropagation();
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    e.stopPropagation();
+    
+  });
+
+  resizeRightBar && resizeRightBar.addEventListener('mousedown', function (e) {
+
+    var cover = document.createElement('div');
+    var frame = document.getElementById('demo-frame');
+    
+    var frameWidth = area.offsetWidth;
+    var mouseX = e.pageX;
+    var positionRight = document.body.offsetWidth - area.offsetLeft - frameWidth;
+
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.className += " resize";
+    Code.setTopArea('demo');
+
+    cover.classList.add('demo-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+
+      var mouseMoveX = evt.pageX;
+      var dist = mouseMoveX - mouseX;
+      var width = frameWidth + dist - 20;
+
+      if (width < MIN_WIDTH) {
+        width = MIN_WIDTH;
+        dist = width - frameWidth + 20;
+      }
+
+      area.style.width = width + 'px';
+      area.style.right = positionRight - dist + 'px'; 
       
-    });
-  }
+    }; 
 
-  if (resizeRightBar) {
-    resizeRightBar.addEventListener('mousedown', function (e) {
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.removeEventListener('selectstart', disableSelect);
+      cover.remove();
+      area.dataset.width = area.style.width;
+    };
 
-      var cover = document.createElement('div');
-      var frame = document.getElementById('demo-frame');
+    var disableSelect = function (evt) { 
+      evt.preventDefault();
+    };
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    cover.addEventListener('selectstart', disableSelect);
+    e.stopPropagation();
+    
+  });
+
+  resizeBottomBar && resizeBottomBar.addEventListener('mousedown', function (e) {
+
+    var cover = document.createElement('div');
+    var frame = document.getElementById('demo-frame');
+    var oy = e.pageY;
+    var dh = area.offsetHeight;
+    
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.className += " resize";
+    Code.setTopArea('demo');
+
+    cover.classList.add('demo-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+      var ry = evt.pageY;
+      var height = dh + ry - oy - 20;
+
+      height = height < MIN_HEIGHT ? MIN_HEIGHT : height;
+      area.style.height = height + 'px';
+    }; 
+
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.removeEventListener('selectstart', disableSelect);
+      cover.remove();
+      area.dataset.height = area.style.height;
+    };
+
+    var disableSelect = function (evt) { 
+      evt.preventDefault();
+    }; 
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    cover.addEventListener('selectstart', disableSelect);
+    e.stopPropagation();
+    
+  });
+
+  resizeTopBar && resizeTopBar.addEventListener('mousedown', function (e) {
+
+    var cover = document.createElement('div');
+    var frame = document.getElementById('demo-frame');
+    
+    var frameHeight = area.offsetHeight;
+    var mouseY = e.pageY;
+    var positionTop = area.offsetTop;
+    
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.className += " resize";
+    Code.setTopArea('demo');
+
+    cover.classList.add('demo-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+
+      var mouseMoveY = evt.pageY;
+      var dist = mouseMoveY - mouseY;
+      var height = frameHeight - dist - 20;
+
+      if (height < MIN_HEIGHT) {
+        height = MIN_HEIGHT;
+        dist = frameHeight - 20 - height;
+      }
+
+      area.style.height = height + 'px';
+      area.style.top = positionTop + dist + 'px';
       
-      var frameWidth = area.offsetWidth;
-      var mouseX = e.pageX;
-      var positionRight = document.body.offsetWidth - area.offsetLeft - frameWidth;
+    }; 
 
-      area.style.opacity = '0.4';
-      frame.style.pointerEvents = 'none';
-      area.className += " resize";
-      Code.setTopArea('demo');
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.removeEventListener('selectstart', disableSelect);
+      cover.remove();
+      area.dataset.height = area.style.height;
+    };
 
-      cover.classList.add('demo-cover'); 
-      document.body.appendChild(cover);
+    var disableSelect = function (evt) { 
+      evt.preventDefault();
+    };
 
-      var move = function (evt) { 
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    cover.addEventListener('selectstart', disableSelect);
+    e.stopPropagation();
+    
+  });
 
-        var mouseMoveX = evt.pageX;
-        var dist = mouseMoveX - mouseX;
-        var width = frameWidth + dist - 20;
+  resizeTopLeftBar && resizeTopLeftBar.addEventListener('mousedown', function (e) {
 
-        if (width < 225) {
-          return;
-        }
+    var cover = document.createElement('div');
+    var frame = document.getElementById('demo-frame');
+    
+    var frameHeight = area.offsetHeight;
+    var frameWidth = area.offsetWidth;
+    var mouseX = e.pageX;
+    var mouseY = e.pageY;
+    var positionTop = area.offsetTop;
+    
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.className += " resize";
+    Code.setTopArea('demo');
 
-        area.style.width = width + 'px';
-        area.style.right = positionRight - dist + 'px'; 
-        
-      }; 
+    cover.classList.add('demo-cover'); 
+    document.body.appendChild(cover);
 
-      var up = function () {
-        area.style.opacity = '1';
-        frame.style.pointerEvents = 'auto';
-        area.classList.remove('resize');
-        cover.removeEventListener('mousemove', move);
-        cover.removeEventListener('mouseup', up);
-        cover.removeEventListener('selectstart', disableSelect);
-        cover.remove();
-        area.dataset.width = area.style.width;
-      };
+    var move = function (evt) { 
 
-      var disableSelect = function (evt) { 
-        evt.preventDefault();
-      };
+      var mouseMoveX = evt.pageX;
+      var mouseMoveY = evt.pageY;
+      var distX = mouseMoveX - mouseX;
+      var distY = mouseMoveY - mouseY;
+      var height = frameHeight - distY - 20;
+      var width = frameWidth - distX - 20;
 
-      cover.addEventListener('mousemove', move);
-      cover.addEventListener('mouseup', up);
-      cover.addEventListener('selectstart', disableSelect);
-      e.stopPropagation();
+      if (height < MIN_HEIGHT) {
+        height = MIN_HEIGHT;
+        distY = frameHeight - 20 - height;
+      }
+
+      width = width < MIN_WIDTH ? MIN_WIDTH : width;
+
+      area.style.width = width + 'px';
+      area.style.height = height + 'px';
+      area.style.top = positionTop + distY + 'px';
       
-    });
-  }
+    }; 
 
-  if (resizeBottomBar) {
-    resizeBottomBar.addEventListener('mousedown', function (e) {
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.removeEventListener('selectstart', disableSelect);
+      cover.remove();
+      area.dataset.width = area.style.width;
+      area.dataset.height = area.style.height;
+    };
 
-      var cover = document.createElement('div');
-      var frame = document.getElementById('demo-frame');
-      var oy = e.pageY;
-      var dh = area.offsetHeight;
+    var disableSelect = function (evt) { 
+      evt.preventDefault();
+    };
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    cover.addEventListener('selectstart', disableSelect);
+    e.stopPropagation();
+    
+  });
+
+  resizeTopRightBar && resizeTopRightBar.addEventListener('mousedown', function (e) {
+
+    var cover = document.createElement('div');
+    var frame = document.getElementById('demo-frame');
+    
+    var frameHeight = area.offsetHeight;
+    var frameWidth = area.offsetWidth;
+    var mouseX = e.pageX;
+    var mouseY = e.pageY;
+    var positionTop = area.offsetTop;
+    var positionRight = document.body.offsetWidth - area.offsetLeft - frameWidth;
+    
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.className += " resize";
+    Code.setTopArea('demo');
+
+    cover.classList.add('demo-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+
+      var mouseMoveX = evt.pageX;
+      var mouseMoveY = evt.pageY;
+      var distX = mouseMoveX - mouseX;
+      var distY = mouseMoveY - mouseY;
+      var height = frameHeight - distY - 20;
+      var width = frameWidth + distX - 20;
+
+      if (width < MIN_WIDTH) {
+        width = MIN_WIDTH;
+        distX = width - frameWidth + 20;
+      }
       
-      area.style.opacity = '0.4';
-      frame.style.pointerEvents = 'none';
-      area.className += " resize";
-      Code.setTopArea('demo');
+      if (height < MIN_HEIGHT) {
+        height = MIN_HEIGHT;
+        distY = frameHeight - 20 - height;
+      }
 
-      cover.classList.add('demo-cover'); 
-      document.body.appendChild(cover);
+      area.style.width = width + 'px';
+      area.style.right = positionRight - distX + 'px';
 
-      var move = function (evt) { 
-        var ry = evt.pageY;
-        area.style.height = dh + ry - oy - 20 + 'px';
-      }; 
-
-      var up = function () {
-        area.style.opacity = '1';
-        frame.style.pointerEvents = 'auto';
-        area.classList.remove('resize');
-        cover.removeEventListener('mousemove', move);
-        cover.removeEventListener('mouseup', up);
-        cover.removeEventListener('selectstart', disableSelect);
-        cover.remove();
-        area.dataset.height = area.style.height;
-      };
-
-      var disableSelect = function (evt) { 
-        evt.preventDefault();
-      }; 
-
-      cover.addEventListener('mousemove', move);
-      cover.addEventListener('mouseup', up);
-      cover.addEventListener('selectstart', disableSelect);
-      e.stopPropagation();
+      area.style.height = height + 'px';
+      area.style.top = positionTop + distY + 'px';
       
-    });
-  }
+    }; 
 
-  if (resizeTopBar) {
-    resizeTopBar.addEventListener('mousedown', function (e) {
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.removeEventListener('selectstart', disableSelect);
+      cover.remove();
+      area.dataset.width = area.style.width;
+      area.dataset.height = area.style.height;
+    };
 
-      var cover = document.createElement('div');
-      var frame = document.getElementById('demo-frame');
+    var disableSelect = function (evt) { 
+      evt.preventDefault();
+    };
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    cover.addEventListener('selectstart', disableSelect);
+    e.stopPropagation();
+    
+  });
+
+  resizeBottomLeftBar && resizeBottomLeftBar.addEventListener('mousedown', function (e) {
+
+    var cover = document.createElement('div');
+    var frame = document.getElementById('demo-frame');
+    
+    var frameHeight = area.offsetHeight;
+    var frameWidth = area.offsetWidth;
+    var mouseX = e.pageX;
+    var mouseY = e.pageY;
+    
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.className += " resize";
+    Code.setTopArea('demo');
+
+    cover.classList.add('demo-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+
+      var mouseMoveX = evt.pageX;
+      var mouseMoveY = evt.pageY;
+      var distX = mouseMoveX - mouseX;
+      var distY = mouseMoveY - mouseY;
+      var height = frameHeight + distY - 20;
+      var width = frameWidth - distX - 20;
+
+      width = width < MIN_WIDTH ? MIN_WIDTH : width;
+      height = height < MIN_HEIGHT ? MIN_HEIGHT : height;
+
+      area.style.width = width + 'px';
+      area.style.height = height + 'px';
       
-      var frameHeight = area.offsetHeight;
-      var mouseY = e.pageY;
-      var positionTop = area.offsetTop;
+    }; 
+
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.removeEventListener('selectstart', disableSelect);
+      cover.remove();
+      area.dataset.width = area.style.width;
+      area.dataset.height = area.style.height;
+    };
+
+    var disableSelect = function (evt) { 
+      evt.preventDefault();
+    };
+
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    cover.addEventListener('selectstart', disableSelect);
+    e.stopPropagation();
+    
+  });
+
+  resizeBottomRightBar && resizeBottomRightBar.addEventListener('mousedown', function (e) {
+
+    var cover = document.createElement('div');
+    var frame = document.getElementById('demo-frame');
+    
+    var frameHeight = area.offsetHeight;
+    var frameWidth = area.offsetWidth;
+    var mouseX = e.pageX;
+    var mouseY = e.pageY;
+    var positionRight = document.body.offsetWidth - area.offsetLeft - frameWidth;
+    
+    area.style.opacity = '0.4';
+    frame.style.pointerEvents = 'none';
+    area.className += " resize";
+    Code.setTopArea('demo');
+
+    cover.classList.add('demo-cover'); 
+    document.body.appendChild(cover);
+
+    var move = function (evt) { 
+
+      var mouseMoveX = evt.pageX;
+      var mouseMoveY = evt.pageY;
+      var distX = mouseMoveX - mouseX;
+      var distY = mouseMoveY - mouseY;
+      var height = frameHeight + distY - 20;
+      var width = frameWidth + distX - 20;
+
+      if (width < MIN_WIDTH) {
+        width = MIN_WIDTH;
+        distX = width - frameWidth + 20;
+      }
+
+      height = height < MIN_HEIGHT ? MIN_HEIGHT : height;
+
+      area.style.width = width + 'px';
+      area.style.height = height + 'px';
+      area.style.right = positionRight - distX + 'px'; 
       
-      area.style.opacity = '0.4';
-      frame.style.pointerEvents = 'none';
-      area.className += " resize";
-      Code.setTopArea('demo');
+    }; 
 
-      cover.classList.add('demo-cover'); 
-      document.body.appendChild(cover);
+    var up = function () {
+      area.style.opacity = '1';
+      frame.style.pointerEvents = 'auto';
+      area.classList.remove('resize');
+      cover.removeEventListener('mousemove', move);
+      cover.removeEventListener('mouseup', up);
+      cover.removeEventListener('selectstart', disableSelect);
+      cover.remove();
+      area.dataset.width = area.style.width;
+      area.dataset.height = area.style.height;
+    };
 
-      var move = function (evt) { 
+    var disableSelect = function (evt) { 
+      evt.preventDefault();
+    };
 
-        var mouseMoveY = evt.pageY;
-        var dist = mouseMoveY - mouseY;
-        var height = frameHeight - dist - 20;
-
-        if (height < 225 ) {
-          return;
-        }
-
-        area.style.height = height + 'px';
-        area.style.top = positionTop + dist + 'px';
-        
-      }; 
-
-      var up = function () {
-        area.style.opacity = '1';
-        frame.style.pointerEvents = 'auto';
-        area.classList.remove('resize');
-        cover.removeEventListener('mousemove', move);
-        cover.removeEventListener('mouseup', up);
-        cover.removeEventListener('selectstart', disableSelect);
-        cover.remove();
-        area.dataset.height = area.style.height;
-      };
-
-      var disableSelect = function (evt) { 
-        evt.preventDefault();
-      };
-
-      cover.addEventListener('mousemove', move);
-      cover.addEventListener('mouseup', up);
-      cover.addEventListener('selectstart', disableSelect);
-      e.stopPropagation();
-      
-    });
-  }
-
-  if (resizeTopLeftBar) {
-    resizeTopLeftBar.addEventListener('mousedown', function (e) {
-
-      var cover = document.createElement('div');
-      var frame = document.getElementById('demo-frame');
-      
-      var frameHeight = area.offsetHeight;
-      var frameWidth = area.offsetWidth;
-      var mouseX = e.pageX;
-      var mouseY = e.pageY;
-      var positionTop = area.offsetTop;
-      
-      area.style.opacity = '0.4';
-      frame.style.pointerEvents = 'none';
-      area.className += " resize";
-      Code.setTopArea('demo');
-
-      cover.classList.add('demo-cover'); 
-      document.body.appendChild(cover);
-
-      var move = function (evt) { 
-
-        var mouseMoveX = evt.pageX;
-        var mouseMoveY = evt.pageY;
-        var distX = mouseMoveX - mouseX;
-        var distY = mouseMoveY - mouseY;
-        var height = frameHeight - distY - 20;
-        var width = frameWidth - distX - 20;
-
-        if (height < 225 && width >= 225) {
-          area.style.width = width + 'px';
-
-          return;
-        }
-
-        if (height < 225 && width < 225) {
-          return;
-        }
-
-        area.style.width = width + 'px';
-        area.style.height = height + 'px';
-        area.style.top = positionTop + distY + 'px';
-        
-      }; 
-
-      var up = function () {
-        area.style.opacity = '1';
-        frame.style.pointerEvents = 'auto';
-        area.classList.remove('resize');
-        cover.removeEventListener('mousemove', move);
-        cover.removeEventListener('mouseup', up);
-        cover.removeEventListener('selectstart', disableSelect);
-        cover.remove();
-        area.dataset.width = area.style.width;
-        area.dataset.height = area.style.height;
-      };
-
-      var disableSelect = function (evt) { 
-        evt.preventDefault();
-      };
-
-      cover.addEventListener('mousemove', move);
-      cover.addEventListener('mouseup', up);
-      cover.addEventListener('selectstart', disableSelect);
-      e.stopPropagation();
-      
-    });
-  }
-
-  if (resizeTopRightBar) {
-    resizeTopRightBar.addEventListener('mousedown', function (e) {
-
-      var cover = document.createElement('div');
-      var frame = document.getElementById('demo-frame');
-      
-      var frameHeight = area.offsetHeight;
-      var frameWidth = area.offsetWidth;
-      var mouseX = e.pageX;
-      var mouseY = e.pageY;
-      var positionTop = area.offsetTop;
-      var positionRight = document.body.offsetWidth - area.offsetLeft - frameWidth;
-      
-      area.style.opacity = '0.4';
-      frame.style.pointerEvents = 'none';
-      area.className += " resize";
-      Code.setTopArea('demo');
-
-      cover.classList.add('demo-cover'); 
-      document.body.appendChild(cover);
-
-      var move = function (evt) { 
-
-        var mouseMoveX = evt.pageX;
-        var mouseMoveY = evt.pageY;
-        var distX = mouseMoveX - mouseX;
-        var distY = mouseMoveY - mouseY;
-        var height = frameHeight - distY - 20;
-        var width = frameWidth + distX - 20;
-
-        if (width < 225 && height >= 225) {
-          area.style.height = height + 'px';
-          area.style.top = positionTop + distY + 'px';
-
-          return;
-        }
-
-        if (height < 225 && width >= 225) {
-          area.style.width = width + 'px';
-          area.style.right = positionRight - distX + 'px';
-
-          return;
-        }
-
-        if (height < 225 && width < 225) {
-          return;
-        }
-
-        area.style.width = width + 'px';
-        area.style.right = positionRight - distX + 'px';
-
-        area.style.height = height + 'px';
-        area.style.top = positionTop + distY + 'px';
-        
-      }; 
-
-      var up = function () {
-        area.style.opacity = '1';
-        frame.style.pointerEvents = 'auto';
-        area.classList.remove('resize');
-        cover.removeEventListener('mousemove', move);
-        cover.removeEventListener('mouseup', up);
-        cover.removeEventListener('selectstart', disableSelect);
-        cover.remove();
-        area.dataset.width = area.style.width;
-        area.dataset.height = area.style.height;
-      };
-
-      var disableSelect = function (evt) { 
-        evt.preventDefault();
-      };
-
-      cover.addEventListener('mousemove', move);
-      cover.addEventListener('mouseup', up);
-      cover.addEventListener('selectstart', disableSelect);
-      e.stopPropagation();
-      
-    });
-  }
-
-  if (resizeBottomLeftBar) {
-    resizeBottomLeftBar.addEventListener('mousedown', function (e) {
-
-      var cover = document.createElement('div');
-      var frame = document.getElementById('demo-frame');
-      
-      var frameHeight = area.offsetHeight;
-      var frameWidth = area.offsetWidth;
-      var mouseX = e.pageX;
-      var mouseY = e.pageY;
-      
-      area.style.opacity = '0.4';
-      frame.style.pointerEvents = 'none';
-      area.className += " resize";
-      Code.setTopArea('demo');
-
-      cover.classList.add('demo-cover'); 
-      document.body.appendChild(cover);
-
-      var move = function (evt) { 
-
-        var mouseMoveX = evt.pageX;
-        var mouseMoveY = evt.pageY;
-        var distX = mouseMoveX - mouseX;
-        var distY = mouseMoveY - mouseY;
-        var height = frameHeight + distY - 20;
-        var width = frameWidth - distX - 20;
-
-        if (height < 225 && width < 225) {
-          return;
-        }
-
-        area.style.width = width + 'px';
-        area.style.height = height + 'px';
-        
-      }; 
-
-      var up = function () {
-        area.style.opacity = '1';
-        frame.style.pointerEvents = 'auto';
-        area.classList.remove('resize');
-        cover.removeEventListener('mousemove', move);
-        cover.removeEventListener('mouseup', up);
-        cover.removeEventListener('selectstart', disableSelect);
-        cover.remove();
-        area.dataset.width = area.style.width;
-        area.dataset.height = area.style.height;
-      };
-
-      var disableSelect = function (evt) { 
-        evt.preventDefault();
-      };
-
-      cover.addEventListener('mousemove', move);
-      cover.addEventListener('mouseup', up);
-      cover.addEventListener('selectstart', disableSelect);
-      e.stopPropagation();
-      
-    });
-  }
-
-  if (resizeBottomLeftBar) {
-    resizeBottomRightBar.addEventListener('mousedown', function (e) {
-
-      var cover = document.createElement('div');
-      var frame = document.getElementById('demo-frame');
-      
-      var frameHeight = area.offsetHeight;
-      var frameWidth = area.offsetWidth;
-      var mouseX = e.pageX;
-      var mouseY = e.pageY;
-      var positionRight = document.body.offsetWidth - area.offsetLeft - frameWidth;
-      
-      area.style.opacity = '0.4';
-      frame.style.pointerEvents = 'none';
-      area.className += " resize";
-      Code.setTopArea('demo');
-
-      cover.classList.add('demo-cover'); 
-      document.body.appendChild(cover);
-
-      var move = function (evt) { 
-
-        var mouseMoveX = evt.pageX;
-        var mouseMoveY = evt.pageY;
-        var distX = mouseMoveX - mouseX;
-        var distY = mouseMoveY - mouseY;
-        var height = frameHeight + distY - 20;
-        var width = frameWidth + distX - 20;
-
-        if (width < 225 && height >= 225) {
-          area.style.height = height + 'px';
-
-          return;
-        }
-
-        if (height < 225 && width < 225) {
-          return;
-        }
-
-        area.style.width = width + 'px';
-        area.style.height = height + 'px';
-        area.style.right = positionRight - distX + 'px'; 
-        
-      }; 
-
-      var up = function () {
-        area.style.opacity = '1';
-        frame.style.pointerEvents = 'auto';
-        area.classList.remove('resize');
-        cover.removeEventListener('mousemove', move);
-        cover.removeEventListener('mouseup', up);
-        cover.removeEventListener('selectstart', disableSelect);
-        cover.remove();
-        area.dataset.width = area.style.width;
-        area.dataset.height = area.style.height;
-      };
-
-      var disableSelect = function (evt) { 
-        evt.preventDefault();
-      };
-
-      cover.addEventListener('mousemove', move);
-      cover.addEventListener('mouseup', up);
-      cover.addEventListener('selectstart', disableSelect);
-      e.stopPropagation();
-      
-    });
-  }
+    cover.addEventListener('mousemove', move);
+    cover.addEventListener('mouseup', up);
+    cover.addEventListener('selectstart', disableSelect);
+    e.stopPropagation();
+    
+  });
 
   btn.onclick = function () {
     if (localStorage.demoArea == 'open') {
@@ -1114,6 +1092,8 @@ Code.loadSimulator = function () {
   var resizeBottomLeftBar = document.querySelector('#simulator-area .resize-bar-bottom-left');
   var resizeBottomRightBar = document.querySelector('#simulator-area .resize-bar-bottom-right');
   var storage = {}; 
+  var MIN_WIDTH = 225;
+  var MIN_HEIGHT = 225;
 
   if (localStorage.simulator) {
     try {
@@ -1243,7 +1223,10 @@ Code.loadSimulator = function () {
 
     var move = function (evt) { 
       var rx = evt.pageX;
-      area.style.width = dw - rx + ox - 20 + 'px';
+      var width = dw - rx + ox - 20;
+
+      width = width < MIN_WIDTH ? MIN_WIDTH : width;
+      area.style.width = width + 'px';
     }; 
 
     var up = function () {
@@ -1288,8 +1271,9 @@ Code.loadSimulator = function () {
       var dist = mouseMoveX - mouseX;
       var width = frameWidth + dist - 20;
 
-      if (width < 225) {
-        return;
+      if (width < MIN_WIDTH) {
+        width = MIN_WIDTH;
+        dist = width - frameWidth + 20;
       }
 
       area.style.width = width + 'px';
@@ -1338,7 +1322,10 @@ Code.loadSimulator = function () {
 
     var move = function (evt) { 
       var ry = evt.pageY;
-      area.style.height = dh + ry - oy - 20 + 'px';
+      var height = dh + ry - oy - 20;
+
+      height = height < MIN_HEIGHT ? MIN_HEIGHT : height;
+      area.style.height = height + 'px';  
     }; 
 
     var up = function () {
@@ -1388,8 +1375,9 @@ Code.loadSimulator = function () {
       var dist = mouseMoveY - mouseY;
       var height = frameHeight - dist - 20;
 
-      if (height < 225 ) {
-        return;
+      if (height < MIN_HEIGHT) {
+        height = MIN_HEIGHT;
+        dist = frameHeight - 20 - height;
       }
 
       area.style.height = height + 'px';
@@ -1448,15 +1436,12 @@ Code.loadSimulator = function () {
       var height = frameHeight - distY - 20;
       var width = frameWidth - distX - 20;
 
-      if (height < 225 && width >= 225) {
-        area.style.width = width + 'px';
-
-        return;
+      if (height < MIN_HEIGHT) {
+        height = MIN_HEIGHT;
+        distY = frameHeight - 20 - height;
       }
 
-      if (height < 225 && width < 225) {
-        return;
-      }
+      width = width < MIN_WIDTH ? MIN_WIDTH : width;
 
       area.style.width = width + 'px';
       area.style.height = height + 'px';
@@ -1517,22 +1502,14 @@ Code.loadSimulator = function () {
       var height = frameHeight - distY - 20;
       var width = frameWidth + distX - 20;
 
-      if (width < 225 && height >= 225) {
-        area.style.height = height + 'px';
-        area.style.top = positionTop + distY + 'px';
-
-        return;
+      if (width < MIN_WIDTH) {
+        width = MIN_WIDTH;
+        distX = width - frameWidth + 20;
       }
 
-      if (height < 225 && width >= 225) {
-        area.style.width = width + 'px';
-        area.style.right = positionRight - distX + 'px';
-
-        return;
-      }
-
-      if (height < 225 && width < 225) {
-        return;
+      if (height < MIN_HEIGHT) {
+        height = MIN_HEIGHT;
+        distY = frameHeight - 20 - height;
       }
 
       area.style.width = width + 'px';
@@ -1594,12 +1571,10 @@ Code.loadSimulator = function () {
       var height = frameHeight + distY - 20;
       var width = frameWidth - distX - 20;
 
-      if (height < 225 && width < 225) {
-        return;
-      }
-
+      width = width < MIN_WIDTH ? MIN_WIDTH : width;
+      height = height < MIN_HEIGHT ? MIN_HEIGHT : height;
       area.style.width = width + 'px';
-      area.style.height = height + 'px';
+      area.style.height = height + 'px';      
     }; 
 
     var up = function () {
@@ -1655,16 +1630,12 @@ Code.loadSimulator = function () {
       var height = frameHeight + distY - 20;
       var width = frameWidth + distX - 20;
 
-      if (width < 225 && height >= 225) {
-        area.style.height = height + 'px';
-
-        return;
+      if (width < MIN_WIDTH) {
+        width = MIN_WIDTH;
+        distX = width - frameWidth + 20;
       }
 
-      if (height < 225 && width < 225) {
-        return;
-      }
-
+      height = height < MIN_HEIGHT ? MIN_HEIGHT : height;
       area.style.width = width + 'px';
       area.style.height = height + 'px';
       area.style.right = positionRight - distX + 'px'; 
