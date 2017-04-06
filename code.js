@@ -1121,13 +1121,20 @@ Code.loadSimulator = function () {
   Code.bindClick('runButton', function () {
     var xml = Blockly.Xml.workspaceToDom(Code.workspace);
     var deviceIds = [];
-    var nodes = xml.querySelectorAll('[name="device_"] [name="TEXT"]');
+    var devices = [];
+    var boards = xml.querySelectorAll('block[type="board_ready"]');
+    
+    boards.forEach(function (board) {
+      var id = board.querySelector('[name="device_"] [name="TEXT"]').textContent;
+      var local = board.querySelector('[name="type_"]').textContent === '5';
 
-    nodes.forEach(function (node) {
-      deviceIds.push(node.textContent);
+      devices.push({
+        id: id,
+        local: local
+      });
     });
 
-    frame.contentWindow.blockly.setDeviceId(deviceIds);
+    frame.contentWindow.blockly.setDevice(devices);
     frame.contentWindow.blockly.toggleRunning();
   });
 
