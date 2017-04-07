@@ -1122,8 +1122,8 @@ Code.loadSimulator = function () {
     var xml = Blockly.Xml.workspaceToDom(Code.workspace);
     var deviceIds = [];
     var devices = [];
-    var boards = xml.querySelectorAll('block[type="board_ready"]');
-    
+    var boards = xml.querySelectorAll('block[type="board"],block[type="board_ready"]');
+
     boards.forEach(function (board) {
       var id = board.querySelector('[name="device_"] [name="TEXT"]').textContent;
       var local = board.querySelector('[name="type_"]').textContent === '5';
