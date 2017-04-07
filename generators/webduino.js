@@ -856,9 +856,9 @@ Blockly.JavaScript['board'] = function (block) {
   } else if (dropdown_type_ === '5') {
     // Simulator
     if (checkbox_multi_ === 'TRUE') {
-      type = 'boardReady({' + board + 'device: ' + value_device_ + ', multi: true, transport: \'message\', window: window.parent.frames[0]}, async function (board) {\n';
+      type = 'boardReady({' + board + 'device: ' + value_device_ + ', multi: true, transport: \'message\', window: window.top.frames[0]}, async function (board) {\n';
     } else {
-      type = 'boardReady({' + board + 'device: ' + value_device_ + ', transport: \'message\', window: window.parent.frames[0]}, async function (board) {\n';
+      type = 'boardReady({' + board + 'device: ' + value_device_ + ', transport: \'message\', window: window.top.frames[0]}, async function (board) {\n';
     }
   }
 
