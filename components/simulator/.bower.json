@@ -26,11 +26,11 @@
     "defiant": "defiant-js#^1.4.0",
     "webduino-js": "dist"
   },
-  "_release": "af9d82be4d",
+  "_release": "ff496653d1",
   "_resolution": {
     "type": "branch",
     "branch": "blockly",
-    "commit": "af9d82be4d843a63a546fb51a9efb4ec7a209006"
+    "commit": "ff496653d16c4d0275b736cf81a37ed56835e3a3"
   },
   "_source": "https://git.kingkit.codes/webduino/simulator.git",
   "_target": "blockly",

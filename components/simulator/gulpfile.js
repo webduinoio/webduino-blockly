@@ -20,7 +20,9 @@ gulp.task('clean-dist', function () {
 });
 
 gulp.task('copyFiles', ['clean-dist'], function () {
-  return gulp.src(['./**/*', '!dist{,/**}',
+  return gulp.src([
+      './**/*', 
+      '!dist{,/**}',
       '!node_modules{,/**}',
       '!engine{,*}.html'
     ])
@@ -79,20 +81,13 @@ gulp.task('page-index-js', ['copyFiles'], function () {
     'dist/components/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.min.js',
     'dist/components/i18next-xhr-backend/i18nextXHRBackend.min.js',
     'dist/components/jquery-i18next/jquery-i18next.min.js',
+    'dist/components/defiant/dist/defiant.min.js',
 
     // Engine
-    'dist/js/engine/setImmediate.js',
-    'dist/js/engine/paho.js',
-    'dist/js/engine/webduino.js',
-    'dist/js/engine/core/EventEmitter.js',
-    'dist/js/engine/core/util.js',
-    'dist/js/engine/util/promisify.js',
-    'dist/js/engine/core/Transport.js',
-    'dist/js/engine/core/Pin.js',
-    'dist/js/engine/core/Module.js',
+    'dist/components/webduino-js/dist/webduino-base.js',
     'dist/js/engine/core/Board.js',
-    'dist/js/engine/core/WebArduino.js',
-    'dist/js/engine/core/Arduino.js',
+    'dist/js/engine/transport/MqttTransport.js',
+    'dist/components/webduino-js/src/core/WebArduino.js',
     'dist/js/engine/components/Engine.js',
     'dist/js/engine/components/Led.js',
     'dist/js/engine/components/RGBLed.js',
@@ -100,8 +95,6 @@ gulp.task('page-index-js', ['copyFiles'], function () {
     'dist/js/engine/components/Servo.js',
     'dist/js/engine/components/Matrix.js',
     'dist/js/engine/components/UltraSonic.js',
-    'dist/js/engine/transport/MqttTransport.js',
-    'dist/js/engine/transport/WebSocketTransport.js',
 
     // ui
     'dist/js/roundedCorner.js',
