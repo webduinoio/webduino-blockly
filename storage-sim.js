@@ -219,7 +219,9 @@ BlocklySimStorage.handleRequest_ = function () {
       var toggleBtn = workInfo.toggleBtn;
       var storage;
 
-      if (BlocklySimStorage.httpRequest_.name == 'key') {
+      if (BlocklySimStorage.httpRequest_.name == 'simulator') {
+        BlocklySimStorage.monitorChanges_(workInfo);
+      } else if (BlocklySimStorage.httpRequest_.name == 'key') {
         if (!data.length) return;
 
         data = JSON.parse(data).simulator;
