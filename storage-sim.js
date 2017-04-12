@@ -68,17 +68,15 @@ BlocklySimStorage.backupOnUnload = function (area, frame) {
  */
 BlocklySimStorage.setConfig_ = function (area, frame, toggleBtn, storage, cb) {
 
-  cb = cb || function() {};
-
   if (!frame.contentWindow.blockly) {
-    BlocklySimStorage.loadHandler_ = function () {
-      frame.contentWindow.removeEventListener('load', BlocklySimStorage.loadHandler_);
-      BlocklySimStorage.loadHandler_ = null;
+    frame.contentWindow.addEventListener('load', function aa() {
+      frame.contentWindow.removeEventListener('load', aa);
       BlocklySimStorage.setConfig_(area, frame, toggleBtn, storage, cb);
-    };
-    frame.contentWindow.addEventListener('load', BlocklySimStorage.loadHandler_);
+    });
     return;
   }
+
+  cb = cb || function() {};
 
   var api = frame.contentWindow.blockly;
 
@@ -89,14 +87,7 @@ BlocklySimStorage.setConfig_ = function (area, frame, toggleBtn, storage, cb) {
   // 依 blockly 目前的語系
   api.lang(Code.getLang());
 
-  // 之前存檔的回復
-  // 這是該方法最後的結束點
-  if (storage.config) {
-    api.setConfig(storage.config, cb);
-  } else {
-    setTimeout(cb, 0);
-  }
-
+  // 設定 area 寬高
   if (storage.isFull) {
     area.classList.add('full');
   } else {
@@ -104,10 +95,18 @@ BlocklySimStorage.setConfig_ = function (area, frame, toggleBtn, storage, cb) {
     storage.height && (area.style.height = storage.height);
   }
 
+  // 設定 area 顯示/隱藏
   if (storage.opened) {
     area.classList.add('show');
     toggleBtn.classList.add('opened');
+  } else {
+    area.classList.remove('show');  
+    toggleBtn.classList.remove('opened');
   }
+
+  // 之前存檔的回復
+  api.setConfig(storage.config, cb);
+  
 };
 
 /**
