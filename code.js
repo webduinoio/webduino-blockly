@@ -1091,32 +1091,20 @@ Code.loadSimulator = function () {
   var resizeTopRightBar = document.querySelector('#simulator-area .resize-bar-top-right');
   var resizeBottomLeftBar = document.querySelector('#simulator-area .resize-bar-bottom-left');
   var resizeBottomRightBar = document.querySelector('#simulator-area .resize-bar-bottom-right');
-  var storage = {}; 
-  var MIN_WIDTH = 225;
+  var MIN_WIDTH = 345;
   var MIN_HEIGHT = 225;
 
-  if (localStorage.simulator) {
-    try {
-      storage = JSON.parse(localStorage.simulator);
-    } catch (e) {
-      storage = {};
-    }
+  loadConfig();
+
+  if ('BlocklySimStorage' in window) {
+    // Hook a save function onto unload.
+    BlocklySimStorage.backupOnUnload(area, frame);
   }
 
-  if (frame.contentWindow.blockly) { 
-    frameReady();
-  } else {
-    frame.contentWindow.addEventListener('load', frameReady);
-  }
-
-  window.addEventListener('unload', function () {
-    storage.config = frame.contentWindow.blockly.config();
-    storage.opened = area.classList.contains('show');
-    storage.isFull = area.classList.contains('full');
-    storage.width = area.dataset.width;
-    storage.height = area.dataset.height;
-    localStorage.simulator = JSON.stringify(storage);
-  });
+  // 處理 firefox iframe 中，vue 拋錯的問題
+  setTimeout(function () {
+    area.classList.remove('init');
+  }, 1000);
   
   Code.bindClick('runButton', function () {
     var xml = Blockly.Xml.workspaceToDom(Code.workspace);
@@ -1136,6 +1124,10 @@ Code.loadSimulator = function () {
 
     frame.contentWindow.blockly.setDevice(devices);
     frame.contentWindow.blockly.toggleRunning();
+  });
+
+  Code.bindClick('linkButton', function () {
+    BlocklySimStorage.link(area, frame, btn);
   });
 
   Code.bindClick(closeBtn, function () {
@@ -1691,38 +1683,12 @@ Code.loadSimulator = function () {
     area.style.width = area.dataset.width || '';
   }
 
-  function frameReady() {
-    var api = frame.contentWindow.blockly;
-
-    // 寬度的儲存
-    storage.width && (area.dataset.width = storage.width);
-    storage.height && (area.dataset.height = storage.height);
-
-    // 語系
-    api.lang(Code.getLang());
-
-    // 之前存檔的回復
-    if (storage.config) {
-      api.config(storage.config);
+  function loadConfig() {
+    if ('BlocklySimStorage' in window && BlocklySimStorage.isLinkUrl()) {
+      BlocklySimStorage.retrieveXml(window.location.hash.substring(1), area, frame, btn);
+    } else if ('BlocklySimStorage' in window) {
+      BlocklySimStorage.restoreBlocks(area, frame, btn);
     }
-
-    if (storage.isFull) {
-      area.classList.add('full');
-    }
-
-    updateWidth();
-    updateHeight();
-
-    if (storage.opened) {
-      area.classList.add('show');
-      btn.classList.add('opened');
-    }
-
-    // 處理 firefox iframe 中，vue 拋錯的問題
-    setTimeout(function () {
-      area.classList.remove('init');
-    }, 1000);
-
   }
 
 };
