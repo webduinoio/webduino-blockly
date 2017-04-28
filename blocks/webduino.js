@@ -3479,9 +3479,7 @@ Blockly.Blocks['irled_new'] = {
   init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_IRLED, "紅外線發射，腳位：")
-      .appendField(new Blockly.FieldDropdown([
-        ["9", "9"]
-      ]), "pin_");
+      .appendField(new Blockly.FieldDropdown(Code.getPinDropdown), "pin_");
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
