@@ -334,8 +334,8 @@
         <block type="mobile_deviceorientation_event_val"></block>
         <block type="mobile_devicemotion_event_val"></block>
         <block type="mobile_deviceorientation_event_remove"></block>
-    </category> -->
-  <sep></sep>  
+    </category> 
+  <sep></sep>  -->
   </category>
   <sep></sep>
   <category id="catBoard">
@@ -856,8 +856,8 @@
       <block type="data_firebase_clear"></block>
     </category>
     <sep></sep>
-  </category> -->
-  <sep></sep>
+  </category> 
+  <sep></sep>-->
   <category id="catDemo">
     <category id="catDemoText">
       <block type="demo_show_text"></block>

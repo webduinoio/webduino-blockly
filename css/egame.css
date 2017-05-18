@@ -1,9 +1,41 @@
+body {
+  background-color: #C6DDE0;
+}
+
 header {
   width: 100%;
-  height: 80px;
+  height: 135px;
   min-width: 200px;
-  background-image: url(../media/egame/title.png);
+  background-image: none;
+  position: relative;
+}
+
+#banner-left {
+  background-image: url(../media/egame/banner-left.png);
   background-size: 100% 100%;
+  left: 0;
+  position: absolute;
+  width: 640px;
+  height: 120px;
+}
+
+#banner-middle {
+  background-image: url(../media/egame/banner-middle.png);
+  background-size: 20.39px 120px;
+  background-repeat: repeat-x;
+  left: 640px;
+  position: absolute;
+  width: calc(100% - 983.5px);
+  height: 120px;
+}
+
+#banner-right {
+  background-image: url(../media/egame/banner-right.png);
+  background-size: 100% 100%;
+  right: 0;
+  position: absolute;
+  width: 343.5px;
+  height: 120px;
 }
 
 header > a {
@@ -15,9 +47,155 @@ header > h1 {
 }
 
 .egame .blocklySvg {
-  background-color: #184961;
+  background-color: #C6DDE0;
 }
 
 svg defs>pattern:last-child line {
-  stroke: #143C4E;
+  stroke: #DFEDF0;
+}
+
+table.nav td.tabmax, table td.tabmin {
+  background-color: #C6DDE0;
+}
+
+.blocklyMainBackground {
+  stroke-width: 0 !important;
+}
+
+#tabRow {
+  border: 1px solid #C6DDE0;
+}
+
+#tabRow > td {
+  border: 0px;
+}
+
+table.nav {
+  height: calc(100vh - 160px);
+}
+
+#userMenu, 
+#userMenu span {
+  font-size: 18px;
+}
+
+#userMenu {
+  top: 40px;
+  right: 77px;
+}
+
+#userMenu a,
+#userMenu span,
+#languageMenu {
+  color: #8CFFE8;
+}
+
+.check,
+.linkButton:link,
+#check-device-online:hover,
+button#runButton:hover,
+#check-btn {
+  color: #FFF;
+}
+
+.linkButton,
+#check-device-online,
+#check-device-online:hover {
+  background: #5EB2BF;
+}
+
+.linkButton:hover,
+table.nav td.tabmax button:hover {
+  color: #5EB2BF;
+}
+
+table.nav td.tabmax button {
+  background: #5EB2BF;
+  color: #FFF;
+}
+
+#input-device {
+  background: #c6dde0;
+  color: #008891;
+  box-shadow: inset #5EB2BF 0 0 3px;
+}
+
+.toolMenu div {
+  color: #008891;
+}
+
+.garden {
+  bottom: 0;
+  right: 150px;
+  position: absolute;
+}
+
+table.nav td.tabon {
+  background: #008891;
+  color: #d9feff;
+}
+
+td.tabon {
+  border-bottom-color: #008891 !important;
+}
+
+table.nav td {
+  color: #008891;
+}
+
+.blocklyToolboxDiv {
+  background-color: #008891 !important;
+  color: #d9feff !important;
+}
+
+.blocklyTreeRow.blocklyTreeRow:hover {
+  background-color: rgba(190, 231, 232, 0.5) !important;
+}
+
+.blocklyToolboxDiv .blocklyTreeSelected.blocklyTreeSelected {
+  background-color: #DDFF63 !important; 
+}
+
+.blocklyTreeSelected.blocklyTreeSelected .blocklyTreeLabel {
+  color: #008891 !important;
+}
+
+pre.content {
+  border: 1px solid #008891;
+}
+
+table.nav td.tabmax button.opened {
+  background-color: #008891;
+}
+
+#simulator-area,
+#demo-area {
+  border: 10px solid #5eb2bf;
+  top: 172px;
+  right: 36px;
+}
+
+.resize-area { 
+  background-image: url(../media/egame/resize-bar.png);
+}
+
+table.nav td.tabmax button.opened:hover {
+  color: #d9feff;
+}
+
+.blocklyFlyoutBackground {
+  fill: #A1C4CC !important;
+}
+
+td#copyCode:after {
+  background: #5eb2bf !important;
+  color: #ffffff;
+}
+
+td#copyCode:before {
+  border-color: transparent rgb(94, 178, 191) transparent transparent;
+}
+
+td#copyCode:hover:before {
+  border-color: transparent rgb(94, 178, 191) transparent transparent;
 }
