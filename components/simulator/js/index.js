@@ -130,7 +130,14 @@
   });
 
   // 縮放功能
-  var zoomInst = new Zoom('svg', '.zoom-container');
+  var zoomInst = new Zoom({
+    selector: 'svg',
+    trasnformTarget: '.zoom-container',
+    afterZoom: function () {
+      addHistory();
+    }
+  });
+  window._zoomInst = zoomInst;
 
   // 歷史管理
   var hm = new HistoryManager();
@@ -376,6 +383,7 @@
     
     utils.event.on('navbar-zoomToFit', function () {
       zoomInst.zoomToFit();
+      addHistory();
     });
 
   }

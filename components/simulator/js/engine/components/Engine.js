@@ -49,6 +49,7 @@
     console.log("Engine start...");
     board = new webduino[createJSON.type]({
       device: createJSON.id,
+      transport: createJSON.local ? 'message' : 'mqtt',
       multi: true
     });
     board.begin();

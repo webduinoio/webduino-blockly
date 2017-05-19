@@ -13,6 +13,8 @@ var imagemin = require('gulp-imagemin');
 var path = require('path');
 var moment = require('moment');
 var fileSuffix = moment().format('YYYYMMDDHHmmss');
+var ghtmlSrc = require('gulp-html-src');
+var dom  = require('gulp-dom')
 
 
 gulp.task('clean-dist', function () {
@@ -21,10 +23,15 @@ gulp.task('clean-dist', function () {
 
 gulp.task('copyFiles', ['clean-dist'], function () {
   return gulp.src([
-      './**/*', 
+      './**/*',
+      '!js{,/**}',
+      '!css{,/**}',
       '!dist{,/**}',
       '!node_modules{,/**}',
-      '!engine{,*}.html'
+      '!engine{,*}.html',
+      '!gulpfile.js',
+      '!package.json',
+      '!bower.json'
     ])
     .pipe(gulp.dest('dist/'));
 });
@@ -37,7 +44,7 @@ gulp.task('page-index-media', ['copyFiles'], function () {
 
 gulp.task('page-index-less', ['copyFiles'], function () {
   return gulp.src([
-      'dist/css/less/*.less',
+      'css/less/*.less',
     ])
     .pipe(concat('temp.less'))
     .pipe(less())
@@ -68,60 +75,8 @@ gulp.task('page-index-css', ['copyFiles', 'page-index-less'], function () {
 });
 
 gulp.task('page-index-js', ['copyFiles'], function () {
-  var jsList = [
-    // other
-    'dist/components/vue/dist/vue.min.js',
-    'dist/components/d3/d3.min.js',
-    'dist/components/jquery/dist/jquery.min.js',
-    'dist/components/bootstrap/dist/js/bootstrap.min.js',
-    'dist/components/bootstrap-select/dist/js/bootstrap-select.min.js',
-    'dist/components/Snap.svg/dist/snap.svg-min.js',
-    'dist/components/moment/min/moment.min.js',
-    'dist/components/i18next/i18next.min.js',
-    'dist/components/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.min.js',
-    'dist/components/i18next-xhr-backend/i18nextXHRBackend.min.js',
-    'dist/components/jquery-i18next/jquery-i18next.min.js',
-    'dist/components/defiant/dist/defiant.min.js',
-
-    // Engine
-    'dist/components/webduino-js/dist/webduino-base.js',
-    'dist/js/engine/core/Board.js',
-    'dist/js/engine/transport/MqttTransport.js',
-    'dist/components/webduino-js/src/core/WebArduino.js',
-    'dist/js/engine/components/Engine.js',
-    'dist/js/engine/components/Led.js',
-    'dist/js/engine/components/RGBLed.js',
-    'dist/js/engine/components/Buzzer.js',
-    'dist/js/engine/components/Servo.js',
-    'dist/js/engine/components/Matrix.js',
-    'dist/js/engine/components/UltraSonic.js',
-
-    // ui
-    'dist/js/roundedCorner.js',
-    'dist/js/components/arduino-uno.js',
-    'dist/js/components/led.js',
-    'dist/js/components/servo.js',
-    'dist/js/components/matrix.js',
-    'dist/js/components/rgbled.js',
-    'dist/js/components/button.js',
-    'dist/js/components/buzzer.js',
-    'dist/js/components/ultrasonic.js',
-    'dist/js/components/hand.js',
-    'dist/js/history.js',
-    'dist/js/utils.js',
-    'dist/js/interact.js',
-    'dist/js/navbar.js',
-    'dist/js/zoom.js',
-    'dist/js/drawPath.js',
-    'dist/js/editPath.js',
-    'dist/js/editPath2.js',
-    'dist/js/dndComponent.js',
-    'dist/js/focusPoint.js',
-    'dist/js/index.js',
-    'dist/js/blockly.js'
-  ];
-
-  return gulp.src(jsList)
+  return gulp.src('index.html')
+    .pipe(ghtmlSrc())
     .pipe(concat('temp.js'))
     .pipe(uglify())
     .pipe(rename({
@@ -133,8 +88,15 @@ gulp.task('page-index-js', ['copyFiles'], function () {
 
 gulp.task('page-index-html', ['copyFiles'], function () {
   return gulp.src('dist/index.html')
+    .pipe(dom(function(){
+      this.querySelectorAll('body')[0].setAttribute('data-timestamp', fileSuffix);
+      return this;
+    }))
     .pipe(htmlreplace({
-      'css': 'css/bundle-' + fileSuffix + '.css',
+      'css': [
+        'components/bootstrap/dist/css/bootstrap.min.css',
+        'css/bundle-' + fileSuffix + '.css'
+      ],
       'js': 'js/bundle-' + fileSuffix + '.js'
     }))
     .pipe(htmlmin({

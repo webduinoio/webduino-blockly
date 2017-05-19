@@ -2,7 +2,7 @@
 
   "use strict";
 
-  var _deviceIds = [];
+  var _device;
 
   function updateDeviceId_() {
     var ArduinoUno = window._components.ArduinoUno;
@@ -13,9 +13,10 @@
     });
 
     // 在積木及模擬器皆只有一個裝置時，才做
-    if (_deviceIds.length === 1 && unoIds.length === 1) {
+    if (_device.length === 1 && unoIds.length === 1) {
       ArduinoUno.updateProperty(unoIds[0], {
-        deviceId: _deviceIds[0]
+        deviceId: _device[0].id,
+        local: _device[0].local
       });
     }
   }
@@ -39,27 +40,30 @@
     window.navbar.engineToggle();
   }
 
-  function setDeviceId(ids) {
-    if (typeof ids === 'string') {
-      _deviceIds = [ids];
-    }
-
-    if (Array.isArray(ids)) {
-      _deviceIds = ids.slice();
-    }
+  function setDevice(device) {
+    _device = device.slice();
   }
 
-  function config(obj) {
+  function setConfig(obj, cb) {
+    cb = cb || function () {};
+
     if (!window.app.isReady()) {
-      readyHandler_(config, this, [obj]);
+      readyHandler_(setConfig, this, [obj, cb]);
       return;
     }
 
-    if (obj) {
-      utils.importLayout(obj);
-    } else {
-      return utils.exportLayout();
+    if (!obj) {
+      obj = utils.exportLayout();
+      obj.data.components = [];
+      obj.data.paths = [];
     }
+
+    utils.importLayout(obj);
+    cb();
+  }
+
+  function getConfig() {
+    return utils.exportLayout();
   }
 
   function language(val) {
@@ -78,11 +82,17 @@
     $('#lang').selectpicker('val', mapping[val]);
   }
 
+  function isReady() {
+    return window.app.isReady();
+  }
+
   window.blockly = {
-    setDeviceId: setDeviceId,
+    setDevice: setDevice,
     toggleRunning: toggleRunning,
-    config: config,
-    lang: language
+    setConfig: setConfig,
+    getConfig: getConfig,
+    lang: language,
+    isReady: isReady
   };
 
 })();

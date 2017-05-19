@@ -139,6 +139,7 @@
       boards[elem.id] = {
         id: elem.id,
         deviceId: ArduinoUno.getProperty(elem.id, 'deviceId'),
+        local: ArduinoUno.getProperty(elem.id, 'local') === 'true',
         type: elem.dataset.type,
         connector: []
       };
@@ -255,6 +256,7 @@
         id: board.deviceId,
         name: id, // DOM element id
         type: "WebArduino",
+        local: board.local,
         connector: []
       };
       var connector = board.connector;
