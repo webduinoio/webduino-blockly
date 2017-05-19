@@ -106,7 +106,7 @@
 
   /**
    * 取得目標元素在 svg (viewport) 的座標
-   * @param  {object} svgElement - svg element
+   * @param  {SVGElement} svgElement - svg element
    * @return {object} {x, y}
    */
   function getViewportCoordinate(svgElement) {
@@ -129,7 +129,7 @@
 
   /**
    * 取得矩形中心點
-   * @param  {object} svgElement - svg rectangle element
+   * @param  {SVGElement} svgElement - svg rectangle element
    * @return {object} {x, y}
    */
   function getRectCenter(svgElement) {
@@ -141,8 +141,22 @@
     }
   }
 
-  function getCenter(svgElement) {
-    return getRectCenter(svgElement);
+  /**
+   * 取得元素的中心座標
+   * @param  {SVGElement} svgElement - svg element
+   * @param  {string} containerSelector  - container，指定座標系統，預設為 screen
+   * @return {object} {x, y}
+   */
+  function getCenter(svgElement, containerSelector) {
+    var centerPoint = getRectCenter(svgElement);
+    var elem;
+
+    if (containerSelector) {
+      elem = document.querySelector(containerSelector);
+      return coordinateTransform(elem, centerPoint);
+    }
+
+    return centerPoint;
   }
   
   /**
@@ -160,6 +174,7 @@
       "name": "svg",
       "width": rect.width,
       "height": rect.height,
+      "zoom": _zoomInst.getTransform(),
       "data": {
         "components": clone(comps.data()),
         "paths": clone(paths.data())
@@ -179,12 +194,15 @@
     var editContent = d3.select('svg .edit-content');
 
     // clear content
-
     area.selectAll('*').remove();
     pathContainer.selectAll('*').remove();
     editContent.selectAll('*').remove();
 
-    // 比例尺的部份先不處理
+    // 比例尺的部份
+    // 相容之前釋出的 blockly 版本
+    if (jsonObj.zoom) {
+      _zoomInst.setTransform(jsonObj.zoom, true);
+    }
     
     // 匯入資料
     // 待處理
@@ -344,23 +362,26 @@
   /**
    * 取得目標元素所對應的連接點座標
    * @param  {element} elem - html element
+   * @param  {string} containerSelector  - container，指定座標系統，預設為 screen
    * @return {object} 回傳座標資訊, ex: {x: 1, y: 1, component: {id: 'xxx', type: 'led', pin: 'xxx'}}
    */
-  function getConnectPoint(elem) {
+  function getConnectPoint(elem, containerSelector) {
     var $elem = $(elem);
     var $com = $elem.parents('.component').first();
     var coor;
 
-    if ($elem.parents('[name="pinGroup"]').length > 0) {
-      if ($elem.is('rect')) {
-        coor = getRectCenter(elem);
-        coor.component = {
-          id: $com.attr('id'),
-          type: $com.get(0).dataset.type,
-          pin: $elem.attr('name')
-        };
-        return coor;
-      }
+    if (!$elem.parents('[name="pinGroup"]').length) {
+      return null;
+    }
+
+    if ($elem.is('rect')) {
+      coor = getCenter(elem, containerSelector);
+      coor.component = {
+        id: $com.attr('id'),
+        type: $com.get(0).dataset.type,
+        pin: $elem.attr('name')
+      };
+      return coor;
     }
 
     return null;
@@ -397,7 +418,7 @@
     guid: guid,
     getTransformObj: getTransformObj,
     getViewportCoordinate: getViewportCoordinate,
-    getRectCenter: getRectCenter,
+    // getRectCenter: getRectCenter,
     getCenter: getCenter,
     clone: clone,
     exportLayout: exportLayout,

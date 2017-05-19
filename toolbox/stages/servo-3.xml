@@ -27,8 +27,12 @@
   <category id="catBoard">
     <block type="board_ready">
       <value name="device_">
-        <block type="text"></block>
+        <block type="text">
+          <field name="TEXT">1234</field>
+        </block>
       </value>
+      <field name="type_">5</field>
+      <field name="rate_">250</field>
     </block>
   </category>
   <category id="catRGBLed">

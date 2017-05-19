@@ -1036,7 +1036,7 @@ td#copyCode div {
   width: 400px;
   height: 400px;
   min-height: 225px;
-  min-width: 225px;
+  min-width: 345px;
   background: rgba(255, 255, 255, 1);
   border-radius: 20px;
   border: 10px solid #ccc;

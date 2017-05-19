@@ -1729,6 +1729,7 @@
 	<g name="property">
 		
 			<text name="deviceId" transform="matrix(1 0 0 1 625.719 212.915)" fill="#FFFFFF" font-family="'ArialMT'" font-size="20" letter-spacing="1" text-decoration=" underline">05O0</text>
+			<text name="local" style="display:none">false</text>
 	</g>
 	<g name="pinGroup" opacity="0">
 		<rect name="unoPin-d-unknow1" x="458.896" y="13.054" fill="#FF0000" width="8" height="8"/>

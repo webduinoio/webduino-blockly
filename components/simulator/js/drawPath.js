@@ -26,6 +26,7 @@
     this._drawStartFn = config.drawStart || function () {};
     this._drawDragFn = config.drawDrag || function () {};
     this._drawEndFn = config.drawEnd || function () {};
+    this._pointsMgr = new ConnectPoint();;
     this._config = config;
 
     this._target.call(d3Drag(this));
@@ -50,7 +51,8 @@
   }
 
   function startHandler() {
-    this._startPoint = parsePoint(utils.getConnectPoint(d3.event.sourceEvent.target));
+    this._pointsMgr.update();
+    this._startPoint = this._pointsMgr.find(d3.event.x, d3.event.y, 20)[2];
     this._line = [this._startPoint, this._startPoint];
     this._path.push(this._line);
     this._gNode = this._pathContainer.append('g').attr('id', utils.guid()).node();
@@ -61,14 +63,29 @@
 
   function dragHandler() {
     d3.event.sourceEvent.preventDefault();
+
+    // 這點的坐標系統是 _dragContainer，不是 screen
     var point = {
       x: d3.event.x,
       y: d3.event.y
     };
     var target = getEventTarget();
-    var cp = utils.getConnectPoint(target);
+    var cloestPoint = this._pointsMgr.find(point.x, point.y, 20);
+    
+    if (cloestPoint) {
+      // 取得 connectPoint 中，點的資訊
+      cloestPoint = cloestPoint[2];
+      target = cloestPoint.elem;
+    }
+
+    // 最接近的點，不能是起點
+    if (cloestPoint === this._startPoint) {
+      cloestPoint = null;
+      target = null;
+    }
+    
     this._updatePath(point);
-    this._endPoint = parsePoint(cp);
+    this._endPoint = cloestPoint;
     this._drawDragFn(target);
   }
 
@@ -91,8 +108,13 @@
       pathId = d3.select(this._gNode).attr('id');
     }
 
-    this._path = [];
+    this._startPoint = null;
     this._endPoint = null;
+    this._pathNode = null;
+    this._gNode = null;
+    this._line = null;
+    this._path = [];
+    this._pointsMgr.clear();
     this._drawEndFn(pathId);
   }
 
@@ -111,24 +133,9 @@
     }
   }
 
-  /**
-   * 轉換座標
-   * 來源座標為視窗座標系統下的座標，必須轉換為之後使用的座標系統的座標 ( .zoom-container 中的座標 )。
-   * @param {object} pointObj - 會包含座標 x, y 外，可能還有其他資訊
-   * @return {object} 座標 x, y
-   */
-  function parsePoint(pointObj) {
-    var point;
-    if (pointObj) {
-      point = { x: pointObj.x, y: pointObj.y };
-      point = utils.coordinateTransform(d3.select('.zoom-container').node(), point);
-      $.extend(pointObj, point);
-    }
-    return pointObj;
-  }
-
   DrawPath.prototype.destroy = function () {
     this._target.on('.drag', null);
+    this._pointsMgr.destroy();
   };
   
   return DrawPath;

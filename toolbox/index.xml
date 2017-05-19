@@ -346,8 +346,11 @@
     </block> -->
     <block type="board" tags="fly,mark1,smart">
       <value name="device_">
-        <block type="text"></block>
+        <block type="text">
+          <field name="TEXT">1234</field>
+        </block>
       </value>
+      <field name="type_">5</field>
       <field name="rate_">250</field>
     </block>
     <block type="all_board_ready"></block>
