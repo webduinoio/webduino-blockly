@@ -91,10 +91,6 @@ table.nav {
   color: #8CFFE8;
 }
 
-#userMenu a:first-child {
-  display:none;
-}
-
 .check,
 .linkButton:link,
 #check-device-online:hover,
@@ -130,9 +126,9 @@ table.nav td.tabmax button {
 }
 
 .garden {
-  width: 50vw;
+  width: 40vw;
   bottom: 0;
-  right: 150px;
+  right: 32%;
   position: absolute;
   pointer-events: none;
   user-select: none;
@@ -173,11 +169,9 @@ table.nav td.tabmax button.opened {
   background-color: #008891;
 }
 
-#simulator-area,
-#demo-area {
+#simulator-area {
   border: 10px solid #5eb2bf;
   top: 172px;
-  right: 36px;
 }
 
 .resize-area { 
@@ -203,4 +197,13 @@ td#copyCode:before {
 
 td#copyCode:hover:before {
   border-color: transparent rgb(94, 178, 191) transparent transparent;
+}
+
+#cuteman01::before {
+  background-color: #C6DDE0;
+  width: calc(32vw - 40px);
+}
+
+#demoArea {
+  height: calc(100% - 181px);
 }
