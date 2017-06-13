@@ -664,6 +664,7 @@ Blockly.Msg.WEBDUINO_MAX7219_BTN3 = "Button 3";
 Blockly.Msg.WEBDUINO_MAX7219_BTNSTOP = "Stop";
 Blockly.Msg.WEBDUINO_MAX7219_BTNOFF = "Turn off";
 Blockly.Msg.WEBDUINO_MAX7219_DO = "do:";
+Blockly.Msg.WEBDUINO_MAX7219_SET_SHOW_VALUE = "show value:";
 
 // Tutorials - ADXL345
 

@@ -741,6 +741,7 @@ Blockly.Msg.WEBDUINO_MAX7219_BTN3 = "按钮 3";
 Blockly.Msg.WEBDUINO_MAX7219_BTNSTOP = "停止动画";
 Blockly.Msg.WEBDUINO_MAX7219_BTNOFF = "关闭";
 Blockly.Msg.WEBDUINO_MAX7219_DO = "执行";
+Blockly.Msg.WEBDUINO_MAX7219_SET_SHOW_VALUE = "显示数值";
 
 // Tutorials - ADXL345
 

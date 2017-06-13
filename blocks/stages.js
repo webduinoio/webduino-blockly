@@ -903,6 +903,18 @@ Blockly.Blocks['tutorial_max7219_button'] = {
   }
 };
 
+Blockly.Blocks['stage_max7219_set_value'] = {
+  init: function () {
+    this.appendValueInput("show_")
+      .appendField(Blockly.Msg.WEBDUINO_MAX7219_SET_SHOW_VALUE, "show value:");
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 /*
                 .o8              oooo    .oooo.         .o     oooooooo 
                "888              `888  .dP""Y88b      .d88    dP""""""" 

@@ -771,6 +771,12 @@ Blockly.JavaScript['tutorial_max7219_button'] = function (block) {
   return code;
 };
 
+Blockly.JavaScript['stage_max7219_set_value'] = function (block) {
+  var value_show_ = Blockly.JavaScript.valueToCode(block, 'show_', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'document.getElementById("show").innerHTML = ' + value_show_ + ';\n';
+  return code;
+};
+
 /*
                 .o8              oooo    .oooo.         .o     oooooooo 
                "888              `888  .dP""Y88b      .d88    dP""""""" 
