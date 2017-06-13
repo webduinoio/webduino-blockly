@@ -742,6 +742,7 @@ Blockly.Msg.WEBDUINO_MAX7219_BTNSTOP = "停止動畫";
 Blockly.Msg.WEBDUINO_MAX7219_BTNOFF = "關閉";
 Blockly.Msg.WEBDUINO_MAX7219_DO = "執行";
 Blockly.Msg.WEBDUINO_MAX7219_SET_SHOW_VALUE = "顯示數值";
+Blockly.Msg.WEBDUINO_MAX7219_GET_SELECT_VALUE = "選擇的數值";
 
 // Tutorials - ADXL345
 

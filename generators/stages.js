@@ -777,6 +777,11 @@ Blockly.JavaScript['stage_max7219_set_value'] = function (block) {
   return code;
 };
 
+Blockly.JavaScript['stage_max7219_get_value'] = function (block) {
+  var code = 'Number(document.getElementById("select").value)';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
 /*
                 .o8              oooo    .oooo.         .o     oooooooo 
                "888              `888  .dP""Y88b      .d88    dP""""""" 

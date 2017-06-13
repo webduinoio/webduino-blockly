@@ -915,6 +915,17 @@ Blockly.Blocks['stage_max7219_set_value'] = {
   }
 };
 
+Blockly.Blocks['stage_max7219_get_value'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField(Blockly.Msg.WEBDUINO_MAX7219_GET_SELECT_VALUE, "選擇的數值");
+    this.setOutput(true);
+    this.setTooltip('');
+    this.setColour(Blockly.Blocks.colour.HUESON);
+    this.setHelpUrl('https://webduino.io');
+  }
+};
+
 /*
                 .o8              oooo    .oooo.         .o     oooooooo 
                "888              `888  .dP""Y88b      .d88    dP""""""" 

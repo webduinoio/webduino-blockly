@@ -1,0 +1,160 @@
+<xml id="toolbox" style="display: none">
+  <category id="catVariables" custom="VARIABLE"></category>
+  <category id="catLogic">
+    <block type="controls_if"></block>
+    <block type="logic_compare"></block>
+    <block type="logic_operation"></block>
+  </category>
+  <category id="catLoops">
+    <block type="controls_repeat_ext">
+      <value name="TIMES">
+        <block type="math_number">
+          <field name="NUM">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="controls_whileUntil"></block>
+    <block type="controls_for">
+      <value name="FROM">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+      <value name="TO">
+        <block type="math_number">
+          <field name="NUM">10</field>
+        </block>
+      </value>
+      <value name="BY">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+    </block>
+    <block type="controls_flow_statements"></block>
+  </category>
+  <category id="catMath">
+    <block type="math_number"></block>
+    <block type="math_arithmetic"></block>
+    <block type="math_random_int">
+      <value name="FROM">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+      <value name="TO">
+        <block type="math_number">
+          <field name="NUM">100</field>
+        </block>
+      </value>
+    </block>
+  </category>
+  <category id="catExec">
+    <block type="timer">
+      <value name="secs_">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+    </block>
+    <block type="interval">
+      <value name="secs_">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+    </block>
+    <block type="delay">
+      <value name="secs_">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+    </block>
+  </category>
+  <sep></sep>
+  <category id="catBoard">
+    <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text">
+          <field name="TEXT">1234</field>
+        </block>
+      </value>
+      <field name="type_">5</field>
+      <field name="rate_">250</field>
+    </block>
+  </category>
+  <category id="catBuzzer">
+    <block type="variables_set">
+      <field name="VAR">buzzer</field>
+      <value name="VALUE">
+        <block type="buzzer_new">
+          <field name="pin_">11</field>
+        </block>
+      </value>
+    </block>
+    <block type="buzzer_music_play"></block>
+    <block type="buzzer_notes_tempos"></block>
+    <block type="buzzer_music_array">
+      <value name="notes_">
+        <block type="text">
+          <field name="TEXT">C6,D6,E6,F6,G6,A6,B6</field>
+        </block>
+      </value>
+      <value name="tempos_">
+        <block type="text">
+          <field name="TEXT">8</field>
+        </block>
+      </value>
+    </block>
+    <block type="buzzer_load_music"></block>
+    <block type="buzzer_event"></block>
+    <block type="buzzer_state"></block>
+  </category>
+  <category id="catMax7219">
+    <block type="variables_set">
+      <field name="VAR">matrix</field>
+      <value name="VALUE">
+        <block type="max7219_new">
+          <field name="din_">9</field>
+          <field name="cs_">10</field>
+          <field name="clk_">11</field>
+        </block>
+      </value>
+    </block>
+    <block type="max7219_draw">
+      <value name="code_">
+        <block type="text">
+          <field name="TEXT">1026464040462610</field>
+        </block>
+      </value>
+    </block>
+    <block type="max7219_val_num">
+      <value name="value_">
+        <block type="math_number">
+          <field name="NUM">99</field>
+        </block>
+      </value>
+    </block>
+  </category>
+  <category id="catButton">
+    <block type="variables_set">
+      <field name="VAR">button</field>
+      <value name="VALUE">
+        <block type="button_new">
+          <field name="pin_">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="button_event"></block>
+  </category>
+  <category id="catTutorials">
+    <block type="stage_max7219_get_value"></block>
+  </category>
+  <sep></sep>
+</xml>
