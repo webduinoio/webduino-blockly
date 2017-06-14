@@ -94,7 +94,7 @@
       uiBoard.online();
 
       var list = uiSetting.connector;
-      var comp, compId, compType, setting;
+      var compId, compType, setting;
 
       for (var i in list) {
         setting = list[i];
@@ -102,13 +102,11 @@
         compType = setting.type;
 
         if (compType === 'Btn') {
-          comp = comp || new _components.Btn(compId, engine, setting.signal);
-          components[compId] = comp;
+          components[compId] = new _components.Btn(compId, engine, setting.signal);
         }
 
         if (compType === 'UltraSonic') {
-          comp = comp || new _components.UltraSonic(compId, engine, setting.trig, setting.echo, true);
-          components[compId] = comp;
+          components[compId] = new _components.UltraSonic(compId, engine, setting.trig, setting.echo, true);
         }
 
       }
