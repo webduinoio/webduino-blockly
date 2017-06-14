@@ -6,3 +6,4 @@ MSG.green = "Green";
 MSG.blue = "Blue";
 MSG.clear = "Clear";
 MSG.stageHelp = "Clicking the button of demo area to change RGB LED Color in simulator."
+MSG.demoTitle = "Demo Area";

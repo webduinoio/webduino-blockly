@@ -6,3 +6,4 @@ MSG.green = "Green";
 MSG.blue = "Blue";
 MSG.clear = "Clear";
 MSG.stageHelp = "使用積木，點擊測試區的按鈕時，會改變三色 LED 的顏色, 並且利用模擬器，也表現出燈炮顏色變化的畫面。";
+MSG.demoTitle = "網頁互動區";

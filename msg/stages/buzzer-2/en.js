@@ -4,3 +4,4 @@ MSG.demoDescription = "Create another piece of music and play it with the buzzer
 MSG.notes = "Notes:";
 MSG.tempos = "Tempos:";
 MSG.stageHelp = "Music Creation with a Buzzer.";
+MSG.demoTitle = "Demo Area";
