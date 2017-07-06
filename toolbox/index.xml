@@ -765,7 +765,7 @@
       <block type="adxl345_val"></block>
       <block type="adxl345_off"></block>
     </category>
-    <category id="catRFID" tags="fly,mark1">
+    <category id="catRFID">
       <block type="variables_set">
         <field name="VAR">rfid</field>
         <value name="VALUE">

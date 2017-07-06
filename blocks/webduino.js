@@ -3810,15 +3810,18 @@ Blockly.Blocks['rfid_new'] = {
     this.appendDummyInput()
       .appendField("RFID，SDA")
       .appendField(new Blockly.FieldDropdown([
-        ["10", "10"]
+        ["10", "10"],
+        ["15", "15"]
       ]), "sda_")
       .appendField("  SCK")
       .appendField(new Blockly.FieldDropdown([
-        ["13", "13"]
+        ["13", "13"],
+        ["14", "14"]
       ]), "sck_")
       .appendField("  MOSI")
       .appendField(new Blockly.FieldDropdown([
-        ["11", "11"]
+        ["11", "11"],
+        ["13", "13"]
       ]), "mosi_")
       .appendField("  MISO")
       .appendField(new Blockly.FieldDropdown([
