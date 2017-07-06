@@ -1080,14 +1080,14 @@ Blockly.JavaScript['fish_move'] = function (block) {
 Blockly.JavaScript['timer'] = function (block) {
   var value_secs_ = Blockly.JavaScript.valueToCode(block, 'secs_', Blockly.JavaScript.ORDER_NONE);
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'setTimeout(async function () {\n' + statements_do_ + '}, ' + 1000 * value_secs_ + ');\n';
+  var code = 'setTimeout(async function () {\n' + statements_do_ + '}, 1000 * ' + value_secs_ + ');\n';
   return code;
 };
 
 Blockly.JavaScript['interval'] = function (block) {
   var value_secs_ = Blockly.JavaScript.valueToCode(block, 'secs_', Blockly.JavaScript.ORDER_NONE);
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
-  var code = 'setInterval(async function () {\n' + statements_do_ + '}, ' + 1000 * value_secs_ + ');\n';
+  var code = 'setInterval(async function () {\n' + statements_do_ + '}, 1000 * ' + value_secs_ + ');\n';
   return code;
 };
 
