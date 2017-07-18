@@ -328,6 +328,19 @@ Code.checkDeviceOnline = function (device) {
   device.inputArea = document.getElementById('input-device');
   device.btn = document.getElementById('check-btn');
   device.icon = document.getElementById('check-icon');
+  device.boardInst = null;
+
+  document.addEventListener('visibilitychange', function (evt) {
+    if (!document.hidden) {
+      device.check(device.inputArea.value);
+    } else {
+      if (device.boardInst) {
+        device.boardInst.disconnect(function () {
+          delete device.boardInst;
+        });
+      }
+    }
+  });
 
   if (!localStorage.boardCheckOpen) {
     localStorage.boardCheckOpen = 0;
@@ -336,33 +349,44 @@ Code.checkDeviceOnline = function (device) {
   device.btn.onclick = function () {
     if (localStorage.boardCheckOpen == 1) {
       localStorage.boardCheckOpen = 0;
-      device.inputArea.className = device.inputArea.className.replace("open", "");
+      device.inputArea.className = device.inputArea.className.replace('open', '');
     } else {
       localStorage.boardCheckOpen = 1;
-      device.inputArea.className = device.inputArea.className + "open";
+      device.inputArea.className = device.inputArea.className + 'open';
     }
   };
 
   device.check = function (v) {
-    boardReady({
-      device: v,
-      multi: true
-    }, true, function (board) {
-      device.icon.setAttribute('class', 'check board-online icon-power');
-      board.once(webduino.BoardEvent.DISCONNECT, function (e) {
+    if (v.length > 3 && v.length <= 8 && v.indexOf('.') === -1) {
+      if (device.boardInst) {
+        device.boardInst.disconnect(function () {
+          doCheck();
+        });
+      } else {
+        doCheck();
+      }
+
+      function doCheck() {
+        var board = new webduino.WebArduino({ device: v, multi: true, clientId: 'lightning' });
+        board.on('ready', function () {
+          device.icon.setAttribute('class', 'check board-online icon-power');
+          board.once(webduino.BoardEvent.DISCONNECT, function (e) {
+            device.icon.setAttribute('class', 'check board-error icon-power');
+            if (!document.hidden) {
+              device.check(v);
+            }
+          });
+        });
         device.icon.setAttribute('class', 'check board-error icon-power');
-      });
-    });
-    device.icon.setAttribute('class', 'check board-error icon-power');
+        device.boardInst = board;
+      }
+    }
   };
 
   device.inputArea.oninput = function () {
     localStorage.boardState = this.value;
-    if (this.value.length > 3 && this.value.length <= 8 && this.value.indexOf('.') === -1) {
-      device.check(this.value);
-    } else {
-      device.icon.setAttribute('class', 'check icon-power');
-    }
+    device.icon.setAttribute('class', 'check icon-power');
+    device.check(this.value);
   };
 
   if (localStorage.boardState) {
@@ -371,12 +395,12 @@ Code.checkDeviceOnline = function (device) {
   }
 
   if (localStorage.boardCheckOpen == 0) {
-    device.inputArea.className = device.inputArea.className.replace("open", "");
+    device.inputArea.className = device.inputArea.className.replace('open', '');
   } else if (localStorage.boardCheckOpen == 1 && device.inputArea.value.length < 4) {
     localStorage.boardCheckOpen = 0;
-    device.inputArea.className = device.inputArea.className.replace("open", "");
+    device.inputArea.className = device.inputArea.className.replace('open', '');
   } else {
-    device.inputArea.className = device.inputArea.className + "open";
+    device.inputArea.className = device.inputArea.className + 'open';
   }
 
 };
