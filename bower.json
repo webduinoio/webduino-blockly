@@ -2,7 +2,6 @@
   "name": "webduino-blockly",
   "dependencies": {
     "blockly-src": "google/blockly#ec4ab879168829fa20bea0b9e440350d20df47f4",
-    "simulator": "https://git.kingkit.codes/webduino/simulator.git#blockly",
     "webcomponentsjs": "0.x"
   }
 }
