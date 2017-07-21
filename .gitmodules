@@ -1,0 +1,4 @@
+[submodule "simulator"]
+	path = simulator
+	url = https://git.kingkit.codes/webduino/simulator.git
+	branch = blockly
