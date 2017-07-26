@@ -293,7 +293,10 @@ Code.bindClick = function (el, func) {
   }
   if (el) {
     el.addEventListener('click', func, true);
-    el.addEventListener('touchend', func, true);
+    el.addEventListener('touchend', function (evt) {
+      func.apply(this, arguments);
+      evt.preventDefault();
+    }, true);
   }
 };
 
