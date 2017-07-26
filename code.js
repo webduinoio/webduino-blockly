@@ -1124,6 +1124,17 @@ Code.loadSimulator = function () {
 
     frame.contentWindow.blockly.setDevice(devices);
     frame.contentWindow.blockly.toggleRunning();
+    
+    // check Stage
+    setTimeout(function () {
+      var isPlay = document.getElementById('runButton').style['background-color'];
+      if (isPlay == "rgb(0, 170, 85)") {
+        Code.demo = document.getElementById("demo-frame");
+        Code.engine = frame.contentWindow.engine;
+        Code.stageCheck();
+      }
+    }, 1000);
+
   });
 
   Code.bindClick('linkButton', function () {
