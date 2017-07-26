@@ -1,39 +1,45 @@
-Code.stageCheck = function () {
-  var stageName = Code.getStringParamFromUrl('page');
-  var stage = {
-    'stages/01': stage1,
-    'stages/02': stage2,
-    'stages/03': stage3,
-    'stages/04': stage4
-  };
-  stage[stageName]();
++(function () {
+  "use strict";
 
+  var Code = window.Code;
+  var demoDoc_, engine_;
 
+  function init(demo, engine) {
+    var stageName = Code.getStringParamFromUrl('page');
+    var stage = {
+      'stages/01': stage1,
+      'stages/02': stage2,
+      'stages/03': stage3,
+      'stages/04': stage4
+    };
 
-
-  function stage1() {
-    var htmlState = Code.demo.contentDocument.getElementById('light').className;
-    var engineLed = Code.engine.list().led[0].value();
-    if (engineLed == 1 && htmlState == 'on') {
-      alert("第一關 過關!");
-    }
+    demoDoc_ = demo.contentDocument;
+    engine_ = engine;
+    stage[stageName]();
   }
 
 
 
 
+  function stage1() {
+    var htmlState = demoDoc_.getElementById('light').className;
+    var engineLed = engine_.list().led[0].value();
+    if (engineLed === 1 && htmlState === 'on') {
+      alert("第一關 過關!");
+    }
+  }
+
   function stage2() {
-    console.log("Stage2 check...");
-    var redBtn = Code.demo.contentDocument.getElementById('redBtn');
-    var greenBtn = Code.demo.contentDocument.getElementById('greenBtn');
-    var blueBtn = Code.demo.contentDocument.getElementById('blueBtn');
-    var clearBtn = Code.demo.contentDocument.getElementById('clearBtn');
-    var rgbLed = Code.engine.list()['rgbled'][0];
+    var redBtn = demoDoc_.getElementById('redBtn');
+    var greenBtn = demoDoc_.getElementById('greenBtn');
+    var blueBtn = demoDoc_.getElementById('blueBtn');
+    var clearBtn = demoDoc_.getElementById('clearBtn');
+    var rgbLed = engine_.list()['rgbled'][0];
     var checkPoint1, checkPoint2, checkPoint3, checkPoint4;
 
     checkPoint1 = checkPoint2 = checkPoint3 = checkPoint4 = false;
 
-    $(redBtn).on('click', function () {
+    redBtn.addEventListener('click', function () {
       setTimeout(function () {
         if (rgbLed._redValue < rgbLed._greenValue && rgbLed._redValue < rgbLed._blueValue) {
           checkPoint1 = true;
@@ -41,7 +47,8 @@ Code.stageCheck = function () {
         }
       }, 500);
     });
-    $(greenBtn).on('click', function () {
+
+    greenBtn.addEventListener('click', function () {
       setTimeout(function () {
         if (rgbLed._greenValue < rgbLed._redValue && rgbLed._greenValue < rgbLed._blueValue) {
           checkPoint2 = true;
@@ -49,7 +56,8 @@ Code.stageCheck = function () {
         }
       }, 500);
     });
-    $(blueBtn).on('click', function () {
+
+    blueBtn.addEventListener('click', function () {
       setTimeout(function () {
         if (rgbLed._blueValue < rgbLed._greenValue && rgbLed._blueValue < rgbLed._redValue) {
           checkPoint3 = true;
@@ -57,11 +65,12 @@ Code.stageCheck = function () {
         }
       }, 500);
     });
-    $(clearBtn).on('click', function () {
+
+    clearBtn.addEventListener('click', function () {
       setTimeout(function () {
-        if (rgbLed._redValue == 1 &&
-          rgbLed._greenValue == 1 &&
-          rgbLed._blueValue == 1) {
+        if (rgbLed._redValue === 1 &&
+          rgbLed._greenValue === 1 &&
+          rgbLed._blueValue === 1) {
           checkPoint4 = true;
           checkPointVerify();
         }
@@ -70,27 +79,26 @@ Code.stageCheck = function () {
 
     function checkPointVerify() {
       console.log(checkPoint1, checkPoint2, checkPoint3, checkPoint4);
-      if (checkPoint1 == true &&
-        checkPoint2 == true &&
-        checkPoint3 == true &&
-        checkPoint4 == true) {
+      if (checkPoint1 === true &&
+        checkPoint2 === true &&
+        checkPoint3 === true &&
+        checkPoint4 === true) {
         alert("第二關 過關!");
       } else {
         console.log("Stage2 not yet...");
       }
     }
+
   }
 
-
   function stage3() {
-    console.log("Stage3 check...");
     var colors = {};
-    var rgbLed = Code.engine.list()['rgbled'][0];
+    var rgbLed = engine_.list()['rgbled'][0];
     rgbLed.state(function (r, g, b) {
-      var htmlState = Code.demo.contentDocument.getElementById('light').className;
-      if (htmlState == 'on') {
+      var htmlState = demoDoc_.getElementById('light').className;
+      if (htmlState === 'on') {
         colors["[" + r + "," + g + "," + b + "]"] = true;
-        if (colorAmt(colors) == 14) {
+        if (colorAmt(colors) === 14) {
           alert('第三關 過關!');
           rgbLed.state(function () {});
         }
@@ -107,8 +115,15 @@ Code.stageCheck = function () {
     }
   }
 
-
   function stage4() {
 
   }
-};
+
+
+
+
+  Code.stageCheck = {
+    init: init
+  };
+
+})();

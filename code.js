@@ -1130,11 +1130,11 @@ Code.loadSimulator = function () {
     
     // check Stage
     setTimeout(function () {
-      var isPlay = document.getElementById('runButton').style['background-color'];
-      if (isPlay == "rgb(0, 170, 85)") {
-        Code.demo = document.getElementById("demo-frame");
-        Code.engine = frame.contentWindow.engine;
-        Code.stageCheck();
+      var demo, engine;
+      if (Code.running) {
+        demo = document.getElementById("demo-frame");
+        engine = frame.contentWindow.blockly.getEngine();
+        Code.stageCheck.init(demo, engine);
       }
     }, 1000);
 
