@@ -43,6 +43,7 @@
 
   function onConnect() {
     this._window.addEventListener("message", this._messageHandler, false);
+    this.isOpen = true;
   }
 
   function onMessage(event) {
@@ -110,7 +111,10 @@
 
     isOpen: {
       get: function () {
-        return true;
+        return this._isOpen;
+      },
+      set: function (val) {
+        this._isOpen = val;
       }
     }
 
@@ -131,6 +135,7 @@
     this._window.removeEventListener("message", this._messageHandler);
     delete this._window;
     delete this._options;
+    this.isOpen = false;
   };
 
   proto.flush = function () {
