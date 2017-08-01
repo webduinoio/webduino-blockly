@@ -298,7 +298,8 @@ Blockly.JavaScript['tutorial_youtube'] = function (block) {
     '          resolve();\n' +
     '        }\n' +
     '      }\n' +
-    '    });\n' +
+    '    });\n' + 
+    '    window.youtube_ = ' + value_name_ + ';\n' + 
     '  };\n' +
     '});\n';
   return code;

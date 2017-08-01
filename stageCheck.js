@@ -34,7 +34,7 @@
       if (led.getValue() === 1 && htmlState === 'on') isPass = true;
     });
 
-    if (isPass) alert("第一關 過關!");
+    if (isPass) alert("第 1 關 過關!");
   }
 
   /**
@@ -126,7 +126,7 @@
 
       if (isPass) {
         isPassed = true;
-        alert("第二關 過關!");
+        alert("第 2 關 過關!");
       } else {
         console.log("Stage2 not yet...");
       }
@@ -134,13 +134,15 @@
 
   }
 
+  /**
+   * 關卡 3：模擬器中三色 LED 是否有做顏色的不斷變化
+   */
   function stage3() {
     var lightBtn = demoDoc_.getElementById('light');
     var isPass = false;
 
     lightBtn.addEventListener('click', function() {
       if (lightBtn.classList.contains('on')) {
-        console.log('==> 開始');
         setTimeout(checking, 3000);
       }
     });
@@ -156,12 +158,11 @@
           colors["[" + r + "," + g + "," + b + "]"] = true;
           if (Object.keys(colors).length > 1) {
             isPass = true;
-            alert('第三關 過關!');
+            alert('第 3 關 過關!');
             checkOver();
           }
         });
       });
-
     }
 
     function checkOver() {
@@ -173,12 +174,95 @@
 
   }
 
+  /**
+   * 關卡 4：點擊按鈕時，是否有完成暫停影片及播放影片的功能，以及長按按鈕來讓影片停止
+   */
   function stage4() {
+    var demoWin = demoDoc_.defaultView;
+    var youtube = demoWin.youtube_;
+    var btns = engine_.list().btn;
+    var act = void 0;
+    var check = [false, false, false]; // 檢查三項，點按鈕，暫停 youtube 及播放 youtube，長按則停止。
+    var isPassed = false;
+    var TIMES = 10;
+    var times = 0;
+
+    if (!btns.length) {
+      return;
+    }
+
+    btns.forEach(function (btn) {
+      btn.setPressHandler(press);
+      btn.setSustainedPressHandler(sustainedPress);
+    });
+
+    if (youtube) {
+      youtube.addEventListener('onStateChange', stageChange);
+    } else {
+      setTimeout(function aa() {
+        times++;
+        if (demoWin.youtube_) {
+          youtube = demoWin.youtube_;
+          youtube.addEventListener('onStateChange', stageChange);
+          return;
+        }
+
+        if (times < TIMES) {
+          setTimeout(aa, 1000);
+        }
+
+      }, 1000);
+    }
+
+    function press() {
+      act = 'press';
+    }
+
+    function sustainedPress() {
+      act = 'sustainedPress';
+    }
+
+    function stageChange(evt) {
+      var state = evt.data;
+
+      if (act) {
+        if (act === 'press' && state === demoWin.YT.PlayerState.PAUSED) check[0] = true;
+        if (act === 'press' && state === demoWin.YT.PlayerState.PLAYING) check[1] = true;
+        if (act === 'sustainedPress' && state === -1) check[2] = true;
+        act = void 0;
+      }
+      checking(); 
+    }
+
+    function checking() {
+      if (isPassed) return;
+
+      var isPass = check.reduce(function (acc, val) {
+        return acc && val;
+      }, true);
+
+      if (isPass) {
+        isPassed = true;
+        checkOver();
+        
+        setTimeout(function () {
+          alert('第 4 關 過關!');
+        }, 1000);
+      }
+    }
+
+    function checkOver() {
+      youtube.removeEventListener('onStateChange', stageChange);
+      btns.forEach(function (btn) {
+        btn.setPressHandler(null);
+        btn.setSustainedPressHandler(null);
+      });
+    }
 
   }
 
 
-
+  
 
   Code.stageCheck = {
     init: init
