@@ -10,7 +10,8 @@
       'stages/01': stage1,
       'stages/02': stage2,
       'stages/03': stage3,
-      'stages/04': stage4
+      'stages/04': stage4,
+      'stages/05': stage5
     };
 
     demoDoc_ = demo.contentDocument;
@@ -261,8 +262,43 @@
 
   }
 
+  /**
+   * 點擊模擬器按鈕時，檢查在互動區裡，玩家的數字是否增加，有增加判斷為過關
+   */
+  function stage5() {
+    var btns = engine_.list().btn;
+    var usershow = demoDoc_.getElementById('usershow');
+    var isPassed = false;
 
-  
+    if (!btns.length) {
+      return;
+    }
+
+    btns.forEach(function (btn) {
+      btn.setPressHandler(checking);
+    });
+
+    function checking() {
+      if (isPassed) return;
+      if (Number(usershow.textContent) > 0) {
+        isPassed = true;
+        checkOver();
+        setTimeout(function () {
+          alert('第 5 關 過關!');
+        }, 1000);
+      }
+    }
+
+    function checkOver() {
+      btns.forEach(function (btn) {
+        btn.setPressHandler(null);
+      });
+    }
+
+  }
+
+
+
 
   Code.stageCheck = {
     init: init
