@@ -12,7 +12,8 @@
       'stages/03': stage3,
       'stages/04': stage4,
       'stages/05': stage5,
-      'stages/06': stage6
+      'stages/06': stage6,
+      'stages/07': stage7
     };
 
     demoDoc_ = demo.contentDocument;
@@ -381,7 +382,134 @@
 
   }
 
+  /**
+   * 檢查
+   * 1. 網頁互動區的數值，是否和超音波的數值一致
+   * 2. 超音波數值小於 50 時，蜂鳴器要發出聲音，並且三色 LED 有顏色變化，及伺服馬達要有 90 度的變化
+   * 3. 超音波數值超過 50 時，蜂鳴器無聲，三色 LED 無變化，伺服馬達恢復 0 度
+   * 做法：
+   * 1. 蜂鳴器的發聲與否，以 2 筆資料為準，有 2 筆以上，判斷發聲
+   * 2. 三色 led，變化與否，看儲存的顏色是否超過 1 筆
+   */
+  function stage7() {
+    var ultrasonics = engine_.list().ultrasonic;
+    var buzzers = engine_.list().buzzer;
+    var rgbLeds = engine_.list().rgbled;
+    var servos = engine_.list().servo;
+    var showEl = demoDoc_.querySelector('#show');
+    var buzzerData = {};
+    var rgbData = {};
+    var curDistance = void 0;
+    var check = [false, false];
+    var isPassed = false;
 
+    if (!ultrasonics.length) return;
+    if (!buzzers.length) return;
+    if (!rgbLeds.length) return;
+    if (!servos.length) return;
+
+    ultrasonics.forEach(function (us) {
+      us.setSendHandler(send);
+    });
+
+    buzzers.forEach(function (bz) {
+      bz.setCmdHandler(cmd);
+    });
+
+    rgbLeds.forEach(function (rgbLed) {
+      rgbLed.state(state);
+    });
+
+    // 當超音波距離不同時，做檢查，並建立 array 來儲存蜂鳴器命令發送的時間
+    function send(distance) {
+      // 檢查超音波偵測到的距離，是否和畫面相同
+      if (Number(distance) !== Number(showEl.textContent)) return;
+
+      // 把之前的記錄清除，以便正確判斷蜂鳴器發聲的記錄
+      if (curDistance && curDistance !== distance) {
+        buzzerData[curDistance] = [];
+        rgbData[curDistance] = {};
+      }
+
+      buzzerData[distance] = buzzerData[distance] || [];
+      rgbData[distance] = rgbData[distance] || {};
+      curDistance = distance;
+
+      if (curDistance < 50) {
+        checkPoint1();
+      } else {
+        checkPoint2();
+      }
+
+      checking();      
+    }
+
+    // 儲存蜂鳴器送出命令的時間
+    function cmd() {
+      if (curDistance) {
+        buzzerData[curDistance] && buzzerData[curDistance].push(Date.now());  
+      }
+    }
+
+    // 儲存三色 led 狀態
+    function state(r, g, b) {
+      if (curDistance) {
+        rgbData[curDistance]["[" + r + "," + g + "," + b + "]"] = true;
+      }
+    }
+
+    function checkPoint1 () {
+      if (check[0]) return;
+      if (buzzerData[curDistance].length < 2) return;
+      if (Object.keys(rgbData[curDistance]).length < 2) return;
+
+      check[0] = servos.some(function (servo, idx, ary) {
+        return servo.getAngle() === 90;
+      });
+    }
+
+    function checkPoint2 () {
+      if (check[1]) return;
+      if (buzzerData[curDistance].length > 2) return;
+      if (Object.keys(rgbData[curDistance]).length > 1) return;
+
+      check[1] = servos.some(function (servo, idx, ary) {
+        return servo.getAngle() === 5;
+      });
+    }
+
+    function checking() {
+      if (isPassed) return;
+      
+      isPassed = check.reduce(function (acc, val) {
+        return acc && val;
+      }, true);
+
+      if (isPassed) {
+        checkOver();
+
+        // 考量畫面有些動畫未完成，所以延遲 1 秒執行
+        setTimeout(function () {
+          alert('第 7 關 過關!');
+        }, 1000);
+      }
+    }
+
+    function checkOver() {
+      ultrasonics.forEach(function (us) {
+        us.setSendHandler(null);
+      });
+
+      buzzers.forEach(function (bz) {
+        bz.setCmdHandler(null);
+      });
+
+      rgbLeds.forEach(function (rgbLed) {
+        rgbLed.state(null);
+      });
+    }
+
+  }
 
 
   Code.stageCheck = {
