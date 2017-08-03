@@ -11,7 +11,8 @@
       'stages/02': stage2,
       'stages/03': stage3,
       'stages/04': stage4,
-      'stages/05': stage5
+      'stages/05': stage5,
+      'stages/06': stage6
     };
 
     demoDoc_ = demo.contentDocument;
@@ -292,6 +293,89 @@
     function checkOver() {
       btns.forEach(function (btn) {
         btn.setPressHandler(null);
+      });
+    }
+
+  }
+
+  /**
+   * 檢查網頁互動區的數值，是否和超音波的數值一致，當超音波偵測數值改變時，蜂鳴器發出的頻率要有變化
+   * 做法：根據超音波距離，記錄蜂鳴器發出指令，來計算出，在某個超音波距離下，蜂鳴器啟動的頻率。
+   */
+  function stage6() {
+    var ultrasonics = engine_.list().ultrasonic;
+    var buzzers = engine_.list().buzzer;
+    var showEl = demoDoc_.querySelector('#show');
+    var data = {};
+    var curDistance = void 0;
+    var isPassed = false;
+
+    if (!ultrasonics.length) return;
+    if (!buzzers.length) return;
+
+    ultrasonics.forEach(function (us) {
+      us.setSendHandler(send);
+    });
+
+    buzzers.forEach(function (bz) {
+      bz.setCmdHandler(cmd);
+    });
+
+    // 當超音波距離不同時，做檢查，並建立 array 來儲存蜂鳴器命令發送的時間
+    function send(distance) {
+      // 檢查超音波偵測到的距離，是否和畫面相同
+      if (Number(distance) !== Number(showEl.textContent)) return;
+
+      data[distance] = data[distance] || [];
+      curDistance = distance;
+      checking();
+    }
+
+    // 儲存蜂鳴器送出命令的時間
+    function cmd() {
+      if (curDistance) {
+        data[curDistance] && data[curDistance].push(Date.now());  
+      }
+    }
+
+    function checking() {
+      if (isPassed) return;
+      if (Object.keys(data).length < 2) return;
+
+      var aa = [];
+
+      Object.keys(data).forEach(function (key) {
+        var ary = data[key];
+        var len = ary.length;
+        if (len < 2) return;
+        var val = (ary[len - 1] - ary[0]) / (len - 1);
+        aa.push(val);
+      });
+
+      if (aa.length < 2) return;
+
+      // 每個值，都與比 index 高的數值做比較，看是否超過 100 毫秒，只要有成立的，就算過關
+      // 蜂鳴器最低的播放頻率，假設為 100 毫秒
+      isPassed = aa.some(function (val, idx, ary) {
+        var cp = ary.slice(idx);
+        return cp.some(function (val2) {
+          return Math.abs(val2 - val) > 100;
+        });
+      });
+
+      if (isPassed) {
+        checkOver();
+        alert('第 6 關 過關!');
+      }
+    }
+
+    function checkOver() {
+      ultrasonics.forEach(function (us) {
+        us.setSendHandler(null);
+      });
+
+      buzzers.forEach(function (bz) {
+        bz.setCmdHandler(null);
       });
     }
 
