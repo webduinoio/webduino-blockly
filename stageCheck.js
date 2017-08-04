@@ -16,7 +16,8 @@
       'stages/07': stage7,
       'stages/08': stage8,
       'stages/09': stage9,
-      'stages/10': stage10
+      'stages/10': stage10,
+      'stages/11': stage11
     };
 
     demoDoc_ = demo.contentDocument;
@@ -730,6 +731,88 @@
     }
 
     function checkOver() {
+      buzzers.forEach(function (bz) {
+        bz.setCmdHandler(null);
+      });
+    }
+
+  }
+
+  /**
+   * 點擊執行後，點擊按鈕，判斷點矩陣是否有變化，重複點擊按鈕，直到蜂鳴器執行，則判斷過關
+   * 做法：當蜂鳴起接收到資料時，檢查點矩陣資料，資料筆數要大於 2，互動區的數字與點短陣是否相同
+   */
+  function stage11() {
+    var selectEl = demoDoc_.querySelector('#select');
+    var btns = engine_.list().btn;
+    var buzzers = engine_.list().buzzer;
+    var matrixs  = engine_.list().matrix;
+    var mapping = {
+      "1": "00000082fe800000",
+      "2": "0000f292929e0000",
+      "3": "0000929292fe0000",
+      "4": "00001e1010fe0000",
+      "5": "00009e9292f20000",
+      "6": "0000fe9292f20000"
+    };
+    var datas = [];
+    var isPassed = false;
+
+    if (!btns.length) return;
+    if (!buzzers.length) return;
+    if (!matrixs.length) return;
+
+    btns.forEach(function (btn) {
+      btn.setPressHandler(press);
+    });
+
+    matrixs.forEach(function (matrix) {
+      matrix.state(state);
+    });
+
+    buzzers.forEach(function (bz) {
+      bz.setCmdHandler(cmd);
+    });
+
+    function press() {
+      datas.length = 0;
+    }
+
+    function state(hex) {
+      datas.push(hex);
+    }
+
+    function cmd() {
+      setTimeout(checking, 1000);
+    }
+
+    function checking() {
+      if (isPassed) return;
+      if (datas.length < 2) return;
+      if (datas.slice().pop() === mapping[selectEl.value]) {
+        isPassed = true;
+      }
+
+      if (isPassed) {
+        checkOver();
+
+        // 考量畫面有些動畫未完成，所以延遲 1 秒執行
+        setTimeout(function () {
+          alert('第 11 關 過關!');
+        }, 1000);
+      }
+
+    }
+
+    function checkOver() {
+      btns.forEach(function (btn) {
+        btn.setPressHandler(null);
+      });
+
+      matrixs.forEach(function (matrix) {
+        matrix.state(null);
+      });
+
       buzzers.forEach(function (bz) {
         bz.setCmdHandler(null);
       });
