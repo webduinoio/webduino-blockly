@@ -19,7 +19,8 @@
       'stages/10': stage10,
       'stages/11': stage11,
       'stages/12': stage12,
-      'stages/13': stage13
+      'stages/13': stage13,
+      'stages/14': stage14
     };
 
     demoDoc_ = demo.contentDocument;
@@ -981,6 +982,77 @@
 
       buzzers.forEach(function (bz) {
         bz.setCmdHandler(null);
+      });
+    }
+
+  }
+
+  /**
+   * 點擊按鈕後，伺服馬達轉 90 度，且網頁互動區也顯示 90，再點擊，則旋轉 0 度，互動區也顯示 0，完成該操作則過關
+   * 做法：點擊按鈕後，做檢查，檢查互動區的值，與伺服馬達旋轉角度是否一致。此外，要檢查二種情況 0, 90 度。
+   */
+  function stage14() {
+    var showEl = demoDoc_.querySelector('#show');
+    var btns = engine_.list().btn;
+    var servos = engine_.list().servo;
+    var check = [false, false];
+    var isPassed = false;
+    var timer;
+
+    if (!btns.length) return;
+    if (!servos.length) return;
+
+    btns.forEach(function (btn) {
+      btn.setPressHandler(press);
+    });
+
+    function press() {
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        var demoAngle = parseInt(showEl.textContent);
+        if (demoAngle === 0) checkPoint1();
+        if (demoAngle === 90) checkPoint2();
+        checking();
+      }, 300);
+    }
+
+    function checkPoint1() {
+      if (check[0]) return;
+      check[0] = servos.some(function (servo) {
+        var angle = servo.getAngle();
+        return angle === 0 || angle === 5;
+      });
+    }
+
+    function checkPoint2() {
+      if (check[1]) return;
+      check[1] = servos.some(function (servo) {
+        var angle = servo.getAngle();
+        return angle === 90;
+      });
+    }
+
+    function checking() {
+      if (isPassed) return;
+      
+      isPassed = check.reduce(function (acc, val) {
+        return acc && val;
+      }, true);
+    
+      if (isPassed) {
+        checkOver();
+
+        // 考量畫面有些動畫未完成，所以延遲 1 秒執行
+        setTimeout(function () {
+          alert('第 14 關 過關!');
+        }, 1000);
+      }
+
+    }
+
+    function checkOver() {
+      btns.forEach(function (btn) {
+        btn.setPressHandler(null);
       });
     }
 
