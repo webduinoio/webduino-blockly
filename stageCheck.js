@@ -18,7 +18,8 @@
       'stages/09': stage9,
       'stages/10': stage10,
       'stages/11': stage11,
-      'stages/12': stage12
+      'stages/12': stage12,
+      'stages/13': stage13
     };
 
     demoDoc_ = demo.contentDocument;
@@ -898,6 +899,88 @@
 
       ultrasonics.forEach(function (us) {
         us.setSendHandler(null);
+      });
+    }
+
+  }
+
+  /**
+   * 點擊按鈕後，點矩陣及網頁互動區數字一致且蜂鳴器有執行，則為過關
+   * 做法：
+   * 1. 點擊按鈕次數與蜂鳴器發聲次數相同
+   * 2. 網頁互動區的數字與點短陣相同
+   */
+  function stage13() {
+    var showEl = demoDoc_.querySelector('#show');
+    var btns = engine_.list().btn;
+    var matrixs  = engine_.list().matrix;
+    var buzzers = engine_.list().buzzer;
+    var matrixNumber = JSON.parse('["0000fe8282fe0000", "00000082fe800000","0000f292929e0000","0000929292fe0000","00001e1010fe0000","00009e9292f20000","0000fe9292f20000","0000020202fe0000","0000fe9292fe0000","00009e9292fe0000","82fe8000fe82fe00","82fe800082fe8000","82fe8000f2929e00","82fe80009292fe00","82fe80001e10fe00","82fe80009e92f200","82fe8000fe92f200","82fe80000202fe00","82fe8000fe92fe00","82fe80009e92fe00","f2929e00fe82fe00","f2929e0082fe8000","f2929e00f2929e00","f2929e009292fe00","f2929e001e10fe00","f2929e009e92f200","f2929e00fe92f200","f2929e000202fe00","f2929e00fe92fe00","f2929e009e92fe00","9292fe00fe82fe00","9292fe0082fe8000","9292fe00f2929e00","9292fe009292fe00","9292fe001e10fe00","9292fe009e92f200","9292fe00fe92f200","9292fe000202fe00","9292fe00fe92fe00","9292fe009e92fe00","1e10fe00fe82fe00","1e10fe0082fe8000","1e10fe00f2929e00","1e10fe009292fe00","1e10fe001e10fe00","1e10fe009e92f200","1e10fe00fe92f200","1e10fe000202fe00","1e10fe00fe92fe00","1e10fe009e92fe00","9e92f200fe82fe00","9e92f20082fe8000","9e92f200f2929e00","9e92f2009292fe00","9e92f2001e10fe00","9e92f2009e92f200","9e92f200fe92f200","9e92f2000202fe00","9e92f200fe92fe00","9e92f2009e92fe00","fe92f200fe82fe00","fe92f20082fe8000","fe92f200f2929e00","fe92f2009292fe00","fe92f2001e10fe00","fe92f2009e92f200","fe92f200fe92f200","fe92f2000202fe00","fe92f200fe92fe00","fe92f2009e92fe00","0202fe00fe82fe00","0202fe0082fe8000","0202fe00f2929e00","0202fe009292fe00","0202fe001e10fe00","0202fe009e92f200","0202fe00fe92f200","0202fe000202fe00","0202fe00fe92fe00","0202fe009e92fe00","fe92fe00fe82fe00","fe92fe0082fe8000","fe92fe00f2929e00","fe92fe009292fe00","fe92fe001e10fe00","fe92fe009e92f200","fe92fe00fe92f200","fe92fe000202fe00","fe92fe00fe92fe00","fe92fe009e92fe00","9e92fe00fe82fe00","9e92fe0082fe8000","9e92fe00f2929e00","9e92fe009292fe00","9e92fe001e10fe00","9e92fe009e92f200","9e92fe00fe92f200","9e92fe000202fe00","9e92fe00fe92fe00","9e92fe009e92fe00"]');
+    var data = [];
+    var btnTimes = 0;
+    var buzzerTimes = 0;
+    var isPassed = false;
+    var timer;
+
+    if (!btns.length) return;
+    if (!matrixs.length) return;
+    if (!buzzers.length) return;
+
+    btns.forEach(function (btn) {
+      btn.setPressHandler(press);
+    });
+
+    matrixs.forEach(function (matrix) {
+      matrix.state(state);
+    });
+
+    buzzers.forEach(function (bz) {
+      bz.setCmdHandler(cmd);
+    });
+
+    function press() {
+      btnTimes++;
+      clearTimeout(timer);
+      timer = setTimeout(checking, 500);
+    }
+
+    function state(hex) {
+      data.push(hex);
+    }
+
+    function cmd() {
+      buzzerTimes++;
+    }
+
+    function checking() {
+      if (isPassed) return;
+      if (btnTimes !== buzzerTimes) return;
+      if (matrixNumber.indexOf(data.slice().pop()) === Number(showEl.textContent)) {
+        isPassed = true;
+      }
+    
+      if (isPassed) {
+        checkOver();
+
+        // 考量畫面有些動畫未完成，所以延遲 1 秒執行
+        setTimeout(function () {
+          alert('第 12 關 過關!');
+        }, 1000);
+      }
+
+    }
+
+    function checkOver() {
+      btns.forEach(function (btn) {
+        btn.setPressHandler(null);
+      });
+
+      matrixs.forEach(function (matrix) {
+        matrix.state(null);
+      });
+
+      buzzers.forEach(function (bz) {
+        bz.setCmdHandler(null);
       });
     }
 
