@@ -17,7 +17,8 @@
       'stages/08': stage8,
       'stages/09': stage9,
       'stages/10': stage10,
-      'stages/11': stage11
+      'stages/11': stage11,
+      'stages/12': stage12
     };
 
     demoDoc_ = demo.contentDocument;
@@ -815,6 +816,88 @@
 
       buzzers.forEach(function (bz) {
         bz.setCmdHandler(null);
+      });
+    }
+
+  }
+
+  /**
+   * 操作當超音波距離 < 50 時，點擊按鈕，點矩陣顯示 O，反之則顯示 X，完成操作，則過關
+   * 做法：點擊按鈕後，檢查點矩陣最後一次圖形是否為 O，前一次是否為 X，超音波距離是否小於 50
+   */
+  function stage12() {
+    var btns = engine_.list().btn;
+    var matrixs  = engine_.list().matrix;
+    var ultrasonics = engine_.list().ultrasonic;
+    var pictO = ['3c4281818181423c', '0000fe8282fe0000', '00f09090f0000000', '007cc682c67c0000'];
+    var pictX = ['8142241818244281', '0088502050880000', '00c66c106cc60000'];
+    var data = [];
+    var isPassed = false;
+    var curDistance;
+
+    if (!btns.length) return;
+    if (!matrixs.length) return;
+    if (!ultrasonics.length) return;
+
+    btns.forEach(function (btn) {
+      btn.setPressHandler(press);
+    });
+
+    matrixs.forEach(function (matrix) {
+      matrix.state(state);
+    });
+
+    ultrasonics.forEach(function (us) {
+      us.setSendHandler(send);
+    });
+
+    function press() {
+      setTimeout(checking, 500);
+    }
+
+    function state(hex) {
+      data.push(hex);
+    }
+
+    function send(distance) {
+      curDistance = Number(distance);
+    }
+
+    function checking() {
+      if (isPassed) return;
+      if (curDistance > 49) return;
+      
+      // 過濾掉點矩陣重置的指令
+      var cp = data.slice().filter(function (val) {
+        return val !== '0000000000000000';
+      });
+      
+      if (pictO.includes(cp.pop()) && pictX.includes(cp.pop())) {
+        isPassed = true;
+      }
+
+      if (isPassed) {
+        checkOver();
+
+        // 考量畫面有些動畫未完成，所以延遲 1 秒執行
+        setTimeout(function () {
+          alert('第 12 關 過關!');
+        }, 1000);
+      }
+
+    }
+
+    function checkOver() {
+      btns.forEach(function (btn) {
+        btn.setPressHandler(null);
+      });
+
+      matrixs.forEach(function (matrix) {
+        matrix.state(null);
+      });
+
+      ultrasonics.forEach(function (us) {
+        us.setSendHandler(null);
       });
     }
 
