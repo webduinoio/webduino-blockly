@@ -20,7 +20,8 @@
       'stages/11': stage11,
       'stages/12': stage12,
       'stages/13': stage13,
-      'stages/14': stage14
+      'stages/14': stage14,
+      'stages/15': stage15
     };
 
     demoDoc_ = demo.contentDocument;
@@ -1053,6 +1054,71 @@
     function checkOver() {
       btns.forEach(function (btn) {
         btn.setPressHandler(null);
+      });
+    }
+
+  }
+
+  /**
+   * 判斷超音波的距離，會顯示在互動區及點矩陣上，完成此操作則過關
+   */
+  function stage15() {
+    var showEl = demoDoc_.querySelector('#show');
+    var matrixs  = engine_.list().matrix;
+    var ultrasonics = engine_.list().ultrasonic;
+    var matrixNumber = JSON.parse('["0000fe8282fe0000", "00000082fe800000","0000f292929e0000","0000929292fe0000","00001e1010fe0000","00009e9292f20000","0000fe9292f20000","0000020202fe0000","0000fe9292fe0000","00009e9292fe0000","82fe8000fe82fe00","82fe800082fe8000","82fe8000f2929e00","82fe80009292fe00","82fe80001e10fe00","82fe80009e92f200","82fe8000fe92f200","82fe80000202fe00","82fe8000fe92fe00","82fe80009e92fe00","f2929e00fe82fe00","f2929e0082fe8000","f2929e00f2929e00","f2929e009292fe00","f2929e001e10fe00","f2929e009e92f200","f2929e00fe92f200","f2929e000202fe00","f2929e00fe92fe00","f2929e009e92fe00","9292fe00fe82fe00","9292fe0082fe8000","9292fe00f2929e00","9292fe009292fe00","9292fe001e10fe00","9292fe009e92f200","9292fe00fe92f200","9292fe000202fe00","9292fe00fe92fe00","9292fe009e92fe00","1e10fe00fe82fe00","1e10fe0082fe8000","1e10fe00f2929e00","1e10fe009292fe00","1e10fe001e10fe00","1e10fe009e92f200","1e10fe00fe92f200","1e10fe000202fe00","1e10fe00fe92fe00","1e10fe009e92fe00","9e92f200fe82fe00","9e92f20082fe8000","9e92f200f2929e00","9e92f2009292fe00","9e92f2001e10fe00","9e92f2009e92f200","9e92f200fe92f200","9e92f2000202fe00","9e92f200fe92fe00","9e92f2009e92fe00","fe92f200fe82fe00","fe92f20082fe8000","fe92f200f2929e00","fe92f2009292fe00","fe92f2001e10fe00","fe92f2009e92f200","fe92f200fe92f200","fe92f2000202fe00","fe92f200fe92fe00","fe92f2009e92fe00","0202fe00fe82fe00","0202fe0082fe8000","0202fe00f2929e00","0202fe009292fe00","0202fe001e10fe00","0202fe009e92f200","0202fe00fe92f200","0202fe000202fe00","0202fe00fe92fe00","0202fe009e92fe00","fe92fe00fe82fe00","fe92fe0082fe8000","fe92fe00f2929e00","fe92fe009292fe00","fe92fe001e10fe00","fe92fe009e92f200","fe92fe00fe92f200","fe92fe000202fe00","fe92fe00fe92fe00","fe92fe009e92fe00","9e92fe00fe82fe00","9e92fe0082fe8000","9e92fe00f2929e00","9e92fe009292fe00","9e92fe001e10fe00","9e92fe009e92f200","9e92fe00fe92f200","9e92fe000202fe00","9e92fe00fe92fe00","9e92fe009e92fe00"]');
+    var data = [];
+    var isPassed = false;
+    var curDistance;
+
+    if (!matrixs.length) return;
+    if (!ultrasonics.length) return;
+
+    ultrasonics.forEach(function (us) {
+      us.setSendHandler(send);
+    });
+
+    matrixs.forEach(function (matrix) {
+      matrix.state(state);
+    });
+
+    function send(distance) {
+      if (!curDistance) {
+        curDistance = Number(distance);
+        return;
+      }
+
+      if (curDistance !== Number(distance)) {
+        setTimeout(checking, 300);
+        curDistance = Number(distance);
+      }
+    }
+
+    function state(hex) {
+      data.push(hex);
+    }
+
+    function checking() {
+      if (isPassed) return;
+      if (curDistance !== Number(showEl.textContent)) return;
+      if (curDistance === matrixNumber.indexOf(data.slice().pop())) {
+        isPassed = true;
+      }
+    
+      if (isPassed) {
+        checkOver();
+        alert('第 15 關 過關!');
+      }
+
+    }
+
+    function checkOver() {
+      ultrasonics.forEach(function (us) {
+        us.setSendHandler(null);
+      });
+
+      matrixs.forEach(function (matrix) {
+        matrix.state(null);
       });
     }
 
