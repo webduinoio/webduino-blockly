@@ -14,7 +14,8 @@
       'stages/05': stage5,
       'stages/06': stage6,
       'stages/07': stage7,
-      'stages/08': stage8
+      'stages/08': stage8,
+      'stages/09': stage9
     };
 
     demoDoc_ = demo.contentDocument;
@@ -611,6 +612,63 @@
 
   }
 
+  /**
+   * 判斷點矩陣圖形是否有持續重複變化，有則視為過關
+   * 做法：過三秒後，開始偵測，至少二種圖形，且每種點矩陣圖形出現的次數都超過 3 次
+   */
+  function stage9() {
+    var matrixs  = engine_.list().matrix;
+    var datas = {};
+    var isCheck = false;
+    var isPassed = false;
+
+    if (!matrixs.length) return;
+
+    matrixs.forEach(function (matrix) {
+      matrix.state(state);
+    });
+
+    setTimeout(function () {
+      isCheck = true;
+    }, 3000);
+
+    function state(hex) {
+      var key = '[' + hex + ']';
+      if (!datas[key]) datas[key] = [];
+      datas[key].push(Date.now());
+      checking();
+    }
+
+    function checking() {
+      if (!isCheck) return;
+      if (isPassed) return;
+
+      var dataKeys = Object.keys(datas);
+
+      if (dataKeys.length < 2) return;
+
+      isPassed = dataKeys.reduce(function (acc, val) {
+        return acc && val.length > 3;
+      }, true);
+
+      if (isPassed) {
+        checkOver();
+
+        // 考量畫面有些動畫未完成，所以延遲 1 秒執行
+        setTimeout(function () {
+          alert('第 9 關 過關!');
+        }, 1000);
+      }
+
+    }
+
+    function checkOver() {
+      matrixs.forEach(function (matrix) {
+        matrix.state(null);
+      });
+    }
+
+  }
 
   Code.stageCheck = {
     init: init
