@@ -15,7 +15,8 @@
       'stages/06': stage6,
       'stages/07': stage7,
       'stages/08': stage8,
-      'stages/09': stage9
+      'stages/09': stage9,
+      'stages/10': stage10
     };
 
     demoDoc_ = demo.contentDocument;
@@ -460,7 +461,7 @@
       }
     }
 
-    function checkPoint1 () {
+    function checkPoint1() {
       if (check[0]) return;
       if (buzzerData[curDistance].length < 2) return;
       if (Object.keys(rgbData[curDistance]).length < 2) return;
@@ -470,7 +471,7 @@
       });
     }
 
-    function checkPoint2 () {
+    function checkPoint2() {
       if (check[1]) return;
       if (buzzerData[curDistance].length > 2) return;
       if (Object.keys(rgbData[curDistance]).length > 1) return;
@@ -665,6 +666,72 @@
     function checkOver() {
       matrixs.forEach(function (matrix) {
         matrix.state(null);
+      });
+    }
+
+  }
+
+  /**
+   * 點擊執行後，判斷蜂鳴器是否有執行播放超級瑪麗，及網頁互動區顯示音符及節奏，都符合，則過關
+   * 做法：
+   * 1. 是否播放超級瑪麗
+   * 2. 網頁互動區是否有值
+   */
+  function stage10() {
+    var buzzers = engine_.list().buzzer;
+    var buzzerNotes = demoDoc_.querySelector('#buzzerNotes');
+    var buzzerTempos = demoDoc_.querySelector('#buzzerTempos');
+    var buzzerData = [];
+    var regMary = /2051,100,2204,100,2396,100,2618,100,3855,100,3855,100,3855,100,3347,100,3855,100,4954,100,2204,100,3347,100,2204,100,1925,100,2396,100,2618,100,2501,100,2396,100,2204,100,3855,100,4954,100,5332,100,4048,100,4954,100,3855,100,3347,100,3573,100,2618,100,3347,100,2204,100,1925,100,2396,100,2618,100,2501,100,2396,100,2204,100,3855,100,4954,100,5332,100,4048,100,4954,100,3855,100,3347,100,3573,100,2618,100/;
+    var check = [false, false];
+    var isPassed = false;
+
+    if (!buzzers.length) return;
+
+    buzzers.forEach(function (bz) {
+      bz.setCmdHandler(cmd);
+    });
+
+    // 儲存蜂鳴器送出命令的時間
+    function cmd(cmd) {
+      buzzerData.push(cmd);
+      checkPoint1();
+      checkPoint2();
+      checking();
+    }
+
+    function checkPoint1() {
+      if (check[0]) return;
+      if (!buzzerNotes.textContent) return;
+      if (!buzzerTempos.textContent) return;
+      check[0] = true;
+    }
+
+    function checkPoint2() {
+      if (check[1]) return;
+      check[1] = regMary.test(buzzerData.toString());
+    }
+
+    function checking() {
+      if (isPassed) return;
+      
+      isPassed = check.reduce(function (acc, val) {
+        return acc && val;
+      }, true);
+
+      if (isPassed) {
+        checkOver();
+
+        // 考量畫面有些動畫未完成，所以延遲 1 秒執行
+        setTimeout(function () {
+          alert('第 10 關 過關!');
+        }, 1000);
+      }
+    }
+
+    function checkOver() {
+      buzzers.forEach(function (bz) {
+        bz.setCmdHandler(null);
       });
     }
 
