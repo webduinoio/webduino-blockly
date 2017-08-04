@@ -13,7 +13,8 @@
       'stages/04': stage4,
       'stages/05': stage5,
       'stages/06': stage6,
-      'stages/07': stage7
+      'stages/07': stage7,
+      'stages/08': stage8
     };
 
     demoDoc_ = demo.contentDocument;
@@ -506,6 +507,105 @@
 
       rgbLeds.forEach(function (rgbLed) {
         rgbLed.state(null);
+      });
+    }
+
+  }
+
+  /**
+   * 調整超音波在 <10，10~20，20~30，30~40，>40，五個區間，會判斷是否符合對應的速度，符合則過關
+   */
+  function stage8() {
+    var demoWin = demoDoc_.defaultView;
+    var ultrasonics = engine_.list().ultrasonic;
+    var check = [false, false, false, false, false];
+    var isPassed = false;
+    var youtube;
+    
+    if (!ultrasonics.length) return;
+
+    Promise.resolve()
+      .then(getYoutube)
+      .then(doSomething)
+      .catch(errorHandler);
+
+    function getYoutube() {
+      return new Promise(function (resolve, reject) {
+        var TIMES = 10;
+        var times = 0;
+
+        setTimeout(function aa() {
+          times++;
+
+          if (demoWin.youtube_) {
+            youtube = demoWin.youtube_;
+            resolve();
+            return;
+          }
+
+          if (times > TIMES) {
+            reject();
+            return;
+          }
+
+          setTimeout(aa, 1000);
+        }, 1000);
+
+      });
+    }
+
+    function doSomething() {
+      ultrasonics.forEach(function (us) {
+        us.setSendHandler(send);
+      });
+    }
+
+    function errorHandler() {
+      return;
+    }
+
+    // 當超音波距離不同時，做檢查
+    function send(distance) {
+      var rate = youtube.getPlaybackRate();
+      var area = [0, 10, 20, 30, 40];
+
+      // 找出距離落在的區間，區間 1: 0~10，區間 2: 10~20，以此類推，大於 40 後，算區間 5
+      var areaLevel = area.reduce(function (acc, val, idx, ary) {
+        if (distance > val) {
+          return idx + 1;
+        }
+        return acc;
+      }, 0);
+
+      if (areaLevel === 1 && rate === 0.5) check[0] = true;
+      if (areaLevel === 2 && rate === 1) check[1] = true;
+      if (areaLevel === 3 && rate === 1.25) check[2] = true;
+      if (areaLevel === 4 && rate === 1.5) check[3] = true;
+      if (areaLevel === 5 && rate === 2) check[4] = true;
+
+      checking();     
+    }
+
+    function checking() {
+      if (isPassed) return;
+      
+      isPassed = check.reduce(function (acc, val) {
+        return acc && val;
+      }, true);
+
+      if (isPassed) {
+        checkOver();
+
+        // 考量畫面有些動畫未完成，所以延遲 1 秒執行
+        setTimeout(function () {
+          alert('第 8 關 過關!');
+        }, 1000);
+      }
+    }
+
+    function checkOver() {
+      ultrasonics.forEach(function (us) {
+        us.setSendHandler(null);
       });
     }
 
