@@ -616,8 +616,7 @@ td#copyCode div {
 /* demo area */
 
 #demo-area {
-  display: none;
-  z-index: 101;
+  z-index: -1;
   position: absolute;
   right: 30px;
   top: 125px;
@@ -632,12 +631,12 @@ td#copyCode div {
   cursor: move;
 }
 
-#demo-area.topArea {
-  z-index: 102;
+#demo-area.show {
+  z-index: 101;
 }
 
-#demo-area.show {
-  display: block;
+#demo-area.show.topArea {
+  z-index: 102;
 }
 
 #demo-area.resize {
@@ -1028,8 +1027,7 @@ td#copyCode div {
 /* simulation area */
 
 #simulator-area {
-  display: none;
-  z-index: 101;
+  z-index: -1;
   position: absolute;
   right: 30px;
   top: 125px;
@@ -1044,13 +1042,16 @@ td#copyCode div {
   cursor: move;
 }
 
-#simulation-area.topArea {
+#simulator-area.show {
+  z-index: 101;
+}
+
+#simulation-area.show.topArea {
   z-index: 102;
 }
 
 #simulator-area.init {
   opacity: 0;
-  display: block;
 }
 
 #simulator-area.full {
@@ -1063,10 +1064,6 @@ td#copyCode div {
   bottom: 15px;
   right: 15px;
   z-index: 200;
-}
-
-#simulator-area.show {
-  display: block;
 }
 
 .resize-area {

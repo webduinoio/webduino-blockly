@@ -116,8 +116,7 @@ table.nav{
 }
 
 #simulator-area {
-  display: none;
-  z-index: 999;
+  z-index: -1;
   position: absolute;
   right: 32%;
   top: 125px;
@@ -134,7 +133,6 @@ table.nav{
 
 #simulator-area.init {
   opacity: 0;
-  display: block;
 }
 
 #simulator-area.full {
@@ -148,7 +146,7 @@ table.nav{
 }
 
 #simulator-area.show {
-  display: block;
+  z-index: 999;
 }
 
 .resize-area {
