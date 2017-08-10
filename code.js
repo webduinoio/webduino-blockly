@@ -1125,8 +1125,12 @@ Code.loadSimulator = function () {
       });
     });
 
-    frame.contentWindow.blockly.setDevice(devices);
-    frame.contentWindow.blockly.toggleRunning();
+    if (Code.running) {
+      frame.contentWindow.blockly.setDevice(devices);
+      frame.contentWindow.blockly.start();
+    } else {
+      frame.contentWindow.blockly.stop();
+    }
     
     // check Stage
     setTimeout(function () {

@@ -37,24 +37,54 @@
   }
 
   function init(self) {
+    // 這個是拋送訊息用。
+    // 而用自身的 window 來做資料的接收
     self._window = self._options.window || window;
-    self._connHandler();
+
+    // messageTransport 拋送的通道，固定有 transport: true 來做識別
+    self._window.postMessage({ 
+      transport: true, 
+      transportReady: true 
+    }, location.origin);
+
+    window.addEventListener('message', function checkConnect(evt) {
+      var data = evt.data;
+
+      if (evt.origin !== location.origin) return;
+      if (!data.transport) return;
+      if (evt.source !== self._window) {
+        // 這裡一定是相同的，不同就有問題了
+        console.error('message transport 接收訊息有問題');
+        return; 
+      }
+
+      if (data.transportReady) {
+        evt.source.postMessage({ 
+          transport: true, 
+          transportGo: true 
+        }, location.origin);
+
+        window.removeEventListener('message', checkConnect);
+        self._connHandler();
+      }
+      
+    });
   }
 
   function onConnect() {
-    this._window.addEventListener("message", this._messageHandler, false);
+    window.addEventListener("message", this._messageHandler, false);
     this.isOpen = true;
   }
 
   function onMessage(event) {
     var message = event.data;
+
+    if (event.origin !== location.origin) return;
+    if (!message.transport) return;
+    
     var dest = message.destinationName
     var oldStatus = this._status;
     var subscribe = [this._options.device + TOPIC.PONG, this._options.device + TOPIC.STATUS]
-
-    if (event.origin !== location.origin) {
-      return;
-    }
      
     if (subscribe.indexOf(dest) === -1) {
       return;
@@ -88,6 +118,7 @@
 
   function sendOut() {
     var payload = {
+      transport: true,
       destinationName: this._options.device + TOPIC.PING,
       payloadBytes: new Uint8Array(this._buf)
     };
@@ -132,7 +163,7 @@
   };
 
   proto.close = function () {
-    this._window.removeEventListener("message", this._messageHandler);
+    window.removeEventListener("message", this._messageHandler);
     delete this._window;
     delete this._options;
     this.isOpen = false;
