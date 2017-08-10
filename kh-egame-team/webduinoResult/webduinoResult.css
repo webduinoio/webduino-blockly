@@ -1,0 +1,260 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2017/7/4, 上午 09:35:57
+    Author     : vivianne
+*/
+.fontNormal{
+	color: #C7B299;
+}
+
+.fontResult{
+	color: white;
+}
+
+.fontFinalResultText{
+	color: white;
+        font-size:200%
+}
+
+.footPrint{
+	disply: inline-block;
+}
+
+.rightArea{
+	position: absolute;
+	z-index: 999;
+	overflow: auto;
+	display: inline-block;
+        width:80%;
+        height:66%;
+        top:20%;
+        left:8%
+}
+
+.topArea{
+	color: #FFDF40;
+	-moz-border-radius:  3% 3%/35% 35%;
+	border-radius: 3% 3%/35% 35%;
+	background-color: #542A22;
+        width:89%;
+        height:5%;
+        padding:2% 2% 3% 3%;
+        margin:2%;
+        font-size:200%
+}
+.midArea{
+	padding: 2%;
+        margin:2%;
+	color: #FFDF40;
+	-moz-border-radius: 5% 5%/10% 10%;
+	border-radius: 5% 5%/10% 10%;
+	background-color: #542A22;
+        height:64%;
+        width:90%;
+        font-size:160%;
+}
+.commentArea{
+	background-repeat: no-repeat;
+	background-position: center;
+	float:left;
+	border: 2px dashed #A6591F;
+        width:33%;
+        height:85%;
+}
+.expArea{
+	margin-left: 3%;
+	float:left;
+        /*font-size:165%*/
+}
+.goldArea{
+	margin-left: 4%;
+	float:left;
+        /*font-size:165%*/
+}
+#resultView{
+    display:block;
+    position:absolute;
+    top:0%;
+    left:20%;
+    width:50%;
+    background-repeat:no-repeat;
+    background-size:contain;
+    z-index:2;
+}
+.levelUp{
+    color:#FFF4CC;
+    font-size:250%;
+    font-weight:bold;
+    position:absolute;
+    top:22%;
+    left:24%
+}
+.levelUpInfo{
+    color:#FFF4CC;
+    font-size:200%;
+    position:absolute;
+    top:35%;
+    left:32%
+}
+.levelUpButtonSet{
+    cursor:pointer;
+    position:absolute;
+    width:18%;
+    height:15%;
+    top:65%;
+    left:40%;
+}
+.levelUpButtonText{
+    color:#AD1A47;
+    font-size:180%;
+    position:absolute;
+    top:35%;
+    left:30%;
+}
+.levelUpButton{
+    width:100%;
+    height:100%;
+}
+.levelExit{
+    position:absolute;
+    top:1%;
+    left:87%;
+    width:12%;
+    height:8%;
+    cursor:pointer;
+}
+.achieve{
+    color:#FFF4CC;
+    font-size:250%;
+    font-weight:bold;
+    position:absolute;
+    top:22%;
+    left:30%
+}
+.achieveInfo{
+    color:#FFF4CC;
+    font-size:160%;
+    position:absolute;
+    top:30%;
+    left:24%;
+    overflow:auto;
+    height:28%;
+    width:60%;
+    text-align:left        
+}
+.achieveButtonSet{
+    width:16%;
+    height:10%;
+    position:absolute;
+    top:58%;
+    left:40%;
+    cursor:pointer
+}
+.achieveButtonText{
+    color:#AD1A47;
+    font-size:180%;
+    position:absolute;
+    top:30%;
+    left:22%;
+}
+.achieveButton{
+    width:100%;
+    height:100%
+}
+.achieveExit{
+    position:absolute;
+    top:1%;
+    left:87%;
+    width:12%;
+    height:8%;
+    cursor:pointer
+}
+.exit{
+    width:6%;
+    height:9%;
+    position:absolute;
+    top:2%;
+    left:90%;
+    cursor:pointer
+}
+.btnExitSet{
+    position:absolute;
+    top:84%;
+    left:72%;
+    width:14%;
+    height:9%;
+    cursor:pointer;
+    text-align: center;
+}
+.btnExit{
+   width:100%;
+   height:100%;
+}
+.textExit{
+    position:absolute;
+    top:30%;
+    left:16%;
+    /*font-size:160%;*/
+    font-weight:bold;
+    color:#FFF4CC;
+    margin:0 auto;
+} 
+.btnNextSet{
+    position:absolute;
+    top:84%;
+    left:40%;
+    width:14%;
+    height:9%;
+    cursor:pointer;
+    text-align: center;
+}
+.btnNext{
+    width:100%;
+    height:100%;
+}
+.textNext{
+    position:absolute;
+    top:30%;
+    left:27%;
+    /*font-size:160%;*/
+    font-weight:bold;
+    color:#FFF4CC;
+    margin:0 auto;
+}
+.btnPlayAgainSet{
+    position:absolute;
+    top:84%;
+    left:56%;
+    width:14%;
+    height:9%;
+    cursor:pointer;
+    text-align: center;
+}
+.btnPlayAgain{
+    width:100%;
+    height:100%
+}
+.textPlayAgain{
+    position:absolute;
+    top:30%;
+    left:22%;
+    /*font-size:160%;*/
+    font-weight:bold;
+    color:#FFF4CC;
+    margin:0 auto;
+}
+#bottom_exit{
+    height: 50%;
+    width: 15%;
+    position: absolute;
+    top: 58%;    
+    left: -20%;
+    cursor:pointer;
+}
+.btnRow{
+    font-size:160%;
+}

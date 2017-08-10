@@ -36,6 +36,24 @@
     tag.parentNode.insertBefore(link, tag);
   }
 
+  /**
+   * E-game 平台的 api
+   * @return {[type]} [description]
+   */
+  function sectionInfoFromEgame() {
+    //The following are the codes from KH EGAME TEAM for getting each webduino section information.
+    var page = Code.getPage();
+    var sectionId = page.substring(page.indexOf("/")+1);
+    //console.log(page);
+    return $.ajax({
+        url: '/auth/main/?a=getWebduinoSectionInfo&sectionId='+sectionId,
+        method: 'get',        
+        success: function (response) {
+            console.log(response);
+        }
+    }); 
+  }
+
   function assembleHtml(head, body, css, js) {
     var html = '<!doctype html>\n<html>\n\n';
 
