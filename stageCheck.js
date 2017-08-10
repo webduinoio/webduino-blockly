@@ -138,8 +138,6 @@
       if (isPass) {
         isPassed = true;
         alert("第 2 關 過關!");
-      } else {
-        console.log("Stage2 not yet...");
       }
     }
 
