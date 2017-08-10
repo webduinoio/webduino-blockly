@@ -92,6 +92,7 @@ table.nav{
   display:none;
 }
 #demo-area{
+  z-index: 101;
   display:block!important;
   position:relative;
   top:0;
