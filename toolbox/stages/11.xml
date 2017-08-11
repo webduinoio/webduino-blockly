@@ -156,5 +156,4 @@
   <category id="catTutorials">
     <block type="stage_max7219_get_value"></block>
   </category>
-  <sep></sep>
 </xml>

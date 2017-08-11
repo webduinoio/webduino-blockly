@@ -7,7 +7,6 @@
     <block type="lists_create_with"></block>
   </category>
   <sep></sep>
-  <sep></sep>
   <category id="catBoard">
     <block type="board_server">
       <value name="server_">
@@ -53,5 +52,4 @@
       </value>
     </block>
   </category>
-  <sep></sep>
 </xml>

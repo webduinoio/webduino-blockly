@@ -137,5 +137,4 @@
     </block>
     <block type="rgb_led_dancing_status"></block>
   </category>
-  <sep></sep>
 </xml>

@@ -1,6 +1,5 @@
 <xml id="toolbox" style="display: none">
   <category id="catVariables" custom="VARIABLE"></category>
-  <sep></sep>
   <category id="catColour">
     <block type="colour_picker"></block>
   </category>
@@ -40,5 +39,4 @@
     <block type="rgb_led_area_color"></block>
     <block type="rgb_led_btn_click"></block>
   </category>
-  <sep></sep>
 </xml>

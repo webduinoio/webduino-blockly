@@ -1,14 +1,11 @@
 <xml id="toolbox" style="display: none">
   <category id="catVariables" custom="VARIABLE"></category>
-  <sep></sep>
-  <sep></sep>
   <category id="catText">
     <block type="text"></block>
   </category>
   <category id="catLogic">
     <block type="controls_if"></block>
   </category>
-  <sep></sep>
   <sep></sep>
   <category id="catBoard">
     <block type="board_server">
@@ -37,8 +34,6 @@
     </block>
     <block type="button_event"></block>
   </category>
-  <sep></sep>
-  <sep></sep>
   <category id="catTutorials">
     <block type="show_text"></block>
     <block type="tutorial_youtube">
@@ -51,5 +46,4 @@
     <block type="tutorial_youtube_control"></block>
     <block type="tutorial_youtube_status"></block>
   </category>
-  <sep></sep>
 </xml>

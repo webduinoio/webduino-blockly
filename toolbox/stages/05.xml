@@ -1,7 +1,6 @@
 <xml id="toolbox" style="display: none">
   <category id="catVariables" custom="VARIABLE"></category>
   <sep></sep>
-  <sep></sep>
   <category id="catMath">
     <block type="math_number">
     </block>
@@ -37,5 +36,4 @@
     <block type="button_game"></block>
     <block type="button_game_user"></block>
   </category>
-  <sep></sep>
 </xml>

@@ -1,6 +1,5 @@
 <xml id="toolbox" style="display: none">
   <category id="catVariables" custom="VARIABLE"></category>
-  <sep></sep>
   <category id="catLogic">
     <block type="controls_if"></block>
     <block type="logic_compare"></block>
@@ -26,7 +25,6 @@
       <field name="rate_">250</field>
     </block>
   </category>
-  <sep></sep>
   <category id="catUltraSonic">
     <block type="variables_set">
       <field name="VAR">ultrasonic</field>
@@ -57,5 +55,4 @@
     <block type="tutorial_youtube_volume"></block>
     <block type="tutorial_youtube_speed"></block>
   </category>
-  <sep></sep>
 </xml>

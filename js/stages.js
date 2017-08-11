@@ -8,6 +8,38 @@
     // 當點選關卡而非解答時，清空內容
     restoreSimulator();
 
+    // 計算闖關時間
+    window.stage = {
+      startTime: Date.now(),
+      getGameTime: function () {
+        return Date.now() - this.startTime;
+      },
+      getCode: function () {
+        var obj = {
+          blockly: getBlocklyCode(),
+          simulator: getSimulatorConfig()
+        };
+        return JSON.stringify(obj);
+      },
+      getSectionValues: function () {
+        var wk = Code.workspace;
+        var xml = Blockly.Xml.workspaceToDom(wk);
+        var config = getSimulatorConfig();
+        return {
+          block: xml.querySelectorAll('block').length,
+          simulator: {
+            line: config.data.components.length,
+            component: config.data.paths.length
+          }
+        };
+      },
+      getBlockXml: function () {
+        var wk = Code.workspace;
+        var xml = Blockly.Xml.workspaceToDom(wk);
+        return xml;
+      }
+    };
+
   });
 
   function restoreBlocks() {
@@ -32,6 +64,18 @@
       localStorage.simulator = '{}';
       BlocklySimStorage.restoreBlocks(area, frame, btn);
     }
+  }
+
+  function getBlocklyCode() {
+    var wk = Code.workspace;
+    var xml = Blockly.Xml.workspaceToDom(wk);
+    var text = Blockly.Xml.domToText(xml);
+    return text;
+  }
+
+  function getSimulatorConfig() {
+    var frame = document.querySelector('#simulator-frame');
+    return frame.contentWindow.blockly.getConfig();
   }
 
 })();

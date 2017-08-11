@@ -123,5 +123,4 @@
     </block>
     <block type="ultrasonic_distance"></block>
   </category>
-  <sep></sep>
 </xml>

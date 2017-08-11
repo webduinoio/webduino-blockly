@@ -11,21 +11,21 @@
   </category>
   <sep></sep>
   <category id="catBoard">
-  <block type="board_server">
-    <value name="server_">
-      <block type="text"></block>
-    </value>
-  </block>
-  <block type="board_ready">
-    <value name="device_">
-      <block type="text">
-        <field name="TEXT">1234</field>
-      </block>
-    </value>
-    <field name="type_">5</field>
-    <field name="rate_">250</field>
-  </block>
-</category>
+    <block type="board_server">
+      <value name="server_">
+        <block type="text"></block>
+      </value>
+    </block>
+    <block type="board_ready">
+      <value name="device_">
+        <block type="text">
+          <field name="TEXT">1234</field>
+        </block>
+      </value>
+      <field name="type_">5</field>
+      <field name="rate_">250</field>
+    </block>
+  </category>
   <category id="catBuzzer">
     <block type="variables_set">
       <field name="VAR">buzzer</field>
@@ -93,5 +93,4 @@
   <category id="catTutorials">
     <block type="stage_max7219_set_value"></block>
   </category>
-  <sep></sep>
 </xml>

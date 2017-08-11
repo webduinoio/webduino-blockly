@@ -26,7 +26,28 @@
 
     demoDoc_ = demo.contentDocument;
     engine_ = engine;
+
+    if (!demoDoc_ || !engine_) {
+      showResult(false, parseInt(stageName.slice(-2)));
+      return;
+    }
+
     stage[stageName] && stage[stageName]();
+  }
+
+  function showResult(isPassed, stageInt) {
+    // 若已經停止執行，就不做事了。
+    if (!Code.running) return;
+
+    // if (ReturnGameRecord) {
+
+    // }
+
+    if (isPassed) {
+      alert("第" + stageInt + "關 過關！");
+    } else {
+      alert("第" + stageInt + "關 失敗！");
+    }
   }
 
 
@@ -36,35 +57,45 @@
    * 關卡 1：只要模擬器中任一個 led 亮及 demo area 中的燈泡是亮的狀態，就判斷為過關
    */
   function stage1() {
+    var STAGENUM = 1;
     var htmlState = demoDoc_.getElementById('light').className;
     var leds = engine_.list().led;
-    var isPass = false;
+    var isPassed = false;
 
     leds.forEach(function (led) {
-      if (isPass) return;
-      if (led.getValue() === 1 && htmlState === 'on') isPass = true;
+      if (isPassed) return;
+      if (led.getValue() === 1 && htmlState === 'on') isPassed = true;
     });
 
-    if (isPass) alert("第 1 關 過關!");
+    showResult(isPassed, STAGENUM);
   }
 
   /**
    * 關卡 2：只要模擬器中任一個 rgbLed 完成顏色的變化，就判斷為過關
    */
   function stage2() {
+    var STAGENUM = 2;
     var redBtn = demoDoc_.getElementById('redBtn');
     var greenBtn = demoDoc_.getElementById('greenBtn');
     var blueBtn = demoDoc_.getElementById('blueBtn');
     var clearBtn = demoDoc_.getElementById('clearBtn');
-    var rgbLedAry = engine_.list()['rgbled'];
+    var rgbLedAry = engine_.list().rgbled;
     var rgbLedChecks = [];
+    var checkPointExec = [false, false, false, false];
     var isPassed = false;
+    var isCheckAll = false;
+
+    if (!rgbLedAry.length) {
+      showResult(false, STAGENUM);
+      return;
+    }
 
     rgbLedAry.forEach(function (rgbLed) {
       rgbLedChecks.push([false, false, false, false]);
     });
 
     redBtn.addEventListener('click', function () {
+      checkPointExec[0] = true;
       setTimeout(function () {
         checkPoint1();
         checkPointVerify();
@@ -72,6 +103,7 @@
     });
 
     greenBtn.addEventListener('click', function () {
+      checkPointExec[1] = true;
       setTimeout(function () {
         checkPoint2();
         checkPointVerify();
@@ -79,6 +111,7 @@
     });
 
     blueBtn.addEventListener('click', function () {
+      checkPointExec[2] = true;
       setTimeout(function () {
         checkPoint3();
         checkPointVerify();
@@ -86,6 +119,7 @@
     });
 
     clearBtn.addEventListener('click', function () {
+      checkPointExec[3] = true;
       setTimeout(function () {
         checkPoint4();
         checkPointVerify();
@@ -128,16 +162,25 @@
 
     function checkPointVerify() {
       if (isPassed) return;
+      if (isCheckAll) return;
 
-      var isPass = rgbLedChecks.filter(function (check) {
+      isPassed = rgbLedChecks.filter(function (check) {
         return check.reduce(function(acc, val) {
           return acc && val;
         }, true);
       }).length > 0;
 
-      if (isPass) {
-        isPassed = true;
-        alert("第 2 關 過關!");
+      isCheckAll = checkPointExec.reduce(function (acc, val) {
+        return acc && val;
+      }, true);
+
+      if (isPassed) {
+        showResult(true, STAGENUM);
+        return;
+      }
+
+      if (isCheckAll) {
+        showResult(false, STAGENUM);
       }
     }
 
@@ -147,36 +190,71 @@
    * 關卡 3：模擬器中三色 LED 是否有做顏色的不斷變化
    */
   function stage3() {
+    var STAGENUM = 3;
     var lightBtn = demoDoc_.getElementById('light');
-    var isPass = false;
+    var rgbLedAry = engine_.list()['rgbled'];
+    var rgbLedStates = [];
+    var isPassed = false;
+    var timer;
 
-    lightBtn.addEventListener('click', function() {
+    if (!rgbLedAry.length || !isValidBlock()) {
+      showResult(false, STAGENUM);
+      return;
+    }
+
+    rgbLedAry.forEach(function (rgbLed) {
+      rgbLedStates.push({});
+    });
+
+    lightBtn.addEventListener('click', function click() {
       if (lightBtn.classList.contains('on')) {
-        setTimeout(checking, 3000);
+        // 點擊燈泡後，讓它執行 3 秒後，做檢查，進入檢查階段，就不會停止。
+        timer = setTimeout(function () {
+          lightBtn.removeEventListener('click', click);
+
+          Promise.resolve()
+            .then(function () {
+              return new Promise(function (resolve) {
+                listenState();
+                setTimeout(resolve, 2000);
+              });
+            })
+            .then(checking)
+            .then(checkOver);
+
+        }, 2000);
+      } else {
+        clearTimeout(timer);
       }
     });
 
-    function checking() {
-      var rgbLedAry = engine_.list()['rgbled'];
+    function isValidBlock() {
+      var xml = window.stage.getBlockXml();
+      var dancingBlock = xml.querySelector('block[type="rgb_led_start_dancing"]');
+      if (!dancingBlock) return false;
+      return dancingBlock.querySelectorAll('block[type="rgb_led_dancing_status"] block[type="rgbled_setcolor"] block[type="colour_picker"]').length > 1;
+    }
 
-      rgbLedAry.forEach(function (rgbLed) {
-        var colors = {};
+    function listenState() {
+      rgbLedAry.forEach(function (rgbLed, idx) {
         rgbLed.state(function (r, g, b) {
-          if (isPass) return;
-
-          colors["[" + r + "," + g + "," + b + "]"] = true;
-          if (Object.keys(colors).length > 1) {
-            isPass = true;
-            alert('第 3 關 過關!');
-            checkOver();
-          }
+          rgbLedStates[idx]["[" + r + "," + g + "," + b + "]"] = true;
         });
       });
     }
 
+    function checking() {
+      if (isPassed) return;
+
+      isPassed = rgbLedStates.reduce(function (acc, colors) {
+        return acc || Object.keys(colors).length > 1;
+      }, false);
+
+      showResult(isPassed, STAGENUM);
+    }
+
     function checkOver() {
-      var rgbLedAry = engine_.list()['rgbled'];
-      rgbLedAry.forEach(function (rgbLed) {
+      rgbLedAry.forEach(function (rgbLed, idx) {
         rgbLed.state(null);
       });
     }
@@ -187,6 +265,7 @@
    * 關卡 4：點擊按鈕時，是否有完成暫停影片及播放影片的功能，以及長按按鈕來讓影片停止
    */
   function stage4() {
+    var STAGENUM = 4;
     var demoWin = demoDoc_.defaultView;
     var youtube = demoWin.youtube_;
     var btns = engine_.list().btn;
@@ -196,7 +275,8 @@
     var TIMES = 10;
     var times = 0;
 
-    if (!btns.length) {
+    if (!btns.length || !isValidBlock()) {
+      showResult(false, STAGENUM);
       return;
     }
 
@@ -218,7 +298,11 @@
 
         if (times < TIMES) {
           setTimeout(aa, 1000);
+          return;
         }
+
+        // youtube 無法取到，直接判為失敗
+        showResult(false, STAGENUM);
 
       }, 1000);
     }
@@ -243,19 +327,36 @@
       checking(); 
     }
 
+    function isValidBlock() {
+      var xml = window.stage.getBlockXml();
+      var youtbue = xml.querySelector('block[type="tutorial_youtube"]');
+      var youtbueControl = xml.querySelectorAll('block[type="tutorial_youtube_control"]');
+      var status = [];
+      if (!youtbue || !youtbueControl) return false;
+
+      youtbueControl = [].slice.apply(youtbueControl);
+      
+      // 檢查是否用到 youtbue 狀態：播放、暫定、停止
+      youtbueControl.forEach(function(block) {
+        var statusCode = block.querySelector('field[name="status_"]').textContent;
+        status.includes(statusCode) || status.push(statusCode);
+      });
+
+      return status.length === 3;
+    }
+
     function checking() {
       if (isPassed) return;
 
-      var isPass = check.reduce(function (acc, val) {
+      isPassed = check.reduce(function (acc, val) {
         return acc && val;
       }, true);
 
-      if (isPass) {
-        isPassed = true;
+      if (isPassed) {
         checkOver();
         
         setTimeout(function () {
-          alert('第 4 關 過關!');
+          showResult(true, STAGENUM);
         }, 1000);
       }
     }
@@ -274,11 +375,13 @@
    * 點擊模擬器按鈕時，檢查在互動區裡，玩家的數字是否增加，有增加判斷為過關
    */
   function stage5() {
+    var STAGENUM = 5;
     var btns = engine_.list().btn;
     var usershow = demoDoc_.getElementById('usershow');
     var isPassed = false;
 
-    if (!btns.length) {
+    if (!btns.length || !isValidBlock()) {
+      showResult(false, STAGENUM);
       return;
     }
 
@@ -286,13 +389,21 @@
       btn.setPressHandler(checking);
     });
 
+    function isValidBlock() {
+      var xml = window.stage.getBlockXml();
+      var game = xml.querySelector('block[type="button_game"]');
+      var gameUser = xml.querySelector('block[type="button_game_user"]');
+      if (!game || !gameUser) return false;
+      return true;
+    }
+
     function checking() {
       if (isPassed) return;
       if (Number(usershow.textContent) > 0) {
         isPassed = true;
         checkOver();
         setTimeout(function () {
-          alert('第 5 關 過關!');
+          showResult(true, STAGENUM);
         }, 1000);
       }
     }
@@ -310,6 +421,7 @@
    * 做法：根據超音波距離，記錄蜂鳴器發出指令，來計算出，在某個超音波距離下，蜂鳴器啟動的頻率。
    */
   function stage6() {
+    var STAGENUM = 6;
     var ultrasonics = engine_.list().ultrasonic;
     var buzzers = engine_.list().buzzer;
     var showEl = demoDoc_.querySelector('#show');
@@ -317,8 +429,10 @@
     var curDistance = void 0;
     var isPassed = false;
 
-    if (!ultrasonics.length) return;
-    if (!buzzers.length) return;
+    if (!ultrasonics.length || !buzzers.length || !isValidBlock()) {
+      showResult(false, STAGENUM);
+      return;
+    }
 
     ultrasonics.forEach(function (us) {
       us.setSendHandler(send);
@@ -343,6 +457,15 @@
       if (curDistance) {
         data[curDistance] && data[curDistance].push(Date.now());  
       }
+    }
+
+    // 檢查是否有超音波及蜂鳴器的積木
+    function isValidBlock() {
+      var xml = window.stage.getBlockXml();
+      var ultrasonic = xml.querySelector('block[type="ultrasonic_get"]');
+      var buzzer = xml.querySelector('block[type="buzzer_music_play"]');
+      if (!ultrasonic || !buzzer) return false;
+      return true;
     }
 
     function checking() {
@@ -372,7 +495,7 @@
 
       if (isPassed) {
         checkOver();
-        alert('第 6 關 過關!');
+        showResult(true, STAGENUM);
       }
     }
 
@@ -398,6 +521,7 @@
    * 2. 三色 led，變化與否，看儲存的顏色是否超過 1 筆
    */
   function stage7() {
+    var STAGENUM = 7;
     var ultrasonics = engine_.list().ultrasonic;
     var buzzers = engine_.list().buzzer;
     var rgbLeds = engine_.list().rgbled;
@@ -409,10 +533,10 @@
     var check = [false, false];
     var isPassed = false;
 
-    if (!ultrasonics.length) return;
-    if (!buzzers.length) return;
-    if (!rgbLeds.length) return;
-    if (!servos.length) return;
+    if (!ultrasonics.length || !buzzers.length || !rgbLeds.length || !servos.length || !isValidBlock()) {
+      showResult(false, STAGENUM);
+      return;
+    }
 
     ultrasonics.forEach(function (us) {
       us.setSendHandler(send);
@@ -484,6 +608,17 @@
       });
     }
 
+    // 檢查是否有用到超音波、蜂鳴器、三色 LED及伺服馬達的積木
+    function isValidBlock() {
+      var xml = window.stage.getBlockXml();
+      var ultrasonic = xml.querySelector('block[type="ultrasonic_get"]');
+      var buzzer = xml.querySelector('block[type="buzzer_music_play"]');
+      var rgbled = xml.querySelector('block[type="rgbled_setcolor"]');
+      var servo = xml.querySelector('block[type="servo_angle_set"], block[type="servo_angle"]');
+      if (!ultrasonic || !buzzer || !rgbled || !servo) return false;
+      return true;
+    }
+
     function checking() {
       if (isPassed) return;
       
@@ -496,7 +631,7 @@
 
         // 考量畫面有些動畫未完成，所以延遲 1 秒執行
         setTimeout(function () {
-          alert('第 7 關 過關!');
+          showResult(true, STAGENUM);
         }, 1000);
       }
     }
@@ -521,13 +656,17 @@
    * 調整超音波在 <10，10~20，20~30，30~40，>40，五個區間，會判斷是否符合對應的速度，符合則過關
    */
   function stage8() {
+    var STAGENUM = 8;
     var demoWin = demoDoc_.defaultView;
     var ultrasonics = engine_.list().ultrasonic;
     var check = [false, false, false, false, false];
     var isPassed = false;
     var youtube;
     
-    if (!ultrasonics.length) return;
+    if (!ultrasonics.length || !isValidBlock()) {
+      showResult(false, STAGENUM);
+      return;
+    }
 
     Promise.resolve()
       .then(getYoutube)
@@ -591,6 +730,26 @@
       checking();     
     }
 
+    // 檢查是否有用到超音波、youtbue 的積木
+    function isValidBlock() {
+      var xml = window.stage.getBlockXml();
+      var ultrasonic = xml.querySelector('block[type="ultrasonic_get"]');
+      var youtbue = xml.querySelector('block[type="tutorial_youtube"]');
+      var youtbueSpeed = xml.querySelectorAll('block[type="tutorial_youtube_speed"]');
+      var speed = [];
+      if (!ultrasonic || !youtbue || !youtbueSpeed) return false;
+
+      youtbueSpeed = [].slice.apply(youtbueSpeed);
+      
+      // 檢查是否用到 youtbue 狀態：播放、暫定、停止
+      youtbueSpeed.forEach(function(block) {
+        var statusCode = block.querySelector('field[name="speed_"]').textContent;
+        speed.includes(statusCode) || speed.push(statusCode);
+      });
+
+      return speed.length > 1;
+    }
+
     function checking() {
       if (isPassed) return;
       
@@ -603,7 +762,7 @@
 
         // 考量畫面有些動畫未完成，所以延遲 1 秒執行
         setTimeout(function () {
-          alert('第 8 關 過關!');
+          showResult(true, STAGENUM);
         }, 1000);
       }
     }
@@ -621,12 +780,16 @@
    * 做法：過三秒後，開始偵測，至少二種圖形，且每種點矩陣圖形出現的次數都超過 3 次
    */
   function stage9() {
+    var STAGENUM = 9;
     var matrixs  = engine_.list().matrix;
     var datas = {};
     var isCheck = false;
     var isPassed = false;
 
-    if (!matrixs.length) return;
+    if (!matrixs.length || !isValidBlock()) {
+      showResult(false, STAGENUM);
+      return;
+    }
 
     matrixs.forEach(function (matrix) {
       matrix.state(state);
@@ -641,6 +804,14 @@
       if (!datas[key]) datas[key] = [];
       datas[key].push(Date.now());
       checking();
+    }
+
+    // 檢查是否有用到點矩陣積木
+    function isValidBlock() {
+      var xml = window.stage.getBlockXml();
+      var matrix = xml.querySelector('block[type="max7219_draw"], block[type="max7219_animate"]');
+      if (!matrix) return false;
+      return true;
     }
 
     function checking() {
@@ -660,7 +831,7 @@
 
         // 考量畫面有些動畫未完成，所以延遲 1 秒執行
         setTimeout(function () {
-          alert('第 9 關 過關!');
+          showResult(true, STAGENUM);
         }, 1000);
       }
 
@@ -681,6 +852,7 @@
    * 2. 是否播放超級瑪麗
    */
   function stage10() {
+    var STAGENUM = 10;
     var buzzers = engine_.list().buzzer;
     var buzzerNotes = demoDoc_.querySelector('#buzzerNotes');
     var buzzerTempos = demoDoc_.querySelector('#buzzerTempos');
@@ -689,7 +861,10 @@
     var check = [false, false];
     var isPassed = false;
 
-    if (!buzzers.length) return;
+    if (!buzzers.length || !isValidBlock()) {
+      showResult(false, STAGENUM);
+      return;
+    }
 
     buzzers.forEach(function (bz) {
       bz.setCmdHandler(cmd);
@@ -715,6 +890,16 @@
       check[1] = regMary.test(buzzerData.toString());
     }
 
+    // 檢查是否使用到蜂鳴器相關的積木
+    function isValidBlock() {
+      var xml = window.stage.getBlockXml();
+      var buzzerMusic = xml.querySelector('block[type="buzzer_music"]');
+      var buzzerLoadMusic = xml.querySelector('block[type="buzzer_load_music"]');
+      var buzzerPlay = xml.querySelector('block[type="buzzer_play"]');
+      if (!buzzerMusic || !buzzerLoadMusic || !buzzerPlay) return false;
+      return true;
+    }
+
     function checking() {
       if (isPassed) return;
       
@@ -727,7 +912,7 @@
 
         // 考量畫面有些動畫未完成，所以延遲 1 秒執行
         setTimeout(function () {
-          alert('第 10 關 過關!');
+          showResult(true, STAGENUM);
         }, 1000);
       }
     }
@@ -745,6 +930,7 @@
    * 做法：當蜂鳴起接收到資料時，檢查點矩陣資料，資料筆數要大於 2，互動區的數字與點短陣是否相同
    */
   function stage11() {
+    var STAGENUM = 11;
     var selectEl = demoDoc_.querySelector('#select');
     var btns = engine_.list().btn;
     var buzzers = engine_.list().buzzer;
@@ -760,9 +946,10 @@
     var datas = [];
     var isPassed = false;
 
-    if (!btns.length) return;
-    if (!buzzers.length) return;
-    if (!matrixs.length) return;
+    if (!btns.length || !buzzers.length || !matrixs.length || !isValidBlock()) {
+      showResult(false, STAGENUM);
+      return;
+    }
 
     btns.forEach(function (btn) {
       btn.setPressHandler(press);
@@ -788,6 +975,16 @@
       setTimeout(checking, 1000);
     }
 
+    // 檢查是否使用到按鈕、點矩陣及蜂鳴器的積木
+    function isValidBlock() {
+      var xml = window.stage.getBlockXml();
+      var button_event = xml.querySelector('block[type="button_event"]');
+      var max7219_draw = button_event.querySelector('block[type="max7219_draw"]');
+      var buzzer_music_play = button_event.querySelector('block[type="buzzer_music_play"]');
+      if (!button_event || !max7219_draw || !buzzer_music_play) return false;
+      return true;
+    }
+
     function checking() {
       if (isPassed) return;
       if (datas.length < 2) return;
@@ -800,7 +997,7 @@
 
         // 考量畫面有些動畫未完成，所以延遲 1 秒執行
         setTimeout(function () {
-          alert('第 11 關 過關!');
+          showResult(true, STAGENUM);
         }, 1000);
       }
 
@@ -827,6 +1024,7 @@
    * 做法：點擊按鈕後，檢查點矩陣最後一次圖形是否為 O，前一次是否為 X，超音波距離是否小於 50
    */
   function stage12() {
+    var STAGENUM = 12;
     var btns = engine_.list().btn;
     var matrixs  = engine_.list().matrix;
     var ultrasonics = engine_.list().ultrasonic;
@@ -836,9 +1034,10 @@
     var isPassed = false;
     var curDistance;
 
-    if (!btns.length) return;
-    if (!matrixs.length) return;
-    if (!ultrasonics.length) return;
+    if (!btns.length || !ultrasonics.length || !matrixs.length || !isValidBlock()) {
+      showResult(false, STAGENUM);
+      return;
+    }
 
     btns.forEach(function (btn) {
       btn.setPressHandler(press);
@@ -864,6 +1063,16 @@
       curDistance = Number(distance);
     }
 
+    // 檢查是否使用到按鈕、點矩陣及超音波的積木
+    function isValidBlock() {
+      var xml = window.stage.getBlockXml();
+      var button_event = xml.querySelector('block[type="button_event"]');
+      var max7219_draw = button_event.querySelector('block[type="max7219_draw"]');
+      var ultrasonic_get = xml.querySelector('block[type="ultrasonic_get"]');
+      if (!button_event || !max7219_draw || !ultrasonic_get) return false;
+      return true;
+    }
+
     function checking() {
       if (isPassed) return;
       if (curDistance > 49) return;
@@ -882,7 +1091,7 @@
 
         // 考量畫面有些動畫未完成，所以延遲 1 秒執行
         setTimeout(function () {
-          alert('第 12 關 過關!');
+          showResult(true, STAGENUM);
         }, 1000);
       }
 
@@ -911,6 +1120,7 @@
    * 2. 網頁互動區的數字與點短陣相同
    */
   function stage13() {
+    var STAGENUM = 13;
     var showEl = demoDoc_.querySelector('#show');
     var btns = engine_.list().btn;
     var matrixs  = engine_.list().matrix;
@@ -922,9 +1132,10 @@
     var isPassed = false;
     var timer;
 
-    if (!btns.length) return;
-    if (!matrixs.length) return;
-    if (!buzzers.length) return;
+    if (!btns.length || !buzzers.length || !matrixs.length || !isValidBlock()) {
+      showResult(false, STAGENUM);
+      return;
+    }
 
     btns.forEach(function (btn) {
       btn.setPressHandler(press);
@@ -952,6 +1163,16 @@
       buzzerTimes++;
     }
 
+    // 檢查是否使用到按鈕、點矩陣及蜂鳴器的積木
+    function isValidBlock() {
+      var xml = window.stage.getBlockXml();
+      var button_event = xml.querySelector('block[type="button_event"]');
+      var max7219_draw = button_event.querySelector('block[type="max7219_draw"]');
+      var buzzer_music_play = button_event.querySelector('block[type="buzzer_music_play"]');
+      if (!button_event || !max7219_draw || !buzzer_music_play) return false;
+      return true;
+    }
+
     function checking() {
       if (isPassed) return;
       if (btnTimes !== buzzerTimes) return;
@@ -964,7 +1185,7 @@
 
         // 考量畫面有些動畫未完成，所以延遲 1 秒執行
         setTimeout(function () {
-          alert('第 12 關 過關!');
+          showResult(true, STAGENUM);
         }, 1000);
       }
 
@@ -991,6 +1212,7 @@
    * 做法：點擊按鈕後，做檢查，檢查互動區的值，與伺服馬達旋轉角度是否一致。此外，要檢查二種情況 0, 90 度。
    */
   function stage14() {
+    var STAGENUM = 14;
     var showEl = demoDoc_.querySelector('#show');
     var btns = engine_.list().btn;
     var servos = engine_.list().servo;
@@ -998,8 +1220,10 @@
     var isPassed = false;
     var timer;
 
-    if (!btns.length) return;
-    if (!servos.length) return;
+    if (!btns.length || !servos.length || !isValidBlock()) {
+      showResult(false, STAGENUM);
+      return;
+    }
 
     btns.forEach(function (btn) {
       btn.setPressHandler(press);
@@ -1031,6 +1255,15 @@
       });
     }
 
+    // 檢查是否使用到按鈕、伺服馬達的積木
+    function isValidBlock() {
+      var xml = window.stage.getBlockXml();
+      var button_event = xml.querySelector('block[type="button_event"]');
+      var servo_angle = button_event.querySelectorAll('block[type="servo_angle"], block[type="servo_angle_set"]');
+      if (!button_event) return false;
+      return servo_angle.length > 1;
+    }
+
     function checking() {
       if (isPassed) return;
       
@@ -1043,7 +1276,7 @@
 
         // 考量畫面有些動畫未完成，所以延遲 1 秒執行
         setTimeout(function () {
-          alert('第 14 關 過關!');
+          showResult(true, STAGENUM);
         }, 1000);
       }
 
@@ -1061,6 +1294,7 @@
    * 判斷超音波的距離，會顯示在互動區及點矩陣上，完成此操作則過關
    */
   function stage15() {
+    var STAGENUM = 15;
     var showEl = demoDoc_.querySelector('#show');
     var matrixs  = engine_.list().matrix;
     var ultrasonics = engine_.list().ultrasonic;
@@ -1069,8 +1303,10 @@
     var isPassed = false;
     var curDistance;
 
-    if (!matrixs.length) return;
-    if (!ultrasonics.length) return;
+    if (!matrixs.length || !ultrasonics.length || !isValidBlock()) {
+      showResult(false, STAGENUM);
+      return;
+    }
 
     ultrasonics.forEach(function (us) {
       us.setSendHandler(send);
@@ -1096,6 +1332,15 @@
       data.push(hex);
     }
 
+    // 檢查是否使用到點矩陣及超音波的積木
+    function isValidBlock() {
+      var xml = window.stage.getBlockXml();
+      var ultrasonic_get = xml.querySelector('block[type="ultrasonic_get"]');
+      var max7219_draw = ultrasonic_get.querySelector('block[type="max7219_draw"]');
+      if (!ultrasonic_get || !max7219_draw) return false;
+      return true;
+    }
+
     function checking() {
       if (isPassed) return;
       if (curDistance !== Number(showEl.textContent)) return;
@@ -1105,7 +1350,7 @@
     
       if (isPassed) {
         checkOver();
-        alert('第 15 關 過關!');
+        showResult(true, STAGENUM);
       }
 
     }

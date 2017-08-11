@@ -1,10 +1,9 @@
 <xml id="toolbox" style="display: none">
   <category id="catVariables" custom="VARIABLE"></category>
-  <sep></sep>
-  <sep></sep>
   <category id="catText">
     <block type="text"></block>
   </category>
+  <sep></sep>
   <category id="catBoard">
     <block type="board_server">
       <value name="server_">
@@ -30,13 +29,13 @@
         </block>
       </value>
     </block>
-      <block type="buzzer_music">
-        <value name="music_name_">
-          <block type="variables_get">
-            <field name="VAR">music</field>
-          </block>
-        </value>
-      </block>
+    <block type="buzzer_music">
+      <value name="music_name_">
+        <block type="variables_get">
+          <field name="VAR">music</field>
+        </block>
+      </value>
+    </block>
     <block type="buzzer_music_array">
       <value name="music_name_">
         <block type="variables_get">
@@ -72,5 +71,4 @@
       </value>
     </block>
   </category>
-  <sep></sep>
 </xml>
