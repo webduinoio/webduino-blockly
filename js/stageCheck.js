@@ -36,12 +36,15 @@
   }
 
   function showResult(isPassed, stageInt) {
+    var stage = window.stage;
+
     // 若已經停止執行，就不做事了。
     if (!Code.running) return;
 
-    // if (ReturnGameRecord) {
-
-    // }
+    if (window.ReturnGameRecord) {
+      window.ReturnGameRecord('utf8', stageInt, stage.getGameTime(), stage.getSectionValues(), JSON.stringify(stage.getCode()));
+      return;
+    }
 
     if (isPassed) {
       alert("第" + stageInt + "關 過關！");
