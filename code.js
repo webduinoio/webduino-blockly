@@ -1138,7 +1138,7 @@ Code.loadSimulator = function () {
       if (Code.running) {
         demo = document.getElementById("demo-frame");
         engine = frame.contentWindow.blockly.getEngine();
-        Code.stageCheck.init(demo, engine);
+        Code.stageCheck && Code.stageCheck.init(demo, engine);
       }
     }, 1000);
 
@@ -1719,10 +1719,10 @@ Code.setTopArea = function (areaType) {
 
   $.each(area, function (key, val) {
     var $el = $('#' + val);
-    $el.removeClass("topArea");
+    $el.removeClass("topFrame");
 
     if (areaType === key) {
-      $el.addClass("topArea");
+      $el.addClass("topFrame");
     }
   });
 

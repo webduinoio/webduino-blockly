@@ -635,7 +635,7 @@ td#copyCode div {
   z-index: 101;
 }
 
-#demo-area.show.topArea {
+#demo-area.show.topFrame {
   z-index: 102;
 }
 
@@ -1046,7 +1046,7 @@ td#copyCode div {
   z-index: 101;
 }
 
-#simulation-area.show.topArea {
+#simulation-area.show.topFrame {
   z-index: 102;
 }
 
