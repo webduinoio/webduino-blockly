@@ -21,6 +21,7 @@ var MSG = {
   timeout: "超过最大执行数",
   trashTooltip: "删除所有积木",
   sampleTooltip: "载入范例积木",
+  film: "影片",
   helpTooltip: "提示",
   simulatorTooltip: "模拟器区域",
   demoTooltip: "网页互动区域",

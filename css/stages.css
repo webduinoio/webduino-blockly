@@ -301,3 +301,12 @@ table.nav{
   opacity: 0;
   z-index: 9999;
 }
+
+/* 處理按鈕列的提示字串位置 */
+.toolMenu div{
+  display: flex !important;
+  justify-content: center;
+  text-align: center;
+  left: 0px;
+  right: 0px;
+}

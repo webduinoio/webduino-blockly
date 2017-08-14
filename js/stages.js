@@ -1,5 +1,13 @@
 +(function () {
 
+  var FILMS = {
+    'stages/01': 'https://youtu.be/o9NPI3BtNoA',
+    'stages/02': 'https://youtu.be/VN4sKngbiGI',
+    'stages/03': 'https://youtu.be/mXCnzUzcNSk',
+    'stages/05': 'https://youtu.be/UmMJG2zInWU',
+    'stages/10': 'https://youtu.be/NA2kjjwoWNA'
+  };
+
   window.addEventListener('load', function () {
 
     // 當點選關卡而非解答時，清空內容
@@ -7,6 +15,9 @@
 
     // 當點選關卡而非解答時，清空內容
     restoreSimulator();
+
+    // 決定影片按鈕的行為
+    watchFilm();
 
     // 計算闖關時間
     window.stage = {
@@ -76,6 +87,22 @@
   function getSimulatorConfig() {
     var frame = document.querySelector('#simulator-frame');
     return frame.contentWindow.blockly.getConfig();
+  }
+
+  function watchFilm() {
+    var stageName = Code.getStringParamFromUrl('page');
+    var url = FILMS[stageName];
+    var watchFilm = document.getElementById('watchFilm');
+
+    if (!url) {
+      watchFilm.style.display = "none";
+      return;
+    }
+
+    Code.bindClick(watchFilm,
+      function () {
+        window.open(url);
+      });
   }
 
 })();
