@@ -117,13 +117,12 @@
   }
 
   function sendOut() {
-    var payload = {
-      transport: true,
-      destinationName: this._options.device + TOPIC.PING,
-      payloadBytes: new Uint8Array(this._buf)
-    };
     if (this.isOpen) {
-      this._window.postMessage(payload, location.origin);
+      this._window.postMessage({
+        transport: true,
+        destinationName: this._options.device + TOPIC.PING,
+        payloadBytes: new Uint8Array(this._buf)
+      }, location.origin);
     }
     clearBuf(this);
   }
