@@ -6,6 +6,10 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks.colour.HUE = 120;
 Blockly.Blocks.colour.HUESON = 70;
 
+var webUrl = 'https://webduino.io';
+var mainUrl = 'https://tutorials.webduino.io/zh-tw/docs/';
+var utmUrl = '?utm_source=trail-blockly&utm_medium=contextMenu&utm_campaign=tutorials';
+
 /* 
       .o8                                        
      "888                                        
@@ -24,7 +28,7 @@ Blockly.Blocks['demo_show_text'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -36,7 +40,7 @@ Blockly.Blocks['demo_text_size'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -48,7 +52,7 @@ Blockly.Blocks['demo_text_lineheight'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -60,7 +64,7 @@ Blockly.Blocks['demo_text_color'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -72,7 +76,7 @@ Blockly.Blocks['demo_light_click'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+        this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -88,7 +92,7 @@ Blockly.Blocks['demo_light_state'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUESON);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -103,7 +107,7 @@ Blockly.Blocks['demo_light_ifelse'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUESON);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -115,7 +119,7 @@ Blockly.Blocks['demo_light_toggle'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUESON);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -135,7 +139,7 @@ Blockly.Blocks['demo_button_click'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -150,7 +154,7 @@ Blockly.Blocks['demo_image_url'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -165,7 +169,7 @@ Blockly.Blocks['demo_image_size'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -178,7 +182,7 @@ Blockly.Blocks['demo_image_rotate'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -190,7 +194,7 @@ Blockly.Blocks['demo_image_opacity'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -209,7 +213,7 @@ Blockly.Blocks['demo_image_position'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -221,7 +225,7 @@ Blockly.Blocks['demo_area_input'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -232,7 +236,7 @@ Blockly.Blocks['demo_area_input_color'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUESON);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -244,7 +248,7 @@ Blockly.Blocks['demo_area_color'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUESON);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -267,7 +271,7 @@ Blockly.Blocks['demo_range_set'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -279,7 +283,7 @@ Blockly.Blocks['demo_range_show'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUESON);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -290,7 +294,7 @@ Blockly.Blocks['demo_range_input_value'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUESON);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -311,7 +315,7 @@ Blockly.Blocks['demo_youtube'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/sensor/rfid-youtube.html' + utmUrl);
   }
 };
 
@@ -326,7 +330,7 @@ Blockly.Blocks['demo_youtube_volume'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/sensor/rfid-youtube.html' + utmUrl);
   }
 };
 
@@ -348,7 +352,7 @@ Blockly.Blocks['demo_youtube_speed'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/sensor/rfid-youtube.html' + utmUrl);
   }
 };
 
@@ -368,7 +372,7 @@ Blockly.Blocks['demo_youtube_control'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/sensor/rfid-youtube.html' + utmUrl);
   }
 };
 
@@ -388,7 +392,7 @@ Blockly.Blocks['demo_youtube_status'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(70);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/sensor/rfid-youtube.html' + utmUrl);
   }
 };
 
@@ -403,7 +407,7 @@ Blockly.Blocks['demo_youtube_id'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/sensor/rfid-youtube.html' + utmUrl);
   }
 };
 
@@ -422,7 +426,7 @@ Blockly.Blocks['demo_youtube_listcontrol'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(180);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/sensor/rfid-youtube.html' + utmUrl);
   }
 };
 
@@ -440,7 +444,7 @@ Blockly.Blocks['demo_youtube_listnum'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(180);
-    this.setHelpUrl('http://www.example.com/');
+    this.setHelpUrl(mainUrl + 'useful/sensor/rfid-youtube.html' + utmUrl);
   }
 };
 
@@ -453,7 +457,7 @@ Blockly.Blocks['demo_youtube_currenttime'] = {
     this.setOutput(true, null);
     this.setTooltip('');
     this.setColour(70);
-    this.setHelpUrl('http://www.example.com/');
+    this.setHelpUrl(mainUrl + 'useful/sensor/rfid-youtube.html' + utmUrl);
   }
 };
 
@@ -471,7 +475,7 @@ Blockly.Blocks['demo_youtube_seekto'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('http://www.example.com/');
+    this.setHelpUrl(mainUrl + 'useful/sensor/rfid-youtube.html' + utmUrl);
   }
 };
 
@@ -494,7 +498,7 @@ Blockly.Blocks['demo_youtube_callback'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('http://www.example.com/');
+    this.setHelpUrl(mainUrl + 'useful/sensor/rfid-youtube.html' + utmUrl);
   }
 };
 
@@ -516,7 +520,7 @@ Blockly.Blocks['demo_tracking'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/sensor/rfid-youtube.html' + utmUrl);
   }
 };
 
@@ -533,7 +537,7 @@ Blockly.Blocks['demo_tracking_action'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/component/led-tracking-face.html' + utmUrl);
   }
 };
 
@@ -575,7 +579,7 @@ Blockly.Blocks['demo_tracking_face'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/component/led-tracking-face.html' + utmUrl);
   }
 };
 
@@ -594,7 +598,7 @@ Blockly.Blocks['demo_tracking_val'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUESON);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/component/led-tracking-face.html' + utmUrl);
   }
 };
 
@@ -643,7 +647,7 @@ Blockly.Blocks['demo_controller'] = {
     this.setColour(Blockly.Blocks.colour.HUE);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-mobile.html' + utmUrl);
   }
 };
 
@@ -657,7 +661,7 @@ Blockly.Blocks['demo_controller_show'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-mobile.html' + utmUrl);
   }
 };
 
@@ -682,7 +686,7 @@ Blockly.Blocks['demo_controller_range'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-mobile.html' + utmUrl);
   }
 };
 
@@ -693,7 +697,7 @@ Blockly.Blocks['demo_controller_range_value'] = {
     this.setOutput(true, "Number");
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUESON);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-mobile.html' + utmUrl);
   }
 };
 
@@ -711,7 +715,7 @@ Blockly.Blocks['demo_controller_showcolor'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-mobile.html' + utmUrl);
   }
 };
 
@@ -740,7 +744,7 @@ Blockly.Blocks['mobile_deviceorientation_event'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(190);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-mobile.html' + utmUrl);
   }
 };
 
@@ -762,7 +766,7 @@ Blockly.Blocks['mobile_deviceorientation_event_val'] = {
     this.setOutput(true, null);
     this.setTooltip('');
     this.setColour(210);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-mobile.html' + utmUrl);
   }
 };
 
@@ -784,7 +788,7 @@ Blockly.Blocks['mobile_devicemotion_event_val'] = {
     this.setOutput(true, null);
     this.setTooltip('');
     this.setColour(210);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-mobile.html' + utmUrl);
   }
 };
 
@@ -801,7 +805,7 @@ Blockly.Blocks['mobile_deviceorientation_event_remove'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(190);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-mobile.html' + utmUrl);
   }
 };
 
@@ -837,7 +841,7 @@ Blockly.Blocks['math_round_digit'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl);
   }
 };
 
@@ -862,7 +866,7 @@ Blockly.Blocks['math_value_conversion'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl);
   }
 };
 
@@ -882,7 +886,7 @@ Blockly.Blocks['number_to_string'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(160);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl);
   }
 };
 
@@ -907,7 +911,7 @@ Blockly.Blocks['console'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setHelpUrl('https://blockly-demo.appspot.com/');
+    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl);
   }
 };
 
@@ -928,7 +932,7 @@ Blockly.Blocks['getdate'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(20);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl);
   }
 };
 Blockly.Blocks['gettime'] = {
@@ -944,7 +948,7 @@ Blockly.Blocks['gettime'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(20);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl);
   }
 };
 
@@ -956,7 +960,7 @@ Blockly.Blocks['board_server'] = {
     this.setInputsInline(true);
     this.setColour(250);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl);
   }
 };
 
@@ -1012,7 +1016,7 @@ Blockly.Blocks['board'] = {
     this.appendStatementInput('callbacks_');
     this.setTooltip('');
     this.setColour(290);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl);
   },
   onchange: function (ev) {
     switch (ev.name) {
@@ -1045,7 +1049,7 @@ Blockly.Blocks['board_error'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl);
   }
 };
 
@@ -1058,7 +1062,7 @@ Blockly.Blocks['all_board_ready'] = {
       .appendField(Blockly.Msg.WEBDUINO_BOARD_CHAIN_DO, "執行：");
     this.setTooltip('');
     this.setColour(0);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/multi-board.html' + utmUrl);
   }
 };
 
@@ -1076,7 +1080,7 @@ Blockly.Blocks['board_query_pin_state'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(120);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/board-pin.html' + utmUrl);
   }
 };
 
@@ -1087,7 +1091,7 @@ Blockly.Blocks['board_pin_state'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(160);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/board-pin.html' + utmUrl);
   }
 };
 
@@ -1099,7 +1103,7 @@ Blockly.Blocks['pin_get'] = {
     this.setOutput(true);
     this.setColour(270);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/board-pin.html' + utmUrl);
   }
 };
 
@@ -1111,7 +1115,7 @@ Blockly.Blocks['pin_num'] = {
     this.setColour(230);
     this.setOutput(true, "Number");
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/board-pin.html' + utmUrl);
   }
 };
 
@@ -1124,7 +1128,7 @@ Blockly.Blocks['pin_board'] = {
     this.setOutput(true);
     this.setColour(270);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/board-pin.html' + utmUrl);
   },
   getBoardsDropdown: function () {
     var nameMap = {
@@ -1188,7 +1192,7 @@ Blockly.Blocks['pin_set_mode'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/board-pin.html' + utmUrl);
   }
 };
 
@@ -1201,7 +1205,7 @@ Blockly.Blocks['pin_read'] = {
     this.setOutput(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/board-pin.html' + utmUrl);
   }
 };
 
@@ -1215,7 +1219,7 @@ Blockly.Blocks['pin_write'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/blockly/board-pin.html' + utmUrl);
   }
 };
 
@@ -1228,7 +1232,7 @@ Blockly.Blocks['led_new'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/led.html' + utmUrl);
   }
 };
 
@@ -1245,7 +1249,7 @@ Blockly.Blocks['led_state'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/led.html' + utmUrl);
   }
 };
 
@@ -1258,7 +1262,7 @@ Blockly.Blocks['led_toggle'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/led.html' + utmUrl);
   }
 };
 
@@ -1272,7 +1276,7 @@ Blockly.Blocks['led_intensity'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/led.html' + utmUrl);
   }
 };
 
@@ -1293,7 +1297,7 @@ Blockly.Blocks['led_callback'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/led.html' + utmUrl);
   }
 };
 
@@ -1310,7 +1314,7 @@ Blockly.Blocks['led_blink'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/led.html' + utmUrl);
   }
 };
 
@@ -1329,7 +1333,7 @@ Blockly.Blocks['led_blink_callback'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/led.html' + utmUrl);
   }
 };
 
@@ -1346,7 +1350,7 @@ Blockly.Blocks['rgbled_new'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/rgbled.html' + utmUrl);
   }
 };
 
@@ -1363,7 +1367,7 @@ Blockly.Blocks['rgbled_new_cathode'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/rgbled.html' + utmUrl);
   }
 };
 
@@ -1376,7 +1380,7 @@ Blockly.Blocks['rgbled_setcolor'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/rgbled.html' + utmUrl);
   }
 };
 
@@ -1391,7 +1395,7 @@ Blockly.Blocks['rgbled_setcolor_callback'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/rgbled.html' + utmUrl);
   }
 };
 
@@ -1470,7 +1474,7 @@ Blockly.Blocks['timer'] = {
     this.setNextStatement(true);
     this.setColour(180);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl);
   }
 };
 
@@ -1487,7 +1491,7 @@ Blockly.Blocks['interval'] = {
     this.setNextStatement(true);
     this.setColour(180);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl);
   }
 };
 
@@ -1501,7 +1505,7 @@ Blockly.Blocks['delay'] = {
     this.setNextStatement(true);
     this.setColour(180);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl);
   }
 };
 
@@ -1515,7 +1519,7 @@ Blockly.Blocks['ultrasonic_new'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/ultrasonic.html' + utmUrl);
   }
 };
 
@@ -1535,7 +1539,7 @@ Blockly.Blocks['ultrasonic_get'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/ultrasonic.html' + utmUrl);
   }
 };
 
@@ -1548,7 +1552,7 @@ Blockly.Blocks['ultrasonic_get_promise'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/ultrasonic.html' + utmUrl);
   }
 };
 
@@ -1561,7 +1565,7 @@ Blockly.Blocks['ultrasonic_distance'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/ultrasonic.html' + utmUrl);
   }
 };
 
@@ -1574,7 +1578,7 @@ Blockly.Blocks['ultrasonic_stop'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/ultrasonic.html' + utmUrl);
   }
 };
 
@@ -1587,7 +1591,7 @@ Blockly.Blocks['button_new'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/button.html' + utmUrl);
   }
 };
 
@@ -1599,7 +1603,7 @@ Blockly.Blocks['button_pullup_new'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/button.html' + utmUrl);
   }
 };
 
@@ -1622,7 +1626,7 @@ Blockly.Blocks['button_event'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/button.html' + utmUrl);
   }
 };
 
@@ -1635,7 +1639,7 @@ Blockly.Blocks['pir_new'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/pir.html' + utmUrl);
   }
 };
 
@@ -1656,7 +1660,7 @@ Blockly.Blocks['pir_status'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/pir.html' + utmUrl);
   }
 };
 
@@ -1668,7 +1672,7 @@ Blockly.Blocks['sound_new'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/sound.html' + utmUrl);
   }
 };
 
@@ -1688,7 +1692,7 @@ Blockly.Blocks['sound_status'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/sound.html' + utmUrl);
   }
 };
 
@@ -1700,7 +1704,7 @@ Blockly.Blocks['shock_new'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/shake-button.html' + utmUrl);
   }
 };
 
@@ -1721,7 +1725,7 @@ Blockly.Blocks['shock_event'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/shake-button.html' + utmUrl);
   }
 };
 
@@ -1733,7 +1737,7 @@ Blockly.Blocks['dht_new'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/dht.html' + utmUrl);
   }
 };
 
@@ -1752,7 +1756,7 @@ Blockly.Blocks['dht_get'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/dht.html' + utmUrl);
   }
 };
 
@@ -1768,7 +1772,7 @@ Blockly.Blocks['dht_get_number'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/dht.html' + utmUrl);
   }
 };
 
@@ -1780,7 +1784,8 @@ Blockly.Blocks['buzzer_new'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl('https://webduino.io');
+    this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
   }
 };
 
@@ -1796,7 +1801,8 @@ Blockly.Blocks['buzzer_music'] = {
     this.setNextStatement(true);
     this.setTooltip('即將停用，請改用 "用 buzzer 播放..."');
     this.setColour(65);
-    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
   }
 };
 
@@ -1811,7 +1817,8 @@ Blockly.Blocks['buzzer_var_notes_var_tempos'] = {
     this.setNextStatement(true, null);
     this.setColour(35);
     this.setTooltip('');
-    this.setHelpUrl('');
+    this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
   }
 };
 
@@ -1861,7 +1868,8 @@ Blockly.Blocks['buzzer_notes_tempos'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
   }
 };
 
@@ -1877,7 +1885,8 @@ Blockly.Blocks['buzzer_music_play'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
   }
 };
 
@@ -1930,7 +1939,8 @@ Blockly.Blocks['buzzer_single'] = {
     this.setNextStatement(true);
     this.setTooltip('即將停用，請改用 "用 buzzer 播放..."');
     this.setColour(65);
-    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
   }
 };
 
@@ -1946,7 +1956,8 @@ Blockly.Blocks['buzzer_play'] = {
     this.setNextStatement(true);
     this.setTooltip('即將停用，請改用 "用 buzzer 播放..."');
     this.setColour(65);
-    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
   }
 };
 
@@ -1966,7 +1977,8 @@ Blockly.Blocks['buzzer_event'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
   }
 };
 
@@ -1985,7 +1997,8 @@ Blockly.Blocks['buzzer_state'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
   }
 };
 
@@ -2004,7 +2017,8 @@ Blockly.Blocks['buzzer_music_array'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
   }
 };
 
@@ -2024,7 +2038,8 @@ Blockly.Blocks['buzzer_load_music'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
   }
 };
 
@@ -2036,7 +2051,7 @@ Blockly.Blocks['relay_new'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/relay.html' + utmUrl); 
   }
 };
 
@@ -2053,7 +2068,7 @@ Blockly.Blocks['relay_state'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/relay.html' + utmUrl); 
   }
 };
 
@@ -2065,7 +2080,7 @@ Blockly.Blocks['servo_new'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/servo.html' + utmUrl); 
   }
 };
 
@@ -2080,7 +2095,7 @@ Blockly.Blocks['servo_angle'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/servo.html' + utmUrl); 
   }
 };
 
@@ -2094,7 +2109,7 @@ Blockly.Blocks['servo_angle_set'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/servo.html' + utmUrl); 
   }
 };
 
@@ -2110,7 +2125,7 @@ Blockly.Blocks['data_firebase'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(200);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl); 
   }
 };
 
@@ -2125,7 +2140,7 @@ Blockly.Blocks['data_firebase_url'] = {
     this.setInputsInline(true);
     this.setTooltip('');
     this.setColour(200);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl); 
   }
 };
 
@@ -2174,7 +2189,7 @@ Blockly.Blocks['data_firebase_write'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setMutator(new Blockly.Mutator(['data_firebase_write_item']));
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl); 
     this.itemCount_ = 2;
   },
   mutationToDom: function (workspace) {
@@ -2252,7 +2267,7 @@ Blockly.Blocks['data_firebase_data'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(100);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl); 
   }
 };
 
@@ -2275,7 +2290,7 @@ Blockly.Blocks['data_firebase_read'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(160);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl); 
   }
 };
 
@@ -2293,7 +2308,7 @@ Blockly.Blocks['data_firebase_readonce'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(160);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl); 
   }
 };
 
@@ -2306,7 +2321,7 @@ Blockly.Blocks['data_firebase_clear'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(160);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl); 
   }
 };
 
@@ -2354,7 +2369,7 @@ Blockly.Blocks['new_object'] = {
     this.setTooltip('');
     this.setOutput(true, null);
     this.setMutator(new Blockly.Mutator(['add_object_item']));
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl); 
     this.itemCount_ = 2;
   },
   mutationToDom: function (workspace) {
@@ -2443,7 +2458,7 @@ Blockly.Blocks[Blockly.Msg.WEBDUINO_TESTCAR_NEW, 'car_test_new'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(200);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl); 
   }
 };
 
@@ -2468,7 +2483,7 @@ Blockly.Blocks['car_test_move'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl); 
   }
 };
 
@@ -2491,7 +2506,7 @@ Blockly.Blocks['car_speed'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl); 
 
   }
 };
@@ -2515,7 +2530,7 @@ Blockly.Blocks['temp_data_set'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(200);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl); 
   }
 };
 
@@ -2536,7 +2551,7 @@ Blockly.Blocks['temp_data_get'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(200);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl); 
   }
 };
 
@@ -2562,7 +2577,7 @@ Blockly.Blocks['sound_recognition'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(100);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/component/led-speech.html' + utmUrl); 
   }
 };
 
@@ -2578,7 +2593,7 @@ Blockly.Blocks['sound_recognition_check'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(60);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/component/led-speech.html' + utmUrl); 
   }
 };
 
@@ -2594,7 +2609,7 @@ Blockly.Blocks['sound_recognition_stop'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(100);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/component/led-speech.html' + utmUrl); 
   }
 };
 
@@ -2605,7 +2620,7 @@ Blockly.Blocks['sound_recognition_text'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(60);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/component/led-speech.html' + utmUrl); 
   }
 };
 
@@ -2636,7 +2651,7 @@ Blockly.Blocks['translate_speech'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/component/buzzer-clock.html' + utmUrl); 
   }
 };
 
@@ -2654,7 +2669,7 @@ Blockly.Blocks['speak'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl('http://www.example.com/');
+    this.setHelpUrl(mainUrl + 'useful/component/buzzer-clock.html' + utmUrl); 
   }
 };
 
@@ -2680,7 +2695,7 @@ Blockly.Blocks['speak_callback'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl('http://www.example.com/');
+    this.setHelpUrl(mainUrl + 'useful/component/buzzer-clock.html' + utmUrl); 
   }
 };
 
@@ -2699,7 +2714,7 @@ Blockly.Blocks['speak_event'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl('http://www.example.com/');
+    this.setHelpUrl(mainUrl + 'useful/component/buzzer-clock.html' + utmUrl); 
   }
 };
 
@@ -2747,7 +2762,7 @@ Blockly.Blocks['speak_setting_sample'] = {
     this.setOutput(true, null);
     this.setTooltip('');
     this.setColour(270);
-    this.setHelpUrl('http://www.example.com/');
+    this.setHelpUrl(mainUrl + 'useful/component/buzzer-clock.html' + utmUrl); 
   }
 };
 
@@ -2999,7 +3014,8 @@ Blockly.Blocks['max7219_new'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl('http://webduinoio.github.io/demo/max7219/');
+    this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
   }
 };
 
@@ -3014,7 +3030,8 @@ Blockly.Blocks['max7219_draw'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('http://webduinoio.github.io/demo/max7219/');
+    this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
   }
 };
 
@@ -3034,7 +3051,8 @@ Blockly.Blocks['max7219_animate'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('http://webduinoio.github.io/demo/max7219/');
+    this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
   }
 };
 
@@ -3058,7 +3076,8 @@ Blockly.Blocks['max7219_animate_horse'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('http://webduinoio.github.io/demo/max7219/');
+    this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
   }
 };
 
@@ -3072,7 +3091,8 @@ Blockly.Blocks['max7219_stop'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
   }
 };
 
@@ -3085,7 +3105,8 @@ Blockly.Blocks['max7219_off'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
   }
 };
 
@@ -3167,7 +3188,8 @@ Blockly.Blocks['max7219_88'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('https://webduino.io');
+    this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
   }
 };
 
@@ -3180,7 +3202,8 @@ Blockly.Blocks['max7219_val_alphabet'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('https://webduino.io');
+    this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
   }
 };
 
@@ -3192,7 +3215,8 @@ Blockly.Blocks['max7219_val_num'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('https://webduino.io');
+    this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
   }
 };
 
@@ -3243,7 +3267,8 @@ Blockly.Blocks['max7219_val_img'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('https://webduino.io');
+    this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
   }
 };
 
@@ -3255,7 +3280,7 @@ Blockly.Blocks['photocell_new'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/photocell.html' + utmUrl); 
   },
   getPinDropdown: function () {
     var tags = Code.getTags(),
@@ -3303,7 +3328,7 @@ Blockly.Blocks['photocell_detected'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/photocell.html' + utmUrl); 
   }
 };
 
@@ -3316,7 +3341,7 @@ Blockly.Blocks['photocell_val'] = {
     this.setOutput(true);
     this.setColour(35);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/photocell.html' + utmUrl); 
   }
 };
 
@@ -3330,7 +3355,7 @@ Blockly.Blocks['photocell_stop'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/photocell.html' + utmUrl); 
   }
 };
 
@@ -3342,7 +3367,7 @@ Blockly.Blocks['soil_new'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/soil.html' + utmUrl); 
   },
   getPinDropdown: function () {
     var tags = Code.getTags(),
@@ -3390,7 +3415,7 @@ Blockly.Blocks['soil_detected'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/soil.html' + utmUrl); 
   }
 };
 
@@ -3403,7 +3428,7 @@ Blockly.Blocks['soil_val'] = {
     this.setOutput(true);
     this.setColour(35);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/soil.html' + utmUrl); 
   }
 };
 
@@ -3417,7 +3442,7 @@ Blockly.Blocks['soil_stop'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/soil.html' + utmUrl); 
   }
 };
 
@@ -3430,7 +3455,7 @@ Blockly.Blocks['irrecv_new'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl); 
   }
 };
 
@@ -3445,7 +3470,7 @@ Blockly.Blocks['irrecv_on'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl); 
   }
 };
 
@@ -3457,7 +3482,7 @@ Blockly.Blocks['irrecv_val'] = {
     this.setOutput(true);
     this.setColour(35);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl); 
   }
 };
 
@@ -3470,7 +3495,7 @@ Blockly.Blocks['irrecv_off'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl); 
   }
 };
 
@@ -3483,7 +3508,7 @@ Blockly.Blocks['irled_new'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl); 
   }
 };
 
@@ -3497,7 +3522,7 @@ Blockly.Blocks['irled_launch'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl); 
   }
 };
 
@@ -3516,7 +3541,7 @@ Blockly.Blocks['adxl345_new'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/adxl345.html' + utmUrl); 
   }
 };
 
@@ -3531,7 +3556,7 @@ Blockly.Blocks['adxl345_on'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/adxl345.html' + utmUrl); 
   }
 };
 
@@ -3551,7 +3576,7 @@ Blockly.Blocks['adxl345_val'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/adxl345.html' + utmUrl); 
   }
 };
 
@@ -3564,7 +3589,7 @@ Blockly.Blocks['adxl345_off'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/adxl345.html' + utmUrl); 
   }
 };
 
@@ -3614,7 +3639,7 @@ Blockly.Blocks['joystick_new'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/joypad.html' + utmUrl); 
   }
 };
 
@@ -3629,7 +3654,7 @@ Blockly.Blocks['joystick_on'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/joypad.html' + utmUrl); 
   }
 };
 
@@ -3646,7 +3671,7 @@ Blockly.Blocks['joystick_val'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/joypad.html' + utmUrl); 
   }
 };
 
@@ -3659,7 +3684,7 @@ Blockly.Blocks['joystick_off'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/component/joypad.html' + utmUrl); 
   }
 };
 
@@ -3678,7 +3703,7 @@ Blockly.Blocks['document_keyboard'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(5);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl); 
   }
 };
 
@@ -3691,7 +3716,7 @@ Blockly.Blocks['document_keyboard_konami'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl); 
   }
 };
 
@@ -3704,7 +3729,7 @@ Blockly.Blocks['document_keyboard_stop'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(5);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl); 
   }
 };
 
@@ -3778,7 +3803,7 @@ Blockly.Blocks['document_keycode'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl); 
   }
 };
 
@@ -3800,7 +3825,7 @@ Blockly.Blocks['text_indexof'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(210);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/rfid.html' + utmUrl);
   }
 };
 
@@ -3830,7 +3855,7 @@ Blockly.Blocks['rfid_new'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/rfid.html' + utmUrl);
   }
 };
 
@@ -3845,7 +3870,7 @@ Blockly.Blocks['rfid_enter'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/rfid.html' + utmUrl);
   }
 };
 
@@ -3857,7 +3882,7 @@ Blockly.Blocks['rfid_uid'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/rfid.html' + utmUrl);
   }
 };
 
@@ -3873,7 +3898,7 @@ Blockly.Blocks['rfid_if'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/rfid.html' + utmUrl);
   }
 };
 
@@ -3889,7 +3914,7 @@ Blockly.Blocks['rfid_leave'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/rfid.html' + utmUrl);
   }
 };
 
@@ -3902,6 +3927,6 @@ Blockly.Blocks['rfid_stopread'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl('https://webduino.io');
+    this.setHelpUrl(mainUrl + 'basic/sensor/rfid.html' + utmUrl);
   }
 };

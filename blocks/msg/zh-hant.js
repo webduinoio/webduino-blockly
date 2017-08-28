@@ -8,6 +8,80 @@ goog.require('Blockly.Msg.Webduino');
 
 Blockly.Msg.SAMPLE_COMFIRM_MSG = "載入範例積木將會覆寫工作區內容，確定載入？\n( 單純想加入範例積木，可點選後方「+」號 )";
 
+// BlockSvg ContextMenu
+
+Blockly.Msg.MAINURL = "https://tutorials.webduino.io/zh-tw/docs/";
+Blockly.Msg.UTMURL = '?utm_source=trail-blockly&utm_medium=contextMenu&utm_campaign=tutorials';
+
+Blockly.Msg.HELP = "教學";
+Blockly.Msg.TOOL = "小工具";
+
+Blockly.Msg.VARIABLES_SET_HELPURL = Blockly.Msg.MAINURL + "blockly/standard/variables.html" + Blockly.Msg.UTMURL;
+Blockly.Msg.VARIABLES_GET_HELPURL = Blockly.Msg.VARIABLES_SET_HELPURL;
+
+Blockly.Msg.PROCEDURES_DEFNORETURN_HELPURL = "https://tutorials.webduino.io/zh-tw/docs/blockly/standard/functions.html" + Blockly.Msg.UTMURL;
+Blockly.Msg.PROCEDURES_DEFRETURN_HELPURL = Blockly.Msg.PROCEDURES_DEFNORETURN_HELPURL;
+Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL = Blockly.Msg.PROCEDURES_DEFNORETURN_HELPURL;
+Blockly.Msg.PROCEDURES_CALLRETURN_HELPURL = Blockly.Msg.PROCEDURES_DEFNORETURN_HELPURL;
+Blockly.Msg.PROCEDURES_IFRETURN_HELPURL = Blockly.Msg.PROCEDURES_DEFNORETURN_HELPURL;
+
+Blockly.Msg.TEXT_TEXT_HELPURL = Blockly.Msg.MAINURL + "blockly/standard/text.html" + Blockly.Msg.UTMURL;
+Blockly.Msg.TEXT_JOIN_HELPURL = Blockly.Msg.TEXT_TEXT_HELPURL;
+Blockly.Msg.TEXT_APPEND_HELPURL = Blockly.Msg.TEXT_TEXT_HELPURL;
+Blockly.Msg.TEXT_INDEXOF_HELPURL = Blockly.Msg.TEXT_TEXT_HELPURL;
+Blockly.Msg.TEXT_CHARAT_HELPURL = Blockly.Msg.TEXT_TEXT_HELPURL;
+Blockly.Msg.TEXT_GET_SUBSTRING_HELPURL = Blockly.Msg.TEXT_TEXT_HELPURL;
+Blockly.Msg.TEXT_CHANGECASE_HELPURL = Blockly.Msg.TEXT_TEXT_HELPURL;
+Blockly.Msg.TEXT_TRIM_HELPURL = Blockly.Msg.TEXT_TEXT_HELPURL;
+Blockly.Msg.TEXT_PROMPT_HELPURL = Blockly.Msg.TEXT_TEXT_HELPURL;
+Blockly.Msg.TEXT_LENGTH_HELPURL = Blockly.Msg.TEXT_TEXT_HELPURL;
+Blockly.Msg.TEXT_ISEMPTY_HELPURL = Blockly.Msg.TEXT_TEXT_HELPURL;
+Blockly.Msg.TEXT_PRINT_HELPURL = Blockly.Msg.TEXT_TEXT_HELPURL;
+
+Blockly.Msg.MATH_NUMBER_HELPURL = Blockly.Msg.MAINURL + "blockly/standard/math.html" + Blockly.Msg.UTMURL;
+Blockly.Msg.MATH_ARITHMETIC_HELPURL = Blockly.Msg.MATH_NUMBER_HELPURL;
+Blockly.Msg.MATH_SINGLE_HELPURL = Blockly.Msg.MATH_NUMBER_HELPURL;
+Blockly.Msg.MATH_TRIG_HELPURL = Blockly.Msg.MATH_NUMBER_HELPURL;
+Blockly.Msg.MATH_CONSTANT_HELPURL = Blockly.Msg.MATH_NUMBER_HELPURL;
+Blockly.Msg.MATH_CHANGE_HELPURL = Blockly.Msg.MATH_NUMBER_HELPURL;
+Blockly.Msg.MATH_ROUND_HELPURL = Blockly.Msg.MATH_NUMBER_HELPURL;
+Blockly.Msg.MATH_ONLIST_HELPURL = Blockly.Msg.MATH_NUMBER_HELPURL;
+Blockly.Msg.MATH_MODULO_HELPURL = Blockly.Msg.MATH_NUMBER_HELPURL;
+Blockly.Msg.MATH_CONSTRAIN_HELPURL = Blockly.Msg.MATH_NUMBER_HELPURL;
+Blockly.Msg.MATH_RANDOM_INT_HELPURL = Blockly.Msg.MATH_NUMBER_HELPURL;
+Blockly.Msg.MATH_RANDOM_FLOAT_HELPURL = Blockly.Msg.MATH_NUMBER_HELPURL;
+
+Blockly.Msg.LISTS_CREATE_EMPTY_HELPURL = Blockly.Msg.MAINURL + "blockly/standard/lists.html" + Blockly.Msg.UTMURL;
+Blockly.Msg.LISTS_CREATE_WITH_HELPURL = Blockly.Msg.LISTS_CREATE_EMPTY_HELPURL;
+Blockly.Msg.LISTS_REPEAT_HELPURL = Blockly.Msg.LISTS_CREATE_EMPTY_HELPURL;
+Blockly.Msg.LISTS_LENGTH_HELPURL = Blockly.Msg.LISTS_CREATE_EMPTY_HELPURL;
+Blockly.Msg.LISTS_ISEMPTY_HELPURL = Blockly.Msg.LISTS_CREATE_EMPTY_HELPURL;
+Blockly.Msg.LISTS_INDEX_OF_HELPURL = Blockly.Msg.LISTS_CREATE_EMPTY_HELPURL;
+Blockly.Msg.LISTS_GET_INDEX_HELPURL = Blockly.Msg.LISTS_CREATE_EMPTY_HELPURL;
+Blockly.Msg.LISTS_SET_INDEX_HELPURL = Blockly.Msg.LISTS_CREATE_EMPTY_HELPURL;
+Blockly.Msg.LISTS_GET_SUBLIST_HELPURL = Blockly.Msg.LISTS_CREATE_EMPTY_HELPURL;
+Blockly.Msg.LISTS_SPLIT_HELPURL = Blockly.Msg.LISTS_CREATE_EMPTY_HELPURL;
+
+Blockly.Msg.CONTROLS_IF_HELPURL = Blockly.Msg.MAINURL + "blockly/standard/logic.html" + Blockly.Msg.UTMURL;
+Blockly.Msg.LOGIC_COMPARE_HELPURL = Blockly.Msg.CONTROLS_IF_HELPURL;
+Blockly.Msg.LOGIC_OPERATION_HELPURL = Blockly.Msg.CONTROLS_IF_HELPURL;
+Blockly.Msg.LOGIC_NEGATE_HELPURL = Blockly.Msg.CONTROLS_IF_HELPURL;
+Blockly.Msg.LOGIC_BOOLEAN_HELPURL = Blockly.Msg.CONTROLS_IF_HELPURL;
+Blockly.Msg.LOGIC_NULL_HELPURL = Blockly.Msg.CONTROLS_IF_HELPURL;
+Blockly.Msg.LOGIC_TERNARY_HELPURL = Blockly.Msg.CONTROLS_IF_HELPURL;
+
+Blockly.Msg.CONTROLS_REPEAT_HELPURL = Blockly.Msg.MAINURL + "blockly/standard/loops.html" + Blockly.Msg.UTMURL;
+Blockly.Msg.CONTROLS_WHILEUNTIL_HELPURL = Blockly.Msg.CONTROLS_REPEAT_HELPURL;
+Blockly.Msg.CONTROLS_FOR_HELPURL = Blockly.Msg.CONTROLS_REPEAT_HELPURL;
+Blockly.Msg.CONTROLS_FOREACH_HELPURL = Blockly.Msg.CONTROLS_REPEAT_HELPURL;
+Blockly.Msg.CONTROLS_FLOW_STATEMENTS_HELPURL = Blockly.Msg.CONTROLS_REPEAT_HELPURL;
+
+Blockly.Msg.COLOUR_PICKER_HELPURL = Blockly.Msg.MAINURL + "blockly/index.html" + Blockly.Msg.UTMURL;
+Blockly.Msg.COLOUR_RANDOM_HELPURL = Blockly.Msg.COLOUR_PICKER_HELPURL;
+Blockly.Msg.COLOUR_RGB_HELPURL= Blockly.Msg.COLOUR_PICKER_HELPURL;
+Blockly.Msg.COLOUR_BLEND_HELPURL= Blockly.Msg.COLOUR_PICKER_HELPURL;
+
+
 // Main
 
 Blockly.Msg.VARIABLES_SET = "設定 %1 為 %2";
