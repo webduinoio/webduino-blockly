@@ -1677,7 +1677,7 @@ Blockly.JavaScript['temp_data_get'] = function (block) {
   var code;
   if (dropdown_type_ == 1) {
     code = '(function(){\n' +
-      '  function getCookie(c_name){\n' +
+      '  function ' + getCookie + '(c_name){\n' +
       '    if (document.cookie.length>0){\n' +
       '      var c_start=document.cookie.indexOf(c_name + "=");\n' +
       '      if (c_start!=-1){\n' +
