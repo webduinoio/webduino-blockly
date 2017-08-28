@@ -292,25 +292,40 @@ button:hover{
 }
 
 header {
+  position: relative;
   width: 100%;
-  height: 80px;
+  height: 75px;
   min-width: 200px;
   background-image: linear-gradient(top, #000 0%, #333 100%);
   background-image: -moz-linear-gradient(top, #000 0%, #333 100%);
   background-image: -webkit-linear-gradient(top, #000 0%, #333 100%);
 }
 
+header::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:60px;
+  height:60px;
+  z-index: 99;
+  background-image: url(../media/trail.png);
+}
+
 header .logo {
   position: relative;
-  margin: 24px 5px 0 30px;
+  margin: 20px 5px 0 20px;
 }
 
 header h1 {
   vertical-align: top;
   display: inline-block;
   margin: 0;
-  padding: 32px 0 0;
+  padding: 24px 0 0;
+  margin-right: 5px;
   color: #fff;
+  font-weight: normal;
+  font-size: 21px;
 }
 
 header span {
@@ -366,8 +381,8 @@ a.toolMenu:hover div,div.toolMenu:hover div{
 #userMenu{
   position:absolute;
   z-index:100;
-  top:12px;
-  right:20px;
+  top:8px;
+  right:16px;
   font-weight: normal;
 }
 
@@ -406,7 +421,6 @@ a.toolMenu:hover div,div.toolMenu:hover div{
 
 #userMenu i{
   margin-left:6px;
-  vertical-align: text-bottom;
 }
 
 #userMenu span{
@@ -428,14 +442,15 @@ a.toolMenu:hover div,div.toolMenu:hover div{
 #languageMenu {
   -webkit-appearance: none;
   cursor:pointer;
-  font-size:15px;
+  font-size:14px;
   background: none;
   outline: none;
   border: none;
   color: #777;
-  padding-left:18px;
-  margin-left:-18px;
+  padding-left:14px;
+  margin-left:-16px;
   transition: .3s;
+  vertical-align: top;
 }
 
 #update {
@@ -449,7 +464,7 @@ a.toolMenu:hover div,div.toolMenu:hover div{
 table.nav {
   width: calc(100% - 30px);
   min-width: 600px!important;
-  height: calc(100vh - 95px);
+  height: calc(100vh - 90px);
   margin: 0 auto;
 }
 
@@ -466,7 +481,7 @@ table td.tabmin {
 }
 
 table.nav td.tabmax {
-  padding-right: 0;
+  padding-right: 5px;
 }
 
 table.nav td.tabmax a,
