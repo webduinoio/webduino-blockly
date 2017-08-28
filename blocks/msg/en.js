@@ -254,13 +254,13 @@ Blockly.Msg.WEBDUINO_SPEAK_R10 = "1";
 Blockly.Msg.WEBDUINO_SPEAK_R07 = "0.7";
 Blockly.Msg.WEBDUINO_SPEAK_R05 = "0.5";
 
-Blockly.Msg.WEBDUINO_TIMER_AFTER = "After";
+Blockly.Msg.WEBDUINO_TIMER_AFTER = "(Async) After";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "second(s)";
 Blockly.Msg.WEBDUINO_TIMER_DO = "do";
-Blockly.Msg.WEBDUINO_INTERVAL_EVERY = "Every";
+Blockly.Msg.WEBDUINO_INTERVAL_EVERY = "(Async) Every";
 Blockly.Msg.WEBDUINO_INTERVAL_SECOND = "second(s)";
 Blockly.Msg.WEBDUINO_INTERVAL_DO = "do";
-Blockly.Msg.WEBDUINO_DELAY = "delay";
+Blockly.Msg.WEBDUINO_DELAY = "Delay";
 Blockly.Msg.WEBDUINO_DELAY_SECONDS = "second(s)";
 
 // Keyboard

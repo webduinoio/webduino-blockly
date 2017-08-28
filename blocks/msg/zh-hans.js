@@ -303,10 +303,10 @@ Blockly.Msg.WEBDUINO_KEYBOARD_KONAMI = "当输入 Konami Code，执行";
 
 // Delay
 
-Blockly.Msg.WEBDUINO_TIMER_AFTER = "等待";
+Blockly.Msg.WEBDUINO_TIMER_AFTER = "(非同步) 等待";
 Blockly.Msg.WEBDUINO_TIMER_SECOND = "秒之后";
 Blockly.Msg.WEBDUINO_TIMER_DO = "执行";
-Blockly.Msg.WEBDUINO_INTERVAL_EVERY = "每隔";
+Blockly.Msg.WEBDUINO_INTERVAL_EVERY = "(非同步) 每隔";
 Blockly.Msg.WEBDUINO_INTERVAL_SECOND = "秒";
 Blockly.Msg.WEBDUINO_INTERVAL_DO = "执行";
 Blockly.Msg.WEBDUINO_DELAY = "等待";
