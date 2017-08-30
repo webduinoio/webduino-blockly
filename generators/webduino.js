@@ -629,9 +629,11 @@ Blockly.JavaScript['demo_tracking'] = function (block) {
   var value_var_ = Blockly.JavaScript.valueToCode(block, 'var_', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_type_ = block.getFieldValue('type_');
   var statements_do_ = Blockly.JavaScript.statementToCode(block, 'do_');
+  var statements_standby_ = Blockly.JavaScript.statementToCode(block, 'standby_');
   var share = value_var_ + '.myTracker.on("track", async function(event) {\n' +
     '  if (event.data.length === 0) {\n' +
     '    ' + value_var_ + '.context.clearRect(0, 0, ' + value_var_ + '.canvas.width, ' + value_var_ + '.canvas.height);\n' +
+    '    ' + statements_standby_ + '\n' + 
     '  } else {\n' +
     '    ' + value_var_ + '.context.clearRect(0, 0, ' + value_var_ + '.canvas.width, ' + value_var_ + '.canvas.height);\n' +
     '    event.data.forEach(async function(data) {\n' +

@@ -146,6 +146,7 @@ Blockly.Msg.DEMO_TRACKING = "track";
 Blockly.Msg.DEMO_TRACKING_FACE = "face";
 Blockly.Msg.DEMO_TRACKING_COLOR = "color";
 Blockly.Msg.DEMO_TRACKING_DO = "When tracking succeeds, do";
+Blockly.Msg.DEMO_TRACKING_STANDBY = "When tracking standby, do";
 Blockly.Msg.DEMO_TRACKING_RUN = "start";
 Blockly.Msg.DEMO_TRACKING_STOP = "stop";
 Blockly.Msg.DEMO_TRACKING_TRACK = "tracking";

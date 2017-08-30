@@ -515,7 +515,9 @@ Blockly.Blocks['demo_tracking'] = {
         [Blockly.Msg.DEMO_TRACKING_COLOR, "color"]
       ]), "type_");
     this.appendStatementInput("do_")
-      .appendField(Blockly.Msg.DEMO_TRACKING_DO, "追蹤成功時，將會執行");
+      .appendField(Blockly.Msg.DEMO_TRACKING_DO, "追蹤成功時，執行");
+    this.appendStatementInput("standby_")
+      .appendField(Blockly.Msg.DEMO_TRACKING_STANDBY, "追蹤待命時，執行");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
