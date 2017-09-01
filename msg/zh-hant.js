@@ -10,6 +10,7 @@ var MSG = {
   userMenuDashboard: "專案管理",
   userMenuTutorials: "教學",
   userMenuStages: "關卡",
+  returnStemIsland: "回到史丹島",
   userMenuWebSite: "資訊",
   userMenuLogout: "登出",
   blocks: "積木",

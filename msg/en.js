@@ -10,6 +10,7 @@ var MSG = {
   userMenuDashboard: "Dashboard",
   userMenuTutorials: "Tutorials",
   userMenuStages: "Stages",
+  returnStemIsland: "Back to Stem Island",
   userMenuWebSite: "Support",
   userMenuLogout: "Logout",
   blocks: "Blocks",
