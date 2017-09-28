@@ -14,6 +14,8 @@
 
   'use strict';
 
+  var parser = new window.DOMParser();
+
   function loadTemplate(url, callback) {
     var link = document.createElement('link'),
       tag = document.getElementsByTagName('script')[0];
@@ -38,10 +40,7 @@
 
   function assembleHtml(head, body, css, js) {
     var html = '<!doctype html>\n<html>\n\n';
-    if(css==='jsbin'){
-        head = head.replace(/\/lib\//g,'https://blockly.webduino.io/lib/');
-        body = body.replace(/\/media\//g,'https://blockly.webduino.io/media/');
-    }
+
     html += ('<head>' +
       (head ? '\n  ' + head + '\n' : '') +
       (css ? '\n  <style>' + css + '</style>\n' : '') +
@@ -87,6 +86,39 @@
     return $wrap.wrap('<div/>').parent().html();
   }
 
+  function injectDependencies(headStr) {
+    var head = parser.parseFromString(headStr, 'text/html').head;
+
+    head.querySelectorAll('script').forEach(function (sc) {
+      sc.src = appendBaseURL(sc.getAttribute('src'));
+    });
+    head.querySelectorAll('link').forEach(function (link) {
+      link.href = appendBaseURL(link.getAttribute('href'));
+    });
+
+    return head.innerHTML;
+  }
+
+  function injectMedia(bodyStr) {
+    var body = parser.parseFromString(bodyStr, 'text/html').body;
+
+    body.querySelectorAll('img').forEach(function (img) {
+      img.src = appendBaseURL(img.getAttribute('src'));
+    });
+
+    return body.innerHTML;
+  }
+
+  function appendBaseURL(url) {
+    var urlc = url.toLowerCase();
+    if (urlc.indexOf('//') !== 0 &&
+      urlc.indexOf('http://') !== 0 &&
+      urlc.indexOf('https://') !== 0) {
+      url = location.origin + url;
+    }
+    return url;
+  }
+
   var launchers = {
     jsfiddle: function (config) {
       var data = config.data;
@@ -121,11 +153,12 @@
 
     jsbin: function (config) {
       var data = config.data;
+
       if (config.jsPreprocessor) {
         data[config.jsPreprocessor] = data.js;
         delete data.js;
       }
-      data.html = assembleHtml(data.head,data.body,'jsbin');
+      data.html = assembleHtml(data.head, data.body);
       config.modes = config.modes || 'html,css,js,output';
 
       post('//bin.webduino.io?' + config.modes, data);
@@ -158,6 +191,8 @@
 
   window.launcher = {
     loadTemplate: loadTemplate,
+    injectDependencies: injectDependencies,
+    injectMedia: injectMedia,
     translate: translate,
     jsfiddle: launchers.jsfiddle,
     codepen: launchers.codepen,
