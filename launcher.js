@@ -38,7 +38,10 @@
 
   function assembleHtml(head, body, css, js) {
     var html = '<!doctype html>\n<html>\n\n';
-
+    if(css==='jsbin'){
+        head = head.replace(/\/lib\//g,'https://blockly.webduino.io/lib/');
+        body = body.replace(/\/media\//g,'https://blockly.webduino.io/media/');
+    }
     html += ('<head>' +
       (head ? '\n  ' + head + '\n' : '') +
       (css ? '\n  <style>' + css + '</style>\n' : '') +
@@ -118,12 +121,11 @@
 
     jsbin: function (config) {
       var data = config.data;
-
       if (config.jsPreprocessor) {
         data[config.jsPreprocessor] = data.js;
         delete data.js;
       }
-      data.html = assembleHtml(data.head, data.body);
+      data.html = assembleHtml(data.head,data.body,'jsbin');
       config.modes = config.modes || 'html,css,js,output';
 
       post('//bin.webduino.io?' + config.modes, data);
