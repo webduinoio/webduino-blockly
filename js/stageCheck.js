@@ -37,12 +37,15 @@
 
   function showResult(isPassed, stageInt) {
     var stage = window.stage;
+    var sectionValues = stage.getSectionValuesByStage(stageInt);
+
+    sectionValues.isPassed = isPassed; 
 
     // 若已經停止執行，就不做事了。
     if (!Code.running) return;
 
     if (window.ReturnGameRecord) {
-      window.ReturnGameRecord('utf8', stageInt, stage.getGameTime(), stage.getSectionValues(), JSON.stringify(stage.getCode()));
+      window.ReturnGameRecord('utf8', stageInt, stage.getGameTime(), sectionValues, JSON.stringify(stage.getCode()));
       return;
     }
 

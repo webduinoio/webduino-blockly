@@ -8,6 +8,114 @@
     'stages/10': 'https://youtu.be/NA2kjjwoWNA'
   };
 
+  var STAGE_SECTION_PASSED = {
+    'stages/01': {
+      block: 6,
+      simulator: {
+        line: 2,
+        component: 2
+      }
+    },
+    'stages/02': {
+      block: 28,
+      simulator: {
+        line: 4,
+        component: 2
+      }
+    },
+    'stages/03': {
+      block: 34,
+      simulator: {
+        line: 4,
+        component: 2
+      }
+    },
+    'stages/04': {
+      block: 30,
+      simulator: {
+        line: 3,
+        component: 2
+      }
+    },
+    'stages/05': {
+      block: 7,
+      simulator: {
+        line: 3,
+        component: 2
+      }
+    },
+    'stages/06': {
+      block: 49,
+      simulator: {
+        line: 6,
+        component: 3
+      }
+    },
+    'stages/07': {
+      block: 60,
+      simulator: {
+        line: 13,
+        component: 5
+      }
+    },
+    'stages/08': {
+      block: 42,
+      simulator: {
+        line: 4,
+        component: 2
+      }
+    },
+    'stages/09': {
+      block: 15,
+      simulator: {
+        line: 5,
+        component: 2
+      }
+    },
+    'stages/10': {
+      block: 14,
+      simulator: {
+        line: 2,
+        component: 2
+      }
+    },
+    'stages/11': {
+      block: 31,
+      simulator: {
+        line: 10,
+        component: 4
+      }
+    },
+    'stages/12': {
+      block: 47,
+      simulator: {
+        line: 12,
+        component: 4
+      }
+    },
+    'stages/13': {
+      block: 25,
+      simulator: {
+        line: 10,
+        component: 4
+      }
+    },
+    'stages/14': {
+      block: 25,
+      simulator: {
+        line: 6,
+        component: 3
+      }
+    },
+    'stages/15': {
+      block: 13,
+      simulator: {
+        line: 9,
+        component: 3
+      }
+    }
+  };
+
   window.addEventListener('load', function () {
 
     // 當點選關卡而非解答時，清空內容
@@ -39,9 +147,25 @@
         return {
           block: xml.querySelectorAll('block').length,
           simulator: {
-            line: config.data.components.length,
-            component: config.data.paths.length
+            line: config.data.paths.length,
+            component: config.data.components.length
           }
+        };
+      },
+      getSectionValuesByStage: function (stageInt) {
+        var stageName = Code.getStringParamFromUrl('page');
+        var wk = Code.workspace;
+        var xml = Blockly.Xml.workspaceToDom(wk);
+        var config = getSimulatorConfig();
+        return {
+          user: {
+            block: xml.querySelectorAll('block').length,
+            simulator: {
+              line: config.data.paths.length,
+              component: config.data.components.length
+            }
+          },
+          solution: STAGE_SECTION_PASSED[stageName]
         };
       },
       getBlockXml: function () {
