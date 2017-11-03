@@ -7,5 +7,5 @@ MSG.goal = "終點";
 MSG.toWinTheGame = "的人就贏";
 MSG.NPC = "電腦：";
 MSG.player = "玩家：";
-MSG.stageHelp = "使用積木及模擬器，當點擊模擬器中的按鈕時，能控制測試區中的角色移動。";
+MSG.stageHelp = "設定完開發板與按鈕腳位後，找看看哪裡有遊戲模組，接著設定好每按下一次按鈕，就可以讓你的遊戲角色前進幾步。";
 MSG.demoTitle = "網頁互動區";
