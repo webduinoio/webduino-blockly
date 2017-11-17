@@ -338,59 +338,62 @@
     <sep></sep>
   </category>
   <sep></sep>
-  <category id="catBoard">
-    <block type="board_server" tags="fly,mark1">
-      <value name="server_">
-        <block type="text"></block>
-      </value>
-    </block>
-    <block type="board" tags="fly,mark1,smart">
-      <value name="device_">
-        <block type="text"></block>
-      </value>
-      <field name="rate_">250</field>
-    </block>
-    <block type="all_board_ready"></block>
-    <block type="board_error"></block>
-  </category>
-  <category id="catPin">
-    <block type="variables_set">
-      <field name="VAR">pin</field>
-      <value name="VALUE">
-        <block type="pin_get">
-          <value name="pin">
-            <block type="pin_num">
-              <field name="pin_">10</field>
-            </block>
-          </value>
-        </block>
-      </value>
-    </block>
-    <block type="variables_set">
-      <field name="VAR">pin</field>
-      <value name="VALUE">
-        <block type="pin_get">
-          <value name="pin">
-            <block type="pin_board">
-              <value name="pin_">
-                <block type="pin_num">
-                  <field name="pin_">10</field>
-                </block>
-              </value>
-            </block>
-          </value>
-        </block>
-      </value>
-    </block>
-    <block type="pin_set_mode"></block>
-    <block type="pin_read"></block>
-    <block type="pin_write">
-      <value name="value_">
-        <block type="math_number">
-          <field name="NUM">0</field>
-        </block>
-      </value>
-    </block>
+  <category id="catBoardGroup">
+    <category id="catBoard">
+      <block type="board_server" tags="fly,mark1">
+        <value name="server_">
+          <block type="text"></block>
+        </value>
+      </block>
+      <block type="board" tags="fly,mark1,smart">
+        <value name="device_">
+          <block type="text"></block>
+        </value>
+        <field name="rate_">250</field>
+      </block>
+      <block type="all_board_ready"></block>
+      <block type="board_error"></block>
+    </category>
+    <category id="catPin">
+      <block type="variables_set">
+        <field name="VAR">pin</field>
+        <value name="VALUE">
+          <block type="pin_get">
+            <value name="pin">
+              <block type="pin_num">
+                <field name="pin_">10</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+      <block type="variables_set">
+        <field name="VAR">pin</field>
+        <value name="VALUE">
+          <block type="pin_get">
+            <value name="pin">
+              <block type="pin_board">
+                <value name="pin_">
+                  <block type="pin_num">
+                    <field name="pin_">10</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+      <block type="pin_set_mode"></block>
+      <block type="pin_read"></block>
+      <block type="pin_write">
+        <value name="value_">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+      </block>
+    </category>
+    <sep></sep>
   </category>
   <category id="catMenu1">
     <category id="catLed">
@@ -468,65 +471,6 @@
         </value>
       </block>
     </category>
-    <category id="catBuzzer">
-      <block type="variables_set">
-        <field name="VAR">buzzer</field>
-        <value name="VALUE">
-          <block type="buzzer_new">
-            <field name="pin_">11</field>
-          </block>
-        </value>
-      </block>
-      <block type="buzzer_music_play"></block>
-      <block type="buzzer_var_notes_var_tempos"></block>
-      <block type="buzzer_notes_tempos"></block>
-      <block type="buzzer_music_array">
-        <value name="notes_">
-          <block type="text">
-            <field name="TEXT">C6,D6,E6,F6,G6,A6,B6</field>
-          </block>
-        </value>
-        <value name="tempos_">
-          <block type="text">
-            <field name="TEXT">8</field>
-          </block>
-        </value>
-      </block>
-      <block type="buzzer_load_music"></block>
-      <block type="buzzer_event"></block>
-      <block type="buzzer_state"></block>
-    </category>
-    <category id="catRelay" tags="fly,mark1">
-      <block type="variables_set">
-        <field name="VAR">relay</field>
-        <value name="VALUE">
-          <block type="relay_new">
-            <field name="pin_">10</field>
-          </block>
-        </value>
-      </block>
-      <block type="relay_state">
-        <field name="relay_">relay</field>
-      </block>
-    </category>
-    <category id="catServo" tags="fly,mark1">
-      <block type="variables_set">
-        <field name="VAR">servo</field>
-        <value name="VALUE">
-          <block type="servo_new">
-            <field name="pin_">10</field>
-          </block>
-        </value>
-      </block>
-      <block type="servo_angle"></block>
-      <block type="servo_angle_set">
-        <value name="angle_">
-          <block type="math_number">
-            <field name="NUM">1</field>
-          </block>
-        </value>
-      </block>
-    </category>
     <category id="catMax7219" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">matrix</field>
@@ -585,6 +529,50 @@
       </block>
       <block type="max7219_val_img"></block>
       <block type="max7219_88"></block>
+    </category>
+    <sep></sep>
+  </category>
+  <category id="catMenu2">
+    <category id="catBuzzer">
+      <block type="variables_set">
+        <field name="VAR">buzzer</field>
+        <value name="VALUE">
+          <block type="buzzer_new">
+            <field name="pin_">11</field>
+          </block>
+        </value>
+      </block>
+      <block type="buzzer_music_play"></block>
+      <block type="buzzer_var_notes_var_tempos"></block>
+      <block type="buzzer_notes_tempos"></block>
+      <block type="buzzer_music_array">
+        <value name="notes_">
+          <block type="text">
+            <field name="TEXT">C6,D6,E6,F6,G6,A6,B6</field>
+          </block>
+        </value>
+        <value name="tempos_">
+          <block type="text">
+            <field name="TEXT">8</field>
+          </block>
+        </value>
+      </block>
+      <block type="buzzer_load_music"></block>
+      <block type="buzzer_event"></block>
+      <block type="buzzer_state"></block>
+    </category>
+    <category id="catRelay" tags="fly,mark1">
+      <block type="variables_set">
+        <field name="VAR">relay</field>
+        <value name="VALUE">
+          <block type="relay_new">
+            <field name="pin_">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="relay_state">
+        <field name="relay_">relay</field>
+      </block>
     </category>
     <category id="catIRLed" tags="fly,mark1">
       <block type="variables_set">
@@ -663,7 +651,7 @@
     </category>
     <sep></sep>
   </category>
-  <category id="catMenu2">
+  <category id="catMenu3">
     <category id="catUltraSonic" tags="fly,mark1">
       <block type="variables_set">
         <field name="VAR">ultrasonic</field>
@@ -765,6 +753,9 @@
       <block type="adxl345_val"></block>
       <block type="adxl345_off"></block>
     </category>
+    <sep></sep>
+  </category>
+  <category id="catMenu4">
     <category id="catRFID">
       <block type="variables_set">
         <field name="VAR">rfid</field>
@@ -791,7 +782,25 @@
     </category>
     <sep></sep>
   </category>
-  <category id="catMenu3">
+  <category id="catMenu5">
+    <category id="catServo" tags="fly,mark1">
+      <block type="variables_set">
+        <field name="VAR">servo</field>
+        <value name="VALUE">
+          <block type="servo_new">
+            <field name="pin_">10</field>
+          </block>
+        </value>
+      </block>
+      <block type="servo_angle"></block>
+      <block type="servo_angle_set">
+        <value name="angle_">
+          <block type="math_number">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+    </category>
     <category id="catCarTest">
       <block type="car_test_new">
         <value name="var_">
