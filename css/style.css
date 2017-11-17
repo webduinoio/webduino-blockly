@@ -193,13 +193,16 @@ pre.content {
   overflow: scroll;
 }
 
+#trashButton{
+  margin-right:-1px;
+} 
 
 #check-device-online {
   display: inline-block;
   background: #ddd;
   box-sizing: border-box;
   padding: 0 0 0 3px;
-  margin: -7px 0 4px;
+  margin: -7px -1px 4px 1px;
   border-radius: 5px;
   vertical-align: bottom;
   cursor: pointer;
@@ -218,7 +221,7 @@ pre.content {
   border-radius: 3px;
   background: #333;
   color: #fff;
-  margin: -13px -4px -5px 0;
+  margin: -13px -4px -4px 0;
   vertical-align: middle;
   opacity: 0;
 }
@@ -348,6 +351,7 @@ header h1 a b{
   opacity:0;  
   font-weight: normal;
   transition:.3s;
+  pointer-events: none;
 }
 header h1 a:hover{
   color:#fc0;
@@ -610,6 +614,7 @@ td#copyCode:after {
   white-space: nowrap;
   font-family: 'verdana';
   opacity:0;
+  pointer-events: none;
 }
 td#copyCode:before {
   transition:.3s;
@@ -625,6 +630,7 @@ td#copyCode:before {
   top: 3px;
   left: 31px;
   opacity:0;
+  pointer-events: none;
 }
 
 td#copyCode:hover:after {
@@ -670,9 +676,9 @@ td#copyCode div {
   background: #ddd;
   transition: .3s;
   border-radius: 5px;
-  margin: -7px 0 4px;
+  margin: -7px -1px 4px 1px;
   box-sizing: border-box;
-  padding: 4px 12px 5px;
+  padding: 4px 10px 5px;
   vertical-align: bottom;
 }
 
@@ -702,7 +708,7 @@ td#copyCode div {
   display: none;
   z-index: 99;
   position: absolute;
-  right: 30px;
+  right: 20px;
   top: 125px;
   width: 400px;
   min-width: 225px;
@@ -739,7 +745,7 @@ td#copyCode div {
   overflow: auto;
   width: 100%;
   height: 100%;
-  padding: 0 20px 20px;
+  padding: 0 20px 10px;
   box-sizing: border-box;
 }
 
@@ -763,20 +769,20 @@ td#copyCode div {
 
 #demo-area .demo-area-content>h4 {
   font-size: 20px;
-  margin: 25px 0 15px;
+  margin: 25px 0 10px;
 }
 
 #demo-area .demo-area-content>span {
   display: inline-block;
   font-size: 16px;
   line-height: 24px;
-  margin: 0 0 10px;
+  margin: 0;
 }
 
 #demo-area .demo-area-content select {
   outline: none;
   border: 1px solid #ccc;
-  margin: 0 0 15px;
+  margin: 0 ;
   font-size: 16px;
 }
 
@@ -1096,7 +1102,8 @@ td#copyCode div {
 
 #demo-frame {
   width: 100%;
-  height: calc(100% - 120px);
+  margin-top:15px;
+  height: calc(100% - 110px);
   border: none;
   z-index: 2;
 }

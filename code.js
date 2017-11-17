@@ -825,7 +825,7 @@ Code.init = function (toolbox) {
     //      // Account for the 19 pixel margin and on each side.
     //}
     var contentHeight = document.getElementById('content_blocks').offsetHeight;
-    document.getElementById('demo-area').style.height = (contentHeight - 110) + 'px';
+    document.getElementById('demo-area').style.height = (contentHeight - 65) + 'px';
   };
   window.addEventListener('resize', onresize, false);
 
@@ -1479,12 +1479,12 @@ Blockly.ZoomControls.prototype.position = function () {
     this.left_ = this.MARGIN_SIDE_;
   } else {
     this.left_ = metrics.absoluteLeft -
-      this.WIDTH_ - this.MARGIN_SIDE_ + 70;
+      this.WIDTH_ - this.MARGIN_SIDE_ + 100;
   }
   this.top_ = metrics.viewHeight + metrics.absoluteTop -
     this.HEIGHT_ - this.MARGIN_BOTTOM_ + 5;
   this.svgGroup_.setAttribute('transform',
-    'translate(' + this.left_ + ',' + this.top_ + ')');
+    'translate(' + this.left_ + ',' + this.top_ + ') scale(.95)');;
 };
 
 // trashcan position and size
@@ -1496,13 +1496,13 @@ Blockly.Trashcan.prototype.position = function () {
   if (this.workspace_.RTL) {
     this.left_ = this.MARGIN_SIDE_;
   } else {
-    this.left_ = metrics.viewWidth + metrics.absoluteLeft -
-      this.WIDTH_ - this.MARGIN_SIDE_ + 10;
+    this.left_ = metrics.absoluteLeft -
+    this.WIDTH_ - this.MARGIN_SIDE_ + 82;
   }
   this.top_ = metrics.viewHeight + metrics.absoluteTop -
-    (this.BODY_HEIGHT_ + this.LID_HEIGHT_) - this.MARGIN_BOTTOM_ + 10;
+    (this.BODY_HEIGHT_ + this.LID_HEIGHT_) - this.MARGIN_BOTTOM_ + 26;
   this.svgGroup_.setAttribute('transform',
-    'translate(' + this.left_ + ',' + this.top_ + ') scale(.75)');
+    'translate(' + this.left_ + ',' + this.top_ + ') scale(.58)');
 };
 
 Blockly.WorkspaceSvg.prototype.showContextMenu_ = function (e) {

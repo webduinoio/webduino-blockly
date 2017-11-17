@@ -844,13 +844,6 @@
   </category>
   <category id="catDatabase">
     <category id="catFirebase">
-      <block type="data_firebase">
-        <value name="name_">
-          <block type="variables_get">
-            <field name="VAR">myFirebase</field>
-          </block>
-        </value>
-      </block>
       <block type="data_firebase_url">
         <value name="name_">
           <block type="variables_get">
@@ -859,7 +852,7 @@
         </value>
         <value name="url_">
           <block type="text">
-            <field name="TEXT"></field>
+            <field name="TEXT">https://</field>
           </block>
         </value>
       </block>

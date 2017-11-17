@@ -216,8 +216,8 @@
   outline: none;
 }
 .blocklyTreeRow.blocklyTreeRow {
-  line-height: 22px;
-  height: 22px;
+  line-height: 23px;
+  height: 24px;
   margin-bottom: 0;
   padding-right: 25px;
   white-space: nowrap;
