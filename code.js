@@ -1016,7 +1016,7 @@ Code.initLanguage = function () {
   languageMenu.addEventListener('change', Code.changeLanguage, true);
 
   // Inject language strings.
-  document.title += ' ' + MSG['title'];
+  document.title = MSG['title'];
 };
 
 /**

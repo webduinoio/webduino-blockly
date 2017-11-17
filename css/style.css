@@ -323,9 +323,38 @@ header h1 {
   margin: 0;
   padding: 24px 0 0;
   margin-right: 5px;
-  color: #fff;
+  color: #ccc;
   font-weight: normal;
   font-size: 21px;
+  position: relative;
+}
+header h1 a{
+  position: absolute;
+  font-size:24px;
+  top:25px;
+  right:-32px;
+  text-decoration: none;
+  color:#666;
+  transition:.3s;
+}
+header h1 a b{
+  position:absolute;
+  color:#fc0;
+  font-size:13px;
+  width:200px;
+  line-height: 13px;
+  left:20px;
+  top:8px;
+  opacity:0;  
+  font-weight: normal;
+  transition:.3s;
+}
+header h1 a:hover{
+  color:#fc0;
+}
+header h1 a:hover b{
+  left:30px;
+  opacity:1; 
 }
 
 header span {

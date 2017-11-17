@@ -1,10 +1,16 @@
 <header>
   <a href="https://webduino.io" target="_blank"><img class="logo" src="media/logo.png" id="logo"></a>
-  <h1>{{title}}</h1>
+  <h1>{{title}}<a href="https://goo.gl/xV2xLV" target="_blank"><i class="icon-cloud_done"></i><b>{{gotoCloud}}</b></a></h1>
   <div id="userMenu">
 
-      <a href="index-tutorials{{#if_eq lang 'en'}}-en{{/if_eq}}.html" target="_blank" id="blockly-to-website"><i class="icon-book"></i> <b>{{userMenuTutorials}}</b></a>
-      <a href="https://webduino.io" target="_blank" id="blockly-to-tutorials"><i class="icon-info"></i> <b>{{userMenuWebSite}}</b></a>
+      <a href="https://webduino.io" target="_blank" id="blockly-to-tutorials"><i class="icon-home"></i> <b>{{userMenuWebSite}}</b></a>
+
+      <a href="https://tutorials.webduino.io/zh-tw/docs/basic/index.html?utm_source=cloud-blockly&utm_medium=userMenu&utm_campaign=tutorials" target="_blank" id="blockly-to-website"><i class="icon-book"></i> <b>{{userMenuTutorials}}</b></a>
+
+      <a href="https://docs.webduino.io/" target="_blank" id="blockly-to-website"><i class="icon-file-text2"></i> <b>{{userMenuApiDocs}}</b></a>
+
+      <a href="index-tutorials{{#if_eq lang 'en'}}-en{{/if_eq}}.html" target="_blank" id="blockly-to-website"><i class="icon-tree" ></i> <b>{{userMenuDemos}}</b></a>
+
       <span><i class="icon-earth"></i> <select id="languageMenu"></select></span>
 
   </div>
