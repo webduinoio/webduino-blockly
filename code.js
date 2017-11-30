@@ -708,6 +708,21 @@ Code.ga = function (blockArea, toolManu, i) {
   }
 };
 
+Code.remind = function(){
+  var remindButton = document.getElementById('remind-button');
+  var remind = document.querySelector('.remind');
+  var cookie = document.cookie;
+  if(cookie.indexOf('webduinoBlocklyRemind=close')!=-1){
+    remind.style.display = 'none';
+  }else{
+  remindButton.addEventListener('click',function(){
+    remind.style.display = 'none';
+    document.cookie =  'webduinoBlocklyRemind=close';
+    ga('send', 'event', 'Webduino-blockly', 'remind click');
+  });
+  }
+}
+
 /**
  * Populate the currently selected pane with content generated from the blocks.
  */
@@ -1875,6 +1890,7 @@ Promise.all([
   Code.loadDemoArea();
   Code.loadGa();
   Code.ga();
+  Code.remind();
   Code.importPrettify();
   Code.bindHotkey(window.document);
   Promise.all([

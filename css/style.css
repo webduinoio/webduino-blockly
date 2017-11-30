@@ -1107,3 +1107,100 @@ td#copyCode div {
   border: none;
   z-index: 2;
 }
+
+
+.remind{
+  position: fixed;
+  z-index:9999;
+  width:100%;
+  height:100%;
+}
+.remind-top{
+  width:100%;
+  height:500px;
+}
+.remind-top div{
+  height:100%;
+  float:left;
+}
+.remind-top-1{
+  width:550px;
+  background:url(../media/remind-1.png);
+}
+.remind-top-2{
+  background:#000;
+  opacity:.6;
+  width:calc(100% - 800px);
+}
+.remind-top-3{
+  width:250px;
+  background:url(../media/remind-3.png);
+}
+.remind-bottom{
+  width:100%;
+  height:calc(100% - 500px);
+  background:#000;
+  opacity:.6;
+}
+.remind .owl{
+  position:absolute;
+  display:inline-block;
+  bottom:30px;
+  right:20px;
+  z-index:2;
+  width:800px;
+}
+.remind .owl .owl-img{
+  position:absolute;
+  z-index:2;
+  bottom:0;
+  right:0;
+  width:100%;
+  pointer-events: none;
+}
+.remind .owl .owl-button{
+  position:absolute;
+  display:inline-block;
+  z-index:1;
+  bottom:50px;
+  left:11%;
+  width:350px;
+  height:130px;
+  cursor:pointer;
+  background-image:url(../media/owl-button.png);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  cursor:pointer;
+}
+.remind .owl .owl-button:hover{
+  background-image:url(../media/owl-button-push.png);
+}
+
+
+@media (max-width: 1500px){
+  .remind .owl{
+    width:700px;
+  }
+  .remind .owl .owl-button{
+    width:310px;
+    height:120px;
+    bottom:40px;
+  }
+}
+
+@media (max-width: 1200px){
+  .remind .owl{
+    width:600px;
+  }
+  .remind .owl .owl-button{
+    width:260px;
+    height:110px;
+    bottom:30px;
+  }
+}
+
+@media (max-width: 800px){
+  .remind{
+    display:none;
+  }
+}
