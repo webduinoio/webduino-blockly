@@ -3,9 +3,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title data-translation="title">Webduino Blockly - 點擊按鈕開關玩賽跑小遊戲</title>
   <!-- webduino -->
-  <script src="https://webduino.io/components/webduino-js/dist/webduino-all.min.js"></script>
-  <script src="https://blockly.webduino.io/webduino-blockly.js"></script>
-  <script src="https://blockly.webduino.io/lib/runtime.min.js"></script>
+  <script src="/lib/webduino-all.min.js"></script>
+  <script src="/lib/webduino-blockly.js"></script>
+  <script src="/lib/runtime.min.js"></script>
 </template>
 <template id="body">
   <br>
@@ -15,16 +15,16 @@
   <br><br>
   <span data-translation="NPC">電腦：</span><span id="npcshow">0</span>
   <br>
-  <span data-translation="player">玩家：</span><span id="usershow">0</span> 
+  <span data-translation="player">玩家：</span><span id="usershow">0</span>
   <br>
   <br>
   <div id="npc">
-    <img id="npcimg" src="http://webduinoio.github.io/webduino-blockly/media/tutorials/run-cat.gif">
+    <img id="npcimg" src="/media/tutorials/run-cat.gif">
   </div>
   <div id="user">
-    <img id="userimg" src="http://webduinoio.github.io/webduino-blockly/media/tutorials/run-lion.gif">
-  </div>  
-  <button id="start" class="go" data-translation="gameStart">比賽開始</button> 
+    <img id="userimg" src="/media/tutorials/run-lion.gif">
+  </div>
+  <button id="start" class="go" data-translation="gameStart">比賽開始</button>
 </template>
 <template id="css">
 #start {

@@ -14,6 +14,8 @@
 
   'use strict';
 
+  var parser = new window.DOMParser();
+
   function loadTemplate(url, callback) {
     var link = document.createElement('link'),
       tag = document.getElementsByTagName('script')[0];
@@ -82,6 +84,39 @@
     });
 
     return $wrap.wrap('<div/>').parent().html();
+  }
+
+  function injectDependencies(headStr) {
+    var head = parser.parseFromString(headStr, 'text/html').head;
+
+    head.querySelectorAll('script').forEach(function (sc) {
+      sc.src = appendBaseURL(sc.getAttribute('src'));
+    });
+    head.querySelectorAll('link').forEach(function (link) {
+      link.href = appendBaseURL(link.getAttribute('href'));
+    });
+
+    return head.innerHTML;
+  }
+
+  function injectMedia(bodyStr) {
+    var body = parser.parseFromString(bodyStr, 'text/html').body;
+
+    body.querySelectorAll('img').forEach(function (img) {
+      img.src = appendBaseURL(img.getAttribute('src'));
+    });
+
+    return body.innerHTML;
+  }
+
+  function appendBaseURL(url) {
+    var urlc = url.toLowerCase();
+    if (urlc.indexOf('//') !== 0 &&
+      urlc.indexOf('http://') !== 0 &&
+      urlc.indexOf('https://') !== 0) {
+      url = location.origin + url;
+    }
+    return url;
   }
 
   var launchers = {
@@ -156,6 +191,8 @@
 
   window.launcher = {
     loadTemplate: loadTemplate,
+    injectDependencies: injectDependencies,
+    injectMedia: injectMedia,
     translate: translate,
     jsfiddle: launchers.jsfiddle,
     codepen: launchers.codepen,

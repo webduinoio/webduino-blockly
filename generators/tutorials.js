@@ -4,13 +4,13 @@ goog.provide('Blockly.JavaScript.webduino.tutorials');
 goog.require('Blockly.JavaScript');
 
 /*
-ooooo        oooooooooooo oooooooooo.   
-`888'        `888'     `8 `888'   `Y8b  
- 888          888          888      888 
- 888          888oooo8     888      888 
- 888          888    "     888      888 
- 888       o  888       o  888     d88' 
-o888ooooood8 o888ooooood8 o888bood8P'   
+ooooo        oooooooooooo oooooooooo.
+`888'        `888'     `8 `888'   `Y8b
+ 888          888          888      888
+ 888          888oooo8     888      888
+ 888          888    "     888      888
+ 888       o  888       o  888     d88'
+o888ooooood8 o888ooooood8 o888bood8P'
 */
 
 Blockly.JavaScript['light'] = function (block) {
@@ -105,13 +105,13 @@ Blockly.JavaScript['stop_clock'] = function (block) {
 };
 
 /*
-ooooooooo.     .oooooo.    oooooooooo.  
-`888   `Y88.  d8P'  `Y8b   `888'   `Y8b 
- 888   .d88' 888            888     888 
- 888ooo88P'  888            888oooo888' 
- 888`88b.    888     ooooo  888    `88b 
- 888  `88b.  `88.    .88'   888    .88P 
-o888o  o888o  `Y8bood8P'   o888bood8P'  
+ooooooooo.     .oooooo.    oooooooooo.
+`888   `Y88.  d8P'  `Y8b   `888'   `Y8b
+ 888   .d88' 888            888     888
+ 888ooo88P'  888            888oooo888'
+ 888`88b.    888     ooooo  888    `88b
+ 888  `88b.  `88.    .88'   888    .88P
+o888o  o888o  `Y8bood8P'   o888bood8P'
 */
 
 Blockly.JavaScript['rgb_led_area_color'] = function (block) {
@@ -190,13 +190,13 @@ Blockly.JavaScript['rgb_led_dancing_status'] = function (block) {
 };
 
 /*
-ooooo     ooo ooooo        ooooooooooooo ooooooooo.         .o.       
-`888'     `8' `888'        8'   888   `8 `888   `Y88.      .888.      
- 888       8   888              888       888   .d88'     .8"888.     
- 888       8   888              888       888ooo88P'     .8' `888.    
- 888       8   888              888       888`88b.      .88ooo8888.   
- `88.    .8'   888       o      888       888  `88b.   .8'     `888.  
-   `YbodP'    o888ooooood8     o888o     o888o  o888o o88o     o8888o 
+ooooo     ooo ooooo        ooooooooooooo ooooooooo.         .o.
+`888'     `8' `888'        8'   888   `8 `888   `Y88.      .888.
+ 888       8   888              888       888   .d88'     .8"888.
+ 888       8   888              888       888ooo88P'     .8' `888.
+ 888       8   888              888       888`88b.      .88ooo8888.
+ `88.    .8'   888       o      888       888  `88b.   .8'     `888.
+   `YbodP'    o888ooooood8     o888o     o888o  o888o o88o     o8888o
 */
 
 Blockly.JavaScript['ultrasonic_set_number'] = function (block) {
@@ -217,7 +217,7 @@ Blockly.JavaScript['ultrasonic_change_image_size'] = function (block) {
 Blockly.JavaScript['ultrasonic_change_image_url'] = function (block) {
   var value_url = Blockly.JavaScript.valueToCode(block, 'url', Blockly.JavaScript.ORDER_ATOMIC);
   if (value_url == '\'\'' || !value_url) {
-    value_url = '"https://webduino.io/img/tutorials/tutorial-05-01s.jpg"';
+    value_url = '"/media/tutorials/tutorial-05-01s.jpg"';
   }
   var code = 'document.getElementById("image").setAttribute("src",' + value_url + ');\n';
   return code;
@@ -266,19 +266,19 @@ Blockly.JavaScript['ultrasonic_change_add_music'] = function (block) {
 };
 
 /*
-oooooo   oooo                           .                .o8                 
- `888.   .8'                          .o8               "888                 
-  `888. .8'    .ooooo.  oooo  oooo  .o888oo oooo  oooo   888oooo.   .ooooo.  
-   `888.8'    d88' `88b `888  `888    888   `888  `888   d88' `88b d88' `88b 
-    `888'     888   888  888   888    888    888   888   888   888 888ooo888 
-     888      888   888  888   888    888 .  888   888   888   888 888    .o 
-    o888o     `Y8bod8P'  `V88V"V8P'   "888"  `V88V"V8P'  `Y8bod8P' `Y8bod8P' 
+oooooo   oooo                           .                .o8
+ `888.   .8'                          .o8               "888
+  `888. .8'    .ooooo.  oooo  oooo  .o888oo oooo  oooo   888oooo.   .ooooo.
+   `888.8'    d88' `88b `888  `888    888   `888  `888   d88' `88b d88' `88b
+    `888'     888   888  888   888    888    888   888   888   888 888ooo888
+     888      888   888  888   888    888 .  888   888   888   888 888    .o
+    o888o     `Y8bod8P'  `V88V"V8P'   "888"  `V88V"V8P'  `Y8bod8P' `Y8bod8P'
 */
 
 Blockly.JavaScript['tutorial_youtube'] = function (block) {
   var value_name_ = Blockly.JavaScript.valueToCode(block, 'name_', Blockly.JavaScript.ORDER_ATOMIC);
   var text_id_ = block.getFieldValue('id_');
-  var code = 
+  var code =
     'await new Promise(function (resolve) {\n' +
     '  var tag = document.createElement("script");\n' +
     '  tag.src = "https://www.youtube.com/iframe_api";\n' +
@@ -354,13 +354,13 @@ Blockly.JavaScript['tutorial_youtube_id'] = function(block) {
 };
 
 /*
-oooooooooo.  ooooo     ooo ooooooooooooo ooooooooooooo   .oooooo.   ooooo      ooo 
-`888'   `Y8b `888'     `8' 8'   888   `8 8'   888   `8  d8P'  `Y8b  `888b.     `8' 
- 888     888  888       8       888           888      888      888  8 `88b.    8  
- 888oooo888'  888       8       888           888      888      888  8   `88b.  8  
- 888    `88b  888       8       888           888      888      888  8     `88b.8  
- 888    .88P  `88.    .8'       888           888      `88b    d88'  8       `888  
-o888bood8P'     `YbodP'        o888o         o888o      `Y8bood8P'  o8o        `8  
+oooooooooo.  ooooo     ooo ooooooooooooo ooooooooooooo   .oooooo.   ooooo      ooo
+`888'   `Y8b `888'     `8' 8'   888   `8 8'   888   `8  d8P'  `Y8b  `888b.     `8'
+ 888     888  888       8       888           888      888      888  8 `88b.    8
+ 888oooo888'  888       8       888           888      888      888  8   `88b.  8
+ 888    `88b  888       8       888           888      888      888  8     `88b.8
+ 888    .88P  `88.    .8'       888           888      `88b    d88'  8       `888
+o888bood8P'     `YbodP'        o888o         o888o      `Y8bood8P'  o8o        `8
 */
 
 Blockly.JavaScript['show_text'] = function (block) {
@@ -527,13 +527,13 @@ Blockly.JavaScript['button_game_user'] = function (block) {
 };
 
 /*
-oooooooooo.   ooooo   ooooo ooooooooooooo 
-`888'   `Y8b  `888'   `888' 8'   888   `8 
- 888      888  888     888       888      
- 888      888  888ooooo888       888      
- 888      888  888     888       888      
- 888     d88'  888     888       888      
-o888bood8P'   o888o   o888o     o888o     
+oooooooooo.   ooooo   ooooo ooooooooooooo
+`888'   `Y8b  `888'   `888' 8'   888   `8
+ 888      888  888     888       888
+ 888      888  888ooooo888       888
+ 888      888  888     888       888
+ 888     d88'  888     888       888
+o888bood8P'   o888o   o888o     o888o
 */
 
 Blockly.JavaScript['tutorial_dht_show'] = function (block) {
@@ -660,13 +660,13 @@ Blockly.JavaScript['tutorial_dht_draw'] = function (block) {
 };
 
 /*
- .oooooo..o oooooooooooo ooooooooo.   oooooo     oooo   .oooooo.   
-d8P'    `Y8 `888'     `8 `888   `Y88.  `888.     .8'   d8P'  `Y8b  
-Y88bo.       888          888   .d88'   `888.   .8'   888      888 
- `"Y8888o.   888oooo8     888ooo88P'     `888. .8'    888      888 
-     `"Y88b  888    "     888`88b.        `888.8'     888      888 
-oo     .d8P  888       o  888  `88b.       `888'      `88b    d88' 
-8""88888P'  o888ooooood8 o888o  o888o       `8'        `Y8bood8P'  
+ .oooooo..o oooooooooooo ooooooooo.   oooooo     oooo   .oooooo.
+d8P'    `Y8 `888'     `8 `888   `Y88.  `888.     .8'   d8P'  `Y8b
+Y88bo.       888          888   .d88'   `888.   .8'   888      888
+ `"Y8888o.   888oooo8     888ooo88P'     `888. .8'    888      888
+     `"Y88b  888    "     888`88b.        `888.8'     888      888
+oo     .d8P  888       o  888  `88b.       `888'      `88b    d88'
+8""88888P'  o888ooooood8 o888o  o888o       `8'        `Y8bood8P'
 */
 
 Blockly.JavaScript['tutorial_servo_button'] = function (block) {
@@ -710,13 +710,13 @@ Blockly.JavaScript['tutorial_servo_calculate'] = function (block) {
 
 
 /*
-oooooooooo.  ooooo     ooo  oooooooooooo  oooooooooooo oooooooooooo ooooooooo.   
-`888'   `Y8b `888'     `8' d'""""""d888' d'""""""d888' `888'     `8 `888   `Y88. 
- 888     888  888       8        .888P         .888P    888          888   .d88' 
- 888oooo888'  888       8       d888'         d888'     888oooo8     888ooo88P'  
- 888    `88b  888       8     .888P         .888P       888    "     888`88b.    
- 888    .88P  `88.    .8'    d888'    .P   d888'    .P  888       o  888  `88b.  
-o888bood8P'     `YbodP'    .8888888888P  .8888888888P  o888ooooood8 o888o  o888o 
+oooooooooo.  ooooo     ooo  oooooooooooo  oooooooooooo oooooooooooo ooooooooo.
+`888'   `Y8b `888'     `8' d'""""""d888' d'""""""d888' `888'     `8 `888   `Y88.
+ 888     888  888       8        .888P         .888P    888          888   .d88'
+ 888oooo888'  888       8       d888'         d888'     888oooo8     888ooo88P'
+ 888    `88b  888       8     .888P         .888P       888    "     888`88b.
+ 888    .88P  `88.    .8'    d888'    .P   d888'    .P  888       o  888  `88b.
+o888bood8P'     `YbodP'    .8888888888P  .8888888888P  o888ooooood8 o888o  o888o
 */
 
 Blockly.JavaScript['tutorial_buzzer_1'] = function (block) {
@@ -737,29 +737,29 @@ Blockly.JavaScript['tutorial_buzzer_3'] = function (block) {
 
 
 /*
-ooooooooo.   oooo                      .                                 oooo  oooo  
-`888   `Y88. `888                    .o8                                 `888  `888  
- 888   .d88'  888 .oo.    .ooooo.  .o888oo  .ooooo.   .ooooo.   .ooooo.   888   888  
- 888ooo88P'   888P"Y88b  d88' `88b   888   d88' `88b d88' `"Y8 d88' `88b  888   888  
- 888          888   888  888   888   888   888   888 888       888ooo888  888   888  
- 888          888   888  888   888   888 . 888   888 888   .o8 888    .o  888   888  
-o888o        o888o o888o `Y8bod8P'   "888" `Y8bod8P' `Y8bod8P' `Y8bod8P' o888o o888o 
+ooooooooo.   oooo                      .                                 oooo  oooo
+`888   `Y88. `888                    .o8                                 `888  `888
+ 888   .d88'  888 .oo.    .ooooo.  .o888oo  .ooooo.   .ooooo.   .ooooo.   888   888
+ 888ooo88P'   888P"Y88b  d88' `88b   888   d88' `88b d88' `"Y8 d88' `88b  888   888
+ 888          888   888  888   888   888   888   888 888       888ooo888  888   888
+ 888          888   888  888   888   888 . 888   888 888   .o8 888    .o  888   888
+o888o        o888o o888o `Y8bod8P'   "888" `Y8bod8P' `Y8bod8P' `Y8bod8P' o888o o888o
 */
 
 Blockly.JavaScript['photocell_show_number'] = function (block) {
   var value_number_ = Blockly.JavaScript.valueToCode(block, 'number_', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'document.getElementById("show").innerHTML = ' + value_number_ + ';\n';
   return code;
-};                                                                                                                   
+};
 
 /*
-ooo        ooooo       .o.       ooooooo  ooooo  ooooooooo   .oooo.     .o   .ooooo.   
-`88.       .888'      .888.       `8888    d8'  d"""""""8' .dP""Y88b  o888  888' `Y88. 
- 888b     d'888      .8"888.        Y888..8P          .8'        ]8P'  888  888    888 
- 8 Y88. .P  888     .8' `888.        `8888'          .8'       .d8P'   888   `Vbood888 
- 8  `888'   888    .88ooo8888.      .8PY888.        .8'      .dP'      888        888' 
- 8    Y     888   .8'     `888.    d8'  `888b      .8'     .oP     .o  888      .88P'  
-o8o        o888o o88o     o8888o o888o  o88888o   .8'      8888888888 o888o   .oP'     
+ooo        ooooo       .o.       ooooooo  ooooo  ooooooooo   .oooo.     .o   .ooooo.
+`88.       .888'      .888.       `8888    d8'  d"""""""8' .dP""Y88b  o888  888' `Y88.
+ 888b     d'888      .8"888.        Y888..8P          .8'        ]8P'  888  888    888
+ 8 Y88. .P  888     .8' `888.        `8888'          .8'       .d8P'   888   `Vbood888
+ 8  `888'   888    .88ooo8888.      .8PY888.        .8'      .dP'      888        888'
+ 8    Y     888   .8'     `888.    d8'  `888b      .8'     .oP     .o  888      .88P'
+o8o        o888o o88o     o8888o o888o  o88888o   .8'      8888888888 o888o   .oP'
 */
 
 Blockly.JavaScript['tutorial_max7219_button'] = function (block) {
@@ -772,13 +772,13 @@ Blockly.JavaScript['tutorial_max7219_button'] = function (block) {
 };
 
 /*
-                .o8              oooo    .oooo.         .o     oooooooo 
-               "888              `888  .dP""Y88b      .d88    dP""""""" 
- .oooo.    .oooo888  oooo    ooo  888        ]8P'   .d'888   d88888b.   
-`P  )88b  d88' `888   `88b..8P'   888      <88b.  .d'  888       `Y88b  
- .oP"888  888   888     Y888'     888       `88b. 88ooo888oo       ]88  
-d8(  888  888   888   .o8"'88b    888  o.   .88P       888   o.   .88P  
-`Y888""8o `Y8bod88P" o88'   888o o888o `8bd88P'       o888o  `8bd88P'   
+                .o8              oooo    .oooo.         .o     oooooooo
+               "888              `888  .dP""Y88b      .d88    dP"""""""
+ .oooo.    .oooo888  oooo    ooo  888        ]8P'   .d'888   d88888b.
+`P  )88b  d88' `888   `88b..8P'   888      <88b.  .d'  888       `Y88b
+ .oP"888  888   888     Y888'     888       `88b. 88ooo888oo       ]88
+d8(  888  888   888   .o8"'88b    888  o.   .88P       888   o.   .88P
+`Y888""8o `Y8bod88P" o88'   888o o888o `8bd88P'       o888o  `8bd88P'
 */
 
 Blockly.JavaScript['tutorial_adxl345_show'] = function (block) {
@@ -795,45 +795,39 @@ Blockly.JavaScript['adxl345_image_angle'] = function(block) {
 };
 
 /*
- o8o                                                    
- `"'                                                    
-oooo  oooo d8b oooo d8b  .ooooo.   .ooooo.  oooo    ooo 
-`888  `888""8P `888""8P d88' `88b d88' `"Y8  `88.  .8'  
- 888   888      888     888ooo888 888         `88..8'   
- 888   888      888     888    .o 888   .o8    `888'    
-o888o d888b    d888b    `Y8bod8P' `Y8bod8P'     `8'     
+ o8o
+ `"'
+oooo  oooo d8b oooo d8b  .ooooo.   .ooooo.  oooo    ooo
+`888  `888""8P `888""8P d88' `88b d88' `"Y8  `88.  .8'
+ 888   888      888     888ooo888 888         `88..8'
+ 888   888      888     888    .o 888   .o8    `888'
+o888o d888b    d888b    `Y8bod8P' `Y8bod8P'     `8'
 */
 
 Blockly.JavaScript['tutorial_irrecv_code'] = function (block) {
   var value_code_ = Blockly.JavaScript.valueToCode(block, 'code_', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'document.getElementById("code").innerHTML = ' + value_code_ + ';\n';
   return code;
-};  
+};
 
 Blockly.JavaScript['tutorial_irrecv_color'] = function (block) {
   var value_code_ = Blockly.JavaScript.valueToCode(block, 'code_', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'document.getElementById("area").style.background = ' + value_code_ + ';\n';
   return code;
-}; 
+};
 
 /*
-ooooooooo.   oooooooooooo ooooo oooooooooo.   
-`888   `Y88. `888'     `8 `888' `888'   `Y8b  
- 888   .d88'  888          888   888      888 
- 888ooo88P'   888oooo8     888   888      888 
- 888`88b.     888    "     888   888      888 
- 888  `88b.   888          888   888     d88' 
-o888o  o888o o888o        o888o o888bood8P'   
+ooooooooo.   oooooooooooo ooooo oooooooooo.
+`888   `Y88. `888'     `8 `888' `888'   `Y8b
+ 888   .d88'  888          888   888      888
+ 888ooo88P'   888oooo8     888   888      888
+ 888`88b.     888    "     888   888      888
+ 888  `88b.   888          888   888     d88'
+o888o  o888o o888o        o888o o888bood8P'
 */
 
 Blockly.JavaScript['tutorial_rfid_code'] = function (block) {
   var value_code_ = Blockly.JavaScript.valueToCode(block, 'code_', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'document.getElementById("show").innerHTML = ' + value_code_ + ';\n';
   return code;
-}; 
-
-
-
-
-
-
+};
