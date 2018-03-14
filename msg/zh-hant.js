@@ -82,6 +82,7 @@ var MSG = {
   catKeyCode: "鍵盤行為",
   catPlus: "進階功能",
   catStandard: "基本功能",
+  catLED5x5: "全彩點距陣",
   catMax7219: "LED 點矩陣",
   catPhotocell: "光敏(可變)電阻",
   catSoil: "土壤濕度偵測",

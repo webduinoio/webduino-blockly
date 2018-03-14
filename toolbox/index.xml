@@ -530,6 +530,16 @@
       <block type="max7219_val_img"></block>
       <block type="max7219_88"></block>
     </category>
+
+
+
+   <category id="catLED5x5" tags="fly,mark1">
+      <block type="led5x5_img"></block>
+    </category>
+
+
+
+
     <sep></sep>
   </category>
   <category id="catMenu2">

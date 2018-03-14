@@ -76,7 +76,7 @@ Blockly.Blocks['demo_light_click'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(Blockly.Blocks.colour.HUE);
-        this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
+    this.setHelpUrl(mainUrl + 'basic/blockly/blockly-information.html' + utmUrl);
   }
 };
 
@@ -1787,7 +1787,7 @@ Blockly.Blocks['buzzer_new'] = {
     this.setTooltip('');
     this.setColour(230);
     this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
-    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl);
   }
 };
 
@@ -1804,23 +1804,23 @@ Blockly.Blocks['buzzer_music'] = {
     this.setTooltip('即將停用，請改用 "用 buzzer 播放..."');
     this.setColour(65);
     this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
-    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl);
   }
 };
 
 Blockly.Blocks['buzzer_var_notes_var_tempos'] = {
-  init: function() {
+  init: function () {
     this.appendDummyInput()
       .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_TONE, "音符：")
-        .appendField(new Blockly.FieldVariable("notes"), "notes")
+      .appendField(new Blockly.FieldVariable("notes"), "notes")
       .appendField(Blockly.Msg.WEBDUINO_BUZZER_MUSIC1_TEMPOS, "   節奏 ( 幾分之1秒 )：")
-        .appendField(new Blockly.FieldVariable("tempo"), "tempo");
+      .appendField(new Blockly.FieldVariable("tempo"), "tempo");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(35);
     this.setTooltip('');
     this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
-    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl);
   }
 };
 
@@ -1871,7 +1871,7 @@ Blockly.Blocks['buzzer_notes_tempos'] = {
     this.setTooltip('');
     this.setColour(35);
     this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
-    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl);
   }
 };
 
@@ -1888,7 +1888,7 @@ Blockly.Blocks['buzzer_music_play'] = {
     this.setTooltip('');
     this.setColour(65);
     this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
-    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl);
   }
 };
 
@@ -1942,7 +1942,7 @@ Blockly.Blocks['buzzer_single'] = {
     this.setTooltip('即將停用，請改用 "用 buzzer 播放..."');
     this.setColour(65);
     this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
-    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl);
   }
 };
 
@@ -1959,7 +1959,7 @@ Blockly.Blocks['buzzer_play'] = {
     this.setTooltip('即將停用，請改用 "用 buzzer 播放..."');
     this.setColour(65);
     this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
-    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl);
   }
 };
 
@@ -1980,7 +1980,7 @@ Blockly.Blocks['buzzer_event'] = {
     this.setTooltip('');
     this.setColour(65);
     this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
-    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl);
   }
 };
 
@@ -2000,7 +2000,7 @@ Blockly.Blocks['buzzer_state'] = {
     this.setTooltip('');
     this.setColour(65);
     this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
-    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl);
   }
 };
 
@@ -2020,7 +2020,7 @@ Blockly.Blocks['buzzer_music_array'] = {
     this.setTooltip('');
     this.setColour(35);
     this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
-    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl);
   }
 };
 
@@ -2041,7 +2041,7 @@ Blockly.Blocks['buzzer_load_music'] = {
     this.setTooltip('');
     this.setColour(35);
     this.setToolUrl('http://webduinoio.github.io/samples/content/buzzer-piano/');
-    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/buzzer.html' + utmUrl);
   }
 };
 
@@ -2053,7 +2053,7 @@ Blockly.Blocks['relay_new'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl(mainUrl + 'basic/component/relay.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/relay.html' + utmUrl);
   }
 };
 
@@ -2070,7 +2070,7 @@ Blockly.Blocks['relay_state'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/component/relay.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/relay.html' + utmUrl);
   }
 };
 
@@ -2082,7 +2082,7 @@ Blockly.Blocks['servo_new'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl(mainUrl + 'basic/component/servo.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/servo.html' + utmUrl);
   }
 };
 
@@ -2097,7 +2097,7 @@ Blockly.Blocks['servo_angle'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl(mainUrl + 'basic/component/servo.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/servo.html' + utmUrl);
   }
 };
 
@@ -2111,7 +2111,7 @@ Blockly.Blocks['servo_angle_set'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl(mainUrl + 'basic/component/servo.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/servo.html' + utmUrl);
   }
 };
 
@@ -2127,7 +2127,7 @@ Blockly.Blocks['data_firebase'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(200);
-    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl);
   }
 };
 
@@ -2142,7 +2142,7 @@ Blockly.Blocks['data_firebase_url'] = {
     this.setInputsInline(true);
     this.setTooltip('');
     this.setColour(200);
-    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl);
   }
 };
 
@@ -2191,7 +2191,7 @@ Blockly.Blocks['data_firebase_write'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setMutator(new Blockly.Mutator(['data_firebase_write_item']));
-    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl);
     this.itemCount_ = 2;
   },
   mutationToDom: function (workspace) {
@@ -2269,7 +2269,7 @@ Blockly.Blocks['data_firebase_data'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(100);
-    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl);
   }
 };
 
@@ -2292,7 +2292,7 @@ Blockly.Blocks['data_firebase_read'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(160);
-    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl);
   }
 };
 
@@ -2310,7 +2310,7 @@ Blockly.Blocks['data_firebase_readonce'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(160);
-    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl);
   }
 };
 
@@ -2323,7 +2323,7 @@ Blockly.Blocks['data_firebase_clear'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(160);
-    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl);
   }
 };
 
@@ -2371,7 +2371,7 @@ Blockly.Blocks['new_object'] = {
     this.setTooltip('');
     this.setOutput(true, null);
     this.setMutator(new Blockly.Mutator(['add_object_item']));
-    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'socket/useful/im-1.html' + utmUrl);
     this.itemCount_ = 2;
   },
   mutationToDom: function (workspace) {
@@ -2460,7 +2460,7 @@ Blockly.Blocks[Blockly.Msg.WEBDUINO_TESTCAR_NEW, 'car_test_new'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(200);
-    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl);
   }
 };
 
@@ -2485,7 +2485,7 @@ Blockly.Blocks['car_test_move'] = {
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl);
   }
 };
 
@@ -2502,13 +2502,13 @@ Blockly.Blocks['car_speed'] = {
     this.appendValueInput("speed_")
       .setCheck("Number");
     this.appendDummyInput()
-      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PERCENT,"%");
+      .appendField(Blockly.Msg.WEBDUINO_TESTCAR_PERCENT, "%");
     this.setColour(200);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl);
 
   }
 };
@@ -2532,7 +2532,7 @@ Blockly.Blocks['temp_data_set'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(200);
-    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl);
   }
 };
 
@@ -2553,7 +2553,7 @@ Blockly.Blocks['temp_data_get'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(200);
-    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/index.html' + utmUrl);
   }
 };
 
@@ -2579,7 +2579,7 @@ Blockly.Blocks['sound_recognition'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(100);
-    this.setHelpUrl(mainUrl + 'useful/component/led-speech.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'useful/component/led-speech.html' + utmUrl);
   }
 };
 
@@ -2595,7 +2595,7 @@ Blockly.Blocks['sound_recognition_check'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(60);
-    this.setHelpUrl(mainUrl + 'useful/component/led-speech.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'useful/component/led-speech.html' + utmUrl);
   }
 };
 
@@ -2611,7 +2611,7 @@ Blockly.Blocks['sound_recognition_stop'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(100);
-    this.setHelpUrl(mainUrl + 'useful/component/led-speech.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'useful/component/led-speech.html' + utmUrl);
   }
 };
 
@@ -2622,7 +2622,7 @@ Blockly.Blocks['sound_recognition_text'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(60);
-    this.setHelpUrl(mainUrl + 'useful/component/led-speech.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'useful/component/led-speech.html' + utmUrl);
   }
 };
 
@@ -2653,7 +2653,7 @@ Blockly.Blocks['translate_speech'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl(mainUrl + 'useful/component/buzzer-clock.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'useful/component/buzzer-clock.html' + utmUrl);
   }
 };
 
@@ -2671,7 +2671,7 @@ Blockly.Blocks['speak'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl(mainUrl + 'useful/component/buzzer-clock.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'useful/component/buzzer-clock.html' + utmUrl);
   }
 };
 
@@ -2697,7 +2697,7 @@ Blockly.Blocks['speak_callback'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl(mainUrl + 'useful/component/buzzer-clock.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'useful/component/buzzer-clock.html' + utmUrl);
   }
 };
 
@@ -2716,7 +2716,7 @@ Blockly.Blocks['speak_event'] = {
     this.setNextStatement(true, null);
     this.setTooltip('');
     this.setColour(230);
-    this.setHelpUrl(mainUrl + 'useful/component/buzzer-clock.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'useful/component/buzzer-clock.html' + utmUrl);
   }
 };
 
@@ -2764,7 +2764,7 @@ Blockly.Blocks['speak_setting_sample'] = {
     this.setOutput(true, null);
     this.setTooltip('');
     this.setColour(270);
-    this.setHelpUrl(mainUrl + 'useful/component/buzzer-clock.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'useful/component/buzzer-clock.html' + utmUrl);
   }
 };
 
@@ -3003,6 +3003,114 @@ Blockly.Blocks['status_repeat_stop'] = {
 
 
 
+
+
+
+//https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#p3cgep
+Blockly.JavaScript['led5x5_img'] = function (block) {
+  var colour_red = block.getFieldValue('red');
+  var checkbox_m1 = block.getFieldValue('_m01') == 'FALSE';
+  var checkbox_m2 = block.getFieldValue('_m02') == 'FALSE';
+  var checkbox_m3 = block.getFieldValue('_m03') == 'FALSE';
+  var checkbox_m4 = block.getFieldValue('_m04') == 'FALSE';
+  var checkbox_m5 = block.getFieldValue('_m05') == 'FALSE';
+  var checkbox_m6 = block.getFieldValue('_m06') == 'FALSE';
+  var checkbox_m7 = block.getFieldValue('_m07') == 'FALSE';
+  var checkbox_m8 = block.getFieldValue('_m08') == 'FALSE';
+  var checkbox_m9 = block.getFieldValue('_m09') == 'FALSE';
+  var checkbox_m10 = block.getFieldValue('_m10') == 'FALSE';
+  var checkbox_m11 = block.getFieldValue('_m11') == 'FALSE';
+  var checkbox_m12 = block.getFieldValue('_m12') == 'FALSE';
+  var checkbox_m13 = block.getFieldValue('_m13') == 'FALSE';
+  var checkbox_m14 = block.getFieldValue('_m14') == 'FALSE';
+  var checkbox_m15 = block.getFieldValue('_m15') == 'FALSE';
+  var checkbox_m16 = block.getFieldValue('_m16') == 'FALSE';
+  var checkbox_m17 = block.getFieldValue('_m17') == 'FALSE';
+  var checkbox_m18 = block.getFieldValue('_m18') == 'FALSE';
+  var checkbox_m19 = block.getFieldValue('_m19') == 'FALSE';
+  var checkbox_m20 = block.getFieldValue('_m20') == 'FALSE';
+  var checkbox_m21 = block.getFieldValue('_m21') == 'FALSE';
+  var checkbox_m22 = block.getFieldValue('_m22') == 'FALSE';
+  var checkbox_m23 = block.getFieldValue('_m23') == 'FALSE';
+  var checkbox_m24 = block.getFieldValue('_m24') == 'FALSE';
+  var checkbox_m25 = block.getFieldValue('_m25') == 'FALSE';
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+Blockly.Blocks['led5x5_img'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("挑選顏色")
+        .appendField(new Blockly.FieldColour("#ff0000"), "_mcolor");
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m01")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m02")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m03")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m04")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m05");
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m06")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m07")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m08")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m09")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m10");
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m11")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m12")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m13")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m14")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m15");
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m16")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m17")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m18")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m19")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m20");
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m21")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m22")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m23")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m24")
+        .appendField(new Blockly.FieldCheckbox("FALSE"), "_m25");
+    this.setOutput(true, null);
+    this.setColour(195);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Blockly.Blocks['max7219_new'] = {
   init: function () {
     this.appendDummyInput()
@@ -3017,7 +3125,7 @@ Blockly.Blocks['max7219_new'] = {
     this.setColour(230);
     this.setTooltip('');
     this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
-    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl);
   }
 };
 
@@ -3033,7 +3141,7 @@ Blockly.Blocks['max7219_draw'] = {
     this.setTooltip('');
     this.setColour(65);
     this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
-    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl);
   }
 };
 
@@ -3054,7 +3162,7 @@ Blockly.Blocks['max7219_animate'] = {
     this.setColour(65);
     this.setTooltip('');
     this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
-    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl);
   }
 };
 
@@ -3079,7 +3187,7 @@ Blockly.Blocks['max7219_animate_horse'] = {
     this.setColour(65);
     this.setTooltip('');
     this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
-    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl);
   }
 };
 
@@ -3094,7 +3202,7 @@ Blockly.Blocks['max7219_stop'] = {
     this.setColour(65);
     this.setTooltip('');
     this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
-    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl);
   }
 };
 
@@ -3108,7 +3216,7 @@ Blockly.Blocks['max7219_off'] = {
     this.setTooltip('');
     this.setColour(65);
     this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
-    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl);
   }
 };
 
@@ -3191,7 +3299,7 @@ Blockly.Blocks['max7219_88'] = {
     this.setTooltip('');
     this.setColour(35);
     this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
-    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl);
   }
 };
 
@@ -3205,7 +3313,7 @@ Blockly.Blocks['max7219_val_alphabet'] = {
     this.setTooltip('');
     this.setColour(35);
     this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
-    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl);
   }
 };
 
@@ -3218,7 +3326,7 @@ Blockly.Blocks['max7219_val_num'] = {
     this.setTooltip('');
     this.setColour(35);
     this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
-    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl);
   }
 };
 
@@ -3270,7 +3378,7 @@ Blockly.Blocks['max7219_val_img'] = {
     this.setTooltip('');
     this.setColour(35);
     this.setToolUrl('http://webduinoio.github.io/demo/max7219/');
-    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/maxmatrix.html' + utmUrl);
   }
 };
 
@@ -3282,7 +3390,7 @@ Blockly.Blocks['photocell_new'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/sensor/photocell.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/sensor/photocell.html' + utmUrl);
   },
   getPinDropdown: function () {
     var tags = Code.getTags(),
@@ -3330,7 +3438,7 @@ Blockly.Blocks['photocell_detected'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/sensor/photocell.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/sensor/photocell.html' + utmUrl);
   }
 };
 
@@ -3343,7 +3451,7 @@ Blockly.Blocks['photocell_val'] = {
     this.setOutput(true);
     this.setColour(35);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/sensor/photocell.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/sensor/photocell.html' + utmUrl);
   }
 };
 
@@ -3357,7 +3465,7 @@ Blockly.Blocks['photocell_stop'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/sensor/photocell.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/sensor/photocell.html' + utmUrl);
   }
 };
 
@@ -3369,7 +3477,7 @@ Blockly.Blocks['soil_new'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/sensor/soil.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/sensor/soil.html' + utmUrl);
   },
   getPinDropdown: function () {
     var tags = Code.getTags(),
@@ -3417,7 +3525,7 @@ Blockly.Blocks['soil_detected'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/sensor/soil.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/sensor/soil.html' + utmUrl);
   }
 };
 
@@ -3430,7 +3538,7 @@ Blockly.Blocks['soil_val'] = {
     this.setOutput(true);
     this.setColour(35);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/sensor/soil.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/sensor/soil.html' + utmUrl);
   }
 };
 
@@ -3444,7 +3552,7 @@ Blockly.Blocks['soil_stop'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/sensor/soil.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/sensor/soil.html' + utmUrl);
   }
 };
 
@@ -3457,7 +3565,7 @@ Blockly.Blocks['irrecv_new'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl);
   }
 };
 
@@ -3472,7 +3580,7 @@ Blockly.Blocks['irrecv_on'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl);
   }
 };
 
@@ -3484,7 +3592,7 @@ Blockly.Blocks['irrecv_val'] = {
     this.setOutput(true);
     this.setColour(35);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl);
   }
 };
 
@@ -3497,7 +3605,7 @@ Blockly.Blocks['irrecv_off'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl);
   }
 };
 
@@ -3510,7 +3618,7 @@ Blockly.Blocks['irled_new'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl);
   }
 };
 
@@ -3524,7 +3632,7 @@ Blockly.Blocks['irled_launch'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(65);
-    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/ir.html' + utmUrl);
   }
 };
 
@@ -3543,7 +3651,7 @@ Blockly.Blocks['adxl345_new'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/sensor/adxl345.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/sensor/adxl345.html' + utmUrl);
   }
 };
 
@@ -3558,7 +3666,7 @@ Blockly.Blocks['adxl345_on'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/sensor/adxl345.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/sensor/adxl345.html' + utmUrl);
   }
 };
 
@@ -3578,7 +3686,7 @@ Blockly.Blocks['adxl345_val'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl(mainUrl + 'basic/sensor/adxl345.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/sensor/adxl345.html' + utmUrl);
   }
 };
 
@@ -3591,7 +3699,7 @@ Blockly.Blocks['adxl345_off'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/sensor/adxl345.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/sensor/adxl345.html' + utmUrl);
   }
 };
 
@@ -3641,7 +3749,7 @@ Blockly.Blocks['joystick_new'] = {
     this.setOutput(true);
     this.setColour(230);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/component/joypad.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/joypad.html' + utmUrl);
   }
 };
 
@@ -3656,7 +3764,7 @@ Blockly.Blocks['joystick_on'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/component/joypad.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/joypad.html' + utmUrl);
   }
 };
 
@@ -3673,7 +3781,7 @@ Blockly.Blocks['joystick_val'] = {
     this.setOutput(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl(mainUrl + 'basic/component/joypad.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/joypad.html' + utmUrl);
   }
 };
 
@@ -3686,7 +3794,7 @@ Blockly.Blocks['joystick_off'] = {
     this.setNextStatement(true);
     this.setColour(65);
     this.setTooltip('');
-    this.setHelpUrl(mainUrl + 'basic/component/joypad.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'basic/component/joypad.html' + utmUrl);
   }
 };
 
@@ -3705,7 +3813,7 @@ Blockly.Blocks['document_keyboard'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(5);
-    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl);
   }
 };
 
@@ -3718,7 +3826,7 @@ Blockly.Blocks['document_keyboard_konami'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl);
   }
 };
 
@@ -3731,7 +3839,7 @@ Blockly.Blocks['document_keyboard_stop'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(5);
-    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl);
   }
 };
 
@@ -3805,7 +3913,7 @@ Blockly.Blocks['document_keycode'] = {
     this.setNextStatement(true);
     this.setTooltip('');
     this.setColour(35);
-    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl); 
+    this.setHelpUrl(mainUrl + 'useful/example/toycar-keyboard.html' + utmUrl);
   }
 };
 

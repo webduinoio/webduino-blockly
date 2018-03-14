@@ -633,7 +633,7 @@ Blockly.JavaScript['demo_tracking'] = function (block) {
   var share = value_var_ + '.myTracker.on("track", async function(event) {\n' +
     '  if (event.data.length === 0) {\n' +
     '    ' + value_var_ + '.context.clearRect(0, 0, ' + value_var_ + '.canvas.width, ' + value_var_ + '.canvas.height);\n' +
-    '    ' + statements_standby_ + '\n' + 
+    '    ' + statements_standby_ + '\n' +
     '  } else {\n' +
     '    ' + value_var_ + '.context.clearRect(0, 0, ' + value_var_ + '.canvas.width, ' + value_var_ + '.canvas.height);\n' +
     '    event.data.forEach(async function(data) {\n' +
@@ -1311,10 +1311,10 @@ Blockly.JavaScript['buzzer_music_play'] = function (block) {
     code = variable_var_ + '.play(' + functionName + '([' + statements_music_ + ']).notes ,' + functionName + '([' + statements_music_ + ']).tempos );\n';
   } else {
     var _vars = statements_music_.trim();
-    _vars = _vars.substring(0,_vars.length-1).split(',');
+    _vars = _vars.substring(0, _vars.length - 1).split(',');
     var notes = _vars[0].split(':')[1];
     var tempos = _vars[1].split(':')[1];
-    code = variable_var_ + '.play(' + notes +','+ tempos+');\n';
+    code = variable_var_ + '.play(' + notes + ',' + tempos + ');\n';
   }
   return code;
 };
@@ -1634,7 +1634,7 @@ Blockly.JavaScript['car_test_move'] = function (block) {
   return code;
 };
 
-Blockly.JavaScript['car_speed'] = function(block) {
+Blockly.JavaScript['car_speed'] = function (block) {
   var variable_var_ = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('var_'), Blockly.Variables.NAME_TYPE);
   var dropdown_speed_ = Blockly.JavaScript.valueToCode(block, 'speed_', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_tire_ = block.getFieldValue('tire_');
@@ -2036,6 +2036,54 @@ Blockly.JavaScript['status_repeat_stop'] = function (block) {
   var code = 'clearTimeout(' + value_name_ + ');\n';
   return code;
 };
+
+
+
+
+
+
+Blockly.JavaScript['led5x5_img'] = function (block) {
+  var colour__mcolor = block.getFieldValue('_mcolor');
+  var checkbox__m01 = block.getFieldValue('_m01');
+  var checkbox__m02 = block.getFieldValue('_m02');
+  var checkbox__m03 = block.getFieldValue('_m03');
+  var checkbox__m04 = block.getFieldValue('_m04');
+  var checkbox__m05 = block.getFieldValue('_m05');
+  var checkbox__m06 = block.getFieldValue('_m06');
+  var checkbox__m07 = block.getFieldValue('_m07');
+  var checkbox__m08 = block.getFieldValue('_m08');
+  var checkbox__m09 = block.getFieldValue('_m09');
+  var checkbox__m10 = block.getFieldValue('_m10');
+  var checkbox__m11 = block.getFieldValue('_m11');
+  var checkbox__m12 = block.getFieldValue('_m12');
+  var checkbox__m13 = block.getFieldValue('_m13');
+  var checkbox__m14 = block.getFieldValue('_m14');
+  var checkbox__m15 = block.getFieldValue('_m15');
+  var checkbox__m16 = block.getFieldValue('_m16');
+  var checkbox__m17 = block.getFieldValue('_m17');
+  var checkbox__m18 = block.getFieldValue('_m18');
+  var checkbox__m19 = block.getFieldValue('_m19');
+  var checkbox__m20 = block.getFieldValue('_m20');
+  var checkbox__m21 = block.getFieldValue('_m21');
+  var checkbox__m22 = block.getFieldValue('_m22');
+  var checkbox__m23 = block.getFieldValue('_m23');
+  var checkbox__m24 = block.getFieldValue('_m24');
+  var checkbox__m25 = block.getFieldValue('_m25');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...' + checkbox__m01;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+
+
+
+
+
+
+
+
+
 
 
 Blockly.JavaScript['max7219_new'] = function (block) {
