@@ -74,6 +74,11 @@
     return board ? board.getPin(pinNum) : undef;
   }
 
+  function bitGPIO(pinNum) {
+    var pinMaps = [25, 32, 33, 13, 15, 35, 12, 14, 16, 17, 26, 27, 2, 18, 19, 23, 5];
+    return pinMaps[pinNum];
+  }
+
   function searchBoard(options) {
     var keys = Object.keys(options),
       candidate,
@@ -705,6 +710,7 @@
 
   scope.boardReady = boardReady;
   scope.getPin = getPin;
+  scope.bitGPIO = bitGPIO;
   scope.getLed = getLed;
   scope.getRelay = getRelay;
   scope.getRGBLed = getRGBLed;
