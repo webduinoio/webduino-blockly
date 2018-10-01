@@ -827,8 +827,8 @@ Blockly.Blocks['math_round_digit'] = {
     this.appendValueInput("round_")
       .appendField(new Blockly.FieldDropdown([
         [Blockly.Msg.WEBDUINO_MATH_ROUND, "round"],
-        [Blockly.Msg.WEBDUINO_MATH_ROUND_UP, "floor"],
-        [Blockly.Msg.WEBDUINO_MATH_ROUND_DOWN, "ceil"]
+        [Blockly.Msg.WEBDUINO_MATH_ROUND_UP, "ceil"],
+        [Blockly.Msg.WEBDUINO_MATH_ROUND_DOWN, "floor"]
       ]), "type_")
       .appendField(Blockly.Msg.WEBDUINO_MATH_ROUND_TO, "到小數點")
       .appendField(new Blockly.FieldDropdown([
