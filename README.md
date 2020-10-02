@@ -1,6 +1,7 @@
 # Webduino-Blockly
 
 The Visual Programming Editor for Webduino.
+efficient and simple
 
 Google's [Blockly](https://github.com/google/blockly) is a web-based, visual programming editor. Users can drag blocks together to build programs.
 
