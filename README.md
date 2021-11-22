@@ -1,7 +1,3 @@
-# Archive
-
-New repo is: <https://github.com/webduinoio/webduino-blockly-trail>
-
 # Webduino-Blockly
 
 The Visual Programming Editor for Webduino.
